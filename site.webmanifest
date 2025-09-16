@@ -1,0 +1,100 @@
+{
+    "name": "Calkilo - AI Calorie Calculator",
+    "short_name": "Calkilo",
+    "description": "AI-powered calorie calculator app that analyzes food photos to provide accurate calorie counts and nutrition tracking",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#10b981",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "en",
+    "categories": ["health", "lifestyle", "food"],
+    "icons": [
+        {
+            "src": "/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/images/screenshot1.jpg",
+            "sizes": "390x844",
+            "type": "image/jpeg",
+            "form_factor": "narrow"
+        },
+        {
+            "src": "/images/screenshot2.jpg",
+            "sizes": "390x844",
+            "type": "image/jpeg",
+            "form_factor": "narrow"
+        },
+        {
+            "src": "/images/screenshot3.jpg",
+            "sizes": "390x844",
+            "type": "image/jpeg",
+            "form_factor": "narrow"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Take Photo",
+            "short_name": "Photo",
+            "description": "Take a photo to calculate calories",
+            "url": "/?action=photo",
+            "icons": [
+                {
+                    "src": "/icons/camera-96x96.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "View History",
+            "short_name": "History",
+            "description": "View your nutrition history",
+            "url": "/?action=history",
+            "icons": [
+                {
+                    "src": "/icons/history-96x96.png",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ],
+    "related_applications": [
+        {
+            "platform": "play",
+            "url": "https://play.google.com/store/apps/details?id=com.calkilo.app",
+            "id": "com.calkilo.app"
+        },
+        {
+            "platform": "itunes",
+            "url": "https://apps.apple.com/app/calkilo/id123456789"
+        }
+    ],
+    "prefer_related_applications": true
+}

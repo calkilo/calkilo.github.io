@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>FAQ - Frequently Asked Questions | Calkilo AI Calorie Calculator</title>
+    <meta name="description" content="Find answers to common questions about Calkilo AI calorie calculator app. Learn about features, accuracy, privacy, and how to use the app effectively.">
+    <meta name="keywords" content="calkilo faq, calorie calculator questions, AI app help, nutrition tracking FAQ, diet app support">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="FAQ - Calkilo AI Calorie Calculator">
+    <meta property="og:description" content="Get answers to common questions about Calkilo AI calorie calculator app. Learn about features, accuracy, and usage.">
+    <meta property="og:url" content="https://calkilo.app/faq.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://calkilo.app/faq.html">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Additional CSS for FAQ page -->
+    <style>
+        .faq-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 120px 20px 80px;
+        }
+        
+        .faq-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .faq-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-header p {
+            font-size: 1.2rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .faq-search {
+            max-width: 500px;
+            margin: 0 auto 3rem;
+            position: relative;
+        }
+        
+        .faq-search input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .faq-search input:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+        
+        .faq-search i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+        }
+        
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .category-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #e5e7eb;
+            background: white;
+            color: #6b7280;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .category-btn.active,
+        .category-btn:hover {
+            border-color: #6366f1;
+            background: #6366f1;
+            color: white;
+        }
+        
+        .faq-section {
+            margin-bottom: 3rem;
+        }
+        
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .faq-item {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8fafc;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f2937;
+            transition: background-color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: #f1f5f9;
+        }
+        
+        .faq-question.active {
+            background: #6366f1;
+            color: white;
+        }
+        
+        .faq-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-question.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .faq-answer.active {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+        
+        .faq-answer p {
+            color: #6b7280;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .faq-answer ul {
+            color: #6b7280;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .faq-answer li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: #4f46e5;
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #6b7280;
+        }
+        
+        .no-results i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #d1d5db;
+        }
+        
+        @media (max-width: 768px) {
+            .faq-header h1 {
+                font-size: 2rem;
+            }
+            
+            .faq-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .category-btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <i class="fas fa-apple-alt" aria-hidden="true"></i>
+                    <span>Calkilo</span>
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html#features" class="nav-link">Features</a>
+                <a href="index.html#screenshots" class="nav-link">Screenshots</a>
+                <a href="index.html#testimonials" class="nav-link">Reviews</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="index.html#download" class="nav-link download-btn">Download</a>
+            </div>
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- FAQ Content -->
+    <main class="faq-content">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left" aria-hidden="true"></i>
+            Back to Home
+        </a>
+        
+        <div class="faq-header">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about Calkilo and how to make the most of our AI-powered calorie calculator.</p>
+        </div>
+        
+        <div class="faq-search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input type="text" id="searchInput" placeholder="Search FAQ..." aria-label="Search frequently asked questions">
+        </div>
+        
+        <div class="faq-categories">
+            <button class="category-btn active" data-category="all">All Questions</button>
+            <button class="category-btn" data-category="getting-started">Getting Started</button>
+            <button class="category-btn" data-category="features">Features</button>
+            <button class="category-btn" data-category="accuracy">Accuracy</button>
+            <button class="category-btn" data-category="privacy">Privacy</button>
+            <button class="category-btn" data-category="technical">Technical</button>
+        </div>
+        
+        <div class="faq-sections">
+            <!-- Getting Started Section -->
+            <div class="faq-section" data-category="getting-started">
+                <h2>Getting Started</h2>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How do I download and install Calkilo?
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Calkilo is available for free download on both iOS and Android devices:</p>
+                        <ul>
+                            <li><strong>iOS:</strong> Visit the App Store and search for "Calkilo" or click the download button on our website</li>
+                            <li><strong>Android:</strong> Visit Google Play Store and search for "Calkilo" or use the download link on our website</li>
+                        </ul>
+                        <p>Once downloaded, simply open the app and follow the setup wizard to create your account and start tracking your nutrition.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Do I need to create an account to use Calkilo?
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>While you can use some basic features without an account, creating a free account allows you to:</p>
+                        <ul>
+                            <li>Save your nutrition history and progress</li>
+                            <li>Sync data across multiple devices</li>
+                            <li>Set personalized health goals</li>
+                            <li>Access advanced AI features</li>
+                            <li>Export your data</li>
+                        </ul>
+                        <p>Account creation is quick and only requires your email address and a password.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How do I take a good food photo for accurate calorie calculation?
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>For the most accurate results, follow these tips when photographing your food:</p>
+                        <ul>
+                            <li><strong>Good lighting:</strong> Use natural light or bright, even lighting</li>
+                            <li><strong>Clear view:</strong> Make sure all food items are visible and not covered</li>
+                            <li><strong>Close-up:</strong> Fill the frame with your food, but keep some background visible for scale</li>
+                            <li><strong>Multiple angles:</strong> Take photos from different angles if the food has multiple layers</li>
+                            <li><strong>Clean background:</strong> Use a simple, contrasting background when possible</li>
+                            <li><strong>Fresh food:</strong> Photograph food when it's fresh and properly presented</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Features Section -->
+            <div class="faq-section" data-category="features">
+                <h2>Features & Functionality</h2>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What features does Calkilo offer?
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Calkilo offers a comprehensive suite of nutrition tracking features:</p>
+                        <ul>
+                            <li><strong>AI Photo Analysis:</strong> Instant calorie calculation from food photos</li>
+                            <li><strong>Macronutrient Tracking:</strong> Detailed protein, carb, and fat breakdowns</li>
+                            <li><strong>Nutrition History:</strong> Complete log of your daily food intake</li>
+                            <li><strong>Goal Setting:</strong> Personalized calorie and macro targets</li>
+                            <li><strong>Progress Tracking:</strong> Visual charts and statistics</li>
+                            <li><strong>Food Database:</strong> Extensive database of foods and ingredients</li>
+                            <li><strong>Export Options:</strong> Download your data in various formats</li>
+                            <li><strong>Offline Mode:</strong> Basic features work without internet</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Can I manually add foods that aren't recognized by AI?
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! Calkilo offers several ways to add foods that our AI might not recognize:</p>
+                        <ul>
+                            <li><strong>Manual Entry:</strong> Search our extensive food database by name or barcode</li>
+                            <li><strong>Custom Foods:</strong> Create custom food entries with your own nutritional data</li>
+                            <li><strong>Recipe Builder:</strong> Add complex dishes by breaking them down into ingredients</li>
+                            <li><strong>Barcode Scanner:</strong> Scan product barcodes for packaged foods</li>
+                            <li><strong>Voice Input:</strong> Speak the food name for quick entry</li>
+                        </ul>
+                        <p>Our AI continuously learns from user inputs, so unrecognized foods help improve the system for everyone.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How do I set and track my health goals?
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Setting up your health goals in Calkilo is easy:</p>
+                        <ul>
+                            <li><strong>Goal Setup:</strong> Go to Settings > Health Goals to configure your targets</li>
+                            <li><strong>Calorie Goals:</strong> Set daily calorie targets based on your weight goals</li>
+                            <li><strong>Macro Targets:</strong> Customize protein, carb, and fat percentages</li>
+                            <li><strong>Weight Goals:</strong> Track weight loss, gain, or maintenance</li>
+                            <li><strong>Activity Level:</strong> Adjust goals based on your exercise routine</li>
+                            <li><strong>Progress Monitoring:</strong> View daily, weekly, and monthly progress charts</li>
+                        </ul>
+                        <p>Our AI provides personalized recommendations based on your goals and progress.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Accuracy Section -->
+            <div class="faq-section" data-category="accuracy">
+                <h2>Accuracy & AI Technology</h2>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How accurate is Calkilo's AI calorie calculation?
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Calkilo's AI achieves 99.2% accuracy in calorie calculation through:</p>
+                        <ul>
+                            <li><strong>Advanced Computer Vision:</strong> State-of-the-art image recognition technology</li>
+                            <li><strong>Machine Learning:</strong> Trained on millions of food images and nutritional data</li>
+                            <li><strong>Continuous Learning:</strong> AI improves with each photo analyzed</li>
+                            <li><strong>Portion Estimation:</strong> Sophisticated algorithms to estimate serving sizes</li>
+                            <li><strong>Food Recognition:</strong> Identifies thousands of foods and ingredients</li>
+                            <li><strong>Quality Control:</strong> Multiple validation layers ensure accuracy</li>
+                        </ul>
+                        <p>While highly accurate, results are estimates and may vary based on food preparation methods and portion sizes.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What types of foods can Calkilo recognize?
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Calkilo can recognize a wide variety of foods including:</p>
+                        <ul>
+                            <li><strong>Fresh Foods:</strong> Fruits, vegetables, meats, fish, dairy products</li>
+                            <li><strong>Prepared Meals:</strong> Salads, sandwiches, pasta, rice dishes, soups</li>
+                            <li><strong>Packaged Foods:</strong> Snacks, cereals, beverages, frozen foods</li>
+                            <li><strong>International Cuisine:</strong> Asian, Mediterranean, Latin American, and other global dishes</li>
+                            <li><strong>Complex Dishes:</strong> Multi-ingredient meals and recipes</li>
+                            <li><strong>Beverages:</strong> Coffee, tea, smoothies, alcoholic drinks</li>
+                        </ul>
+                        <p>Our AI database contains over 100,000 food items and continues to grow with user contributions.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How does Calkilo handle portion sizes?
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Calkilo uses advanced computer vision to estimate portion sizes through:</p>
+                        <ul>
+                            <li><strong>Reference Objects:</strong> Uses common items (plates, utensils, hands) for scale</li>
+                            <li><strong>3D Modeling:</strong> Creates 3D models of food to estimate volume</li>
+                            <li><strong>Machine Learning:</strong> Learns from user corrections to improve estimates</li>
+                            <li><strong>Manual Adjustment:</strong> Users can adjust portion sizes after AI analysis</li>
+                            <li><strong>Standard Portions:</strong> Provides common serving size options</li>
+                        </ul>
+                        <p>For best results, include reference objects in your photos and verify portion estimates.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Privacy Section -->
+            <div class="faq-section" data-category="privacy">
+                <h2>Privacy & Data Security</h2>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How does Calkilo protect my personal data?
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Calkilo implements multiple layers of security to protect your data:</p>
+                        <ul>
+                            <li><strong>End-to-End Encryption:</strong> All data encrypted in transit and at rest</li>
+                            <li><strong>Secure Infrastructure:</strong> Hosted on SOC 2 compliant cloud servers</li>
+                            <li><strong>Access Controls:</strong> Strict authentication and authorization protocols</li>
+                            <li><strong>Data Minimization:</strong> Only collect data necessary for our services</li>
+                            <li><strong>Regular Audits:</strong> Continuous security monitoring and assessments</li>
+                            <li><strong>Privacy by Design:</strong> Built with privacy protection as a core principle</li>
+                        </ul>
+                        <p>We never sell your personal data and only share it with your explicit consent or as required by law.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Can I delete my data and account?
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, you have complete control over your data:</p>
+                        <ul>
+                            <li><strong>Account Deletion:</strong> Delete your account anytime through app settings</li>
+                            <li><strong>Data Export:</strong> Download all your data before deletion</li>
+                            <li><strong>Selective Deletion:</strong> Remove specific photos or entries</li>
+                            <li><strong>GDPR Compliance:</strong> Full compliance with EU data protection laws</li>
+                            <li><strong>Permanent Removal:</strong> Data permanently deleted within 30 days</li>
+                            <li><strong>Confirmation Process:</strong> Multiple confirmations to prevent accidental deletion</li>
+                        </ul>
+                        <p>Contact our support team if you need assistance with data deletion or export.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is my health data shared with third parties?
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No, we do not share your health data with third parties. Our data sharing policy includes:</p>
+                        <ul>
+                            <li><strong>No Data Sales:</strong> We never sell your personal or health data</li>
+                            <li><strong>Limited Sharing:</strong> Only share data with your explicit consent</li>
+                            <li><strong>Anonymized Data:</strong> May use anonymized data for AI improvement</li>
+                            <li><strong>Legal Requirements:</strong> Only share when required by law or court order</li>
+                            <li><strong>Service Providers:</strong> Trusted partners bound by strict confidentiality agreements</li>
+                            <li><strong>Transparency:</strong> Clear disclosure of any data sharing in our Privacy Policy</li>
+                        </ul>
+                        <p>Your health information is treated with the highest level of confidentiality and security.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Technical Section -->
+            <div class="faq-section" data-category="technical">
+                <h2>Technical Support</h2>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What devices and operating systems are supported?
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Calkilo supports a wide range of devices and operating systems:</p>
+                        <ul>
+                            <li><strong>iOS:</strong> iPhone and iPad running iOS 12.0 or later</li>
+                            <li><strong>Android:</strong> Phones and tablets running Android 8.0 (API level 26) or later</li>
+                            <li><strong>Camera Requirements:</strong> Rear camera with autofocus for best photo quality</li>
+                            <li><strong>Storage:</strong> At least 100MB free space for app and data</li>
+                            <li><strong>Internet:</strong> Wi-Fi or cellular data for AI processing and sync</li>
+                            <li><strong>Offline Mode:</strong> Basic features work without internet connection</li>
+                        </ul>
+                        <p>We regularly update the app to support the latest devices and operating systems.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Why is the app running slowly or crashing?
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>If Calkilo is running slowly or crashing, try these troubleshooting steps:</p>
+                        <ul>
+                            <li><strong>Restart the App:</strong> Close and reopen the app completely</li>
+                            <li><strong>Check Internet:</strong> Ensure you have a stable internet connection</li>
+                            <li><strong>Update the App:</strong> Download the latest version from the app store</li>
+                            <li><strong>Clear Cache:</strong> Clear app cache in device settings</li>
+                            <li><strong>Free Storage:</strong> Ensure you have at least 500MB free storage</li>
+                            <li><strong>Restart Device:</strong> Restart your phone or tablet</li>
+                            <li><strong>Contact Support:</strong> If issues persist, contact our technical support team</li>
+                        </ul>
+                        <p>Most performance issues are resolved with these simple steps.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How do I sync my data across multiple devices?
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Syncing your data across devices is automatic when you're signed in:</p>
+                        <ul>
+                            <li><strong>Account Required:</strong> Sign in with the same account on all devices</li>
+                            <li><strong>Automatic Sync:</strong> Data syncs automatically when connected to internet</li>
+                            <li><strong>Real-time Updates:</strong> Changes appear on all devices within minutes</li>
+                            <li><strong>Manual Sync:</strong> Pull down to refresh or go to Settings > Sync</li>
+                            <li><strong>Conflict Resolution:</strong> App handles conflicts by using the most recent data</li>
+                            <li><strong>Offline Changes:</strong> Changes sync when internet connection is restored</li>
+                        </ul>
+                        <p>Ensure all devices are updated to the latest app version for best sync performance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="no-results" id="noResults" style="display: none;">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <h3>No results found</h3>
+            <p>Try searching with different keywords or browse our categories above.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-apple-alt"></i>
+                        <span>Calkilo</span>
+                    </div>
+                    <p>Revolutionizing nutrition tracking with AI-powered calorie calculation</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Follow us on Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Connect with us on LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#screenshots">Screenshots</a>
+                        <a href="index.html#download">Download</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="faq.html">FAQ</a>
+                        <a href="contact.html">Contact Us</a>
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <a href="terms-of-service.html">Terms of Service</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#">About Us</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Careers</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2025</span> Calkilo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // FAQ functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            const searchInput = document.getElementById('searchInput');
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const faqSections = document.querySelectorAll('.faq-section');
+            const noResults = document.getElementById('noResults');
+            
+            // FAQ accordion functionality
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('.faq-icon');
+                    
+                    // Close other open FAQs in the same section
+                    const currentSection = this.closest('.faq-section');
+                    const otherQuestions = currentSection.querySelectorAll('.faq-question');
+                    
+                    otherQuestions.forEach(otherQuestion => {
+                        if (otherQuestion !== this) {
+                            otherQuestion.classList.remove('active');
+                            otherQuestion.nextElementSibling.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current FAQ
+                    this.classList.toggle('active');
+                    answer.classList.toggle('active');
+                });
+            });
+            
+            // Search functionality
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                let hasResults = false;
+                
+                faqSections.forEach(section => {
+                    const questions = section.querySelectorAll('.faq-question');
+                    let sectionHasResults = false;
+                    
+                    questions.forEach(question => {
+                        const questionText = question.textContent.toLowerCase();
+                        const answer = question.nextElementSibling;
+                        const answerText = answer.textContent.toLowerCase();
+                        
+                        if (questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
+                            question.parentElement.style.display = 'block';
+                            sectionHasResults = true;
+                            hasResults = true;
+                        } else {
+                            question.parentElement.style.display = 'none';
+                        }
+                    });
+                    
+                    section.style.display = sectionHasResults ? 'block' : 'none';
+                });
+                
+                noResults.style.display = hasResults ? 'none' : 'block';
+            });
+            
+            // Category filtering
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    
+                    // Update active button
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Clear search
+                    searchInput.value = '';
+                    noResults.style.display = 'none';
+                    
+                    // Show/hide sections
+                    faqSections.forEach(section => {
+                        if (category === 'all' || section.dataset.category === category) {
+                            section.style.display = 'block';
+                            const questions = section.querySelectorAll('.faq-item');
+                            questions.forEach(q => q.style.display = 'block');
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
