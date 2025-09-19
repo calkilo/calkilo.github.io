@@ -216,30 +216,45 @@ window.addEventListener('scroll', () => {
 });
 
 // Add typing effect to hero title
-function typeWriter(element, text, speed = 100) {
+function typeWriter(element, text, speed = 100, onComplete) {
     let i = 0;
-    element.innerHTML = '';
-    
+    element.textContent = '';
     function type() {
         if (i < text.length) {
-            element.innerHTML += text.charAt(i);
+            element.textContent += text.charAt(i);
             i++;
             setTimeout(type, speed);
+        } else if (typeof onComplete === 'function') {
+            onComplete();
         }
     }
-    
     type();
 }
 
 // Initialize typing effect when page loads
 document.addEventListener('DOMContentLoaded', () => {
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-        const originalText = heroTitle.innerHTML;
-        setTimeout(() => {
-            typeWriter(heroTitle, originalText.replace(/<[^>]*>/g, ''), 50);
-        }, 1000);
+    const span1 = document.querySelector('[data-translate="hero.title1"]');
+    const span2 = document.querySelector('[data-translate="hero.title2"]');
+    if (!span1 || !span2) return;
+
+    let timerKickoff;
+    function startHeroTypewriter() {
+        if (timerKickoff) clearTimeout(timerKickoff);
+        const text1 = span1.textContent || '';
+        const text2 = span2.textContent || '';
+        span1.textContent = '';
+        span2.textContent = '';
+        timerKickoff = setTimeout(() => {
+            typeWriter(span1, text1, 50, () => {
+                typeWriter(span2, text2, 50);
+            });
+        }, 300);
     }
+
+    // run once after load (translations already applied by i18n.js)
+    startHeroTypewriter();
+    // re-run when language changes
+    document.addEventListener('calkilo:languageChanged', startHeroTypewriter);
 });
 
 // Add hover effects for feature cards
@@ -366,3 +381,5 @@ document.addEventListener('DOMContentLoaded', function() {
         currentYearElement.textContent = new Date().getFullYear();
     }
 });
+
+// i18n bootstrapping moved to i18n.js

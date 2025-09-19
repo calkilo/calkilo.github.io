@@ -58,7 +58,7 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cairo:wght@400;600;700&family=Vazirmatn:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <!-- Structured Data -->
@@ -180,7 +180,7 @@
     <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <div class="nav-logo">
-                <i class="fas fa-apple-alt" aria-hidden="true"></i>
+                <img src="assest/CalKilo-logo.svg" alt="Calkilo Logo" class="logo-img">
                 <span>Calkilo</span>
             </div>
             <div class="nav-menu" id="nav-menu">
@@ -212,11 +212,11 @@
                 </p>
                 <div class="hero-buttons">
                     <a href="#download" class="btn btn-primary" aria-label="Download Calkilo for iOS">
-                        <i class="fab fa-apple" aria-hidden="true"></i>
+                        <i class="fa-brands fa-apple" aria-hidden="true"></i>
                         <span data-translate="hero.download_ios">Download for iOS</span>
                     </a>
                     <a href="#download" class="btn btn-secondary" aria-label="Download Calkilo for Android">
-                        <i class="fab fa-google-play" aria-hidden="true"></i>
+                        <i class="fa-brands fa-google-play" aria-hidden="true"></i>
                         <span data-translate="hero.download_android">Download for Android</span>
                     </a>
                 </div>
@@ -364,21 +364,21 @@
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-target"></i>
+                        <i class="fa-solid fa-bullseye"></i>
                     </div>
                     <h3 data-translate="features.goals.title">Personalized Goals</h3>
                     <p data-translate="features.goals.description">Set and track personalized health goals with AI-powered recommendations tailored to your lifestyle and preferences.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-history"></i>
+                        <i class="fa-solid fa-clock-rotate-left"></i>
                     </div>
                     <h3 data-translate="features.history.title">Smart History</h3>
                     <p data-translate="features.history.description">View your eating patterns, track progress over time, and get insights to help you make better food choices.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fa-solid fa-shield-halved"></i>
                     </div>
                     <h3 data-translate="features.privacy.title">Privacy First</h3>
                     <p data-translate="features.privacy.description">Your photos and data are processed securely with end-to-end encryption. Your privacy is our top priority.</p>
@@ -398,12 +398,7 @@
                 <div class="screenshot-item">
                     <div class="phone-frame">
                         <div class="screenshot-content">
-                            <div class="camera-screen">
-                                <div class="camera-viewfinder"></div>
-                                <div class="camera-controls">
-                                    <i class="fas fa-camera"></i>
-                                </div>
-                            </div>
+                            <img src="assest/screenshot-1.jpg" alt="Calkilo App - Photo Capture" class="screenshot-img">
                         </div>
                     </div>
                     <h4 data-translate="screenshots.capture.title">Easy Photo Capture</h4>
@@ -412,27 +407,7 @@
                 <div class="screenshot-item">
                     <div class="phone-frame">
                         <div class="screenshot-content">
-                            <div class="results-screen">
-                                <div class="food-result">
-                                    <div class="food-image-small"></div>
-                                    <h5>Pasta Carbonara</h5>
-                                    <div class="calorie-display">485 calories</div>
-                                </div>
-                                <div class="nutrition-breakdown">
-                                    <div class="macro-item">
-                                        <span>Protein</span>
-                                        <span>18g</span>
-                                    </div>
-                                    <div class="macro-item">
-                                        <span>Carbs</span>
-                                        <span>45g</span>
-                                    </div>
-                                    <div class="macro-item">
-                                        <span>Fat</span>
-                                        <span>22g</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <img src="assest/screenshot2.jpg" alt="Calkilo App - Results Screen" class="screenshot-img">
                         </div>
                     </div>
                     <h4 data-translate="screenshots.results.title">Instant Results</h4>
@@ -441,35 +416,7 @@
                 <div class="screenshot-item">
                     <div class="phone-frame">
                         <div class="screenshot-content">
-                            <div class="dashboard-screen">
-                                <div class="daily-summary">
-                                    <h5>Today's Summary</h5>
-                                    <div class="calorie-circle">
-                                        <span class="calories-consumed">1,240</span>
-                                        <span class="calorie-goal">/ 2,000</span>
-                                    </div>
-                                </div>
-                                <div class="progress-bars">
-                                    <div class="progress-item">
-                                        <span>Protein</span>
-                                        <div class="progress-bar">
-                                            <div class="progress-fill" style="width: 75%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-item">
-                                        <span>Carbs</span>
-                                        <div class="progress-bar">
-                                            <div class="progress-fill" style="width: 60%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-item">
-                                        <span>Fat</span>
-                                        <div class="progress-bar">
-                                            <div class="progress-fill" style="width: 45%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <img src="assest/screenshot3.jpg" alt="Calkilo App - Progress Tracking" class="screenshot-img">
                         </div>
                     </div>
                     <h4 data-translate="screenshots.progress.title">Progress Tracking</h4>
@@ -557,7 +504,7 @@
                 <div class="download-buttons">
                     <a href="#" class="download-btn">
                         <div class="download-icon">
-                            <i class="fab fa-apple"></i>
+                            <i class="fa-brands fa-apple"></i>
                         </div>
                         <div class="download-text">
                             <span class="download-label" data-translate="download.app_store.label">Download on the</span>
@@ -566,7 +513,7 @@
                     </a>
                     <a href="#" class="download-btn">
                         <div class="download-icon">
-                            <i class="fab fa-google-play"></i>
+                            <i class="fa-brands fa-google-play"></i>
                         </div>
                         <div class="download-text">
                             <span class="download-label" data-translate="download.google_play.label">Get it on</span>
@@ -598,7 +545,7 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <i class="fas fa-apple-alt"></i>
+                        <img src="assest/CalKilo-logo.svg" alt="Calkilo Logo" class="logo-img">
                         <span>Calkilo</span>
                     </div>
                     <p data-translate="footer.description">Revolutionizing nutrition tracking with AI-powered calorie calculation</p>
@@ -639,6 +586,7 @@
         </div>
     </footer>
 
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

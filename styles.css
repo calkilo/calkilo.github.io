@@ -279,10 +279,23 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
     color: #333;
     overflow-x: hidden;
+}
+
+/* Language-specific font stacks */
+html[lang="ar"], html[lang="fa"] {
+    font-family: 'Vazirmatn', 'Cairo', Tahoma, 'Segoe UI', Arial, sans-serif;
+}
+
+html[lang="zh"] {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Heiti SC', system-ui, -apple-system, sans-serif;
+}
+
+html[lang="ru"] {
+    font-family: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* Lazy loading for images */
@@ -347,12 +360,31 @@ img[data-src].loaded {
     align-items: center;
     font-size: 1.5rem;
     font-weight: 700;
-    color: #6366f1;
+    color: #10b981;
 }
 
 .nav-logo i {
     margin-right: 0.5rem;
     font-size: 1.8rem;
+}
+
+.logo-img {
+    width: 32px;
+    height: 32px;
+    margin-right: 0.5rem;
+    object-fit: contain;
+}
+
+.footer-logo .logo-img {
+    width: 28px;
+    height: 28px;
+}
+
+.screenshot-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
 }
 
 .nav-menu {
@@ -372,9 +404,25 @@ img[data-src].loaded {
     color: #6366f1;
 }
 
-.download-btn {
+/* Header Download button - scoped to nav only */
+.nav-menu .download-btn {
     background: linear-gradient(135deg, #10b981, #059669);
-    color: white !important;
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 9999px;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    border: none;
+}
+
+.nav-menu .download-btn:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.nav-menu .download-btn {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #ffffff;
     padding: 0.75rem 1.5rem;
     border-radius: 50px;
     transition: transform 0.3s ease;
@@ -383,10 +431,10 @@ img[data-src].loaded {
     box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
 }
 
-.download-btn:hover {
+.nav-menu .download-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
-    color: white !important;
+    color: #ffffff;
 }
 
 .hamburger {
@@ -589,6 +637,22 @@ img[data-src].loaded {
         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="3" fill="%23ffffff" opacity="0.1"/><circle cx="80" cy="30" r="2" fill="%23ffffff" opacity="0.08"/><circle cx="40" cy="70" r="2.5" fill="%23ffffff" opacity="0.12"/><circle cx="90" cy="80" r="1.5" fill="%23ffffff" opacity="0.1"/><circle cx="10" cy="90" r="2.8" fill="%23ffffff" opacity="0.09"/><circle cx="60" cy="10" r="1.8" fill="%23ffffff" opacity="0.11"/><circle cx="30" cy="50" r="2.2" fill="%23ffffff" opacity="0.08"/><circle cx="70" cy="60" r="1.2" fill="%23ffffff" opacity="0.1"/></svg>');
     background-size: 150px 150px;
     opacity: 0.3;
+}
+
+/* Override: display real app screenshot in hero phone frame */
+.hero .app-interface {
+    display: none;
+}
+
+.hero .phone-screen::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 30px;
+    background: url('assest/screenshot4.png') center/cover no-repeat;
 }
 
 .app-header {
@@ -1334,7 +1398,7 @@ img[data-src].loaded {
     margin-bottom: 3rem;
 }
 
-.download-btn {
+.download .download-btn {
     display: flex;
     align-items: center;
     background: white;
@@ -1348,7 +1412,7 @@ img[data-src].loaded {
     font-weight: 600;
 }
 
-.download-btn:hover {
+.download .download-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
     background: #f0fdf4;
@@ -1419,7 +1483,7 @@ img[data-src].loaded {
     align-items: center;
     font-size: 1.5rem;
     font-weight: 700;
-    color: #6366f1;
+    color: #10b981;
     margin-bottom: 1rem;
 }
 
