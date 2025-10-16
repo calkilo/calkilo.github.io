@@ -22,7 +22,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
     <!-- Additional CSS for contact page -->
     <style>
@@ -269,7 +269,7 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <a href="index.html" style="text-decoration: none; color: inherit;">
-                    <i class="fas fa-apple-alt" aria-hidden="true"></i>
+                    <i class="bi bi-apple" aria-hidden="true"></i>
                     <span>Calkilo</span>
                 </a>
             </div>
@@ -292,7 +292,7 @@
     <!-- Contact Content -->
     <main class="contact-content">
         <a href="index.html" class="back-link">
-            <i class="fas fa-arrow-left" aria-hidden="true"></i>
+            <i class="bi bi-arrow-left" aria-hidden="true"></i>
             Back to Home
         </a>
         
@@ -306,7 +306,7 @@
                 <h2>Get in Touch</h2>
                 
                 <div class="contact-item">
-                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    <i class="bi bi-envelope" aria-hidden="true"></i>
                     <div class="contact-item-content">
                         <h3>General Support</h3>
                         <p><a href="mailto:support@calkilo.app">support@calkilo.app</a></p>
@@ -314,7 +314,7 @@
                 </div>
                 
                 <div class="contact-item">
-                    <i class="fas fa-headset" aria-hidden="true"></i>
+                    <i class="bi bi-headset" aria-hidden="true"></i>
                     <div class="contact-item-content">
                         <h3>Technical Support</h3>
                         <p><a href="mailto:tech@calkilo.app">tech@calkilo.app</a></p>
@@ -322,7 +322,7 @@
                 </div>
                 
                 <div class="contact-item">
-                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                    <i class="bi bi-shield-check" aria-hidden="true"></i>
                     <div class="contact-item-content">
                         <h3>Privacy & Legal</h3>
                         <p><a href="mailto:privacy@calkilo.app">privacy@calkilo.app</a></p>
@@ -330,7 +330,7 @@
                 </div>
                 
                 <div class="contact-item">
-                    <i class="fas fa-phone" aria-hidden="true"></i>
+                    <i class="bi bi-telephone" aria-hidden="true"></i>
                     <div class="contact-item-content">
                         <h3>Phone Support</h3>
                         <p><a href="tel:+1555CALKILO">+1 (555) CALKILO</a></p>
@@ -338,7 +338,7 @@
                 </div>
                 
                 <div class="contact-item">
-                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    <i class="bi bi-geo-alt" aria-hidden="true"></i>
                     <div class="contact-item-content">
                         <h3>Office Address</h3>
                         <p>123 Health Tech Street<br>San Francisco, CA 94105</p>
@@ -346,7 +346,7 @@
                 </div>
                 
                 <div class="contact-item">
-                    <i class="fas fa-clock" aria-hidden="true"></i>
+                    <i class="bi bi-clock" aria-hidden="true"></i>
                     <div class="contact-item-content">
                         <h3>Support Hours</h3>
                         <p>Monday - Friday: 9 AM - 6 PM PST<br>Saturday: 10 AM - 4 PM PST</p>
@@ -393,7 +393,7 @@
                     </div>
                     
                     <button type="submit" class="submit-btn">
-                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        <i class="bi bi-send" aria-hidden="true"></i>
                         Send Message
                     </button>
                 </form>
@@ -442,15 +442,15 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <i class="fas fa-apple-alt"></i>
+                        <i class="bi bi-apple"></i>
                         <span>Calkilo</span>
                     </div>
                     <p>Revolutionizing nutrition tracking with AI-powered calorie calculation</p>
                     <div class="social-links">
-                        <a href="#" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Follow us on Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Connect with us on LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Follow us on Twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" aria-label="Follow us on Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Follow us on Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="Connect with us on LinkedIn"><i class="bi bi-linkedin"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -509,7 +509,7 @@
             const submitBtn = this.querySelector('.submit-btn');
             const originalText = submitBtn.innerHTML;
             
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.innerHTML = '<i class="bi bi-arrow-repeat"></i> Sending...';
             submitBtn.disabled = true;
             
             setTimeout(() => {
