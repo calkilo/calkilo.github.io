@@ -72,3 +72,4 @@ To test locally:
 5. Use browser back button - should navigate language history
 
 Note: For full server redirect functionality, you'll need to deploy to a server that supports the configuration files (Apache, Netlify, etc.).
+

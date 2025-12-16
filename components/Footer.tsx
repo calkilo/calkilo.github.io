@@ -1,0 +1,63 @@
+import Link from 'next/link'
+import Image from 'next/image'
+
+const Footer = () => {
+  const currentYear = new Date().getFullYear()
+
+  return (
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-content">
+          <div className="footer-brand">
+            <div className="footer-logo">
+              <Image src="/assest/CalKilo-logo.svg" alt="Calkilo Logo" width={40} height={40} className="logo-img" />
+              <span>Calkilo</span>
+            </div>
+            <p>Revolutionizing nutrition tracking with AI-powered calorie calculation</p>
+            <div className="social-links">
+              <a href="#" aria-label="Follow us on Twitter">
+                <i className="bi bi-twitter"></i>
+              </a>
+              <a href="#" aria-label="Follow us on Facebook">
+                <i className="bi bi-facebook"></i>
+              </a>
+              <a href="#" aria-label="Follow us on Instagram">
+                <i className="bi bi-instagram"></i>
+              </a>
+              <a href="#" aria-label="Connect with us on LinkedIn">
+                <i className="bi bi-linkedin"></i>
+              </a>
+            </div>
+          </div>
+          <div className="footer-links">
+            <div className="footer-column">
+              <h4>Product</h4>
+              <Link href="/#features">Features</Link>
+              <Link href="/#screenshots">Screenshots</Link>
+              <Link href="/#download">Download</Link>
+            </div>
+            <div className="footer-column">
+              <h4>Support</h4>
+              <Link href="/faq">FAQ</Link>
+              <Link href="/contact">Contact Us</Link>
+              <Link href="/privacy-policy">Privacy Policy</Link>
+              <Link href="/terms-of-service">Terms of Service</Link>
+              <Link href="/terms-and-conditions">Terms & Conditions</Link>
+            </div>
+            <div className="footer-column">
+              <h4>Company</h4>
+              <Link href="#">About Us</Link>
+              <Link href="#">Blog</Link>
+              <Link href="#">Careers</Link>
+            </div>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; {currentYear} Calkilo. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  )
+}
+
+export default Footer
