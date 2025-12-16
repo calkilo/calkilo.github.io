@@ -15,6 +15,26 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
+// Handle language selector toggle in mobile menu
+document.addEventListener('DOMContentLoaded', () => {
+    const languageToggle = document.getElementById('languageToggle');
+    const languageSelector = document.getElementById('languageSelector');
+    
+    if (languageToggle && languageSelector) {
+        languageToggle.addEventListener('click', (e) => {
+            // Toggle active class for mobile menu styling
+            languageSelector.classList.toggle('active');
+        });
+        
+        // Close language dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!languageSelector.contains(e.target)) {
+                languageSelector.classList.remove('active');
+            }
+        });
+    }
+});
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -73,13 +93,18 @@ function animateCounter(element, target, duration = 2000) {
     let start = 0;
     const increment = target / (duration / 16);
     
+    // Ensure white color during animation
+    element.style.color = '#ffffff';
+    
     function updateCounter() {
         start += increment;
         if (start < target) {
             element.textContent = Math.floor(start).toLocaleString();
+            element.style.color = '#ffffff'; // Keep white during animation
             requestAnimationFrame(updateCounter);
         } else {
             element.textContent = target.toLocaleString();
+            element.style.color = '#ffffff'; // Ensure white at end
         }
     }
     
@@ -90,8 +115,10 @@ function animateCounter(element, target, duration = 2000) {
 const heroObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            const statNumbers = document.querySelectorAll('.stat-number');
+            const statNumbers = document.querySelectorAll('.hero .stat-number, .hero-stats .stat-number');
             statNumbers.forEach(stat => {
+                // Ensure white color during animation
+                stat.style.color = '#ffffff';
                 const text = stat.textContent;
                 if (text.includes('500K+')) {
                     stat.textContent = '0';
@@ -103,9 +130,11 @@ const heroObserver = new IntersectionObserver((entries) => {
                         const interval = setInterval(() => {
                             count += 0.1;
                             stat.textContent = count.toFixed(1) + '%';
+                            stat.style.color = '#ffffff'; // Ensure white during animation
                             if (count >= 99.2) {
                                 clearInterval(interval);
                                 stat.textContent = '99.2%';
+                                stat.style.color = '#ffffff';
                             }
                         }, 20);
                     }, 500);

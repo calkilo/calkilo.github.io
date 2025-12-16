@@ -1,0 +1,36 @@
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Handle language routes - redirect to index.html with language code
+# Example: /fa -> /index.html (client-side will handle the language)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Check if the first segment is a valid language code
+RewriteCond %{REQUEST_URI} ^/(en|fa|zh|ru|it|fr|de|ar|es|nl)(/.*)?$ [NC]
+RewriteRule ^(en|fa|zh|ru|it|fr|de|ar|es|nl)(/.*)?$ /index.html [L]
+
+# Redirect root to default language (English) - only if no language is detected
+RewriteCond %{REQUEST_URI} ^/$
+RewriteCond %{QUERY_STRING} !lang=
+RewriteRule ^$ /en [R=301,L]
+
+# Fallback: serve index.html for all other routes (for SPA behavior)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+
+# Set cache headers for static assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# Enable compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>

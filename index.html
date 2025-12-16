@@ -129,53 +129,6 @@
     </script>
 </head>
 <body>
-    <!-- Language Selector -->
-    <div class="language-selector" id="languageSelector">
-        <button class="language-toggle" id="languageToggle" aria-label="Select Language">
-            <span class="current-flag" id="currentFlag">🇬🇧</span>
-            <span class="current-lang" id="currentLang">English</span>
-            <i class="bi bi-chevron-down"></i>
-        </button>
-        <div class="language-dropdown" id="languageDropdown">
-            <div class="language-option" data-lang="en">
-                <span class="flag">🇬🇧</span>
-                <span class="lang-name">English</span>
-            </div>
-            <div class="language-option" data-lang="fa">
-                <span class="flag">🇮🇷</span>
-                <span class="lang-name">Persian</span>
-            </div>
-            <div class="language-option" data-lang="zh">
-                <span class="flag">🇨🇳</span>
-                <span class="lang-name">Chinese</span>
-            </div>
-            <div class="language-option" data-lang="ru">
-                <span class="flag">🇷🇺</span>
-                <span class="lang-name">Russian</span>
-            </div>
-            <div class="language-option" data-lang="it">
-                <span class="flag">🇮🇹</span>
-                <span class="lang-name">Italian</span>
-            </div>
-            <div class="language-option" data-lang="fr">
-                <span class="flag">🇫🇷</span>
-                <span class="lang-name">French</span>
-            </div>
-            <div class="language-option" data-lang="de">
-                <span class="flag">🇩🇪</span>
-                <span class="lang-name">German</span>
-            </div>
-            <div class="language-option" data-lang="ar">
-                <span class="flag">🇸🇦</span>
-                <span class="lang-name">Arabic</span>
-            </div>
-            <div class="language-option" data-lang="es">
-                <span class="flag">🇪🇸</span>
-                <span class="lang-name">Spanish</span>
-            </div>
-        </div>
-    </div>
-
     <!-- Navigation -->
     <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
@@ -185,11 +138,60 @@
             </div>
             <div class="nav-menu" id="nav-menu">
                 <a href="#features" class="nav-link" data-translate="nav.features">Features</a>
-                <a href="#pricing" class="nav-link" data-translate="nav.pricing">Pricing</a>
                 <a href="#screenshots" class="nav-link" data-translate="nav.screenshots">Screenshots</a>
                 <a href="#testimonials" class="nav-link" data-translate="nav.reviews">Reviews</a>
                 <a href="faq.html" class="nav-link" data-translate="nav.faq">FAQ</a>
                 <a href="contact.html" class="nav-link" data-translate="nav.contact">Contact</a>
+                <!-- Language Selector -->
+                <div class="language-selector" id="languageSelector">
+                    <button class="language-toggle" id="languageToggle" aria-label="Select Language">
+                        <span class="current-flag" id="currentFlag">🇬🇧</span>
+                        <span class="current-lang" id="currentLang">English</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <div class="language-option" data-lang="en">
+                            <span class="flag">🇬🇧</span>
+                            <span class="lang-name">English</span>
+                        </div>
+                        <div class="language-option" data-lang="fa">
+                            <span class="flag">🇮🇷</span>
+                            <span class="lang-name">Persian</span>
+                        </div>
+                        <div class="language-option" data-lang="zh">
+                            <span class="flag">🇨🇳</span>
+                            <span class="lang-name">Chinese</span>
+                        </div>
+                        <div class="language-option" data-lang="ru">
+                            <span class="flag">🇷🇺</span>
+                            <span class="lang-name">Russian</span>
+                        </div>
+                        <div class="language-option" data-lang="it">
+                            <span class="flag">🇮🇹</span>
+                            <span class="lang-name">Italian</span>
+                        </div>
+                        <div class="language-option" data-lang="fr">
+                            <span class="flag">🇫🇷</span>
+                            <span class="lang-name">French</span>
+                        </div>
+                        <div class="language-option" data-lang="de">
+                            <span class="flag">🇩🇪</span>
+                            <span class="lang-name">German</span>
+                        </div>
+                        <div class="language-option" data-lang="ar">
+                            <span class="flag">🇸🇦</span>
+                            <span class="lang-name">Arabic</span>
+                        </div>
+                        <div class="language-option" data-lang="es">
+                            <span class="flag">🇪🇸</span>
+                            <span class="lang-name">Spanish</span>
+                        </div>
+                        <div class="language-option" data-lang="nl">
+                            <span class="flag">🇳🇱</span>
+                            <span class="lang-name">Dutch</span>
+                        </div>
+                    </div>
+                </div>
                 <a href="#download" class="nav-link download-btn" data-translate="nav.download">Download</a>
             </div>
             <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
@@ -592,79 +594,6 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <div class="section-header">
-                <h2 data-translate="pricing.title">Choose Your Plan</h2>
-                <p data-translate="pricing.subtitle">Start free and upgrade anytime to unlock premium features</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 data-translate="pricing.free.title">Free</h3>
-                        <div class="price">
-                            <span class="price-amount">$0</span>
-                            <span class="price-period" data-translate="pricing.free.period">/month</span>
-                        </div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.free.feature1">AI photo analysis (5 per day)</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.free.feature2">Basic calorie tracking</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.free.feature3">Macro tracking (Protein, Carbs, Fats)</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.free.feature4">7-day history</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.free.feature5">Manual food logging</span></li>
-                        <li class="disabled"><i class="bi bi-x-circle"></i> <span data-translate="pricing.free.feature6">Unlimited AI scans</span></li>
-                        <li class="disabled"><i class="bi bi-x-circle"></i> <span data-translate="pricing.free.feature7">Advanced nutrition insights</span></li>
-                        <li class="disabled"><i class="bi bi-x-circle"></i> <span data-translate="pricing.free.feature8">Meal planning</span></li>
-                    </ul>
-                    <a href="#download" class="pricing-btn btn-outline" data-translate="pricing.free.button">Get Started</a>
-                </div>
-                <div class="pricing-card featured">
-                    <div class="popular-badge" data-translate="pricing.premium.badge">Most Popular</div>
-                    <div class="pricing-header">
-                        <h3 data-translate="pricing.premium.title">Premium</h3>
-                        <div class="price">
-                            <span class="price-amount">$9.99</span>
-                            <span class="price-period" data-translate="pricing.premium.period">/month</span>
-                        </div>
-                        <p class="price-note" data-translate="pricing.premium.note">or $79.99/year (save 33%)</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.premium.feature1">Unlimited AI photo analysis</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.premium.feature2">Advanced calorie & nutrition tracking</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.premium.feature3">Detailed micronutrient tracking</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.premium.feature4">Unlimited history & insights</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.premium.feature5">AI meal planning & recipes</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.premium.feature6">Wearable device integration</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.premium.feature7">Priority support</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.premium.feature8">Ad-free experience</span></li>
-                    </ul>
-                    <a href="#download" class="pricing-btn btn-primary" data-translate="pricing.premium.button">Start Free Trial</a>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 data-translate="pricing.lifetime.title">Lifetime</h3>
-                        <div class="price">
-                            <span class="price-amount">$199</span>
-                            <span class="price-period" data-translate="pricing.lifetime.period">one-time</span>
-                        </div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.lifetime.feature1">All Premium features</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.lifetime.feature2">Lifetime access</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.lifetime.feature3">All future updates</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.lifetime.feature4">Priority support forever</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.lifetime.feature5">Early access to new features</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.lifetime.feature6">VIP community access</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.lifetime.feature7">No recurring charges</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span data-translate="pricing.lifetime.feature8">Best value</span></li>
-                    </ul>
-                    <a href="#download" class="pricing-btn btn-outline" data-translate="pricing.lifetime.button">Buy Lifetime</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Comparison Table Section -->
     <section id="comparison" class="comparison">
@@ -915,77 +844,6 @@
         </div>
     </section>
 
-    <!-- Success Stories Section -->
-    <section id="success-stories" class="success-stories">
-        <div class="container">
-            <div class="section-header">
-                <h2 data-translate="success_stories.title">Real Results from Real People</h2>
-                <p data-translate="success_stories.subtitle">See how Calkilo has helped thousands achieve their health goals</p>
-            </div>
-            <div class="success-grid">
-                <div class="success-card">
-                    <div class="success-stats">
-                        <div class="stat-badge">
-                            <span class="stat-number">-32 lbs</span>
-                            <span class="stat-label" data-translate="success_stories.lost">Lost</span>
-                        </div>
-                        <div class="stat-badge">
-                            <span class="stat-number">4 months</span>
-                            <span class="stat-label" data-translate="success_stories.in">In</span>
-                        </div>
-                    </div>
-                    <div class="success-content">
-                        <h4 data-translate="success_stories.jessica.name">Jessica M.</h4>
-                        <p data-translate="success_stories.jessica.text">"The AI photo feature made tracking so easy. I finally stuck to my plan and lost the weight I'd been trying to lose for years!"</p>
-                        <div class="success-tags">
-                            <span class="tag" data-translate="success_stories.jessica.tag1">Weight Loss</span>
-                            <span class="tag" data-translate="success_stories.jessica.tag2">Consistency</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="success-card">
-                    <div class="success-stats">
-                        <div class="stat-badge">
-                            <span class="stat-number">+15 lbs</span>
-                            <span class="stat-label" data-translate="success_stories.gained">Muscle</span>
-                        </div>
-                        <div class="stat-badge">
-                            <span class="stat-number">6 months</span>
-                            <span class="stat-label" data-translate="success_stories.in">In</span>
-                        </div>
-                    </div>
-                    <div class="success-content">
-                        <h4 data-translate="success_stories.marcus.name">Marcus T.</h4>
-                        <p data-translate="success_stories.marcus.text">"Tracking macros became effortless. The accuracy helped me optimize my diet for muscle gain while staying lean."</p>
-                        <div class="success-tags">
-                            <span class="tag" data-translate="success_stories.marcus.tag1">Muscle Gain</span>
-                            <span class="tag" data-translate="success_stories.marcus.tag2">Athletic Performance</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="success-card">
-                    <div class="success-stats">
-                        <div class="stat-badge">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label" data-translate="success_stories.energy">Energy</span>
-                        </div>
-                        <div class="stat-badge">
-                            <span class="stat-number">2 months</span>
-                            <span class="stat-label" data-translate="success_stories.in">In</span>
-                        </div>
-                    </div>
-                    <div class="success-content">
-                        <h4 data-translate="success_stories.priya.name">Priya S.</h4>
-                        <p data-translate="success_stories.priya.text">"Managing my diabetes became easier with accurate nutrition tracking. My energy levels are better than ever!"</p>
-                        <div class="success-tags">
-                            <span class="tag" data-translate="success_stories.priya.tag1">Health Management</span>
-                            <span class="tag" data-translate="success_stories.priya.tag2">Energy Boost</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- FAQ Section -->
     <section id="faq" class="faq-section">
@@ -1124,7 +982,6 @@
                         <a href="#features" data-translate="footer.product.features">Features</a>
                         <a href="#screenshots" data-translate="footer.product.screenshots">Screenshots</a>
                         <a href="#download" data-translate="footer.product.download">Download</a>
-                        <a href="#" data-translate="footer.product.pricing">Pricing</a>
                     </div>
                     <div class="footer-column">
                         <h4 data-translate="footer.support.title">Support</h4>
