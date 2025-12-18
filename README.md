@@ -69,7 +69,20 @@ calkilo-landing/
 
 ## Deployment
 
-The app can be deployed to Vercel, Netlify, or any platform that supports Next.js.
+The app can be deployed to Vercel, Netlify, GitHub Pages, or any platform that supports Next.js.
+
+### GitHub Pages
+
+The project is configured for automatic deployment to GitHub Pages using GitHub Actions:
+
+1. Push your code to the `main` branch
+2. Go to your repository Settings → Pages
+3. Under "Source", select "GitHub Actions"
+4. The workflow will automatically build and deploy your site on every push to `main`
+
+The site will be available at:
+- `https://<username>.github.io/<repository-name>/` (default)
+- `https://calkilo.com/` (if using custom domain)
 
 ### Vercel
 
