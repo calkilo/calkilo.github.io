@@ -1,6 +1,14 @@
 import Link from 'next/link'
 
 const Hero = () => {
+  const handleDownloadClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    const element = document.getElementById('download')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   return (
     <section className="hero" role="banner">
       <div className="hero-container">
@@ -14,11 +22,11 @@ const Hero = () => {
             and nutritional information. No more guessing or manual logging.
           </p>
           <div className="hero-buttons">
-            <Link href="#download" className="btn btn-primary" aria-label="Download Calkilo for iOS">
+            <Link href="#download" className="btn btn-primary" aria-label="Download Calkilo for iOS" onClick={handleDownloadClick}>
               <i className="bi bi-apple" aria-hidden="true"></i>
               <span>Download for iOS</span>
             </Link>
-            <Link href="#download" className="btn btn-secondary" aria-label="Download Calkilo for Android">
+            <Link href="#download" className="btn btn-secondary" aria-label="Download Calkilo for Android" onClick={handleDownloadClick}>
               <i className="bi bi-google-play" aria-hidden="true"></i>
               <span>Download for Android</span>
             </Link>

@@ -65,7 +65,7 @@ const LanguageSelector = () => {
       }
       
       setIsOpen(false)
-      // Reload page to apply language changes (you can implement i18n later)
+      // Reload page to apply language changes
       window.location.reload()
     }
   }

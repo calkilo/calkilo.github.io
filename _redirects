@@ -14,6 +14,10 @@
 /es /index.html 200
 /nl /index.html 200
 
+# Redirect .html versions to trailing slash versions
+/privacy-policy.html /privacy-policy/ 301
+/terms-and-conditions.html /terms-and-conditions/ 301
+
 # Fallback for SPA - serve index.html for all other routes
 /* /index.html 200
 

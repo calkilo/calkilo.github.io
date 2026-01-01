@@ -30,8 +30,19 @@ const Navbar = () => {
     }
   }, [isMenuOpen])
 
-  const handleLinkClick = () => {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     setIsMenuOpen(false)
+    const href = e.currentTarget.getAttribute('href')
+    if (href && href.startsWith('/#')) {
+      e.preventDefault()
+      const targetId = href.substring(2)
+      const element = document.getElementById(targetId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        // Update URL without scrolling
+        window.history.pushState(null, '', href)
+      }
+    }
   }
 
   useEffect(() => {

@@ -1,2 +1,6 @@
+# Redirect .html versions to trailing slash versions
+/privacy-policy.html /privacy-policy/ 301
+/terms-and-conditions.html /terms-and-conditions/ 301
+
 # Next.js redirects
 /*    /index.html   200

@@ -1,0 +1,52 @@
+{
+  "title": "اتصل بنا - دعم Calkilo حاسبة السعرات الحرارية بالذكاء الاصطناعي",
+  "description": "اتصل بفريق دعم Calkilo للحصول على المساعدة في تطبيق حاسبة السعرات الحرارية بالذكاء الاصطناعي. احصل على المساعدة في الميزات والمشاكل التقنية والاستفسارات العامة.",
+  "breadcrumb": {
+    "home": "الرئيسية",
+    "current": "اتصل بنا"
+  },
+  "backToHome": "العودة إلى الرئيسية",
+  "header": {
+    "title": "اتصل بنا",
+    "subtitle": "نحن هنا للمساعدة! تواصل مع فريق الدعم لدينا للحصول على المساعدة في Calkilo أو أي أسئلة قد تكون لديك."
+  },
+  "contactInfo": {
+    "title": "تواصل معنا",
+    "generalSupport": {
+      "title": "الدعم العام",
+      "email": "support@calkilo.app"
+    },
+    "technicalSupport": {
+      "title": "الدعم التقني",
+      "email": "tech@calkilo.app"
+    },
+    "privacyLegal": {
+      "title": "الخصوصية والقانونية",
+      "email": "privacy@calkilo.app"
+    }
+  },
+  "form": {
+    "title": "أرسل لنا رسالة",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "email": "عنوان البريد الإلكتروني",
+    "subject": "الموضوع",
+    "subjectPlaceholder": "اختر موضوعًا",
+    "subjectOptions": {
+      "general": "استفسار عام",
+      "technical": "الدعم التقني",
+      "billing": "سؤال الفوترة",
+      "feature": "طلب ميزة",
+      "bug": "تقرير خطأ",
+      "privacy": "مخاوف الخصوصية",
+      "other": "أخرى"
+    },
+    "message": "الرسالة",
+    "messagePlaceholder": "يرجى وصف استفسارك بالتفصيل...",
+    "submit": "إرسال الرسالة",
+    "submitting": "جاري الإرسال...",
+    "success": "شكرًا لرسالتك! سنعود إليك خلال 24 ساعة.",
+    "required": "*"
+  }
+}
+

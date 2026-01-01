@@ -2,9 +2,11 @@ import { GetStaticProps } from 'next'
 import Layout from '../components/Layout'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useTranslation } from '../hooks/useTranslation'
 
 export default function Contact() {
+  const { t, isLoading } = useTranslation('contact')
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -19,20 +21,27 @@ export default function Contact() {
     setIsSubmitting(true)
     // Simulate form submission
     setTimeout(() => {
-      alert('Thank you for your message! We\'ll get back to you within 24 hours.')
+      alert(t('form.success'))
       setFormData({ firstName: '', lastName: '', email: '', subject: '', message: '' })
       setIsSubmitting(false)
     }, 2000)
   }
 
+  if (isLoading) {
+    return (
+      <Layout>
+        <main className="contact-content" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh' }}>
+          <div>Loading...</div>
+        </main>
+      </Layout>
+    )
+  }
+
   return (
     <>
       <Head>
-        <title>Contact Us - Calkilo AI Calorie Calculator Support</title>
-        <meta
-          name="description"
-          content="Contact Calkilo support team for help with our AI calorie calculator app. Get assistance with features, technical issues, and general inquiries."
-        />
+        <title>{t('title')}</title>
+        <meta name="description" content={t('description')} />
         <link rel="canonical" href="https://calkilo.com/contact" />
       </Head>
       <Layout>
@@ -41,66 +50,66 @@ export default function Contact() {
             <ol style={{ display: 'flex', listStyle: 'none', padding: 0, margin: 0, gap: '0.5rem', alignItems: 'center', fontSize: '0.9rem' }}>
               <li>
                 <Link href="/" style={{ color: '#6366f1', textDecoration: 'none' }}>
-                  Home
+                  {t('breadcrumb.home')}
                 </Link>
               </li>
               <li aria-hidden="true" style={{ color: '#9ca3af' }}>
                 /
               </li>
               <li aria-current="page" style={{ color: '#6b7280' }}>
-                Contact
+                {t('breadcrumb.current')}
               </li>
             </ol>
           </nav>
 
           <Link href="/" className="back-link">
             <i className="bi bi-arrow-left" aria-hidden="true"></i>
-            Back to Home
+            {t('backToHome')}
           </Link>
 
           <div className="contact-header">
-            <h1>Contact Us</h1>
-            <p>We&apos;re here to help! Get in touch with our support team for assistance with Calkilo or any questions you may have.</p>
+            <h1>{t('header.title')}</h1>
+            <p>{t('header.subtitle')}</p>
           </div>
 
           <div className="contact-grid">
             <div className="contact-info">
-              <h2>Get in Touch</h2>
+              <h2>{t('contactInfo.title')}</h2>
               <div className="contact-item">
                 <i className="bi bi-envelope" aria-hidden="true"></i>
                 <div className="contact-item-content">
-                  <h3>General Support</h3>
+                  <h3>{t('contactInfo.generalSupport.title')}</h3>
                   <p>
-                    <a href="mailto:support@calkilo.app">support@calkilo.app</a>
+                    <a href={`mailto:${t('contactInfo.generalSupport.email')}`}>{t('contactInfo.generalSupport.email')}</a>
                   </p>
                 </div>
               </div>
               <div className="contact-item">
                 <i className="bi bi-headset" aria-hidden="true"></i>
                 <div className="contact-item-content">
-                  <h3>Technical Support</h3>
+                  <h3>{t('contactInfo.technicalSupport.title')}</h3>
                   <p>
-                    <a href="mailto:tech@calkilo.app">tech@calkilo.app</a>
+                    <a href={`mailto:${t('contactInfo.technicalSupport.email')}`}>{t('contactInfo.technicalSupport.email')}</a>
                   </p>
                 </div>
               </div>
               <div className="contact-item">
                 <i className="bi bi-shield-check" aria-hidden="true"></i>
                 <div className="contact-item-content">
-                  <h3>Privacy & Legal</h3>
+                  <h3>{t('contactInfo.privacyLegal.title')}</h3>
                   <p>
-                    <a href="mailto:privacy@calkilo.app">privacy@calkilo.app</a>
+                    <a href={`mailto:${t('contactInfo.privacyLegal.email')}`}>{t('contactInfo.privacyLegal.email')}</a>
                   </p>
                 </div>
               </div>
             </div>
 
             <div className="contact-form">
-              <h2>Send us a Message</h2>
+              <h2>{t('form.title')}</h2>
               <form id="contactForm" onSubmit={handleSubmit}>
                 <div className="form-row">
                   <div className="form-group">
-                    <label htmlFor="firstName">First Name *</label>
+                    <label htmlFor="firstName">{t('form.firstName')} {t('form.required')}</label>
                     <input
                       type="text"
                       id="firstName"
@@ -111,7 +120,7 @@ export default function Contact() {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="lastName">Last Name *</label>
+                    <label htmlFor="lastName">{t('form.lastName')} {t('form.required')}</label>
                     <input
                       type="text"
                       id="lastName"
@@ -123,7 +132,7 @@ export default function Contact() {
                   </div>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="email">Email Address *</label>
+                  <label htmlFor="email">{t('form.email')} {t('form.required')}</label>
                   <input
                     type="email"
                     id="email"
@@ -134,7 +143,7 @@ export default function Contact() {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="subject">Subject *</label>
+                  <label htmlFor="subject">{t('form.subject')} {t('form.required')}</label>
                   <select
                     id="subject"
                     name="subject"
@@ -142,22 +151,22 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   >
-                    <option value="">Select a subject</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="technical">Technical Support</option>
-                    <option value="billing">Billing Question</option>
-                    <option value="feature">Feature Request</option>
-                    <option value="bug">Bug Report</option>
-                    <option value="privacy">Privacy Concern</option>
-                    <option value="other">Other</option>
+                    <option value="">{t('form.subjectPlaceholder')}</option>
+                    <option value="general">{t('form.subjectOptions.general')}</option>
+                    <option value="technical">{t('form.subjectOptions.technical')}</option>
+                    <option value="billing">{t('form.subjectOptions.billing')}</option>
+                    <option value="feature">{t('form.subjectOptions.feature')}</option>
+                    <option value="bug">{t('form.subjectOptions.bug')}</option>
+                    <option value="privacy">{t('form.subjectOptions.privacy')}</option>
+                    <option value="other">{t('form.subjectOptions.other')}</option>
                   </select>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="message">Message *</label>
+                  <label htmlFor="message">{t('form.message')} {t('form.required')}</label>
                   <textarea
                     id="message"
                     name="message"
-                    placeholder="Please describe your inquiry in detail..."
+                    placeholder={t('form.messagePlaceholder')}
                     required
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -165,7 +174,7 @@ export default function Contact() {
                 </div>
                 <button type="submit" className="submit-btn" disabled={isSubmitting}>
                   <i className="bi bi-send" aria-hidden="true"></i>
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {isSubmitting ? t('form.submitting') : t('form.submit')}
                 </button>
               </form>
             </div>

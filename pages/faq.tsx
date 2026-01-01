@@ -2,63 +2,63 @@ import { GetStaticProps } from 'next'
 import Layout from '../components/Layout'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useTranslation } from '../hooks/useTranslation'
 
 export default function FAQ() {
+  const { t, isLoading } = useTranslation('faq')
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
+  const [faqs, setFaqs] = useState<Array<{ category: string; question: string; answer: string }>>([])
 
-  const faqs = [
-    {
-      category: 'getting-started',
-      question: 'How do I download and install Calkilo?',
-      answer:
-        'Calkilo is available for free download on both iOS and Android devices. Visit the App Store for iOS or Google Play Store for Android, search for "Calkilo", or click the download button on our website.',
-    },
-    {
-      category: 'getting-started',
-      question: 'Do I need to create an account to use Calkilo?',
-      answer:
-        'While you can use some basic features without an account, creating a free account allows you to save your nutrition history, sync data across devices, set personalized health goals, and access advanced AI features.',
-    },
-    {
-      category: 'features',
-      question: 'What features does Calkilo offer?',
-      answer:
-        'Calkilo offers AI photo analysis, macronutrient tracking, nutrition history, goal setting, progress tracking, extensive food database, export options, and offline mode for basic features.',
-    },
-    {
-      category: 'accuracy',
-      question: 'How accurate is Calkilo\'s AI calorie calculation?',
-      answer:
-        'Calkilo\'s AI achieves 99.2% accuracy in calorie calculation through advanced computer vision and machine learning trained on millions of food images.',
-    },
-    {
-      category: 'privacy',
-      question: 'Is my food photo data private and secure?',
-      answer:
-        'Yes! Your photos are processed with end-to-end encryption and automatically deleted after analysis. We never share or sell your data, and you can delete your account anytime.',
-    },
-    {
-      category: 'technical',
-      question: 'What devices and operating systems are supported?',
-      answer:
-        'Calkilo supports iPhone and iPad running iOS 12.0 or later, and Android phones and tablets running Android 8.0 or later.',
-    },
-  ]
+  useEffect(() => {
+    const loadFaqs = async () => {
+      if (typeof window !== 'undefined' && !isLoading) {
+        try {
+          const lang = localStorage.getItem('preferred-language') || 'en'
+          const response = await fetch(`/locales/${lang}/faq.json`)
+          if (response.ok) {
+            const data = await response.json()
+            if (data.faqs && Array.isArray(data.faqs)) {
+              setFaqs(data.faqs)
+            }
+          } else if (lang !== 'en') {
+            // Fallback to English
+            const enResponse = await fetch(`/locales/en/faq.json`)
+            if (enResponse.ok) {
+              const enData = await enResponse.json()
+              if (enData.faqs && Array.isArray(enData.faqs)) {
+                setFaqs(enData.faqs)
+              }
+            }
+          }
+        } catch (e) {
+          console.error('Failed to load FAQs:', e)
+        }
+      }
+    }
+    loadFaqs()
+  }, [isLoading])
 
   const filteredFaqs = faqs.filter(
     (faq) => faq.question.toLowerCase().includes(searchTerm.toLowerCase()) || faq.answer.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
+  if (isLoading) {
+    return (
+      <Layout>
+        <main className="faq-content" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh' }}>
+          <div>Loading...</div>
+        </main>
+      </Layout>
+    )
+  }
+
   return (
     <>
       <Head>
-        <title>FAQ - Frequently Asked Questions | Calkilo AI Calorie Calculator</title>
-        <meta
-          name="description"
-          content="Find answers to common questions about Calkilo AI calorie calculator app. Learn about features, accuracy, privacy, and how to use the app effectively."
-        />
+        <title>{t('title')}</title>
+        <meta name="description" content={t('description')} />
         <link rel="canonical" href="https://calkilo.com/faq" />
       </Head>
       <Layout>
@@ -67,26 +67,26 @@ export default function FAQ() {
             <ol style={{ display: 'flex', listStyle: 'none', padding: 0, margin: 0, gap: '0.5rem', alignItems: 'center', fontSize: '0.9rem' }}>
               <li>
                 <Link href="/" style={{ color: '#6366f1', textDecoration: 'none' }}>
-                  Home
+                  {t('breadcrumb.home')}
                 </Link>
               </li>
               <li aria-hidden="true" style={{ color: '#9ca3af' }}>
                 /
               </li>
               <li aria-current="page" style={{ color: '#6b7280' }}>
-                FAQ
+                {t('breadcrumb.current')}
               </li>
             </ol>
           </nav>
 
           <Link href="/" className="back-link">
             <i className="bi bi-arrow-left" aria-hidden="true"></i>
-            Back to Home
+            {t('backToHome')}
           </Link>
 
           <div className="faq-header">
-            <h1>Frequently Asked Questions</h1>
-            <p>Find answers to common questions about Calkilo and how to make the most of our AI-powered calorie calculator.</p>
+            <h1>{t('header.title')}</h1>
+            <p>{t('header.subtitle')}</p>
           </div>
 
           <div className="faq-search">
@@ -94,8 +94,8 @@ export default function FAQ() {
             <input
               type="text"
               id="searchInput"
-              placeholder="Search FAQ..."
-              aria-label="Search frequently asked questions"
+              placeholder={t('search.placeholder')}
+              aria-label={t('search.label')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -103,7 +103,7 @@ export default function FAQ() {
 
           <div className="faq-sections">
             <div className="faq-section">
-              <h2>All Questions</h2>
+              <h2>{t('section.allQuestions')}</h2>
               {filteredFaqs.length > 0 ? (
                 filteredFaqs.map((faq, index) => (
                   <div key={index} className="faq-item">
@@ -124,8 +124,8 @@ export default function FAQ() {
               ) : (
                 <div className="no-results">
                   <i className="bi bi-search" aria-hidden="true"></i>
-                  <h3>No results found</h3>
-                  <p>Try searching with different keywords.</p>
+                  <h3>{t('noResults.title')}</h3>
+                  <p>{t('noResults.message')}</p>
                 </div>
               )}
             </div>

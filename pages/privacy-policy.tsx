@@ -2,16 +2,26 @@ import { GetStaticProps } from 'next'
 import Layout from '../components/Layout'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useTranslation } from '../hooks/useTranslation'
 
 export default function PrivacyPolicy() {
+  const { t, isLoading } = useTranslation('privacy-policy')
+
+  if (isLoading) {
+    return (
+      <Layout>
+        <main className="legal-content" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh' }}>
+          <div>Loading...</div>
+        </main>
+      </Layout>
+    )
+  }
+
   return (
     <>
       <Head>
-        <title>Privacy Policy - Calkilo AI Calorie Calculator App</title>
-        <meta
-          name="description"
-          content="Calkilo Privacy Policy - Learn how we protect your personal data and health information in our AI-powered calorie calculator app. GDPR and CCPA compliant."
-        />
+        <title>{t('title')}</title>
+        <meta name="description" content={t('description')} />
         <link rel="canonical" href="https://calkilo.com/privacy-policy" />
       </Head>
       <Layout>
@@ -20,109 +30,124 @@ export default function PrivacyPolicy() {
             <ol style={{ display: 'flex', listStyle: 'none', padding: 0, margin: 0, gap: '0.5rem', alignItems: 'center', fontSize: '0.9rem' }}>
               <li>
                 <Link href="/" style={{ color: '#6366f1', textDecoration: 'none' }}>
-                  Home
+                  {t('breadcrumb.home')}
                 </Link>
               </li>
               <li aria-hidden="true" style={{ color: '#9ca3af' }}>
                 /
               </li>
               <li aria-current="page" style={{ color: '#6b7280' }}>
-                Privacy Policy
+                {t('breadcrumb.current')}
               </li>
             </ol>
           </nav>
 
           <Link href="/" className="back-link">
             <i className="bi bi-arrow-left" aria-hidden="true"></i>
-            Back to Home
+            {t('backToHome')}
           </Link>
 
-          <h1>Privacy Policy</h1>
-          <p className="last-updated">Last updated: January 15, 2024</p>
+          <h1>{t('breadcrumb.current')}</h1>
+          <p className="last-updated">{t('lastUpdated')}</p>
 
-          <p>
-            At Calkilo, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our AI-powered calorie calculator mobile application (&quot;App&quot;) and related services.
-          </p>
+          <p>{t('content.intro')}</p>
 
-          <h2>1. Information We Collect</h2>
-          <h3>1.1 Personal Information</h3>
-          <p>We may collect the following types of personal information:</p>
+          <h2>{t('content.sections.informationWeCollect.title')}</h2>
+          <h3>{t('content.sections.informationWeCollect.personalInfo.title')}</h3>
+          <p>{t('content.sections.informationWeCollect.personalInfo.description')}</p>
           <ul>
             <li>
-              <strong>Account Information:</strong> Email address, username, and password when you create an account
+              <strong>{t('content.sections.informationWeCollect.personalInfo.items.accountInfo').split(':')[0]}:</strong>{' '}
+              {t('content.sections.informationWeCollect.personalInfo.items.accountInfo').split(':').slice(1).join(':')}
             </li>
             <li>
-              <strong>Profile Information:</strong> Age, gender, height, weight, activity level, and health goals
+              <strong>{t('content.sections.informationWeCollect.personalInfo.items.profileInfo').split(':')[0]}:</strong>{' '}
+              {t('content.sections.informationWeCollect.personalInfo.items.profileInfo').split(':').slice(1).join(':')}
             </li>
             <li>
-              <strong>Health Data:</strong> Food photos, calorie counts, nutritional information, and dietary preferences
+              <strong>{t('content.sections.informationWeCollect.personalInfo.items.healthData').split(':')[0]}:</strong>{' '}
+              {t('content.sections.informationWeCollect.personalInfo.items.healthData').split(':').slice(1).join(':')}
             </li>
             <li>
-              <strong>Usage Data:</strong> App usage patterns, features used, and interaction data
+              <strong>{t('content.sections.informationWeCollect.personalInfo.items.usageData').split(':')[0]}:</strong>{' '}
+              {t('content.sections.informationWeCollect.personalInfo.items.usageData').split(':').slice(1).join(':')}
             </li>
             <li>
-              <strong>Device Information:</strong> Device type, operating system, unique device identifiers, and IP address
+              <strong>{t('content.sections.informationWeCollect.personalInfo.items.deviceInfo').split(':')[0]}:</strong>{' '}
+              {t('content.sections.informationWeCollect.personalInfo.items.deviceInfo').split(':').slice(1).join(':')}
             </li>
           </ul>
 
-          <h2>2. How We Use Your Information</h2>
-          <p>We use your information for the following purposes:</p>
+          <h2>{t('content.sections.howWeUse.title')}</h2>
+          <p>{t('content.sections.howWeUse.description')}</p>
           <ul>
             <li>
-              <strong>Core Services:</strong> To provide AI-powered calorie calculation and nutrition tracking
+              <strong>{t('content.sections.howWeUse.items.coreServices').split(':')[0]}:</strong>{' '}
+              {t('content.sections.howWeUse.items.coreServices').split(':').slice(1).join(':')}
             </li>
             <li>
-              <strong>Personalization:</strong> To customize your experience and provide relevant recommendations
+              <strong>{t('content.sections.howWeUse.items.personalization').split(':')[0]}:</strong>{' '}
+              {t('content.sections.howWeUse.items.personalization').split(':').slice(1).join(':')}
             </li>
             <li>
-              <strong>Improvement:</strong> To enhance our AI algorithms and app functionality
+              <strong>{t('content.sections.howWeUse.items.improvement').split(':')[0]}:</strong>{' '}
+              {t('content.sections.howWeUse.items.improvement').split(':').slice(1).join(':')}
             </li>
             <li>
-              <strong>Communication:</strong> To send you important updates, notifications, and support
+              <strong>{t('content.sections.howWeUse.items.communication').split(':')[0]}:</strong>{' '}
+              {t('content.sections.howWeUse.items.communication').split(':').slice(1).join(':')}
             </li>
             <li>
-              <strong>Analytics:</strong> To understand usage patterns and improve our services
+              <strong>{t('content.sections.howWeUse.items.analytics').split(':')[0]}:</strong>{' '}
+              {t('content.sections.howWeUse.items.analytics').split(':').slice(1).join(':')}
             </li>
             <li>
-              <strong>Legal Compliance:</strong> To comply with applicable laws and regulations
+              <strong>{t('content.sections.howWeUse.items.legalCompliance').split(':')[0]}:</strong>{' '}
+              {t('content.sections.howWeUse.items.legalCompliance').split(':').slice(1).join(':')}
             </li>
           </ul>
 
-          <h2>3. Data Security</h2>
-          <p>We implement industry-standard security measures to protect your information:</p>
+          <h2>{t('content.sections.dataSecurity.title')}</h2>
+          <p>{t('content.sections.dataSecurity.description')}</p>
           <ul>
             <li>
-              <strong>Encryption:</strong> All data is encrypted in transit and at rest using AES-256 encryption
+              <strong>{t('content.sections.dataSecurity.items.encryption').split(':')[0]}:</strong>{' '}
+              {t('content.sections.dataSecurity.items.encryption').split(':').slice(1).join(':')}
             </li>
             <li>
-              <strong>Access Controls:</strong> Strict access controls and authentication protocols
+              <strong>{t('content.sections.dataSecurity.items.accessControls').split(':')[0]}:</strong>{' '}
+              {t('content.sections.dataSecurity.items.accessControls').split(':').slice(1).join(':')}
             </li>
             <li>
-              <strong>Regular Audits:</strong> Regular security audits and vulnerability assessments
+              <strong>{t('content.sections.dataSecurity.items.regularAudits').split(':')[0]}:</strong>{' '}
+              {t('content.sections.dataSecurity.items.regularAudits').split(':').slice(1).join(':')}
             </li>
             <li>
-              <strong>Secure Infrastructure:</strong> Hosted on secure, SOC 2 compliant cloud infrastructure
+              <strong>{t('content.sections.dataSecurity.items.secureInfrastructure').split(':')[0]}:</strong>{' '}
+              {t('content.sections.dataSecurity.items.secureInfrastructure').split(':').slice(1).join(':')}
             </li>
           </ul>
 
-          <h2>4. Your Rights and Choices</h2>
-          <p>You have the right to:</p>
+          <h2>{t('content.sections.yourRights.title')}</h2>
+          <p>{t('content.sections.yourRights.description')}</p>
           <ul>
-            <li>Access your personal information</li>
-            <li>Correct inaccurate or incomplete data</li>
-            <li>Delete your account and associated data</li>
-            <li>Export your data in a portable format</li>
-            <li>Opt-out of certain data processing activities</li>
+            <li>{t('content.sections.yourRights.items.0')}</li>
+            <li>{t('content.sections.yourRights.items.1')}</li>
+            <li>{t('content.sections.yourRights.items.2')}</li>
+            <li>{t('content.sections.yourRights.items.3')}</li>
+            <li>{t('content.sections.yourRights.items.4')}</li>
           </ul>
 
-          <h2>5. Contact Us</h2>
-          <p>If you have any questions about this Privacy Policy or our data practices, please contact us:</p>
+          <h2>{t('content.sections.contactUs.title')}</h2>
+          <p>{t('content.sections.contactUs.description')}</p>
           <ul>
             <li>
-              <strong>Email:</strong> privacy@calkilo.app
+              <strong>{t('content.sections.contactUs.email').split(':')[0]}:</strong>{' '}
+              {t('content.sections.contactUs.email').split(':').slice(1).join(':')}
             </li>
             <li>
-              <strong>Address:</strong> Calkilo Privacy Team, 123 Health Tech Street, San Francisco, CA 94105
+              <strong>{t('content.sections.contactUs.address').split(':')[0]}:</strong>{' '}
+              {t('content.sections.contactUs.address').split(':').slice(1).join(':')}
             </li>
           </ul>
         </main>

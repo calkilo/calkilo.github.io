@@ -4,6 +4,14 @@ import Image from 'next/image'
 const Footer = () => {
   const currentYear = new Date().getFullYear()
 
+  const handleDownloadClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    const element = document.getElementById('download')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   return (
     <footer className="footer">
       <div className="container">
@@ -34,7 +42,7 @@ const Footer = () => {
               <h4>Product</h4>
               <Link href="/#features">Features</Link>
               <Link href="/#screenshots">Screenshots</Link>
-              <Link href="/#download">Download</Link>
+              <Link href="/#download" onClick={handleDownloadClick}>Download</Link>
             </div>
             <div className="footer-column">
               <h4>Support</h4>

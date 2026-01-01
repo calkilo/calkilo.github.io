@@ -1,0 +1,69 @@
+{
+  "title": "Privacy Policy - Calkilo AI Calorie Calculator App",
+  "description": "Calkilo Privacy Policy - Learn how we protect your personal data and health information in our AI-powered calorie calculator app. GDPR and CCPA compliant.",
+  "breadcrumb": {
+    "home": "Home",
+    "current": "Privacy Policy"
+  },
+  "backToHome": "Back to Home",
+  "lastUpdated": "Last updated: January 15, 2024",
+  "content": {
+    "intro": "At Calkilo, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our AI-powered calorie calculator mobile application (\"App\") and related services.",
+    "sections": {
+      "informationWeCollect": {
+        "title": "1. Information We Collect",
+        "personalInfo": {
+          "title": "1.1 Personal Information",
+          "description": "We may collect the following types of personal information:",
+          "items": {
+            "accountInfo": "Account Information: Email address, username, and password when you create an account",
+            "profileInfo": "Profile Information: Age, gender, height, weight, activity level, and health goals",
+            "healthData": "Health Data: Food photos, calorie counts, nutritional information, and dietary preferences",
+            "usageData": "Usage Data: App usage patterns, features used, and interaction data",
+            "deviceInfo": "Device Information: Device type, operating system, unique device identifiers, and IP address"
+          }
+        }
+      },
+      "howWeUse": {
+        "title": "2. How We Use Your Information",
+        "description": "We use your information for the following purposes:",
+        "items": {
+          "coreServices": "Core Services: To provide AI-powered calorie calculation and nutrition tracking",
+          "personalization": "Personalization: To customize your experience and provide relevant recommendations",
+          "improvement": "Improvement: To enhance our AI algorithms and app functionality",
+          "communication": "Communication: To send you important updates, notifications, and support",
+          "analytics": "Analytics: To understand usage patterns and improve our services",
+          "legalCompliance": "Legal Compliance: To comply with applicable laws and regulations"
+        }
+      },
+      "dataSecurity": {
+        "title": "3. Data Security",
+        "description": "We implement industry-standard security measures to protect your information:",
+        "items": {
+          "encryption": "Encryption: All data is encrypted in transit and at rest using AES-256 encryption",
+          "accessControls": "Access Controls: Strict access controls and authentication protocols",
+          "regularAudits": "Regular Audits: Regular security audits and vulnerability assessments",
+          "secureInfrastructure": "Secure Infrastructure: Hosted on secure, SOC 2 compliant cloud infrastructure"
+        }
+      },
+      "yourRights": {
+        "title": "4. Your Rights and Choices",
+        "description": "You have the right to:",
+        "items": {
+          "0": "Access your personal information",
+          "1": "Correct inaccurate or incomplete data",
+          "2": "Delete your account and associated data",
+          "3": "Export your data in a portable format",
+          "4": "Opt-out of certain data processing activities"
+        }
+      },
+      "contactUs": {
+        "title": "5. Contact Us",
+        "description": "If you have any questions about this Privacy Policy or our data practices, please contact us:",
+        "email": "Email: privacy@calkilo.app",
+        "address": "Address: Calkilo Privacy Team, 123 Health Tech Street, San Francisco, CA 94105"
+      }
+    }
+  }
+}
+
