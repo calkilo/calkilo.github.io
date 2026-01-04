@@ -1,0 +1,56 @@
+{
+  "title": "常见问题 - 常见问题 | Calkilo AI卡路里计算器",
+  "description": "查找有关Calkilo AI卡路里计算器应用的常见问题答案。了解功能、准确性、隐私以及如何有效使用该应用。",
+  "breadcrumb": {
+    "home": "首页",
+    "current": "常见问题"
+  },
+  "backToHome": "返回首页",
+  "header": {
+    "title": "常见问题",
+    "subtitle": "查找有关Calkilo的常见问题答案，以及如何充分利用我们的AI驱动的卡路里计算器。"
+  },
+  "search": {
+    "placeholder": "搜索常见问题...",
+    "label": "搜索常见问题"
+  },
+  "section": {
+    "allQuestions": "所有问题"
+  },
+  "noResults": {
+    "title": "未找到结果",
+    "message": "尝试使用不同的关键词搜索。"
+  },
+  "faqs": [
+    {
+      "category": "getting-started",
+      "question": "如何下载和安装Calkilo？",
+      "answer": "Calkilo可在iOS和Android设备上免费下载。访问iOS的App Store或Android的Google Play商店，搜索\"Calkilo\"，或点击我们网站上的下载按钮。"
+    },
+    {
+      "category": "getting-started",
+      "question": "我需要创建账户才能使用Calkilo吗？",
+      "answer": "虽然您可以在没有账户的情况下使用一些基本功能，但创建免费账户可以让您保存营养历史记录、跨设备同步数据、设置个性化健康目标并访问高级AI功能。"
+    },
+    {
+      "category": "features",
+      "question": "Calkilo提供哪些功能？",
+      "answer": "Calkilo提供AI照片分析、宏量营养素跟踪、营养历史记录、目标设定、进度跟踪、广泛的食品数据库、导出选项以及基本功能的离线模式。"
+    },
+    {
+      "category": "accuracy",
+      "question": "Calkilo的AI卡路里计算有多准确？",
+      "answer": "Calkilo的AI通过先进的计算机视觉和基于数百万食物图像训练的机器学习，在卡路里计算中达到99.2%的准确率。"
+    },
+    {
+      "category": "privacy",
+      "question": "我的食物照片数据是否私密和安全？",
+      "answer": "是的！您的照片经过端到端加密处理，分析后会自动删除。我们从不分享或出售您的数据，您可以随时删除您的账户。"
+    },
+    {
+      "category": "technical",
+      "question": "支持哪些设备和操作系统？",
+      "answer": "Calkilo支持运行iOS 12.0或更高版本的iPhone和iPad，以及运行Android 8.0或更高版本的Android手机和平板电脑。"
+    }
+  ]
+}

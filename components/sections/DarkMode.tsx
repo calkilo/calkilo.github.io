@@ -1,30 +1,32 @@
 import { useTheme } from '../../contexts/ThemeContext'
+import { useTranslation } from '../../hooks/useTranslation'
 
 const DarkMode = () => {
   const { theme, toggleTheme } = useTheme()
+  const { t } = useTranslation('common')
 
   return (
     <section id="dark-mode" className="dark-mode-section">
       <div className="container">
         <div className="section-header">
-          <h2>Dark Mode</h2>
-          <p>for a sleek tracking experience!</p>
+          <h2>{t('darkMode.title')}</h2>
+          <p>{t('darkMode.subtitle')}</p>
         </div>
         <div className="dark-mode-content">
           <div className="dark-mode-text">
-            <p className="dark-mode-description">You can switch to dark mode by one click. Now.</p>
+            <p className="dark-mode-description">{t('darkMode.description')}</p>
             <div className="theme-toggle-container">
               <button
                 className={`theme-toggle-large ${theme === 'dark' ? 'active' : ''}`}
                 onClick={toggleTheme}
                 aria-label="Toggle dark mode"
               >
-                <span className={`toggle-option ${theme === 'dark' ? 'active' : ''}`}>Dark</span>
-                <span className={`toggle-option ${theme === 'light' ? 'active' : ''}`}>Light</span>
+                <span className={`toggle-option ${theme === 'dark' ? 'active' : ''}`}>{t('darkMode.dark')}</span>
+                <span className={`toggle-option ${theme === 'light' ? 'active' : ''}`}>{t('darkMode.light')}</span>
               </button>
             </div>
             <p className="dark-mode-subdescription">
-              Choose The Look That Feels Right For You, You Can Switch Between Light And Dark Mode For A More Comfortable Experience.
+              {t('darkMode.subdescription')}
             </p>
           </div>
           <div className="dark-mode-screenshots">

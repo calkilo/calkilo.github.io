@@ -2,10 +2,19 @@ import { GetStaticProps } from 'next'
 import Layout from '../components/Layout'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 
 export default function TermsOfService() {
-  const { t, isLoading } = useTranslation('terms-of-service')
+  const { t, isLoading, translationData } = useTranslation('terms-of-service')
+  const [, forceUpdate] = useState(0)
+  
+  // Force re-render when translations load
+  useEffect(() => {
+    if (translationData) {
+      forceUpdate(prev => prev + 1)
+    }
+  }, [translationData])
 
   if (isLoading) {
     return (

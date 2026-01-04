@@ -1,17 +1,21 @@
+import { useTranslation } from '../../hooks/useTranslation'
+
 const Community = () => {
+  const { t } = useTranslation('common')
+  
   const communityFeatures = [
-    { icon: 'bi-trophy', title: 'Challenges', description: 'Join challenges to stay motivated and earn rewards!' },
-    { icon: 'bi-share', title: 'Share', description: 'Share your achievements and inspire others.' },
-    { icon: 'bi-trophy', title: 'LeaderBoard', description: 'Compare with friends and climb the rankings!' },
-    { icon: 'bi-person-plus', title: 'Invite your Friends', description: 'Compete health data synchronization.' },
+    { icon: 'bi-trophy', title: t('community.features.challenges.title'), description: t('community.features.challenges.description') },
+    { icon: 'bi-share', title: t('community.features.share.title'), description: t('community.features.share.description') },
+    { icon: 'bi-trophy', title: t('community.features.leaderboard.title'), description: t('community.features.leaderboard.description') },
+    { icon: 'bi-person-plus', title: t('community.features.invite.title'), description: t('community.features.invite.description') },
   ]
 
   return (
     <section id="community" className="community">
       <div className="container">
         <div className="section-header">
-          <h2>Join a Thriving Community</h2>
-          <p>Invite, share, and get motivated with thousands of health-conscious users.</p>
+          <h2>{t('community.title')}</h2>
+          <p>{t('community.subtitle')}</p>
         </div>
         <div className="community-grid">
           {communityFeatures.map((feature, index) => (

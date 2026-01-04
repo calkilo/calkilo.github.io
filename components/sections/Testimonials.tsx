@@ -1,43 +1,45 @@
 import { useState } from 'react'
+import { useTranslation } from '../../hooks/useTranslation'
 
 const Testimonials = () => {
+  const { t } = useTranslation('common')
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const testimonials = [
     {
-      quote: 'CalKilo has completely transformed how I track my nutrition. The AI is incredibly accurate and the interface is so intuitive!',
-      author: 'Sarah Johnson',
-      date: '2 weeks ago',
+      quote: t('testimonials.items.sarah.quote'),
+      author: t('testimonials.items.sarah.author'),
+      date: t('testimonials.items.sarah.date'),
       rating: 5,
     },
     {
-      quote: 'I love how easy it is to just take a photo and get instant calorie counts. This app has helped me reach my fitness goals faster than ever.',
-      author: 'Michael Chen',
-      date: '1 month ago',
+      quote: t('testimonials.items.michael.quote'),
+      author: t('testimonials.items.michael.author'),
+      date: t('testimonials.items.michael.date'),
       rating: 5,
     },
     {
-      quote: 'The meal planning feature is a game-changer. It suggests meals based on my preferences and dietary restrictions perfectly.',
-      author: 'Emily Rodriguez',
-      date: '3 weeks ago',
+      quote: t('testimonials.items.emily.quote'),
+      author: t('testimonials.items.emily.author'),
+      date: t('testimonials.items.emily.date'),
       rating: 5,
     },
     {
-      quote: 'Best calorie tracking app I\'ve ever used. The dark mode is sleek and the AI recognition is spot-on every time.',
-      author: 'David Kim',
-      date: '1 week ago',
+      quote: t('testimonials.items.david.quote'),
+      author: t('testimonials.items.david.author'),
+      date: t('testimonials.items.david.date'),
       rating: 5,
     },
     {
-      quote: 'CalKilo makes nutrition tracking fun with gamification. I actually look forward to logging my meals now!',
-      author: 'Jessica Martinez',
-      date: '2 months ago',
+      quote: t('testimonials.items.jessica.quote'),
+      author: t('testimonials.items.jessica.author'),
+      date: t('testimonials.items.jessica.date'),
       rating: 5,
     },
     {
-      quote: 'The integration with my fitness tracker is seamless. Everything syncs perfectly and I get a complete picture of my health.',
-      author: 'Robert Taylor',
-      date: '1 month ago',
+      quote: t('testimonials.items.robert.quote'),
+      author: t('testimonials.items.robert.author'),
+      date: t('testimonials.items.robert.date'),
       rating: 5,
     },
   ]
@@ -59,7 +61,7 @@ const Testimonials = () => {
       <div className="container">
         <div className="section-header">
           <h2>
-            What Are People Saying <span className="highlight-text">About Us</span>
+            {t('testimonials.title')} <span className="highlight-text">{t('testimonials.titleHighlight')}</span>
           </h2>
         </div>
         <div className="testimonials-carousel">

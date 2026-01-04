@@ -351,17 +351,46 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Main content - account for fixed navbar */
+main {
+    margin-top: 0;
+    padding-top: 0;
+    position: relative;
+}
+
 /* Language-specific font stacks */
-html[lang="ar"], html[lang="fa"] {
+/* Arabic and Persian (RTL) */
+html[lang="ar"] {
+    font-family: 'Cairo', 'Noto Sans Arabic', 'Vazirmatn', Tahoma, 'Segoe UI', Arial, sans-serif;
+}
+
+html[lang="fa"] {
     font-family: 'Vazirmatn', 'Cairo', Tahoma, 'Segoe UI', Arial, sans-serif;
 }
 
+/* Chinese */
 html[lang="zh"] {
     font-family: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Heiti SC', system-ui, -apple-system, sans-serif;
 }
 
+/* Russian and Cyrillic */
 html[lang="ru"] {
     font-family: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* German, Dutch, French, Italian, Spanish - Latin with diacritics */
+html[lang="de"],
+html[lang="nl"],
+html[lang="fr"],
+html[lang="it"],
+html[lang="es"] {
+    font-family: 'Inter', 'Noto Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* English and default */
+html[lang="en"],
+html:not([lang]) {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* Ensure Font Awesome icons keep their own font across languages */
@@ -621,12 +650,14 @@ img[data-src].loaded {
 
 /* Hero Section */
 .hero {
-    padding: 160px 0 120px;
+    padding: 0;
+    padding-top: 80px;
+    padding-bottom: 120px;
     background: #ffffff;
     color: #1f2937;
     position: relative;
     overflow: hidden;
-    min-height: 90vh;
+    min-height: calc(90vh - 80px);
     display: flex;
     align-items: center;
 }

@@ -1,40 +1,38 @@
+import { useTranslation } from '../../hooks/useTranslation'
+
 const Features = () => {
+  const { t } = useTranslation('common')
+  
   const features = [
     {
       icon: 'bi-camera',
-      title: 'Instant Photo Analysis',
-      description:
-        'Simply snap a photo of your meal and get instant, accurate calorie calculations powered by advanced computer vision AI.',
+      title: t('features.items.photoAnalysis.title'),
+      description: t('features.items.photoAnalysis.description'),
     },
     {
       icon: 'bi-cpu',
-      title: 'Advanced AI Technology',
-      description:
-        'Our proprietary AI model recognizes thousands of foods and ingredients with 99.2% accuracy, learning from millions of food images.',
+      title: t('features.items.aiTechnology.title'),
+      description: t('features.items.aiTechnology.description'),
     },
     {
       icon: 'bi-graph-up',
-      title: 'Detailed Nutrition Tracking',
-      description:
-        'Track not just calories, but also macronutrients, vitamins, and minerals to get a complete picture of your nutrition.',
+      title: t('features.items.nutritionTracking.title'),
+      description: t('features.items.nutritionTracking.description'),
     },
     {
       icon: 'bi-bullseye',
-      title: 'Personalized Goals',
-      description:
-        'Set and track personalized health goals with AI-powered recommendations tailored to your lifestyle and preferences.',
+      title: t('features.items.personalizedGoals.title'),
+      description: t('features.items.personalizedGoals.description'),
     },
     {
       icon: 'bi-clock-history',
-      title: 'Smart History',
-      description:
-        'View your eating patterns, track progress over time, and get insights to help you make better food choices.',
+      title: t('features.items.smartHistory.title'),
+      description: t('features.items.smartHistory.description'),
     },
     {
       icon: 'bi-shield-check',
-      title: 'Privacy First',
-      description:
-        'Your photos and data are processed securely with end-to-end encryption. Your privacy is our top priority.',
+      title: t('features.items.privacyFirst.title'),
+      description: t('features.items.privacyFirst.description'),
     },
   ]
 
@@ -42,8 +40,8 @@ const Features = () => {
     <section id="features" className="features" role="region" aria-labelledby="features-heading">
       <div className="container">
         <header className="section-header">
-          <h2 id="features-heading">Why Choose Calkilo?</h2>
-          <p>Revolutionary AI technology that makes calorie counting effortless and accurate</p>
+          <h2 id="features-heading">{t('features.title')}</h2>
+          <p>{t('features.subtitle')}</p>
         </header>
         <div className="features-grid" role="list">
           {features.map((feature, index) => (

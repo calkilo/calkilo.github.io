@@ -7,8 +7,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     // Only run on client side
     if (typeof window !== 'undefined') {
-      // Set RTL for Arabic and Persian based on saved preference
+      // Set language and RTL for Arabic and Persian based on saved preference
       const savedLang = localStorage.getItem('preferred-language') || 'en'
+      document.documentElement.setAttribute('lang', savedLang)
+      
       if (savedLang === 'ar' || savedLang === 'fa') {
         document.documentElement.setAttribute('dir', 'rtl')
       } else {

@@ -1,0 +1,52 @@
+{
+  "title": "Kontaktieren Sie uns - Calkilo KI-Kalorienrechner Support",
+  "description": "Kontaktieren Sie das Calkilo-Supportteam für Hilfe bei unserer KI-Kalorienrechner-App. Erhalten Sie Unterstützung bei Funktionen, technischen Problemen und allgemeinen Anfragen.",
+  "breadcrumb": {
+    "home": "Startseite",
+    "current": "Kontakt"
+  },
+  "backToHome": "Zurück zur Startseite",
+  "header": {
+    "title": "Kontaktieren Sie uns",
+    "subtitle": "Wir sind hier, um zu helfen! Kontaktieren Sie unser Support-Team für Hilfe bei Calkilo oder Fragen, die Sie haben."
+  },
+  "contactInfo": {
+    "title": "Kontakt aufnehmen",
+    "generalSupport": {
+      "title": "Allgemeiner Support",
+      "email": "support@calkilo.app"
+    },
+    "technicalSupport": {
+      "title": "Technischer Support",
+      "email": "tech@calkilo.app"
+    },
+    "privacyLegal": {
+      "title": "Datenschutz & Rechtliches",
+      "email": "privacy@calkilo.app"
+    }
+  },
+  "form": {
+    "title": "Senden Sie uns eine Nachricht",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "email": "E-Mail-Adresse",
+    "subject": "Betreff",
+    "subjectPlaceholder": "Wählen Sie einen Betreff",
+    "subjectOptions": {
+      "general": "Allgemeine Anfrage",
+      "technical": "Technischer Support",
+      "billing": "Abrechnungsfrage",
+      "feature": "Funktionsanfrage",
+      "bug": "Fehlerbericht",
+      "privacy": "Datenschutzbedenken",
+      "other": "Sonstiges"
+    },
+    "message": "Nachricht",
+    "messagePlaceholder": "Bitte beschreiben Sie Ihre Anfrage im Detail...",
+    "submit": "Nachricht senden",
+    "submitting": "Wird gesendet...",
+    "success": "Vielen Dank für Ihre Nachricht! Wir werden Ihnen innerhalb von 24 Stunden antworten.",
+    "required": "*"
+  }
+}
+

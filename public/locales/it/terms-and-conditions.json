@@ -1,0 +1,52 @@
+{
+  "title": "Termini e Condizioni - App Calcolatore Calorie IA Calkilo",
+  "description": "Calkilo Terms & Conditions - Read our terms and conditions for using the AI-powered calorie calculator app. User agreement and usage terms.",
+  "breadcrumb": {
+    "home": "Home",
+    "current": "Termini e Condizioni"
+  },
+  "backToHome": "Torna alla home",
+  "lastUpdated": "Ultimo aggiornamento: 15 gennaio 2024",
+  "content": {
+    "intro": "Welcome to Calkilo! These Terms & Conditions (\"Terms\") govern your access to and use of our AI-powered calorie calculator mobile application (\"App\"), website, and related services (collectively, the \"Services\") provided by Calkilo (\"we,\" \"us,\" or \"our\").",
+    "sections": {
+      "agreementToTerms": {
+        "title": "1. Agreement to Terms",
+        "description": "By accessing or using Calkilo, you agree to be bound by these Terms & Conditions and all applicable laws and regulations. If you do not agree with any of these Terms, you are prohibited from using or accessing the Services."
+      },
+      "useLicense": {
+        "title": "2. Use License",
+        "permissionToUse": {
+          "title": "2.1 Permission to Use",
+          "description": "Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to:",
+          "items": {
+            "0": "Download and install the App on your personal mobile device",
+            "1": "Access and use the Services for your personal, non-commercial use",
+            "2": "Use the App's features and functionality as intended"
+          }
+        }
+      },
+      "healthDisclaimer": {
+        "title": "3. Health and Medical Disclaimer",
+        "important": "IMPORTANT MEDICAL DISCLAIMER:",
+        "description": "Calkilo is a nutrition tracking tool and is not intended to diagnose, treat, cure, or prevent any disease or medical condition. The information provided by our App is for general informational purposes only and should not be considered as medical advice.",
+        "items": {
+          "0": "Always consult with qualified healthcare professionals before making dietary changes",
+          "1": "Our calorie and nutrition calculations are estimates and may not be 100% accurate",
+          "2": "Individual nutritional needs vary based on health conditions, medications, age, and other factors",
+          "3": "We are not responsible for any health outcomes resulting from use of our Services"
+        }
+      },
+      "limitationOfLiability": {
+        "title": "4. Limitation of Liability",
+        "description": "TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, CALKILO AND ITS AFFILIATES SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES."
+      },
+      "contactInformation": {
+        "title": "5. Contact Information",
+        "description": "If you have any questions about these Terms & Conditions, please contact us:",
+        "email": "Email: legal@calkilo.app",
+        "address": "Address: Calkilo Legal Team, 123 Health Tech Street, San Francisco, CA 94105"
+      }
+    }
+  }
+}

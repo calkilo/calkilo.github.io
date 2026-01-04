@@ -1,0 +1,31 @@
+{
+  "navbar": {
+    "home": "Главная",
+    "features": "Функции",
+    "choosePlan": "Выбрать план",
+    "contact": "Контакты",
+    "tryForFree": "Попробовать бесплатно"
+  },
+  "footer": {
+    "tagline": "Революция в отслеживании питания с расчетом калорий на основе ИИ",
+    "features": "Функции",
+    "download": "Скачать",
+    "howItWorks": "Как это работает?",
+    "blog": "Блог",
+    "support": "Поддержка",
+    "privacyPolicy": "Политика Конфиденциальности",
+    "termsOfService": "Условия Использования",
+    "termsAndConditions": "Условия и Положения",
+    "faq": "Часто задаваемые вопросы",
+    "getInTouch": "Связаться с нами",
+    "aboutUs": "О нас",
+    "ourTeam": "Наша команда",
+    "allRightsReserved": "Все права защищены"
+  },
+  "social": {
+    "followTwitter": "Следите за нами в Twitter",
+    "followFacebook": "Следите за нами в Facebook",
+    "followInstagram": "Следите за нами в Instagram",
+    "connectLinkedIn": "Свяжитесь с нами в LinkedIn"
+  }
+}

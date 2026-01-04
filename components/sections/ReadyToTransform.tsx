@@ -1,4 +1,8 @@
+import { useTranslation } from '../../hooks/useTranslation'
+
 const ReadyToTransform = () => {
+  const { t } = useTranslation('common')
+  
   return (
     <section id="ready-to-transform" className="ready-to-transform">
       <div className="container">
@@ -30,27 +34,27 @@ const ReadyToTransform = () => {
           </div>
           <div className="ready-to-transform-text">
             <h2>
-              Ready to Transform Your Nutrition? <span className="highlight-text">Get CalKilo For Free</span>
+              {t('readyToTransform.title')} <span className="highlight-text">{t('readyToTransform.titleHighlight')}</span>
             </h2>
-            <p>Download the app to track, calculate & crush your health goals.</p>
+            <p>{t('readyToTransform.subtitle')}</p>
             <div className="download-options">
               <div className="download-buttons-transform">
                 <a href="#" className="download-btn-transform" aria-label="Download on App Store">
                   <i className="bi bi-apple"></i>
                   <div className="download-btn-text">
-                    <span className="download-btn-label">Download on the</span>
-                    <span className="download-btn-platform">App Store</span>
+                    <span className="download-btn-label">{t('readyToTransform.downloadOn')}</span>
+                    <span className="download-btn-platform">{t('readyToTransform.appStore')}</span>
                   </div>
                 </a>
                 <a href="#" className="download-btn-transform" aria-label="Get it on Google Play">
                   <i className="bi bi-google-play"></i>
                   <div className="download-btn-text">
-                    <span className="download-btn-label">Get it on</span>
-                    <span className="download-btn-platform">Google Play</span>
+                    <span className="download-btn-label">{t('readyToTransform.getItOn')}</span>
+                    <span className="download-btn-platform">{t('readyToTransform.googlePlay')}</span>
                   </div>
                 </a>
               </div>
-              <p className="qr-code-intro">Or Scan to download!</p>
+              <p className="qr-code-intro">{t('readyToTransform.scanToDownload')}</p>
               <div className="qr-code-container">
                 <div className="qr-code-placeholder">
                   <div className="qr-code-grid">

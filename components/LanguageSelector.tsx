@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useRouter } from 'next/router'
 
 const languages = [
   { code: 'en', flag: '🇬🇧', name: 'English' },
@@ -13,7 +14,10 @@ const languages = [
   { code: 'fa', flag: '🇮🇷', name: 'Persian' },
 ]
 
+const validLocales = ['en', 'fa', 'zh', 'ru', 'it', 'fr', 'de', 'ar', 'es', 'nl']
+
 const LanguageSelector = () => {
+  const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
   const [currentLang, setCurrentLang] = useState(languages[0])
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -21,19 +25,30 @@ const LanguageSelector = () => {
   useEffect(() => {
     // Only run on client side
     if (typeof window !== 'undefined') {
-      // Get language from localStorage or default to English
-      const savedLang = localStorage.getItem('preferred-language') || 'en'
+      // Get language from URL first, then localStorage, then default to English
+      const pathname = router.asPath || window.location.pathname
+      let savedLang = 'en'
+      
+      // Check if URL has a locale prefix
+      const pathSegments = pathname.split('/').filter(Boolean)
+      if (pathSegments.length > 0 && validLocales.includes(pathSegments[0])) {
+        savedLang = pathSegments[0]
+      } else {
+        savedLang = localStorage.getItem('preferred-language') || 'en'
+      }
+      
       const lang = languages.find((l) => l.code === savedLang) || languages[0]
       setCurrentLang(lang)
       
-      // Set RTL for Arabic and Persian
+      // Set language and RTL for Arabic and Persian
+      document.documentElement.setAttribute('lang', lang.code)
       if (lang.code === 'ar' || lang.code === 'fa') {
         document.documentElement.setAttribute('dir', 'rtl')
       } else {
         document.documentElement.setAttribute('dir', 'ltr')
       }
     }
-  }, [])
+  }, [router.asPath])
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent | TouchEvent) => {
@@ -57,7 +72,8 @@ const LanguageSelector = () => {
       const lang = languages.find((l) => l.code === langCode) || languages[0]
       setCurrentLang(lang)
       
-      // Set RTL for Arabic and Persian
+      // Set language and RTL for Arabic and Persian
+      document.documentElement.setAttribute('lang', langCode)
       if (langCode === 'ar' || langCode === 'fa') {
         document.documentElement.setAttribute('dir', 'rtl')
       } else {
@@ -65,8 +81,38 @@ const LanguageSelector = () => {
       }
       
       setIsOpen(false)
-      // Reload page to apply language changes
-      window.location.reload()
+      
+      // Get current pathname
+      const pathname = router.asPath || window.location.pathname
+      const pathSegments = pathname.split('/').filter(Boolean)
+      
+      // Remove existing locale if present
+      let pagePath = ''
+      if (pathSegments.length > 0 && validLocales.includes(pathSegments[0])) {
+        // Remove the locale from the path
+        pagePath = '/' + pathSegments.slice(1).join('/')
+      } else {
+        // No locale in path, use current path
+        pagePath = pathname === '/' ? '/' : pathname
+      }
+      
+      // Remove trailing slash for consistency (except root)
+      if (pagePath !== '/' && pagePath.endsWith('/')) {
+        pagePath = pagePath.slice(0, -1)
+      }
+      
+      // Build new URL with locale
+      let newPath = ''
+      if (langCode === 'en') {
+        // English: no locale prefix
+        newPath = pagePath === '/' ? '/' : pagePath + '/'
+      } else {
+        // Other languages: add locale prefix
+        newPath = pagePath === '/' ? `/${langCode}/` : `/${langCode}${pagePath}/`
+      }
+      
+      // Navigate to new URL
+      router.push(newPath)
     }
   }
 

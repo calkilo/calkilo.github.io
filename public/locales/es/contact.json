@@ -1,0 +1,52 @@
+{
+  "title": "Contáctenos - Soporte de Calculadora de Calorías IA Calkilo",
+  "description": "Contacte al equipo de soporte de Calkilo para obtener ayuda con nuestra aplicación calculadora de calorías IA. Obtenga asistencia con funciones, problemas técnicos y consultas generales.",
+  "breadcrumb": {
+    "home": "Inicio",
+    "current": "Contacto"
+  },
+  "backToHome": "Volver al inicio",
+  "header": {
+    "title": "Contáctenos",
+    "subtitle": "¡Estamos aquí para ayudar! Póngase en contacto con nuestro equipo de soporte para obtener ayuda con Calkilo o cualquier pregunta que pueda tener."
+  },
+  "contactInfo": {
+    "title": "Póngase en contacto",
+    "generalSupport": {
+      "title": "Soporte general",
+      "email": "support@calkilo.app"
+    },
+    "technicalSupport": {
+      "title": "Soporte técnico",
+      "email": "tech@calkilo.app"
+    },
+    "privacyLegal": {
+      "title": "Privacidad y legal",
+      "email": "privacy@calkilo.app"
+    }
+  },
+  "form": {
+    "title": "Envíenos un mensaje",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Dirección de correo electrónico",
+    "subject": "Asunto",
+    "subjectPlaceholder": "Seleccione un asunto",
+    "subjectOptions": {
+      "general": "Consulta general",
+      "technical": "Soporte técnico",
+      "billing": "Pregunta de facturación",
+      "feature": "Solicitud de función",
+      "bug": "Informe de error",
+      "privacy": "Preocupación de privacidad",
+      "other": "Otro"
+    },
+    "message": "Mensaje",
+    "messagePlaceholder": "Por favor describa su consulta en detalle...",
+    "submit": "Enviar mensaje",
+    "submitting": "Enviando...",
+    "success": "¡Gracias por su mensaje! Le responderemos en un plazo de 24 horas.",
+    "required": "*"
+  }
+}
+

@@ -1,7 +1,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { useTranslation } from '../../hooks/useTranslation'
 
 const Hero = () => {
+  const { t } = useTranslation('common')
+  
   const handleDownloadClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     const element = document.getElementById('download')
@@ -15,23 +18,22 @@ const Hero = () => {
       <div className="hero-container">
         <div className="hero-content">
           <h1 className="hero-title">
-            <span>Calculate Calories with</span>
-            <span className="gradient-text">AI Precision</span>
+            <span>{t('hero.title')}</span>
+            <span className="gradient-text">{t('hero.titleHighlight')}</span>
           </h1>
           <p className="hero-description">
-            Simply take a photo of your food and let Calkilo&apos;s advanced AI instantly calculate accurate calories
-            and nutritional information. No more guessing or manual logging.
+            {t('hero.description')}
           </p>
           <div className="hero-download-section">
-            <p className="available-on-text">Available on:</p>
+            <p className="available-on-text">{t('hero.availableOn')}</p>
             <div className="hero-buttons">
-              <Link href="#download" className="btn btn-primary" aria-label="Download Calkilo for iOS" onClick={handleDownloadClick}>
+              <Link href="#download" className="btn btn-primary" aria-label={t('hero.downloadIOS')} onClick={handleDownloadClick}>
                 <i className="bi bi-apple" aria-hidden="true"></i>
-                <span>App Store</span>
+                <span>{t('hero.appStore')}</span>
               </Link>
-              <Link href="#download" className="btn btn-secondary" aria-label="Download Calkilo for Android" onClick={handleDownloadClick}>
+              <Link href="#download" className="btn btn-secondary" aria-label={t('hero.downloadAndroid')} onClick={handleDownloadClick}>
                 <i className="bi bi-google-play" aria-hidden="true"></i>
-                <span>Google Play</span>
+                <span>{t('hero.googlePlay')}</span>
               </Link>
             </div>
           </div>

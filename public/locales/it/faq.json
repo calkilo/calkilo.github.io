@@ -1,0 +1,56 @@
+{
+  "title": "FAQ - Domande frequenti | Calcolatore Calorie IA Calkilo",
+  "description": "Trova risposte alle domande comuni sull'app calcolatrice di calorie IA Calkilo. Scopri funzionalità, precisione, privacy e come usare l'app in modo efficace.",
+  "breadcrumb": {
+    "home": "Home",
+    "current": "FAQ"
+  },
+  "backToHome": "Torna alla home",
+  "header": {
+    "title": "Domande frequenti",
+    "subtitle": "Trova risposte alle domande comuni su Calkilo e su come sfruttare al meglio il nostro calcolatore di calorie alimentato dall'IA."
+  },
+  "search": {
+    "placeholder": "Cerca nelle FAQ...",
+    "label": "Cerca domande frequenti"
+  },
+  "section": {
+    "allQuestions": "Tutte le domande"
+  },
+  "noResults": {
+    "title": "Nessun risultato trovato",
+    "message": "Prova a cercare con parole chiave diverse."
+  },
+  "faqs": [
+    {
+      "category": "getting-started",
+      "question": "Come scaricare e installare Calkilo?",
+      "answer": "Calkilo è disponibile per il download gratuito su dispositivi iOS e Android. Visita App Store per iOS o Google Play Store per Android, cerca \"Calkilo\" o fai clic sul pulsante di download sul nostro sito web."
+    },
+    {
+      "category": "getting-started",
+      "question": "Devo creare un account per usare Calkilo?",
+      "answer": "Sebbene tu possa usare alcune funzionalità di base senza un account, la creazione di un account gratuito ti consente di salvare la cronologia nutrizionale, sincronizzare i dati tra i dispositivi, impostare obiettivi di salute personalizzati e accedere a funzionalità IA avanzate."
+    },
+    {
+      "category": "features",
+      "question": "Quali funzionalità offre Calkilo?",
+      "answer": "Calkilo offre analisi foto IA, tracciamento macronutrienti, cronologia nutrizionale, impostazione obiettivi, tracciamento progressi, database alimentare esteso, opzioni di esportazione e modalità offline per funzionalità di base."
+    },
+    {
+      "category": "accuracy",
+      "question": "Quanto è accurato il calcolo delle calorie IA di Calkilo?",
+      "answer": "L'IA di Calkilo raggiunge una precisione del 99,2% nel calcolo delle calorie attraverso la visione artificiale avanzata e l'apprendimento automatico addestrato su milioni di immagini di cibo."
+    },
+    {
+      "category": "privacy",
+      "question": "I miei dati delle foto di cibo sono privati e sicuri?",
+      "answer": "Sì! Le tue foto vengono elaborate con crittografia end-to-end ed eliminate automaticamente dopo l'analisi. Non condividiamo mai né vendiamo i tuoi dati e puoi eliminare il tuo account in qualsiasi momento."
+    },
+    {
+      "category": "technical",
+      "question": "Quali dispositivi e sistemi operativi sono supportati?",
+      "answer": "Calkilo supporta iPhone e iPad con iOS 12.0 o successivo e telefoni e tablet Android con Android 8.0 o successivo."
+    }
+  ]
+}

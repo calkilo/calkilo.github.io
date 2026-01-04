@@ -1,39 +1,35 @@
 import Link from 'next/link'
 import { useState } from 'react'
+import { useTranslation } from '../../hooks/useTranslation'
 
 const FAQ = () => {
+  const { t } = useTranslation('common')
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   const faqs = [
     {
-      question: 'How much does Eat Planner cost?',
-      answer:
-        'Calkilo offers flexible pricing plans. We have a free version with basic features, and Premium plans starting at $7.99/month. All plans include a 1-day free trial. Check our pricing section for detailed information.',
+      question: t('faq.questions.cost.question'),
+      answer: t('faq.questions.cost.answer'),
     },
     {
-      question: 'How does the AI meal planning work?',
-      answer:
-        'Our AI analyzes your dietary preferences, health goals, and eating patterns to create personalized meal plans. Simply tell the AI your preferences, and it will suggest meals, recipes, and shopping lists tailored to you.',
+      question: t('faq.questions.aiMealPlanning.question'),
+      answer: t('faq.questions.aiMealPlanning.answer'),
     },
     {
-      question: 'Can I change my preferences after onboarding?',
-      answer:
-        'Yes! You can update your dietary preferences, goals, and restrictions anytime from your profile settings. The AI will automatically adjust your meal plans and suggestions.',
+      question: t('faq.questions.changePreferences.question'),
+      answer: t('faq.questions.changePreferences.answer'),
     },
     {
-      question: 'Is my food photo data private and secure?',
-      answer:
-        'Yes! Your photos are processed with end-to-end encryption and automatically deleted after analysis. We never share or sell your data, and you can delete your account anytime.',
+      question: t('faq.questions.privacy.question'),
+      answer: t('faq.questions.privacy.answer'),
     },
     {
-      question: 'Do I need internet connection to use the app?',
-      answer:
-        'The app works offline for manual logging. AI photo analysis requires internet connection for the best accuracy, but you can save photos and analyze them later when connected.',
+      question: t('faq.questions.internet.question'),
+      answer: t('faq.questions.internet.answer'),
     },
     {
-      question: 'Do you include nutritional information?',
-      answer:
-        'Yes! Every meal and recipe includes detailed nutritional information including calories, macronutrients (protein, carbs, fats), vitamins, minerals, and more.',
+      question: t('faq.questions.nutritionInfo.question'),
+      answer: t('faq.questions.nutritionInfo.answer'),
     },
   ]
 
@@ -42,9 +38,9 @@ const FAQ = () => {
       <div className="container">
         <div className="section-header">
           <h2>
-            Frequently Asked <span className="highlight-text">Questions</span>
+            {t('faq.title')} <span className="highlight-text">{t('faq.titleHighlight')}</span>
           </h2>
-          <p>Got a question? We&apos;ve got answers.</p>
+          <p>{t('faq.subtitle')}</p>
         </div>
         <div className="faq-grid">
           {faqs.map((faq, index) => (
@@ -66,9 +62,9 @@ const FAQ = () => {
         </div>
         <div className="faq-more">
           <div className="faq-contact-box">
-            <p>Still have questions? Don&apos;t hesitate to reach out to our support team...</p>
+            <p>{t('faq.contactText')}</p>
             <Link href="/contact" className="btn btn-primary">
-              Contact Us
+              {t('faq.contactButton')}
             </Link>
           </div>
         </div>

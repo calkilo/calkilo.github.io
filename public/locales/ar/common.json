@@ -1,0 +1,31 @@
+{
+  "navbar": {
+    "home": "الرئيسية",
+    "features": "الميزات",
+    "choosePlan": "اختر الخطة",
+    "contact": "اتصل بنا",
+    "tryForFree": "جرب مجاناً"
+  },
+  "footer": {
+    "tagline": "ثورة في تتبع التغذية مع حساب السعرات الحرارية بالذكاء الاصطناعي",
+    "features": "الميزات",
+    "download": "تحميل",
+    "howItWorks": "كيف يعمل؟",
+    "blog": "المدونة",
+    "support": "الدعم",
+    "privacyPolicy": "سياسة الخصوصية",
+    "termsOfService": "شروط الخدمة",
+    "termsAndConditions": "الشروط والأحكام",
+    "faq": "الأسئلة الشائعة",
+    "getInTouch": "تواصل معنا",
+    "aboutUs": "من نحن",
+    "ourTeam": "فريقنا",
+    "allRightsReserved": "جميع الحقوق محفوظة"
+  },
+  "social": {
+    "followTwitter": "تابعنا على تويتر",
+    "followFacebook": "تابعنا على فيسبوك",
+    "followInstagram": "تابعنا على إنستغرام",
+    "connectLinkedIn": "تواصل معنا على لينكد إن"
+  }
+}

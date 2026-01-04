@@ -1,53 +1,57 @@
+import { useTranslation } from '../../hooks/useTranslation'
+
 const Pricing = () => {
+  const { t } = useTranslation('common')
+  
   const plans = [
     {
-      name: 'Premium 1 Month',
+      name: t('pricing.plans.month1.name'),
       price: '$7.99',
       originalPrice: '$9.99',
       period: '/ month',
       features: [
-        'Personalized meal plans',
-        'Smart grocery shopping lists',
-        'AI-based insights',
-        'Dietary preferences settings',
-        'Mobile & tablet order logs',
-        'Customer support',
+        t('pricing.features.mealPlans'),
+        t('pricing.features.shoppingLists'),
+        t('pricing.features.aiInsights'),
+        t('pricing.features.dietaryPreferences'),
+        t('pricing.features.orderLogs'),
+        t('pricing.features.customerSupport'),
       ],
-      buttonText: 'Start for 1 Month',
+      buttonText: t('pricing.plans.month1.buttonText'),
       featured: false,
     },
     {
-      name: 'Premium 3 Month',
+      name: t('pricing.plans.month3.name'),
       price: '$21.99',
       originalPrice: '$27.99',
       period: '/ 3 months',
       features: [
-        'Personalized meal plans',
-        'Smart grocery shopping lists',
-        'AI-based insights',
-        'Dietary preferences settings',
-        'Mobile & tablet order logs',
-        'Customer support',
-        '24/7 personalized AI chat',
+        t('pricing.features.mealPlans'),
+        t('pricing.features.shoppingLists'),
+        t('pricing.features.aiInsights'),
+        t('pricing.features.dietaryPreferences'),
+        t('pricing.features.orderLogs'),
+        t('pricing.features.customerSupport'),
+        t('pricing.features.aiChat'),
       ],
-      buttonText: 'Try it Now',
+      buttonText: t('pricing.plans.month3.buttonText'),
       featured: true,
     },
     {
-      name: 'Premium 6 Month',
+      name: t('pricing.plans.month6.name'),
       price: '$59.99',
       originalPrice: '$69.99',
       period: '/ 6 months',
       features: [
-        'Personalized meal plans',
-        'Smart grocery shopping lists',
-        'AI-based insights',
-        'Dietary preferences settings',
-        'Mobile & tablet order logs',
-        'Customer support',
-        '24/7 personalized AI chat',
+        t('pricing.features.mealPlans'),
+        t('pricing.features.shoppingLists'),
+        t('pricing.features.aiInsights'),
+        t('pricing.features.dietaryPreferences'),
+        t('pricing.features.orderLogs'),
+        t('pricing.features.customerSupport'),
+        t('pricing.features.aiChat'),
       ],
-      buttonText: 'Get Premium',
+      buttonText: t('pricing.plans.month6.buttonText'),
       featured: false,
     },
   ]
@@ -56,20 +60,20 @@ const Pricing = () => {
     <section id="pricing" className="pricing">
       <div className="container">
         <div className="section-header">
-          <p className="pricing-intro">Choose the perfect plan for your family&apos;s meal planning needs.</p>
+          <p className="pricing-intro">{t('pricing.intro')}</p>
         </div>
         <div className="pricing-cta">
           <div className="pricing-banner">
-            <p className="pricing-banner-text">Start For Free With Gamification & Unlock More Features Anytime</p>
-            <button className="pricing-go-premium-btn">Go premium now</button>
+            <p className="pricing-banner-text">{t('pricing.bannerText')}</p>
+            <button className="pricing-go-premium-btn">{t('pricing.goPremium')}</button>
           </div>
-          <p className="pricing-security">My credit card is secure</p>
+          <p className="pricing-security">{t('pricing.security')}</p>
         </div>
         <div className="pricing-grid">
           {plans.map((plan, index) => (
             <div key={index} className={`pricing-card ${plan.featured ? 'featured' : ''}`}>
-              {plan.featured && <div className="popular-badge">Best Value</div>}
-              {index === 2 && <div className="sale-badge">New Sale</div>}
+              {plan.featured && <div className="popular-badge">{t('pricing.badges.bestValue')}</div>}
+              {index === 2 && <div className="sale-badge">{t('pricing.badges.newSale')}</div>}
               <div className="pricing-header">
                 <h3>{plan.name}</h3>
                 <div className="price">

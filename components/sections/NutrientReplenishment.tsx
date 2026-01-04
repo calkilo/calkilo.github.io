@@ -1,18 +1,20 @@
 import { useState } from 'react'
+import { useTranslation } from '../../hooks/useTranslation'
 
 const NutrientReplenishment = () => {
+  const { t } = useTranslation('common')
   const [activeTab, setActiveTab] = useState('calories')
 
   const tabs = [
-    { id: 'calories', label: 'Calories' },
-    { id: 'carbohydrates', label: 'Carbohydrates' },
-    { id: 'proteins', label: 'Proteins' },
-    { id: 'fat', label: 'Fat' },
+    { id: 'calories', label: t('nutrientReplenishment.tabs.calories') },
+    { id: 'carbohydrates', label: t('nutrientReplenishment.tabs.carbohydrates') },
+    { id: 'proteins', label: t('nutrientReplenishment.tabs.proteins') },
+    { id: 'fat', label: t('nutrientReplenishment.tabs.fat') },
   ]
 
   const meals = [
-    { name: 'Cheese Bread & Veggies', calories: 320, carbs: 45, protein: 12, fat: 8 },
-    { name: 'Salad, Tomatoes & Nuts', calories: 180, carbs: 15, protein: 8, fat: 12 },
+    { name: t('nutrientReplenishment.meals.cheeseBread'), calories: 320, carbs: 45, protein: 12, fat: 8 },
+    { name: t('nutrientReplenishment.meals.saladNuts'), calories: 180, carbs: 15, protein: 8, fat: 12 },
   ]
 
   const nutrients = {
@@ -26,7 +28,7 @@ const NutrientReplenishment = () => {
     <section id="nutrient-replenishment" className="nutrient-replenishment">
       <div className="container">
         <div className="section-header">
-          <h2>Don&apos;t forget to replenish the nutrients you need in a day.</h2>
+          <h2>{t('nutrientReplenishment.title')}</h2>
         </div>
         <div className="nutrient-tabs">
           {tabs.map((tab) => (
@@ -47,10 +49,10 @@ const NutrientReplenishment = () => {
                 <div className="meal-details">
                   <h4>{meal.name}</h4>
                   <div className="meal-nutrients">
-                    <span>{meal.calories} Kcal</span>
-                    <span>{meal.carbs}g Carbs</span>
-                    <span>{meal.protein}g Protein</span>
-                    <span>{meal.fat}g Fat</span>
+                    <span>{meal.calories} {t('nutrientReplenishment.units.kcal')}</span>
+                    <span>{meal.carbs}{t('nutrientReplenishment.units.g')} {t('nutrientReplenishment.units.carbs')}</span>
+                    <span>{meal.protein}{t('nutrientReplenishment.units.g')} {t('nutrientReplenishment.units.protein')}</span>
+                    <span>{meal.fat}{t('nutrientReplenishment.units.g')} {t('nutrientReplenishment.units.fat')}</span>
                   </div>
                 </div>
               </div>
@@ -58,40 +60,40 @@ const NutrientReplenishment = () => {
           </div>
           <div className="nutrient-trackers">
             <div className="tracker-card meal-tracker">
-              <h3>Meal Tracker</h3>
+              <h3>{t('nutrientReplenishment.mealTracker')}</h3>
               <div className="tracked-meals">
                 <div className="tracked-meal">
                   <div className="tracked-meal-image">🥗</div>
                   <div className="tracked-meal-info">
-                    <span className="tracked-meal-name">Salad, Tomatoes & Nuts</span>
+                    <span className="tracked-meal-name">{t('nutrientReplenishment.meals.saladNuts')}</span>
                     <div className="tracked-meal-stats">
-                      <span>180 Kcal</span>
-                      <span>45% Carbs</span>
-                      <span>20% Protein</span>
-                      <span>35% Fat</span>
+                      <span>180 {t('nutrientReplenishment.units.kcal')}</span>
+                      <span>45{t('nutrientReplenishment.units.percent')} {t('nutrientReplenishment.units.carbs')}</span>
+                      <span>20{t('nutrientReplenishment.units.percent')} {t('nutrientReplenishment.units.protein')}</span>
+                      <span>35{t('nutrientReplenishment.units.percent')} {t('nutrientReplenishment.units.fat')}</span>
                     </div>
                   </div>
                 </div>
                 <div className="tracked-meal">
                   <div className="tracked-meal-image">🍳</div>
                   <div className="tracked-meal-info">
-                    <span className="tracked-meal-name">Eggs & Avocado</span>
+                    <span className="tracked-meal-name">{t('nutrientReplenishment.meals.eggsAvocado')}</span>
                     <div className="tracked-meal-stats">
-                      <span>320 Kcal</span>
-                      <span>15% Carbs</span>
-                      <span>30% Protein</span>
-                      <span>55% Fat</span>
+                      <span>320 {t('nutrientReplenishment.units.kcal')}</span>
+                      <span>15{t('nutrientReplenishment.units.percent')} {t('nutrientReplenishment.units.carbs')}</span>
+                      <span>30{t('nutrientReplenishment.units.percent')} {t('nutrientReplenishment.units.protein')}</span>
+                      <span>55{t('nutrientReplenishment.units.percent')} {t('nutrientReplenishment.units.fat')}</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="tracker-card nutrients-required">
-              <h3>Nutrients required</h3>
+              <h3>{t('nutrientReplenishment.nutrientsRequired')}</h3>
               <div className="nutrient-progress">
                 <div className="nutrient-progress-item">
                   <div className="nutrient-progress-header">
-                    <span className="nutrient-label">Calories</span>
+                    <span className="nutrient-label">{t('nutrientReplenishment.tabs.calories')}</span>
                     <span className="nutrient-value">
                       {nutrients.calories.current}/{nutrients.calories.target} {nutrients.calories.unit}
                     </span>
@@ -105,7 +107,7 @@ const NutrientReplenishment = () => {
                 </div>
                 <div className="nutrient-progress-item">
                   <div className="nutrient-progress-header">
-                    <span className="nutrient-label">Carbohydrates</span>
+                    <span className="nutrient-label">{t('nutrientReplenishment.tabs.carbohydrates')}</span>
                     <span className="nutrient-value">
                       {nutrients.carbohydrates.current}/{nutrients.carbohydrates.target} {nutrients.carbohydrates.unit}
                     </span>
@@ -119,7 +121,7 @@ const NutrientReplenishment = () => {
                 </div>
                 <div className="nutrient-progress-item">
                   <div className="nutrient-progress-header">
-                    <span className="nutrient-label">Proteins</span>
+                    <span className="nutrient-label">{t('nutrientReplenishment.tabs.proteins')}</span>
                     <span className="nutrient-value">
                       {nutrients.proteins.current}/{nutrients.proteins.target} {nutrients.proteins.unit}
                     </span>
@@ -133,7 +135,7 @@ const NutrientReplenishment = () => {
                 </div>
                 <div className="nutrient-progress-item">
                   <div className="nutrient-progress-header">
-                    <span className="nutrient-label">Fats</span>
+                    <span className="nutrient-label">{t('nutrientReplenishment.tabs.fat')}</span>
                     <span className="nutrient-value">
                       {nutrients.fat.current}/{nutrients.fat.target} {nutrients.fat.unit}
                     </span>

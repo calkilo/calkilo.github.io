@@ -1,0 +1,52 @@
+{
+  "title": "Neem contact op - Calkilo AI Caloriecalculator Ondersteuning",
+  "description": "Neem contact op met het Calkilo-ondersteuningsteam voor hulp bij onze AI-caloriecalculator-app. Krijg hulp bij functies, technische problemen en algemene vragen.",
+  "breadcrumb": {
+    "home": "Home",
+    "current": "Contact"
+  },
+  "backToHome": "Terug naar home",
+  "header": {
+    "title": "Neem contact op",
+    "subtitle": "We zijn er om te helpen! Neem contact op met ons ondersteuningsteam voor hulp bij Calkilo of vragen die u mogelijk heeft."
+  },
+  "contactInfo": {
+    "title": "Neem contact op",
+    "generalSupport": {
+      "title": "Algemene ondersteuning",
+      "email": "support@calkilo.app"
+    },
+    "technicalSupport": {
+      "title": "Technische ondersteuning",
+      "email": "tech@calkilo.app"
+    },
+    "privacyLegal": {
+      "title": "Privacy en juridisch",
+      "email": "privacy@calkilo.app"
+    }
+  },
+  "form": {
+    "title": "Stuur ons een bericht",
+    "firstName": "Voornaam",
+    "lastName": "Achternaam",
+    "email": "E-mailadres",
+    "subject": "Onderwerp",
+    "subjectPlaceholder": "Selecteer een onderwerp",
+    "subjectOptions": {
+      "general": "Algemene vraag",
+      "technical": "Technische ondersteuning",
+      "billing": "Factureringsvraag",
+      "feature": "Functieverzoek",
+      "bug": "Bugrapport",
+      "privacy": "Privacyzorg",
+      "other": "Anders"
+    },
+    "message": "Bericht",
+    "messagePlaceholder": "Beschrijf uw vraag in detail...",
+    "submit": "Bericht verzenden",
+    "submitting": "Verzenden...",
+    "success": "Bedankt voor uw bericht! We nemen binnen 24 uur contact met u op.",
+    "required": "*"
+  }
+}
+

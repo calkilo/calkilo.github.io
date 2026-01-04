@@ -1,22 +1,26 @@
+import { useTranslation } from '../../hooks/useTranslation'
+
 const HowItWorks = () => {
+  const { t } = useTranslation('common')
+  
   const steps = [
     {
       number: '1',
       icon: 'bi-camera-fill',
-      title: 'Scan Your Meal',
-      description: 'Take a photo of your food.',
+      title: t('howItWorks.steps.scan.title'),
+      description: t('howItWorks.steps.scan.description'),
     },
     {
       number: '2',
       icon: 'bi-robot',
-      title: 'Get Instant Analysis',
-      description: 'AI instantly recognizes your meal and calculates nutrition.',
+      title: t('howItWorks.steps.analysis.title'),
+      description: t('howItWorks.steps.analysis.description'),
     },
     {
       number: '3',
       icon: 'bi-clipboard-data',
-      title: 'Track Your Progress',
-      description: 'Monitor your daily progress and achieve your goals.',
+      title: t('howItWorks.steps.track.title'),
+      description: t('howItWorks.steps.track.description'),
     },
   ]
 
@@ -24,8 +28,8 @@ const HowItWorks = () => {
     <section id="how-it-works" className="how-it-works">
       <div className="container">
         <div className="section-header">
-          <h2>How it Works?</h2>
-          <p>Three simple steps to smarter calorie tracking.</p>
+          <h2>{t('howItWorks.title')}</h2>
+          <p>{t('howItWorks.subtitle')}</p>
         </div>
         <div className="steps-container">
           {steps.map((step, index) => (

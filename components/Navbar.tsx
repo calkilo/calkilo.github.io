@@ -3,10 +3,12 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import LanguageSelector from './LanguageSelector'
+import { useTranslation } from '../hooks/useTranslation'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const router = useRouter()
+  const { t } = useTranslation('common')
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,18 +47,6 @@ const Navbar = () => {
     }
   }
 
-  useEffect(() => {
-    // Prevent body scroll when menu is open
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [isMenuOpen])
-
   return (
     <nav className="navbar" role="navigation" aria-label="Main navigation">
       <div className="nav-container">
@@ -68,20 +58,20 @@ const Navbar = () => {
         {isMenuOpen && <div className="menu-backdrop" onClick={() => setIsMenuOpen(false)}></div>}
         <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`} id="nav-menu">
           <Link href="/" className="nav-link" onClick={handleLinkClick}>
-            Home
+            {t('navbar.home')}
           </Link>
           <Link href="/#features" className="nav-link" onClick={handleLinkClick}>
-            Features
+            {t('navbar.features')}
           </Link>
           <Link href="/#pricing" className="nav-link" onClick={handleLinkClick}>
-            Choose Plan
+            {t('navbar.choosePlan')}
           </Link>
           <Link href="/contact" className="nav-link" onClick={handleLinkClick}>
-            Contact
+            {t('navbar.contact')}
           </Link>
           <LanguageSelector />
           <Link href="/#download" className="nav-link download-btn" onClick={handleLinkClick}>
-            Try For Free
+            {t('navbar.tryForFree')}
           </Link>
         </div>
         <button

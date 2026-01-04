@@ -1,0 +1,31 @@
+{
+  "navbar": {
+    "home": "Startseite",
+    "features": "Funktionen",
+    "choosePlan": "Plan wählen",
+    "contact": "Kontakt",
+    "tryForFree": "Kostenlos testen"
+  },
+  "footer": {
+    "tagline": "Revolutionierung der Ernährungserfassung mit KI-gestützter Kalorienberechnung",
+    "features": "Funktionen",
+    "download": "Herunterladen",
+    "howItWorks": "Wie funktioniert es?",
+    "blog": "Blog",
+    "support": "Support",
+    "privacyPolicy": "Datenschutzerklärung",
+    "termsOfService": "Nutzungsbedingungen",
+    "termsAndConditions": "Allgemeine Geschäftsbedingungen",
+    "faq": "FAQ",
+    "getInTouch": "Kontakt aufnehmen",
+    "aboutUs": "Über uns",
+    "ourTeam": "Unser Team",
+    "allRightsReserved": "Alle Rechte vorbehalten"
+  },
+  "social": {
+    "followTwitter": "Folgen Sie uns auf Twitter",
+    "followFacebook": "Folgen Sie uns auf Facebook",
+    "followInstagram": "Folgen Sie uns auf Instagram",
+    "connectLinkedIn": "Verbinden Sie sich mit uns auf LinkedIn"
+  }
+}
