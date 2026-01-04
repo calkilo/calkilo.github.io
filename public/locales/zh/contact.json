@@ -1,0 +1,52 @@
+{
+  "title": "联系我们 - Calkilo AI卡路里计算器支持",
+  "description": "联系Calkilo支持团队，获取我们AI卡路里计算器应用的帮助。获取功能、技术问题和一般咨询方面的帮助。",
+  "breadcrumb": {
+    "home": "首页",
+    "current": "联系我们"
+  },
+  "backToHome": "返回首页",
+  "header": {
+    "title": "联系我们",
+    "subtitle": "我们随时为您提供帮助！联系我们的支持团队，获取Calkilo的帮助或您可能遇到的任何问题。"
+  },
+  "contactInfo": {
+    "title": "取得联系",
+    "generalSupport": {
+      "title": "一般支持",
+      "email": "support@calkilo.app"
+    },
+    "technicalSupport": {
+      "title": "技术支持",
+      "email": "tech@calkilo.app"
+    },
+    "privacyLegal": {
+      "title": "隐私和法律",
+      "email": "privacy@calkilo.app"
+    }
+  },
+  "form": {
+    "title": "给我们发消息",
+    "firstName": "名字",
+    "lastName": "姓氏",
+    "email": "电子邮件地址",
+    "subject": "主题",
+    "subjectPlaceholder": "选择一个主题",
+    "subjectOptions": {
+      "general": "一般咨询",
+      "technical": "技术支持",
+      "billing": "账单问题",
+      "feature": "功能请求",
+      "bug": "错误报告",
+      "privacy": "隐私问题",
+      "other": "其他"
+    },
+    "message": "消息",
+    "messagePlaceholder": "请详细描述您的咨询...",
+    "submit": "发送消息",
+    "submitting": "发送中...",
+    "success": "感谢您的消息！我们将在24小时内回复您。",
+    "required": "*"
+  }
+}
+

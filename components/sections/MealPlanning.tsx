@@ -1,24 +1,28 @@
+import { useTranslation } from '../../hooks/useTranslation'
+
 const MealPlanning = () => {
+  const { t } = useTranslation('common')
+  
   const mealFeatures = [
     {
-      icon: 'bi-lightning-charge',
-      title: 'Smart Meal Suggestions',
-      description: 'AI recommends meals based on your nutrition goals and eating patterns',
+      icon: 'bi-graph-up-arrow',
+      title: t('mealPlanning.features.analysis.title'),
+      description: t('mealPlanning.features.analysis.description'),
     },
     {
-      icon: 'bi-calendar-week',
-      title: 'Weekly Meal Plans',
-      description: 'Generate complete weekly meal plans with shopping lists',
+      icon: 'bi-chat-dots',
+      title: t('mealPlanning.features.chat.title'),
+      description: t('mealPlanning.features.chat.description'),
     },
     {
-      icon: 'bi-heart',
-      title: 'Dietary Preferences',
-      description: 'Support for vegan, keto, paleo, gluten-free, and more',
+      icon: 'bi-bullseye',
+      title: t('mealPlanning.features.goals.title'),
+      description: t('mealPlanning.features.goals.description'),
     },
     {
-      icon: 'bi-book',
-      title: '10,000+ Recipes',
-      description: 'Access thousands of healthy recipes with nutrition info',
+      icon: 'bi-camera',
+      title: t('mealPlanning.features.photo.title'),
+      description: t('mealPlanning.features.photo.description'),
     },
   ]
 
@@ -26,47 +30,63 @@ const MealPlanning = () => {
     <section id="meal-planning" className="meal-planning">
       <div className="container">
         <div className="meal-planning-content">
+          <div className="meal-planning-phone">
+            <div className="meal-planning-mockup">
+              <div className="meal-planning-screen">
+                <div className="meal-planning-interface">
+                  <div className="chat-header">
+                    <div className="chat-avatar">🤖</div>
+                    <div className="chat-info">
+                      <span className="chat-name">{t('mealPlanning.chatName')}</span>
+                      <span className="chat-status">{t('mealPlanning.chatStatus')}</span>
+                    </div>
+                  </div>
+                  <div className="chat-messages">
+                    <div className="chat-message bot">
+                      <p>{t('mealPlanning.chatBotMessage1')}</p>
+                    </div>
+                    <div className="chat-message user">
+                      <p>{t('mealPlanning.chatUserMessage')}</p>
+                    </div>
+                    <div className="chat-message bot">
+                      <p>{t('mealPlanning.chatBotMessage2')}</p>
+                    </div>
+                  </div>
+                  <div className="chat-input-area">
+                    <input type="text" placeholder={t('mealPlanning.chatPlaceholder')} className="chat-input" />
+                    <button className="chat-send">
+                      <i className="bi bi-send"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Green circular labels */}
+            <div className="feature-label ai-chat-label">
+              <span>{t('mealPlanning.aiChat')}</span>
+            </div>
+            <div className="feature-label recipes-label">
+              <span>{t('mealPlanning.recipes')}</span>
+            </div>
+            <div className="feature-label support-label">
+              <span>{t('mealPlanning.supportReport')}</span>
+            </div>
+          </div>
           <div className="meal-planning-text">
-            <h2>AI-Powered Meal Planning & Recipes</h2>
-            <p>Get personalized meal plans tailored to your goals, preferences, and dietary restrictions</p>
+            <h2>{t('mealPlanning.title')}</h2>
+            <p className="meal-planning-subtitle">{t('mealPlanning.subtitle')}</p>
             <div className="meal-features">
               {mealFeatures.map((feature, index) => (
                 <div key={index} className="meal-feature">
-                  <i className={`bi ${feature.icon}`}></i>
-                  <div>
+                  <div className="meal-feature-icon">
+                    <i className={`bi ${feature.icon}`}></i>
+                  </div>
+                  <div className="meal-feature-content">
                     <h4>{feature.title}</h4>
                     <p>{feature.description}</p>
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-          <div className="meal-planning-image">
-            <div className="meal-card-stack">
-              <div className="meal-card">
-                <div className="meal-img-placeholder">🥗</div>
-                <h4>Grilled Chicken Salad</h4>
-                <div className="meal-macros">
-                  <span>450 cal</span>
-                  <span>35g protein</span>
-                </div>
-              </div>
-              <div className="meal-card">
-                <div className="meal-img-placeholder">🍳</div>
-                <h4>Veggie Omelet</h4>
-                <div className="meal-macros">
-                  <span>320 cal</span>
-                  <span>25g protein</span>
-                </div>
-              </div>
-              <div className="meal-card">
-                <div className="meal-img-placeholder">🥙</div>
-                <h4>Quinoa Buddha Bowl</h4>
-                <div className="meal-macros">
-                  <span>520 cal</span>
-                  <span>18g protein</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>

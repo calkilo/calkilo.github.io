@@ -2,10 +2,19 @@ import { GetStaticProps } from 'next'
 import Layout from '../components/Layout'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 
 export default function TermsAndConditions() {
-  const { t, isLoading } = useTranslation('terms-and-conditions')
+  const { t, isLoading, translationData } = useTranslation('terms-and-conditions')
+  const [, forceUpdate] = useState(0)
+  
+  // Force re-render when translations load
+  useEffect(() => {
+    if (translationData) {
+      forceUpdate(prev => prev + 1)
+    }
+  }, [translationData])
 
   if (isLoading) {
     return (
@@ -50,34 +59,195 @@ export default function TermsAndConditions() {
           <h1>{t('breadcrumb.current')}</h1>
           <p className="last-updated">{t('lastUpdated')}</p>
 
-          <p>{t('content.intro')}</p>
+          <p style={{ whiteSpace: 'pre-line' }}>{t('content.intro')}</p>
 
           <h2>{t('content.sections.agreementToTerms.title')}</h2>
-          <p>{t('content.sections.agreementToTerms.description')}</p>
+          <p style={{ whiteSpace: 'pre-line' }}>{t('content.sections.agreementToTerms.description')}</p>
 
-          <h2>{t('content.sections.useLicense.title')}</h2>
-          <h3>{t('content.sections.useLicense.permissionToUse.title')}</h3>
-          <p>{t('content.sections.useLicense.permissionToUse.description')}</p>
+          <h2>{t('content.sections.eligibility.title')}</h2>
+          <h3>{t('content.sections.eligibility.ageRequirement.title')}</h3>
+          <p>{t('content.sections.eligibility.ageRequirement.description')}</p>
+          
+          <h3>{t('content.sections.eligibility.accountRegistration.title')}</h3>
+          <p>{t('content.sections.eligibility.accountRegistration.description')}</p>
           <ul>
-            <li>{t('content.sections.useLicense.permissionToUse.items.0')}</li>
-            <li>{t('content.sections.useLicense.permissionToUse.items.1')}</li>
-            <li>{t('content.sections.useLicense.permissionToUse.items.2')}</li>
+            <li>{t('content.sections.eligibility.accountRegistration.items.0')}</li>
+            <li>{t('content.sections.eligibility.accountRegistration.items.1')}</li>
+            <li>{t('content.sections.eligibility.accountRegistration.items.2')}</li>
+            <li>{t('content.sections.eligibility.accountRegistration.items.3')}</li>
+            <li>{t('content.sections.eligibility.accountRegistration.items.4')}</li>
           </ul>
 
-          <h2>{t('content.sections.healthDisclaimer.title')}</h2>
-          <p>
-            <strong>{t('content.sections.healthDisclaimer.important')}</strong>
-          </p>
-          <p>{t('content.sections.healthDisclaimer.description')}</p>
+          <h2>{t('content.sections.descriptionOfService.title')}</h2>
+          <p>{t('content.sections.descriptionOfService.description')}</p>
           <ul>
-            <li>{t('content.sections.healthDisclaimer.items.0')}</li>
-            <li>{t('content.sections.healthDisclaimer.items.1')}</li>
-            <li>{t('content.sections.healthDisclaimer.items.2')}</li>
-            <li>{t('content.sections.healthDisclaimer.items.3')}</li>
+            <li>{t('content.sections.descriptionOfService.items.0')}</li>
+            <li>{t('content.sections.descriptionOfService.items.1')}</li>
+            <li>{t('content.sections.descriptionOfService.items.2')}</li>
+            <li>{t('content.sections.descriptionOfService.items.3')}</li>
+            <li>{t('content.sections.descriptionOfService.items.4')}</li>
+            <li>{t('content.sections.descriptionOfService.items.5')}</li>
           </ul>
+
+          <h2>{t('content.sections.userResponsibilities.title')}</h2>
+          <h3>{t('content.sections.userResponsibilities.acceptableUse.title')}</h3>
+          <p>{t('content.sections.userResponsibilities.acceptableUse.description')}</p>
+          <ul>
+            <li>{t('content.sections.userResponsibilities.acceptableUse.items.0')}</li>
+            <li>{t('content.sections.userResponsibilities.acceptableUse.items.1')}</li>
+            <li>{t('content.sections.userResponsibilities.acceptableUse.items.2')}</li>
+            <li>{t('content.sections.userResponsibilities.acceptableUse.items.3')}</li>
+            <li>{t('content.sections.userResponsibilities.acceptableUse.items.4')}</li>
+            <li>{t('content.sections.userResponsibilities.acceptableUse.items.5')}</li>
+            <li>{t('content.sections.userResponsibilities.acceptableUse.items.6')}</li>
+          </ul>
+
+          <h3>{t('content.sections.userResponsibilities.healthInformationDisclaimer.title')}</h3>
+          <p>{t('content.sections.userResponsibilities.healthInformationDisclaimer.description')}</p>
+          <p>{t('content.sections.userResponsibilities.healthInformationDisclaimer.notIntended.0')}</p>
+          <p>{t('content.sections.userResponsibilities.healthInformationDisclaimer.notIntended.1')}</p>
+          <p>{t('content.sections.userResponsibilities.healthInformationDisclaimer.notIntended.2')}</p>
+          <p>{t('content.sections.userResponsibilities.healthInformationDisclaimer.acknowledgment')}</p>
+          <ul>
+            <li>{t('content.sections.userResponsibilities.healthInformationDisclaimer.acknowledgmentItems.0')}</li>
+            <li>{t('content.sections.userResponsibilities.healthInformationDisclaimer.acknowledgmentItems.1')}</li>
+            <li>{t('content.sections.userResponsibilities.healthInformationDisclaimer.acknowledgmentItems.2')}</li>
+            <li>{t('content.sections.userResponsibilities.healthInformationDisclaimer.acknowledgmentItems.3')}</li>
+          </ul>
+
+          <h3>{t('content.sections.userResponsibilities.contentYouProvide.title')}</h3>
+          <p>{t('content.sections.userResponsibilities.contentYouProvide.description')}</p>
+          <p>{t('content.sections.userResponsibilities.contentYouProvide.represent')}</p>
+          <ul>
+            <li>{t('content.sections.userResponsibilities.contentYouProvide.representItems.0')}</li>
+            <li>{t('content.sections.userResponsibilities.contentYouProvide.representItems.1')}</li>
+            <li>{t('content.sections.userResponsibilities.contentYouProvide.representItems.2')}</li>
+          </ul>
+
+          <h2>{t('content.sections.premiumFeatures.title')}</h2>
+          <h3>{t('content.sections.premiumFeatures.subscriptionPlans.title')}</h3>
+          <p>{t('content.sections.premiumFeatures.subscriptionPlans.description')}</p>
+
+          <h3>{t('content.sections.premiumFeatures.paymentTerms.title')}</h3>
+          <ul>
+            <li>{t('content.sections.premiumFeatures.paymentTerms.items.0')}</li>
+            <li>{t('content.sections.premiumFeatures.paymentTerms.items.1')}</li>
+            <li>{t('content.sections.premiumFeatures.paymentTerms.items.2')}</li>
+            <li>{t('content.sections.premiumFeatures.paymentTerms.items.3')}</li>
+          </ul>
+
+          <h3>{t('content.sections.premiumFeatures.cancellationAndRefunds.title')}</h3>
+          <ul>
+            <li>{t('content.sections.premiumFeatures.cancellationAndRefunds.items.0')}</li>
+            <li>{t('content.sections.premiumFeatures.cancellationAndRefunds.items.1')}</li>
+            <li>{t('content.sections.premiumFeatures.cancellationAndRefunds.items.2')}</li>
+            <li>{t('content.sections.premiumFeatures.cancellationAndRefunds.items.3')}</li>
+          </ul>
+
+          <h3>{t('content.sections.premiumFeatures.priceChanges.title')}</h3>
+          <p>{t('content.sections.premiumFeatures.priceChanges.description')}</p>
+
+          <h2>{t('content.sections.intellectualProperty.title')}</h2>
+          <h3>{t('content.sections.intellectualProperty.ourRights.title')}</h3>
+          <p>{t('content.sections.intellectualProperty.ourRights.description')}</p>
+
+          <h3>{t('content.sections.intellectualProperty.limitedLicense.title')}</h3>
+          <p>{t('content.sections.intellectualProperty.limitedLicense.description')}</p>
+
+          <h3>{t('content.sections.intellectualProperty.restrictions.title')}</h3>
+          <p>{t('content.sections.intellectualProperty.restrictions.description')}</p>
+          <ul>
+            <li>{t('content.sections.intellectualProperty.restrictions.items.0')}</li>
+            <li>{t('content.sections.intellectualProperty.restrictions.items.1')}</li>
+            <li>{t('content.sections.intellectualProperty.restrictions.items.2')}</li>
+            <li>{t('content.sections.intellectualProperty.restrictions.items.3')}</li>
+          </ul>
+
+          <h2>{t('content.sections.privacy.title')}</h2>
+          <p>{t('content.sections.privacy.description')}</p>
+
+          <h2>{t('content.sections.disclaimers.title')}</h2>
+          <h3>{t('content.sections.disclaimers.serviceAvailability.title')}</h3>
+          <p>{t('content.sections.disclaimers.serviceAvailability.description')}</p>
+          <ul>
+            <li>{t('content.sections.disclaimers.serviceAvailability.items.0')}</li>
+            <li>{t('content.sections.disclaimers.serviceAvailability.items.1')}</li>
+            <li>{t('content.sections.disclaimers.serviceAvailability.items.2')}</li>
+          </ul>
+
+          <h3>{t('content.sections.disclaimers.accuracyOfInformation.title')}</h3>
+          <p>{t('content.sections.disclaimers.accuracyOfInformation.description')}</p>
+
+          <h3>{t('content.sections.disclaimers.thirdPartyContent.title')}</h3>
+          <p>{t('content.sections.disclaimers.thirdPartyContent.description')}</p>
 
           <h2>{t('content.sections.limitationOfLiability.title')}</h2>
           <p>{t('content.sections.limitationOfLiability.description')}</p>
+          <ul>
+            <li>{t('content.sections.limitationOfLiability.items.0')}</li>
+            <li>{t('content.sections.limitationOfLiability.items.1')}</li>
+            <li>{t('content.sections.limitationOfLiability.items.2')}</li>
+          </ul>
+
+          <h2>{t('content.sections.indemnification.title')}</h2>
+          <p>{t('content.sections.indemnification.description')}</p>
+          <ul>
+            <li>{t('content.sections.indemnification.items.0')}</li>
+            <li>{t('content.sections.indemnification.items.1')}</li>
+            <li>{t('content.sections.indemnification.items.2')}</li>
+            <li>{t('content.sections.indemnification.items.3')}</li>
+          </ul>
+
+          <h2>{t('content.sections.accountTermination.title')}</h2>
+          <h3>{t('content.sections.accountTermination.terminationByYou.title')}</h3>
+          <p>{t('content.sections.accountTermination.terminationByYou.description')}</p>
+
+          <h3>{t('content.sections.accountTermination.terminationByUs.title')}</h3>
+          <p>{t('content.sections.accountTermination.terminationByUs.description')}</p>
+          <ul>
+            <li>{t('content.sections.accountTermination.terminationByUs.items.0')}</li>
+            <li>{t('content.sections.accountTermination.terminationByUs.items.1')}</li>
+            <li>{t('content.sections.accountTermination.terminationByUs.items.2')}</li>
+            <li>{t('content.sections.accountTermination.terminationByUs.items.3')}</li>
+          </ul>
+
+          <h3>{t('content.sections.accountTermination.effectOfTermination.title')}</h3>
+          <p>{t('content.sections.accountTermination.effectOfTermination.description')}</p>
+          <ul>
+            <li>{t('content.sections.accountTermination.effectOfTermination.items.0')}</li>
+            <li>{t('content.sections.accountTermination.effectOfTermination.items.1')}</li>
+            <li>{t('content.sections.accountTermination.effectOfTermination.items.2')}</li>
+          </ul>
+
+          <h2>{t('content.sections.disputeResolution.title')}</h2>
+          <h3>{t('content.sections.disputeResolution.governingLaw.title')}</h3>
+          <p>{t('content.sections.disputeResolution.governingLaw.description')}</p>
+
+          <h3>{t('content.sections.disputeResolution.disputeResolutionProcess.title')}</h3>
+          <p>{t('content.sections.disputeResolution.disputeResolutionProcess.description')}</p>
+          <ul>
+            <li>{t('content.sections.disputeResolution.disputeResolutionProcess.items.0')}</li>
+            <li>{t('content.sections.disputeResolution.disputeResolutionProcess.items.1')}</li>
+            <li>{t('content.sections.disputeResolution.disputeResolutionProcess.items.2')}</li>
+          </ul>
+
+          <h2>{t('content.sections.changesToTerms.title')}</h2>
+          <p>{t('content.sections.changesToTerms.description')}</p>
+          <ul>
+            <li>{t('content.sections.changesToTerms.items.0')}</li>
+            <li>{t('content.sections.changesToTerms.items.1')}</li>
+            <li>{t('content.sections.changesToTerms.items.2')}</li>
+          </ul>
+          <p>{t('content.sections.changesToTerms.continuedUse')}</p>
+
+          <h2>{t('content.sections.severability.title')}</h2>
+          <p>{t('content.sections.severability.description')}</p>
+
+          <h2>{t('content.sections.entireAgreement.title')}</h2>
+          <p>{t('content.sections.entireAgreement.description')}</p>
+
+          <h2>{t('content.sections.waiver.title')}</h2>
+          <p>{t('content.sections.waiver.description')}</p>
 
           <h2>{t('content.sections.contactInformation.title')}</h2>
           <p>{t('content.sections.contactInformation.description')}</p>
@@ -87,10 +257,18 @@ export default function TermsAndConditions() {
               {t('content.sections.contactInformation.email').split(':').slice(1).join(':')}
             </li>
             <li>
+              <strong>{t('content.sections.contactInformation.website').split(':')[0]}:</strong>{' '}
+              {t('content.sections.contactInformation.website').split(':').slice(1).join(':')}
+            </li>
+            <li>
               <strong>{t('content.sections.contactInformation.address').split(':')[0]}:</strong>{' '}
               {t('content.sections.contactInformation.address').split(':').slice(1).join(':')}
             </li>
           </ul>
+
+          <h2>{t('content.sections.acknowledgment.title')}</h2>
+          <p>{t('content.sections.acknowledgment.description')}</p>
+          <p style={{ marginTop: '2rem', fontStyle: 'italic' }}>{t('content.sections.acknowledgment.footer')}</p>
         </main>
       </Layout>
     </>

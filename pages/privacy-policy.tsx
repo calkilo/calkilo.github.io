@@ -2,10 +2,19 @@ import { GetStaticProps } from 'next'
 import Layout from '../components/Layout'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 
 export default function PrivacyPolicy() {
-  const { t, isLoading } = useTranslation('privacy-policy')
+  const { t, isLoading, translationData } = useTranslation('privacy-policy')
+  const [, forceUpdate] = useState(0)
+  
+  // Force re-render when translations load
+  useEffect(() => {
+    if (translationData) {
+      forceUpdate(prev => prev + 1)
+    }
+  }, [translationData])
 
   if (isLoading) {
     return (
@@ -50,9 +59,11 @@ export default function PrivacyPolicy() {
           <h1>{t('breadcrumb.current')}</h1>
           <p className="last-updated">{t('lastUpdated')}</p>
 
+          <h2>1. Introduction</h2>
           <p>{t('content.intro')}</p>
 
           <h2>{t('content.sections.informationWeCollect.title')}</h2>
+          
           <h3>{t('content.sections.informationWeCollect.personalInfo.title')}</h3>
           <p>{t('content.sections.informationWeCollect.personalInfo.description')}</p>
           <ul>
@@ -69,74 +80,165 @@ export default function PrivacyPolicy() {
               {t('content.sections.informationWeCollect.personalInfo.items.healthData').split(':').slice(1).join(':')}
             </li>
             <li>
-              <strong>{t('content.sections.informationWeCollect.personalInfo.items.usageData').split(':')[0]}:</strong>{' '}
-              {t('content.sections.informationWeCollect.personalInfo.items.usageData').split(':').slice(1).join(':')}
+              <strong>{t('content.sections.informationWeCollect.personalInfo.items.authenticationData').split(':')[0]}:</strong>{' '}
+              {t('content.sections.informationWeCollect.personalInfo.items.authenticationData').split(':').slice(1).join(':')}
             </li>
-            <li>
-              <strong>{t('content.sections.informationWeCollect.personalInfo.items.deviceInfo').split(':')[0]}:</strong>{' '}
-              {t('content.sections.informationWeCollect.personalInfo.items.deviceInfo').split(':').slice(1).join(':')}
-            </li>
+          </ul>
+
+          <h3>{t('content.sections.informationWeCollect.healthNutritionData.title')}</h3>
+          <p>{t('content.sections.informationWeCollect.healthNutritionData.description')}</p>
+          <ul>
+            <li>{t('content.sections.informationWeCollect.healthNutritionData.items.foodEntries')}</li>
+            <li>{t('content.sections.informationWeCollect.healthNutritionData.items.calorieData')}</li>
+            <li>{t('content.sections.informationWeCollect.healthNutritionData.items.exerciseData')}</li>
+            <li>{t('content.sections.informationWeCollect.healthNutritionData.items.weightTracking')}</li>
+            <li>{t('content.sections.informationWeCollect.healthNutritionData.items.bodyMeasurements')}</li>
+            <li>{t('content.sections.informationWeCollect.healthNutritionData.items.aiAnalysis')}</li>
+          </ul>
+
+          <h3>{t('content.sections.informationWeCollect.usageData.title')}</h3>
+          <p>{t('content.sections.informationWeCollect.usageData.description')}</p>
+          <ul>
+            <li>{t('content.sections.informationWeCollect.usageData.items.appUsage')}</li>
+            <li>{t('content.sections.informationWeCollect.usageData.items.featuresAccessed')}</li>
+            <li>{t('content.sections.informationWeCollect.usageData.items.deviceInfo')}</li>
+            <li>{t('content.sections.informationWeCollect.usageData.items.ipLocation')}</li>
+            <li>{t('content.sections.informationWeCollect.usageData.items.cameraAccess')}</li>
+          </ul>
+
+          <h3>{t('content.sections.informationWeCollect.paymentInfo.title')}</h3>
+          <p>{t('content.sections.informationWeCollect.paymentInfo.description')}</p>
+          <ul>
+            <li>{t('content.sections.informationWeCollect.paymentInfo.items.purchaseHistory')}</li>
+            <li>{t('content.sections.informationWeCollect.paymentInfo.items.paymentMethod')}</li>
+            <li>{t('content.sections.informationWeCollect.paymentInfo.items.transactions')}</li>
+          </ul>
+
+          <h3>{t('content.sections.informationWeCollect.socialFeaturesData.title')}</h3>
+          <p>{t('content.sections.informationWeCollect.socialFeaturesData.description')}</p>
+          <ul>
+            <li>{t('content.sections.informationWeCollect.socialFeaturesData.items.inviteCodes')}</li>
+            <li>{t('content.sections.informationWeCollect.socialFeaturesData.items.leaderboard')}</li>
+            <li>{t('content.sections.informationWeCollect.socialFeaturesData.items.challenges')}</li>
+            <li>{t('content.sections.informationWeCollect.socialFeaturesData.items.gamification')}</li>
           </ul>
 
           <h2>{t('content.sections.howWeUse.title')}</h2>
           <p>{t('content.sections.howWeUse.description')}</p>
+
+          <h3>{t('content.sections.howWeUse.serviceProvision.title')}</h3>
           <ul>
-            <li>
-              <strong>{t('content.sections.howWeUse.items.coreServices').split(':')[0]}:</strong>{' '}
-              {t('content.sections.howWeUse.items.coreServices').split(':').slice(1).join(':')}
-            </li>
-            <li>
-              <strong>{t('content.sections.howWeUse.items.personalization').split(':')[0]}:</strong>{' '}
-              {t('content.sections.howWeUse.items.personalization').split(':').slice(1).join(':')}
-            </li>
-            <li>
-              <strong>{t('content.sections.howWeUse.items.improvement').split(':')[0]}:</strong>{' '}
-              {t('content.sections.howWeUse.items.improvement').split(':').slice(1).join(':')}
-            </li>
-            <li>
-              <strong>{t('content.sections.howWeUse.items.communication').split(':')[0]}:</strong>{' '}
-              {t('content.sections.howWeUse.items.communication').split(':').slice(1).join(':')}
-            </li>
-            <li>
-              <strong>{t('content.sections.howWeUse.items.analytics').split(':')[0]}:</strong>{' '}
-              {t('content.sections.howWeUse.items.analytics').split(':').slice(1).join(':')}
-            </li>
-            <li>
-              <strong>{t('content.sections.howWeUse.items.legalCompliance').split(':')[0]}:</strong>{' '}
-              {t('content.sections.howWeUse.items.legalCompliance').split(':').slice(1).join(':')}
-            </li>
+            <li>{t('content.sections.howWeUse.serviceProvision.items.provideService')}</li>
+            <li>{t('content.sections.howWeUse.serviceProvision.items.personalize')}</li>
+            <li>{t('content.sections.howWeUse.serviceProvision.items.processScans')}</li>
+            <li>{t('content.sections.howWeUse.serviceProvision.items.trackProgress')}</li>
+            <li>{t('content.sections.howWeUse.serviceProvision.items.calculateGoals')}</li>
           </ul>
+
+          <h3>{t('content.sections.howWeUse.communication.title')}</h3>
+          <ul>
+            <li>{t('content.sections.howWeUse.communication.items.notifications')}</li>
+            <li>{t('content.sections.howWeUse.communication.items.customerSupport')}</li>
+            <li>{t('content.sections.howWeUse.communication.items.serviceCommunications')}</li>
+          </ul>
+
+          <h3>{t('content.sections.howWeUse.analytics.title')}</h3>
+          <ul>
+            <li>{t('content.sections.howWeUse.analytics.items.analyzeUsage')}</li>
+            <li>{t('content.sections.howWeUse.analytics.items.developFeatures')}</li>
+            <li>{t('content.sections.howWeUse.analytics.items.research')}</li>
+          </ul>
+
+          <h3>{t('content.sections.howWeUse.legalCompliance.title')}</h3>
+          <ul>
+            <li>{t('content.sections.howWeUse.legalCompliance.items.complyLaws')}</li>
+            <li>{t('content.sections.howWeUse.legalCompliance.items.enforceTerms')}</li>
+            <li>{t('content.sections.howWeUse.legalCompliance.items.preventFraud')}</li>
+          </ul>
+
+          <h2>{t('content.sections.informationSharing.title')}</h2>
+          <p>{t('content.sections.informationSharing.description')}</p>
+
+          <h3>{t('content.sections.informationSharing.serviceProviders.title')}</h3>
+          <p>{t('content.sections.informationSharing.serviceProviders.description')}</p>
+          <ul>
+            <li>{t('content.sections.informationSharing.serviceProviders.items.cloudStorage')}</li>
+            <li>{t('content.sections.informationSharing.serviceProviders.items.analytics')}</li>
+            <li>{t('content.sections.informationSharing.serviceProviders.items.paymentProcessors')}</li>
+            <li>{t('content.sections.informationSharing.serviceProviders.items.authentication')}</li>
+          </ul>
+
+          <h3>{t('content.sections.informationSharing.legalRequirements.title')}</h3>
+          <p>{t('content.sections.informationSharing.legalRequirements.description')}</p>
+
+          <h3>{t('content.sections.informationSharing.businessTransfers.title')}</h3>
+          <p>{t('content.sections.informationSharing.businessTransfers.description')}</p>
+
+          <h3>{t('content.sections.informationSharing.withConsent.title')}</h3>
+          <p>{t('content.sections.informationSharing.withConsent.description')}</p>
 
           <h2>{t('content.sections.dataSecurity.title')}</h2>
           <p>{t('content.sections.dataSecurity.description')}</p>
           <ul>
-            <li>
-              <strong>{t('content.sections.dataSecurity.items.encryption').split(':')[0]}:</strong>{' '}
-              {t('content.sections.dataSecurity.items.encryption').split(':').slice(1).join(':')}
-            </li>
-            <li>
-              <strong>{t('content.sections.dataSecurity.items.accessControls').split(':')[0]}:</strong>{' '}
-              {t('content.sections.dataSecurity.items.accessControls').split(':').slice(1).join(':')}
-            </li>
-            <li>
-              <strong>{t('content.sections.dataSecurity.items.regularAudits').split(':')[0]}:</strong>{' '}
-              {t('content.sections.dataSecurity.items.regularAudits').split(':').slice(1).join(':')}
-            </li>
-            <li>
-              <strong>{t('content.sections.dataSecurity.items.secureInfrastructure').split(':')[0]}:</strong>{' '}
-              {t('content.sections.dataSecurity.items.secureInfrastructure').split(':').slice(1).join(':')}
-            </li>
+            <li>{t('content.sections.dataSecurity.items.encryption')}</li>
+            <li>{t('content.sections.dataSecurity.items.authentication')}</li>
+            <li>{t('content.sections.dataSecurity.items.securityAssessments')}</li>
+            <li>{t('content.sections.dataSecurity.items.limitedAccess')}</li>
           </ul>
+          <p><em>{t('content.sections.dataSecurity.disclaimer')}</em></p>
 
           <h2>{t('content.sections.yourRights.title')}</h2>
           <p>{t('content.sections.yourRights.description')}</p>
+
+          <h3>{t('content.sections.yourRights.accessPortability.title')}</h3>
           <ul>
-            <li>{t('content.sections.yourRights.items.0')}</li>
-            <li>{t('content.sections.yourRights.items.1')}</li>
-            <li>{t('content.sections.yourRights.items.2')}</li>
-            <li>{t('content.sections.yourRights.items.3')}</li>
-            <li>{t('content.sections.yourRights.items.4')}</li>
+            <li>{t('content.sections.yourRights.accessPortability.items.requestAccess')}</li>
+            <li>{t('content.sections.yourRights.accessPortability.items.requestCopy')}</li>
           </ul>
+
+          <h3>{t('content.sections.yourRights.correctionDeletion.title')}</h3>
+          <ul>
+            <li>{t('content.sections.yourRights.correctionDeletion.items.updateInfo')}</li>
+            <li>{t('content.sections.yourRights.correctionDeletion.items.requestDeletion')}</li>
+            <li><em>{t('content.sections.yourRights.correctionDeletion.items.deletionNote')}</em></li>
+          </ul>
+
+          <h3>{t('content.sections.yourRights.optOut.title')}</h3>
+          <ul>
+            <li>{t('content.sections.yourRights.optOut.items.disableNotifications')}</li>
+            <li>{t('content.sections.yourRights.optOut.items.adjustSettings')}</li>
+            <li>{t('content.sections.yourRights.optOut.items.withdrawConsent')}</li>
+          </ul>
+
+          <h3>{t('content.sections.yourRights.dataRetention.title')}</h3>
+          <p>{t('content.sections.yourRights.dataRetention.description')}</p>
+
+          <h2>{t('content.sections.childrensPrivacy.title')}</h2>
+          <p>{t('content.sections.childrensPrivacy.description')}</p>
+
+          <h2>{t('content.sections.internationalTransfers.title')}</h2>
+          <p>{t('content.sections.internationalTransfers.description')}</p>
+
+          <h2>{t('content.sections.thirdPartyServices.title')}</h2>
+          <p>{t('content.sections.thirdPartyServices.description')}</p>
+
+          <h3>{t('content.sections.thirdPartyServices.authenticationProviders.title')}</h3>
+          <p>{t('content.sections.thirdPartyServices.authenticationProviders.description')}</p>
+
+          <h3>{t('content.sections.thirdPartyServices.paymentProcessors.title')}</h3>
+          <p>{t('content.sections.thirdPartyServices.paymentProcessors.description')}</p>
+
+          <h2>{t('content.sections.californiaPrivacyRights.title')}</h2>
+          <p>{t('content.sections.californiaPrivacyRights.description')}</p>
+          <ul>
+            <li>{t('content.sections.californiaPrivacyRights.items.rightToKnow')}</li>
+            <li>{t('content.sections.californiaPrivacyRights.items.rightToDelete')}</li>
+            <li>{t('content.sections.californiaPrivacyRights.items.rightToOptOut')}</li>
+            <li>{t('content.sections.californiaPrivacyRights.items.rightToNonDiscrimination')}</li>
+          </ul>
+
+          <h2>{t('content.sections.changesToPolicy.title')}</h2>
+          <p>{t('content.sections.changesToPolicy.description')}</p>
 
           <h2>{t('content.sections.contactUs.title')}</h2>
           <p>{t('content.sections.contactUs.description')}</p>
@@ -146,9 +248,21 @@ export default function PrivacyPolicy() {
               {t('content.sections.contactUs.email').split(':').slice(1).join(':')}
             </li>
             <li>
+              <strong>{t('content.sections.contactUs.website').split(':')[0]}:</strong>{' '}
+              {t('content.sections.contactUs.website').split(':').slice(1).join(':')}
+            </li>
+            <li>
               <strong>{t('content.sections.contactUs.address').split(':')[0]}:</strong>{' '}
               {t('content.sections.contactUs.address').split(':').slice(1).join(':')}
             </li>
+          </ul>
+
+          <h2>{t('content.sections.dataController.title')}</h2>
+          <p>{t('content.sections.dataController.description')}</p>
+          <ul>
+            <li><strong>{t('content.sections.dataController.companyName')}</strong></li>
+            <li>{t('content.sections.dataController.companyAddress')}</li>
+            <li>{t('content.sections.dataController.contactInfo')}</li>
           </ul>
         </main>
       </Layout>
