@@ -61,28 +61,27 @@ const Navbar = () => {
     <nav className="navbar" role="navigation" aria-label="Main navigation">
       <div className="nav-container">
         <div className="nav-logo">
-          <Link href="/" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center' }}>
-            <Image src="/assest/CalKilo-logo.svg" alt="Calkilo Logo" width={40} height={40} className="logo-img" />
-            <span>Calkilo</span>
+          <Link href="/" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <Image src="/assest/CalKilo-logo.png" alt="CalKilo Logo" width={120} height={40} className="logo-img" priority />
           </Link>
         </div>
         {isMenuOpen && <div className="menu-backdrop" onClick={() => setIsMenuOpen(false)}></div>}
         <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`} id="nav-menu">
+          <Link href="/" className="nav-link" onClick={handleLinkClick}>
+            Home
+          </Link>
           <Link href="/#features" className="nav-link" onClick={handleLinkClick}>
             Features
           </Link>
-          <Link href="/#screenshots" className="nav-link" onClick={handleLinkClick}>
-            Screenshots
-          </Link>
-          <Link href="/faq" className="nav-link" onClick={handleLinkClick}>
-            FAQ
+          <Link href="/#pricing" className="nav-link" onClick={handleLinkClick}>
+            Choose Plan
           </Link>
           <Link href="/contact" className="nav-link" onClick={handleLinkClick}>
             Contact
           </Link>
           <LanguageSelector />
           <Link href="/#download" className="nav-link download-btn" onClick={handleLinkClick}>
-            Download
+            Try For Free
           </Link>
         </div>
         <button

@@ -39,29 +39,28 @@ const Footer = () => {
           </div>
           <div className="footer-links">
             <div className="footer-column">
-              <h4>Product</h4>
-              <Link href="/#features">Features</Link>
-              <Link href="/#screenshots">Screenshots</Link>
+              <h4>Features</h4>
               <Link href="/#download" onClick={handleDownloadClick}>Download</Link>
+              <Link href="/#how-it-works">How it Works?</Link>
+              <Link href="#">Blog</Link>
             </div>
             <div className="footer-column">
               <h4>Support</h4>
-              <Link href="/faq">FAQ</Link>
-              <Link href="/contact">Contact Us</Link>
               <Link href="/privacy-policy">Privacy Policy</Link>
               <Link href="/terms-of-service">Terms of Service</Link>
               <Link href="/terms-and-conditions">Terms & Conditions</Link>
+              <Link href="/faq">FAQ</Link>
             </div>
             <div className="footer-column">
-              <h4>Company</h4>
+              <h4>Get In Touch</h4>
+              <Link href="/contact">Contact</Link>
               <Link href="#">About Us</Link>
-              <Link href="#">Blog</Link>
-              <Link href="#">Careers</Link>
+              <Link href="#">Our Team</Link>
             </div>
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; {currentYear} Calkilo. All rights reserved.</p>
+          <p>&copy; 2023 CalKilo. All rights reserved.</p>
         </div>
       </div>
     </footer>

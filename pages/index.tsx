@@ -1,11 +1,15 @@
 import { GetStaticProps } from 'next'
 import Layout from '../components/Layout'
 import Hero from '../components/sections/Hero'
-import HowItWorks from '../components/sections/HowItWorks'
-import Screenshots from '../components/sections/Screenshots'
-import Integrations from '../components/sections/Integrations'
 import MealPlanning from '../components/sections/MealPlanning'
+import NutrientReplenishment from '../components/sections/NutrientReplenishment'
+import HowItWorks from '../components/sections/HowItWorks'
+import DarkMode from '../components/sections/DarkMode'
+import Integrations from '../components/sections/Integrations'
+import Testimonials from '../components/sections/Testimonials'
+import Pricing from '../components/sections/Pricing'
 import Community from '../components/sections/Community'
+import ReadyToTransform from '../components/sections/ReadyToTransform'
 import FAQ from '../components/sections/FAQ'
 import Head from 'next/head'
 
@@ -135,11 +139,15 @@ export default function Home() {
       </Head>
       <Layout>
         <Hero />
-        <HowItWorks />
-        <Screenshots />
-        <Integrations />
         <MealPlanning />
+        <NutrientReplenishment />
+        <HowItWorks />
+        <DarkMode />
+        <Integrations />
+        <Testimonials />
+        <Pricing />
         <Community />
+        <ReadyToTransform />
         <FAQ />
       </Layout>
     </>

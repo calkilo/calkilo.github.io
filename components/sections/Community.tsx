@@ -1,9 +1,9 @@
 const Community = () => {
   const communityFeatures = [
-    { icon: 'bi-trophy', title: 'Weekly Challenges', description: 'Join community challenges to stay motivated and earn rewards' },
-    { icon: 'bi-people', title: 'Support Groups', description: 'Connect with others on similar health journeys' },
-    { icon: 'bi-share', title: 'Share Progress', description: 'Share your achievements and inspire others' },
-    { icon: 'bi-star', title: 'Leaderboards', description: 'Compete with friends and climb the rankings' },
+    { icon: 'bi-trophy', title: 'Challenges', description: 'Join challenges to stay motivated and earn rewards!' },
+    { icon: 'bi-share', title: 'Share', description: 'Share your achievements and inspire others.' },
+    { icon: 'bi-trophy', title: 'LeaderBoard', description: 'Compare with friends and climb the rankings!' },
+    { icon: 'bi-person-plus', title: 'Invite your Friends', description: 'Compete health data synchronization.' },
   ]
 
   return (
@@ -11,7 +11,7 @@ const Community = () => {
       <div className="container">
         <div className="section-header">
           <h2>Join a Thriving Community</h2>
-          <p>Connect, share, and get motivated with thousands of health-conscious users</p>
+          <p>Invite, share, and get motivated with thousands of health-conscious users.</p>
         </div>
         <div className="community-grid">
           {communityFeatures.map((feature, index) => (

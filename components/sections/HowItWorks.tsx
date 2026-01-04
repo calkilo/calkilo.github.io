@@ -3,20 +3,20 @@ const HowItWorks = () => {
     {
       number: '1',
       icon: 'bi-camera-fill',
-      title: 'Snap a Photo',
-      description: 'Take a clear photo of your meal, snack, or drink. Our AI works with any food from any cuisine.',
+      title: 'Scan Your Meal',
+      description: 'Take a photo of your food.',
     },
     {
       number: '2',
       icon: 'bi-robot',
-      title: 'AI Analyzes',
-      description: 'Our advanced AI instantly recognizes ingredients, portion sizes, and calculates precise nutrition data.',
+      title: 'Get Instant Analysis',
+      description: 'AI instantly recognizes your meal and calculates nutrition.',
     },
     {
       number: '3',
       icon: 'bi-clipboard-data',
-      title: 'Track Progress',
-      description: 'View detailed nutrition breakdown, track your goals, and watch your progress over time.',
+      title: 'Track Your Progress',
+      description: 'Monitor your daily progress and achieve your goals.',
     },
   ]
 
@@ -24,8 +24,8 @@ const HowItWorks = () => {
     <section id="how-it-works" className="how-it-works">
       <div className="container">
         <div className="section-header">
-          <h2>How It Works</h2>
-          <p>Track your nutrition in three simple steps</p>
+          <h2>How it Works?</h2>
+          <p>Three simple steps to smarter calorie tracking.</p>
         </div>
         <div className="steps-container">
           {steps.map((step, index) => (

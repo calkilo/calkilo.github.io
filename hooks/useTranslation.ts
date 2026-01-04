@@ -23,6 +23,7 @@ export const useTranslation = (namespace: string = 'common') => {
   const loadTranslations = async (lang: string, ns: string) => {
     setIsLoading(true)
     const cacheKey = `${lang}-${ns}`
+    const enCacheKey = `en-${ns}`
     
     // Check if already loaded
     if (translations[cacheKey]) {
@@ -41,10 +42,20 @@ export const useTranslation = (namespace: string = 'common') => {
       } else {
         // Fallback to English if translation doesn't exist
         if (lang !== 'en') {
+          // Try to get English from cache first
+          if (translations[enCacheKey]) {
+            translations[cacheKey] = translations[enCacheKey]
+            setTranslationsLoaded(true)
+            setIsLoading(false)
+            return
+          }
+          
+          // Load English translation
           const enResponse = await fetch(`/locales/en/${ns}.json`)
           if (enResponse.ok) {
             const enData = await enResponse.json()
             translations[cacheKey] = enData
+            translations[enCacheKey] = enData // Cache English version too
             setTranslationsLoaded(true)
           }
         }
@@ -54,11 +65,20 @@ export const useTranslation = (namespace: string = 'common') => {
       console.error(`Failed to load translations for ${lang}/${ns}:`, error)
       // Fallback to English
       if (lang !== 'en') {
+        // Try to get English from cache first
+        if (translations[enCacheKey]) {
+          translations[cacheKey] = translations[enCacheKey]
+          setTranslationsLoaded(true)
+          setIsLoading(false)
+          return
+        }
+        
         try {
           const enResponse = await fetch(`/locales/en/${ns}.json`)
           if (enResponse.ok) {
             const enData = await enResponse.json()
             translations[cacheKey] = enData
+            translations[enCacheKey] = enData // Cache English version too
             setTranslationsLoaded(true)
           }
         } catch (e) {

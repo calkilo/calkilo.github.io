@@ -6,9 +6,19 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: 'How accurate is the AI food recognition?',
+      question: 'How much does Eat Planner cost?',
       answer:
-        "Calkilo's AI has 99.2% accuracy, trained on millions of food images. It recognizes thousands of foods, ingredients, and dishes from various cuisines worldwide.",
+        'Calkilo offers flexible pricing plans. We have a free version with basic features, and Premium plans starting at $7.99/month. All plans include a 1-day free trial. Check our pricing section for detailed information.',
+    },
+    {
+      question: 'How does the AI meal planning work?',
+      answer:
+        'Our AI analyzes your dietary preferences, health goals, and eating patterns to create personalized meal plans. Simply tell the AI your preferences, and it will suggest meals, recipes, and shopping lists tailored to you.',
+    },
+    {
+      question: 'Can I change my preferences after onboarding?',
+      answer:
+        'Yes! You can update your dietary preferences, goals, and restrictions anytime from your profile settings. The AI will automatically adjust your meal plans and suggestions.',
     },
     {
       question: 'Is my food photo data private and secure?',
@@ -21,19 +31,9 @@ const FAQ = () => {
         'The app works offline for manual logging. AI photo analysis requires internet connection for the best accuracy, but you can save photos and analyze them later when connected.',
     },
     {
-      question: 'Can I cancel my subscription anytime?',
+      question: 'Do you include nutritional information?',
       answer:
-        'Absolutely! You can cancel your subscription anytime from your account settings. You\'ll continue to have access until the end of your billing period.',
-    },
-    {
-      question: 'Does it work with my fitness tracker?',
-      answer:
-        'Yes! Calkilo integrates with Apple Health, Google Fit, Fitbit, Samsung Health, Garmin, and more to sync your activity data automatically.',
-    },
-    {
-      question: 'Is there a free trial for premium features?',
-      answer:
-        'Yes! We offer a 7-day free trial of Premium features. No credit card required. You can upgrade anytime from the free version.',
+        'Yes! Every meal and recipe includes detailed nutritional information including calories, macronutrients (protein, carbs, fats), vitamins, minerals, and more.',
     },
   ]
 
@@ -41,8 +41,10 @@ const FAQ = () => {
     <section id="faq" className="faq-section">
       <div className="container">
         <div className="section-header">
-          <h2>Frequently Asked Questions</h2>
-          <p>Got questions? We&apos;ve got answers</p>
+          <h2>
+            Frequently Asked <span className="highlight-text">Questions</span>
+          </h2>
+          <p>Got a question? We&apos;ve got answers.</p>
         </div>
         <div className="faq-grid">
           {faqs.map((faq, index) => (
@@ -63,10 +65,12 @@ const FAQ = () => {
           ))}
         </div>
         <div className="faq-more">
-          <p>Have more questions?</p>
-          <Link href="/faq" className="btn btn-outline">
-            View All FAQs
-          </Link>
+          <div className="faq-contact-box">
+            <p>Still have questions? Don&apos;t hesitate to reach out to our support team...</p>
+            <Link href="/contact" className="btn btn-primary">
+              Contact Us
+            </Link>
+          </div>
         </div>
       </div>
     </section>
