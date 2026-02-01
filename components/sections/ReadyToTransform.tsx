@@ -46,20 +46,34 @@ const ReadyToTransform = () => {
             <p>{t('readyToTransform.subtitle')}</p>
             <div className="download-options">
               <div className="download-buttons-transform">
-                <button type="button" className="download-btn-transform" disabled aria-disabled="true" title="Download coming soon" aria-label="Download on App Store">
+                <a
+                  href="https://apps.apple.com/us/app/calkilo/id6755718411"
+                  className="download-btn-transform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Download on App Store"
+                  title="Download on App Store"
+                >
                   <i className="bi bi-apple"></i>
                   <div className="download-btn-text">
                     <span className="download-btn-label">{t('readyToTransform.downloadOn')}</span>
                     <span className="download-btn-platform">{t('readyToTransform.appStore')}</span>
                   </div>
-                </button>
-                <button type="button" className="download-btn-transform" disabled aria-disabled="true" title="Download coming soon" aria-label="Get it on Google Play">
+                </a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.calkilo.mobile&pli=1"
+                  className="download-btn-transform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Get it on Google Play"
+                  title="Get it on Google Play"
+                >
                   <i className="bi bi-google-play"></i>
                   <div className="download-btn-text">
                     <span className="download-btn-label">{t('readyToTransform.getItOn')}</span>
                     <span className="download-btn-platform">{t('readyToTransform.googlePlay')}</span>
                   </div>
-                </button>
+                </a>
               </div>
               <p className="qr-code-intro">{t('readyToTransform.scanToDownload')}</p>
               <div className="qr-code-container">
