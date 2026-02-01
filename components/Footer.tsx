@@ -26,26 +26,26 @@ const Footer = () => {
             </div>
             <p>{t('footer.tagline')}</p>
             <div className="social-links">
-              <a href="#" aria-label={t('social.followTwitter')}>
+              <button type="button" className="social-link" disabled aria-disabled="true" aria-label={t('social.followTwitter')} title="Twitter coming soon">
                 <i className="bi bi-twitter"></i>
-              </a>
-              <a href="#" aria-label={t('social.followFacebook')}>
+              </button>
+              <button type="button" className="social-link" disabled aria-disabled="true" aria-label={t('social.followFacebook')} title="Facebook coming soon">
                 <i className="bi bi-facebook"></i>
-              </a>
-              <a href="#" aria-label={t('social.followInstagram')}>
+              </button>
+              <button type="button" className="social-link" disabled aria-disabled="true" aria-label={t('social.followInstagram')} title="Instagram coming soon">
                 <i className="bi bi-instagram"></i>
-              </a>
-              <a href="#" aria-label={t('social.connectLinkedIn')}>
+              </button>
+              <button type="button" className="social-link" disabled aria-disabled="true" aria-label={t('social.connectLinkedIn')} title="LinkedIn coming soon">
                 <i className="bi bi-linkedin"></i>
-              </a>
+              </button>
             </div>
           </div>
           <div className="footer-links">
-            <div className="footer-column">
+              <div className="footer-column">
               <h4>{t('footer.features')}</h4>
               <Link href="/#download" onClick={handleDownloadClick}>{t('footer.download')}</Link>
               <Link href="/#how-it-works">{t('footer.howItWorks')}</Link>
-              <Link href="#">{t('footer.blog')}</Link>
+              <button type="button" className="footer-link" disabled aria-disabled="true">{t('footer.blog')}</button>
             </div>
             <div className="footer-column">
               <h4>{t('footer.support')}</h4>
@@ -57,8 +57,8 @@ const Footer = () => {
             <div className="footer-column">
               <h4>{t('footer.getInTouch')}</h4>
               <Link href="/contact">{t('navbar.contact')}</Link>
-              <Link href="#">{t('footer.aboutUs')}</Link>
-              <Link href="#">{t('footer.ourTeam')}</Link>
+              <button type="button" className="footer-link" disabled aria-disabled="true">{t('footer.aboutUs')}</button>
+              <button type="button" className="footer-link" disabled aria-disabled="true">{t('footer.ourTeam')}</button>
             </div>
           </div>
         </div>

@@ -1,8 +1,15 @@
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from '../../hooks/useTranslation'
 
 const ReadyToTransform = () => {
   const { t } = useTranslation('common')
-  
+  const [filled, setFilled] = useState<boolean[]>([])
+
+  useEffect(() => {
+    // generate deterministic client-side QR pattern to avoid hydration mismatch
+    setFilled(Array.from({ length: 25 }, () => Math.random() > 0.5))
+  }, [])
+
   return (
     <section id="ready-to-transform" className="ready-to-transform">
       <div className="container">
@@ -39,28 +46,32 @@ const ReadyToTransform = () => {
             <p>{t('readyToTransform.subtitle')}</p>
             <div className="download-options">
               <div className="download-buttons-transform">
-                <a href="#" className="download-btn-transform" aria-label="Download on App Store">
+                <button type="button" className="download-btn-transform" disabled aria-disabled="true" title="Download coming soon" aria-label="Download on App Store">
                   <i className="bi bi-apple"></i>
                   <div className="download-btn-text">
                     <span className="download-btn-label">{t('readyToTransform.downloadOn')}</span>
                     <span className="download-btn-platform">{t('readyToTransform.appStore')}</span>
                   </div>
-                </a>
-                <a href="#" className="download-btn-transform" aria-label="Get it on Google Play">
+                </button>
+                <button type="button" className="download-btn-transform" disabled aria-disabled="true" title="Download coming soon" aria-label="Get it on Google Play">
                   <i className="bi bi-google-play"></i>
                   <div className="download-btn-text">
                     <span className="download-btn-label">{t('readyToTransform.getItOn')}</span>
                     <span className="download-btn-platform">{t('readyToTransform.googlePlay')}</span>
                   </div>
-                </a>
+                </button>
               </div>
               <p className="qr-code-intro">{t('readyToTransform.scanToDownload')}</p>
               <div className="qr-code-container">
                 <div className="qr-code-placeholder">
                   <div className="qr-code-grid">
-                    {[...Array(25)].map((_, i) => (
-                      <div key={i} className={`qr-square ${Math.random() > 0.5 ? 'filled' : ''}`}></div>
-                    ))}
+                    {filled.length === 25
+                      ? filled.map((isFilled, i) => (
+                          <div key={i} className={`qr-square ${isFilled ? 'filled' : ''}`}></div>
+                        ))
+                      : Array.from({ length: 25 }).map((_, i) => (
+                          <div key={i} className="qr-square"></div>
+                        ))}
                   </div>
                 </div>
               </div>

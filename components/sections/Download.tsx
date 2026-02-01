@@ -6,7 +6,7 @@ const Download = () => {
           <h2>Ready to Transform Your Nutrition?</h2>
           <p>Download Calkilo today and experience the future of calorie counting</p>
           <div className="download-buttons">
-            <a href="#" className="download-btn">
+            <button type="button" className="download-btn" disabled aria-disabled="true" title="Download coming soon">
               <div className="download-icon">
                 <i className="bi bi-apple"></i>
               </div>
@@ -14,8 +14,8 @@ const Download = () => {
                 <span className="download-label">Download on the</span>
                 <span className="download-platform">App Store</span>
               </div>
-            </a>
-            <a href="#" className="download-btn">
+            </button>
+            <button type="button" className="download-btn" disabled aria-disabled="true" title="Download coming soon">
               <div className="download-icon">
                 <i className="bi bi-google-play"></i>
               </div>
@@ -23,7 +23,7 @@ const Download = () => {
                 <span className="download-label">Get it on</span>
                 <span className="download-platform">Google Play</span>
               </div>
-            </a>
+            </button>
           </div>
           <div className="download-features">
             <div className="download-feature">
