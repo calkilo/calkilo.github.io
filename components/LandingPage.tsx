@@ -11,31 +11,31 @@ interface LandingPageProps {
 }
 
 const FIGMA_ASSETS = {
-  heroSlideOne: '/assets/figma/9d9b9498b6a18bddd5bf8497bbfeac1152b019f0.png',
-  heroSlideTwoLight: '/assets/figma/65a641bda519c280d8c60b43b9194d73157d5c50.png',
-  heroSlideTwoDark: '/assets/figma/e868a161326472def96e2a09561e5c328725ad68.png',
+  heroSlideOne: '/assets/figma/9d9b9498b6a18bddd5bf8497bbfeac1152b019f0.webp',
+  heroSlideTwoLight: '/assets/figma/65a641bda519c280d8c60b43b9194d73157d5c50.webp',
+  heroSlideTwoDark: '/assets/figma/e868a161326472def96e2a09561e5c328725ad68.webp',
   aiScreenMain: '/assets/analysis.png',
   aiScreenAltOne: '/assets/chatAi.png',
   aiScreenAltTwo: '/assets/goal.png',
   aiScreenAltThree: '/assets/food.png',
-  nutrientFood: '/assets/figma/f9fc5d99c2586a8ad4c69f78e400402215b3cf0d.png',
-  mealCheese: '/assets/figma/a07ad49e36ea032dcf3464dcfc4e3947ec6d4108.png',
-  mealKebab: '/assets/figma/4d70d5ddd422f6daae0ab9012dfccd118bf8760f.png',
-  howScan: '/assets/figma/91a03867120f1176a96de7c963594542dd9020cd.png',
-  howAnalyze: '/assets/figma/ff8765a9d5715fe86accc36535380ac908919f6a.png',
-  howTrack: '/assets/figma/ca251d12fbd0aabf9fa0a93e9bdd0f13035d3f4a.png',
-  showcasePhoneLight: '/assets/figma/144fdc5e8efb509c6633f560c1d992b7caeda48b.png',
-  showcasePhoneDark: '/assets/figma/cf534efed9f33231adce8d4bb20068f596e7e5ed.png',
-  testimonialPatternLight: '/assets/figma/799db71e4d01dc53b148041ca9ffe475417e18ae.png',
-  testimonialPatternDark: '/assets/figma/c4062c2c99c33073ea782580edb076695f3d2ff4.png',
-  avocadoAccent: '/assets/figma/d2a83b3b0cfab62434f69e2ccf8149cb68e9e9f7.png',
-  communityPattern: '/assets/figma/d0483e2a4aef637594c6708a5e625afd025940da.png',
+  nutrientFood: '/assets/figma/f9fc5d99c2586a8ad4c69f78e400402215b3cf0d.webp',
+  mealCheese: '/assets/figma/a07ad49e36ea032dcf3464dcfc4e3947ec6d4108.webp',
+  mealKebab: '/assets/figma/4d70d5ddd422f6daae0ab9012dfccd118bf8760f.webp',
+  howScan: '/assets/figma/91a03867120f1176a96de7c963594542dd9020cd.webp',
+  howAnalyze: '/assets/figma/ff8765a9d5715fe86accc36535380ac908919f6a.webp',
+  howTrack: '/assets/figma/ca251d12fbd0aabf9fa0a93e9bdd0f13035d3f4a.webp',
+  showcasePhoneLight: '/assets/figma/144fdc5e8efb509c6633f560c1d992b7caeda48b.webp',
+  showcasePhoneDark: '/assets/figma/cf534efed9f33231adce8d4bb20068f596e7e5ed.webp',
+  testimonialPatternLight: '/assets/figma/799db71e4d01dc53b148041ca9ffe475417e18ae.webp',
+  testimonialPatternDark: '/assets/figma/c4062c2c99c33073ea782580edb076695f3d2ff4.webp',
+  avocadoAccent: '/assets/figma/d2a83b3b0cfab62434f69e2ccf8149cb68e9e9f7.webp',
+  communityPattern: '/assets/figma/d0483e2a4aef637594c6708a5e625afd025940da.webp',
   communityChallenge: '/assets/challenge.png',
   communityShare: '/assets/share.png',
   communityLeaderboard: '/assets/leaderboard.png',
   communityInvite: '/assets/invite.png',
-  downloadPhone: '/assets/figma/e9df2fa0d3353ddb99e689cfcc597568be38a5ad.png',
-  downloadTrophy: '/assets/figma/ed0552cf31e3cc332040cf675af1604cbb45cb4d.png',
+  downloadPhone: '/assets/figma/e9df2fa0d3353ddb99e689cfcc597568be38a5ad.webp',
+  downloadTrophy: '/assets/figma/ed0552cf31e3cc332040cf675af1604cbb45cb4d.webp',
   downloadObjects: '/assets/download.png',
   integrationAppleHealth: '/assets/Apple%20Health.png',
   integrationGoogleFit: '/assets/Google-fit.png',
@@ -441,7 +441,7 @@ const FEATURE_ITEMS = [
     title: 'Analysis and AI suggestions',
     description:
       'Monitor your weight, measurements, and nutrition goals. Get personalized AI suggestions to stay on track and optimize your diet.',
-      icon:'/assets/figma/f9fc5d99c2586a8ad4c69f78e400402215b3cf0d.png',
+    icon: '/assets/figma/f9fc5d99c2586a8ad4c69f78e400402215b3cf0d.webp',
   },
   {
     title: 'Chat & AI Agent',
@@ -1761,6 +1761,8 @@ export default function LandingPage({ variant }: LandingPageProps) {
                   key={slide}
                   src={slide}
                   alt=""
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  fetchPriority={index === 0 ? 'high' : 'low'}
                   className={`lp-hero-slide${index === heroSlide ? ' is-active' : ''}`}
                 />
               ))}
@@ -1777,6 +1779,8 @@ export default function LandingPage({ variant }: LandingPageProps) {
                   src={aiScreens[activeFeature].src}
                   alt={ts('CalKilo AI screen')}
                   className="lp-ai-screen"
+                  loading="lazy"
+                  decoding="async"
                   style={{ '--screen-scale': aiScreens[activeFeature].scale } as CSSProperties}
                 />
               </div>
@@ -1831,7 +1835,7 @@ export default function LandingPage({ variant }: LandingPageProps) {
 
               <div className="lp-nutrients-panel">
                 <div className="lp-tilted-food" aria-hidden="true">
-                  <img src={FIGMA_ASSETS.nutrientFood} alt="" />
+                  <img src={FIGMA_ASSETS.nutrientFood} alt="" loading="lazy" decoding="async" />
                 </div>
                 <article className="lp-requirement-card">
                   <h3>{ts('Nutrients required')}</h3>
@@ -1860,7 +1864,7 @@ export default function LandingPage({ variant }: LandingPageProps) {
 
             <div className="lp-meal-lane">
               <article className="lp-meal-item">
-                <img src={FIGMA_ASSETS.mealCheese} alt={ts('Cheese, Bread')} />
+                <img src={FIGMA_ASSETS.mealCheese} alt={ts('Cheese, Bread')} loading="lazy" decoding="async" />
                 <div>
                   <h3>{ts('Cheese, Bread')}</h3>
                   <p>{ts('270 Cal')}</p>
@@ -1869,7 +1873,7 @@ export default function LandingPage({ variant }: LandingPageProps) {
               </article>
 
               <article className="lp-meal-item lp-meal-item--shift">
-                <img src={FIGMA_ASSETS.mealKebab} alt={ts('Kebab, Tomato & Basil')} />
+                <img src={FIGMA_ASSETS.mealKebab} alt={ts('Kebab, Tomato & Basil')} loading="lazy" decoding="async" />
                 <div>
                   <h3>{ts('Kebab, Tomato & Basil')}</h3>
                   <p>{ts('480 Cal')}</p>
@@ -1893,7 +1897,7 @@ export default function LandingPage({ variant }: LandingPageProps) {
               {HOW_STEPS.map((step, index) => (
                 <article key={step.title} className="lp-how-card">
                   <div className="lp-how-image-wrap">
-                    <img src={step.image} alt={ts(step.title)} />
+                    <img src={step.image} alt={ts(step.title)} loading="lazy" decoding="async" />
                   </div>
                  
                 </article>
@@ -1926,8 +1930,8 @@ export default function LandingPage({ variant }: LandingPageProps) {
             </div>
 
             <div className="lp-style-phones" aria-hidden="true">
-              <img src={FIGMA_ASSETS.showcasePhoneDark} alt="" className="lp-style-phone back" />
-              <img src={FIGMA_ASSETS.showcasePhoneLight} alt="" className="lp-style-phone front" />
+              <img src={FIGMA_ASSETS.showcasePhoneDark} alt="" className="lp-style-phone back" loading="lazy" decoding="async" />
+              <img src={FIGMA_ASSETS.showcasePhoneLight} alt="" className="lp-style-phone front" loading="lazy" decoding="async" />
             </div>
           </div>
         </section>
@@ -1975,6 +1979,8 @@ export default function LandingPage({ variant }: LandingPageProps) {
                 alt=""
                 className="lp-testimonial-avocado"
                 aria-hidden="true"
+                loading="lazy"
+                decoding="async"
               />
               <div className="lp-testimonial-grid">
                 {TESTIMONIALS.map((review) => (
