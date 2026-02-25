@@ -5380,7 +5380,7 @@ export default function LightMode() {
       <StyleShowcase />
       <Integrations />
       <Testimonials />
-      <Pricing />
+      {/* <Pricing /> */}
       <Community />
       <DownloadCta />
       <Faq />

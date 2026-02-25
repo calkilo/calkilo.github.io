@@ -35,6 +35,11 @@ jobs:
       - name: Build Next.js site
         run: npm run build
 
+      - name: Verify static export output
+        run: |
+          test -d out
+          test -f out/index.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
