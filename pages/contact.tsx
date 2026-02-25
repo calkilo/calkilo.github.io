@@ -1,192 +1,179 @@
-import { GetStaticProps } from 'next'
-import Layout from '../components/Layout'
-import Head from 'next/head'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
-import { useTranslation } from '../hooks/useTranslation'
+import StaticPageLayout from '../components/StaticPageLayout'
+import { SITE_URL } from '../lib/seo'
 
-export default function Contact() {
-  const { t, isLoading } = useTranslation('contact')
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    subject: '',
-    message: '',
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+const CONTACT_PAGE_TITLE = 'Contact Calkilo'
+const CONTACT_PAGE_DESCRIPTION = 'Contact Calkilo support for product, billing, and privacy requests.'
+const CONTACT_PAGE_KEYWORDS = [
+  'calkilo contact',
+  'nutrition app support',
+  'ai calorie tracker support',
+  'privacy request support',
+]
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    // Simulate form submission
-    setTimeout(() => {
-      alert(t('form.success'))
-      setFormData({ firstName: '', lastName: '', email: '', subject: '', message: '' })
-      setIsSubmitting(false)
-    }, 2000)
-  }
+const CONTACT_PAGE_JSON_LD = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: CONTACT_PAGE_TITLE,
+    url: `${SITE_URL}/contact`,
+    description: CONTACT_PAGE_DESCRIPTION,
+    inLanguage: 'en',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Calkilo',
+    url: SITE_URL,
+    email: 'support@calkilo.app',
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'customer support',
+        email: 'support@calkilo.app',
+        url: `${SITE_URL}/contact`,
+        availableLanguage: ['English'],
+      },
+      {
+        '@type': 'ContactPoint',
+        contactType: 'privacy inquiries',
+        email: 'privacy@calkilo.app',
+        url: `${SITE_URL}/privacy-policy`,
+        availableLanguage: ['English'],
+      },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Contact',
+        item: `${SITE_URL}/contact`,
+      },
+    ],
+  },
+] as const
 
-  if (isLoading) {
-    return (
-      <Layout>
-        <main className="contact-content" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh' }}>
-          <div>Loading...</div>
-        </main>
-      </Layout>
-    )
-  }
+const SUPPORT_CHANNELS = [
+  {
+    title: 'Email Support',
+    description: 'For account, billing, and technical questions.',
+    actionLabel: 'support@calkilo.app',
+    actionHref: 'mailto:support@calkilo.app',
+  },
+  {
+    title: 'Privacy Requests',
+    description: 'For data access, deletion, and policy-related inquiries.',
+    actionLabel: 'privacy@calkilo.app',
+    actionHref: 'mailto:privacy@calkilo.app',
+  },
+  {
+    title: 'Response Window',
+    description: 'We typically respond to support inquiries within one business day.',
+    actionLabel: 'View Privacy Policy',
+    actionHref: '/privacy-policy',
+  },
+] as const
 
+export default function ContactPage() {
   return (
-    <>
-      <Head>
-        <title>{t('title')}</title>
-        <meta name="description" content={t('description')} />
-        <link rel="canonical" href="https://calkilo.com/contact" />
-      </Head>
-      <Layout>
-        <main className="contact-content">
-          <nav aria-label="Breadcrumb" style={{ marginBottom: '2rem' }}>
-            <ol style={{ display: 'flex', listStyle: 'none', padding: 0, margin: 0, gap: '0.5rem', alignItems: 'center', fontSize: '0.9rem' }}>
-              <li>
-                <Link href="/" style={{ color: '#6366f1', textDecoration: 'none' }}>
-                  {t('breadcrumb.home')}
-                </Link>
-              </li>
-              <li aria-hidden="true" style={{ color: '#9ca3af' }}>
-                /
-              </li>
-              <li aria-current="page" style={{ color: '#6b7280' }}>
-                {t('breadcrumb.current')}
-              </li>
-            </ol>
-          </nav>
+    <StaticPageLayout
+      title={CONTACT_PAGE_TITLE}
+      description={CONTACT_PAGE_DESCRIPTION}
+      path="/contact"
+      heading="Contact Us"
+      intro="Need help with Calkilo? Send us a message and our support team will get back to you as soon as possible."
+      activeNav="contact"
+      keywords={CONTACT_PAGE_KEYWORDS}
+      jsonLd={CONTACT_PAGE_JSON_LD}
+    >
+      <section className="lp-contact-grid">
+        <article className="lp-static-card lp-contact-card">
+          <h2>Send a Message</h2>
+          <p>
+            Share as much detail as possible so we can resolve your issue quickly. For urgent requests, email
+            support@calkilo.app directly.
+          </p>
 
-          <Link href="/" className="back-link">
-            <i className="bi bi-arrow-left" aria-hidden="true"></i>
-            {t('backToHome')}
-          </Link>
-
-          <div className="contact-header">
-            <h1>{t('header.title')}</h1>
-            <p>{t('header.subtitle')}</p>
-          </div>
-
-          <div className="contact-grid">
-            <div className="contact-info">
-              <h2>{t('contactInfo.title')}</h2>
-              <div className="contact-item">
-                <i className="bi bi-envelope" aria-hidden="true"></i>
-                <div className="contact-item-content">
-                  <h3>{t('contactInfo.generalSupport.title')}</h3>
-                  <p>
-                    <a href={`mailto:${t('contactInfo.generalSupport.email')}`}>{t('contactInfo.generalSupport.email')}</a>
-                  </p>
-                </div>
-              </div>
-              <div className="contact-item">
-                <i className="bi bi-headset" aria-hidden="true"></i>
-                <div className="contact-item-content">
-                  <h3>{t('contactInfo.technicalSupport.title')}</h3>
-                  <p>
-                    <a href={`mailto:${t('contactInfo.technicalSupport.email')}`}>{t('contactInfo.technicalSupport.email')}</a>
-                  </p>
-                </div>
-              </div>
-              <div className="contact-item">
-                <i className="bi bi-shield-check" aria-hidden="true"></i>
-                <div className="contact-item-content">
-                  <h3>{t('contactInfo.privacyLegal.title')}</h3>
-                  <p>
-                    <a href={`mailto:${t('contactInfo.privacyLegal.email')}`}>{t('contactInfo.privacyLegal.email')}</a>
-                  </p>
-                </div>
-              </div>
+          <form className="lp-contact-form" action="mailto:support@calkilo.app" method="post" encType="text/plain">
+            <div className="lp-form-row">
+              <label>
+                Full Name
+                <input type="text" name="fullName" placeholder="Your full name" required />
+              </label>
+              <label>
+                Email Address
+                <input type="email" name="email" placeholder="you@example.com" required />
+              </label>
             </div>
 
-            <div className="contact-form">
-              <h2>{t('form.title')}</h2>
-              <form id="contactForm" onSubmit={handleSubmit}>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="firstName">{t('form.firstName')} {t('form.required')}</label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      required
-                      value={formData.firstName}
-                      onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="lastName">{t('form.lastName')} {t('form.required')}</label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      required
-                      value={formData.lastName}
-                      onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="email">{t('form.email')} {t('form.required')}</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="subject">{t('form.subject')} {t('form.required')}</label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    required
-                    value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  >
-                    <option value="">{t('form.subjectPlaceholder')}</option>
-                    <option value="general">{t('form.subjectOptions.general')}</option>
-                    <option value="technical">{t('form.subjectOptions.technical')}</option>
-                    <option value="billing">{t('form.subjectOptions.billing')}</option>
-                    <option value="feature">{t('form.subjectOptions.feature')}</option>
-                    <option value="bug">{t('form.subjectOptions.bug')}</option>
-                    <option value="privacy">{t('form.subjectOptions.privacy')}</option>
-                    <option value="other">{t('form.subjectOptions.other')}</option>
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="message">{t('form.message')} {t('form.required')}</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    placeholder={t('form.messagePlaceholder')}
-                    required
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  ></textarea>
-                </div>
-                <button type="submit" className="submit-btn" disabled={isSubmitting}>
-                  <i className="bi bi-send" aria-hidden="true"></i>
-                  {isSubmitting ? t('form.submitting') : t('form.submit')}
-                </button>
-              </form>
+            <div className="lp-form-row">
+              <label>
+                Topic
+                <select name="topic" defaultValue="general">
+                  <option value="general">General question</option>
+                  <option value="technical">Technical issue</option>
+                  <option value="billing">Billing</option>
+                  <option value="privacy">Privacy request</option>
+                </select>
+              </label>
+              <label>
+                Account ID (Optional)
+                <input type="text" name="accountId" placeholder="Example: CK-10294" />
+              </label>
             </div>
-          </div>
-        </main>
-      </Layout>
-    </>
+
+            <label>
+              Message
+              <textarea
+                name="message"
+                placeholder="Describe your request, issue steps, and expected result."
+                rows={7}
+                required
+              />
+            </label>
+
+            <button className="lp-contact-submit" type="submit">
+              Send message
+            </button>
+            <p className="lp-contact-note">
+              Submitting this form opens your email app with pre-filled details for support@calkilo.app.
+            </p>
+          </form>
+        </article>
+
+        <aside className="lp-contact-aside">
+          {SUPPORT_CHANNELS.map((channel) => (
+            <article key={channel.title} className="lp-static-card lp-contact-method">
+              <h3>{channel.title}</h3>
+              <p>{channel.description}</p>
+              {channel.actionHref.startsWith('mailto:') ? (
+                <a href={channel.actionHref}>{channel.actionLabel}</a>
+              ) : (
+                <Link href={channel.actionHref}>{channel.actionLabel}</Link>
+              )}
+            </article>
+          ))}
+        </aside>
+      </section>
+
+      <section className="lp-static-card lp-contact-faq">
+        <h2>Before You Send</h2>
+        <ul className="lp-policy-list">
+          <li>Include screenshots for UI bugs or error messages when possible.</li>
+          <li>For billing requests, mention the subscription plan and purchase date.</li>
+          <li>For privacy requests, include the account email used in Calkilo.</li>
+        </ul>
+      </section>
+    </StaticPageLayout>
   )
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-  return {
-    props: {},
-  }
 }
