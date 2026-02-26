@@ -18,6 +18,8 @@ interface SeoHeadProps {
   nofollow?: boolean
   jsonLd?: JsonLdInput
   themeColor?: string
+  language?: string
+  alternateLanguages?: ReadonlyArray<{ lang: string; path: string }>
 }
 
 const DEFAULT_THEME_COLOR = '#00d448'
@@ -29,6 +31,16 @@ function normalizeJsonLd(input?: JsonLdInput): string[] {
 
   const schemas = Array.isArray(input) ? input : [input]
   return schemas.map((schema) => JSON.stringify(schema).replace(/</g, '\\u003c'))
+}
+
+const LOCALE_MAP: Record<string, string> = {
+  en: 'en_US',
+  nl: 'nl_NL',
+  ru: 'ru_RU',
+  zh: 'zh_CN',
+  ar: 'ar_AR',
+  fa: 'fa_IR',
+  it: 'it_IT',
 }
 
 export default function SeoHead({
@@ -44,6 +56,8 @@ export default function SeoHead({
   nofollow = false,
   jsonLd,
   themeColor = DEFAULT_THEME_COLOR,
+  language = 'en',
+  alternateLanguages,
 }: SeoHeadProps) {
   const canonicalUrl = toAbsoluteUrl(canonicalPath ?? path)
   const pageUrl = toAbsoluteUrl(path)
@@ -85,8 +99,15 @@ export default function SeoHead({
 
       <meta property="og:type" content={ogType} key="og:type" />
       <meta property="og:site_name" content={SITE_NAME} key="og:site_name" />
-      <meta property="og:locale" content="en_US" key="og:locale" />
+      <meta property="og:locale" content={LOCALE_MAP[language] || 'en_US'} key="og:locale" />
       <meta property="og:url" content={pageUrl} key="og:url" />
+      {alternateLanguages?.map((alt) => (
+        <meta property="og:locale:alternate" content={LOCALE_MAP[alt.lang]} key={`og:locale:${alt.lang}`} />
+      ))}
+      {alternateLanguages?.map((alt) => (
+        <link rel="alternate" hrefLang={alt.lang} href={toAbsoluteUrl(alt.path)} key={`hreflang:${alt.lang}`} />
+      ))}
+      <link rel="alternate" hrefLang="x-default" href={toAbsoluteUrl(path)} key="hreflang:x-default" />
       <meta property="og:title" content={title} key="og:title" />
       <meta property="og:description" content={description} key="og:description" />
       <meta property="og:image" content={imageUrl} key="og:image" />
