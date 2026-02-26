@@ -22,10 +22,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 }
 
-interface LangHomePageProps {
-  lang: string
-}
-
-export default function LangHomePage({ lang }: LangHomePageProps) {
-  return <LandingPage variant="light" initialLanguage={lang} />
+export default function LangHomePage() {
+  return <LandingPage variant="light" />
 }
