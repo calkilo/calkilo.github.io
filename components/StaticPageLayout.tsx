@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { type ReactNode } from 'react'
 import SeoHead from './SeoHead'
 
-type StaticNavItem = 'privacy' | 'contact' | 'terms'
+type StaticNavItem = 'privacy' | 'contact' | 'terms' | 'deletion'
 type JsonLdSchema = Record<string, unknown>
 
 interface StaticPageLayoutProps {
@@ -34,6 +34,7 @@ const FOOTER_SECTIONS = [
     links: [
       { label: 'Privacy Policy', href: '/privacy-policy' },
       { label: 'Terms of Service', href: '/terms-of-service' },
+      { label: 'Delete Account & Data', href: '/account-deletion' },
       { label: 'Contact', href: '/contact' },
       { label: 'FAQ', href: '/#faq' },
     ],
@@ -94,6 +95,9 @@ export default function StaticPageLayout({
             </Link>
             <Link href="/terms-of-service" className={activeNav === 'terms' ? 'is-active' : undefined}>
               Terms
+            </Link>
+            <Link href="/account-deletion" className={activeNav === 'deletion' ? 'is-active' : undefined}>
+              Delete Account
             </Link>
             <Link href="/contact" className={activeNav === 'contact' ? 'is-active' : undefined}>
               Contact
@@ -171,6 +175,9 @@ export default function StaticPageLayout({
               </li>
               <li>
                 <Link href="/privacy-policy">Privacy requests</Link>
+              </li>
+              <li>
+                <Link href="/account-deletion">Delete account &amp; data</Link>
               </li>
             </ul>
           </section>

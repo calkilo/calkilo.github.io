@@ -77,6 +77,12 @@ const SUPPORT_CHANNELS = [
     actionHref: 'mailto:privacy@calkilo.app',
   },
   {
+    title: 'Account Deletion',
+    description: 'Use the dedicated page to request account and associated data deletion.',
+    actionLabel: 'Open account deletion page',
+    actionHref: '/account-deletion',
+  },
+  {
     title: 'Response Window',
     description: 'We typically respond to support inquiries within one business day.',
     actionLabel: 'View Privacy Policy',

@@ -771,6 +771,7 @@ const FOOTER_LINKS = [
     links: [
       { label: 'Privacy Policy', href: '/privacy-policy' },
       { label: 'Terms of Service', href: '/terms-of-service' },
+      { label: 'Delete Account & Data', href: '/account-deletion' },
       { label: 'Terms & Conditions', href: '#' },
       { label: 'FAQ', href: '#faq' },
     ],

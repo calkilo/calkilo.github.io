@@ -87,7 +87,7 @@ const POLICY_SECTIONS: PolicySection[] = [
     title: '4. Data Retention',
     paragraphs: [
       'We retain personal information for as long as your account is active or as needed to provide services, resolve disputes, and comply with legal obligations.',
-      'You can request deletion of your account and associated data by contacting support at support@calkilo.app.',
+      'You can request deletion of your account and associated data on our account deletion page at /account-deletion or by emailing privacy@calkilo.app.',
     ],
   },
   {
