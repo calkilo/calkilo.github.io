@@ -61,6 +61,16 @@ const LANGUAGE_LABELS: Record<SiteLanguage, string> = {
   it: 'Italiano',
 }
 
+const LANGUAGE_SHORT_LABELS: Record<SiteLanguage, string> = {
+  en: 'En',
+  nl: 'Nl',
+  ru: 'Ru',
+  zh: 'Zh',
+  ar: 'Ar',
+  fa: 'Fa',
+  it: 'It',
+}
+
 const LANGUAGE_FONT_FAMILIES: Record<SiteLanguage, string> = {
   en: "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
   nl: "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
@@ -605,6 +615,13 @@ const HOW_STEPS = [
     description: 'View detailed nutrition breakdown, track your goals, and watch your progress over time.',
     image: FIGMA_ASSETS.howTrack,
   },
+] as const
+
+const NUTRIENT_PROGRESS_ITEMS = [
+  { label: 'Calories', value: '1100/2000', progress: 55 },
+  { label: 'Carbohydrates', value: '300/325', progress: 92 },
+  { label: 'Proteins', value: '10/75', progress: 13 },
+  { label: 'Fat', value: '25/50', progress: 50 },
 ] as const
 
 const INTEGRATIONS = [
@@ -1432,7 +1449,11 @@ function translateStaticText(language: SiteLanguage, text: string): string {
 function BrandLogo() {
   return (
     <span className="lp-brand" aria-label="CalKilo logo">
-      <img src={FIGMA_ASSETS.headetLogo} alt="" aria-hidden="true" />
+      <img className="lp-brand-mark-icon" src="/assets/logo-calkilo.svg" alt="" aria-hidden="true" />
+      <span className="lp-brand-text">
+        <span>Cal</span>
+        <span>Kilo</span>
+      </span>
     </span>
   )
 }
@@ -1487,6 +1508,7 @@ export default function LandingPage({ variant }: LandingPageProps) {
   const [activeFeature, setActiveFeature] = useState(0)
   const [language, setLanguage] = useState<SiteLanguage>('en')
   const [activeNav, setActiveNav] = useState<(typeof NAV_ITEMS)[number]>('home')
+  const [isScrolled, setIsScrolled] = useState(false)
 
   const resolvedVariant: LandingVariant = manualVariant ?? systemVariant
   const isDark = resolvedVariant === 'dark'
@@ -1584,6 +1606,19 @@ export default function LandingPage({ variant }: LandingPageProps) {
     }, 5200)
 
     return () => window.clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
+    const syncScrollState = () => {
+      setIsScrolled(window.scrollY > 24)
+    }
+
+    syncScrollState()
+    window.addEventListener('scroll', syncScrollState, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', syncScrollState)
+    }
   }, [])
 
   useEffect(() => {
@@ -1701,7 +1736,7 @@ export default function LandingPage({ variant }: LandingPageProps) {
         jsonLd={landingJsonLd}
       />
 
-      <header className="lp-topbar">
+      <header className={`lp-topbar${isScrolled ? ' is-scrolled' : ''}`}>
         <div className="lp-container lp-topbar-inner">
           <a className="lp-logo" href="#home" aria-label="CalKilo home">
             <BrandLogo />
@@ -1727,13 +1762,14 @@ export default function LandingPage({ variant }: LandingPageProps) {
             <label className="lp-lang" aria-label="Language selector">
               <span className="sr-only">{ts('Language')}</span>
               <select
+                title={LANGUAGE_LABELS[language]}
                 value={language}
                 onChange={(event) => setLanguage(event.target.value as SiteLanguage)}
                 style={{ fontFamily: languageFontFamily }}
               >
                 {LANGUAGE_OPTIONS.map((lang) => (
                   <option key={lang} value={lang} style={{ fontFamily: LANGUAGE_FONT_FAMILIES[lang] }}>
-                    {LANGUAGE_LABELS[lang]}
+                    {LANGUAGE_SHORT_LABELS[lang]}
                   </option>
                 ))}
               </select>
@@ -1789,7 +1825,7 @@ export default function LandingPage({ variant }: LandingPageProps) {
 
             <div className="lp-ai-content">
               <h2>
-                CalKilo-AI: {aiTitleSuffix}
+                <span>CalKilo-AI</span>: {aiTitleSuffix}
               </h2>
               <p>{copy.aiSubtitle}</p>
 
@@ -1820,12 +1856,12 @@ export default function LandingPage({ variant }: LandingPageProps) {
             <div className="lp-nutrients-grid">
               <div className="lp-nutrients-copy">
                 <h2>{copy.nutrientTitle}</h2>
-                {/* <div className="lp-time-row">
+                <div className="lp-time-row" aria-label="Meal schedule">
                   <span className="is-active">07:00</span>
                   <span>10:00</span>
                   <span>13:00</span>
                   <span>18:00</span>
-                </div> */}
+                </div>
                 <div className="lp-chip-row">
                   <span>{ts('Calories')}</span>
                   <span>{ts('Carbohydrates')}</span>
@@ -1842,22 +1878,17 @@ export default function LandingPage({ variant }: LandingPageProps) {
                   <h3>{ts('Nutrients required')}</h3>
                   <p>{ts('nutrients needed in a day')}</p>
                   <ul className="lp-macro-list">
-                    <li>
-                      <strong>{ts('Calories')}</strong>
-                      <span>1100/2000</span>
-                    </li>
-                    <li>
-                      <strong>{ts('Carbohydrates')}</strong>
-                      <span>300/325</span>
-                    </li>
-                    <li>
-                      <strong>{ts('Proteins')}</strong>
-                      <span>10/75</span>
-                    </li>
-                    <li>
-                      <strong>{ts('Fat')}</strong>
-                      <span>25/50</span>
-                    </li>
+                    {NUTRIENT_PROGRESS_ITEMS.map((item) => (
+                      <li key={item.label}>
+                        <div className="lp-macro-top">
+                          <strong>{ts(item.label)}</strong>
+                          <span>{item.value}</span>
+                        </div>
+                        <div className="lp-macro-bar" aria-hidden="true">
+                          <span style={{ width: `${item.progress}%` }} />
+                        </div>
+                      </li>
+                    ))}
                   </ul>
                 </article>
               </div>
@@ -1911,7 +1942,7 @@ export default function LandingPage({ variant }: LandingPageProps) {
           <div className="lp-container lp-style-grid">
             <div className="lp-style-copy">
               <h2>{copy.styleTitle}</h2>
-              
+              <p>{copy.styleDescription}</p>
               <div className="lp-style-toggle" role="group" aria-label={ts('Theme toggle')}>
                 <button
                   className={`lp-style-pill${isDark ? '' : ' is-active'}`}
@@ -2000,7 +2031,8 @@ export default function LandingPage({ variant }: LandingPageProps) {
           <div className="lp-container">
             <header className="lp-section-head">
               <p className="lp-kicker">{copy.pricingKicker}</p>
-              <h2>{copy.pricingTitle}</h2>
+              <h2>{ts('Pricing')}</h2>
+              <p>{copy.pricingTitle}</p>
             </header>
 
             <div className="lp-pricing-grid">
@@ -2058,9 +2090,7 @@ export default function LandingPage({ variant }: LandingPageProps) {
         <section className="lp-section lp-download" id="download">
           <div className="lp-container lp-download-grid">
             <div className="lp-download-art" aria-hidden="true">
-   
-              <img src={FIGMA_ASSETS.downloadObjects} alt="" className="objects" />
-             
+              <img src={FIGMA_ASSETS.downloadObjects} alt="" className="lp-download-composite" loading="lazy" decoding="async" />
             </div>
 
             <div className="lp-download-copy">
