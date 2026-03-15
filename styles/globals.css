@@ -1726,7 +1726,6 @@ img {
     text-align: center;
   }
 
-  .lp-time-row,
   .lp-chip-row {
     justify-content: center;
   }
@@ -1756,6 +1755,23 @@ img {
   .lp-requirement-card {
     max-width: 360px;
     transform: none;
+  }
+
+  /* When the download section collapses to one column, allow the composite art
+     to size naturally to avoid overflowing into the copy block. */
+  .lp-download-art {
+    display: flex;
+    justify-content: center;
+    min-height: auto;
+  }
+
+  .lp-download-composite {
+    left: auto;
+    margin: 0 auto;
+    max-width: min(520px, 100%);
+    position: relative;
+    top: auto;
+    width: 100%;
   }
 
   .lp-meal-lane {
@@ -1804,6 +1820,14 @@ img {
 }
 
 @media (max-width: 760px) {
+  .lp-topbar {
+    padding: 18px 0 12px;
+  }
+
+  .lp-topbar.is-scrolled {
+    padding: 10px 0;
+  }
+
   .lp-topbar-inner {
     gap: 10px;
     grid-template-columns: minmax(0, 1fr);
@@ -1842,12 +1866,27 @@ img {
   }
 
   .lp-hero {
-    padding: 52px 0 32px;
+    padding: 46px 0 28px;
   }
 
   .lp-hero-media,
   .lp-ai-screen-wrap {
-    min-height: 390px;
+    min-height: 320px;
+  }
+
+  .lp-hero-slide {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .lp-time-row {
+    gap: 8px;
+    margin: 14px 0 16px;
+  }
+
+  .lp-chip-row {
+    gap: 12px;
+    padding-top: 18px;
   }
 
   .lp-nutrients-panel {
@@ -1855,22 +1894,28 @@ img {
   }
 
   .lp-tilted-food {
-    left: 0;
-    top: 30px;
-    width: min(260px, 56%);
+    left: -10px;
+    top: 18px;
+    transform: rotate(-10deg);
+    width: min(240px, 56%);
+  }
+
+  .lp-tilted-food img {
+    height: 170px;
   }
 
   .lp-requirement-card {
     margin-left: auto;
-    padding: 14px;
+    padding: 18px 16px 16px;
+    padding-left: clamp(112px, 32vw, 140px);
   }
 
   .lp-section {
-    padding: 68px 0;
+    padding: 56px 0;
   }
 
   .lp-style {
-    padding: 84px 0;
+    padding: 76px 0;
   }
 
   .lp-style-phones {
@@ -1907,22 +1952,17 @@ img {
   }
 
   .lp-download-art {
-    min-height: 360px;
+    min-height: auto;
+    padding-top: 6px;
   }
 
-  .lp-download-art img.phone {
-    left: 28%;
-    width: min(280px, 57%);
+  .lp-download-composite {
+    max-width: min(440px, 100%);
   }
 
-  .lp-download-art img.objects {
-    /* left: 6%;
-    width: min(160px, 36%); */
-  }
-
-  .lp-download-art img.trophy {
-    right: 10%;
-    width: min(120px, 24%);
+  .lp-qr-card {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .lp-faq-item summary {
@@ -1932,5 +1972,13 @@ img {
 
   .lp-faq-topic {
     align-self: flex-start;
+  }
+
+  .lp-footer {
+    padding: 46px 0 20px;
+  }
+
+  .lp-footer-grid {
+    gap: 22px;
   }
 }
