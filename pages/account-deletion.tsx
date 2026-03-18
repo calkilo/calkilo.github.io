@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import StaticPageLayout from '../components/StaticPageLayout'
 import { SITE_URL } from '../lib/seo'
+import { translateStaticPageText } from '../lib/static-page-translations'
+import { normalizeSiteLanguage, toLocalizedPath } from '../lib/site-language'
 
 const ACCOUNT_DELETION_PAGE_TITLE = 'Request Account & Data Deletion | Calkilo'
 const ACCOUNT_DELETION_PAGE_DESCRIPTION =
@@ -21,81 +23,90 @@ const REQUEST_BODY = [
   'Optional account ID:',
   'Reason (optional):',
 ].join('\n')
-const REQUEST_LINK = `mailto:${REQUEST_EMAIL}?subject=${encodeURIComponent(REQUEST_SUBJECT)}&body=${encodeURIComponent(REQUEST_BODY)}`
 
-const ACCOUNT_DELETION_PAGE_JSON_LD = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: ACCOUNT_DELETION_PAGE_TITLE,
-    description: ACCOUNT_DELETION_PAGE_DESCRIPTION,
-    url: `${SITE_URL}/account-deletion`,
-    inLanguage: 'en',
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: SITE_URL,
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Account Deletion',
-        item: `${SITE_URL}/account-deletion`,
-      },
-    ],
-  },
-] as const
+interface AccountDeletionPageProps {
+  lang?: string
+}
 
-export default function AccountDeletionPage() {
+export default function AccountDeletionPage({ lang }: AccountDeletionPageProps) {
+  const language = normalizeSiteLanguage(lang)
+  const localizedPath = toLocalizedPath('/account-deletion', language)
+  const t = (text: string) => translateStaticPageText(language, text)
+  const requestLink = `mailto:${REQUEST_EMAIL}?subject=${encodeURIComponent(t(REQUEST_SUBJECT))}&body=${encodeURIComponent(
+    t(REQUEST_BODY),
+  )}`
+  const pageTitle = t(ACCOUNT_DELETION_PAGE_TITLE)
+  const pageDescription = t(ACCOUNT_DELETION_PAGE_DESCRIPTION)
+  const pageJsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: pageTitle,
+      description: pageDescription,
+      url: `${SITE_URL}${localizedPath}`,
+      inLanguage: language,
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: t('Home'),
+          item: `${SITE_URL}${toLocalizedPath('/', language)}`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: t('Account Deletion'),
+          item: `${SITE_URL}${localizedPath}`,
+        },
+      ],
+    },
+  ] as const
+
   return (
     <StaticPageLayout
-      title={ACCOUNT_DELETION_PAGE_TITLE}
-      description={ACCOUNT_DELETION_PAGE_DESCRIPTION}
+      title={pageTitle}
+      description={pageDescription}
       path="/account-deletion"
-      heading="Request Account & Data Deletion"
-      intro="Use this page to request permanent deletion of your Calkilo account and associated personal data."
+      heading={t('Request Account & Data Deletion')}
+      intro={t('Use this page to request permanent deletion of your Calkilo account and associated personal data.')}
       activeNav="deletion"
+      lang={language}
       keywords={ACCOUNT_DELETION_PAGE_KEYWORDS}
-      jsonLd={ACCOUNT_DELETION_PAGE_JSON_LD}
+      jsonLd={pageJsonLd}
     >
       <section className="lp-static-card">
-        <h2>Submit Your Request</h2>
-        <p>
-          Send your request to our privacy team and we will process it after account ownership verification.
-        </p>
-        <a className="lp-contact-submit" href={REQUEST_LINK}>
-          Email deletion request
+        <h2>{t('Submit Your Request')}</h2>
+        <p>{t('Send your request to our privacy team and we will process it after account ownership verification.')}</p>
+        <a className="lp-contact-submit" href={requestLink}>
+          {t('Email deletion request')}
         </a>
-        <p className="lp-contact-note">
-          This opens your email app with a pre-filled message to {REQUEST_EMAIL}.
-        </p>
+        <p className="lp-contact-note">{t('This opens your email app with a pre-filled message to privacy@calkilo.app.')}</p>
       </section>
 
       <section className="lp-static-card">
-        <h2>Information to Include</h2>
+        <h2>{t('Information to Include')}</h2>
         <ul className="lp-policy-list">
-          <li>Account email address used in Calkilo.</li>
-          <li>Optional account ID if available.</li>
-          <li>Any context needed to identify the account if you use multiple emails.</li>
+          <li>{t('Account email address used in Calkilo.')}</li>
+          <li>{t('Optional account ID if available.')}</li>
+          <li>{t('Any context needed to identify the account if you use multiple emails.')}</li>
         </ul>
       </section>
 
       <section className="lp-static-card">
-        <h2>What Happens Next</h2>
+        <h2>{t('What Happens Next')}</h2>
         <ul className="lp-policy-list">
-          <li>We will confirm your identity before deletion to protect account security.</li>
-          <li>After verification, your account and associated personal data will be deleted.</li>
-          <li>Data we must retain for legal, fraud prevention, or compliance reasons may be kept as required by law.</li>
+          <li>{t('We will confirm your identity before deletion to protect account security.')}</li>
+          <li>{t('After verification, your account and associated personal data will be deleted.')}</li>
+          <li>{t('Data we must retain for legal, fraud prevention, or compliance reasons may be kept as required by law.')}</li>
         </ul>
         <p>
-          For other privacy requests, visit <Link href="/privacy-policy">Privacy Policy</Link> or{' '}
-          <Link href="/contact">Contact</Link>.
+          {t('For other privacy requests, visit')}{' '}
+          <Link href={toLocalizedPath('/privacy-policy', language)}>{t('Privacy Policy')}</Link> {t('or')}{' '}
+          <Link href={toLocalizedPath('/contact', language)}>{t('Contact')}</Link>.
         </p>
       </section>
     </StaticPageLayout>

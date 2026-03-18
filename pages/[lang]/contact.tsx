@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import AccountDeletionPage from '../account-deletion'
+import ContactPage from '../contact'
 import { SUPPORTED_LANGUAGES } from '../../lib/site-language'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -21,4 +21,4 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 }
 
-export default AccountDeletionPage
+export default ContactPage

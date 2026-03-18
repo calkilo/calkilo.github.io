@@ -1,7 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import LandingPage from '../../components/LandingPage'
-
-const SUPPORTED_LANGUAGES = ['en', 'nl', 'ru', 'zh', 'ar', 'fa', 'it']
+import { SUPPORTED_LANGUAGES } from '../../lib/site-language'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = SUPPORTED_LANGUAGES.map((lang) => ({
@@ -22,6 +21,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 }
 
-export default function LangHomePage() {
-  return <LandingPage variant="light" />
+interface LangHomePageProps {
+  lang?: string
+}
+
+export default function LangHomePage({ lang }: LangHomePageProps) {
+  return <LandingPage lang={lang} variant="light" />
 }

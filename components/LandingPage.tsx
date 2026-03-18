@@ -1,12 +1,23 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useEffect, useMemo, useState, type CSSProperties } from 'react'
 import { SITE_URL } from '../lib/seo'
+import {
+  buildAlternateLanguagePaths,
+  isRtlLanguage,
+  LANGUAGE_FONT_FAMILIES,
+  normalizeSiteLanguage,
+  type SiteLanguage,
+  switchLanguagePath,
+  toLocalizedPath,
+} from '../lib/site-language'
+import SiteFooter from './SiteFooter'
+import SiteHeader from './SiteHeader'
 import SeoHead from './SeoHead'
 
 type LandingVariant = 'light' | 'dark'
 
 interface LandingPageProps {
+  lang?: string
   variant: LandingVariant
 }
 
@@ -48,44 +59,6 @@ const FIGMA_ASSETS = {
 
 const NAV_ITEMS = ['home', 'features', 'pricing', 'contact'] as const
 
-const LANGUAGE_OPTIONS = ['en', 'nl', 'ru', 'zh', 'ar', 'fa', 'it'] as const
-type SiteLanguage = (typeof LANGUAGE_OPTIONS)[number]
-
-const LANGUAGE_LABELS: Record<SiteLanguage, string> = {
-  en: 'English',
-  nl: 'Nederlands',
-  ru: 'Русский',
-  zh: '中文',
-  ar: 'العربية',
-  fa: 'فارسی',
-  it: 'Italiano',
-}
-
-const LANGUAGE_SHORT_LABELS: Record<SiteLanguage, string> = {
-  en: 'En',
-  nl: 'Nl',
-  ru: 'Ru',
-  zh: 'Zh',
-  ar: 'Ar',
-  fa: 'Fa',
-  it: 'It',
-}
-
-const LANGUAGE_FONT_FAMILIES: Record<SiteLanguage, string> = {
-  en: "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-  nl: "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-  it: "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-  ru: "'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-  zh: "'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif",
-  ar: "'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif",
-  fa: "'Vazirmatn', 'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif",
-}
-
-const RTL_LANGUAGES = new Set<SiteLanguage>(['ar', 'fa'])
-
-const LANDING_PAGE_TITLE = 'Calkilo | AI Calorie Tracker & Nutrition App'
-const LANDING_PAGE_DESCRIPTION =
-  'Calculate calories with AI precision, get personalized meal plans, and track nutrition across all your devices.'
 const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.calkilo.mobile&hl=fa'
 const APP_STORE_URL = 'https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411'
 const LANDING_PAGE_KEYWORDS = [
@@ -95,11 +68,13 @@ const LANDING_PAGE_KEYWORDS = [
   'photo calorie calculator',
   'calkilo',
 ]
-const LANGUAGE_STORAGE_KEY = 'calkilo-selected-language'
 
 const TRANSLATIONS: Record<
   SiteLanguage,
   {
+    pageDescription: string
+    pageTitle: string
+    darkThemeLabel: string
     nav: Record<(typeof NAV_ITEMS)[number], string>
     tryFree: string
     heroTitleA: string
@@ -143,6 +118,10 @@ const TRANSLATIONS: Record<
   }
 > = {
   en: {
+    pageDescription:
+      'Calculate calories with AI precision, get personalized meal plans, and track nutrition across all your devices.',
+    pageTitle: 'Calkilo | AI Calorie Tracker & Nutrition App',
+    darkThemeLabel: 'Dark Theme',
     nav: { home: 'Home', features: 'Features', pricing: 'Choose Plan', contact: 'Contact' },
     tryFree: 'Try for free',
     heroTitleA: 'Calculate Calories with ',
@@ -190,6 +169,10 @@ const TRANSLATIONS: Record<
     storeAppleLarge: 'App Store',
   },
   nl: {
+    pageDescription:
+      'Bereken calorieen met AI-nauwkeurigheid, ontvang persoonlijke maaltijdplannen en volg je voeding op al je apparaten.',
+    pageTitle: 'Calkilo | AI-calorietracker en voedingsapp',
+    darkThemeLabel: 'Donkere modus',
     nav: { home: 'Thuis', features: 'Functies', pricing: 'Kies plan', contact: 'Contact' },
     tryFree: 'Probeer gratis',
     heroTitleA: 'Bereken calorieen met',
@@ -232,6 +215,9 @@ const TRANSLATIONS: Record<
     storeAppleLarge: 'App Store',
   },
   zh: {
+    pageDescription: '用 AI 精准计算卡路里，获取个性化餐食计划，并在所有设备上追踪营养。',
+    pageTitle: 'Calkilo | AI 卡路里追踪与营养应用',
+    darkThemeLabel: '深色主题',
     nav: { home: '首页', features: '功能', pricing: '选择计划', contact: '联系我们' },
     tryFree: '免费试用',
     heroTitleA: '使用',
@@ -274,6 +260,10 @@ const TRANSLATIONS: Record<
     storeAppleLarge: 'App Store',
   },
   ru: {
+    pageDescription:
+      'Считайте калории с точностью AI, получайте персональные планы питания и отслеживайте рацион на всех устройствах.',
+    pageTitle: 'Calkilo | AI-трекер калорий и питания',
+    darkThemeLabel: 'Темная тема',
     nav: { home: 'Главная', features: 'Функции', pricing: 'Тарифы', contact: 'Контакты' },
     tryFree: 'Попробовать бесплатно',
     heroTitleA: 'Считайте калории с',
@@ -316,6 +306,10 @@ const TRANSLATIONS: Record<
     storeAppleLarge: 'App Store',
   },
   ar: {
+    pageDescription:
+      'احسب السعرات بدقة الذكاء الاصطناعي، واحصل على خطط وجبات مخصصة، وتابع تغذيتك على جميع أجهزتك.',
+    pageTitle: 'Calkilo | تطبيق تتبع السعرات والتغذية بالذكاء الاصطناعي',
+    darkThemeLabel: 'الوضع الداكن',
     nav: { home: 'الرئيسية', features: 'الميزات', pricing: 'الخطط', contact: 'تواصل' },
     tryFree: 'جرب مجاناً',
     heroTitleA: 'احسب السعرات بـ',
@@ -358,6 +352,10 @@ const TRANSLATIONS: Record<
     storeAppleLarge: 'App Store',
   },
   fa: {
+    pageDescription:
+      'کالری را با دقت هوش مصنوعی محاسبه کنید، برنامه غذایی شخصی بگیرید و تغذیه خود را در همه دستگاه‌ها دنبال کنید.',
+    pageTitle: 'Calkilo | اپ هوش مصنوعی برای شمارش کالری و تغذیه',
+    darkThemeLabel: 'حالت تیره',
     nav: { home: 'خانه', features: 'ویژگی‌ها', pricing: 'انتخاب طرح', contact: 'تماس' },
     tryFree: 'رایگان امتحان کنید',
     heroTitleA: 'محاسبه کالری با',
@@ -400,6 +398,10 @@ const TRANSLATIONS: Record<
     storeAppleLarge: 'App Store',
   },
   it: {
+    pageDescription:
+      'Calcola le calorie con precisione AI, ricevi piani alimentari personalizzati e monitora la nutrizione su tutti i tuoi dispositivi.',
+    pageTitle: 'Calkilo | App AI per calorie e nutrizione',
+    darkThemeLabel: 'Tema scuro',
     nav: { home: 'Home', features: 'Funzioni', pricing: 'Scegli piano', contact: 'Contatto' },
     tryFree: 'Provalo gratis',
     heroTitleA: 'Calcola le calorie con',
@@ -774,35 +776,6 @@ const FAQ_ITEMS = [
   },
 ] as const
 
-const FOOTER_LINKS = [
-  {
-    title: 'Feature',
-    links: [
-      { label: 'Download', href: '#download' },
-      { label: 'How it Works?', href: '#how-it-works' },
-      { label: 'Blog', href: '#' },
-    ],
-  },
-  {
-    title: 'Support',
-    links: [
-      { label: 'Privacy Policy', href: '/privacy-policy' },
-      { label: 'Terms of Service', href: '/terms-of-service' },
-      { label: 'Delete Account & Data', href: '/account-deletion' },
-      { label: 'Terms & Conditions', href: '#' },
-      { label: 'FAQ', href: '#faq' },
-    ],
-  },
-  {
-    title: 'Get in Touch',
-    links: [
-      { label: 'Contact', href: '/contact' },
-      { label: 'About Us', href: '#' },
-      { label: 'Our Team', href: '#' },
-    ],
-  },
-] as const
-
 const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
   en: {},
   nl: {
@@ -888,6 +861,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Support": "Ondersteuning",
     "Privacy Policy": "Privacybeleid",
     "Terms of Service": "Servicevoorwaarden",
+    "Delete Account & Data": "Account en gegevens verwijderen",
     "Terms & Conditions": "Algemene voorwaarden",
     "FAQ": "Veelgestelde vragen",
     "Get in Touch": "Neem contact op",
@@ -994,6 +968,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Support": "Поддержка",
     "Privacy Policy": "Политика конфиденциальности",
     "Terms of Service": "Условия использования",
+    "Delete Account & Data": "Удалить аккаунт и данные",
     "Terms & Conditions": "Правила и условия",
     "FAQ": "Частые вопросы",
     "Get in Touch": "Связаться",
@@ -1100,6 +1075,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Support": "支持",
     "Privacy Policy": "隐私政策",
     "Terms of Service": "服务条款",
+    "Delete Account & Data": "删除账户和数据",
     "Terms & Conditions": "条款与条件",
     "FAQ": "常见问题",
     "Get in Touch": "联系我们",
@@ -1206,6 +1182,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Support": "الدعم",
     "Privacy Policy": "سياسة الخصوصية",
     "Terms of Service": "شروط الخدمة",
+    "Delete Account & Data": "حذف الحساب والبيانات",
     "Terms & Conditions": "الشروط والأحكام",
     "FAQ": "الأسئلة الشائعة",
     "Get in Touch": "تواصل معنا",
@@ -1312,6 +1289,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Support": "پشتیبانی",
     "Privacy Policy": "سیاست حریم خصوصی",
     "Terms of Service": "شرایط خدمات",
+    "Delete Account & Data": "حذف حساب و داده‌ها",
     "Terms & Conditions": "شرایط و قوانین",
     "FAQ": "سوالات متداول",
     "Get in Touch": "ارتباط با ما",
@@ -1418,6 +1396,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Support": "Supporto",
     "Privacy Policy": "Informativa sulla privacy",
     "Terms of Service": "Termini di servizio",
+    "Delete Account & Data": "Elimina account e dati",
     "Terms & Conditions": "Termini e condizioni",
     "FAQ": "FAQ",
     "Get in Touch": "Mettiti in contatto",
@@ -1444,18 +1423,6 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
 
 function translateStaticText(language: SiteLanguage, text: string): string {
   return STATIC_TEXT_TRANSLATIONS[language][text] ?? text
-}
-
-function BrandLogo() {
-  return (
-    <span className="lp-brand" aria-label="CalKilo logo">
-      <img className="lp-brand-mark-icon" src="/assets/logo-calkilo.svg" alt="" aria-hidden="true" />
-      <span className="lp-brand-text">
-        <span>Cal</span>
-        <span>Kilo</span>
-      </span>
-    </span>
-  )
 }
 
 function GooglePlayIcon() {
@@ -1501,12 +1468,14 @@ function QrCard({ label }: { label: string }) {
   )
 }
 
-export default function LandingPage({ variant }: LandingPageProps) {
+export default function LandingPage({ lang, variant }: LandingPageProps) {
+  const router = useRouter()
+  const initialLanguage = normalizeSiteLanguage(lang)
   const [systemVariant, setSystemVariant] = useState<LandingVariant>(variant)
   const [manualVariant, setManualVariant] = useState<LandingVariant | null>(null)
   const [heroSlide, setHeroSlide] = useState(0)
   const [activeFeature, setActiveFeature] = useState(0)
-  const [language, setLanguage] = useState<SiteLanguage>('en')
+  const [language, setLanguage] = useState<SiteLanguage>(initialLanguage)
   const [activeNav, setActiveNav] = useState<(typeof NAV_ITEMS)[number]>('home')
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -1544,6 +1513,10 @@ export default function LandingPage({ variant }: LandingPageProps) {
   )
 
   useEffect(() => {
+    setLanguage(initialLanguage)
+  }, [initialLanguage])
+
+  useEffect(() => {
     if (typeof window === 'undefined') {
       return
     }
@@ -1563,34 +1536,18 @@ export default function LandingPage({ variant }: LandingPageProps) {
   }, [])
 
   useEffect(() => {
-    if (typeof window === 'undefined') {
+    if (typeof document === 'undefined') {
       return
     }
 
-    const savedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY)
-    if (!savedLanguage) {
-      return
-    }
-
-    if (LANGUAGE_OPTIONS.includes(savedLanguage as SiteLanguage)) {
-      setLanguage(savedLanguage as SiteLanguage)
-    }
-  }, [])
+    document.documentElement.lang = language
+    document.documentElement.dir = isRtlLanguage(language) ? 'rtl' : 'ltr'
+  }, [language])
 
   useEffect(() => {
     setHeroSlide(0)
     setActiveFeature(0)
   }, [resolvedVariant, language])
-
-  useEffect(() => {
-    if (typeof document === 'undefined' || typeof window === 'undefined') {
-      return
-    }
-
-    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
-    document.documentElement.lang = language
-    document.documentElement.dir = RTL_LANGUAGES.has(language) ? 'rtl' : 'ltr'
-  }, [language])
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -1651,8 +1608,55 @@ export default function LandingPage({ variant }: LandingPageProps) {
   }, [])
 
   const isDarkVariantPage = variant === 'dark'
-  const seoPath = isDarkVariantPage ? '/dark' : '/'
-  const seoTitle = isDarkVariantPage ? `${LANDING_PAGE_TITLE} | Dark Theme` : LANDING_PAGE_TITLE
+  const baseSeoPath = isDarkVariantPage ? '/dark' : '/'
+  const seoPath = toLocalizedPath(baseSeoPath, language)
+  const seoCanonicalPath = isDarkVariantPage ? toLocalizedPath('/', language) : seoPath
+  const seoTitle = isDarkVariantPage ? `${copy.pageTitle} | ${copy.darkThemeLabel}` : copy.pageTitle
+  const landingAlternateLanguages = buildAlternateLanguagePaths(baseSeoPath)
+  const landingHeaderItems = NAV_ITEMS.map((item) => ({
+    key: item,
+    href: `#${item}`,
+    isActive: activeNav === item,
+    label: copy.nav[item],
+    onClick: () => setActiveNav(item),
+  }))
+  const landingFooterSections = [
+    {
+      title: ts('Feature'),
+      links: [
+        { label: ts('Download'), href: '#download' },
+        { label: ts('How it Works?'), href: '#how-it-works' },
+        { label: ts('Blog'), href: '#' },
+      ],
+    },
+    {
+      title: ts('Support'),
+      links: [
+        { label: ts('Privacy Policy'), href: toLocalizedPath('/privacy-policy', language) },
+        { label: ts('Terms of Service'), href: toLocalizedPath('/terms-of-service', language) },
+        { label: ts('Delete Account & Data'), href: toLocalizedPath('/account-deletion', language) },
+        { label: ts('Terms & Conditions'), href: toLocalizedPath('/terms-and-conditions', language) },
+        { label: ts('FAQ'), href: '#faq' },
+      ],
+    },
+    {
+      title: ts('Get in Touch'),
+      links: [
+        { label: ts('Contact'), href: toLocalizedPath('/contact', language) },
+        { label: ts('About Us'), href: '#' },
+        { label: ts('Our Team'), href: '#' },
+      ],
+    },
+  ] as const
+
+  const handleLanguageChange = (nextLanguage: SiteLanguage) => {
+    if (nextLanguage === language) {
+      return
+    }
+
+    setLanguage(nextLanguage)
+    void router.push(switchLanguagePath(router.asPath || seoPath, nextLanguage))
+  }
 
   const landingJsonLd = useMemo<Array<Record<string, unknown>>>(
     () => [
@@ -1667,8 +1671,8 @@ export default function LandingPage({ variant }: LandingPageProps) {
             '@type': 'ContactPoint',
             contactType: 'customer support',
             email: 'support@calkilo.app',
-            url: `${SITE_URL}/contact`,
-            availableLanguage: ['English'],
+            url: `${SITE_URL}${toLocalizedPath('/contact', language)}`,
+            availableLanguage: [language],
           },
         ],
       },
@@ -1676,9 +1680,9 @@ export default function LandingPage({ variant }: LandingPageProps) {
         '@context': 'https://schema.org',
         '@type': 'WebPage',
         name: seoTitle,
-        description: LANDING_PAGE_DESCRIPTION,
+        description: copy.pageDescription,
         url: `${SITE_URL}${seoPath}`,
-        inLanguage: 'en',
+        inLanguage: language,
         isPartOf: {
           '@type': 'WebSite',
           name: 'Calkilo',
@@ -1691,16 +1695,16 @@ export default function LandingPage({ variant }: LandingPageProps) {
         name: 'Calkilo',
         applicationCategory: 'HealthApplication',
         operatingSystem: 'iOS, Android',
-        description: LANDING_PAGE_DESCRIPTION,
-        url: SITE_URL,
-        featureList: FEATURE_ITEMS.map((item) => item.title),
+        description: copy.pageDescription,
+        url: `${SITE_URL}${seoPath}`,
+        featureList: FEATURE_ITEMS.map((item) => ts(item.title)),
         offers: PRICING_PLANS.map((plan) => ({
           '@type': 'Offer',
-          name: plan.title,
+          name: ts(plan.title),
           priceCurrency: 'USD',
           price: plan.price.replace('$', ''),
           availability: 'https://schema.org/InStock',
-          url: `${SITE_URL}/#pricing`,
+          url: `${SITE_URL}${toLocalizedPath('/#pricing', language)}`,
         })),
       },
       {
@@ -1708,75 +1712,50 @@ export default function LandingPage({ variant }: LandingPageProps) {
         '@type': 'FAQPage',
         mainEntity: FAQ_ITEMS.map((item) => ({
           '@type': 'Question',
-          name: item.question,
+          name: ts(item.question),
           acceptedAnswer: {
             '@type': 'Answer',
-            text: item.answer,
+            text: ts(item.answer),
           },
         })),
       },
     ],
-    [seoPath, seoTitle],
+    [copy.pageDescription, language, seoPath, seoTitle],
   )
 
   return (
     <div
       className={`lp-page lp-page--${resolvedVariant}`}
+      dir={isRtlLanguage(language) ? 'rtl' : 'ltr'}
+      lang={language}
       style={{ '--lp-language-font': languageFontFamily } as CSSProperties}
     >
       <SeoHead
         title={seoTitle}
-        description={LANDING_PAGE_DESCRIPTION}
+        description={copy.pageDescription}
         path={seoPath}
-        canonicalPath={isDarkVariantPage ? '/' : seoPath}
+        canonicalPath={seoCanonicalPath}
         keywords={LANDING_PAGE_KEYWORDS}
         noindex={isDarkVariantPage}
         imagePath="/assets/hero-main.png"
         imageAlt="Calkilo AI calorie tracking dashboard"
         jsonLd={landingJsonLd}
+        language={language}
+        alternateLanguages={landingAlternateLanguages}
       />
 
-      <header className={`lp-topbar${isScrolled ? ' is-scrolled' : ''}`}>
-        <div className="lp-container lp-topbar-inner">
-          <a className="lp-logo" href="#home" aria-label="CalKilo home">
-            <BrandLogo />
-          </a>
-
-          <nav className="lp-nav" aria-label="Main navigation">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item}
-                href={`#${item}`}
-                className={activeNav === item ? 'is-active' : undefined}
-                onClick={() => setActiveNav(item)}
-              >
-                {copy.nav[item]}
-              </a>
-            ))}
-          </nav>
-
-          <div className="lp-topbar-actions">
-            <a className="lp-btn lp-btn--solid" href="#download">
-              {copy.tryFree}
-            </a>
-            <label className="lp-lang" aria-label="Language selector">
-              <span className="sr-only">{ts('Language')}</span>
-              <select
-                title={LANGUAGE_LABELS[language]}
-                value={language}
-                onChange={(event) => setLanguage(event.target.value as SiteLanguage)}
-                style={{ fontFamily: languageFontFamily }}
-              >
-                {LANGUAGE_OPTIONS.map((lang) => (
-                  <option key={lang} value={lang} style={{ fontFamily: LANGUAGE_FONT_FAMILIES[lang] }}>
-                    {LANGUAGE_SHORT_LABELS[lang]}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </div>
-        </div>
-      </header>
+      <SiteHeader
+        ctaHref="#download"
+        ctaLabel={copy.tryFree}
+        homeAriaLabel="CalKilo home"
+        homeHref="#home"
+        isScrolled={isScrolled}
+        language={language}
+        languageLabel={ts('Language')}
+        navAriaLabel="Main navigation"
+        navItems={landingHeaderItems}
+        onLanguageChange={handleLanguageChange}
+      />
 
       <main id="home">
         <section className="lp-hero">
@@ -2136,48 +2115,15 @@ export default function LandingPage({ variant }: LandingPageProps) {
         </section>
       </main>
 
-      <footer className="lp-footer" id="contact">
-        <div className="lp-container lp-footer-grid">
-          <section>
-            <a className="lp-logo" href="#home" aria-label="CalKilo home">
-              <BrandLogo />
-            </a>
-            <p>
-              {copy.footerDescription}
-            </p>
-            <div className="lp-socials" aria-label="Social links">
-              <a href="#" aria-label="X">
-                X
-              </a>
-              <a href="#" aria-label="Telegram">
-                Tg
-              </a>
-              <a href="#" aria-label="LinkedIn">
-                In
-              </a>
-              <a href="#" aria-label="Instagram">
-                Ig
-              </a>
-            </div>
-          </section>
-
-          {FOOTER_LINKS.map((section) => (
-            <section key={section.title}>
-              <h3>{ts(section.title)}</h3>
-              <ul>
-                {section.links.map((link) => (
-                  <li key={link.label}>
-                    <Link href={link.href}>{ts(link.label)}</Link>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
-        </div>
-        <p className="lp-copyright">
-          © {new Date().getFullYear()} Calkilo. {ts('All rights reserved.')}
-        </p>
-      </footer>
+      <SiteFooter
+        copyright={`© ${new Date().getFullYear()} Calkilo. ${ts('All rights reserved.')}`}
+        description={copy.footerDescription}
+        homeAriaLabel="CalKilo home"
+        homeHref="#home"
+        id="contact"
+        sections={landingFooterSections}
+        socialLinksLabel="Social links"
+      />
     </div>
   )
 }

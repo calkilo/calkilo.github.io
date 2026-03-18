@@ -1,5 +1,9 @@
 import LandingPage from '../components/LandingPage'
 
-export default function HomePage() {
-  return <LandingPage variant="light" />
+interface HomePageProps {
+  lang?: string
+}
+
+export default function HomePage({ lang }: HomePageProps) {
+  return <LandingPage lang={lang} variant="light" />
 }
