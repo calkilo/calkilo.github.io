@@ -1,7 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import TermsAndConditionsPage from '../terms-and-conditions'
-
-const SUPPORTED_LANGUAGES = ['en', 'nl', 'ru', 'zh', 'ar', 'fa', 'it']
+import { SUPPORTED_LANGUAGES } from '../../lib/site-language'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = SUPPORTED_LANGUAGES.map((lang) => ({

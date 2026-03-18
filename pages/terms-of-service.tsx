@@ -1,5 +1,7 @@
 import StaticPageLayout from '../components/StaticPageLayout'
 import { SITE_URL } from '../lib/seo'
+import { translateStaticPageText } from '../lib/static-page-translations'
+import { normalizeSiteLanguage, toLocalizedPath } from '../lib/site-language'
 
 interface TermsSection {
   title: string
@@ -18,37 +20,6 @@ const TERMS_PAGE_KEYWORDS = [
   'nutrition app legal terms',
   'ai calorie tracker terms',
 ]
-
-const TERMS_PAGE_JSON_LD = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: TERMS_PAGE_TITLE,
-    description: TERMS_PAGE_DESCRIPTION,
-    url: `${SITE_URL}/terms-of-service`,
-    inLanguage: 'en',
-    datePublished: EFFECTIVE_DATE_ISO,
-    dateModified: EFFECTIVE_DATE_ISO,
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: SITE_URL,
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Terms of Service',
-        item: `${SITE_URL}/terms-of-service`,
-      },
-    ],
-  },
-] as const
 
 const TERMS_SECTIONS: TermsSection[] = [
   {
@@ -140,41 +111,80 @@ const TERMS_SECTIONS: TermsSection[] = [
   },
 ] as const
 
-export default function TermsOfServicePage() {
+interface TermsOfServicePageProps {
+  lang?: string
+}
+
+export default function TermsOfServicePage({ lang }: TermsOfServicePageProps) {
+  const language = normalizeSiteLanguage(lang)
+  const localizedPath = toLocalizedPath('/terms-of-service', language)
+  const t = (text: string) => translateStaticPageText(language, text)
+  const pageTitle = t(TERMS_PAGE_TITLE)
+  const pageDescription = t(TERMS_PAGE_DESCRIPTION)
+  const pageJsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: pageTitle,
+      description: pageDescription,
+      url: `${SITE_URL}${localizedPath}`,
+      inLanguage: language,
+      datePublished: EFFECTIVE_DATE_ISO,
+      dateModified: EFFECTIVE_DATE_ISO,
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: t('Home'),
+          item: `${SITE_URL}${toLocalizedPath('/', language)}`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: t('Terms of Service'),
+          item: `${SITE_URL}${localizedPath}`,
+        },
+      ],
+    },
+  ] as const
+
   return (
     <StaticPageLayout
-      title={TERMS_PAGE_TITLE}
-      description={TERMS_PAGE_DESCRIPTION}
+      title={pageTitle}
+      description={pageDescription}
       path="/terms-of-service"
-      heading="Terms of Service"
-      intro="These terms explain the rules, rights, and responsibilities that apply when you use Calkilo."
+      heading={t('Terms of Service')}
+      intro={t('These terms explain the rules, rights, and responsibilities that apply when you use Calkilo.')}
       activeNav="terms"
+      lang={language}
       keywords={TERMS_PAGE_KEYWORDS}
       ogType="article"
-      jsonLd={TERMS_PAGE_JSON_LD}
+      jsonLd={pageJsonLd}
     >
       <article className="lp-static-card">
-        <h2>Summary</h2>
-        <p>
-          By using Calkilo, you agree to use the service lawfully, maintain accurate account information, and follow
-          subscription and acceptable-use rules. Calkilo content is provided for informational purposes and not as
-          medical advice.
-        </p>
+        <h2>{t('Summary')}</h2>
+        <p>{t(
+          'By using Calkilo, you agree to use the service lawfully, maintain accurate account information, and follow subscription and acceptable-use rules. Calkilo content is provided for informational purposes and not as medical advice.',
+        )}</p>
         <p className="lp-policy-date">
-          <strong>Effective date:</strong> {EFFECTIVE_DATE}
+          <strong>{t('Effective date:')}</strong> {t(EFFECTIVE_DATE)}
         </p>
       </article>
 
       {TERMS_SECTIONS.map((section) => (
         <section key={section.title} className="lp-static-card">
-          <h2>{section.title}</h2>
+          <h2>{t(section.title)}</h2>
           {section.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+            <p key={paragraph}>{t(paragraph)}</p>
           ))}
           {section.bullets ? (
             <ul className="lp-policy-list">
               {section.bullets.map((bullet) => (
-                <li key={bullet}>{bullet}</li>
+                <li key={bullet}>{t(bullet)}</li>
               ))}
             </ul>
           ) : null}

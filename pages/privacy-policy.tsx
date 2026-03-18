@@ -1,5 +1,7 @@
 import StaticPageLayout from '../components/StaticPageLayout'
 import { SITE_URL } from '../lib/seo'
+import { translateStaticPageText } from '../lib/static-page-translations'
+import { normalizeSiteLanguage, toLocalizedPath } from '../lib/site-language'
 
 interface PolicySection {
   title: string
@@ -12,42 +14,6 @@ const PRIVACY_PAGE_DESCRIPTION = "Read Calkilo's privacy policy and learn how we
 const EFFECTIVE_DATE = 'February 25, 2026'
 const EFFECTIVE_DATE_ISO = '2026-02-25'
 const PRIVACY_PAGE_KEYWORDS = ['calkilo privacy policy', 'nutrition app privacy', 'ai calorie app data policy']
-
-const PRIVACY_PAGE_JSON_LD = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'PrivacyPolicy',
-    name: PRIVACY_PAGE_TITLE,
-    description: PRIVACY_PAGE_DESCRIPTION,
-    url: `${SITE_URL}/privacy-policy`,
-    inLanguage: 'en',
-    datePublished: EFFECTIVE_DATE_ISO,
-    dateModified: EFFECTIVE_DATE_ISO,
-    publisher: {
-      '@type': 'Organization',
-      name: 'Calkilo',
-      url: SITE_URL,
-    },
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: SITE_URL,
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Privacy Policy',
-        item: `${SITE_URL}/privacy-policy`,
-      },
-    ],
-  },
-] as const
 
 const POLICY_SECTIONS: PolicySection[] = [
   {
@@ -113,41 +79,87 @@ const POLICY_SECTIONS: PolicySection[] = [
   },
 ]
 
-export default function PrivacyPolicyPage() {
+interface PrivacyPolicyPageProps {
+  lang?: string
+}
+
+export default function PrivacyPolicyPage({ lang }: PrivacyPolicyPageProps) {
+  const language = normalizeSiteLanguage(lang)
+  const localizedPath = toLocalizedPath('/privacy-policy', language)
+  const t = (text: string) => translateStaticPageText(language, text)
+  const pageTitle = t(PRIVACY_PAGE_TITLE)
+  const pageDescription = t(PRIVACY_PAGE_DESCRIPTION)
+  const pageJsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'PrivacyPolicy',
+      name: pageTitle,
+      description: pageDescription,
+      url: `${SITE_URL}${localizedPath}`,
+      inLanguage: language,
+      datePublished: EFFECTIVE_DATE_ISO,
+      dateModified: EFFECTIVE_DATE_ISO,
+      publisher: {
+        '@type': 'Organization',
+        name: 'Calkilo',
+        url: SITE_URL,
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: t('Home'),
+          item: `${SITE_URL}${toLocalizedPath('/', language)}`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: t('Privacy Policy'),
+          item: `${SITE_URL}${localizedPath}`,
+        },
+      ],
+    },
+  ] as const
+
   return (
     <StaticPageLayout
-      title={PRIVACY_PAGE_TITLE}
-      description={PRIVACY_PAGE_DESCRIPTION}
+      title={pageTitle}
+      description={pageDescription}
       path="/privacy-policy"
-      heading="Privacy Policy"
-      intro="Your privacy matters to us. This page explains what data we collect, why we collect it, and how you can control your information."
+      heading={t('Privacy Policy')}
+      intro={t(
+        'Your privacy matters to us. This page explains what data we collect, why we collect it, and how you can control your information.',
+      )}
       activeNav="privacy"
+      lang={language}
       keywords={PRIVACY_PAGE_KEYWORDS}
       ogType="article"
-      jsonLd={PRIVACY_PAGE_JSON_LD}
+      jsonLd={pageJsonLd}
     >
       <article className="lp-static-card">
-        <h2>Summary</h2>
-        <p>
-          Calkilo uses account, nutrition, and technical data to provide AI-powered calorie tracking and improve
-          the product. We do not sell personal data, and you can request access or deletion of your information at
-          any time.
-        </p>
+        <h2>{t('Summary')}</h2>
+        <p>{t(
+          'Calkilo uses account, nutrition, and technical data to provide AI-powered calorie tracking and improve the product. We do not sell personal data, and you can request access or deletion of your information at any time.',
+        )}</p>
         <p className="lp-policy-date">
-          <strong>Effective date:</strong> {EFFECTIVE_DATE}
+          <strong>{t('Effective date:')}</strong> {t(EFFECTIVE_DATE)}
         </p>
       </article>
 
       {POLICY_SECTIONS.map((section) => (
         <section key={section.title} className="lp-static-card">
-          <h2>{section.title}</h2>
+          <h2>{t(section.title)}</h2>
           {section.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+            <p key={paragraph}>{t(paragraph)}</p>
           ))}
           {section.bullets ? (
             <ul className="lp-policy-list">
               {section.bullets.map((bullet) => (
-                <li key={bullet}>{bullet}</li>
+                <li key={bullet}>{t(bullet)}</li>
               ))}
             </ul>
           ) : null}

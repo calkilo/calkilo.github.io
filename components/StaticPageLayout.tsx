@@ -1,5 +1,15 @@
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { type ReactNode } from 'react'
+import { translateStaticPageText } from '../lib/static-page-translations'
+import {
+  buildAlternateLanguagePaths,
+  isRtlLanguage,
+  normalizeSiteLanguage,
+  switchLanguagePath,
+  toLocalizedPath,
+} from '../lib/site-language'
+import SiteFooter from './SiteFooter'
+import SiteHeader from './SiteHeader'
 import SeoHead from './SeoHead'
 
 type StaticNavItem = 'privacy' | 'contact' | 'terms' | 'deletion'
@@ -12,47 +22,13 @@ interface StaticPageLayoutProps {
   heading: string
   intro: string
   activeNav: StaticNavItem
+  lang?: string
   keywords?: ReadonlyArray<string>
   noindex?: boolean
   ogType?: 'website' | 'article'
   imagePath?: string
   jsonLd?: JsonLdSchema | ReadonlyArray<JsonLdSchema>
   children: ReactNode
-}
-
-const FOOTER_SECTIONS = [
-  {
-    title: 'Company',
-    links: [
-      { label: 'Home', href: '/' },
-      { label: 'Features', href: '/#features' },
-      { label: 'Pricing', href: '/#pricing' },
-    ],
-  },
-  {
-    title: 'Support',
-    links: [
-      { label: 'Privacy Policy', href: '/privacy-policy' },
-      { label: 'Terms of Service', href: '/terms-of-service' },
-      { label: 'Delete Account & Data', href: '/account-deletion' },
-      { label: 'Contact', href: '/contact' },
-      { label: 'FAQ', href: '/#faq' },
-    ],
-  },
-] as const
-
-function BrandLogo() {
-  return (
-    <span className="lp-brand" aria-label="CalKilo logo">
-      <span className="lp-brand-mark" aria-hidden="true">
-        CK
-      </span>
-      <span className="lp-brand-text">
-        <span>Cal</span>
-        <span>Kilo</span>
-      </span>
-    </span>
-  )
 }
 
 export default function StaticPageLayout({
@@ -62,6 +38,7 @@ export default function StaticPageLayout({
   heading,
   intro,
   activeNav,
+  lang,
   keywords,
   noindex,
   ogType,
@@ -69,48 +46,96 @@ export default function StaticPageLayout({
   jsonLd,
   children,
 }: StaticPageLayoutProps) {
+  const router = useRouter()
+  const language = normalizeSiteLanguage(lang)
+  const t = (text: string) => translateStaticPageText(language, text)
+  const localizedPath = toLocalizedPath(path, language)
+  const footerSections = [
+    {
+      title: t('Feature'),
+      links: [
+        { label: t('Download'), href: toLocalizedPath('/#download', language) },
+        { label: t('How it Works?'), href: toLocalizedPath('/#how-it-works', language) },
+        { label: t('Blog'), href: '#' },
+      ],
+    },
+    {
+      title: t('Support'),
+      links: [
+        { label: t('Privacy Policy'), href: toLocalizedPath('/privacy-policy', language) },
+        { label: t('Terms of Service'), href: toLocalizedPath('/terms-of-service', language) },
+        { label: t('Delete Account & Data'), href: toLocalizedPath('/account-deletion', language) },
+        { label: t('Terms & Conditions'), href: toLocalizedPath('/terms-and-conditions', language) },
+        { label: t('FAQ'), href: toLocalizedPath('/#faq', language) },
+      ],
+    },
+    {
+      title: t('Get in Touch'),
+      links: [
+        { label: t('Contact'), href: toLocalizedPath('/contact', language) },
+        { label: t('About Us'), href: '#' },
+        { label: t('Our Team'), href: '#' },
+      ],
+    },
+  ] as const
+  const headerItems = [
+    {
+      key: 'home',
+      href: toLocalizedPath('/', language),
+      label: t('Home'),
+    },
+    {
+      key: 'features',
+      href: toLocalizedPath('/#features', language),
+      label: t('Features'),
+    },
+    {
+      key: 'pricing',
+      href: toLocalizedPath('/#pricing', language),
+      label: t('Choose Plan'),
+    },
+    {
+      key: 'contact',
+      href: toLocalizedPath('/contact', language),
+      label: t('Contact'),
+      isActive: activeNav === 'contact',
+    },
+  ] as const
+
+  const handleLanguageChange = (nextLanguage: Parameters<typeof switchLanguagePath>[1]) => {
+    if (nextLanguage === language) {
+      return
+    }
+
+    void router.push(switchLanguagePath(router.asPath || localizedPath, nextLanguage))
+  }
+
   return (
-    <div className="lp-page lp-page--light lp-static-page">
+    <div className="lp-page lp-page--light lp-static-page" dir={isRtlLanguage(language) ? 'rtl' : 'ltr'} lang={language}>
       <SeoHead
         title={title}
         description={description}
-        path={path}
+        path={localizedPath}
         keywords={keywords}
         noindex={noindex}
         ogType={ogType}
         imagePath={imagePath}
         jsonLd={jsonLd}
+        language={language}
+        alternateLanguages={buildAlternateLanguagePaths(path)}
       />
 
-      <header className="lp-topbar">
-        <div className="lp-container lp-topbar-inner lp-static-topbar-inner">
-          <Link className="lp-logo" href="/" aria-label="CalKilo home">
-            <BrandLogo />
-          </Link>
-
-          <nav className="lp-nav lp-static-nav" aria-label="Main navigation">
-            <Link href="/">Home</Link>
-            <Link href="/privacy-policy" className={activeNav === 'privacy' ? 'is-active' : undefined}>
-              Privacy Policy
-            </Link>
-            <Link href="/terms-of-service" className={activeNav === 'terms' ? 'is-active' : undefined}>
-              Terms
-            </Link>
-            <Link href="/account-deletion" className={activeNav === 'deletion' ? 'is-active' : undefined}>
-              Delete Account
-            </Link>
-            <Link href="/contact" className={activeNav === 'contact' ? 'is-active' : undefined}>
-              Contact
-            </Link>
-          </nav>
-
-          <div className="lp-topbar-actions lp-static-topbar-actions">
-            <Link className="lp-btn lp-btn--solid lp-static-cta" href="/#download">
-              Try for free
-            </Link>
-          </div>
-        </div>
-      </header>
+      <SiteHeader
+        ctaHref={toLocalizedPath('/#download', language)}
+        ctaLabel={t('Try for free')}
+        homeAriaLabel="CalKilo home"
+        homeHref={toLocalizedPath('/', language)}
+        language={language}
+        languageLabel={t('Language')}
+        navAriaLabel="Main navigation"
+        navItems={headerItems}
+        onLanguageChange={handleLanguageChange}
+      />
 
       <main className="lp-static-main">
         <section className="lp-section lp-static-hero">
@@ -128,62 +153,14 @@ export default function StaticPageLayout({
         </section>
       </main>
 
-      <footer className="lp-footer">
-        <div className="lp-container lp-footer-grid lp-static-footer-grid">
-          <section>
-            <Link className="lp-logo" href="/" aria-label="CalKilo home">
-              <BrandLogo />
-            </Link>
-            <p>Revolutionizing nutrition tracking with AI-powered calorie calculation.</p>
-            <div className="lp-socials" aria-label="Social links">
-              <a href="#" aria-label="X">
-                X
-              </a>
-              <a href="#" aria-label="Telegram">
-                Tg
-              </a>
-              <a href="#" aria-label="LinkedIn">
-                In
-              </a>
-              <a href="#" aria-label="Instagram">
-                Ig
-              </a>
-            </div>
-          </section>
-
-          {FOOTER_SECTIONS.map((section) => (
-            <section key={section.title}>
-              <h3>{section.title}</h3>
-              <ul>
-                {section.links.map((link) => (
-                  <li key={link.label}>
-                    <Link href={link.href}>{link.label}</Link>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
-
-          <section>
-            <h3>Get in Touch</h3>
-            <ul>
-              <li>
-                <a href="mailto:support@calkilo.app">support@calkilo.app</a>
-              </li>
-              <li>
-                <Link href="/contact">Request support</Link>
-              </li>
-              <li>
-                <Link href="/privacy-policy">Privacy requests</Link>
-              </li>
-              <li>
-                <Link href="/account-deletion">Delete account &amp; data</Link>
-              </li>
-            </ul>
-          </section>
-        </div>
-        <p className="lp-copyright">(c) {new Date().getFullYear()} Calkilo. All rights reserved.</p>
-      </footer>
+      <SiteFooter
+        copyright={`© ${new Date().getFullYear()} Calkilo. ${t('All rights reserved.')}`}
+        description={t('Revolutionizing nutrition tracking with AI-powered calorie calculation.')}
+        homeAriaLabel="CalKilo home"
+        homeHref={toLocalizedPath('/', language)}
+        sections={footerSections}
+        socialLinksLabel="Social links"
+      />
     </div>
   )
 }

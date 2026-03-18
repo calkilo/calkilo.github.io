@@ -1,6 +1,9 @@
 import LandingPage from '../components/LandingPage'
 
-export default function DarkPage() {
-  return <LandingPage variant="dark" />
+interface DarkPageProps {
+  lang?: string
 }
 
+export default function DarkPage({ lang }: DarkPageProps) {
+  return <LandingPage lang={lang} variant="dark" />
+}
