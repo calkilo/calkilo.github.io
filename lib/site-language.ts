@@ -44,6 +44,14 @@ function normalizeLeadingSlash(path: string): string {
   return path.startsWith('/') ? path : `/${path}`
 }
 
+function ensureTrailingSlash(pathname: string): string {
+  if (pathname === '/' || pathname.endsWith('/')) {
+    return pathname
+  }
+
+  return `${pathname}/`
+}
+
 function splitPathSuffix(path: string): { pathname: string; suffix: string } {
   const queryIndex = path.indexOf('?')
   const hashIndex = path.indexOf('#')
@@ -101,13 +109,14 @@ export function toLocalizedPath(basePath: string, language: SiteLanguage): strin
   const { pathname, suffix } = splitPathSuffix(basePath)
   const normalizedPath = pathname === '' ? '/' : pathname
 
-  if (language === DEFAULT_LANGUAGE) {
-    return `${normalizedPath}${suffix}`
-  }
+  const localizedPath =
+    language === DEFAULT_LANGUAGE
+      ? normalizedPath
+      : normalizedPath === '/'
+        ? `/${language}/`
+        : `/${language}${normalizedPath}`
 
-  return normalizedPath === '/'
-    ? `/${language}${suffix}`
-    : `/${language}${normalizedPath}${suffix}`
+  return `${ensureTrailingSlash(localizedPath)}${suffix}`
 }
 
 export function switchLanguagePath(currentPath: string, language: SiteLanguage): string {

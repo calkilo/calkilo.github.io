@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { DEFAULT_OG_IMAGE_PATH, SITE_NAME, toAbsoluteUrl } from '../lib/seo'
+import { DEFAULT_LANGUAGE } from '../lib/site-language'
 
 type OpenGraphType = 'website' | 'article'
 type JsonLdSchema = Record<string, unknown>
@@ -63,6 +64,9 @@ export default function SeoHead({
   const pageUrl = toAbsoluteUrl(path)
   const imageUrl = toAbsoluteUrl(imagePath)
   const serializedJsonLd = normalizeJsonLd(jsonLd)
+  const alternateLocales = alternateLanguages?.filter((alt) => alt.lang !== language) ?? []
+  const xDefaultPath =
+    alternateLanguages?.find((alt) => alt.lang === DEFAULT_LANGUAGE)?.path ?? canonicalPath ?? path
   const robotsContent = [
     noindex ? 'noindex' : 'index',
     nofollow ? 'nofollow' : 'follow',
@@ -101,13 +105,13 @@ export default function SeoHead({
       <meta property="og:site_name" content={SITE_NAME} key="og:site_name" />
       <meta property="og:locale" content={LOCALE_MAP[language] || 'en_US'} key="og:locale" />
       <meta property="og:url" content={pageUrl} key="og:url" />
-      {alternateLanguages?.map((alt) => (
+      {alternateLocales.map((alt) => (
         <meta property="og:locale:alternate" content={LOCALE_MAP[alt.lang]} key={`og:locale:${alt.lang}`} />
       ))}
       {alternateLanguages?.map((alt) => (
         <link rel="alternate" hrefLang={alt.lang} href={toAbsoluteUrl(alt.path)} key={`hreflang:${alt.lang}`} />
       ))}
-      <link rel="alternate" hrefLang="x-default" href={toAbsoluteUrl(path)} key="hreflang:x-default" />
+      <link rel="alternate" hrefLang="x-default" href={toAbsoluteUrl(xDefaultPath)} key="hreflang:x-default" />
       <meta property="og:title" content={title} key="og:title" />
       <meta property="og:description" content={description} key="og:description" />
       <meta property="og:image" content={imageUrl} key="og:image" />

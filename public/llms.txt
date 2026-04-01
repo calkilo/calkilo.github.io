@@ -1,0 +1,27 @@
+# Calkilo
+
+> Calkilo is a mobile nutrition app for AI calorie tracking, photo food logging, macro tracking, and meal planning.
+
+## Product summary
+- Product type: AI calorie tracker and nutrition app
+- Platforms: iOS and Android
+- Core use cases: photo calorie estimation, macro tracking, daily nutrition logging, meal planning, progress tracking
+- Integrations: Apple Health, Google Fit, Fitbit, Samsung Health
+
+## Canonical pages
+- Home: https://calkilo.com/
+- AI calorie tracker: https://calkilo.com/ai-calorie-tracker/
+- Photo calorie calculator: https://calkilo.com/photo-calorie-calculator/
+- Macro tracker: https://calkilo.com/macro-tracker/
+- FAQ: https://calkilo.com/faq/
+- Contact: https://calkilo.com/contact/
+- Privacy policy: https://calkilo.com/privacy-policy/
+
+## Store links
+- Google Play: https://play.google.com/store/apps/details?id=com.calkilo.mobile&hl=fa
+- App Store: https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411
+
+## Support
+- Contact support: https://calkilo.com/contact/
+- Account deletion: https://calkilo.com/account-deletion/
+

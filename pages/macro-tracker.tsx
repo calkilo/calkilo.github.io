@@ -1,0 +1,7 @@
+import ResourcePage from '../components/ResourcePage'
+import { RESOURCE_PAGES } from '../lib/resource-pages'
+
+export default function MacroTrackerPage() {
+  return <ResourcePage page={RESOURCE_PAGES['macro-tracker']} />
+}
+

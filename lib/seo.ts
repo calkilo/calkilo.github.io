@@ -1,4 +1,4 @@
-const DEFAULT_SITE_URL = 'https://calkilo.app'
+const DEFAULT_SITE_URL = 'https://calkilo.com'
 
 function trimTrailingSlashes(value: string): string {
   return value.replace(/\/+$/, '')
