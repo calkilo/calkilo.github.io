@@ -58,6 +58,8 @@ img {
   --lp-accent: #00d448;
   --lp-accent-dark: #0aaa40;
   --lp-display-font: 'Arial Rounded MT Bold', 'Arial Rounded MT', 'Trebuchet MS', 'Poppins', sans-serif;
+  --lp-motion-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --lp-motion-gentle: cubic-bezier(0.37, 0, 0.18, 1);
   --lp-shadow: 0 16px 42px rgba(0, 0, 0, 0.1);
   background: var(--lp-bg);
   color: var(--lp-text);
@@ -89,6 +91,33 @@ img {
   margin: 0 auto;
   position: relative;
   width: min(1310px, calc(100% - 48px));
+}
+
+.lp-reveal {
+  --stagger-index: 0;
+  transition:
+    opacity 0.82s var(--lp-motion-smooth) calc(var(--stagger-index) * 85ms),
+    transform 0.96s var(--lp-motion-smooth) calc(var(--stagger-index) * 85ms),
+    filter 0.96s var(--lp-motion-smooth) calc(var(--stagger-index) * 85ms);
+  will-change: transform, opacity, filter;
+}
+
+html.lp-motion-ready .lp-reveal:not(.is-visible) {
+  filter: blur(14px);
+  opacity: 0;
+  transform: translate3d(0, 38px, 0) scale(0.98);
+}
+
+html.lp-motion-ready .lp-reveal.lp-reveal--left:not(.is-visible) {
+  transform: translate3d(-42px, 28px, 0) scale(0.98);
+}
+
+html.lp-motion-ready .lp-reveal.lp-reveal--right:not(.is-visible) {
+  transform: translate3d(42px, 28px, 0) scale(0.98);
+}
+
+html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
+  transform: translate3d(0, 30px, 0) scale(0.92);
 }
 
 .lp-topbar {
@@ -326,6 +355,13 @@ img {
 .lp-store-btn {
   align-items: center;
   display: inline-flex;
+  filter: drop-shadow(0 8px 20px rgba(18, 18, 18, 0.18));
+  transition: transform 0.28s var(--lp-motion-smooth), filter 0.28s var(--lp-motion-smooth);
+}
+
+.lp-store-btn:hover {
+  filter: drop-shadow(0 14px 28px rgba(18, 18, 18, 0.24));
+  transform: translateY(-4px);
 }
 
 .lp-store-icon {
@@ -366,19 +402,57 @@ img {
   justify-content: center;
   min-height: 560px;
   overflow: hidden;
+  perspective: 1200px;
   position: relative;
 }
 
 .lp-hero-glow {
-  /* background:
-    radial-gradient(circle at 20% 20%, rgba(0, 212, 72, 0.3), transparent 48%),
-    radial-gradient(circle at 82% 60%, rgba(255, 190, 40, 0.22), transparent 46%);
-  inset: 0;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(0, 212, 72, 0.24), transparent 42%),
+    radial-gradient(circle at 78% 66%, rgba(255, 214, 91, 0.2), transparent 44%),
+    radial-gradient(circle at 50% 52%, rgba(255, 255, 255, 0.7), transparent 38%);
+  filter: blur(22px);
+  inset: 6% 8%;
+  opacity: 0.95;
   position: absolute;
-  z-index: 1; */
+  z-index: 1;
+  animation: lpGlowPulse 14s ease-in-out infinite;
+}
+
+.lp-page--dark .lp-hero-glow {
+  background:
+    radial-gradient(circle at 18% 24%, rgba(0, 212, 72, 0.22), transparent 42%),
+    radial-gradient(circle at 78% 66%, rgba(255, 214, 91, 0.16), transparent 44%),
+    radial-gradient(circle at 50% 52%, rgba(255, 255, 255, 0.12), transparent 38%);
+}
+
+.lp-hero-orbit {
+  border: 1px solid rgba(0, 212, 72, 0.24);
+  border-radius: 999px;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.lp-hero-orbit--one {
+  inset: 9% 11%;
+  animation: lpOrbitSpin 22s linear infinite;
+}
+
+.lp-hero-orbit--two {
+  border-color: rgba(18, 18, 18, 0.12);
+  border-style: dashed;
+  inset: 18% 18%;
+  opacity: 0.7;
+  animation: lpOrbitSpin 28s linear infinite reverse;
+}
+
+.lp-page--dark .lp-hero-orbit--two {
+  border-color: rgba(255, 255, 255, 0.16);
 }
 
 .lp-hero-slide {
+  filter: drop-shadow(0 26px 48px rgba(0, 0, 0, 0.12));
   height: 100%;
   inset: 0;
   object-fit: contain;
@@ -391,6 +465,7 @@ img {
 }
 
 .lp-hero-slide.is-active {
+  animation: lpHeroDrift 9s ease-in-out infinite;
   opacity: 1;
   transform: scale(1);
 }
@@ -463,6 +538,7 @@ img {
 
 .lp-ai-screen-stage {
   animation: lpFloat 9s ease-in-out infinite;
+  filter: drop-shadow(0 30px 42px rgba(0, 0, 0, 0.16));
   aspect-ratio: 540 / 920;
   position: relative;
   width: min(100%, 545px);
@@ -524,7 +600,7 @@ img {
 }
 
 .lp-feature-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-6px);
 }
 
 .lp-feature-card.is-active {
@@ -687,9 +763,11 @@ img {
 
 .lp-macro-bar span {
   background: linear-gradient(180deg, var(--lp-accent) 0%, var(--lp-accent-dark) 100%);
+  background-size: 200% 100%;
   border-radius: inherit;
   display: block;
   height: 100%;
+  animation: lpBarFlow 4.6s linear infinite;
 }
 
 .lp-nutrients-panel {
@@ -701,6 +779,7 @@ img {
 }
 
 .lp-tilted-food {
+  animation: lpTiltCard 13s ease-in-out infinite;
   border-radius: 20px;
   box-shadow: var(--lp-shadow);
   left: -26px;
@@ -718,6 +797,7 @@ img {
 }
 
 .lp-requirement-card {
+  animation: lpRequirementFloat 12s ease-in-out infinite;
   background: var(--lp-card);
   border: 1px solid var(--lp-border);
   border-radius: 20px;
@@ -758,8 +838,14 @@ img {
   min-height: 109px;
   max-width: 361px;
   padding: 16px;
+  transition: transform 0.32s var(--lp-motion-smooth), box-shadow 0.32s var(--lp-motion-smooth);
   width: 100%;
   margin-top: 38px;
+}
+
+.lp-meal-item:hover {
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.14);
+  transform: translateY(-8px);
 }
 
 .lp-meal-item--shift {
@@ -852,6 +938,17 @@ img {
   content: '';
   inset: 0;
   position: absolute;
+  animation: lpGlowPulse 18s ease-in-out infinite;
+}
+
+.lp-style::after {
+  background: radial-gradient(circle at 82% 20%, rgba(255, 214, 91, 0.2), transparent 32%);
+  content: '';
+  inset: 0;
+  opacity: 0.9;
+  pointer-events: none;
+  position: absolute;
+  animation: lpGlowPulse 24s ease-in-out infinite reverse;
 }
 
 .lp-style-grid {
@@ -921,11 +1018,13 @@ img {
 }
 
 .lp-style-phone.front {
+  animation: lpPhoneFloatFront 11s ease-in-out infinite;
   left: 12%;
   z-index: 3;
 }
 
 .lp-style-phone.back {
+  animation: lpPhoneFloatBack 13s ease-in-out infinite;
   left: 42%;
   opacity: 0.9;
 }
@@ -948,6 +1047,16 @@ img {
   min-height: 219px;
   padding: 29px 24px 24px;
   text-align: center;
+  transition:
+    transform 0.32s var(--lp-motion-smooth),
+    box-shadow 0.32s var(--lp-motion-smooth),
+    border-color 0.32s var(--lp-motion-smooth);
+}
+
+.lp-integration-card:hover {
+  border-color: rgba(0, 212, 72, 0.28);
+  box-shadow: 0 20px 36px rgba(0, 0, 0, 0.12);
+  transform: translateY(-10px);
 }
 
 .lp-integration-mark {
@@ -983,7 +1092,7 @@ img {
 }
 
 .lp-testimonials-bg {
- 
+  animation: lpBackgroundDrift 24s ease-in-out infinite;
   background-repeat: no-repeat;
   background-size: cover;
   inset: 0;
@@ -1026,6 +1135,15 @@ img {
   backdrop-filter: blur(4px);
   min-height: 220px;
   padding: 14px;
+  transition:
+    transform 0.32s var(--lp-motion-smooth),
+    box-shadow 0.32s var(--lp-motion-smooth),
+    background 0.32s var(--lp-motion-smooth);
+}
+
+.lp-testimonial-card:hover {
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px);
 }
 
 .lp-page--dark .lp-testimonial-card {
@@ -1071,12 +1189,25 @@ img {
   min-height: 487px;
   padding: 24px 24px 28px;
   position: relative;
+  transition:
+    transform 0.35s var(--lp-motion-smooth),
+    box-shadow 0.35s var(--lp-motion-smooth),
+    border-color 0.35s var(--lp-motion-smooth);
 }
 
 .lp-pricing-card.is-highlight {
   border-color: var(--lp-accent);
   box-shadow: 0 16px 36px rgba(0, 212, 72, 0.22);
   transform: translateY(-8px);
+}
+
+.lp-pricing-card:hover {
+  box-shadow: 0 20px 38px rgba(0, 0, 0, 0.14);
+  transform: translateY(-10px);
+}
+
+.lp-pricing-card.is-highlight:hover {
+  transform: translateY(-14px);
 }
 
 .lp-price-badge {
@@ -1174,6 +1305,7 @@ img {
 }
 
 .lp-community-bg {
+  animation: lpBackgroundDrift 26s ease-in-out infinite reverse;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1202,6 +1334,16 @@ img {
   min-height: 250px;
   padding: 29px;
   text-align: center;
+  transition:
+    transform 0.34s var(--lp-motion-smooth),
+    box-shadow 0.34s var(--lp-motion-smooth),
+    border-color 0.34s var(--lp-motion-smooth);
+}
+
+.lp-community-card:hover {
+  border-color: rgba(18, 18, 18, 0.12);
+  box-shadow: 0 22px 38px rgba(0, 0, 0, 0.18);
+  transform: translateY(-10px) rotate(-1deg);
 }
 
 .lp-community-icon {
@@ -1253,6 +1395,7 @@ img {
 }
 
 .lp-download-glow--primary {
+  animation: lpGlowPulse 16s ease-in-out infinite;
   background: radial-gradient(circle, rgba(222, 255, 180, 0.5) 0%, rgba(151, 215, 134, 0.34) 48%, rgba(151, 215, 134, 0) 76%);
   height: 420px;
   left: 42px;
@@ -1261,6 +1404,7 @@ img {
 }
 
 .lp-download-glow--secondary {
+  animation: lpGlowPulse 12s ease-in-out infinite reverse;
   background: radial-gradient(circle, rgba(255, 242, 171, 0.34) 0%, rgba(255, 242, 171, 0) 72%);
   height: 190px;
   right: 28px;
@@ -1282,6 +1426,7 @@ img {
 }
 
 .lp-download-floaters {
+  animation: lpFloaterDrift 9s ease-in-out infinite;
   filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.18));
   left: 0;
   top: 82px;
@@ -1290,6 +1435,7 @@ img {
 }
 
 .lp-download-phone {
+  animation: lpPhoneFloatFront 12s ease-in-out infinite;
   bottom: 8px;
   filter: drop-shadow(0 28px 38px rgba(0, 0, 0, 0.28));
   left: 54px;
@@ -1298,6 +1444,7 @@ img {
 }
 
 .lp-download-trophy {
+  animation: lpTrophySwing 10s ease-in-out infinite;
   filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.24));
   right: 36px;
   top: 58px;
@@ -1387,6 +1534,16 @@ img {
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   padding: 12px 14px;
+  transition:
+    transform 0.28s var(--lp-motion-smooth),
+    box-shadow 0.28s var(--lp-motion-smooth),
+    border-color 0.28s var(--lp-motion-smooth);
+}
+
+.lp-faq-item:hover {
+  border-color: rgba(88, 171, 79, 0.18);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
 }
 
 .lp-faq-item summary {
@@ -1797,6 +1954,173 @@ img {
 
   50% {
     transform: translateY(-8px);
+  }
+}
+
+@keyframes lpGlowPulse {
+  0%,
+  100% {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes lpOrbitSpin {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.03);
+  }
+
+  to {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes lpHeroDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(0, -10px, 0) scale(1.018);
+  }
+}
+
+@keyframes lpBarFlow {
+  from {
+    background-position: 0% 50%;
+  }
+
+  to {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes lpTiltCard {
+  0%,
+  100% {
+    transform: rotate(-13deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(-10deg) translateY(-10px);
+  }
+}
+
+@keyframes lpRequirementFloat {
+  0%,
+  100% {
+    transform: rotate(10deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(8deg) translateY(-12px);
+  }
+}
+
+@keyframes lpPhoneFloatFront {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-1deg);
+  }
+
+  50% {
+    transform: translate3d(0, -14px, 0) rotate(1deg);
+  }
+}
+
+@keyframes lpPhoneFloatBack {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(2deg);
+  }
+
+  50% {
+    transform: translate3d(0, -18px, 0) rotate(-1deg);
+  }
+}
+
+@keyframes lpBackgroundDrift {
+  0%,
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: scale(1.04) translate3d(0, -16px, 0);
+  }
+}
+
+@keyframes lpFloaterDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(6px, -12px, 0) rotate(-3deg);
+  }
+}
+
+@keyframes lpTrophySwing {
+  0%,
+  100% {
+    transform: rotate(-10deg) translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: rotate(-3deg) translate3d(-4px, -12px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.lp-motion-ready .lp-reveal,
+  html.lp-motion-ready .lp-reveal.is-visible {
+    filter: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .lp-ai-screen-stage,
+  .lp-hero-glow,
+  .lp-hero-orbit,
+  .lp-hero-slide.is-active,
+  .lp-macro-bar span,
+  .lp-tilted-food,
+  .lp-requirement-card,
+  .lp-style::before,
+  .lp-style::after,
+  .lp-style-phone.front,
+  .lp-style-phone.back,
+  .lp-testimonials-bg,
+  .lp-community-bg,
+  .lp-download-glow--primary,
+  .lp-download-glow--secondary,
+  .lp-download-floaters,
+  .lp-download-phone,
+  .lp-download-trophy {
+    animation: none;
+  }
+
+  .lp-store-btn,
+  .lp-feature-card,
+  .lp-meal-item,
+  .lp-integration-card,
+  .lp-testimonial-card,
+  .lp-pricing-card,
+  .lp-community-card,
+  .lp-faq-item {
+    transition: none;
   }
 }
 
