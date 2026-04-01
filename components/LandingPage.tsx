@@ -1624,6 +1624,52 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
     }
   }, [])
 
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    const revealNodes = Array.from(document.querySelectorAll<HTMLElement>('.lp-reveal'))
+    if (revealNodes.length === 0) {
+      return
+    }
+
+    const revealAll = () => {
+      revealNodes.forEach((node) => node.classList.add('is-visible'))
+    }
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || typeof IntersectionObserver === 'undefined') {
+      revealAll()
+      return
+    }
+
+    document.documentElement.classList.add('lp-motion-ready')
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return
+          }
+
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        })
+      },
+      {
+        rootMargin: '0px 0px -12% 0px',
+        threshold: 0.16,
+      },
+    )
+
+    revealNodes.forEach((node) => observer.observe(node))
+
+    return () => {
+      document.documentElement.classList.remove('lp-motion-ready')
+      observer.disconnect()
+    }
+  }, [])
+
   const isDarkVariantPage = variant === 'dark'
   const baseSeoPath = isDarkVariantPage ? '/dark' : '/'
   const seoPath = toLocalizedPath(baseSeoPath, language)
@@ -1774,7 +1820,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
       <main id="home">
         <section className="lp-hero">
           <div className="lp-container lp-hero-grid">
-            <div className="lp-hero-copy">
+            <div className="lp-hero-copy lp-reveal lp-reveal--left">
               <h1>
                 {copy.heroTitleA}
                 <span>{copy.heroTitleB}</span>
@@ -1784,8 +1830,10 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
               <StoreButtons copy={copy} />
             </div>
 
-            <div className="lp-hero-media" aria-hidden="true">
+            <div className="lp-hero-media lp-reveal lp-reveal--right" aria-hidden="true">
               <div className="lp-hero-glow" />
+              <div className="lp-hero-orbit lp-hero-orbit--one" />
+              <div className="lp-hero-orbit lp-hero-orbit--two" />
               {heroSlides.map((slide, index) => (
                 <img
                   key={slide}
@@ -1802,7 +1850,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
 
         <section className="lp-section lp-ai" id="features">
           <div className="lp-container lp-ai-grid">
-            <div className="lp-ai-screen-wrap" aria-hidden="true">
+            <div className="lp-ai-screen-wrap lp-reveal lp-reveal--left" aria-hidden="true">
               <div className="lp-ai-screen-glow" />
               <div className="lp-ai-screen-stage">
                 <img
@@ -1816,7 +1864,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
               </div>
             </div>
 
-            <div className="lp-ai-content">
+            <div className="lp-ai-content lp-reveal lp-reveal--right">
               <h2>
                 <span>CalKilo-AI</span>: {aiTitleSuffix}
               </h2>
@@ -1826,9 +1874,10 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
                 {FEATURE_ITEMS.map((item, index) => (
                   <button
                     key={item.title}
-                    className={`lp-feature-card${activeFeature === index ? ' is-active' : ''}`}
+                    className={`lp-feature-card lp-reveal lp-reveal--pop${activeFeature === index ? ' is-active' : ''}`}
                     onClick={() => setActiveFeature(index)}
                     type="button"
+                    style={{ '--stagger-index': index } as CSSProperties}
                   >
                     <div className="lp-feature-icon" aria-hidden="true">
                       <FeatureListIcon index={index} />
@@ -1847,7 +1896,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
         <section className="lp-section lp-nutrients">
           <div className="lp-container">
             <div className="lp-nutrients-grid">
-              <div className="lp-nutrients-copy">
+              <div className="lp-nutrients-copy lp-reveal lp-reveal--left">
                 <h2>{copy.nutrientTitle}</h2>
                 <div className="lp-time-row" aria-label="Meal schedule">
                   <span className="is-active">07:00</span>
@@ -1863,7 +1912,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
                 </div>
               </div>
 
-              <div className="lp-nutrients-panel">
+              <div className="lp-nutrients-panel lp-reveal lp-reveal--right">
                 <div className="lp-tilted-food" aria-hidden="true">
                   <img src={FIGMA_ASSETS.nutrientFood} alt="" loading="lazy" decoding="async" />
                 </div>
@@ -1888,7 +1937,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
             </div>
 
             <div className="lp-meal-lane">
-              <article className="lp-meal-item">
+              <article className="lp-meal-item lp-reveal">
                 <img src={FIGMA_ASSETS.mealCheese} alt={ts('Cheese, Bread')} loading="lazy" decoding="async" />
                 <div>
                   <h3>{ts('Cheese, Bread')}</h3>
@@ -1897,7 +1946,10 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
                 </div>
               </article>
 
-              <article className="lp-meal-item lp-meal-item--shift">
+              <article
+                className="lp-meal-item lp-meal-item--shift lp-reveal lp-reveal--right"
+                style={{ '--stagger-index': 1 } as CSSProperties}
+              >
                 <img src={FIGMA_ASSETS.mealKebab} alt={ts('Kebab, Tomato & Basil')} loading="lazy" decoding="async" />
                 <div>
                   <h3>{ts('Kebab, Tomato & Basil')}</h3>
@@ -1911,7 +1963,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
 
         <section className="lp-section lp-how" id="how-it-works">
           <div className="lp-container">
-            <header className="lp-section-head">
+            <header className="lp-section-head lp-reveal">
               <h2>
                 {copy.howTitleA} <span>{copy.howTitleB}</span>
               </h2>
@@ -1920,7 +1972,11 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
 
             <div className="lp-how-grid">
               {HOW_STEPS.map((step, index) => (
-                <article key={step.title} className="lp-how-card">
+                <article
+                  key={step.title}
+                  className="lp-how-card lp-reveal lp-reveal--pop"
+                  style={{ '--stagger-index': index } as CSSProperties}
+                >
                   <div className="lp-how-image-wrap">
                     <img src={step.image} alt={ts(step.title)} loading="lazy" decoding="async" />
                   </div>
@@ -1933,7 +1989,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
 
         <section className="lp-style">
           <div className="lp-container lp-style-grid">
-            <div className="lp-style-copy">
+            <div className="lp-style-copy lp-reveal lp-reveal--left">
               <h2>{copy.styleTitle}</h2>
               <p>{copy.styleDescription}</p>
               <div className="lp-style-toggle" role="group" aria-label={ts('Theme toggle')}>
@@ -1954,7 +2010,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
               </div>
             </div>
 
-            <div className="lp-style-phones" aria-hidden="true">
+            <div className="lp-style-phones lp-reveal lp-reveal--right" aria-hidden="true">
               <img src={FIGMA_ASSETS.showcasePhoneDark} alt="" className="lp-style-phone back" loading="lazy" decoding="async" />
               <img src={FIGMA_ASSETS.showcasePhoneLight} alt="" className="lp-style-phone front" loading="lazy" decoding="async" />
             </div>
@@ -1963,14 +2019,18 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
 
         <section className="lp-section lp-integrations">
           <div className="lp-container">
-            <header className="lp-section-head">
+            <header className="lp-section-head lp-reveal">
               <h2>{copy.integrationsTitle}</h2>
               <p>{copy.integrationsSubtitle}</p>
             </header>
 
             <div className="lp-integrations-grid">
-              {INTEGRATIONS.map((integration) => (
-                <article key={integration.name} className="lp-integration-card">
+              {INTEGRATIONS.map((integration, index) => (
+                <article
+                  key={integration.name}
+                  className="lp-integration-card lp-reveal lp-reveal--pop"
+                  style={{ '--stagger-index': index } as CSSProperties}
+                >
                   <div className="lp-integration-mark" aria-hidden="true">
                     <img src={integration.icon} alt="" className="lp-integration-icon" loading="lazy" />
                   </div>
@@ -1992,7 +2052,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
           />
 
           <div className="lp-container">
-            <header className="lp-section-head">
+            <header className="lp-section-head lp-reveal">
               <h2>
                 {copy.testimonialsTitleA} <span>{copy.testimonialsTitleB}</span>
               </h2>
@@ -2002,14 +2062,18 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
               <img
                 src={FIGMA_ASSETS.avocadoAccent}
                 alt=""
-                className="lp-testimonial-avocado"
+                className="lp-testimonial-avocado lp-reveal lp-reveal--pop"
                 aria-hidden="true"
                 loading="lazy"
                 decoding="async"
               />
               <div className="lp-testimonial-grid">
-                {TESTIMONIALS.map((review) => (
-                  <article key={review.author} className="lp-testimonial-card">
+                {TESTIMONIALS.map((review, index) => (
+                  <article
+                    key={review.author}
+                    className="lp-testimonial-card lp-reveal"
+                    style={{ '--stagger-index': index } as CSSProperties}
+                  >
                     <h3>{ts(review.title)}</h3>
                     <p>{ts(review.body)}</p>
                     <footer>{review.author}</footer>
@@ -2022,17 +2086,18 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
 
         <section className="lp-section lp-pricing" id="pricing">
           <div className="lp-container">
-            <header className="lp-section-head">
+            <header className="lp-section-head lp-reveal">
               <p className="lp-kicker">{copy.pricingKicker}</p>
               <h2>{ts('Pricing')}</h2>
               <p>{copy.pricingTitle}</p>
             </header>
 
             <div className="lp-pricing-grid">
-              {PRICING_PLANS.map((plan) => (
+              {PRICING_PLANS.map((plan, index) => (
                 <article
                   key={plan.title}
-                  className={`lp-pricing-card${plan.highlight ? ' is-highlight' : ''}`}
+                  className={`lp-pricing-card lp-reveal lp-reveal--pop${plan.highlight ? ' is-highlight' : ''}`}
+                  style={{ '--stagger-index': index } as CSSProperties}
                 >
                   {plan.badge ? <div className="lp-price-badge">{ts(plan.badge)}</div> : null}
                   <h3>{ts(plan.title)}</h3>
@@ -2063,14 +2128,18 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
             style={isDark ? { backgroundImage: `url(${FIGMA_ASSETS.communityPattern})` } : undefined}
           />
           <div className="lp-container">
-            <header className="lp-section-head">
+            <header className="lp-section-head lp-reveal">
               <h2>{copy.communityTitle}</h2>
               <p>{copy.communitySubtitle}</p>
             </header>
 
             <div className="lp-community-grid">
-              {COMMUNITY_ITEMS.map((item) => (
-                <article key={item.title} className="lp-community-card">
+              {COMMUNITY_ITEMS.map((item, index) => (
+                <article
+                  key={item.title}
+                  className="lp-community-card lp-reveal lp-reveal--pop"
+                  style={{ '--stagger-index': index } as CSSProperties}
+                >
                   <img src={item.icon} alt="" className="lp-community-icon" loading="lazy" />
                   <h3>{ts(item.title)}</h3>
                   <p>{ts(item.description)}</p>
@@ -2082,11 +2151,11 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
 
         <section className="lp-section lp-download" id="download">
           <div className="lp-container lp-download-grid">
-            <div className="lp-download-art" aria-hidden="true">
+            <div className="lp-download-art lp-reveal lp-reveal--left" aria-hidden="true">
               <DownloadArt isDark={isDark} />
             </div>
 
-            <div className="lp-download-copy">
+            <div className="lp-download-copy lp-reveal lp-reveal--right">
               <h2>
                 {copy.downloadTitleA}
                 <span> {copy.downloadTitleB}</span>
@@ -2100,7 +2169,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
 
         <section className="lp-section lp-faq" id="faq">
           <div className="lp-container lp-faq-wrap">
-            <header className="lp-section-head">
+            <header className="lp-section-head lp-reveal">
               <p className="lp-kicker">{copy.faqKicker}</p>
               <h2>
                 {copy.faqTitleA} <span>{copy.faqTitleB}</span>
@@ -2110,7 +2179,12 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
 
             <div className="lp-faq-list">
               {FAQ_ITEMS.map((item, index) => (
-                <details key={item.question} className="lp-faq-item" open={index === 0}>
+                <details
+                  key={item.question}
+                  className="lp-faq-item lp-reveal"
+                  open={index === 0}
+                  style={{ '--stagger-index': index } as CSSProperties}
+                >
                   <summary>
                     <span>{ts(item.question)}</span>
                     <span className="lp-faq-topic">{ts(item.topic)}</span>
@@ -2120,7 +2194,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
               ))}
             </div>
 
-            <aside className="lp-faq-support">
+            <aside className="lp-faq-support lp-reveal lp-reveal--pop">
               <h3>{copy.faqSupportTitle}</h3>
               <p>{copy.faqSupportText}</p>
               <button type="button">{copy.faqSupportButton}</button>
