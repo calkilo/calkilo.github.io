@@ -369,10 +369,6 @@ img {
   position: relative;
 }
 
-.lp-page--dark .lp-hero-media {
-  background: #181818;
-}
-
 .lp-hero-glow {
   /* background:
     radial-gradient(circle at 20% 20%, rgba(0, 212, 72, 0.3), transparent 48%),
@@ -1241,14 +1237,73 @@ img {
 }
 
 .lp-download-art {
+  align-items: center;
+  display: flex;
   min-height: 564px;
   position: relative;
 }
 
 .lp-download-glow {
-  /* background: radial-gradient(circle at 40% 50%, rgba(0, 212, 72, 0.22), transparent 55%);
-  inset: 0;
-  position: absolute; */
+  border-radius: 999px;
+  filter: blur(18px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.lp-download-glow--primary {
+  background: radial-gradient(circle, rgba(222, 255, 180, 0.5) 0%, rgba(151, 215, 134, 0.34) 48%, rgba(151, 215, 134, 0) 76%);
+  height: 420px;
+  left: 42px;
+  top: 92px;
+  width: 332px;
+}
+
+.lp-download-glow--secondary {
+  background: radial-gradient(circle, rgba(255, 242, 171, 0.34) 0%, rgba(255, 242, 171, 0) 72%);
+  height: 190px;
+  right: 28px;
+  top: 38px;
+  width: 190px;
+}
+
+.lp-download-stage {
+  aspect-ratio: 540 / 623;
+  position: relative;
+  width: min(540px, 100%);
+}
+
+.lp-download-floaters,
+.lp-download-phone,
+.lp-download-trophy {
+  pointer-events: none;
+  position: absolute;
+}
+
+.lp-download-floaters {
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.18));
+  left: 0;
+  top: 82px;
+  width: min(126px, 23%);
+  z-index: 2;
+}
+
+.lp-download-phone {
+  bottom: 8px;
+  filter: drop-shadow(0 28px 38px rgba(0, 0, 0, 0.28));
+  left: 54px;
+  width: min(320px, 59%);
+  z-index: 3;
+}
+
+.lp-download-trophy {
+  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.24));
+  right: 36px;
+  top: 58px;
+  transform: rotate(-10deg);
+  width: min(130px, 24%);
+  z-index: 4;
 }
 
 .lp-download-composite {
@@ -1695,6 +1750,45 @@ img {
   margin-top: 8px;
 }
 
+.lp-resource-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.lp-resource-btn-secondary {
+  background: transparent;
+  border: 1px solid var(--lp-border);
+  color: var(--lp-text);
+}
+
+.lp-resource-card-grid,
+.lp-resource-related-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.lp-resource-faq-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 18px;
+}
+
+.lp-resource-faq-grid article,
+.lp-resource-related-card {
+  background: var(--lp-surface);
+  border: 1px solid var(--lp-border);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.lp-resource-related-card a {
+  color: var(--lp-text);
+}
+
 @keyframes lpFloat {
   0%,
   100% {
@@ -1769,6 +1863,10 @@ img {
     display: flex;
     justify-content: center;
     min-height: auto;
+  }
+
+  .lp-download-stage {
+    width: min(520px, 100%);
   }
 
   .lp-download-composite {
@@ -1960,6 +2058,35 @@ img {
   .lp-download-art {
     min-height: auto;
     padding-top: 6px;
+  }
+
+  .lp-download-stage {
+    width: min(440px, 100%);
+  }
+
+  .lp-download-glow--primary {
+    height: 320px;
+    left: 28px;
+    top: 78px;
+    width: 256px;
+  }
+
+  .lp-download-glow--secondary {
+    height: 148px;
+    right: 20px;
+    top: 34px;
+    width: 148px;
+  }
+
+  .lp-download-phone {
+    left: 42px;
+    width: min(280px, 62%);
+  }
+
+  .lp-download-trophy {
+    right: 26px;
+    top: 52px;
+    width: min(108px, 23%);
   }
 
   .lp-download-composite {

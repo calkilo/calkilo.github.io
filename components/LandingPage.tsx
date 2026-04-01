@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router'
 import { useEffect, useMemo, useState, type CSSProperties } from 'react'
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from '../lib/app-links'
+import { RESOURCE_LINKS } from '../lib/resource-pages'
 import { SITE_URL } from '../lib/seo'
 import {
   buildAlternateLanguagePaths,
@@ -45,6 +47,7 @@ const FIGMA_ASSETS = {
   communityShare: '/assets/share.png',
   communityLeaderboard: '/assets/leaderboard.png',
   communityInvite: '/assets/invite.png',
+  downloadDecor: '/assets/figma/a405a82c1cca495479595832e0875e50bf678341.png',
   downloadPhone: '/assets/figma/e9df2fa0d3353ddb99e689cfcc597568be38a5ad.webp',
   downloadTrophy: '/assets/figma/ed0552cf31e3cc332040cf675af1604cbb45cb4d.webp',
   downloadObjects: '/assets/download.png',
@@ -59,13 +62,11 @@ const FIGMA_ASSETS = {
 
 const NAV_ITEMS = ['home', 'features', 'pricing', 'contact'] as const
 
-const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.calkilo.mobile&hl=fa'
-const APP_STORE_URL = 'https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411'
 const LANDING_PAGE_KEYWORDS = [
   'ai calorie tracker',
-  'nutrition tracking app',
-  'meal planning app',
   'photo calorie calculator',
+  'macro tracker app',
+  'nutrition tracking app',
   'calkilo',
 ]
 
@@ -119,8 +120,8 @@ const TRANSLATIONS: Record<
 > = {
   en: {
     pageDescription:
-      'Calculate calories with AI precision, get personalized meal plans, and track nutrition across all your devices.',
-    pageTitle: 'Calkilo | AI Calorie Tracker & Nutrition App',
+      'Track calories from food photos, follow macros, and get AI meal plans with Calkilo on iPhone and Android.',
+    pageTitle: 'Calkilo | AI Calorie Tracker, Photo Food Logger & Macro Tracker',
     darkThemeLabel: 'Dark Theme',
     nav: { home: 'Home', features: 'Features', pricing: 'Choose Plan', contact: 'Contact' },
     tryFree: 'Try for free',
@@ -1468,6 +1469,22 @@ function QrCard({ label }: { label: string }) {
   )
 }
 
+function DownloadArt({ isDark }: { isDark: boolean }) {
+  if (!isDark) {
+    return <img src={FIGMA_ASSETS.downloadObjects} alt="" className="lp-download-composite" loading="lazy" decoding="async" />
+  }
+
+  return (
+    <div className="lp-download-stage">
+      <div className="lp-download-glow lp-download-glow--primary" />
+      <div className="lp-download-glow lp-download-glow--secondary" />
+      <img src={FIGMA_ASSETS.downloadDecor} alt="" className="lp-download-floaters" loading="lazy" decoding="async" />
+      <img src={FIGMA_ASSETS.downloadPhone} alt="" className="lp-download-phone" loading="lazy" decoding="async" />
+      <img src={FIGMA_ASSETS.downloadTrophy} alt="" className="lp-download-trophy" loading="lazy" decoding="async" />
+    </div>
+  )
+}
+
 export default function LandingPage({ lang, variant }: LandingPageProps) {
   const router = useRouter()
   const initialLanguage = normalizeSiteLanguage(lang)
@@ -1626,7 +1643,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
       links: [
         { label: ts('Download'), href: '#download' },
         { label: ts('How it Works?'), href: '#how-it-works' },
-        { label: ts('Blog'), href: '#' },
+        { label: 'AI Calorie Tracker', href: RESOURCE_LINKS[0].href },
       ],
     },
     {
@@ -1636,15 +1653,15 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
         { label: ts('Terms of Service'), href: toLocalizedPath('/terms-of-service', language) },
         { label: ts('Delete Account & Data'), href: toLocalizedPath('/account-deletion', language) },
         { label: ts('Terms & Conditions'), href: toLocalizedPath('/terms-and-conditions', language) },
-        { label: ts('FAQ'), href: '#faq' },
+        { label: ts('FAQ'), href: '/faq/' },
       ],
     },
     {
       title: ts('Get in Touch'),
       links: [
         { label: ts('Contact'), href: toLocalizedPath('/contact', language) },
-        { label: ts('About Us'), href: '#' },
-        { label: ts('Our Team'), href: '#' },
+        { label: 'Photo Calorie Calculator', href: RESOURCE_LINKS[1].href },
+        { label: 'Macro Tracker', href: RESOURCE_LINKS[2].href },
       ],
     },
   ] as const
@@ -1666,6 +1683,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
         name: 'Calkilo',
         url: SITE_URL,
         logo: `${SITE_URL}/assets/logo.png`,
+        sameAs: [GOOGLE_PLAY_URL, APP_STORE_URL],
         contactPoint: [
           {
             '@type': 'ContactPoint',
@@ -1675,6 +1693,13 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
             availableLanguage: [language],
           },
         ],
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'Calkilo',
+        url: SITE_URL,
+        inLanguage: language,
       },
       {
         '@context': 'https://schema.org',
@@ -1697,6 +1722,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
         operatingSystem: 'iOS, Android',
         description: copy.pageDescription,
         url: `${SITE_URL}${seoPath}`,
+        sameAs: [GOOGLE_PLAY_URL, APP_STORE_URL],
         featureList: FEATURE_ITEMS.map((item) => ts(item.title)),
         offers: PRICING_PLANS.map((plan) => ({
           '@type': 'Offer',
@@ -1705,18 +1731,6 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
           price: plan.price.replace('$', ''),
           availability: 'https://schema.org/InStock',
           url: `${SITE_URL}${toLocalizedPath('/#pricing', language)}`,
-        })),
-      },
-      {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: FAQ_ITEMS.map((item) => ({
-          '@type': 'Question',
-          name: ts(item.question),
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: ts(item.answer),
-          },
         })),
       },
     ],
@@ -2069,7 +2083,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
         <section className="lp-section lp-download" id="download">
           <div className="lp-container lp-download-grid">
             <div className="lp-download-art" aria-hidden="true">
-              <img src={FIGMA_ASSETS.downloadObjects} alt="" className="lp-download-composite" loading="lazy" decoding="async" />
+              <DownloadArt isDark={isDark} />
             </div>
 
             <div className="lp-download-copy">

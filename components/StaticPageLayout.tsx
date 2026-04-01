@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import { type ReactNode } from 'react'
+import { RESOURCE_LINKS } from '../lib/resource-pages'
 import { translateStaticPageText } from '../lib/static-page-translations'
 import {
   buildAlternateLanguagePaths,
@@ -56,7 +57,7 @@ export default function StaticPageLayout({
       links: [
         { label: t('Download'), href: toLocalizedPath('/#download', language) },
         { label: t('How it Works?'), href: toLocalizedPath('/#how-it-works', language) },
-        { label: t('Blog'), href: '#' },
+        { label: 'AI Calorie Tracker', href: RESOURCE_LINKS[0].href },
       ],
     },
     {
@@ -66,15 +67,15 @@ export default function StaticPageLayout({
         { label: t('Terms of Service'), href: toLocalizedPath('/terms-of-service', language) },
         { label: t('Delete Account & Data'), href: toLocalizedPath('/account-deletion', language) },
         { label: t('Terms & Conditions'), href: toLocalizedPath('/terms-and-conditions', language) },
-        { label: t('FAQ'), href: toLocalizedPath('/#faq', language) },
+        { label: t('FAQ'), href: '/faq/' },
       ],
     },
     {
       title: t('Get in Touch'),
       links: [
         { label: t('Contact'), href: toLocalizedPath('/contact', language) },
-        { label: t('About Us'), href: '#' },
-        { label: t('Our Team'), href: '#' },
+        { label: 'Photo Calorie Calculator', href: RESOURCE_LINKS[1].href },
+        { label: 'Macro Tracker', href: RESOURCE_LINKS[2].href },
       ],
     },
   ] as const
