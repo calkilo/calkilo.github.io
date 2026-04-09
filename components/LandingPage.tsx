@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo, useState, type CSSProperties } from 'react'
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from '../lib/app-links'
@@ -69,6 +70,9 @@ const LANDING_PAGE_KEYWORDS = [
   'nutrition tracking app',
   'calkilo',
 ]
+
+const SEARCH_GUIDES_INTRO =
+  'Start with the pages built around the search topics Calkilo should win: AI calorie tracking, photo calorie estimates, macro tracking, and key product questions.'
 
 const TRANSLATIONS: Record<
   SiteLanguage,
@@ -454,151 +458,89 @@ const FEATURE_ITEMS = [
     title: 'Analysis and AI suggestions',
     description:
       'Monitor your weight, measurements, and nutrition goals. Get personalized AI suggestions to stay on track and optimize your diet.',
-    icon: '/assets/figma/f9fc5d99c2586a8ad4c69f78e400402215b3cf0d.webp',
+    icon: 'analytics',
+    screen: FIGMA_ASSETS.aiScreenMain,
   },
   {
     title: 'Chat & AI Agent',
     description:
       'Chat with support at any time, make changes to meals, receive recipes for different foods and get fast help with your diet.',
+    icon: 'chat',
+    screen: FIGMA_ASSETS.aiScreenAltOne,
   },
   {
     title: 'Personalized Goals',
     description:
       'Set and track personalized health goals with AI-powered recommendations tailored to your lifestyle and preferences.',
+    icon: 'goals',
+    screen: FIGMA_ASSETS.aiScreenAltTwo,
   },
   {
     title: 'Instant Photo Analysis',
     description:
       'Simply snap a photo of your meal and get instant, accurate calorie calculations powered by advanced computer vision AI.',
+    icon: 'camera',
+    screen: FIGMA_ASSETS.aiScreenAltThree,
   },
 ] as const
 
-function FeatureListIcon({ index }: { index: number }) {
-  if (index === 0) {
-    return (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M9.30755 24.3331C8.71182 24.3331 8.22833 23.8496 8.22833 23.2538V13.3826C8.22833 12.7869 8.71182 12.3034 9.30755 12.3034C9.90327 12.3034 10.3868 12.7869 10.3868 13.3826V23.2538C10.3868 23.8496 9.90327 24.3331 9.30755 24.3331Z"
-          fill="#00D448"
-        />
-        <path
-          d="M9.30755 24.3331C8.71182 24.3331 8.22833 23.8496 8.22833 23.2538V13.3826C8.22833 12.7869 8.71182 12.3034 9.30755 12.3034C9.90327 12.3034 10.3868 12.7869 10.3868 13.3826V23.2538C10.3868 23.8496 9.90327 24.3331 9.30755 24.3331"
-          stroke="#00D448"
-          strokeLinecap="round"
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M16.0229 24.3311C15.4272 24.3311 14.9437 23.8476 14.9437 23.2519V8.65661C14.9437 8.06088 15.4272 7.57739 16.0229 7.57739C16.6187 7.57739 17.1022 8.06088 17.1022 8.65661V23.2519C17.1022 23.8476 16.6187 24.3311 16.0229 24.3311Z"
-          fill="#00D448"
-        />
-        <path
-          d="M16.0229 24.3311C15.4272 24.3311 14.9437 23.8476 14.9437 23.2519V8.65661C14.9437 8.06088 15.4272 7.57739 16.0229 7.57739C16.6187 7.57739 17.1022 8.06088 17.1022 8.65661V23.2519C17.1022 23.8476 16.6187 24.3311 16.0229 24.3311"
-          stroke="#00D448"
-          strokeLinecap="round"
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M22.629 24.3306C22.0333 24.3306 21.5498 23.8471 21.5498 23.2514V18.5978C21.5498 18.0021 22.0333 17.5186 22.629 17.5186C23.2247 17.5186 23.7082 18.0021 23.7082 18.5978V23.2514C23.7082 23.8471 23.2247 24.3306 22.629 24.3306Z"
-          fill="#00D448"
-        />
-        <path
-          d="M22.629 24.3306C22.0333 24.3306 21.5498 23.8471 21.5498 23.2514V18.5978C21.5498 18.0021 22.0333 17.5186 22.629 17.5186C23.2247 17.5186 23.7082 18.0021 23.7082 18.5978V23.2514C23.7082 23.8471 23.2247 24.3306 22.629 24.3306"
-          stroke="#00D448"
-          strokeLinecap="round"
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M9.2262 2.65881C5.23742 2.65881 2.65881 5.38851 2.65881 9.61615V22.3221C2.65881 26.5498 5.23742 29.2795 9.2262 29.2795H22.7121C26.7023 29.2795 29.2795 26.5498 29.2795 22.3221V9.61615C29.2795 5.38851 26.7023 2.65881 22.7121 2.65881H9.2262ZM22.7117 31.4375H9.22581C4.00673 31.4375 0.5 27.7739 0.5 22.3217V9.61577C0.5 4.16358 4.00673 0.5 9.22581 0.5H22.7117C27.9308 0.5 31.4375 4.16358 31.4375 9.61577V22.3217C31.4375 27.7739 27.9308 31.4375 22.7117 31.4375Z"
-          fill="#00D448"
-        />
-        <path
-          d="M9.2262 2.65881V2.15881C7.11334 2.15881 5.33323 2.88483 4.08315 4.20886C2.83582 5.52998 2.15881 7.40087 2.15881 9.61615H2.65881H3.15881C3.15881 7.6038 3.7711 5.99601 4.81027 4.89537C5.84669 3.79764 7.35028 3.15881 9.2262 3.15881V2.65881ZM2.65881 9.61615H2.15881V22.3221H2.65881H3.15881V9.61615H2.65881ZM2.65881 22.3221H2.15881C2.15881 24.5374 2.83582 26.4083 4.08315 27.7294C5.33323 29.0534 7.11334 29.7795 9.2262 29.7795V29.2795V28.7795C7.35028 28.7795 5.84669 28.1406 4.81027 27.0429C3.7711 25.9423 3.15881 24.3345 3.15881 22.3221H2.65881ZM9.2262 29.2795V29.7795H22.7121V29.2795V28.7795H9.2262V29.2795ZM22.7121 29.2795V29.7795C24.8256 29.7795 26.6058 29.0535 27.8557 27.7294C29.1028 26.4082 29.7795 24.5373 29.7795 22.3221H29.2795H28.7795C28.7795 24.3345 28.1675 25.9423 27.1285 27.0429C26.0923 28.1406 24.5888 28.7795 22.7121 28.7795V29.2795ZM29.2795 22.3221H29.7795V9.61615H29.2795H28.7795V22.3221H29.2795ZM29.2795 9.61615H29.7795C29.7795 7.40094 29.1028 5.53004 27.8557 4.20889C26.6058 2.88481 24.8256 2.15881 22.7121 2.15881V2.65881V3.15881C24.5888 3.15881 26.0923 3.79767 27.1285 4.89534C28.1675 5.99595 28.7795 7.60372 28.7795 9.61615H29.2795ZM22.7121 2.65881V2.15881H9.2262V2.65881V3.15881H22.7121V2.65881ZM22.7117 31.4375V30.9375H9.22581V31.4375V31.9375H22.7117V31.4375ZM9.22581 31.4375V30.9375C6.73766 30.9375 4.6918 30.067 3.26695 28.5784C1.84027 27.088 1 24.9396 1 22.3217H0.5H0C0 25.156 0.913097 27.5655 2.54455 29.2699C4.17784 30.9762 6.49488 31.9375 9.22581 31.9375V31.4375ZM0.5 22.3217H1V9.61577H0.5H0V22.3217H0.5ZM0.5 9.61577H1C1 6.99787 1.84027 4.84951 3.26695 3.35905C4.6918 1.87051 6.73766 1 9.22581 1V0.5V0C6.49488 0 4.17784 0.961278 2.54455 2.66757C0.913097 4.37196 0 6.78147 0 9.61577H0.5ZM9.22581 0.5V1H22.7117V0.5V0H9.22581V0.5ZM22.7117 0.5V1C25.1998 1 27.2457 1.87051 28.6706 3.35905C30.0972 4.84951 30.9375 6.99787 30.9375 9.61577H31.4375H31.9375C31.9375 6.78147 31.0244 4.37196 29.3929 2.66757C27.7597 0.961278 25.4426 0 22.7117 0V0.5ZM31.4375 9.61577H30.9375V22.3217H31.4375H31.9375V9.61577H31.4375ZM31.4375 22.3217H30.9375C30.9375 24.9396 30.0972 27.088 28.6706 28.5784C27.2457 30.067 25.1998 30.9375 22.7117 30.9375V31.4375V31.9375C25.4426 31.9375 27.7597 30.9762 29.3929 29.2699C31.0244 27.5655 31.9375 25.156 31.9375 22.3217H31.4375Z"
-          fill="#00D448"
-        />
-      </svg>
-    )
-  }
+type FeatureIconKind = (typeof FEATURE_ITEMS)[number]['icon']
 
-  if (index === 1 || index === 2) {
-    return (
-      <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M16 21.3333C16.4909 21.3333 16.8889 21.7313 16.8889 22.2222C16.8889 22.7131 16.4909 23.1111 16 23.1111H10.6667C10.1757 23.1111 9.77778 22.7131 9.77778 22.2222C9.77778 21.7313 10.1757 21.3333 10.6667 21.3333H16Z"
-          fill="currentColor"
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M13.3333 0C14.8061 0 16 1.19391 16 2.66667C16 3.82732 15.2573 4.81155 14.2222 5.17795V8.44444H17.7778C21.9506 8.44444 25.3333 11.8272 25.3333 16V16.1198C25.4642 16.044 25.6157 16 25.7778 16C26.2687 16 26.6667 16.398 26.6667 16.8889V23.1111C26.6667 23.602 26.2687 24 25.7778 24C25.6156 24 25.4642 23.9552 25.3333 23.8793V24C25.3333 25.7182 23.9404 27.1111 22.2222 27.1111H4.44444C2.72622 27.1111 1.33333 25.7182 1.33333 24V23.8793C1.20242 23.9552 1.05111 24 0.888889 24C0.397969 24 0 23.602 0 23.1111V16.8889C0 16.398 0.397969 16 0.888889 16C1.05095 16 1.2025 16.044 1.33333 16.1198V16C1.33333 11.8272 4.71607 8.44444 8.88889 8.44444H12.4444V5.17795C11.4093 4.81155 10.6667 3.82732 10.6667 2.66667C10.6667 1.19391 11.8606 0 13.3333 0ZM8.88889 11.1111C6.18883 11.1111 4 13.2999 4 16V24C4 24.2455 4.19899 24.4444 4.44444 24.4444H22.2222C22.4677 24.4444 22.6667 24.2455 22.6667 24V16C22.6667 13.2999 20.4778 11.1111 17.7778 11.1111H8.88889Z"
-          fill="currentColor"
-        />
-        <path
-          d="M17.9123 13.2826C19.2532 13.1428 20.4444 14.1835 20.4444 15.5317V18.5707C20.4444 18.7927 20.2826 18.9807 20.0625 19.0091C18.9457 19.1533 15.6212 19.556 13.3333 19.556C11.0454 19.556 7.72092 19.1533 6.60417 19.0091C6.38405 18.9807 6.22222 18.7927 6.22222 18.5707V15.5317C6.22228 14.1835 7.41344 13.1428 8.75434 13.2826C10.18 13.4312 11.947 13.5786 13.3333 13.5786C14.7196 13.5786 16.4866 13.4312 17.9123 13.2826ZM13.0694 14.9787C12.7991 14.5695 12.1919 14.5563 11.9045 14.9536L11.8481 15.0456L11.099 16.4813H8C7.75465 16.4813 7.55573 16.6805 7.55556 16.9258C7.55569 17.1711 7.75462 17.3702 8 17.3702H11.2066C11.4713 17.3702 11.7142 17.2229 11.8368 16.9883L12.4696 15.7747L13.5885 18.1567C13.8137 18.6362 14.4659 18.71 14.7925 18.293L15.5148 17.3702H18.6667C18.912 17.3702 19.111 17.1711 19.1111 16.9258C19.1109 16.6805 18.912 16.4813 18.6667 16.4813H15.428C15.2366 16.4814 15.0546 16.5585 14.9219 16.6931L14.8681 16.7539L14.27 17.5169L13.1224 15.0725L13.0694 14.9787Z"
-          fill="currentColor"
-        />
-      </svg>
-    )
+function FeatureListIcon({ kind }: { kind: FeatureIconKind }) {
+  switch (kind) {
+    case 'analytics':
+      return (
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="24" height="24" rx="7" stroke="currentColor" strokeWidth="2" />
+          <path d="M10 21V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <path d="M16 21V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <path d="M22 21V14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      )
+    case 'chat':
+      return (
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M11.1667 23.5L6.5 26V9.5C6.5 7.84315 7.84315 6.5 9.5 6.5H20.5C22.1569 6.5 23.5 7.84315 23.5 9.5V17.5C23.5 19.1569 22.1569 20.5 20.5 20.5H14.1667L11.1667 23.5Z"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M18.5 20.5V22.5C18.5 24.1569 19.8431 25.5 21.5 25.5H22.8333L25.5 28V17.5"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      )
+    case 'goals':
+      return (
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="10" stroke="currentColor" strokeWidth="2" />
+          <circle cx="16" cy="16" r="5" stroke="currentColor" strokeWidth="2" />
+          <path d="M16 16L24.5 7.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <path d="M21.5 7.5H24.5V10.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    case 'camera':
+    default:
+      return (
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M8.66667 10.6667H11.2L13 8H19L20.8 10.6667H23.3333C25.1743 10.6667 26.6667 12.1591 26.6667 14V22C26.6667 23.8409 25.1743 25.3333 23.3333 25.3333H8.66667C6.82572 25.3333 5.33334 23.8409 5.33334 22V14C5.33334 12.1591 6.82572 10.6667 8.66667 10.6667Z"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <circle cx="16" cy="17.3333" r="4.33333" stroke="currentColor" strokeWidth="2" />
+          <path d="M22.6667 14H22.68" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+        </svg>
+      )
   }
-   if ( index === 2) {
-    return (
-      <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M16 21.3333C16.4909 21.3333 16.8889 21.7313 16.8889 22.2222C16.8889 22.7131 16.4909 23.1111 16 23.1111H10.6667C10.1757 23.1111 9.77778 22.7131 9.77778 22.2222C9.77778 21.7313 10.1757 21.3333 10.6667 21.3333H16Z"
-          fill="currentColor"
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M13.3333 0C14.8061 0 16 1.19391 16 2.66667C16 3.82732 15.2573 4.81155 14.2222 5.17795V8.44444H17.7778C21.9506 8.44444 25.3333 11.8272 25.3333 16V16.1198C25.4642 16.044 25.6157 16 25.7778 16C26.2687 16 26.6667 16.398 26.6667 16.8889V23.1111C26.6667 23.602 26.2687 24 25.7778 24C25.6156 24 25.4642 23.9552 25.3333 23.8793V24C25.3333 25.7182 23.9404 27.1111 22.2222 27.1111H4.44444C2.72622 27.1111 1.33333 25.7182 1.33333 24V23.8793C1.20242 23.9552 1.05111 24 0.888889 24C0.397969 24 0 23.602 0 23.1111V16.8889C0 16.398 0.397969 16 0.888889 16C1.05095 16 1.2025 16.044 1.33333 16.1198V16C1.33333 11.8272 4.71607 8.44444 8.88889 8.44444H12.4444V5.17795C11.4093 4.81155 10.6667 3.82732 10.6667 2.66667C10.6667 1.19391 11.8606 0 13.3333 0ZM8.88889 11.1111C6.18883 11.1111 4 13.2999 4 16V24C4 24.2455 4.19899 24.4444 4.44444 24.4444H22.2222C22.4677 24.4444 22.6667 24.2455 22.6667 24V16C22.6667 13.2999 20.4778 11.1111 17.7778 11.1111H8.88889Z"
-          fill="currentColor"
-        />
-        <path
-          d="M17.9123 13.2826C19.2532 13.1428 20.4444 14.1835 20.4444 15.5317V18.5707C20.4444 18.7927 20.2826 18.9807 20.0625 19.0091C18.9457 19.1533 15.6212 19.556 13.3333 19.556C11.0454 19.556 7.72092 19.1533 6.60417 19.0091C6.38405 18.9807 6.22222 18.7927 6.22222 18.5707V15.5317C6.22228 14.1835 7.41344 13.1428 8.75434 13.2826C10.18 13.4312 11.947 13.5786 13.3333 13.5786C14.7196 13.5786 16.4866 13.4312 17.9123 13.2826ZM13.0694 14.9787C12.7991 14.5695 12.1919 14.5563 11.9045 14.9536L11.8481 15.0456L11.099 16.4813H8C7.75465 16.4813 7.55573 16.6805 7.55556 16.9258C7.55569 17.1711 7.75462 17.3702 8 17.3702H11.2066C11.4713 17.3702 11.7142 17.2229 11.8368 16.9883L12.4696 15.7747L13.5885 18.1567C13.8137 18.6362 14.4659 18.71 14.7925 18.293L15.5148 17.3702H18.6667C18.912 17.3702 19.111 17.1711 19.1111 16.9258C19.1109 16.6805 18.912 16.4813 18.6667 16.4813H15.428C15.2366 16.4814 15.0546 16.5585 14.9219 16.6931L14.8681 16.7539L14.27 17.5169L13.1224 15.0725L13.0694 14.9787Z"
-          fill="currentColor"
-        />
-      </svg>
-    )
-  }
-  if (index === 1){
-    return (
-      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M15 0C6.71625 0 0 6.71625 0 15C0 23.2838 6.71625 30 15 30C23.2838 30 30 23.2838 30 15C30 6.71625 23.2838 0 15 0ZM21.6667 10C22.1524 10 22.5 10.3476 22.5 10.8333V11.6667C22.5 12.1524 22.1524 12.5 21.6667 12.5H20V14C20 14.4857 19.6524 14.8333 19.1667 14.8333C18.681 14.8333 18.3333 14.4857 18.3333 14V12.5H16.6667C16.181 12.5 15.8333 12.1524 15.8333 11.6667C15.8333 11.181 16.181 10.8333 16.6667 10.8333H18V9C18 8.51429 18.3476 8.16667 18.8333 8.16667C19.3191 8.16667 19.6667 8.51429 19.6667 9V10H21.6667Z"
-          fill="currentColor"
-        />
-      </svg>
-    )
-  }
-
-  return (
-    <span className="lp-feature-icon-photo">
-      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="30" cy="30" r="29.5" fill="white" stroke="white" />
-      </svg>
-      <svg width="30" height="27" viewBox="0 0 30 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M10.0826 0.91394C11.8057 0.228821 17.977 0.228713 19.6989 0.91394C20.6386 1.28799 21.2722 1.99613 21.8551 3.05457L22.5104 4.3114C22.5253 4.33623 22.54 4.35803 22.5524 4.37683L22.608 4.453C22.9067 4.7781 23.4063 4.97449 23.736 4.97449C26.8543 4.97464 29.3832 7.50257 29.3834 10.62V19.0184C29.3834 22.9952 26.157 26.2206 22.1803 26.2206H7.60217C3.6245 26.2205 0.400076 22.9956 0.400024 19.0184V10.62C0.400275 7.50248 2.92904 4.97449 6.04749 4.97449C6.37605 4.97444 6.87638 4.7779 7.17542 4.453C7.18139 4.44649 7.18943 4.43654 7.19885 4.42371L7.27307 4.30945L7.92639 3.05457C8.50881 1.99604 9.14254 1.28823 10.0826 0.91394ZM18.7223 2.87683C17.2309 2.45535 12.0444 2.47472 10.8873 2.93445C10.5207 3.08039 10.1935 3.44584 9.83167 4.10339L9.27405 5.18152L9.13635 5.42957C9.02176 5.62017 8.90688 5.7811 8.776 5.92371C8.04206 6.7214 6.95642 7.14832 6.04749 7.14832L5.81018 7.1571C4.00287 7.27931 2.57385 8.78375 2.57385 10.621V19.0184C2.57385 21.7951 4.8252 24.0475 7.60217 24.0477H22.1813C24.9574 24.0476 27.2096 21.7946 27.2096 19.0184V10.621C27.2096 8.70387 25.6542 7.14832 23.736 7.14832L23.484 7.13855C22.6311 7.06837 21.6728 6.64881 21.0065 5.92273C20.8773 5.78203 20.7629 5.62244 20.649 5.43347C20.6327 5.40637 20.6128 5.37019 20.5895 5.328L20.4215 5.01257L19.9518 4.10339C19.5896 3.44571 19.262 3.08046 18.8951 2.93445L18.7223 2.87683Z"
-          fill="currentColor"
-        />
-        <path
-          d="M22.868 8.17102L23.037 8.17981C23.8686 8.26429 24.5175 8.96658 24.5175 9.82043C24.5174 10.6663 23.8808 11.3628 23.0604 11.4581L23.0487 11.4601V11.4591L22.8798 11.4689L22.868 11.4698C21.9455 11.4697 21.206 10.7323 21.2059 9.82043C21.2059 8.97464 21.8427 8.27816 22.663 8.18274L22.6757 8.18079L22.8573 8.17102H22.868Z"
-          fill="currentColor"
-          stroke="currentColor"
-          strokeWidth="0.4"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M14.8909 9.38416C18.0357 9.38416 20.585 11.9327 20.5852 15.0775C20.5852 18.2225 18.0358 20.7719 14.8909 20.7719C11.7461 20.7717 9.19751 18.2224 9.19751 15.0775C9.19772 11.9328 11.7462 9.38434 14.8909 9.38416ZM14.8918 11.557C12.9474 11.557 11.3713 13.1331 11.3713 15.0775C11.3716 17.0218 12.9475 18.597 14.8918 18.597C16.8359 18.5968 18.4111 17.0216 18.4114 15.0775C18.4114 13.1332 16.8361 11.5573 14.8918 11.557Z"
-          fill="currentColor"
-        />
-      </svg>
-    </span>
-  )
 }
 
 const HOW_STEPS = [
@@ -761,6 +703,12 @@ const FAQ_ITEMS = [
     answer: 'Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.',
   },
   {
+    topic: 'AI Privacy',
+    question: 'What data does Calkilo send for AI features?',
+    answer:
+      'Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.',
+  },
+  {
     topic: 'System Preference',
     question: 'Do I need internet connection to use the app?',
     answer: 'Photo analysis needs internet, but you can still review previous data and basic logs while offline.',
@@ -839,6 +787,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Meal Planning": "Maaltijdplanning",
     "Preferences": "Voorkeuren",
     "Security": "Beveiliging",
+    "AI Privacy": "AI-privacy",
     "System Preference": "Systeem",
     "Nutrition": "Voeding",
     "Device & App": "Apparaten en app",
@@ -846,6 +795,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "How does the AI meal planning work?": "Hoe werkt AI-maaltijdplanning?",
     "Can I change my preferences after onboarding?": "Kan ik mijn voorkeuren later aanpassen?",
     "Is my food photo data private and secure?": "Zijn mijn voedselfoto-gegevens prive en veilig?",
+    "What data does Calkilo send for AI features?": "Welke gegevens stuurt Calkilo voor AI-functies?",
     "Do I need internet connection to use the app?": "Heb ik internet nodig om de app te gebruiken?",
     "Do recipes include nutritional information?": "Bevatten recepten voedingsinformatie?",
     "Does it work with my fitness tracker?": "Werkt het met mijn fitness tracker?",
@@ -853,6 +803,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "De app combineert je doelen, voedingsgeschiedenis en voorkeuren om maaltijdsuggesties te maken die zich aanpassen.",
     "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "Ja. Je kunt dieetbeperkingen, smaakvoorkeuren en macrodoelen op elk moment aanpassen in je profiel.",
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "Uploads zijn versleuteld en worden alleen gebruikt voor je analyse en betere aanbevelingen.",
+    "Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.": "Voordat Calkilo een nieuwe AI-voedingsscan, maaltijdbewerking of AI-chatverzoek verstuurt, vraagt de app om jouw toestemming. Als je AI-functies toestaat, kan Calkilo voedselfoto's, maaltijdgegevens, chatberichten en de account- of aanvraag-ID's versturen die nodig zijn om je resultaat via api.calkilo.com terug te sturen.",
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "Fotoanalyse vereist internet, maar je kunt eerdere gegevens en basislogs ook offline bekijken.",
     "Each suggested meal includes calories, protein, carbs, fats, and portion guidance.": "Elke voorgestelde maaltijd bevat calorieen, eiwitten, koolhydraten, vetten en portierichtlijnen.",
     "Yes. You can connect supported platforms like Apple Health, Google Fit, Fitbit, and Samsung Health.": "Ja. Je kunt ondersteunde platforms verbinden zoals Apple Health, Google Fit, Fitbit en Samsung Health.",
@@ -945,6 +896,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Meal Planning": "План питания",
     "Preferences": "Настройки",
     "Security": "Безопасность",
+    "AI Privacy": "AI-конфиденциальность",
     "System Preference": "Системные настройки",
     "Nutrition": "Питание",
     "Device & App": "Устройства и приложение",
@@ -952,6 +904,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "How does the AI meal planning work?": "Как работает AI-планирование питания?",
     "Can I change my preferences after onboarding?": "Можно ли изменить настройки после старта?",
     "Is my food photo data private and secure?": "Мои фото еды защищены и приватны?",
+    "What data does Calkilo send for AI features?": "Какие данные Calkilo отправляет для AI-функций?",
     "Do I need internet connection to use the app?": "Нужен ли интернет для работы приложения?",
     "Do recipes include nutritional information?": "Есть ли в рецептах информация о питательности?",
     "Does it work with my fitness tracker?": "Работает ли это с моим фитнес-трекером?",
@@ -959,6 +912,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "Приложение объединяет ваши цели, историю питания и предпочтения, чтобы формировать персональные рекомендации.",
     "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "Да. Вы можете менять ограничения, вкусовые предпочтения и цели по макроэлементам в настройках профиля.",
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "Загрузки шифруются и используются только для анализа и улучшения персональных рекомендаций.",
+    "Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.": "Перед отправкой нового AI-сканирования еды, редактирования приема пищи или AI-чата приложение запрашивает ваше разрешение. Если вы разрешите AI-функции, Calkilo может отправлять фотографии еды, записи о приемах пищи, сообщения чата, а также идентификаторы аккаунта или запроса, необходимые для возврата результата через api.calkilo.com.",
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "Для анализа фото нужен интернет, но прошлые данные и базовые записи доступны офлайн.",
     "Each suggested meal includes calories, protein, carbs, fats, and portion guidance.": "Каждая рекомендация включает калории, белки, углеводы, жиры и рекомендации по порциям.",
     "Yes. You can connect supported platforms like Apple Health, Google Fit, Fitbit, and Samsung Health.": "Да. Можно подключить Apple Health, Google Fit, Fitbit и Samsung Health.",
@@ -1052,6 +1006,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Meal Planning": "餐食规划",
     "Preferences": "偏好设置",
     "Security": "安全",
+    "AI Privacy": "AI 隐私",
     "System Preference": "系统设置",
     "Nutrition": "营养",
     "Device & App": "设备与应用",
@@ -1059,6 +1014,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "How does the AI meal planning work?": "AI 餐食规划如何工作？",
     "Can I change my preferences after onboarding?": "完成引导后可以修改偏好吗？",
     "Is my food photo data private and secure?": "我的食物照片数据是否私密安全？",
+    "What data does Calkilo send for AI features?": "Calkilo 会为 AI 功能发送哪些数据？",
     "Do I need internet connection to use the app?": "使用应用需要联网吗？",
     "Do recipes include nutritional information?": "食谱是否包含营养信息？",
     "Does it work with my fitness tracker?": "是否支持我的健身追踪器？",
@@ -1066,6 +1022,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "应用会结合你的目标、饮食历史和偏好，生成会随数据变化而调整的餐食建议。",
     "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "可以。你可随时在个人设置中更新饮食限制、口味偏好和宏量目标。",
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "上传内容会加密，仅用于提供分析结果并优化个性化推荐。",
+    "Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.": "在 Calkilo 发送新的 AI 食物扫描、餐食编辑或 AI 聊天请求之前，应用会先征求你的许可。如果你允许 AI 功能，Calkilo 可能会通过 api.calkilo.com 发送食物照片、餐食记录、聊天消息，以及返回结果所需的账户或请求标识符。",
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "照片分析需要联网，但离线时仍可查看历史数据和基础记录。",
     "Each suggested meal includes calories, protein, carbs, fats, and portion guidance.": "每个推荐餐食都包含热量、蛋白质、碳水、脂肪和份量建议。",
     "Yes. You can connect supported platforms like Apple Health, Google Fit, Fitbit, and Samsung Health.": "可以。你可以连接 Apple Health、Google Fit、Fitbit 和 Samsung Health。",
@@ -1159,6 +1116,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Meal Planning": "تخطيط الوجبات",
     "Preferences": "التفضيلات",
     "Security": "الأمان",
+    "AI Privacy": "خصوصية الذكاء الاصطناعي",
     "System Preference": "إعدادات النظام",
     "Nutrition": "التغذية",
     "Device & App": "الجهاز والتطبيق",
@@ -1166,6 +1124,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "How does the AI meal planning work?": "كيف يعمل تخطيط الوجبات بالذكاء الاصطناعي؟",
     "Can I change my preferences after onboarding?": "هل يمكنني تغيير التفضيلات بعد البدء؟",
     "Is my food photo data private and secure?": "هل بيانات صور الطعام خاصة وآمنة؟",
+    "What data does Calkilo send for AI features?": "ما البيانات التي يرسلها Calkilo لميزات الذكاء الاصطناعي؟",
     "Do I need internet connection to use the app?": "هل أحتاج اتصال إنترنت لاستخدام التطبيق؟",
     "Do recipes include nutritional information?": "هل تشمل الوصفات معلومات غذائية؟",
     "Does it work with my fitness tracker?": "هل يعمل مع جهاز تتبع اللياقة الخاص بي؟",
@@ -1173,6 +1132,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "يجمع التطبيق أهدافك وسجل التغذية وتفضيلاتك ليولد اقتراحات وجبات تتكيف مع تغير بياناتك.",
     "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "نعم. يمكنك تحديث القيود الغذائية وتفضيلات الذوق وأهداف الماكروز في أي وقت من إعدادات الملف الشخصي.",
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "يتم تشفير الملفات المرفوعة وتستخدم فقط لتقديم التحليل وتحسين توصياتك الشخصية.",
+    "Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.": "قبل أن يرسل Calkilo فحص طعام جديداً بالذكاء الاصطناعي أو تعديل وجبة أو طلب دردشة بالذكاء الاصطناعي، يطلب التطبيق إذنك. إذا سمحت بميزات الذكاء الاصطناعي، فقد يرسل Calkilo صور الطعام وسجلات الوجبات ورسائل الدردشة ومعرّفات الحساب أو الطلب اللازمة لإرجاع النتيجة عبر api.calkilo.com.",
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "تحليل الصور يحتاج إلى الإنترنت، لكن يمكنك مراجعة البيانات السابقة والسجلات الأساسية دون اتصال.",
     "Each suggested meal includes calories, protein, carbs, fats, and portion guidance.": "كل وجبة مقترحة تتضمن السعرات والبروتين والكربوهيدرات والدهون وإرشادات الحصص.",
     "Yes. You can connect supported platforms like Apple Health, Google Fit, Fitbit, and Samsung Health.": "نعم. يمكنك ربط المنصات المدعومة مثل Apple Health وGoogle Fit وFitbit وSamsung Health.",
@@ -1266,6 +1226,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Meal Planning": "برنامه‌ریزی",
     "Preferences": "تنظیمات",
     "Security": "حریم خصوصی",
+    "AI Privacy": "حریم خصوصی هوش مصنوعی",
     "System Preference": "اتصال",
     "Nutrition": "تغذیه",
     "Device & App": "دستگاه‌ها",
@@ -1273,6 +1234,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "How does the AI meal planning work?": "هوش مصنوعی چطور برای من برنامه‌ریزی می‌کند؟",
     "Can I change my preferences after onboarding?": "آیا امکان تغییر تنظیمات بعد از شروع برنامه وجود دارد؟",
     "Is my food photo data private and secure?": "آیا امنیت و حریم خصوصی عکس‌های من حفظ می‌شود؟",
+    "What data does Calkilo send for AI features?": "Calkilo برای قابلیت‌های هوش مصنوعی چه داده‌هایی ارسال می‌کند؟",
     "Do I need internet connection to use the app?": "آیا کار با اپلیکیشن نیاز به اینترنت دائمی دارد؟",
     "Do recipes include nutritional information?": "آیا دستورها شامل اطلاعات تغذیه‌ای هستند؟",
     "Does it work with my fitness tracker?": "آیا اپلیکیشن با ساعت‌های هوشمند و مچ‌بندهای سلامتی همگام می‌شود؟",
@@ -1280,6 +1242,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "سیستم ما با ترکیب اهداف، ذائقه و سوابق تغذیه‌ای شما، هوشمندانه‌ترین پیشنهادها را که دقیقاً با سبک زندگی‌تان سازگار است، طراحی می‌کند.",
     "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "بله، بعد از شروع برنامه می‌توانید اطلاعاتی مثل قد و وزن هدف را در پروفایل خود به‌روزرسانی کنید. در حال حاضر امکان تنظیم دستی ماکروها وجود ندارد.",
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "بله، تمام تصاویر ارسالی به‌صورت رمزگذاری‌شده ذخیره می‌شوند. این داده‌ها صرفاً برای تحلیل دقیق‌تر و شخصی‌سازی بهتر پیشنهادها برای خود شما استفاده می‌شوند.",
+    "Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.": "پیش از آن‌که Calkilo اسکن غذایی جدید، ویرایش وعده یا درخواست چت هوش مصنوعی را ارسال کند، اپ از شما اجازه می‌گیرد. اگر قابلیت‌های هوش مصنوعی را فعال کنید، Calkilo ممکن است عکس غذا، سوابق وعده‌ها، پیام‌های چت و شناسه‌های حساب یا درخواست لازم برای برگرداندن نتیجه را از طریق api.calkilo.com ارسال کند.",
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "برای تحلیل تصاویر به اینترنت نیاز است؛ اما می‌توانید اطلاعات ثبت‌شده قبلی را در حالت آفلاین مشاهده کنید.",
     "Each suggested meal includes calories, protein, carbs, fats, and portion guidance.": "هر وعده پیشنهادی شامل کالری، پروتئین، کربوهیدرات، چربی و راهنمای مقدار است.",
     "Yes. You can connect supported platforms like Apple Health, Google Fit, Fitbit, and Samsung Health.": "بله، می‌توانید سرویس‌های محبوبی مثل Apple Health، Google Fit، Samsung Health و Fitbit را به برنامه متصل کنید.",
@@ -1373,6 +1336,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Meal Planning": "Pianificazione pasti",
     "Preferences": "Preferenze",
     "Security": "Sicurezza",
+    "AI Privacy": "Privacy AI",
     "System Preference": "Impostazioni sistema",
     "Nutrition": "Nutrizione",
     "Device & App": "Dispositivo e app",
@@ -1380,6 +1344,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "How does the AI meal planning work?": "Come funziona la pianificazione pasti con AI?",
     "Can I change my preferences after onboarding?": "Posso cambiare le preferenze dopo l'onboarding?",
     "Is my food photo data private and secure?": "I dati delle foto del cibo sono privati e sicuri?",
+    "What data does Calkilo send for AI features?": "Quali dati invia Calkilo per le funzioni AI?",
     "Do I need internet connection to use the app?": "Serve internet per usare l'app?",
     "Do recipes include nutritional information?": "Le ricette includono informazioni nutrizionali?",
     "Does it work with my fitness tracker?": "Funziona con il mio fitness tracker?",
@@ -1387,6 +1352,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "L'app combina obiettivi, storico nutrizionale e preferenze per suggerire pasti che si adattano ai tuoi dati.",
     "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "Si. Puoi aggiornare restrizioni alimentari, gusti e obiettivi macro in qualsiasi momento dalle impostazioni profilo.",
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "I caricamenti sono crittografati e usati solo per l'analisi e per migliorare i suggerimenti personali.",
+    "Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.": "Prima che Calkilo invii una nuova scansione cibo AI, una modifica del pasto o una richiesta di chat AI, l'app ti chiede il permesso. Se abiliti le funzioni AI, Calkilo puo inviare foto del cibo, registri dei pasti, messaggi di chat e gli identificatori di account o richiesta necessari per restituire il risultato tramite api.calkilo.com.",
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "L'analisi foto richiede internet, ma puoi rivedere dati precedenti e registri base anche offline.",
     "Each suggested meal includes calories, protein, carbs, fats, and portion guidance.": "Ogni pasto suggerito include calorie, proteine, carboidrati, grassi e guida porzioni.",
     "Yes. You can connect supported platforms like Apple Health, Google Fit, Fitbit, and Samsung Health.": "Si. Puoi collegare piattaforme supportate come Apple Health, Google Fit, Fitbit e Samsung Health.",
@@ -1508,24 +1474,6 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
       isDark
         ? [FIGMA_ASSETS.heroSlideOne, FIGMA_ASSETS.heroSlideTwoDark]
         : [FIGMA_ASSETS.heroSlideOne, FIGMA_ASSETS.heroSlideTwoLight],
-    [isDark],
-  )
-
-  const aiScreens = useMemo(
-    () =>
-      isDark
-        ? [
-            { src: FIGMA_ASSETS.aiScreenMain, scale: 1 },
-            { src: FIGMA_ASSETS.aiScreenAltOne, scale: 1 },
-            { src: FIGMA_ASSETS.aiScreenAltTwo, scale: 1 },
-            { src: FIGMA_ASSETS.aiScreenAltThree, scale: 1 },
-          ]
-        : [
-            { src: FIGMA_ASSETS.aiScreenMain, scale: 1 },
-            { src: FIGMA_ASSETS.aiScreenAltOne, scale: 1 },
-            { src: FIGMA_ASSETS.aiScreenAltTwo, scale: 1 },
-            { src: FIGMA_ASSETS.aiScreenAltThree  , scale: 1 },
-          ],
     [isDark],
   )
 
@@ -1853,14 +1801,17 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
             <div className="lp-ai-screen-wrap lp-reveal lp-reveal--left" aria-hidden="true">
               <div className="lp-ai-screen-glow" />
               <div className="lp-ai-screen-stage">
-                <img
-                  src={aiScreens[activeFeature].src}
-                  alt={ts('CalKilo AI screen')}
-                  className="lp-ai-screen"
-                  loading="lazy"
-                  decoding="async"
-                  style={{ '--screen-scale': aiScreens[activeFeature].scale } as CSSProperties}
-                />
+                {FEATURE_ITEMS.map((item, index) => (
+                  <img
+                    key={item.title}
+                    src={item.screen}
+                    alt=""
+                    className={`lp-ai-screen${activeFeature === index ? ' is-active' : ''}`}
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority={index === 0 ? 'high' : 'low'}
+                  />
+                ))}
               </div>
             </div>
 
@@ -1870,17 +1821,18 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
               </h2>
               <p>{copy.aiSubtitle}</p>
 
-              <div className="lp-feature-list">
+              <div className="lp-feature-list lp-reveal lp-reveal--pop">
                 {FEATURE_ITEMS.map((item, index) => (
                   <button
                     key={item.title}
-                    className={`lp-feature-card lp-reveal lp-reveal--pop${activeFeature === index ? ' is-active' : ''}`}
+                    className={`lp-feature-card${activeFeature === index ? ' is-active' : ''}`}
                     onClick={() => setActiveFeature(index)}
                     type="button"
-                    style={{ '--stagger-index': index } as CSSProperties}
                   >
                     <div className="lp-feature-icon" aria-hidden="true">
-                      <FeatureListIcon index={index} />
+                      <span className="lp-feature-icon-badge">
+                        <FeatureListIcon kind={item.icon} />
+                      </span>
                     </div>
                     <div>
                       <h3>{ts(item.title)}</h3>
@@ -2148,6 +2100,38 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
             </div>
           </div>
         </section>
+
+        {language === 'en' ? (
+          <section className="lp-section lp-guides" aria-labelledby="search-guides-title">
+            <div className="lp-container lp-guides-wrap">
+              <header className="lp-section-head lp-guides-head lp-reveal">
+                <p className="lp-kicker">Search Guides</p>
+                <h2 id="search-guides-title">
+                  Build authority for <span>your target searches</span>
+                </h2>
+                <p>{SEARCH_GUIDES_INTRO}</p>
+              </header>
+
+              <div className="lp-guides-grid">
+                {RESOURCE_LINKS.map((resource, index) => (
+                  <article
+                    key={resource.href}
+                    className="lp-guide-card lp-reveal lp-reveal--pop"
+                    style={{ '--stagger-index': index } as CSSProperties}
+                  >
+                    <h3>
+                      <Link href={resource.href}>{resource.label}</Link>
+                    </h3>
+                    <p>{resource.description}</p>
+                    <Link className="lp-guide-link" href={resource.href}>
+                      Read guide
+                    </Link>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
 
         <section className="lp-section lp-download" id="download">
           <div className="lp-container lp-download-grid">

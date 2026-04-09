@@ -1,19 +1,18 @@
 # Enable Rewrite Engine
 RewriteEngine On
 
+# Redirect legacy English-prefixed URLs to the canonical root URLs
+RewriteRule ^en/?$ / [R=301,L,NC]
+RewriteRule ^en/(.*)$ /$1 [R=301,L,NC]
+
 # Handle language routes - redirect to index.html with language code
 # Example: /fa -> /index.html (client-side will handle the language)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Check if the first segment is a valid language code
-RewriteCond %{REQUEST_URI} ^/(en|fa|zh|ru|it|fr|de|ar|es|nl)(/.*)?$ [NC]
-RewriteRule ^(en|fa|zh|ru|it|fr|de|ar|es|nl)(/.*)?$ /index.html [L]
-
-# Redirect root to default language (English) - only if no language is detected
-RewriteCond %{REQUEST_URI} ^/$
-RewriteCond %{QUERY_STRING} !lang=
-RewriteRule ^$ /en [R=301,L]
+# Check if the first segment is a supported non-default language code
+RewriteCond %{REQUEST_URI} ^/(fa|zh|ru|it|ar|nl)(/.*)?$ [NC]
+RewriteRule ^(fa|zh|ru|it|ar|nl)(/.*)?$ /index.html [L]
 
 # Fallback: serve index.html for all other routes (for SPA behavior)
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -34,4 +33,3 @@ RewriteRule . /index.html [L]
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
 </IfModule>
-

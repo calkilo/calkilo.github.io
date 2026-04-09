@@ -3,6 +3,10 @@ export const SUPPORTED_LANGUAGES = ['en', 'nl', 'ru', 'zh', 'ar', 'fa', 'it'] as
 export type SiteLanguage = (typeof SUPPORTED_LANGUAGES)[number]
 
 export const DEFAULT_LANGUAGE: SiteLanguage = 'en'
+export type NonDefaultSiteLanguage = Exclude<SiteLanguage, typeof DEFAULT_LANGUAGE>
+export const LOCALIZED_LANGUAGES: readonly NonDefaultSiteLanguage[] = SUPPORTED_LANGUAGES.filter(
+  (language): language is NonDefaultSiteLanguage => language !== DEFAULT_LANGUAGE,
+)
 
 export const LANGUAGE_LABELS: Record<SiteLanguage, string> = {
   en: 'English',
