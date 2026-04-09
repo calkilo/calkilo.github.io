@@ -11,8 +11,8 @@ interface PolicySection {
 
 const PRIVACY_PAGE_TITLE = 'Calkilo Privacy Policy'
 const PRIVACY_PAGE_DESCRIPTION = "Read Calkilo's privacy policy and learn how we collect, use, and protect your data."
-const EFFECTIVE_DATE = 'February 25, 2026'
-const EFFECTIVE_DATE_ISO = '2026-02-25'
+const EFFECTIVE_DATE = 'April 5, 2026'
+const EFFECTIVE_DATE_ISO = '2026-04-05'
 const PRIVACY_PAGE_KEYWORDS = ['calkilo privacy policy', 'nutrition app privacy', 'ai calorie app data policy']
 
 const POLICY_SECTIONS: PolicySection[] = [
@@ -27,6 +27,7 @@ const POLICY_SECTIONS: PolicySection[] = [
       'Nutrition data: meal photos, food entries, calorie and macro logs',
       'Technical data: device type, browser details, IP address, app usage analytics',
       'Support data: messages and attachments sent through contact or support channels',
+      'AI request data: food photos, meal records, chat messages, and request identifiers needed to return AI results',
     ],
   },
   {
@@ -46,6 +47,8 @@ const POLICY_SECTIONS: PolicySection[] = [
     title: '3. Sharing and Disclosure',
     paragraphs: [
       'We do not sell your personal information. We only share data with trusted service providers that help us operate the platform, such as hosting, analytics, payment, and support tools.',
+      'Any service provider that processes data on our behalf must provide the same or an equal level of privacy and security protection required by our agreements and applicable law.',
+      'If you grant permission in the app, AI requests such as food scans, meal edits, and AI chat messages are sent to Calkilo secure AI processing service via api.calkilo.com so we can return your result.',
       'We may disclose information when required by law, to enforce our terms, or to protect the rights, safety, and security of Calkilo and its users.',
     ],
   },

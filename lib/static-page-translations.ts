@@ -29,6 +29,7 @@ const COMMON_TRANSLATIONS: TranslationTable = {
     Summary: 'Samenvatting',
     'Effective date:': 'Ingangsdatum:',
     'February 25, 2026': '25 februari 2026',
+    'April 5, 2026': '5 april 2026',
     'Account Deletion': 'Accountverwijdering',
     or: 'of',
     'Revolutionizing nutrition tracking with AI-powered calorie calculation.':
@@ -60,6 +61,7 @@ const COMMON_TRANSLATIONS: TranslationTable = {
     Summary: 'Кратко',
     'Effective date:': 'Дата вступления в силу:',
     'February 25, 2026': '25 февраля 2026',
+    'April 5, 2026': '5 апреля 2026',
     'Account Deletion': 'Удаление аккаунта',
     or: 'или',
     'Revolutionizing nutrition tracking with AI-powered calorie calculation.':
@@ -91,6 +93,7 @@ const COMMON_TRANSLATIONS: TranslationTable = {
     Summary: '摘要',
     'Effective date:': '生效日期：',
     'February 25, 2026': '2026年2月25日',
+    'April 5, 2026': '2026年4月5日',
     'Account Deletion': '账户删除',
     or: '或',
     'Revolutionizing nutrition tracking with AI-powered calorie calculation.': '用 AI 热量计算革新营养追踪。',
@@ -121,6 +124,7 @@ const COMMON_TRANSLATIONS: TranslationTable = {
     Summary: 'الملخص',
     'Effective date:': 'تاريخ السريان:',
     'February 25, 2026': '25 فبراير 2026',
+    'April 5, 2026': '5 أبريل 2026',
     'Account Deletion': 'حذف الحساب',
     or: 'أو',
     'Revolutionizing nutrition tracking with AI-powered calorie calculation.':
@@ -152,6 +156,7 @@ const COMMON_TRANSLATIONS: TranslationTable = {
     Summary: 'خلاصه',
     'Effective date:': 'تاریخ اجرا:',
     'February 25, 2026': '25 فوریه 2026',
+    'April 5, 2026': '5 آوریل 2026',
     'Account Deletion': 'حذف حساب',
     or: 'یا',
     'Revolutionizing nutrition tracking with AI-powered calorie calculation.':
@@ -183,6 +188,7 @@ const COMMON_TRANSLATIONS: TranslationTable = {
     Summary: 'Riepilogo',
     'Effective date:': 'Data di entrata in vigore:',
     'February 25, 2026': '25 febbraio 2026',
+    'April 5, 2026': '5 aprile 2026',
     'Account Deletion': 'Eliminazione account',
     or: 'o',
     'Revolutionizing nutrition tracking with AI-powered calorie calculation.':
@@ -213,6 +219,8 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
       'Technische gegevens: apparaattype, browserdetails, IP-adres, gebruiksanalyses van de app',
     'Support data: messages and attachments sent through contact or support channels':
       'Supportgegevens: berichten en bijlagen die via contact- of supportkanalen zijn verzonden',
+    'AI request data: food photos, meal records, chat messages, and request identifiers needed to return AI results':
+      "AI-aanvraaggegevens: voedselfoto's, maaltijdgegevens, chatberichten en aanvraag-ID's die nodig zijn om AI-resultaten terug te sturen",
     '2. How We Use Your Information': '2. Hoe we jouw informatie gebruiken',
     'We use your information to operate the Calkilo platform, deliver features, improve model accuracy, and provide customer support.':
       'We gebruiken jouw informatie om het Calkilo-platform te beheren, functies te leveren, de nauwkeurigheid van modellen te verbeteren en ondersteuning te bieden.',
@@ -225,6 +233,10 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
     '3. Sharing and Disclosure': '3. Delen en openbaarmaking',
     'We do not sell your personal information. We only share data with trusted service providers that help us operate the platform, such as hosting, analytics, payment, and support tools.':
       'We verkopen jouw persoonsgegevens niet. We delen gegevens alleen met vertrouwde dienstverleners die ons helpen het platform te beheren, zoals hosting-, analyse-, betaal- en supporttools.',
+    'Any service provider that processes data on our behalf must provide the same or an equal level of privacy and security protection required by our agreements and applicable law.':
+      'Elke dienstverlener die namens ons gegevens verwerkt, moet volgens onze overeenkomsten en toepasselijke wetgeving dezelfde of een gelijkwaardige bescherming van privacy en beveiliging bieden.',
+    'If you grant permission in the app, AI requests such as food scans, meal edits, and AI chat messages are sent to Calkilo secure AI processing service via api.calkilo.com so we can return your result.':
+      'Als je in de app toestemming geeft, worden AI-verzoeken zoals voedingsscans, maaltijdbewerkingen en AI-chatberichten naar de beveiligde AI-verwerkingsdienst van Calkilo via api.calkilo.com gestuurd zodat we jouw resultaat kunnen teruggeven.',
     'We may disclose information when required by law, to enforce our terms, or to protect the rights, safety, and security of Calkilo and its users.':
       'We kunnen informatie openbaar maken wanneer de wet dit vereist, om onze voorwaarden af te dwingen, of om de rechten, veiligheid en beveiliging van Calkilo en zijn gebruikers te beschermen.',
     '4. Data Retention': '4. Bewaartermijnen van gegevens',
@@ -247,6 +259,8 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
       'We kunnen dit privacybeleid periodiek bijwerken om product-, juridische of operationele wijzigingen te weerspiegelen. Bij belangrijke updates passen we de ingangsdatum aan en geven we waar nodig een kennisgeving.',
     'The current version of this policy became effective on February 25, 2026.':
       'De huidige versie van dit beleid is van kracht sinds 25 februari 2026.',
+    'The current version of this policy became effective on April 5, 2026.':
+      'De huidige versie van dit beleid is van kracht sinds 5 april 2026.',
   },
   ru: {
     'Calkilo Privacy Policy': 'Политика конфиденциальности Calkilo',
@@ -269,6 +283,8 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
       'Технические данные: тип устройства, сведения о браузере, IP-адрес, аналитика использования приложения',
     'Support data: messages and attachments sent through contact or support channels':
       'Данные поддержки: сообщения и вложения, отправленные через контактные или support-каналы',
+    'AI request data: food photos, meal records, chat messages, and request identifiers needed to return AI results':
+      'Данные AI-запросов: фотографии еды, записи о приемах пищи, сообщения чата и идентификаторы запросов, необходимые для возврата результатов AI',
     '2. How We Use Your Information': '2. Как мы используем ваши данные',
     'We use your information to operate the Calkilo platform, deliver features, improve model accuracy, and provide customer support.':
       'Мы используем ваши данные для работы платформы Calkilo, предоставления функций, повышения точности моделей и поддержки пользователей.',
@@ -281,6 +297,10 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
     '3. Sharing and Disclosure': '3. Передача и раскрытие данных',
     'We do not sell your personal information. We only share data with trusted service providers that help us operate the platform, such as hosting, analytics, payment, and support tools.':
       'Мы не продаем вашу персональную информацию. Мы делимся данными только с доверенными поставщиками услуг, которые помогают нам поддерживать платформу, например с инструментами хостинга, аналитики, оплаты и поддержки.',
+    'Any service provider that processes data on our behalf must provide the same or an equal level of privacy and security protection required by our agreements and applicable law.':
+      'Любой поставщик услуг, который обрабатывает данные от нашего имени, должен обеспечивать такой же или эквивалентный уровень защиты конфиденциальности и безопасности в соответствии с нашими соглашениями и применимым законодательством.',
+    'If you grant permission in the app, AI requests such as food scans, meal edits, and AI chat messages are sent to Calkilo secure AI processing service via api.calkilo.com so we can return your result.':
+      'Если вы даете разрешение в приложении, AI-запросы, такие как сканирование еды, редактирование приемов пищи и сообщения AI-чата, отправляются в защищенный сервис обработки AI Calkilo через api.calkilo.com, чтобы мы могли вернуть результат.',
     'We may disclose information when required by law, to enforce our terms, or to protect the rights, safety, and security of Calkilo and its users.':
       'Мы можем раскрывать информацию, если этого требует закон, для соблюдения наших условий или для защиты прав, безопасности и интересов Calkilo и его пользователей.',
     '4. Data Retention': '4. Хранение данных',
@@ -303,6 +323,8 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
       'Мы можем периодически обновлять эту Политику конфиденциальности, чтобы отражать изменения продукта, правовые или операционные изменения. При существенных обновлениях мы изменим дату вступления в силу и уведомим пользователей, когда это требуется.',
     'The current version of this policy became effective on February 25, 2026.':
       'Текущая версия этой политики вступила в силу 25 февраля 2026 года.',
+    'The current version of this policy became effective on April 5, 2026.':
+      'Текущая версия этой политики вступила в силу 5 апреля 2026 года.',
   },
   zh: {
     'Calkilo Privacy Policy': 'Calkilo 隐私政策',
@@ -325,6 +347,8 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
       '技术数据：设备类型、浏览器信息、IP 地址、应用使用分析',
     'Support data: messages and attachments sent through contact or support channels':
       '支持数据：通过联系或支持渠道发送的消息和附件',
+    'AI request data: food photos, meal records, chat messages, and request identifiers needed to return AI results':
+      'AI 请求数据：食物照片、餐食记录、聊天消息，以及返回 AI 结果所需的请求标识符',
     '2. How We Use Your Information': '2. 我们如何使用你的信息',
     'We use your information to operate the Calkilo platform, deliver features, improve model accuracy, and provide customer support.':
       '我们使用你的信息来运营 Calkilo 平台、提供功能、提升模型准确性并提供客户支持。',
@@ -337,6 +361,10 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
     '3. Sharing and Disclosure': '3. 数据共享与披露',
     'We do not sell your personal information. We only share data with trusted service providers that help us operate the platform, such as hosting, analytics, payment, and support tools.':
       '我们不会出售你的个人信息。我们只会与帮助我们运营平台的可信服务提供商共享数据，例如托管、分析、支付和支持工具。',
+    'Any service provider that processes data on our behalf must provide the same or an equal level of privacy and security protection required by our agreements and applicable law.':
+      '任何代表我们处理数据的服务提供商，都必须根据我们的协议和适用法律提供相同或同等水平的隐私与安全保护。',
+    'If you grant permission in the app, AI requests such as food scans, meal edits, and AI chat messages are sent to Calkilo secure AI processing service via api.calkilo.com so we can return your result.':
+      '如果你在应用中授予许可，食物扫描、餐食编辑和 AI 聊天消息等 AI 请求会发送到 Calkilo 的安全 AI 处理服务 api.calkilo.com，以便我们返回结果。',
     'We may disclose information when required by law, to enforce our terms, or to protect the rights, safety, and security of Calkilo and its users.':
       '在法律要求、执行我们的条款或保护 Calkilo 及其用户的权利、安全与保障时，我们可能会披露相关信息。',
     '4. Data Retention': '4. 数据保留',
@@ -359,6 +387,8 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
       '我们可能会定期更新本隐私政策，以反映产品、法律或运营方面的变化。当出现重大更新时，我们会修改生效日期，并在必要时提供通知。',
     'The current version of this policy became effective on February 25, 2026.':
       '本政策当前版本自 2026 年 2 月 25 日起生效。',
+    'The current version of this policy became effective on April 5, 2026.':
+      '本政策当前版本自 2026 年 4 月 5 日起生效。',
   },
   ar: {
     'Calkilo Privacy Policy': 'سياسة خصوصية Calkilo',
@@ -381,6 +411,8 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
       'بيانات تقنية: نوع الجهاز، تفاصيل المتصفح، عنوان IP، تحليلات استخدام التطبيق',
     'Support data: messages and attachments sent through contact or support channels':
       'بيانات الدعم: الرسائل والمرفقات المرسلة عبر قنوات الاتصال أو الدعم',
+    'AI request data: food photos, meal records, chat messages, and request identifiers needed to return AI results':
+      'بيانات طلبات الذكاء الاصطناعي: صور الطعام وسجلات الوجبات ورسائل الدردشة ومعرّفات الطلب اللازمة لإرجاع نتائج الذكاء الاصطناعي',
     '2. How We Use Your Information': '2. كيف نستخدم معلوماتك',
     'We use your information to operate the Calkilo platform, deliver features, improve model accuracy, and provide customer support.':
       'نستخدم معلوماتك لتشغيل منصة Calkilo وتقديم الميزات وتحسين دقة النماذج وتقديم دعم العملاء.',
@@ -393,6 +425,10 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
     '3. Sharing and Disclosure': '3. المشاركة والإفصاح',
     'We do not sell your personal information. We only share data with trusted service providers that help us operate the platform, such as hosting, analytics, payment, and support tools.':
       'نحن لا نبيع معلوماتك الشخصية. نشارك البيانات فقط مع مزودي خدمات موثوقين يساعدوننا في تشغيل المنصة، مثل أدوات الاستضافة والتحليلات والدفع والدعم.',
+    'Any service provider that processes data on our behalf must provide the same or an equal level of privacy and security protection required by our agreements and applicable law.':
+      'يجب على أي مزود خدمة يعالج البيانات نيابةً عنا أن يوفر المستوى نفسه أو مستوىً مكافئاً من حماية الخصوصية والأمان وفقاً لاتفاقياتنا والقانون المعمول به.',
+    'If you grant permission in the app, AI requests such as food scans, meal edits, and AI chat messages are sent to Calkilo secure AI processing service via api.calkilo.com so we can return your result.':
+      'إذا منحت الإذن داخل التطبيق، فسيتم إرسال طلبات الذكاء الاصطناعي مثل فحص الطعام وتعديل الوجبات ورسائل دردشة الذكاء الاصطناعي إلى خدمة المعالجة الآمنة الخاصة بـ Calkilo عبر api.calkilo.com حتى نتمكن من إعادة النتيجة إليك.',
     'We may disclose information when required by law, to enforce our terms, or to protect the rights, safety, and security of Calkilo and its users.':
       'قد نفصح عن المعلومات عندما يقتضي القانون ذلك، أو لتطبيق شروطنا، أو لحماية حقوق وسلامة وأمن Calkilo ومستخدميه.',
     '4. Data Retention': '4. الاحتفاظ بالبيانات',
@@ -415,6 +451,8 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
       'قد نقوم بتحديث سياسة الخصوصية هذه بشكل دوري لتعكس التغييرات في المنتج أو الجوانب القانونية أو التشغيلية. وعندما نجري تحديثات جوهرية، سنعدل تاريخ السريان ونقدم إشعارا عند الحاجة.',
     'The current version of this policy became effective on February 25, 2026.':
       'أصبحت النسخة الحالية من هذه السياسة سارية اعتبارا من 25 فبراير 2026.',
+    'The current version of this policy became effective on April 5, 2026.':
+      'أصبحت النسخة الحالية من هذه السياسة سارية اعتبارا من 5 أبريل 2026.',
   },
   fa: {
     'Calkilo Privacy Policy': 'سیاست حریم خصوصی Calkilo',
@@ -437,6 +475,8 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
       'داده‌های فنی: نوع دستگاه، جزئیات مرورگر، آدرس IP، تحلیل استفاده از اپ',
     'Support data: messages and attachments sent through contact or support channels':
       'داده‌های پشتیبانی: پیام‌ها و فایل‌های ارسالی از طریق کانال‌های تماس یا پشتیبانی',
+    'AI request data: food photos, meal records, chat messages, and request identifiers needed to return AI results':
+      'داده‌های درخواست هوش مصنوعی: عکس‌های غذا، سوابق وعده‌ها، پیام‌های چت و شناسه‌های درخواستی که برای بازگرداندن نتیجه هوش مصنوعی لازم هستند',
     '2. How We Use Your Information': '2. چگونه از اطلاعات شما استفاده می‌کنیم',
     'We use your information to operate the Calkilo platform, deliver features, improve model accuracy, and provide customer support.':
       'ما از اطلاعات شما برای راه‌اندازی پلتفرم Calkilo، ارائه قابلیت‌ها، بهبود دقت مدل و ارائه پشتیبانی استفاده می‌کنیم.',
@@ -449,6 +489,10 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
     '3. Sharing and Disclosure': '3. اشتراک‌گذاری و افشا',
     'We do not sell your personal information. We only share data with trusted service providers that help us operate the platform, such as hosting, analytics, payment, and support tools.':
       'ما اطلاعات شخصی شما را نمی‌فروشیم. فقط داده‌ها را با ارائه‌دهندگان خدمات قابل اعتماد که به ما در اجرای پلتفرم کمک می‌کنند، مانند ابزارهای میزبانی، تحلیل، پرداخت و پشتیبانی، به اشتراک می‌گذاریم.',
+    'Any service provider that processes data on our behalf must provide the same or an equal level of privacy and security protection required by our agreements and applicable law.':
+      'هر ارائه‌دهنده خدماتی که به نمایندگی از ما داده‌ها را پردازش می‌کند باید بر اساس قراردادهای ما و قوانین قابل‌اجرا همان سطح یا سطحی معادل از حفاظت حریم خصوصی و امنیت را ارائه دهد.',
+    'If you grant permission in the app, AI requests such as food scans, meal edits, and AI chat messages are sent to Calkilo secure AI processing service via api.calkilo.com so we can return your result.':
+      'اگر در اپ اجازه بدهید، درخواست‌های هوش مصنوعی مانند اسکن غذا، ویرایش وعده و پیام‌های چت هوش مصنوعی به سرویس پردازش امن هوش مصنوعی Calkilo از طریق api.calkilo.com ارسال می‌شوند تا بتوانیم نتیجه را به شما برگردانیم.',
     'We may disclose information when required by law, to enforce our terms, or to protect the rights, safety, and security of Calkilo and its users.':
       'ممکن است در صورت الزام قانونی، برای اجرای شرایط ما، یا برای حفاظت از حقوق، ایمنی و امنیت Calkilo و کاربرانش، اطلاعات را افشا کنیم.',
     '4. Data Retention': '4. نگهداری داده‌ها',
@@ -471,6 +515,8 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
       'ممکن است این سیاست حریم خصوصی را به‌طور دوره‌ای برای بازتاب تغییرات محصول، قانونی یا عملیاتی به‌روزرسانی کنیم. در صورت ایجاد تغییرات مهم، تاریخ اجرا را به‌روزرسانی کرده و در صورت نیاز اطلاع‌رسانی می‌کنیم.',
     'The current version of this policy became effective on February 25, 2026.':
       'نسخه فعلی این سیاست از 25 فوریه 2026 اجرایی شده است.',
+    'The current version of this policy became effective on April 5, 2026.':
+      'نسخه فعلی این سیاست از 5 آوریل 2026 اجرایی شده است.',
   },
   it: {
     'Calkilo Privacy Policy': 'Informativa sulla privacy di Calkilo',
@@ -493,6 +539,8 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
       'Dati tecnici: tipo di dispositivo, dettagli del browser, indirizzo IP, analisi di utilizzo dell app',
     'Support data: messages and attachments sent through contact or support channels':
       'Dati di supporto: messaggi e allegati inviati tramite i canali di contatto o supporto',
+    'AI request data: food photos, meal records, chat messages, and request identifiers needed to return AI results':
+      'Dati delle richieste AI: foto del cibo, registri dei pasti, messaggi di chat e identificatori necessari per restituire i risultati AI',
     '2. How We Use Your Information': '2. Come utilizziamo le tue informazioni',
     'We use your information to operate the Calkilo platform, deliver features, improve model accuracy, and provide customer support.':
       'Usiamo le tue informazioni per gestire la piattaforma Calkilo, offrire funzionalita, migliorare la precisione dei modelli e fornire supporto clienti.',
@@ -505,6 +553,10 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
     '3. Sharing and Disclosure': '3. Condivisione e divulgazione',
     'We do not sell your personal information. We only share data with trusted service providers that help us operate the platform, such as hosting, analytics, payment, and support tools.':
       'Non vendiamo le tue informazioni personali. Condividiamo i dati solo con fornitori affidabili che ci aiutano a gestire la piattaforma, come hosting, analytics, pagamenti e strumenti di supporto.',
+    'Any service provider that processes data on our behalf must provide the same or an equal level of privacy and security protection required by our agreements and applicable law.':
+      'Qualsiasi fornitore di servizi che tratta dati per nostro conto deve garantire lo stesso livello, o un livello equivalente, di protezione della privacy e della sicurezza richiesto dai nostri accordi e dalla legge applicabile.',
+    'If you grant permission in the app, AI requests such as food scans, meal edits, and AI chat messages are sent to Calkilo secure AI processing service via api.calkilo.com so we can return your result.':
+      "Se concedi l'autorizzazione nell'app, richieste AI come scansioni cibo, modifiche dei pasti e messaggi di chat AI vengono inviate al servizio sicuro di elaborazione AI di Calkilo tramite api.calkilo.com per restituirti il risultato.",
     'We may disclose information when required by law, to enforce our terms, or to protect the rights, safety, and security of Calkilo and its users.':
       'Possiamo divulgare informazioni quando richiesto dalla legge, per far rispettare i nostri termini o per proteggere i diritti, la sicurezza e la tutela di Calkilo e dei suoi utenti.',
     '4. Data Retention': '4. Conservazione dei dati',
@@ -527,6 +579,8 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
       'Possiamo aggiornare periodicamente questa informativa sulla privacy per riflettere cambiamenti di prodotto, legali o operativi. Quando apportiamo aggiornamenti rilevanti, aggiorneremo la data di entrata in vigore e forniremo un avviso quando necessario.',
     'The current version of this policy became effective on February 25, 2026.':
       'La versione attuale di questa informativa e entrata in vigore il 25 febbraio 2026.',
+    'The current version of this policy became effective on April 5, 2026.':
+      'La versione attuale di questa informativa e entrata in vigore il 5 aprile 2026.',
   },
 }
 

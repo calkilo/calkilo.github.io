@@ -1,9 +1,9 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import AccountDeletionPage from '../account-deletion'
-import { SUPPORTED_LANGUAGES } from '../../lib/site-language'
+import { LOCALIZED_LANGUAGES } from '../../lib/site-language'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = SUPPORTED_LANGUAGES.map((lang) => ({
+  const paths = LOCALIZED_LANGUAGES.map((lang) => ({
     params: { lang },
   }))
 
