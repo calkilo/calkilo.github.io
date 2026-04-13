@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&family=Poppins:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&family=Poppins:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap');
 
 *,
 *::before,
@@ -22,6 +22,14 @@ body {
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+html[lang='ar'] body {
+  font-family: 'Cairo', 'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+}
+
+html[lang='fa'] body {
+  font-family: 'Vazirmatn', 'Cairo', 'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
 }
 
 a {
@@ -58,6 +66,7 @@ img {
   --lp-accent: #00d448;
   --lp-accent-dark: #0aaa40;
   --lp-display-font: 'Arial Rounded MT Bold', 'Arial Rounded MT', 'Trebuchet MS', 'Poppins', sans-serif;
+  --lp-brand-font: 'Arial Rounded MT Bold', 'Arial Rounded MT', 'Trebuchet MS', 'Poppins', sans-serif;
   --lp-motion-smooth: cubic-bezier(0.22, 1, 0.36, 1);
   --lp-motion-gentle: cubic-bezier(0.37, 0, 0.18, 1);
   --lp-shadow: 0 16px 42px rgba(0, 0, 0, 0.1);
@@ -192,7 +201,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 .lp-brand-text {
   display: inline-flex;
   direction: ltr;
-  font-family: var(--lp-display-font);
+  font-family: var(--lp-brand-font, var(--lp-display-font));
   font-size: 2.25rem;
   font-weight: 700;
   line-height: 1;
@@ -284,32 +293,45 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-lang {
+  align-items: center;
   background: linear-gradient(180deg, var(--lp-accent) 0%, var(--lp-accent-dark) 100%);
   border: 0;
   border-radius: 33px;
-  display: inline-flex;
+  cursor: pointer;
+  display: inline-grid;
   height: 53px;
+  justify-items: center;
   overflow: hidden;
   position: relative;
   width: 53px;
 }
 
+.lp-lang-display {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  pointer-events: none;
+  position: relative;
+  text-transform: none;
+  z-index: 1;
+}
+
 .lp-lang select {
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   border: 0;
-  color: #fff;
   cursor: pointer;
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: 700;
-  height: 53px;
-  letter-spacing: 0.01em;
+  inset: 0;
+  margin: 0;
   outline: 0;
-  padding: 0;
-  text-align: center;
+  opacity: 0;
+  position: absolute;
   text-transform: none;
   width: 100%;
+  height: 100%;
 }
 
 .lp-hero {
@@ -1387,6 +1409,13 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
 
+.lp-download-scan {
+  display: flex;
+  grid-column: 1 / -1;
+  justify-content: center;
+  margin-top: 4px;
+}
+
 .lp-download-art {
   align-items: center;
   display: flex;
@@ -1494,23 +1523,23 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 .lp-qr-card {
   background: var(--lp-card);
   border: 1px solid var(--lp-border);
-  border-radius: 14px;
-  display: inline-flex;
+  border-radius: 20px;
+  box-shadow: 0 16px 40px rgba(18, 18, 18, 0.12);
+  display: flex;
   flex-direction: column;
-  margin-top: 14px;
-  padding: 12px;
+  padding: clamp(16px, 2vw, 22px);
 }
 
 .lp-qr-image {
   display: block;
-  height: 124px;
-  width: 124px;
+  height: clamp(156px, 16vw, 190px);
+  width: clamp(156px, 16vw, 190px);
 }
 
 .lp-qr-card p {
   color: var(--lp-muted);
-  font-size: 0.75rem;
-  margin: 8px 0 0;
+  font-size: 0.95rem;
+  margin: 12px 0 0;
   text-align: center;
 }
 
@@ -1688,17 +1717,22 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
   max-width: 640px;
 }
 
-.lp-faq-support button {
+.lp-faq-support button,
+.lp-faq-support a {
+  align-items: center;
   background: #121212;
   border: 0;
   border-radius: 12px;
   color: #fff;
   cursor: pointer;
+  display: inline-flex;
   font-family: inherit;
   font-size: 0.95rem;
   font-weight: 600;
+  justify-content: center;
   min-height: 48px;
   padding: 11px 20px;
+  text-decoration: none;
 }
 
 .lp-footer {
@@ -2358,10 +2392,12 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
     height: 38px;
   }
 
-  .lp-lang select {
+  .lp-lang-display {
     font-size: 0.74rem;
+  }
+
+  .lp-lang select {
     height: 38px;
-    padding: 0 28px 0 10px;
   }
 
   .lp-btn {
@@ -2494,8 +2530,17 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
   }
 
   .lp-qr-card {
-    margin-left: auto;
-    margin-right: auto;
+    border-radius: 18px;
+    padding: 16px;
+  }
+
+  .lp-qr-image {
+    height: 152px;
+    width: 152px;
+  }
+
+  .lp-qr-card p {
+    font-size: 0.85rem;
   }
 
   .lp-faq-item summary {

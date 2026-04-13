@@ -67,11 +67,17 @@ export default function SiteHeader({
           </Link>
           <label className="lp-lang" aria-label={languageLabel}>
             <span className="sr-only">{languageLabel}</span>
+            <span
+              aria-hidden="true"
+              className="lp-lang-display"
+              style={{ fontFamily: LANGUAGE_FONT_FAMILIES[language] }}
+            >
+              {LANGUAGE_SHORT_LABELS[language]}
+            </span>
             <select
               title={LANGUAGE_LABELS[language]}
               value={language}
               onChange={(event) => onLanguageChange(event.target.value as SiteLanguage)}
-              style={{ fontFamily: LANGUAGE_FONT_FAMILIES[language] }}
             >
               {SUPPORTED_LANGUAGES.map((option) => (
                 <option

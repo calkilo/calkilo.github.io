@@ -4,9 +4,11 @@ import { useEffect, useMemo, useState, type CSSProperties } from 'react'
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from '../lib/app-links'
 import { RESOURCE_LINKS } from '../lib/resource-pages'
 import { SITE_URL } from '../lib/seo'
+import { ENGLISH_POPULAR_PAGE_LINKS } from '../lib/site-pages'
 import {
   buildAlternateLanguagePaths,
   isRtlLanguage,
+  LANGUAGE_DISPLAY_FONT_FAMILIES,
   LANGUAGE_FONT_FAMILIES,
   normalizeSiteLanguage,
   type SiteLanguage,
@@ -71,8 +73,8 @@ const LANDING_PAGE_KEYWORDS = [
   'calkilo',
 ]
 
-const SEARCH_GUIDES_INTRO =
-  'Start with the pages built around the search topics Calkilo should win: AI calorie tracking, photo calorie estimates, macro tracking, and key product questions.'
+const POPULAR_PAGES_INTRO =
+  'Explore the most important Calkilo pages for features, pricing, support, and calorie-tracking guides.'
 
 const TRANSLATIONS: Record<
   SiteLanguage,
@@ -1468,6 +1470,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
   const ts = (text: string) => translateStaticText(language, text)
   const aiTitleSuffix = copy.aiTitle.replace(/^CalKilo-AI[:：]\s*/u, '')
   const languageFontFamily = LANGUAGE_FONT_FAMILIES[language]
+  const languageDisplayFontFamily = LANGUAGE_DISPLAY_FONT_FAMILIES[language]
 
   const heroSlides = useMemo(
     () =>
@@ -1624,19 +1627,54 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
   const seoCanonicalPath = isDarkVariantPage ? toLocalizedPath('/', language) : seoPath
   const seoTitle = isDarkVariantPage ? `${copy.pageTitle} | ${copy.darkThemeLabel}` : copy.pageTitle
   const landingAlternateLanguages = buildAlternateLanguagePaths(baseSeoPath)
-  const landingHeaderItems = NAV_ITEMS.map((item) => ({
-    key: item,
-    href: `#${item}`,
-    isActive: activeNav === item,
-    label: copy.nav[item],
-    onClick: () => setActiveNav(item),
-  }))
+  const featuresHref = language === 'en' ? '/features/' : '#features'
+  const pricingHref = language === 'en' ? '/pricing/' : '#pricing'
+  const contactHref = toLocalizedPath('/contact', language)
+  const pricingOfferUrl = pricingHref.startsWith('#') ? `${SITE_URL}${seoPath}${pricingHref}` : `${SITE_URL}${pricingHref}`
+  const landingHeaderItems = NAV_ITEMS.map((item) => {
+    if (item === 'home') {
+      return {
+        key: item,
+        href: seoPath,
+        isActive: activeNav === item,
+        label: copy.nav[item],
+        onClick: () => setActiveNav(item),
+      }
+    }
+
+    if (item === 'features') {
+      return {
+        key: item,
+        href: featuresHref,
+        isActive: activeNav === item,
+        label: copy.nav[item],
+        onClick: language === 'en' ? undefined : () => setActiveNav(item),
+      }
+    }
+
+    if (item === 'pricing') {
+      return {
+        key: item,
+        href: pricingHref,
+        isActive: activeNav === item,
+        label: copy.nav[item],
+        onClick: language === 'en' ? undefined : () => setActiveNav(item),
+      }
+    }
+
+    return {
+      key: item,
+      href: contactHref,
+      isActive: false,
+      label: copy.nav[item],
+    }
+  })
   const landingFooterSections = [
     {
       title: ts('Feature'),
       links: [
-        { label: ts('Download'), href: '#download' },
-        { label: ts('How it Works?'), href: '#how-it-works' },
+        { label: copy.nav.features, href: featuresHref },
+        { label: copy.nav.pricing, href: pricingHref },
         { label: 'AI Calorie Tracker', href: RESOURCE_LINKS[0].href },
       ],
     },
@@ -1653,7 +1691,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
     {
       title: ts('Get in Touch'),
       links: [
-        { label: ts('Contact'), href: toLocalizedPath('/contact', language) },
+        { label: ts('Contact'), href: contactHref },
         { label: 'Photo Calorie Calculator', href: RESOURCE_LINKS[1].href },
         { label: 'Macro Tracker', href: RESOURCE_LINKS[2].href },
       ],
@@ -1724,11 +1762,11 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
           priceCurrency: 'USD',
           price: plan.price.replace('$', ''),
           availability: 'https://schema.org/InStock',
-          url: `${SITE_URL}${toLocalizedPath('/#pricing', language)}`,
+          url: pricingOfferUrl,
         })),
       },
     ],
-    [copy.pageDescription, language, seoPath, seoTitle],
+    [copy.pageDescription, language, pricingOfferUrl, seoPath, seoTitle],
   )
 
   return (
@@ -1736,7 +1774,12 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
       className={`lp-page lp-page--${resolvedVariant}`}
       dir={isRtlLanguage(language) ? 'rtl' : 'ltr'}
       lang={language}
-      style={{ '--lp-language-font': languageFontFamily } as CSSProperties}
+      style={
+        {
+          '--lp-language-font': languageFontFamily,
+          '--lp-display-font': languageDisplayFontFamily,
+        } as CSSProperties
+      }
     >
       <SeoHead
         title={seoTitle}
@@ -1756,7 +1799,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
         ctaHref="#download"
         ctaLabel={copy.tryFree}
         homeAriaLabel="Calkilo home"
-        homeHref="#home"
+        homeHref={seoPath}
         isScrolled={isScrolled}
         language={language}
         languageLabel={ts('Language')}
@@ -2105,15 +2148,15 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
           <section className="lp-section lp-guides" aria-labelledby="search-guides-title">
             <div className="lp-container lp-guides-wrap">
               <header className="lp-section-head lp-guides-head lp-reveal">
-                <p className="lp-kicker">Search Guides</p>
+                <p className="lp-kicker">Popular Pages</p>
                 <h2 id="search-guides-title">
-                  Build authority for <span>your target searches</span>
+                  Explore the pages people <span>look for most</span>
                 </h2>
-                <p>{SEARCH_GUIDES_INTRO}</p>
+                <p>{POPULAR_PAGES_INTRO}</p>
               </header>
 
               <div className="lp-guides-grid">
-                {RESOURCE_LINKS.map((resource, index) => (
+                {ENGLISH_POPULAR_PAGE_LINKS.map((resource, index) => (
                   <article
                     key={resource.href}
                     className="lp-guide-card lp-reveal lp-reveal--pop"
@@ -2146,6 +2189,9 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
               </h2>
               <p>{copy.downloadDescription}</p>
               <StoreButtons copy={copy} />
+            </div>
+
+            <div className="lp-download-scan lp-reveal">
               <QrCard label={copy.scanLabel} />
             </div>
           </div>
@@ -2181,7 +2227,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
             <aside className="lp-faq-support lp-reveal lp-reveal--pop">
               <h3>{copy.faqSupportTitle}</h3>
               <p>{copy.faqSupportText}</p>
-              <button type="button">{copy.faqSupportButton}</button>
+              <Link href={contactHref}>{copy.faqSupportButton}</Link>
             </aside>
           </div>
         </section>
@@ -2191,7 +2237,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
         copyright={`© ${new Date().getFullYear()} Calkilo. ${ts('All rights reserved.')}`}
         description={copy.footerDescription}
         homeAriaLabel="Calkilo home"
-        homeHref="#home"
+        homeHref={seoPath}
         id="contact"
         sections={landingFooterSections}
         socialLinksLabel="Social links"
