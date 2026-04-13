@@ -1,10 +1,12 @@
 import { useRouter } from 'next/router'
-import { type ReactNode } from 'react'
+import { type CSSProperties, type ReactNode } from 'react'
 import { RESOURCE_LINKS } from '../lib/resource-pages'
 import { translateStaticPageText } from '../lib/static-page-translations'
 import {
   buildAlternateLanguagePaths,
   isRtlLanguage,
+  LANGUAGE_DISPLAY_FONT_FAMILIES,
+  LANGUAGE_FONT_FAMILIES,
   normalizeSiteLanguage,
   switchLanguagePath,
   toLocalizedPath,
@@ -13,7 +15,7 @@ import SiteFooter from './SiteFooter'
 import SiteHeader from './SiteHeader'
 import SeoHead from './SeoHead'
 
-type StaticNavItem = 'privacy' | 'contact' | 'terms' | 'deletion'
+type StaticNavItem = 'privacy' | 'contact' | 'terms' | 'deletion' | 'none'
 type JsonLdSchema = Record<string, unknown>
 
 interface StaticPageLayoutProps {
@@ -22,7 +24,7 @@ interface StaticPageLayoutProps {
   path: string
   heading: string
   intro: string
-  activeNav: StaticNavItem
+  activeNav?: StaticNavItem
   lang?: string
   keywords?: ReadonlyArray<string>
   noindex?: boolean
@@ -49,14 +51,18 @@ export default function StaticPageLayout({
 }: StaticPageLayoutProps) {
   const router = useRouter()
   const language = normalizeSiteLanguage(lang)
+  const languageFontFamily = LANGUAGE_FONT_FAMILIES[language]
+  const languageDisplayFontFamily = LANGUAGE_DISPLAY_FONT_FAMILIES[language]
   const t = (text: string) => translateStaticPageText(language, text)
   const localizedPath = toLocalizedPath(path, language)
+  const featuresHref = language === 'en' ? '/features/' : toLocalizedPath('/#features', language)
+  const pricingHref = language === 'en' ? '/pricing/' : toLocalizedPath('/#pricing', language)
   const footerSections = [
     {
       title: t('Feature'),
       links: [
-        { label: t('Download'), href: toLocalizedPath('/#download', language) },
-        { label: t('How it Works?'), href: toLocalizedPath('/#how-it-works', language) },
+        { label: t('Features'), href: featuresHref },
+        { label: t('Choose Plan'), href: pricingHref },
         { label: 'AI Calorie Tracker', href: RESOURCE_LINKS[0].href },
       ],
     },
@@ -87,12 +93,12 @@ export default function StaticPageLayout({
     },
     {
       key: 'features',
-      href: toLocalizedPath('/#features', language),
+      href: featuresHref,
       label: t('Features'),
     },
     {
       key: 'pricing',
-      href: toLocalizedPath('/#pricing', language),
+      href: pricingHref,
       label: t('Choose Plan'),
     },
     {
@@ -112,7 +118,17 @@ export default function StaticPageLayout({
   }
 
   return (
-    <div className="lp-page lp-page--light lp-static-page" dir={isRtlLanguage(language) ? 'rtl' : 'ltr'} lang={language}>
+    <div
+      className="lp-page lp-page--light lp-static-page"
+      dir={isRtlLanguage(language) ? 'rtl' : 'ltr'}
+      lang={language}
+      style={
+        {
+          '--lp-language-font': languageFontFamily,
+          '--lp-display-font': languageDisplayFontFamily,
+        } as CSSProperties
+      }
+    >
       <SeoHead
         title={title}
         description={description}

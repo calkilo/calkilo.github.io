@@ -6,6 +6,12 @@ interface SiteFooterLink {
   label: string
 }
 
+interface SiteFooterSocialLink {
+  href: string
+  label: string
+  shortLabel: string
+}
+
 interface SiteFooterSection {
   title: string
   links: ReadonlyArray<SiteFooterLink>
@@ -18,6 +24,7 @@ interface SiteFooterProps {
   homeHref: string
   id?: string
   sections: ReadonlyArray<SiteFooterSection>
+  socialLinks?: ReadonlyArray<SiteFooterSocialLink>
   socialLinksLabel: string
 }
 
@@ -28,6 +35,7 @@ export default function SiteFooter({
   homeHref,
   id,
   sections,
+  socialLinks,
   socialLinksLabel,
 }: SiteFooterProps) {
   return (
@@ -38,20 +46,15 @@ export default function SiteFooter({
             <BrandLogo />
           </Link>
           <p>{description}</p>
-          <div className="lp-socials" aria-label={socialLinksLabel}>
-            <a href="#" aria-label="X">
-              X
-            </a>
-            <a href="#" aria-label="Telegram">
-              Tg
-            </a>
-            <a href="#" aria-label="LinkedIn">
-              In
-            </a>
-            <a href="#" aria-label="Instagram">
-              Ig
-            </a>
-          </div>
+          {socialLinks && socialLinks.length > 0 ? (
+            <div className="lp-socials" aria-label={socialLinksLabel}>
+              {socialLinks.map((link) => (
+                <a key={link.label} href={link.href} aria-label={link.label} target="_blank" rel="noreferrer">
+                  {link.shortLabel}
+                </a>
+              ))}
+            </div>
+          ) : null}
         </section>
 
         {sections.map((section) => (

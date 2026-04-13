@@ -28,14 +28,31 @@ export const LANGUAGE_SHORT_LABELS: Record<SiteLanguage, string> = {
   it: 'It',
 }
 
+const DEFAULT_WEB_FONT_FAMILY = "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+const DEFAULT_DISPLAY_FONT_FAMILY =
+  "'Arial Rounded MT Bold', 'Arial Rounded MT', 'Trebuchet MS', 'Poppins', sans-serif"
+const ARABIC_WEB_FONT_FAMILY = "'Cairo', 'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif"
+const PERSIAN_WEB_FONT_FAMILY =
+  "'Vazirmatn', 'Cairo', 'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif"
+
 export const LANGUAGE_FONT_FAMILIES: Record<SiteLanguage, string> = {
-  en: "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-  nl: "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-  it: "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+  en: DEFAULT_WEB_FONT_FAMILY,
+  nl: DEFAULT_WEB_FONT_FAMILY,
+  it: DEFAULT_WEB_FONT_FAMILY,
   ru: "'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
   zh: "'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif",
-  ar: "'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif",
-  fa: "'Vazirmatn', 'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif",
+  ar: ARABIC_WEB_FONT_FAMILY,
+  fa: PERSIAN_WEB_FONT_FAMILY,
+}
+
+export const LANGUAGE_DISPLAY_FONT_FAMILIES: Record<SiteLanguage, string> = {
+  en: DEFAULT_DISPLAY_FONT_FAMILY,
+  nl: DEFAULT_DISPLAY_FONT_FAMILY,
+  it: DEFAULT_DISPLAY_FONT_FAMILY,
+  ru: DEFAULT_DISPLAY_FONT_FAMILY,
+  zh: DEFAULT_DISPLAY_FONT_FAMILY,
+  ar: ARABIC_WEB_FONT_FAMILY,
+  fa: PERSIAN_WEB_FONT_FAMILY,
 }
 
 const RTL_LANGUAGES = new Set<SiteLanguage>(['ar', 'fa'])

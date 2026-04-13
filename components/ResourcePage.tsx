@@ -5,11 +5,13 @@ import { APP_STORE_URL, GOOGLE_PLAY_URL } from '../lib/app-links'
 import { SITE_URL } from '../lib/seo'
 import {
   DEFAULT_LANGUAGE,
+  LANGUAGE_DISPLAY_FONT_FAMILIES,
   LANGUAGE_FONT_FAMILIES,
   type SiteLanguage,
   toLocalizedPath,
 } from '../lib/site-language'
 import { type ResourcePageDefinition, RESOURCE_LINKS } from '../lib/resource-pages'
+import { CORE_SITE_LINKS } from '../lib/site-pages'
 import SeoHead from './SeoHead'
 import SiteFooter from './SiteFooter'
 import SiteHeader from './SiteHeader'
@@ -21,7 +23,11 @@ interface ResourcePageProps {
 export default function ResourcePage({ page }: ResourcePageProps) {
   const router = useRouter()
   const language = DEFAULT_LANGUAGE
-  const relatedResources = RESOURCE_LINKS.filter((resource) => resource.href !== page.path)
+  const languageDisplayFontFamily = LANGUAGE_DISPLAY_FONT_FAMILIES[language]
+  const relatedPages = [
+    ...CORE_SITE_LINKS.filter((link) => link.href !== page.path),
+    ...RESOURCE_LINKS.filter((resource) => resource.href !== page.path),
+  ]
   const pageJsonLd = [
     {
       '@context': 'https://schema.org',
@@ -96,9 +102,9 @@ export default function ResourcePage({ page }: ResourcePageProps) {
     {
       title: 'Product',
       links: [
-        { label: 'Download', href: '/#download' },
-        { label: 'Features', href: '/#features' },
-        { label: 'Pricing', href: '/#pricing' },
+        { label: 'Features', href: '/features/' },
+        { label: 'Pricing', href: '/pricing/' },
+        { label: 'AI Calorie Tracker', href: '/ai-calorie-tracker/' },
         { label: 'Contact', href: '/contact/' },
       ],
     },
@@ -129,7 +135,12 @@ export default function ResourcePage({ page }: ResourcePageProps) {
       className="lp-page lp-page--light lp-static-page"
       dir="ltr"
       lang={language}
-      style={{ '--lp-language-font': LANGUAGE_FONT_FAMILIES[language] } as CSSProperties}
+      style={
+        {
+          '--lp-language-font': LANGUAGE_FONT_FAMILIES[language],
+          '--lp-display-font': languageDisplayFontFamily,
+        } as CSSProperties
+      }
     >
       <SeoHead
         title={page.title}
@@ -152,8 +163,8 @@ export default function ResourcePage({ page }: ResourcePageProps) {
         navAriaLabel="Main navigation"
         navItems={[
           { key: 'home', href: '/', label: 'Home' },
-          { key: 'features', href: '/#features', label: 'Features' },
-          { key: 'pricing', href: '/#pricing', label: 'Choose Plan' },
+          { key: 'features', href: '/features/', label: 'Features' },
+          { key: 'pricing', href: '/pricing/', label: 'Choose Plan' },
           { key: 'contact', href: '/contact/', label: 'Contact' },
         ]}
         onLanguageChange={handleLanguageChange}
@@ -220,7 +231,7 @@ export default function ResourcePage({ page }: ResourcePageProps) {
             <section className="lp-static-card">
               <h2>Related pages</h2>
               <div className="lp-resource-related-grid">
-                {relatedResources.map((resource) => (
+                {relatedPages.map((resource) => (
                   <article key={resource.href} className="lp-resource-related-card">
                     <h3>
                       <Link href={resource.href}>{resource.label}</Link>
