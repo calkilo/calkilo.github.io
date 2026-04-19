@@ -1,7 +1,7 @@
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo, useState } from 'react'
 import BrandLogo from '../components/BrandLogo'
+import SeoHead from '../components/SeoHead'
 import {
   APP_STORE_URL,
   CALKILO_WEB_URL,
@@ -125,14 +125,14 @@ export default function OpenMealPage() {
 
   return (
     <>
-      <Head>
-        <title>Open Calkilo Meal Logging</title>
-        <meta
-          name="description"
-          content="Open Calkilo meal logging from your email reminder or install the app."
-        />
-        <meta name="robots" content="noindex,nofollow" />
-      </Head>
+      <SeoHead
+        title="Open Calkilo Meal Logging"
+        description="Open Calkilo meal logging from your email reminder or install the app."
+        path="/open-meal/"
+        noindex
+        nofollow
+        imageAlt="Open Calkilo meal logging"
+      />
       <main className="lp-page om-page">
         <div className="om-shell">
           <div className="om-orb om-orb--lime" aria-hidden="true" />

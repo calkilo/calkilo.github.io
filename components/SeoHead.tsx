@@ -1,5 +1,12 @@
 import Head from 'next/head'
-import { DEFAULT_OG_IMAGE_PATH, SITE_NAME, toAbsoluteUrl } from '../lib/seo'
+import {
+  DEFAULT_OG_IMAGE_HEIGHT,
+  DEFAULT_OG_IMAGE_PATH,
+  DEFAULT_OG_IMAGE_TYPE,
+  DEFAULT_OG_IMAGE_WIDTH,
+  SITE_NAME,
+  toAbsoluteUrl,
+} from '../lib/seo'
 import { DEFAULT_LANGUAGE } from '../lib/site-language'
 
 type OpenGraphType = 'website' | 'article'
@@ -14,6 +21,9 @@ interface SeoHeadProps {
   ogType?: OpenGraphType
   imagePath?: string
   imageAlt?: string
+  imageWidth?: number
+  imageHeight?: number
+  imageType?: string
   keywords?: ReadonlyArray<string>
   noindex?: boolean
   nofollow?: boolean
@@ -24,6 +34,32 @@ interface SeoHeadProps {
 }
 
 const DEFAULT_THEME_COLOR = '#00d448'
+
+function detectImageType(path: string): string | undefined {
+  const normalizedPath = path.split('?')[0].toLowerCase()
+
+  if (normalizedPath.endsWith('.png')) {
+    return 'image/png'
+  }
+
+  if (normalizedPath.endsWith('.jpg') || normalizedPath.endsWith('.jpeg')) {
+    return 'image/jpeg'
+  }
+
+  if (normalizedPath.endsWith('.webp')) {
+    return 'image/webp'
+  }
+
+  if (normalizedPath.endsWith('.gif')) {
+    return 'image/gif'
+  }
+
+  if (normalizedPath.endsWith('.svg')) {
+    return 'image/svg+xml'
+  }
+
+  return undefined
+}
 
 function normalizeJsonLd(input?: JsonLdInput): string[] {
   if (!input) {
@@ -52,6 +88,9 @@ export default function SeoHead({
   ogType = 'website',
   imagePath = DEFAULT_OG_IMAGE_PATH,
   imageAlt,
+  imageWidth,
+  imageHeight,
+  imageType,
   keywords,
   noindex = false,
   nofollow = false,
@@ -63,6 +102,11 @@ export default function SeoHead({
   const canonicalUrl = toAbsoluteUrl(canonicalPath ?? path)
   const pageUrl = toAbsoluteUrl(path)
   const imageUrl = toAbsoluteUrl(imagePath)
+  const resolvedImageType = imageType ?? detectImageType(imagePath) ?? DEFAULT_OG_IMAGE_TYPE
+  const resolvedImageWidth =
+    imageWidth ?? (imagePath === DEFAULT_OG_IMAGE_PATH ? DEFAULT_OG_IMAGE_WIDTH : undefined)
+  const resolvedImageHeight =
+    imageHeight ?? (imagePath === DEFAULT_OG_IMAGE_PATH ? DEFAULT_OG_IMAGE_HEIGHT : undefined)
   const serializedJsonLd = normalizeJsonLd(jsonLd)
   const alternateLocales = alternateLanguages?.filter((alt) => alt.lang !== language) ?? []
   const xDefaultPath =
@@ -90,12 +134,20 @@ export default function SeoHead({
       <meta name="application-name" content={SITE_NAME} key="application-name" />
       <meta name="apple-mobile-web-app-title" content={SITE_NAME} key="apple-mobile-web-app-title" />
       <meta name="apple-mobile-web-app-capable" content="yes" key="apple-mobile-web-app-capable" />
+      <meta
+        name="apple-mobile-web-app-status-bar-style"
+        content="default"
+        key="apple-mobile-web-app-status-bar-style"
+      />
       <meta name="mobile-web-app-capable" content="yes" key="mobile-web-app-capable" />
       <meta name="format-detection" content="telephone=no" key="format-detection" />
+      <meta name="referrer" content="strict-origin-when-cross-origin" key="referrer" />
       <meta name="theme-color" content={themeColor} key="theme-color" />
+      <meta name="msapplication-TileColor" content={themeColor} key="msapplication-TileColor" />
 
       <link rel="manifest" href="/manifest.webmanifest" key="manifest" />
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" key="apple-touch-icon" />
+      <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" key="favicon-svg" />
       <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" key="favicon-32x32" />
       <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" key="favicon-16x16" />
       <link rel="icon" href="/favicon.ico" key="favicon-ico" />
@@ -115,9 +167,18 @@ export default function SeoHead({
       <meta property="og:title" content={title} key="og:title" />
       <meta property="og:description" content={description} key="og:description" />
       <meta property="og:image" content={imageUrl} key="og:image" />
+      <meta property="og:image:secure_url" content={imageUrl} key="og:image:secure_url" />
+      <meta property="og:image:type" content={resolvedImageType} key="og:image:type" />
+      {resolvedImageWidth ? (
+        <meta property="og:image:width" content={String(resolvedImageWidth)} key="og:image:width" />
+      ) : null}
+      {resolvedImageHeight ? (
+        <meta property="og:image:height" content={String(resolvedImageHeight)} key="og:image:height" />
+      ) : null}
       <meta property="og:image:alt" content={imageAlt ?? title} key="og:image:alt" />
 
       <meta name="twitter:card" content="summary_large_image" key="twitter:card" />
+      <meta name="twitter:url" content={pageUrl} key="twitter:url" />
       <meta name="twitter:title" content={title} key="twitter:title" />
       <meta name="twitter:description" content={description} key="twitter:description" />
       <meta name="twitter:image" content={imageUrl} key="twitter:image" />
