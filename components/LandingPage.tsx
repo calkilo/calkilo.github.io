@@ -65,13 +65,15 @@ const FIGMA_ASSETS = {
 
 const NAV_ITEMS = ['home', 'features', 'pricing', 'contact'] as const
 
-const LANDING_PAGE_KEYWORDS = [
-  'ai calorie tracker',
-  'photo calorie calculator',
-  'macro tracker app',
-  'nutrition tracking app',
-  'calkilo',
-]
+const LANDING_PAGE_KEYWORDS: Record<SiteLanguage, ReadonlyArray<string>> = {
+  en: ['free ai calorie tracker', 'photo calorie calculator', 'macro tracker app', 'nutrition tracking app', 'calkilo'],
+  nl: ['ai calorietracker', 'foto calorie calculator', 'macro tracker app', 'voeding app', 'calkilo'],
+  zh: ['ai 卡路里追踪', '拍照计算卡路里', '营养追踪应用', '宏量营养追踪', 'calkilo'],
+  ru: ['ai трекер калорий', 'подсчет калорий по фото', 'приложение для макросов', 'трекер питания', 'calkilo'],
+  ar: ['متتبع السعرات بالذكاء الاصطناعي', 'حاسبة سعرات من الصورة', 'تطبيق تتبع الماكروز', 'تتبع التغذية', 'calkilo'],
+  fa: ['کالری شمار رایگان', 'کالری شمار هوش مصنوعی', 'محاسبه کالری با عکس', 'اپ شمارش کالری', 'کالکیلو'],
+  it: ['calcolo calorie ai', 'calorie da foto', 'macro tracker app', 'app nutrizione', 'calkilo'],
+}
 
 const POPULAR_PAGES_INTRO =
   'Explore the most important Calkilo pages for features, pricing, support, and calorie-tracking guides.'
@@ -126,15 +128,15 @@ const TRANSLATIONS: Record<
 > = {
   en: {
     pageDescription:
-      'Track calories from food photos, follow macros, and get AI meal plans with Calkilo on iPhone and Android.',
-    pageTitle: 'Calkilo | AI Calorie Tracker, Photo Food Logger & Macro Tracker',
+      'Free AI calorie tracker that estimates food calories from photos, tracks macros, and creates meal plans on iPhone and Android.',
+    pageTitle: 'Free AI Calorie Tracker & Photo Food Calorie Counter | Calkilo',
     darkThemeLabel: 'Dark Theme',
     nav: { home: 'Home', features: 'Features', pricing: 'Choose Plan', contact: 'Contact' },
     tryFree: 'Try for free',
-    heroTitleA: 'Calculate Calories with ',
-    heroTitleB: 'AI Precision',
+    heroTitleA: 'Free AI Calorie Tracker',
+    heroTitleB: 'for Food Photos',
     heroDescription:
-      "Simply take a photo of your food and let Calkilo's advanced AI instantly calculate accurate calories and nutritional information. No more guessing or manual logging.",
+      'Snap a meal photo and let Calkilo estimate calories, macros, and nutrition instantly. Review each result, keep your daily log, and stay on track without manual entry.',
     availableOn: 'Available on:',
     aiTitle: 'CalKilo-AI: Powered Agent, Meal Planning & Recipes',
     aiSubtitle:
@@ -360,14 +362,15 @@ const TRANSLATIONS: Record<
   },
   fa: {
     pageDescription:
-      'کالری‌شماری دقیق، فقط با یک عکس؛ همراه با برنامه غذایی شخصی و پیگیری تغذیه در همه دستگاه‌ها.',
-    pageTitle: 'Calkilo | اپ هوش مصنوعی برای شمارش کالری و تغذیه',
+      'کالری غذا را از روی عکس با هوش مصنوعی محاسبه کنید. کالری شمار رایگان کالکیلو برای پیگیری کالری، درشت‌مغذی‌ها و برنامه غذایی.',
+    pageTitle: 'کالری شمار رایگان با هوش مصنوعی و تشخیص غذا | کالکیلو',
     darkThemeLabel: 'حالت تیره',
     nav: { home: 'خانه', features: 'ویژگی‌ها', pricing: 'انتخاب طرح', contact: 'تماس' },
     tryFree: 'رایگان شروع کنید',
-    heroTitleA: 'کالری‌شماری دقیق، ',
-    heroTitleB: 'فقط با یک عکس',
-    heroDescription: 'فقط از غذای خود عکس بگیرید تا Calkilo با کمک هوش مصنوعی، کالری و اطلاعات تغذیه‌ای را سریع و دقیق برایتان محاسبه کند.',
+    heroTitleA: 'کالری شمار رایگان',
+    heroTitleB: 'با هوش مصنوعی',
+    heroDescription:
+      'از غذای خود عکس بگیرید تا کالکیلو با هوش مصنوعی، کالری، درشت‌مغذی‌ها و اطلاعات تغذیه‌ای را سریع محاسبه کند. نتیجه را بررسی کنید، وعده‌ها را ثبت کنید و بدون ورود دستی پیگیر رژیم بمانید.',
     availableOn: 'در دسترس در:',
     aiTitle: 'CalKilo-AI: عامل هوشمند، برنامه‌ریزی وعده غذایی و دستور غذا',
     aiSubtitle: 'برنامه‌های غذایی شخصی‌سازی‌شده متناسب با اهداف، ترجیحات و محدودیت‌های غذایی شما.',
@@ -1627,6 +1630,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
   const seoCanonicalPath = isDarkVariantPage ? toLocalizedPath('/', language) : seoPath
   const seoTitle = isDarkVariantPage ? `${copy.pageTitle} | ${copy.darkThemeLabel}` : copy.pageTitle
   const landingAlternateLanguages = buildAlternateLanguagePaths(baseSeoPath)
+  const landingKeywords = LANDING_PAGE_KEYWORDS[language] ?? LANDING_PAGE_KEYWORDS.en
   const featuresHref = language === 'en' ? '/features/' : '#features'
   const pricingHref = language === 'en' ? '/pricing/' : '#pricing'
   const contactHref = toLocalizedPath('/contact', language)
@@ -1754,19 +1758,47 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
         operatingSystem: 'iOS, Android',
         description: copy.pageDescription,
         url: `${SITE_URL}${seoPath}`,
+        inLanguage: language,
+        isAccessibleForFree: true,
         sameAs: [GOOGLE_PLAY_URL, APP_STORE_URL],
         featureList: FEATURE_ITEMS.map((item) => ts(item.title)),
-        offers: PRICING_PLANS.map((plan) => ({
-          '@type': 'Offer',
-          name: ts(plan.title),
-          priceCurrency: 'USD',
-          price: plan.price.replace('$', ''),
-          availability: 'https://schema.org/InStock',
-          url: pricingOfferUrl,
-        })),
+        offers: [
+          {
+            '@type': 'Offer',
+            priceCurrency: 'USD',
+            price: '0',
+            availability: 'https://schema.org/InStock',
+            url: pricingOfferUrl,
+          },
+          ...PRICING_PLANS.map((plan) => ({
+            '@type': 'Offer',
+            name: ts(plan.title),
+            priceCurrency: 'USD',
+            price: plan.price.replace('$', ''),
+            availability: 'https://schema.org/InStock',
+            url: pricingOfferUrl,
+          })),
+        ],
       },
+      ...(!isDarkVariantPage
+        ? [
+            {
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              inLanguage: language,
+              mainEntity: FAQ_ITEMS.map((item) => ({
+                '@type': 'Question',
+                name: ts(item.question),
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: ts(item.answer),
+                },
+              })),
+            },
+          ]
+        : []),
     ],
-    [copy.pageDescription, language, pricingOfferUrl, seoPath, seoTitle],
+    [copy.pageDescription, isDarkVariantPage, language, pricingOfferUrl, seoPath, seoTitle],
   )
 
   return (
@@ -1786,7 +1818,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
         description={copy.pageDescription}
         path={seoPath}
         canonicalPath={seoCanonicalPath}
-        keywords={LANDING_PAGE_KEYWORDS}
+        keywords={landingKeywords}
         noindex={isDarkVariantPage}
         imagePath="/assets/hero-main.png"
         imageAlt="Calkilo AI calorie tracking dashboard"
