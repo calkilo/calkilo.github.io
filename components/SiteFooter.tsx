@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { type ReactNode } from 'react'
 import BrandLogo from './BrandLogo'
 
 interface SiteFooterLink {
@@ -20,6 +21,7 @@ interface SiteFooterSection {
 interface SiteFooterProps {
   copyright: string
   description: string
+  featuredContent?: ReactNode
   homeAriaLabel: string
   homeHref: string
   id?: string
@@ -31,6 +33,7 @@ interface SiteFooterProps {
 export default function SiteFooter({
   copyright,
   description,
+  featuredContent,
   homeAriaLabel,
   homeHref,
   id,
@@ -46,6 +49,7 @@ export default function SiteFooter({
             <BrandLogo />
           </Link>
           <p>{description}</p>
+          {featuredContent ? <div className="lp-footer-featured">{featuredContent}</div> : null}
           {socialLinks && socialLinks.length > 0 ? (
             <div className="lp-socials" aria-label={socialLinksLabel}>
               {socialLinks.map((link) => (
