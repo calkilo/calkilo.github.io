@@ -353,6 +353,10 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
   max-width: 660px;
 }
 
+.lp-hero-copy h1 span {
+  display: block;
+}
+
 .lp-hero-copy p {
   color: var(--lp-muted);
   font-size: clamp(1rem, 2vw, 1.38rem);
@@ -1770,6 +1774,10 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
   max-width: 300px;
 }
 
+.lp-footer-featured {
+  margin-top: 18px;
+}
+
 .lp-page--dark .lp-footer-grid section > p {
   color: rgba(18, 18, 18, 0.78);
 }
@@ -1802,6 +1810,41 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 .lp-socials {
   display: inline-flex;
   gap: 10px;
+}
+
+.lp-featured-badge {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  color: #000 !important;
+  display: inline-flex;
+  gap: 10px;
+  height: 50px;
+  padding: 8px 14px;
+  text-decoration: none;
+  width: 170px;
+}
+
+.lp-featured-badge svg {
+  flex: 0 0 auto;
+}
+
+.lp-featured-badge-copy {
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.2;
+}
+
+.lp-featured-badge-copy span:first-child {
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.lp-featured-badge-copy span:last-child {
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .lp-socials a {
