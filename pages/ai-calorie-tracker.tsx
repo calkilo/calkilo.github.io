@@ -2,6 +2,5 @@ import ResourcePage from '../components/ResourcePage'
 import { RESOURCE_PAGES } from '../lib/resource-pages'
 
 export default function AiCalorieTrackerPage() {
-  return <ResourcePage page={RESOURCE_PAGES['ai-calorie-tracker']} />
+  return <ResourcePage page={RESOURCE_PAGES['ai-calorie-tracker']} pageKey="ai-calorie-tracker" />
 }
-

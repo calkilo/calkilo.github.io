@@ -105,8 +105,8 @@ const TERMS_SECTIONS: TermsSection[] = [
   {
     title: '11. Contact Information',
     paragraphs: [
-      'If you have questions about these Terms of Service, contact us at support@calkilo.app.',
-      'For privacy-related matters, contact privacy@calkilo.app.',
+      'If you have questions about these Terms of Service, contact us at support@calkilo.com.',
+      'For privacy-related matters, contact privacy@calkilo.com.',
     ],
   },
 ] as const

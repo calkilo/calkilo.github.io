@@ -14,7 +14,7 @@ const ACCOUNT_DELETION_PAGE_KEYWORDS = [
   'privacy deletion request',
 ]
 
-const REQUEST_EMAIL = 'privacy@calkilo.app'
+const REQUEST_EMAIL = 'privacy@calkilo.com'
 const REQUEST_SUBJECT = 'Account Deletion Request'
 const REQUEST_BODY = [
   'Please delete my Calkilo account and associated data.',
@@ -84,7 +84,7 @@ export default function AccountDeletionPage({ lang }: AccountDeletionPageProps) 
         <a className="lp-contact-submit" href={requestLink}>
           {t('Email deletion request')}
         </a>
-        <p className="lp-contact-note">{t('This opens your email app with a pre-filled message to privacy@calkilo.app.')}</p>
+        <p className="lp-contact-note">{t('This opens your email app with a pre-filled message to privacy@calkilo.com.')}</p>
       </section>
 
       <section className="lp-static-card">

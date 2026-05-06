@@ -5,28 +5,113 @@ import { APP_STORE_URL, GOOGLE_PLAY_URL } from '../lib/app-links'
 import { SITE_URL } from '../lib/seo'
 import {
   DEFAULT_LANGUAGE,
+  isRtlLanguage,
   LANGUAGE_DISPLAY_FONT_FAMILIES,
   LANGUAGE_FONT_FAMILIES,
+  normalizeSiteLanguage,
   type SiteLanguage,
   toLocalizedPath,
 } from '../lib/site-language'
-import { type ResourcePageDefinition, RESOURCE_LINKS } from '../lib/resource-pages'
+import {
+  getLocalizedResourceLinks,
+  getResourceAlternateLanguages,
+  getResourcePathForLanguage,
+  type ResourcePageDefinition,
+  type ResourcePageKey,
+} from '../lib/resource-pages'
 import { CORE_SITE_LINKS } from '../lib/site-pages'
+import { translateStaticPageText } from '../lib/static-page-translations'
 import SeoHead from './SeoHead'
 import SiteFooter from './SiteFooter'
 import SiteHeader from './SiteHeader'
 
 interface ResourcePageProps {
   page: ResourcePageDefinition
+  pageKey?: ResourcePageKey
+  lang?: string
 }
 
-export default function ResourcePage({ page }: ResourcePageProps) {
+export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps) {
   const router = useRouter()
-  const language = DEFAULT_LANGUAGE
+  const language = page.language ?? normalizeSiteLanguage(lang) ?? DEFAULT_LANGUAGE
   const languageDisplayFontFamily = LANGUAGE_DISPLAY_FONT_FAMILIES[language]
-  const relatedPages = [
-    ...CORE_SITE_LINKS.filter((link) => link.href !== page.path),
-    ...RESOURCE_LINKS.filter((resource) => resource.href !== page.path),
+  const t = (text: string) => translateStaticPageText(language, text)
+  const featuresHref = language === 'en' ? '/features/' : toLocalizedPath('/#features', language)
+  const pricingHref = language === 'en' ? '/pricing/' : toLocalizedPath('/#pricing', language)
+  const localizedResourceLinks = getLocalizedResourceLinks(language)
+  const alternateLanguages = pageKey ? getResourceAlternateLanguages(pageKey) : undefined
+  const localizedCorePages = CORE_SITE_LINKS.map((link) => {
+    if (link.href === '/features/') {
+      return {
+        ...link,
+        href: featuresHref,
+        label: t(link.label),
+        description: t(link.description),
+      }
+    }
+
+    if (link.href === '/pricing/') {
+      return {
+        ...link,
+        href: pricingHref,
+        label: t(link.label),
+        description: t(link.description),
+      }
+    }
+
+    if (link.href === '/contact/') {
+      return {
+        ...link,
+        href: toLocalizedPath('/contact', language),
+        label: t(link.label),
+        description: t(link.description),
+      }
+    }
+
+    return {
+      ...link,
+      label: t(link.label),
+      description: t(link.description),
+    }
+  })
+  const relatedPagesByHref = new Map(
+    [...localizedCorePages, ...localizedResourceLinks]
+      .filter((resource) => resource.href !== page.path)
+      .map((resource) => [resource.href, resource]),
+  )
+  const relatedPages = Array.from(relatedPagesByHref.values())
+  const footerSections = [
+    {
+      title: t('Product'),
+      links: [
+        { label: t('Features'), href: featuresHref },
+        { label: t('Pricing'), href: pricingHref },
+        { label: localizedResourceLinks[0]?.label ?? 'AI Calorie Tracker', href: localizedResourceLinks[0]?.href ?? '/ai-calorie-tracker/' },
+        { label: t('Contact'), href: toLocalizedPath('/contact', language) },
+      ],
+    },
+    {
+      title: t('Guides'),
+      links: localizedResourceLinks.map((resource) => ({
+        label: resource.label,
+        href: resource.href,
+      })),
+    },
+    {
+      title: t('Support'),
+      links: [
+        { label: t('Privacy Policy'), href: toLocalizedPath('/privacy-policy', language) },
+        { label: t('Terms of Service'), href: toLocalizedPath('/terms-of-service', language) },
+        { label: t('Account Deletion'), href: toLocalizedPath('/account-deletion', language) },
+        { label: t('Contact'), href: toLocalizedPath('/contact', language) },
+      ],
+    },
+  ] as const
+  const navItems = [
+    { key: 'home', href: toLocalizedPath('/', language), label: t('Home') },
+    { key: 'features', href: featuresHref, label: t('Features') },
+    { key: 'pricing', href: pricingHref, label: t('Choose Plan') },
+    { key: 'contact', href: toLocalizedPath('/contact', language), label: t('Contact') },
   ]
   const pageJsonLd = [
     {
@@ -73,8 +158,8 @@ export default function ResourcePage({ page }: ResourcePageProps) {
         {
           '@type': 'ListItem',
           position: 1,
-          name: 'Home',
-          item: `${SITE_URL}/`,
+          name: t('Home'),
+          item: `${SITE_URL}${toLocalizedPath('/', language)}`,
         },
         {
           '@type': 'ListItem',
@@ -87,6 +172,7 @@ export default function ResourcePage({ page }: ResourcePageProps) {
     {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
+      inLanguage: language,
       mainEntity: page.faqs.map((faq) => ({
         '@type': 'Question',
         name: faq.question,
@@ -98,42 +184,16 @@ export default function ResourcePage({ page }: ResourcePageProps) {
     },
   ] as const
 
-  const footerSections = [
-    {
-      title: 'Product',
-      links: [
-        { label: 'Features', href: '/features/' },
-        { label: 'Pricing', href: '/pricing/' },
-        { label: 'AI Calorie Tracker', href: '/ai-calorie-tracker/' },
-        { label: 'Contact', href: '/contact/' },
-      ],
-    },
-    {
-      title: 'Guides',
-      links: RESOURCE_LINKS.map((resource) => ({
-        label: resource.label,
-        href: resource.href,
-      })),
-    },
-    {
-      title: 'Support',
-      links: [
-        { label: 'Privacy Policy', href: '/privacy-policy/' },
-        { label: 'Terms of Service', href: '/terms-of-service/' },
-        { label: 'Account Deletion', href: '/account-deletion/' },
-        { label: 'Contact', href: '/contact/' },
-      ],
-    },
-  ] as const
-
   const handleLanguageChange = (nextLanguage: SiteLanguage) => {
-    void router.push(toLocalizedPath('/', nextLanguage))
+    const nextPath = pageKey ? getResourcePathForLanguage(pageKey, nextLanguage) : null
+
+    void router.push(nextPath ?? toLocalizedPath('/', nextLanguage))
   }
 
   return (
     <div
       className="lp-page lp-page--light lp-static-page"
-      dir="ltr"
+      dir={isRtlLanguage(language) ? 'rtl' : 'ltr'}
       lang={language}
       style={
         {
@@ -151,22 +211,18 @@ export default function ResourcePage({ page }: ResourcePageProps) {
         imageAlt={page.heading}
         jsonLd={pageJsonLd}
         language={language}
+        alternateLanguages={alternateLanguages}
       />
 
       <SiteHeader
-        ctaHref="/#download"
-        ctaLabel="Try for free"
+        ctaHref={toLocalizedPath('/#download', language)}
+        ctaLabel={t('Try for free')}
         homeAriaLabel="Calkilo home"
-        homeHref="/"
+        homeHref={toLocalizedPath('/', language)}
         language={language}
-        languageLabel="Language"
+        languageLabel={t('Language')}
         navAriaLabel="Main navigation"
-        navItems={[
-          { key: 'home', href: '/', label: 'Home' },
-          { key: 'features', href: '/features/', label: 'Features' },
-          { key: 'pricing', href: '/pricing/', label: 'Choose Plan' },
-          { key: 'contact', href: '/contact/', label: 'Contact' },
-        ]}
+        navItems={navItems}
         onLanguageChange={handleLanguageChange}
       />
 
@@ -174,7 +230,7 @@ export default function ResourcePage({ page }: ResourcePageProps) {
         <section className="lp-section lp-static-hero">
           <div className="lp-container">
             <div className="lp-static-hero-inner">
-              <p className="lp-kicker">Calkilo Guide</p>
+              <p className="lp-kicker">{t('Calkilo Guide')}</p>
               <h1>{page.heading}</h1>
               <p>{page.intro}</p>
               <div className="lp-resource-actions">
@@ -217,7 +273,7 @@ export default function ResourcePage({ page }: ResourcePageProps) {
             ))}
 
             <section className="lp-static-card">
-              <h2>Questions people ask</h2>
+              <h2>{t('Questions people ask')}</h2>
               <div className="lp-resource-faq-grid">
                 {page.faqs.map((faq) => (
                   <article key={faq.question}>
@@ -229,7 +285,7 @@ export default function ResourcePage({ page }: ResourcePageProps) {
             </section>
 
             <section className="lp-static-card">
-              <h2>Related pages</h2>
+              <h2>{t('Related pages')}</h2>
               <div className="lp-resource-related-grid">
                 {relatedPages.map((resource) => (
                   <article key={resource.href} className="lp-resource-related-card">
@@ -246,10 +302,10 @@ export default function ResourcePage({ page }: ResourcePageProps) {
       </main>
 
       <SiteFooter
-        copyright={`© ${new Date().getFullYear()} Calkilo. All rights reserved.`}
-        description="Revolutionizing nutrition tracking with AI-powered calorie calculation."
+        copyright={`© ${new Date().getFullYear()} Calkilo. ${t('All rights reserved.')}`}
+        description={t('Revolutionizing nutrition tracking with AI-powered calorie calculation.')}
         homeAriaLabel="Calkilo home"
-        homeHref="/"
+        homeHref={toLocalizedPath('/', language)}
         sections={footerSections}
         socialLinksLabel="Social links"
       />

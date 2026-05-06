@@ -27,14 +27,14 @@ export default function ContactPage({ lang }: ContactPageProps) {
     {
       title: 'Email Support',
       description: 'For account, billing, and technical questions.',
-      actionLabel: 'support@calkilo.app',
-      actionHref: 'mailto:support@calkilo.app',
+      actionLabel: 'support@calkilo.com',
+      actionHref: 'mailto:support@calkilo.com',
     },
     {
       title: 'Privacy Requests',
       description: 'For data access, deletion, and policy-related inquiries.',
-      actionLabel: 'privacy@calkilo.app',
-      actionHref: 'mailto:privacy@calkilo.app',
+      actionLabel: 'privacy@calkilo.com',
+      actionHref: 'mailto:privacy@calkilo.com',
     },
     {
       title: 'Account Deletion',
@@ -63,19 +63,19 @@ export default function ContactPage({ lang }: ContactPageProps) {
       '@type': 'Organization',
       name: 'Calkilo',
       url: SITE_URL,
-      email: 'support@calkilo.app',
+      email: 'support@calkilo.com',
       contactPoint: [
         {
           '@type': 'ContactPoint',
           contactType: 'customer support',
-          email: 'support@calkilo.app',
+          email: 'support@calkilo.com',
           url: `${SITE_URL}${localizedPath}`,
           availableLanguage: [language],
         },
         {
           '@type': 'ContactPoint',
           contactType: 'privacy inquiries',
-          email: 'privacy@calkilo.app',
+          email: 'privacy@calkilo.com',
           url: `${SITE_URL}${toLocalizedPath('/privacy-policy', language)}`,
           availableLanguage: [language],
         },
@@ -116,9 +116,9 @@ export default function ContactPage({ lang }: ContactPageProps) {
       <section className="lp-contact-grid">
         <article className="lp-static-card lp-contact-card">
           <h2>{t('Send a Message')}</h2>
-          <p>{t('Share as much detail as possible so we can resolve your issue quickly. For urgent requests, email support@calkilo.app directly.')}</p>
+          <p>{t('Share as much detail as possible so we can resolve your issue quickly. For urgent requests, email support@calkilo.com directly.')}</p>
 
-          <form className="lp-contact-form" action="mailto:support@calkilo.app" method="post" encType="text/plain">
+          <form className="lp-contact-form" action="mailto:support@calkilo.com" method="post" encType="text/plain">
             <div className="lp-form-row">
               <label>
                 {t('Full Name')}
@@ -159,7 +159,7 @@ export default function ContactPage({ lang }: ContactPageProps) {
             <button className="lp-contact-submit" type="submit">
               {t('Send message')}
             </button>
-            <p className="lp-contact-note">{t('Submitting this form opens your email app with pre-filled details for support@calkilo.app.')}</p>
+            <p className="lp-contact-note">{t('Submitting this form opens your email app with pre-filled details for support@calkilo.com.')}</p>
           </form>
         </article>
 
