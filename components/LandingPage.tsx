@@ -2,9 +2,9 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo, useState, type CSSProperties } from 'react'
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from '../lib/app-links'
-import { RESOURCE_LINKS } from '../lib/resource-pages'
+import { getLocalizedResourceLinks } from '../lib/resource-pages'
 import { SITE_URL } from '../lib/seo'
-import { ENGLISH_POPULAR_PAGE_LINKS } from '../lib/site-pages'
+import { CORE_SITE_LINKS, ENGLISH_POPULAR_PAGE_LINKS, type SitePageLink } from '../lib/site-pages'
 import {
   buildAlternateLanguagePaths,
   isRtlLanguage,
@@ -71,8 +71,8 @@ const LANDING_PAGE_KEYWORDS: Record<SiteLanguage, ReadonlyArray<string>> = {
   zh: ['ai 卡路里追踪', '拍照计算卡路里', '营养追踪应用', '宏量营养追踪', 'calkilo'],
   ru: ['ai трекер калорий', 'подсчет калорий по фото', 'приложение для макросов', 'трекер питания', 'calkilo'],
   ar: ['متتبع السعرات بالذكاء الاصطناعي', 'حاسبة سعرات من الصورة', 'تطبيق تتبع الماكروز', 'تتبع التغذية', 'calkilo'],
-  fa: ['کالری شمار رایگان', 'کالری شمار هوش مصنوعی', 'محاسبه کالری با عکس', 'اپ شمارش کالری', 'کالکیلو'],
-  it: ['calcolo calorie ai', 'calorie da foto', 'macro tracker app', 'app nutrizione', 'calkilo'],
+  fa: ['کالری شمار با عکس رایگان', 'هوش مصنوعی کالری شمار رایگان', 'کالری شمار هوش مصنوعی', 'اسکن کالری غذا رایگان', 'کالکیلو'],
+  it: ['calcolo calorie ai', 'calorie da foto', 'contacalorie con foto', 'app calorie e macro', 'calkilo'],
 }
 
 const POPULAR_PAGES_INTRO =
@@ -155,8 +155,8 @@ const TRANSLATIONS: Record<
       'Sync with your favorite health and fitness apps for a complete wellness picture.',
     testimonialsTitleA: 'What Are People Saying',
     testimonialsTitleB: 'About Us',
-    pricingKicker: 'No credit card required',
-    pricingTitle: 'Start for free with gamification and unlock more features anytime',
+    pricingKicker: 'Simple pricing',
+    pricingTitle: 'Choose monthly or yearly premium access',
     communityTitle: 'Join a Thriving Community',
     communitySubtitle: 'Invite, share, and get motivated with thousands of health-conscious users',
     downloadTitleA: 'Ready to Transform Your Nutrition?',
@@ -202,8 +202,8 @@ const TRANSLATIONS: Record<
     integrationsSubtitle: 'Synchroniseer met je favoriete gezondheids- en fitnessapps.',
     testimonialsTitleA: 'Wat mensen zeggen',
     testimonialsTitleB: 'over ons',
-    pricingKicker: 'Geen creditcard nodig',
-    pricingTitle: 'Start gratis en ontgrendel op elk moment meer functies',
+    pricingKicker: 'Eenvoudige prijzen',
+    pricingTitle: 'Kies maandelijkse of jaarlijkse premium toegang',
     communityTitle: 'Word deel van een actieve community',
     communitySubtitle: 'Nodig uit, deel en blijf gemotiveerd met duizenden gebruikers',
     downloadTitleA: 'Klaar om je voeding te verbeteren?',
@@ -247,8 +247,8 @@ const TRANSLATIONS: Record<
     integrationsSubtitle: '与常用健康与健身应用同步，获得完整健康视图。',
     testimonialsTitleA: '用户如何评价',
     testimonialsTitleB: '我们',
-    pricingKicker: '无需信用卡',
-    pricingTitle: '免费开始，随时解锁更多功能',
+    pricingKicker: '简单定价',
+    pricingTitle: '选择月度或年度高级版',
     communityTitle: '加入活跃社区',
     communitySubtitle: '邀请、分享，与成千上万注重健康的用户一起获得动力',
     downloadTitleA: '准备好改变你的营养习惯了吗？',
@@ -293,8 +293,8 @@ const TRANSLATIONS: Record<
     integrationsSubtitle: 'Синхронизируйте любимые приложения здоровья и фитнеса.',
     testimonialsTitleA: 'Что говорят',
     testimonialsTitleB: 'о нас',
-    pricingKicker: 'Кредитная карта не требуется',
-    pricingTitle: 'Начните бесплатно и открывайте больше функций в любой момент',
+    pricingKicker: 'Простые цены',
+    pricingTitle: 'Выберите месячный или годовой премиум-доступ',
     communityTitle: 'Присоединяйтесь к активному сообществу',
     communitySubtitle: 'Приглашайте, делитесь и мотивируйте друг друга',
     downloadTitleA: 'Готовы изменить свое питание?',
@@ -339,8 +339,8 @@ const TRANSLATIONS: Record<
     integrationsSubtitle: 'قم بالمزامنة مع تطبيقات الصحة واللياقة المفضلة لديك.',
     testimonialsTitleA: 'ماذا يقول',
     testimonialsTitleB: 'المستخدمون',
-    pricingKicker: 'لا حاجة لبطاقة ائتمان',
-    pricingTitle: 'ابدأ مجاناً وافتح مزايا أكثر في أي وقت',
+    pricingKicker: 'أسعار بسيطة',
+    pricingTitle: 'اختر اشتراك بريميوم شهرياً أو سنوياً',
     communityTitle: 'انضم إلى مجتمع مزدهر',
     communitySubtitle: 'ادعُ وشارك وتحفّز مع آلاف المستخدمين المهتمين بالصحة',
     downloadTitleA: 'جاهز لتحسين تغذيتك؟',
@@ -362,13 +362,13 @@ const TRANSLATIONS: Record<
   },
   fa: {
     pageDescription:
-      'کالری غذا را از روی عکس با هوش مصنوعی محاسبه کنید. کالری شمار رایگان کالکیلو برای پیگیری کالری، درشت‌مغذی‌ها و برنامه غذایی.',
-    pageTitle: 'کالری شمار رایگان با هوش مصنوعی و تشخیص غذا | کالکیلو',
+      'از غذای خود عکس بگیرید و با کالری شمار هوش مصنوعی کالکیلو، کالری، پروتئین، کربوهیدرات و چربی را سریع‌تر پیگیری کنید.',
+    pageTitle: 'کالری شمار با عکس رایگان و هوش مصنوعی | کالکیلو',
     darkThemeLabel: 'حالت تیره',
     nav: { home: 'خانه', features: 'ویژگی‌ها', pricing: 'انتخاب طرح', contact: 'تماس' },
     tryFree: 'رایگان شروع کنید',
-    heroTitleA: 'کالری شمار رایگان',
-    heroTitleB: 'با هوش مصنوعی',
+    heroTitleA: 'کالری شمار با عکس',
+    heroTitleB: 'رایگان و هوش مصنوعی',
     heroDescription:
       'از غذای خود عکس بگیرید تا کالکیلو با هوش مصنوعی، کالری، درشت‌مغذی‌ها و اطلاعات تغذیه‌ای را سریع محاسبه کند. نتیجه را بررسی کنید، وعده‌ها را ثبت کنید و بدون ورود دستی پیگیر رژیم بمانید.',
     availableOn: 'در دسترس در:',
@@ -386,8 +386,8 @@ const TRANSLATIONS: Record<
     integrationsSubtitle: 'با برنامه‌های سلامت و تناسب اندام محبوبتان همگام‌سازی می‌شود.',
     testimonialsTitleA: 'کاربران چه',
     testimonialsTitleB: 'می‌گویند',
-    pricingKicker: 'بدون نیاز به کارت اعتباری',
-    pricingTitle: 'رایگان شروع کنید و هر زمان خواستید ویژگی‌های بیشتری باز کنید',
+    pricingKicker: 'قیمت‌گذاری ساده',
+    pricingTitle: 'دسترسی پریمیوم ماهانه یا سالانه را انتخاب کنید',
     communityTitle: 'به یک جامعه پویا بپیوندید',
     communitySubtitle: 'دوستانتان را دعوت کنید، تجربیاتتان را به اشتراک بگذارید و در کنار هزاران کاربر دیگر، انگیزه‌تان را برای سلامتی حفظ کنید.',
     downloadTitleA: 'آماده تغییر تغذیه خود هستید؟',
@@ -409,15 +409,15 @@ const TRANSLATIONS: Record<
   },
   it: {
     pageDescription:
-      'Calcola le calorie con precisione AI, ricevi piani alimentari personalizzati e monitora la nutrizione su tutti i tuoi dispositivi.',
-    pageTitle: 'Calkilo | App AI per calorie e nutrizione',
+      'Scatta una foto del pasto e calcola calorie, macro e nutrizione con AI. Calkilo ti aiuta a registrare il diario alimentare su iPhone e Android.',
+    pageTitle: 'Calcolo calorie AI da foto | Calkilo',
     darkThemeLabel: 'Tema scuro',
     nav: { home: 'Home', features: 'Funzioni', pricing: 'Scegli piano', contact: 'Contatto' },
     tryFree: 'Provalo gratis',
-    heroTitleA: 'Calcola le calorie con',
-    heroTitleB: 'precisione AI',
+    heroTitleA: 'Calcolo calorie AI',
+    heroTitleB: 'da foto',
     heroDescription:
-      'Scatta una foto del tuo pasto e ottieni subito calorie e informazioni nutrizionali.',
+      'Scatta una foto del tuo pasto e ottieni una stima di calorie, proteine, carboidrati e grassi. Rivedi il risultato, salva il pasto e mantieni il diario alimentare senza inserimenti manuali lunghi.',
     availableOn: 'Disponibile su:',
     aiTitle: 'CalKilo-AI: Agente smart, piano pasti e ricette',
     aiSubtitle: 'Piani alimentari personalizzati in base a obiettivi e preferenze.',
@@ -433,8 +433,8 @@ const TRANSLATIONS: Record<
     integrationsSubtitle: 'Sincronizza le tue app salute e fitness preferite.',
     testimonialsTitleA: 'Cosa dicono',
     testimonialsTitleB: 'di noi',
-    pricingKicker: 'Nessuna carta richiesta',
-    pricingTitle: 'Inizia gratis e sblocca piu funzionalita quando vuoi',
+    pricingKicker: 'Prezzi semplici',
+    pricingTitle: 'Scegli accesso premium mensile o annuale',
     communityTitle: 'Unisciti a una community attiva',
     communitySubtitle: 'Invita, condividi e resta motivato con migliaia di utenti',
     downloadTitleA: 'Pronto a migliorare la tua nutrizione?',
@@ -626,37 +626,28 @@ const TESTIMONIALS = [
   {
     title: 'Super easy to use',
     author: 'Sarah Morgan',
-    body: 'I started with the free plan and upgraded quickly. Great value for daily nutrition planning.',
+    body: 'I started monthly and moved to yearly quickly. Great value for daily nutrition planning.',
   },
 ] as const
 
 const PRICING_PLANS = [
   {
-    title: 'Premium 1 Month',
-    subtitle: 'Perfect for trying out',
-    oldPrice: '$9.99',
-    price: '$7.99',
-    cta: 'Start for a Month',
+    title: 'Monthly',
+    subtitle: 'Flexible month-to-month access',
+    oldPrice: '',
+    price: '$4.99',
+    cta: 'Choose Monthly',
     highlight: false,
     badge: '',
   },
   {
-    title: 'Premium 3 Months',
-    subtitle: 'Most chosen by athletes',
-    oldPrice: '$27.96',
-    price: '$21.99',
-    cta: 'Try it now',
+    title: 'Yearly',
+    subtitle: 'Best value for the full year',
+    oldPrice: '',
+    price: '$14.99',
+    cta: 'Choose Yearly',
     highlight: true,
-    badge: 'Most Popular - Save 25%',
-  },
-  {
-    title: 'Premium 6 Months',
-    subtitle: 'Best value for meal planners',
-    oldPrice: '$99.90',
-    price: '$59.99',
-    cta: 'Get premium',
-    highlight: false,
-    badge: 'Save 33%',
+    badge: 'Best Value',
   },
 ] as const
 
@@ -688,7 +679,7 @@ const FAQ_ITEMS = [
     topic: 'Pricing',
     question: 'How much does Calkilo cost?',
     answer:
-      'Start free with core tracking and gamification. Premium plans unlock personalized meal plans, deeper analytics, and AI coaching.',
+      'Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.',
   },
   {
     topic: 'Meal Planning',
@@ -762,18 +753,14 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "The AI suggestions are genuinely useful and the app design is clear and fast to use every day.": "De AI-suggesties zijn echt nuttig en de app is duidelijk en snel voor dagelijks gebruik.",
     "Photo analysis is quick, and I can stay consistent with meal tracking even on busy days.": "Fotoanalyse is snel en ik blijf consequent tracken, zelfs op drukke dagen.",
     "The structure is clean, and all key nutrition data is easy to read. Exactly what I needed.": "De opbouw is overzichtelijk en alle belangrijke voedingsdata zijn makkelijk te lezen.",
-    "I started with the free plan and upgraded quickly. Great value for daily nutrition planning.": "Ik begon met het gratis plan en ben snel geupgrade. Veel waarde voor dagelijkse planning.",
-    "Premium 1 Month": "Premium 1 maand",
-    "Perfect for trying out": "Perfect om te proberen",
-    "Start for a Month": "Start voor 1 maand",
-    "Premium 3 Months": "Premium 3 maanden",
-    "Most chosen by athletes": "Meest gekozen door sporters",
-    "Try it now": "Probeer nu",
-    "Most Popular - Save 25%": "Populairst - Bespaar 25%",
-    "Premium 6 Months": "Premium 6 maanden",
-    "Best value for meal planners": "Beste waarde voor meal planners",
-    "Get premium": "Neem premium",
-    "Save 33%": "Bespaar 33%",
+    "I started monthly and moved to yearly quickly. Great value for daily nutrition planning.": "Ik begon maandelijks en stapte snel over naar jaarlijks. Veel waarde voor dagelijkse planning.",
+    "Monthly": "Maandelijks",
+    "Flexible month-to-month access": "Flexibele maandelijkse toegang",
+    "Choose Monthly": "Kies maandelijks",
+    "Yearly": "Jaarlijks",
+    "Best value for the full year": "Beste waarde voor een heel jaar",
+    "Choose Yearly": "Kies jaarlijks",
+    "Best Value": "Beste waarde",
     "Personalized meal plans": "Persoonlijke maaltijdplannen",
     "Smart grocery shopping lists": "Slimme boodschappenlijsten",
     "Nutritional insights": "Voedingsinzichten",
@@ -804,7 +791,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Do I need internet connection to use the app?": "Heb ik internet nodig om de app te gebruiken?",
     "Do recipes include nutritional information?": "Bevatten recepten voedingsinformatie?",
     "Does it work with my fitness tracker?": "Werkt het met mijn fitness tracker?",
-    "Start free with core tracking and gamification. Premium plans unlock personalized meal plans, deeper analytics, and AI coaching.": "Begin gratis met basis tracking en gamification. Premium geeft persoonlijke plannen, diepere analyses en AI-coaching.",
+    "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "Calkilo premium is maandelijks beschikbaar voor $4.99 of jaarlijks voor $14.99. Beide plannen ontgrendelen persoonlijke plannen, diepere analyses en AI-coaching.",
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "De app combineert je doelen, voedingsgeschiedenis en voorkeuren om maaltijdsuggesties te maken die zich aanpassen.",
     "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "Ja. Je kunt dieetbeperkingen, smaakvoorkeuren en macrodoelen op elk moment aanpassen in je profiel.",
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "Uploads zijn versleuteld en worden alleen gebruikt voor je analyse en betere aanbevelingen.",
@@ -871,18 +858,14 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "The AI suggestions are genuinely useful and the app design is clear and fast to use every day.": "AI-подсказки действительно полезные, а интерфейс понятный и быстрый для ежедневного использования.",
     "Photo analysis is quick, and I can stay consistent with meal tracking even on busy days.": "Анализ фото быстрый, и я могу стабильно вести учет даже в загруженные дни.",
     "The structure is clean, and all key nutrition data is easy to read. Exactly what I needed.": "Структура чистая, ключевые данные питания легко читать. Именно то, что мне нужно.",
-    "I started with the free plan and upgraded quickly. Great value for daily nutrition planning.": "Я начал с бесплатного плана и быстро перешел на премиум. Отличная ценность для ежедневного планирования.",
-    "Premium 1 Month": "Премиум 1 месяц",
-    "Perfect for trying out": "Отлично для знакомства",
-    "Start for a Month": "Начать на 1 месяц",
-    "Premium 3 Months": "Премиум 3 месяца",
-    "Most chosen by athletes": "Чаще всего выбирают спортсмены",
-    "Try it now": "Попробовать сейчас",
-    "Most Popular - Save 25%": "Самый популярный - экономия 25%",
-    "Premium 6 Months": "Премиум 6 месяцев",
-    "Best value for meal planners": "Лучшая цена для планирования питания",
-    "Get premium": "Подключить премиум",
-    "Save 33%": "Экономия 33%",
+    "I started monthly and moved to yearly quickly. Great value for daily nutrition planning.": "Я начал с месячного плана и быстро перешел на годовой. Отличная ценность для ежедневного планирования.",
+    "Monthly": "Ежемесячно",
+    "Flexible month-to-month access": "Гибкий помесячный доступ",
+    "Choose Monthly": "Выбрать месяц",
+    "Yearly": "Ежегодно",
+    "Best value for the full year": "Лучшая цена на полный год",
+    "Choose Yearly": "Выбрать год",
+    "Best Value": "Лучшая цена",
     "Personalized meal plans": "Персональные планы питания",
     "Smart grocery shopping lists": "Умные списки покупок",
     "Nutritional insights": "Аналитика питания",
@@ -913,7 +896,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Do I need internet connection to use the app?": "Нужен ли интернет для работы приложения?",
     "Do recipes include nutritional information?": "Есть ли в рецептах информация о питательности?",
     "Does it work with my fitness tracker?": "Работает ли это с моим фитнес-трекером?",
-    "Start free with core tracking and gamification. Premium plans unlock personalized meal plans, deeper analytics, and AI coaching.": "Начните бесплатно с базового трекинга и геймификации. Премиум открывает персональные планы, глубокую аналитику и AI-коучинг.",
+    "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "Calkilo Premium доступен ежемесячно за $4.99 или ежегодно за $14.99. Оба плана открывают персональные планы питания, глубокую аналитику и AI-коучинг.",
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "Приложение объединяет ваши цели, историю питания и предпочтения, чтобы формировать персональные рекомендации.",
     "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "Да. Вы можете менять ограничения, вкусовые предпочтения и цели по макроэлементам в настройках профиля.",
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "Загрузки шифруются и используются только для анализа и улучшения персональных рекомендаций.",
@@ -981,18 +964,14 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "The AI suggestions are genuinely useful and the app design is clear and fast to use every day.": "AI 建议非常实用，应用界面清晰，日常使用很顺手。",
     "Photo analysis is quick, and I can stay consistent with meal tracking even on busy days.": "照片分析很快，即使忙碌时我也能坚持记录饮食。",
     "The structure is clean, and all key nutrition data is easy to read. Exactly what I needed.": "界面结构清爽，关键营养数据一目了然，正是我需要的。",
-    "I started with the free plan and upgraded quickly. Great value for daily nutrition planning.": "我从免费版开始，很快升级了。对日常营养规划非常划算。",
-    "Premium 1 Month": "高级版 1 个月",
-    "Perfect for trying out": "非常适合体验",
-    "Start for a Month": "先试 1 个月",
-    "Premium 3 Months": "高级版 3 个月",
-    "Most chosen by athletes": "运动人群最常选择",
-    "Try it now": "立即试用",
-    "Most Popular - Save 25%": "最受欢迎 - 省 25%",
-    "Premium 6 Months": "高级版 6 个月",
-    "Best value for meal planners": "餐食规划最佳性价比",
-    "Get premium": "开通高级版",
-    "Save 33%": "省 33%",
+    "I started monthly and moved to yearly quickly. Great value for daily nutrition planning.": "我从月度开始，很快转到年度。对日常营养规划非常划算。",
+    "Monthly": "月度",
+    "Flexible month-to-month access": "灵活的按月访问",
+    "Choose Monthly": "选择月度",
+    "Yearly": "年度",
+    "Best value for the full year": "全年最佳性价比",
+    "Choose Yearly": "选择年度",
+    "Best Value": "最佳性价比",
     "Personalized meal plans": "个性化餐食计划",
     "Smart grocery shopping lists": "智能购物清单",
     "Nutritional insights": "营养洞察",
@@ -1023,7 +1002,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Do I need internet connection to use the app?": "使用应用需要联网吗？",
     "Do recipes include nutritional information?": "食谱是否包含营养信息？",
     "Does it work with my fitness tracker?": "是否支持我的健身追踪器？",
-    "Start free with core tracking and gamification. Premium plans unlock personalized meal plans, deeper analytics, and AI coaching.": "可免费开始使用核心记录和游戏化功能。高级版解锁个性化餐单、深度分析和 AI 教练。",
+    "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "Calkilo 高级版可按月 $4.99 或按年 $14.99 使用。两个计划都解锁个性化餐食计划、深度分析和 AI 教练。",
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "应用会结合你的目标、饮食历史和偏好，生成会随数据变化而调整的餐食建议。",
     "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "可以。你可随时在个人设置中更新饮食限制、口味偏好和宏量目标。",
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "上传内容会加密，仅用于提供分析结果并优化个性化推荐。",
@@ -1091,18 +1070,14 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "The AI suggestions are genuinely useful and the app design is clear and fast to use every day.": "اقتراحات الذكاء الاصطناعي مفيدة فعلاً وتصميم التطبيق واضح وسريع يومياً.",
     "Photo analysis is quick, and I can stay consistent with meal tracking even on busy days.": "تحليل الصور سريع ويمكنني الاستمرار في تتبع الوجبات حتى في الأيام المزدحمة.",
     "The structure is clean, and all key nutrition data is easy to read. Exactly what I needed.": "الواجهة نظيفة وكل بيانات التغذية الأساسية سهلة القراءة. هذا ما أحتاجه تماماً.",
-    "I started with the free plan and upgraded quickly. Great value for daily nutrition planning.": "بدأت بالخطة المجانية ثم قمت بالترقية بسرعة. قيمة ممتازة للتخطيط الغذائي اليومي.",
-    "Premium 1 Month": "بريميوم شهر واحد",
-    "Perfect for trying out": "مثالي للتجربة",
-    "Start for a Month": "ابدأ لشهر",
-    "Premium 3 Months": "بريميوم 3 أشهر",
-    "Most chosen by athletes": "الأكثر اختياراً بين الرياضيين",
-    "Try it now": "جرّبه الآن",
-    "Most Popular - Save 25%": "الأكثر شيوعاً - وفر 25%",
-    "Premium 6 Months": "بريميوم 6 أشهر",
-    "Best value for meal planners": "أفضل قيمة لمخططي الوجبات",
-    "Get premium": "احصل على بريميوم",
-    "Save 33%": "وفر 33%",
+    "I started monthly and moved to yearly quickly. Great value for daily nutrition planning.": "بدأت بالخطة الشهرية ثم انتقلت سريعاً إلى السنوية. قيمة ممتازة للتخطيط الغذائي اليومي.",
+    "Monthly": "شهري",
+    "Flexible month-to-month access": "وصول شهري مرن",
+    "Choose Monthly": "اختر الشهري",
+    "Yearly": "سنوي",
+    "Best value for the full year": "أفضل قيمة للعام الكامل",
+    "Choose Yearly": "اختر السنوي",
+    "Best Value": "أفضل قيمة",
     "Personalized meal plans": "خطط وجبات مخصصة",
     "Smart grocery shopping lists": "قوائم تسوق ذكية",
     "Nutritional insights": "تحليلات غذائية",
@@ -1133,7 +1108,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Do I need internet connection to use the app?": "هل أحتاج اتصال إنترنت لاستخدام التطبيق؟",
     "Do recipes include nutritional information?": "هل تشمل الوصفات معلومات غذائية؟",
     "Does it work with my fitness tracker?": "هل يعمل مع جهاز تتبع اللياقة الخاص بي؟",
-    "Start free with core tracking and gamification. Premium plans unlock personalized meal plans, deeper analytics, and AI coaching.": "ابدأ مجاناً مع التتبع الأساسي واللعب التحفيزي. خطط بريميوم تفتح خطط وجبات مخصصة وتحليلات أعمق وتدريباً بالذكاء الاصطناعي.",
+    "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "يتوفر Calkilo Premium شهرياً مقابل $4.99 أو سنوياً مقابل $14.99. يفتح كلا الخيارين خطط وجبات مخصصة وتحليلات أعمق وتدريباً بالذكاء الاصطناعي.",
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "يجمع التطبيق أهدافك وسجل التغذية وتفضيلاتك ليولد اقتراحات وجبات تتكيف مع تغير بياناتك.",
     "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "نعم. يمكنك تحديث القيود الغذائية وتفضيلات الذوق وأهداف الماكروز في أي وقت من إعدادات الملف الشخصي.",
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "يتم تشفير الملفات المرفوعة وتستخدم فقط لتقديم التحليل وتحسين توصياتك الشخصية.",
@@ -1201,18 +1176,14 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "The AI suggestions are genuinely useful and the app design is clear and fast to use every day.": "پیشنهادهای هوش مصنوعی واقعاً مفید هستند و طراحی برنامه واضح و سریع است.",
     "Photo analysis is quick, and I can stay consistent with meal tracking even on busy days.": "تحلیل عکس سریع است و حتی در روزهای شلوغ هم می‌توانم منظم بمانم.",
     "The structure is clean, and all key nutrition data is easy to read. Exactly what I needed.": "ساختار برنامه تمیز است و داده‌های مهم تغذیه‌ای به‌راحتی خوانده می‌شوند.",
-    "I started with the free plan and upgraded quickly. Great value for daily nutrition planning.": "با طرح رایگان شروع کردم و خیلی زود ارتقا دادم. برای برنامه‌ریزی روزانه ارزش بالایی دارد.",
-    "Premium 1 Month": "پریمیوم ۱ ماهه",
-    "Perfect for trying out": "مناسب برای شروع",
-    "Start for a Month": "شروع برای ۱ ماه",
-    "Premium 3 Months": "پریمیوم ۳ ماهه",
-    "Most chosen by athletes": "بیشترین انتخاب ورزشکاران",
-    "Try it now": "همین حالا امتحان کنید",
-    "Most Popular - Save 25%": "محبوب‌ترین - 25٪ تخفیف",
-    "Premium 6 Months": "پریمیوم ۶ ماهه",
-    "Best value for meal planners": "بهترین ارزش برای برنامه‌ریزی وعده",
-    "Get premium": "دریافت پریمیوم",
-    "Save 33%": "33٪ صرفه‌جویی",
+    "I started monthly and moved to yearly quickly. Great value for daily nutrition planning.": "با طرح ماهانه شروع کردم و خیلی زود به سالانه رفتم. برای برنامه‌ریزی روزانه ارزش بالایی دارد.",
+    "Monthly": "ماهانه",
+    "Flexible month-to-month access": "دسترسی منعطف ماه‌به‌ماه",
+    "Choose Monthly": "انتخاب ماهانه",
+    "Yearly": "سالانه",
+    "Best value for the full year": "بهترین ارزش برای یک سال کامل",
+    "Choose Yearly": "انتخاب سالانه",
+    "Best Value": "بهترین ارزش",
     "Personalized meal plans": "برنامه‌های غذایی شخصی‌سازی‌شده",
     "Smart grocery shopping lists": "لیست خرید هوشمند",
     "Nutritional insights": "بینش تغذیه‌ای",
@@ -1243,7 +1214,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Do I need internet connection to use the app?": "آیا کار با اپلیکیشن نیاز به اینترنت دائمی دارد؟",
     "Do recipes include nutritional information?": "آیا دستورها شامل اطلاعات تغذیه‌ای هستند؟",
     "Does it work with my fitness tracker?": "آیا اپلیکیشن با ساعت‌های هوشمند و مچ‌بندهای سلامتی همگام می‌شود؟",
-    "Start free with core tracking and gamification. Premium plans unlock personalized meal plans, deeper analytics, and AI coaching.": "شروع کار رایگان است! می‌توانید از امکانات پایه و قابلیت‌های جذاب ردیابی غذا استفاده کنید. با تهیه اشتراک ویژه (Premium)، به برنامه‌های غذایی اختصاصی، تحلیل‌های دقیق و مربی هوشمند دسترسی خواهید داشت.",
+    "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "اشتراک پریمیوم Calkilo به‌صورت ماهانه با قیمت $4.99 یا سالانه با قیمت $14.99 ارائه می‌شود. هر دو طرح برنامه غذایی شخصی‌سازی‌شده، تحلیل‌های دقیق‌تر و مربی هوش مصنوعی را فعال می‌کنند.",
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "سیستم ما با ترکیب اهداف، ذائقه و سوابق تغذیه‌ای شما، هوشمندانه‌ترین پیشنهادها را که دقیقاً با سبک زندگی‌تان سازگار است، طراحی می‌کند.",
     "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "بله، بعد از شروع برنامه می‌توانید اطلاعاتی مثل قد و وزن هدف را در پروفایل خود به‌روزرسانی کنید. در حال حاضر امکان تنظیم دستی ماکروها وجود ندارد.",
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "بله، تمام تصاویر ارسالی به‌صورت رمزگذاری‌شده ذخیره می‌شوند. این داده‌ها صرفاً برای تحلیل دقیق‌تر و شخصی‌سازی بهتر پیشنهادها برای خود شما استفاده می‌شوند.",
@@ -1251,6 +1222,11 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "برای تحلیل تصاویر به اینترنت نیاز است؛ اما می‌توانید اطلاعات ثبت‌شده قبلی را در حالت آفلاین مشاهده کنید.",
     "Each suggested meal includes calories, protein, carbs, fats, and portion guidance.": "هر وعده پیشنهادی شامل کالری، پروتئین، کربوهیدرات، چربی و راهنمای مقدار است.",
     "Yes. You can connect supported platforms like Apple Health, Google Fit, Fitbit, and Samsung Health.": "بله، می‌توانید سرویس‌های محبوبی مثل Apple Health، Google Fit، Samsung Health و Fitbit را به برنامه متصل کنید.",
+    "Features": "ویژگی‌ها",
+    "See photo calorie tracking, macro goals, AI meal plans, and health app integrations.": "قابلیت‌های ثبت کالری با عکس، هدف‌های ماکرو، برنامه غذایی هوش مصنوعی و اتصال به اپ‌های سلامت را ببینید.",
+    "Compare monthly and yearly premium plans and what each subscription unlocks.": "طرح‌های ماهانه و سالانه پریمیوم و امکانات هر اشتراک را مقایسه کنید.",
+    "Answers about subscriptions, privacy, device sync, and AI food logging.": "پاسخ پرسش‌های رایج درباره اشتراک، حریم خصوصی، همگام‌سازی و ثبت غذا با هوش مصنوعی.",
+    "Reach Calkilo support for product, billing, and privacy requests.": "برای سوال‌های محصول، پرداخت و حریم خصوصی با پشتیبانی کالکیلو تماس بگیرید.",
     "Feature": "ویژگی‌ها",
     "Download": "دانلود",
     "How it Works?": "چگونه کار می‌کند؟",
@@ -1311,18 +1287,14 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "The AI suggestions are genuinely useful and the app design is clear and fast to use every day.": "I suggerimenti AI sono davvero utili e l'app e chiara e veloce ogni giorno.",
     "Photo analysis is quick, and I can stay consistent with meal tracking even on busy days.": "L'analisi foto e rapida e riesco a restare costante anche nei giorni impegnati.",
     "The structure is clean, and all key nutrition data is easy to read. Exactly what I needed.": "La struttura e pulita e i dati nutrizionali principali sono facili da leggere.",
-    "I started with the free plan and upgraded quickly. Great value for daily nutrition planning.": "Ho iniziato con il piano gratuito e ho fatto subito l'upgrade. Ottimo valore per la pianificazione quotidiana.",
-    "Premium 1 Month": "Premium 1 mese",
-    "Perfect for trying out": "Perfetto per iniziare",
-    "Start for a Month": "Inizia per 1 mese",
-    "Premium 3 Months": "Premium 3 mesi",
-    "Most chosen by athletes": "Il piu scelto dagli sportivi",
-    "Try it now": "Provalo ora",
-    "Most Popular - Save 25%": "Piu popolare - Risparmia 25%",
-    "Premium 6 Months": "Premium 6 mesi",
-    "Best value for meal planners": "Miglior valore per pianificare i pasti",
-    "Get premium": "Passa a premium",
-    "Save 33%": "Risparmia 33%",
+    "I started monthly and moved to yearly quickly. Great value for daily nutrition planning.": "Ho iniziato con il mensile e sono passato presto all'annuale. Ottimo valore per la pianificazione quotidiana.",
+    "Monthly": "Mensile",
+    "Flexible month-to-month access": "Accesso flessibile mese per mese",
+    "Choose Monthly": "Scegli mensile",
+    "Yearly": "Annuale",
+    "Best value for the full year": "Miglior valore per tutto l'anno",
+    "Choose Yearly": "Scegli annuale",
+    "Best Value": "Miglior valore",
     "Personalized meal plans": "Piani pasto personalizzati",
     "Smart grocery shopping lists": "Liste della spesa intelligenti",
     "Nutritional insights": "Insight nutrizionali",
@@ -1353,7 +1325,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Do I need internet connection to use the app?": "Serve internet per usare l'app?",
     "Do recipes include nutritional information?": "Le ricette includono informazioni nutrizionali?",
     "Does it work with my fitness tracker?": "Funziona con il mio fitness tracker?",
-    "Start free with core tracking and gamification. Premium plans unlock personalized meal plans, deeper analytics, and AI coaching.": "Inizia gratis con tracciamento base e gamification. I piani premium sbloccano piani personalizzati, analisi avanzate e coaching AI.",
+    "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "Calkilo Premium e disponibile mensilmente a $4.99 o annualmente a $14.99. Entrambi i piani sbloccano piani personalizzati, analisi avanzate e coaching AI.",
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "L'app combina obiettivi, storico nutrizionale e preferenze per suggerire pasti che si adattano ai tuoi dati.",
     "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "Si. Puoi aggiornare restrizioni alimentari, gusti e obiettivi macro in qualsiasi momento dalle impostazioni profilo.",
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "I caricamenti sono crittografati e usati solo per l'analisi e per migliorare i suggerimenti personali.",
@@ -1361,6 +1333,11 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "L'analisi foto richiede internet, ma puoi rivedere dati precedenti e registri base anche offline.",
     "Each suggested meal includes calories, protein, carbs, fats, and portion guidance.": "Ogni pasto suggerito include calorie, proteine, carboidrati, grassi e guida porzioni.",
     "Yes. You can connect supported platforms like Apple Health, Google Fit, Fitbit, and Samsung Health.": "Si. Puoi collegare piattaforme supportate come Apple Health, Google Fit, Fitbit e Samsung Health.",
+    "Features": "Funzioni",
+    "See photo calorie tracking, macro goals, AI meal plans, and health app integrations.": "Scopri tracking calorie da foto, obiettivi macro, piani alimentari AI e integrazioni salute.",
+    "Compare monthly and yearly premium plans and what each subscription unlocks.": "Confronta i piani premium mensili e annuali e le funzioni incluse.",
+    "Answers about subscriptions, privacy, device sync, and AI food logging.": "Risposte su abbonamenti, privacy, sincronizzazione e food logging AI.",
+    "Reach Calkilo support for product, billing, and privacy requests.": "Contatta il supporto Calkilo per prodotto, fatturazione e privacy.",
     "Feature": "Funzionalita",
     "Download": "Scarica",
     "How it Works?": "Come funziona?",
@@ -1658,6 +1635,62 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
   const pricingHref = language === 'en' ? '/pricing/' : '#pricing'
   const contactHref = toLocalizedPath('/contact', language)
   const pricingOfferUrl = pricingHref.startsWith('#') ? `${SITE_URL}${seoPath}${pricingHref}` : `${SITE_URL}${pricingHref}`
+  const localizedResourceLinks = getLocalizedResourceLinks(language)
+  const localizedCorePageLinks: SitePageLink[] = CORE_SITE_LINKS.map((link) => {
+    if (link.href === '/features/') {
+      return {
+        href: featuresHref,
+        label: ts(link.label),
+        description: ts(link.description),
+      }
+    }
+
+    if (link.href === '/pricing/') {
+      return {
+        href: pricingHref,
+        label: ts(link.label),
+        description: ts(link.description),
+      }
+    }
+
+    if (link.href === '/contact/') {
+      return {
+        href: contactHref,
+        label: ts(link.label),
+        description: ts(link.description),
+      }
+    }
+
+    return {
+      href: link.href,
+      label: ts(link.label),
+      description: ts(link.description),
+    }
+  })
+  const popularPageLinks =
+    language === 'en'
+      ? ENGLISH_POPULAR_PAGE_LINKS
+      : Array.from(
+          new Map([...localizedCorePageLinks, ...localizedResourceLinks].map((link) => [link.href, link])).values(),
+        )
+  const showPopularPages = language === 'en' || language === 'fa' || language === 'it'
+  const popularPagesKicker =
+    language === 'fa' ? 'صفحه‌های مهم' : language === 'it' ? 'Pagine utili' : 'Popular Pages'
+  const popularPagesTitle =
+    language === 'fa'
+      ? 'راهنماهای پرجست‌وجوی کالکیلو'
+      : language === 'it'
+        ? 'Guide cercate dagli utenti'
+        : 'Explore the pages people'
+  const popularPagesTitleAccent =
+    language === 'fa' ? 'برای کالری و ماکرو' : language === 'it' ? 'per calorie e AI' : 'look for most'
+  const popularPagesIntro =
+    language === 'fa'
+      ? 'راهنماهای مرتبط با کالری شمار هوش مصنوعی، کالری شمار با عکس، ماکروها و پشتیبانی کالکیلو.'
+      : language === 'it'
+        ? 'Pagine dedicate a calcolo calorie AI, foto del cibo, macro, prezzi e supporto Calkilo.'
+        : POPULAR_PAGES_INTRO
+  const popularPagesLinkLabel = language === 'fa' ? 'خواندن راهنما' : language === 'it' ? 'Leggi guida' : 'Read guide'
   const landingHeaderItems = NAV_ITEMS.map((item) => {
     if (item === 'home') {
       return {
@@ -1702,7 +1735,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
       links: [
         { label: copy.nav.features, href: featuresHref },
         { label: copy.nav.pricing, href: pricingHref },
-        { label: 'AI Calorie Tracker', href: RESOURCE_LINKS[0].href },
+        { label: localizedResourceLinks[0]?.label ?? 'AI Calorie Tracker', href: localizedResourceLinks[0]?.href ?? '/ai-calorie-tracker/' },
       ],
     },
     {
@@ -1719,8 +1752,11 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
       title: ts('Get in Touch'),
       links: [
         { label: ts('Contact'), href: contactHref },
-        { label: 'Photo Calorie Calculator', href: RESOURCE_LINKS[1].href },
-        { label: 'Macro Tracker', href: RESOURCE_LINKS[2].href },
+        {
+          label: localizedResourceLinks[1]?.label ?? 'Photo Calorie Calculator',
+          href: localizedResourceLinks[1]?.href ?? '/photo-calorie-calculator/',
+        },
+        { label: localizedResourceLinks[2]?.label ?? 'Macro Tracker', href: localizedResourceLinks[2]?.href ?? '/macro-tracker/' },
       ],
     },
   ] as const
@@ -1747,7 +1783,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
           {
             '@type': 'ContactPoint',
             contactType: 'customer support',
-            email: 'support@calkilo.app',
+            email: 'support@calkilo.com',
             url: `${SITE_URL}${toLocalizedPath('/contact', language)}`,
             availableLanguage: [language],
           },
@@ -1785,23 +1821,14 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
         isAccessibleForFree: true,
         sameAs: [GOOGLE_PLAY_URL, APP_STORE_URL],
         featureList: FEATURE_ITEMS.map((item) => ts(item.title)),
-        offers: [
-          {
-            '@type': 'Offer',
-            priceCurrency: 'USD',
-            price: '0',
-            availability: 'https://schema.org/InStock',
-            url: pricingOfferUrl,
-          },
-          ...PRICING_PLANS.map((plan) => ({
-            '@type': 'Offer',
-            name: ts(plan.title),
-            priceCurrency: 'USD',
-            price: plan.price.replace('$', ''),
-            availability: 'https://schema.org/InStock',
-            url: pricingOfferUrl,
-          })),
-        ],
+        offers: PRICING_PLANS.map((plan) => ({
+          '@type': 'Offer',
+          name: ts(plan.title),
+          priceCurrency: 'USD',
+          price: plan.price.replace('$', ''),
+          availability: 'https://schema.org/InStock',
+          url: pricingOfferUrl,
+        })),
       },
       ...(!isDarkVariantPage
         ? [
@@ -1905,7 +1932,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
                     src={item.screen}
                     alt=""
                     className={`lp-ai-screen${activeFeature === index ? ' is-active' : ''}`}
-                    loading="eager"
+                    loading={index === 0 ? 'eager' : 'lazy'}
                     decoding="async"
                     fetchPriority={index === 0 ? 'high' : 'low'}
                   />
@@ -2154,7 +2181,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
                   <p className="lp-price-subtitle">{ts(plan.subtitle)}</p>
                   <div className="lp-price-row">
                     <span>{plan.price}</span>
-                    <small>{plan.oldPrice}</small>
+                    {plan.oldPrice ? <small>{plan.oldPrice}</small> : null}
                   </div>
                   <ul>
                     <li>{ts('Personalized meal plans')}</li>
@@ -2199,19 +2226,19 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
           </div>
         </section>
 
-        {language === 'en' ? (
+        {showPopularPages ? (
           <section className="lp-section lp-guides" aria-labelledby="search-guides-title">
             <div className="lp-container lp-guides-wrap">
               <header className="lp-section-head lp-guides-head lp-reveal">
-                <p className="lp-kicker">Popular Pages</p>
+                <p className="lp-kicker">{popularPagesKicker}</p>
                 <h2 id="search-guides-title">
-                  Explore the pages people <span>look for most</span>
+                  {popularPagesTitle} <span>{popularPagesTitleAccent}</span>
                 </h2>
-                <p>{POPULAR_PAGES_INTRO}</p>
+                <p>{popularPagesIntro}</p>
               </header>
 
               <div className="lp-guides-grid">
-                {ENGLISH_POPULAR_PAGE_LINKS.map((resource, index) => (
+                {popularPageLinks.map((resource, index) => (
                   <article
                     key={resource.href}
                     className="lp-guide-card lp-reveal lp-reveal--pop"
@@ -2222,7 +2249,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
                     </h3>
                     <p>{resource.description}</p>
                     <Link className="lp-guide-link" href={resource.href}>
-                      Read guide
+                      {popularPagesLinkLabel}
                     </Link>
                   </article>
                 ))}

@@ -7,11 +7,17 @@ const COMMON_TRANSLATIONS: TranslationTable = {
   nl: {
     Home: 'Thuis',
     Features: 'Functies',
+    Pricing: 'Prijzen',
     'Choose Plan': 'Kies plan',
     Contact: 'Contact',
     'Contact Us': 'Neem contact op',
     'Try for free': 'Probeer gratis',
     Feature: 'Functies',
+    Product: 'Product',
+    Guides: 'Gidsen',
+    'Calkilo Guide': 'Calkilo gids',
+    'Questions people ask': 'Vragen die mensen stellen',
+    'Related pages': 'Gerelateerde pagina’s',
     Download: 'Downloaden',
     'How it Works?': 'Hoe werkt het?',
     Blog: 'Blog',
@@ -39,11 +45,17 @@ const COMMON_TRANSLATIONS: TranslationTable = {
   ru: {
     Home: 'Главная',
     Features: 'Функции',
+    Pricing: 'Тарифы',
     'Choose Plan': 'Тарифы',
     Contact: 'Контакты',
     'Contact Us': 'Связаться с нами',
     'Try for free': 'Попробовать бесплатно',
     Feature: 'Функции',
+    Product: 'Продукт',
+    Guides: 'Гайды',
+    'Calkilo Guide': 'Гайд Calkilo',
+    'Questions people ask': 'Вопросы пользователей',
+    'Related pages': 'Связанные страницы',
     Download: 'Скачать',
     'How it Works?': 'Как это работает?',
     Blog: 'Блог',
@@ -71,11 +83,17 @@ const COMMON_TRANSLATIONS: TranslationTable = {
   zh: {
     Home: '首页',
     Features: '功能',
+    Pricing: '价格',
     'Choose Plan': '选择计划',
     Contact: '联系我们',
     'Contact Us': '联系我们',
     'Try for free': '免费试用',
     Feature: '功能',
+    Product: '产品',
+    Guides: '指南',
+    'Calkilo Guide': 'Calkilo 指南',
+    'Questions people ask': '用户常问的问题',
+    'Related pages': '相关页面',
     Download: '下载',
     'How it Works?': '如何运作？',
     Blog: '博客',
@@ -102,11 +120,17 @@ const COMMON_TRANSLATIONS: TranslationTable = {
   ar: {
     Home: 'الرئيسية',
     Features: 'الميزات',
+    Pricing: 'الأسعار',
     'Choose Plan': 'الخطط',
     Contact: 'تواصل',
     'Contact Us': 'تواصل معنا',
     'Try for free': 'جرب مجاناً',
     Feature: 'الميزات',
+    Product: 'المنتج',
+    Guides: 'الأدلة',
+    'Calkilo Guide': 'دليل Calkilo',
+    'Questions people ask': 'أسئلة يطرحها المستخدمون',
+    'Related pages': 'صفحات ذات صلة',
     Download: 'تنزيل',
     'How it Works?': 'كيف يعمل؟',
     Blog: 'المدونة',
@@ -134,11 +158,17 @@ const COMMON_TRANSLATIONS: TranslationTable = {
   fa: {
     Home: 'خانه',
     Features: 'ویژگی‌ها',
+    Pricing: 'قیمت‌گذاری',
     'Choose Plan': 'انتخاب طرح',
     Contact: 'تماس',
     'Contact Us': 'تماس با ما',
     'Try for free': 'رایگان امتحان کنید',
     Feature: 'ویژگی‌ها',
+    Product: 'محصول',
+    Guides: 'راهنماها',
+    'Calkilo Guide': 'راهنمای کالکیلو',
+    'Questions people ask': 'پرسش‌های رایج کاربران',
+    'Related pages': 'صفحه‌های مرتبط',
     Download: 'دانلود',
     'How it Works?': 'چگونه کار می‌کند؟',
     Blog: 'وبلاگ',
@@ -161,16 +191,30 @@ const COMMON_TRANSLATIONS: TranslationTable = {
     or: 'یا',
     'Revolutionizing nutrition tracking with AI-powered calorie calculation.':
       'انقلابی در پیگیری تغذیه با محاسبه کالری مبتنی بر هوش مصنوعی.',
+    'See photo calorie tracking, macro goals, AI meal plans, and health app integrations.':
+      'قابلیت‌های ثبت کالری با عکس، هدف‌های ماکرو، برنامه غذایی هوش مصنوعی و اتصال به اپ‌های سلامت را ببینید.',
+    'Compare monthly and yearly premium plans and what each subscription unlocks.':
+      'طرح‌های ماهانه و سالانه پریمیوم و امکانات هر اشتراک را مقایسه کنید.',
+    'Answers about subscriptions, privacy, device sync, and AI food logging.':
+      'پاسخ پرسش‌های رایج درباره اشتراک، حریم خصوصی، همگام‌سازی و ثبت غذا با هوش مصنوعی.',
+    'Reach Calkilo support for product, billing, and privacy requests.':
+      'برای سوال‌های محصول، پرداخت و حریم خصوصی با پشتیبانی کالکیلو تماس بگیرید.',
     'All rights reserved.': 'تمام حقوق محفوظ است.',
   },
   it: {
     Home: 'Home',
     Features: 'Funzioni',
+    Pricing: 'Prezzi',
     'Choose Plan': 'Scegli piano',
     Contact: 'Contatto',
     'Contact Us': 'Contattaci',
     'Try for free': 'Provalo gratis',
     Feature: 'Funzionalita',
+    Product: 'Prodotto',
+    Guides: 'Guide',
+    'Calkilo Guide': 'Guida Calkilo',
+    'Questions people ask': 'Domande frequenti',
+    'Related pages': 'Pagine correlate',
     Download: 'Scarica',
     'How it Works?': 'Come funziona?',
     Blog: 'Blog',
@@ -193,6 +237,14 @@ const COMMON_TRANSLATIONS: TranslationTable = {
     or: 'o',
     'Revolutionizing nutrition tracking with AI-powered calorie calculation.':
       'Tracking nutrizionale rivoluzionato dal calcolo calorie con AI.',
+    'See photo calorie tracking, macro goals, AI meal plans, and health app integrations.':
+      'Scopri tracking calorie da foto, obiettivi macro, piani alimentari AI e integrazioni salute.',
+    'Compare monthly and yearly premium plans and what each subscription unlocks.':
+      'Confronta i piani premium mensili e annuali e le funzioni incluse.',
+    'Answers about subscriptions, privacy, device sync, and AI food logging.':
+      'Risposte su abbonamenti, privacy, sincronizzazione e food logging AI.',
+    'Reach Calkilo support for product, billing, and privacy requests.':
+      'Contatta il supporto Calkilo per prodotto, fatturazione e privacy.',
     'All rights reserved.': 'Tutti i diritti riservati.',
   },
 }
@@ -242,18 +294,18 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
     '4. Data Retention': '4. Bewaartermijnen van gegevens',
     'We retain personal information for as long as your account is active or as needed to provide services, resolve disputes, and comply with legal obligations.':
       'We bewaren persoonsgegevens zolang je account actief is of zolang dit nodig is om diensten te leveren, geschillen op te lossen en te voldoen aan wettelijke verplichtingen.',
-    'You can request deletion of your account and associated data on our account deletion page at /account-deletion or by emailing privacy@calkilo.app.':
-      'Je kunt verwijdering van je account en bijbehorende gegevens aanvragen via onze pagina voor accountverwijdering op /account-deletion of door te mailen naar privacy@calkilo.app.',
+    'You can request deletion of your account and associated data on our account deletion page at /account-deletion or by emailing privacy@calkilo.com.':
+      'Je kunt verwijdering van je account en bijbehorende gegevens aanvragen via onze pagina voor accountverwijdering op /account-deletion of door te mailen naar privacy@calkilo.com.',
     '5. Your Privacy Rights': '5. Jouw privacyrechten',
     'Depending on your location, you may have rights to access, correct, delete, or export your personal data, and to object to certain processing activities.':
       'Afhankelijk van je locatie heb je mogelijk rechten om jouw persoonsgegevens in te zien, te corrigeren, te verwijderen of te exporteren, en om bezwaar te maken tegen bepaalde verwerkingen.',
-    'To submit a privacy request, email support@calkilo.app with the subject line "Privacy Request". We will verify your identity before processing your request.':
-      'Om een privacyverzoek in te dienen, mail je naar support@calkilo.app met als onderwerp "Privacyverzoek". We verifiëren je identiteit voordat we jouw verzoek verwerken.',
+    'To submit a privacy request, email support@calkilo.com with the subject line "Privacy Request". We will verify your identity before processing your request.':
+      'Om een privacyverzoek in te dienen, mail je naar support@calkilo.com met als onderwerp "Privacyverzoek". We verifiëren je identiteit voordat we jouw verzoek verwerken.',
     "6. Children's Privacy": '6. Privacy van kinderen',
     'Calkilo is not directed to children under 13, and we do not knowingly collect personal information from children under 13 without appropriate consent.':
       'Calkilo is niet gericht op kinderen jonger dan 13 jaar en we verzamelen niet bewust persoonsgegevens van kinderen onder de 13 zonder passende toestemming.',
-    'If you believe a child has provided personal information to us, contact support@calkilo.app so we can take appropriate action.':
-      'Als je denkt dat een kind persoonsgegevens aan ons heeft verstrekt, neem dan contact op via support@calkilo.app zodat we passende maatregelen kunnen nemen.',
+    'If you believe a child has provided personal information to us, contact support@calkilo.com so we can take appropriate action.':
+      'Als je denkt dat een kind persoonsgegevens aan ons heeft verstrekt, neem dan contact op via support@calkilo.com zodat we passende maatregelen kunnen nemen.',
     '7. Policy Updates': '7. Updates van het beleid',
     'We may update this Privacy Policy periodically to reflect product, legal, or operational changes. When we make material updates, we will revise the effective date and provide notice where required.':
       'We kunnen dit privacybeleid periodiek bijwerken om product-, juridische of operationele wijzigingen te weerspiegelen. Bij belangrijke updates passen we de ingangsdatum aan en geven we waar nodig een kennisgeving.',
@@ -306,18 +358,18 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
     '4. Data Retention': '4. Хранение данных',
     'We retain personal information for as long as your account is active or as needed to provide services, resolve disputes, and comply with legal obligations.':
       'Мы храним персональную информацию, пока ваш аккаунт активен, либо столько, сколько требуется для предоставления услуг, урегулирования споров и соблюдения юридических обязанностей.',
-    'You can request deletion of your account and associated data on our account deletion page at /account-deletion or by emailing privacy@calkilo.app.':
-      'Вы можете запросить удаление аккаунта и связанных данных на странице удаления аккаунта по адресу /account-deletion или написав на privacy@calkilo.app.',
+    'You can request deletion of your account and associated data on our account deletion page at /account-deletion or by emailing privacy@calkilo.com.':
+      'Вы можете запросить удаление аккаунта и связанных данных на странице удаления аккаунта по адресу /account-deletion или написав на privacy@calkilo.com.',
     '5. Your Privacy Rights': '5. Ваши права на конфиденциальность',
     'Depending on your location, you may have rights to access, correct, delete, or export your personal data, and to object to certain processing activities.':
       'В зависимости от вашего местоположения вы можете иметь право на доступ, исправление, удаление или экспорт персональных данных, а также на возражение против определенной обработки.',
-    'To submit a privacy request, email support@calkilo.app with the subject line "Privacy Request". We will verify your identity before processing your request.':
-      'Чтобы отправить запрос по конфиденциальности, напишите на support@calkilo.app с темой "Запрос о конфиденциальности". Перед обработкой запроса мы проверим вашу личность.',
+    'To submit a privacy request, email support@calkilo.com with the subject line "Privacy Request". We will verify your identity before processing your request.':
+      'Чтобы отправить запрос по конфиденциальности, напишите на support@calkilo.com с темой "Запрос о конфиденциальности". Перед обработкой запроса мы проверим вашу личность.',
     "6. Children's Privacy": '6. Конфиденциальность детей',
     'Calkilo is not directed to children under 13, and we do not knowingly collect personal information from children under 13 without appropriate consent.':
       'Calkilo не предназначен для детей младше 13 лет, и мы сознательно не собираем персональные данные детей младше 13 лет без соответствующего согласия.',
-    'If you believe a child has provided personal information to us, contact support@calkilo.app so we can take appropriate action.':
-      'Если вы считаете, что ребенок предоставил нам персональные данные, свяжитесь с нами по адресу support@calkilo.app, чтобы мы могли принять соответствующие меры.',
+    'If you believe a child has provided personal information to us, contact support@calkilo.com so we can take appropriate action.':
+      'Если вы считаете, что ребенок предоставил нам персональные данные, свяжитесь с нами по адресу support@calkilo.com, чтобы мы могли принять соответствующие меры.',
     '7. Policy Updates': '7. Обновления политики',
     'We may update this Privacy Policy periodically to reflect product, legal, or operational changes. When we make material updates, we will revise the effective date and provide notice where required.':
       'Мы можем периодически обновлять эту Политику конфиденциальности, чтобы отражать изменения продукта, правовые или операционные изменения. При существенных обновлениях мы изменим дату вступления в силу и уведомим пользователей, когда это требуется.',
@@ -370,18 +422,18 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
     '4. Data Retention': '4. 数据保留',
     'We retain personal information for as long as your account is active or as needed to provide services, resolve disputes, and comply with legal obligations.':
       '只要你的账户处于活动状态，或在提供服务、解决争议及履行法律义务所需期间，我们都会保留个人信息。',
-    'You can request deletion of your account and associated data on our account deletion page at /account-deletion or by emailing privacy@calkilo.app.':
-      '你可以在我们的账户删除页面 /account-deletion 提交删除账户及相关数据的请求，或发送邮件至 privacy@calkilo.app。',
+    'You can request deletion of your account and associated data on our account deletion page at /account-deletion or by emailing privacy@calkilo.com.':
+      '你可以在我们的账户删除页面 /account-deletion 提交删除账户及相关数据的请求，或发送邮件至 privacy@calkilo.com。',
     '5. Your Privacy Rights': '5. 你的隐私权利',
     'Depending on your location, you may have rights to access, correct, delete, or export your personal data, and to object to certain processing activities.':
       '根据你所在的地区，你可能享有访问、更正、删除或导出个人数据的权利，并有权反对某些处理活动。',
-    'To submit a privacy request, email support@calkilo.app with the subject line "Privacy Request". We will verify your identity before processing your request.':
-      '如需提交隐私请求，请发送电子邮件至 support@calkilo.app，并在主题中写明“隐私请求”。我们会在处理请求前验证你的身份。',
+    'To submit a privacy request, email support@calkilo.com with the subject line "Privacy Request". We will verify your identity before processing your request.':
+      '如需提交隐私请求，请发送电子邮件至 support@calkilo.com，并在主题中写明“隐私请求”。我们会在处理请求前验证你的身份。',
     "6. Children's Privacy": '6. 儿童隐私',
     'Calkilo is not directed to children under 13, and we do not knowingly collect personal information from children under 13 without appropriate consent.':
       'Calkilo 不面向 13 岁以下儿童，未经适当同意，我们不会故意收集 13 岁以下儿童的个人信息。',
-    'If you believe a child has provided personal information to us, contact support@calkilo.app so we can take appropriate action.':
-      '如果你认为有儿童向我们提供了个人信息，请通过 support@calkilo.app 联系我们，以便我们采取适当措施。',
+    'If you believe a child has provided personal information to us, contact support@calkilo.com so we can take appropriate action.':
+      '如果你认为有儿童向我们提供了个人信息，请通过 support@calkilo.com 联系我们，以便我们采取适当措施。',
     '7. Policy Updates': '7. 政策更新',
     'We may update this Privacy Policy periodically to reflect product, legal, or operational changes. When we make material updates, we will revise the effective date and provide notice where required.':
       '我们可能会定期更新本隐私政策，以反映产品、法律或运营方面的变化。当出现重大更新时，我们会修改生效日期，并在必要时提供通知。',
@@ -434,18 +486,18 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
     '4. Data Retention': '4. الاحتفاظ بالبيانات',
     'We retain personal information for as long as your account is active or as needed to provide services, resolve disputes, and comply with legal obligations.':
       'نحتفظ بالمعلومات الشخصية طالما كان حسابك نشطا أو طالما كان ذلك ضروريا لتقديم الخدمات وحل النزاعات والامتثال للالتزامات القانونية.',
-    'You can request deletion of your account and associated data on our account deletion page at /account-deletion or by emailing privacy@calkilo.app.':
-      'يمكنك طلب حذف حسابك والبيانات المرتبطة به من خلال صفحة حذف الحساب على /account-deletion أو عبر البريد privacy@calkilo.app.',
+    'You can request deletion of your account and associated data on our account deletion page at /account-deletion or by emailing privacy@calkilo.com.':
+      'يمكنك طلب حذف حسابك والبيانات المرتبطة به من خلال صفحة حذف الحساب على /account-deletion أو عبر البريد privacy@calkilo.com.',
     '5. Your Privacy Rights': '5. حقوق الخصوصية الخاصة بك',
     'Depending on your location, you may have rights to access, correct, delete, or export your personal data, and to object to certain processing activities.':
       'بحسب موقعك، قد تكون لك حقوق في الوصول إلى بياناتك الشخصية أو تصحيحها أو حذفها أو تصديرها، والاعتراض على بعض أنشطة المعالجة.',
-    'To submit a privacy request, email support@calkilo.app with the subject line "Privacy Request". We will verify your identity before processing your request.':
-      'لتقديم طلب خصوصية، أرسل بريدا إلى support@calkilo.app مع عنوان "طلب خصوصية". سنقوم بالتحقق من هويتك قبل معالجة الطلب.',
+    'To submit a privacy request, email support@calkilo.com with the subject line "Privacy Request". We will verify your identity before processing your request.':
+      'لتقديم طلب خصوصية، أرسل بريدا إلى support@calkilo.com مع عنوان "طلب خصوصية". سنقوم بالتحقق من هويتك قبل معالجة الطلب.',
     "6. Children's Privacy": '6. خصوصية الأطفال',
     'Calkilo is not directed to children under 13, and we do not knowingly collect personal information from children under 13 without appropriate consent.':
       'Calkilo غير موجه للأطفال دون سن 13 عاما، ولا نجمع عن قصد معلومات شخصية من أطفال دون 13 عاما من دون موافقة مناسبة.',
-    'If you believe a child has provided personal information to us, contact support@calkilo.app so we can take appropriate action.':
-      'إذا كنت تعتقد أن طفلا قد زودنا بمعلومات شخصية، فتواصل معنا عبر support@calkilo.app حتى نتخذ الإجراء المناسب.',
+    'If you believe a child has provided personal information to us, contact support@calkilo.com so we can take appropriate action.':
+      'إذا كنت تعتقد أن طفلا قد زودنا بمعلومات شخصية، فتواصل معنا عبر support@calkilo.com حتى نتخذ الإجراء المناسب.',
     '7. Policy Updates': '7. تحديثات السياسة',
     'We may update this Privacy Policy periodically to reflect product, legal, or operational changes. When we make material updates, we will revise the effective date and provide notice where required.':
       'قد نقوم بتحديث سياسة الخصوصية هذه بشكل دوري لتعكس التغييرات في المنتج أو الجوانب القانونية أو التشغيلية. وعندما نجري تحديثات جوهرية، سنعدل تاريخ السريان ونقدم إشعارا عند الحاجة.',
@@ -498,18 +550,18 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
     '4. Data Retention': '4. نگهداری داده‌ها',
     'We retain personal information for as long as your account is active or as needed to provide services, resolve disputes, and comply with legal obligations.':
       'ما اطلاعات شخصی را تا زمانی که حساب شما فعال است یا برای ارائه خدمات، حل اختلاف‌ها و رعایت تعهدات قانونی لازم باشد نگهداری می‌کنیم.',
-    'You can request deletion of your account and associated data on our account deletion page at /account-deletion or by emailing privacy@calkilo.app.':
-      'شما می‌توانید حذف حساب و داده‌های مرتبط را از طریق صفحه حذف حساب در /account-deletion یا با ایمیل به privacy@calkilo.app درخواست کنید.',
+    'You can request deletion of your account and associated data on our account deletion page at /account-deletion or by emailing privacy@calkilo.com.':
+      'شما می‌توانید حذف حساب و داده‌های مرتبط را از طریق صفحه حذف حساب در /account-deletion یا با ایمیل به privacy@calkilo.com درخواست کنید.',
     '5. Your Privacy Rights': '5. حقوق حریم خصوصی شما',
     'Depending on your location, you may have rights to access, correct, delete, or export your personal data, and to object to certain processing activities.':
       'بسته به محل زندگی شما، ممکن است حق دسترسی، اصلاح، حذف یا خروجی گرفتن از داده‌های شخصی خود و نیز اعتراض به برخی فعالیت‌های پردازش را داشته باشید.',
-    'To submit a privacy request, email support@calkilo.app with the subject line "Privacy Request". We will verify your identity before processing your request.':
-      'برای ثبت درخواست حریم خصوصی، به support@calkilo.app ایمیل بزنید و در عنوان بنویسید "درخواست حریم خصوصی". پیش از رسیدگی به درخواست، هویت شما را بررسی می‌کنیم.',
+    'To submit a privacy request, email support@calkilo.com with the subject line "Privacy Request". We will verify your identity before processing your request.':
+      'برای ثبت درخواست حریم خصوصی، به support@calkilo.com ایمیل بزنید و در عنوان بنویسید "درخواست حریم خصوصی". پیش از رسیدگی به درخواست، هویت شما را بررسی می‌کنیم.',
     "6. Children's Privacy": '6. حریم خصوصی کودکان',
     'Calkilo is not directed to children under 13, and we do not knowingly collect personal information from children under 13 without appropriate consent.':
       'Calkilo برای کودکان زیر 13 سال طراحی نشده است و ما بدون رضایت مناسب، آگاهانه اطلاعات شخصی کودکان زیر 13 سال را جمع‌آوری نمی‌کنیم.',
-    'If you believe a child has provided personal information to us, contact support@calkilo.app so we can take appropriate action.':
-      'اگر فکر می‌کنید کودکی اطلاعات شخصی خود را در اختیار ما گذاشته است، با support@calkilo.app تماس بگیرید تا اقدامات لازم را انجام دهیم.',
+    'If you believe a child has provided personal information to us, contact support@calkilo.com so we can take appropriate action.':
+      'اگر فکر می‌کنید کودکی اطلاعات شخصی خود را در اختیار ما گذاشته است، با support@calkilo.com تماس بگیرید تا اقدامات لازم را انجام دهیم.',
     '7. Policy Updates': '7. به‌روزرسانی‌های سیاست',
     'We may update this Privacy Policy periodically to reflect product, legal, or operational changes. When we make material updates, we will revise the effective date and provide notice where required.':
       'ممکن است این سیاست حریم خصوصی را به‌طور دوره‌ای برای بازتاب تغییرات محصول، قانونی یا عملیاتی به‌روزرسانی کنیم. در صورت ایجاد تغییرات مهم، تاریخ اجرا را به‌روزرسانی کرده و در صورت نیاز اطلاع‌رسانی می‌کنیم.',
@@ -562,18 +614,18 @@ const PRIVACY_TRANSLATIONS: TranslationTable = {
     '4. Data Retention': '4. Conservazione dei dati',
     'We retain personal information for as long as your account is active or as needed to provide services, resolve disputes, and comply with legal obligations.':
       "Conserviamo le informazioni personali finche il tuo account e attivo o per il tempo necessario a fornire servizi, risolvere controversie e rispettare gli obblighi legali.",
-    'You can request deletion of your account and associated data on our account deletion page at /account-deletion or by emailing privacy@calkilo.app.':
-      "Puoi richiedere la cancellazione del tuo account e dei dati associati dalla nostra pagina di eliminazione account su /account-deletion oppure scrivendo a privacy@calkilo.app.",
+    'You can request deletion of your account and associated data on our account deletion page at /account-deletion or by emailing privacy@calkilo.com.':
+      "Puoi richiedere la cancellazione del tuo account e dei dati associati dalla nostra pagina di eliminazione account su /account-deletion oppure scrivendo a privacy@calkilo.com.",
     '5. Your Privacy Rights': '5. I tuoi diritti sulla privacy',
     'Depending on your location, you may have rights to access, correct, delete, or export your personal data, and to object to certain processing activities.':
       'A seconda della tua posizione, potresti avere il diritto di accedere, correggere, eliminare o esportare i tuoi dati personali e di opporti ad alcune attivita di trattamento.',
-    'To submit a privacy request, email support@calkilo.app with the subject line "Privacy Request". We will verify your identity before processing your request.':
-      'Per inviare una richiesta privacy, scrivi a support@calkilo.app con oggetto "Richiesta privacy". Verificheremo la tua identita prima di elaborare la richiesta.',
+    'To submit a privacy request, email support@calkilo.com with the subject line "Privacy Request". We will verify your identity before processing your request.':
+      'Per inviare una richiesta privacy, scrivi a support@calkilo.com con oggetto "Richiesta privacy". Verificheremo la tua identita prima di elaborare la richiesta.',
     "6. Children's Privacy": '6. Privacy dei minori',
     'Calkilo is not directed to children under 13, and we do not knowingly collect personal information from children under 13 without appropriate consent.':
       'Calkilo non e rivolto ai minori di 13 anni e non raccogliamo consapevolmente informazioni personali da minori di 13 anni senza adeguato consenso.',
-    'If you believe a child has provided personal information to us, contact support@calkilo.app so we can take appropriate action.':
-      'Se ritieni che un minore ci abbia fornito dati personali, contatta support@calkilo.app cosi potremo intervenire in modo appropriato.',
+    'If you believe a child has provided personal information to us, contact support@calkilo.com so we can take appropriate action.':
+      'Se ritieni che un minore ci abbia fornito dati personali, contatta support@calkilo.com cosi potremo intervenire in modo appropriato.',
     '7. Policy Updates': '7. Aggiornamenti della policy',
     'We may update this Privacy Policy periodically to reflect product, legal, or operational changes. When we make material updates, we will revise the effective date and provide notice where required.':
       'Possiamo aggiornare periodicamente questa informativa sulla privacy per riflettere cambiamenti di prodotto, legali o operativi. Quando apportiamo aggiornamenti rilevanti, aggiorneremo la data di entrata in vigore e forniremo un avviso quando necessario.',
@@ -663,12 +715,12 @@ const TERMS_TRANSLATIONS: TranslationTable = {
     'These terms are effective as of February 25, 2026.':
       'Deze voorwaarden zijn van kracht vanaf 25 februari 2026.',
     '11. Contact Information': '11. Contactinformatie',
-    'If you have questions about these Terms of Service, contact us at support@calkilo.app.':
-      'Als je vragen hebt over deze servicevoorwaarden, neem dan contact met ons op via support@calkilo.app.',
-    'If you have questions about these Terms and Conditions, contact us at support@calkilo.app.':
-      'Als je vragen hebt over deze algemene voorwaarden, neem dan contact met ons op via support@calkilo.app.',
-    'For privacy-related matters, contact privacy@calkilo.app.':
-      'Voor privacygerelateerde zaken kun je contact opnemen via privacy@calkilo.app.',
+    'If you have questions about these Terms of Service, contact us at support@calkilo.com.':
+      'Als je vragen hebt over deze servicevoorwaarden, neem dan contact met ons op via support@calkilo.com.',
+    'If you have questions about these Terms and Conditions, contact us at support@calkilo.com.':
+      'Als je vragen hebt over deze algemene voorwaarden, neem dan contact met ons op via support@calkilo.com.',
+    'For privacy-related matters, contact privacy@calkilo.com.':
+      'Voor privacygerelateerde zaken kun je contact opnemen via privacy@calkilo.com.',
   },
   ru: {
     'Calkilo Terms of Service': 'Условия использования Calkilo',
@@ -748,12 +800,12 @@ const TERMS_TRANSLATIONS: TranslationTable = {
     'These terms are effective as of February 25, 2026.':
       'Эти условия действуют с 25 февраля 2026 года.',
     '11. Contact Information': '11. Контактная информация',
-    'If you have questions about these Terms of Service, contact us at support@calkilo.app.':
-      'Если у вас есть вопросы по этим Условиям использования, свяжитесь с нами по адресу support@calkilo.app.',
-    'If you have questions about these Terms and Conditions, contact us at support@calkilo.app.':
-      'Если у вас есть вопросы по этим Положениям и условиям, свяжитесь с нами по адресу support@calkilo.app.',
-    'For privacy-related matters, contact privacy@calkilo.app.':
-      'По вопросам конфиденциальности обращайтесь по адресу privacy@calkilo.app.',
+    'If you have questions about these Terms of Service, contact us at support@calkilo.com.':
+      'Если у вас есть вопросы по этим Условиям использования, свяжитесь с нами по адресу support@calkilo.com.',
+    'If you have questions about these Terms and Conditions, contact us at support@calkilo.com.':
+      'Если у вас есть вопросы по этим Положениям и условиям, свяжитесь с нами по адресу support@calkilo.com.',
+    'For privacy-related matters, contact privacy@calkilo.com.':
+      'По вопросам конфиденциальности обращайтесь по адресу privacy@calkilo.com.',
   },
   zh: {
     'Calkilo Terms of Service': 'Calkilo 服务条款',
@@ -833,12 +885,12 @@ const TERMS_TRANSLATIONS: TranslationTable = {
     'These terms are effective as of February 25, 2026.':
       '这些条款自 2026 年 2 月 25 日起生效。',
     '11. Contact Information': '11. 联系信息',
-    'If you have questions about these Terms of Service, contact us at support@calkilo.app.':
-      '如果你对这些服务条款有任何疑问，请通过 support@calkilo.app 联系我们。',
-    'If you have questions about these Terms and Conditions, contact us at support@calkilo.app.':
-      '如果你对这些条款与条件有任何疑问，请通过 support@calkilo.app 联系我们。',
-    'For privacy-related matters, contact privacy@calkilo.app.':
-      '如涉及隐私相关事项，请联系 privacy@calkilo.app。',
+    'If you have questions about these Terms of Service, contact us at support@calkilo.com.':
+      '如果你对这些服务条款有任何疑问，请通过 support@calkilo.com 联系我们。',
+    'If you have questions about these Terms and Conditions, contact us at support@calkilo.com.':
+      '如果你对这些条款与条件有任何疑问，请通过 support@calkilo.com 联系我们。',
+    'For privacy-related matters, contact privacy@calkilo.com.':
+      '如涉及隐私相关事项，请联系 privacy@calkilo.com。',
   },
   ar: {
     'Calkilo Terms of Service': 'شروط خدمة Calkilo',
@@ -918,12 +970,12 @@ const TERMS_TRANSLATIONS: TranslationTable = {
     'These terms are effective as of February 25, 2026.':
       'تسري هذه الشروط اعتبارا من 25 فبراير 2026.',
     '11. Contact Information': '11. معلومات الاتصال',
-    'If you have questions about these Terms of Service, contact us at support@calkilo.app.':
-      'إذا كانت لديك أسئلة حول شروط الخدمة هذه، فتواصل معنا عبر support@calkilo.app.',
-    'If you have questions about these Terms and Conditions, contact us at support@calkilo.app.':
-      'إذا كانت لديك أسئلة حول هذه الأحكام والشروط، فتواصل معنا عبر support@calkilo.app.',
-    'For privacy-related matters, contact privacy@calkilo.app.':
-      'للمسائل المتعلقة بالخصوصية، تواصل عبر privacy@calkilo.app.',
+    'If you have questions about these Terms of Service, contact us at support@calkilo.com.':
+      'إذا كانت لديك أسئلة حول شروط الخدمة هذه، فتواصل معنا عبر support@calkilo.com.',
+    'If you have questions about these Terms and Conditions, contact us at support@calkilo.com.':
+      'إذا كانت لديك أسئلة حول هذه الأحكام والشروط، فتواصل معنا عبر support@calkilo.com.',
+    'For privacy-related matters, contact privacy@calkilo.com.':
+      'للمسائل المتعلقة بالخصوصية، تواصل عبر privacy@calkilo.com.',
   },
   fa: {
     'Calkilo Terms of Service': 'شرایط استفاده Calkilo',
@@ -1003,12 +1055,12 @@ const TERMS_TRANSLATIONS: TranslationTable = {
     'These terms are effective as of February 25, 2026.':
       'این شرایط از 25 فوریه 2026 لازم‌الاجرا هستند.',
     '11. Contact Information': '11. اطلاعات تماس',
-    'If you have questions about these Terms of Service, contact us at support@calkilo.app.':
-      'اگر درباره این شرایط استفاده سوالی دارید، از طریق support@calkilo.app با ما تماس بگیرید.',
-    'If you have questions about these Terms and Conditions, contact us at support@calkilo.app.':
-      'اگر درباره این قوانین و شرایط سوالی دارید، از طریق support@calkilo.app با ما تماس بگیرید.',
-    'For privacy-related matters, contact privacy@calkilo.app.':
-      'برای مسائل مرتبط با حریم خصوصی، با privacy@calkilo.app تماس بگیرید.',
+    'If you have questions about these Terms of Service, contact us at support@calkilo.com.':
+      'اگر درباره این شرایط استفاده سوالی دارید، از طریق support@calkilo.com با ما تماس بگیرید.',
+    'If you have questions about these Terms and Conditions, contact us at support@calkilo.com.':
+      'اگر درباره این قوانین و شرایط سوالی دارید، از طریق support@calkilo.com با ما تماس بگیرید.',
+    'For privacy-related matters, contact privacy@calkilo.com.':
+      'برای مسائل مرتبط با حریم خصوصی، با privacy@calkilo.com تماس بگیرید.',
   },
   it: {
     'Calkilo Terms of Service': 'Termini di servizio di Calkilo',
@@ -1088,12 +1140,12 @@ const TERMS_TRANSLATIONS: TranslationTable = {
     'These terms are effective as of February 25, 2026.':
       'Questi termini sono efficaci dal 25 febbraio 2026.',
     '11. Contact Information': '11. Informazioni di contatto',
-    'If you have questions about these Terms of Service, contact us at support@calkilo.app.':
-      'Se hai domande su questi Termini di servizio, contattaci a support@calkilo.app.',
-    'If you have questions about these Terms and Conditions, contact us at support@calkilo.app.':
-      'Se hai domande su questi Termini e condizioni, contattaci a support@calkilo.app.',
-    'For privacy-related matters, contact privacy@calkilo.app.':
-      'Per questioni relative alla privacy, contatta privacy@calkilo.app.',
+    'If you have questions about these Terms of Service, contact us at support@calkilo.com.':
+      'Se hai domande su questi Termini di servizio, contattaci a support@calkilo.com.',
+    'If you have questions about these Terms and Conditions, contact us at support@calkilo.com.':
+      'Se hai domande su questi Termini e condizioni, contattaci a support@calkilo.com.',
+    'For privacy-related matters, contact privacy@calkilo.com.':
+      'Per questioni relative alla privacy, contatta privacy@calkilo.com.',
   },
 }
 
@@ -1109,8 +1161,8 @@ const ACCOUNT_TRANSLATIONS: TranslationTable = {
     'Send your request to our privacy team and we will process it after account ownership verification.':
       'Stuur je verzoek naar ons privacyteam en wij verwerken het nadat het eigendom van het account is geverifieerd.',
     'Email deletion request': 'Verwijderingsverzoek per e-mail',
-    'This opens your email app with a pre-filled message to privacy@calkilo.app.':
-      'Dit opent je e-mailapp met een vooraf ingevuld bericht aan privacy@calkilo.app.',
+    'This opens your email app with a pre-filled message to privacy@calkilo.com.':
+      'Dit opent je e-mailapp met een vooraf ingevuld bericht aan privacy@calkilo.com.',
     'Information to Include': 'Informatie om mee te sturen',
     'Account email address used in Calkilo.': 'E-mailadres van het account dat in Calkilo wordt gebruikt.',
     'Optional account ID if available.': 'Optioneel account-ID indien beschikbaar.',
@@ -1139,8 +1191,8 @@ const ACCOUNT_TRANSLATIONS: TranslationTable = {
     'Send your request to our privacy team and we will process it after account ownership verification.':
       'Отправьте запрос нашей команде по конфиденциальности, и мы обработаем его после проверки владельца аккаунта.',
     'Email deletion request': 'Отправить запрос на удаление по email',
-    'This opens your email app with a pre-filled message to privacy@calkilo.app.':
-      'Это откроет ваше почтовое приложение с заранее заполненным сообщением на privacy@calkilo.app.',
+    'This opens your email app with a pre-filled message to privacy@calkilo.com.':
+      'Это откроет ваше почтовое приложение с заранее заполненным сообщением на privacy@calkilo.com.',
     'Information to Include': 'Что указать в запросе',
     'Account email address used in Calkilo.': 'Адрес электронной почты аккаунта, используемого в Calkilo.',
     'Optional account ID if available.': 'Необязательный ID аккаунта, если он у вас есть.',
@@ -1169,8 +1221,8 @@ const ACCOUNT_TRANSLATIONS: TranslationTable = {
     'Send your request to our privacy team and we will process it after account ownership verification.':
       '将你的请求发送给我们的隐私团队，我们会在验证账户所有权后进行处理。',
     'Email deletion request': '发送删除请求邮件',
-    'This opens your email app with a pre-filled message to privacy@calkilo.app.':
-      '这将打开你的邮件应用，并生成发送到 privacy@calkilo.app 的预填充邮件。',
+    'This opens your email app with a pre-filled message to privacy@calkilo.com.':
+      '这将打开你的邮件应用，并生成发送到 privacy@calkilo.com 的预填充邮件。',
     'Information to Include': '需要提供的信息',
     'Account email address used in Calkilo.': '在 Calkilo 中使用的账户邮箱地址。',
     'Optional account ID if available.': '如有可提供账户 ID（可选）。',
@@ -1199,8 +1251,8 @@ const ACCOUNT_TRANSLATIONS: TranslationTable = {
     'Send your request to our privacy team and we will process it after account ownership verification.':
       'أرسل طلبك إلى فريق الخصوصية لدينا وسنعالجه بعد التحقق من ملكية الحساب.',
     'Email deletion request': 'إرسال طلب الحذف عبر البريد',
-    'This opens your email app with a pre-filled message to privacy@calkilo.app.':
-      'سيؤدي هذا إلى فتح تطبيق البريد لديك مع رسالة جاهزة إلى privacy@calkilo.app.',
+    'This opens your email app with a pre-filled message to privacy@calkilo.com.':
+      'سيؤدي هذا إلى فتح تطبيق البريد لديك مع رسالة جاهزة إلى privacy@calkilo.com.',
     'Information to Include': 'المعلومات التي يجب تضمينها',
     'Account email address used in Calkilo.': 'عنوان البريد الإلكتروني للحساب المستخدم في Calkilo.',
     'Optional account ID if available.': 'معرّف الحساب إن وجد (اختياري).',
@@ -1229,8 +1281,8 @@ const ACCOUNT_TRANSLATIONS: TranslationTable = {
     'Send your request to our privacy team and we will process it after account ownership verification.':
       'درخواست خود را برای تیم حریم خصوصی ما ارسال کنید و پس از تایید مالکیت حساب آن را پردازش می‌کنیم.',
     'Email deletion request': 'ارسال درخواست حذف با ایمیل',
-    'This opens your email app with a pre-filled message to privacy@calkilo.app.':
-      'این گزینه برنامه ایمیل شما را با پیام آماده برای privacy@calkilo.app باز می‌کند.',
+    'This opens your email app with a pre-filled message to privacy@calkilo.com.':
+      'این گزینه برنامه ایمیل شما را با پیام آماده برای privacy@calkilo.com باز می‌کند.',
     'Information to Include': 'اطلاعاتی که باید وارد کنید',
     'Account email address used in Calkilo.': 'آدرس ایمیل حسابی که در Calkilo استفاده می‌شود.',
     'Optional account ID if available.': 'شناسه حساب در صورت وجود (اختیاری).',
@@ -1259,8 +1311,8 @@ const ACCOUNT_TRANSLATIONS: TranslationTable = {
     'Send your request to our privacy team and we will process it after account ownership verification.':
       'Invia la tua richiesta al nostro team privacy e la elaboreremo dopo la verifica della proprieta dell account.',
     'Email deletion request': 'Invia richiesta di eliminazione',
-    'This opens your email app with a pre-filled message to privacy@calkilo.app.':
-      "Questo apre la tua app email con un messaggio precompilato per privacy@calkilo.app.",
+    'This opens your email app with a pre-filled message to privacy@calkilo.com.':
+      "Questo apre la tua app email con un messaggio precompilato per privacy@calkilo.com.",
     'Information to Include': 'Informazioni da includere',
     'Account email address used in Calkilo.': 'Indirizzo email dell account usato in Calkilo.',
     'Optional account ID if available.': 'ID account opzionale se disponibile.',
@@ -1288,8 +1340,8 @@ const CONTACT_TRANSLATIONS: TranslationTable = {
     'Need help with Calkilo? Send us a message and our support team will get back to you as soon as possible.':
       'Hulp nodig met Calkilo? Stuur ons een bericht en ons supportteam neemt zo snel mogelijk contact met je op.',
     'Send a Message': 'Stuur een bericht',
-    'Share as much detail as possible so we can resolve your issue quickly. For urgent requests, email support@calkilo.app directly.':
-      'Deel zoveel mogelijk details zodat we je probleem snel kunnen oplossen. Voor urgente verzoeken kun je direct mailen naar support@calkilo.app.',
+    'Share as much detail as possible so we can resolve your issue quickly. For urgent requests, email support@calkilo.com directly.':
+      'Deel zoveel mogelijk details zodat we je probleem snel kunnen oplossen. Voor urgente verzoeken kun je direct mailen naar support@calkilo.com.',
     'Full Name': 'Volledige naam',
     'Your full name': 'Je volledige naam',
     'Email Address': 'E-mailadres',
@@ -1304,8 +1356,8 @@ const CONTACT_TRANSLATIONS: TranslationTable = {
     'Describe your request, issue steps, and expected result.':
       'Beschrijf je verzoek, de stappen van het probleem en het verwachte resultaat.',
     'Send message': 'Bericht verzenden',
-    'Submitting this form opens your email app with pre-filled details for support@calkilo.app.':
-      'Het verzenden van dit formulier opent je e-mailapp met vooraf ingevulde gegevens voor support@calkilo.app.',
+    'Submitting this form opens your email app with pre-filled details for support@calkilo.com.':
+      'Het verzenden van dit formulier opent je e-mailapp met vooraf ingevulde gegevens voor support@calkilo.com.',
     'Email Support': 'Ondersteuning via e-mail',
     'For account, billing, and technical questions.':
       'Voor account-, facturerings- en technische vragen.',
@@ -1335,8 +1387,8 @@ const CONTACT_TRANSLATIONS: TranslationTable = {
     'Need help with Calkilo? Send us a message and our support team will get back to you as soon as possible.':
       'Нужна помощь с Calkilo? Отправьте нам сообщение, и наша команда поддержки свяжется с вами как можно скорее.',
     'Send a Message': 'Отправить сообщение',
-    'Share as much detail as possible so we can resolve your issue quickly. For urgent requests, email support@calkilo.app directly.':
-      'Опишите как можно больше деталей, чтобы мы быстрее решили вашу проблему. Для срочных запросов пишите напрямую на support@calkilo.app.',
+    'Share as much detail as possible so we can resolve your issue quickly. For urgent requests, email support@calkilo.com directly.':
+      'Опишите как можно больше деталей, чтобы мы быстрее решили вашу проблему. Для срочных запросов пишите напрямую на support@calkilo.com.',
     'Full Name': 'Полное имя',
     'Your full name': 'Ваше полное имя',
     'Email Address': 'Адрес электронной почты',
@@ -1351,8 +1403,8 @@ const CONTACT_TRANSLATIONS: TranslationTable = {
     'Describe your request, issue steps, and expected result.':
       'Опишите ваш запрос, шаги воспроизведения проблемы и ожидаемый результат.',
     'Send message': 'Отправить сообщение',
-    'Submitting this form opens your email app with pre-filled details for support@calkilo.app.':
-      'Отправка этой формы откроет ваше почтовое приложение с заранее заполненными данными для support@calkilo.app.',
+    'Submitting this form opens your email app with pre-filled details for support@calkilo.com.':
+      'Отправка этой формы откроет ваше почтовое приложение с заранее заполненными данными для support@calkilo.com.',
     'Email Support': 'Поддержка по email',
     'For account, billing, and technical questions.':
       'По вопросам аккаунта, оплаты и техническим вопросам.',
@@ -1382,8 +1434,8 @@ const CONTACT_TRANSLATIONS: TranslationTable = {
     'Need help with Calkilo? Send us a message and our support team will get back to you as soon as possible.':
       '需要 Calkilo 帮助吗？给我们发送消息，我们的支持团队会尽快回复你。',
     'Send a Message': '发送消息',
-    'Share as much detail as possible so we can resolve your issue quickly. For urgent requests, email support@calkilo.app directly.':
-      '请尽可能提供详细信息，以便我们更快解决你的问题。对于紧急请求，请直接发送邮件至 support@calkilo.app。',
+    'Share as much detail as possible so we can resolve your issue quickly. For urgent requests, email support@calkilo.com directly.':
+      '请尽可能提供详细信息，以便我们更快解决你的问题。对于紧急请求，请直接发送邮件至 support@calkilo.com。',
     'Full Name': '姓名',
     'Your full name': '你的姓名',
     'Email Address': '电子邮箱地址',
@@ -1398,8 +1450,8 @@ const CONTACT_TRANSLATIONS: TranslationTable = {
     'Describe your request, issue steps, and expected result.':
       '请描述你的请求、问题步骤和预期结果。',
     'Send message': '发送消息',
-    'Submitting this form opens your email app with pre-filled details for support@calkilo.app.':
-      '提交此表单会打开你的邮件应用，并预填支持邮件内容到 support@calkilo.app。',
+    'Submitting this form opens your email app with pre-filled details for support@calkilo.com.':
+      '提交此表单会打开你的邮件应用，并预填支持邮件内容到 support@calkilo.com。',
     'Email Support': '邮件支持',
     'For account, billing, and technical questions.':
       '用于账户、计费和技术问题。',
@@ -1429,8 +1481,8 @@ const CONTACT_TRANSLATIONS: TranslationTable = {
     'Need help with Calkilo? Send us a message and our support team will get back to you as soon as possible.':
       'هل تحتاج إلى مساعدة مع Calkilo؟ أرسل لنا رسالة وسيعود إليك فريق الدعم لدينا في أقرب وقت ممكن.',
     'Send a Message': 'أرسل رسالة',
-    'Share as much detail as possible so we can resolve your issue quickly. For urgent requests, email support@calkilo.app directly.':
-      'شارك أكبر قدر ممكن من التفاصيل حتى نتمكن من حل مشكلتك بسرعة. للطلبات العاجلة، أرسل بريدا مباشرا إلى support@calkilo.app.',
+    'Share as much detail as possible so we can resolve your issue quickly. For urgent requests, email support@calkilo.com directly.':
+      'شارك أكبر قدر ممكن من التفاصيل حتى نتمكن من حل مشكلتك بسرعة. للطلبات العاجلة، أرسل بريدا مباشرا إلى support@calkilo.com.',
     'Full Name': 'الاسم الكامل',
     'Your full name': 'اسمك الكامل',
     'Email Address': 'عنوان البريد الإلكتروني',
@@ -1445,8 +1497,8 @@ const CONTACT_TRANSLATIONS: TranslationTable = {
     'Describe your request, issue steps, and expected result.':
       'اشرح طلبك وخطوات المشكلة والنتيجة المتوقعة.',
     'Send message': 'إرسال الرسالة',
-    'Submitting this form opens your email app with pre-filled details for support@calkilo.app.':
-      'يؤدي إرسال هذا النموذج إلى فتح تطبيق البريد لديك مع تفاصيل جاهزة لـ support@calkilo.app.',
+    'Submitting this form opens your email app with pre-filled details for support@calkilo.com.':
+      'يؤدي إرسال هذا النموذج إلى فتح تطبيق البريد لديك مع تفاصيل جاهزة لـ support@calkilo.com.',
     'Email Support': 'الدعم عبر البريد',
     'For account, billing, and technical questions.':
       'لأسئلة الحساب والفوترة والمشكلات التقنية.',
@@ -1476,8 +1528,8 @@ const CONTACT_TRANSLATIONS: TranslationTable = {
     'Need help with Calkilo? Send us a message and our support team will get back to you as soon as possible.':
       'به کمک در Calkilo نیاز دارید؟ برای ما پیام بفرستید تا تیم پشتیبانی در سریع‌ترین زمان پاسخ دهد.',
     'Send a Message': 'ارسال پیام',
-    'Share as much detail as possible so we can resolve your issue quickly. For urgent requests, email support@calkilo.app directly.':
-      'تا حد امکان جزئیات بیشتری ارائه کنید تا مشکل شما را سریع‌تر حل کنیم. برای درخواست‌های فوری مستقیما به support@calkilo.app ایمیل بزنید.',
+    'Share as much detail as possible so we can resolve your issue quickly. For urgent requests, email support@calkilo.com directly.':
+      'تا حد امکان جزئیات بیشتری ارائه کنید تا مشکل شما را سریع‌تر حل کنیم. برای درخواست‌های فوری مستقیما به support@calkilo.com ایمیل بزنید.',
     'Full Name': 'نام کامل',
     'Your full name': 'نام کامل شما',
     'Email Address': 'آدرس ایمیل',
@@ -1492,8 +1544,8 @@ const CONTACT_TRANSLATIONS: TranslationTable = {
     'Describe your request, issue steps, and expected result.':
       'درخواست خود، مراحل مشکل و نتیجه مورد انتظار را توضیح دهید.',
     'Send message': 'ارسال پیام',
-    'Submitting this form opens your email app with pre-filled details for support@calkilo.app.':
-      'ارسال این فرم برنامه ایمیل شما را با جزئیات آماده برای support@calkilo.app باز می‌کند.',
+    'Submitting this form opens your email app with pre-filled details for support@calkilo.com.':
+      'ارسال این فرم برنامه ایمیل شما را با جزئیات آماده برای support@calkilo.com باز می‌کند.',
     'Email Support': 'پشتیبانی ایمیلی',
     'For account, billing, and technical questions.':
       'برای سوالات مربوط به حساب، پرداخت و مسائل فنی.',
@@ -1523,8 +1575,8 @@ const CONTACT_TRANSLATIONS: TranslationTable = {
     'Need help with Calkilo? Send us a message and our support team will get back to you as soon as possible.':
       'Hai bisogno di aiuto con Calkilo? Inviaci un messaggio e il nostro team di supporto ti rispondera il prima possibile.',
     'Send a Message': 'Invia un messaggio',
-    'Share as much detail as possible so we can resolve your issue quickly. For urgent requests, email support@calkilo.app directly.':
-      'Condividi quanti piu dettagli possibile cosi potremo risolvere rapidamente il tuo problema. Per richieste urgenti, scrivi direttamente a support@calkilo.app.',
+    'Share as much detail as possible so we can resolve your issue quickly. For urgent requests, email support@calkilo.com directly.':
+      'Condividi quanti piu dettagli possibile cosi potremo risolvere rapidamente il tuo problema. Per richieste urgenti, scrivi direttamente a support@calkilo.com.',
     'Full Name': 'Nome completo',
     'Your full name': 'Il tuo nome completo',
     'Email Address': 'Indirizzo email',
@@ -1539,8 +1591,8 @@ const CONTACT_TRANSLATIONS: TranslationTable = {
     'Describe your request, issue steps, and expected result.':
       'Descrivi la tua richiesta, i passaggi del problema e il risultato atteso.',
     'Send message': 'Invia messaggio',
-    'Submitting this form opens your email app with pre-filled details for support@calkilo.app.':
-      "L'invio di questo modulo apre la tua app email con dettagli precompilati per support@calkilo.app.",
+    'Submitting this form opens your email app with pre-filled details for support@calkilo.com.':
+      "L'invio di questo modulo apre la tua app email con dettagli precompilati per support@calkilo.com.",
     'Email Support': 'Supporto via email',
     'For account, billing, and technical questions.':
       'Per domande su account, fatturazione e aspetti tecnici.',

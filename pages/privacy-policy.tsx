@@ -56,21 +56,21 @@ const POLICY_SECTIONS: PolicySection[] = [
     title: '4. Data Retention',
     paragraphs: [
       'We retain personal information for as long as your account is active or as needed to provide services, resolve disputes, and comply with legal obligations.',
-      'You can request deletion of your account and associated data on our account deletion page at /account-deletion or by emailing privacy@calkilo.app.',
+      'You can request deletion of your account and associated data on our account deletion page at /account-deletion or by emailing privacy@calkilo.com.',
     ],
   },
   {
     title: '5. Your Privacy Rights',
     paragraphs: [
       'Depending on your location, you may have rights to access, correct, delete, or export your personal data, and to object to certain processing activities.',
-      'To submit a privacy request, email support@calkilo.app with the subject line "Privacy Request". We will verify your identity before processing your request.',
+      'To submit a privacy request, email support@calkilo.com with the subject line "Privacy Request". We will verify your identity before processing your request.',
     ],
   },
   {
     title: "6. Children's Privacy",
     paragraphs: [
       'Calkilo is not directed to children under 13, and we do not knowingly collect personal information from children under 13 without appropriate consent.',
-      'If you believe a child has provided personal information to us, contact support@calkilo.app so we can take appropriate action.',
+      'If you believe a child has provided personal information to us, contact support@calkilo.com so we can take appropriate action.',
     ],
   },
   {

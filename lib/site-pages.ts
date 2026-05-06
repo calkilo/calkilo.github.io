@@ -15,7 +15,7 @@ export const CORE_SITE_LINKS: ReadonlyArray<SitePageLink> = [
   {
     href: '/pricing/',
     label: 'Pricing',
-    description: 'Compare the free start with premium plans and what each subscription unlocks.',
+    description: 'Compare monthly and yearly premium plans and what each subscription unlocks.',
   },
   {
     href: '/faq/',

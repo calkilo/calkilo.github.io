@@ -5,9 +5,9 @@ import { GUIDE_LINKS } from '../lib/resource-pages'
 import { SITE_URL } from '../lib/seo'
 import { CORE_SITE_LINKS } from '../lib/site-pages'
 
-const PRICING_PAGE_TITLE = 'Calkilo Pricing | Free Start and Premium Plans'
+const PRICING_PAGE_TITLE = 'Calkilo Pricing | Monthly and Yearly Plans'
 const PRICING_PAGE_DESCRIPTION =
-  'See Calkilo pricing, what the free experience includes, and what premium unlocks for meal planning, AI support, and deeper nutrition insights.'
+  'See Calkilo pricing for monthly and yearly premium access, including meal planning, AI support, and deeper nutrition insights.'
 const PRICING_PAGE_KEYWORDS = [
   'calkilo pricing',
   'calkilo premium',
@@ -17,37 +17,32 @@ const PRICING_PAGE_KEYWORDS = [
 
 const PRICING_CARDS = [
   {
-    title: 'Free start',
-    subtitle: 'Start using the core experience without a card',
-    body: 'Best for evaluating the app, trying food-photo logging, and seeing whether the product fits your daily routine.',
+    title: 'Monthly',
+    subtitle: '$4.99',
+    body: 'Best for flexible premium access when you want meal planning, AI support, and deeper tracking month to month.',
   },
   {
-    title: 'Premium 1 Month',
-    subtitle: '$7.99',
-    body: 'A short commitment for people who want to test premium planning and AI support before going longer.',
-  },
-  {
-    title: 'Premium 3 Months',
-    subtitle: '$21.99',
-    body: 'The main mid-range option for people who want enough time to build consistency and compare progress.',
-  },
-  {
-    title: 'Premium 6 Months',
-    subtitle: '$59.99',
-    body: 'The longer plan for users who already know they want meal planning, deeper tracking, and a sustained routine.',
+    title: 'Yearly',
+    subtitle: '$14.99',
+    body: 'Best value for users who already know they want premium nutrition support for the full year.',
   },
 ] as const
 
 const PRICING_FAQS = [
   {
-    question: 'Can someone start using Calkilo without paying first?',
+    question: 'What are the Calkilo pricing options?',
     answer:
-      'Yes. The homepage messaging positions Calkilo as a free start, with premium plans unlocking more advanced features over time.',
+      'Calkilo premium is available monthly for $4.99 or yearly for $14.99.',
   },
   {
     question: 'What premium value is emphasized most strongly?',
     answer:
       'Premium is framed around personalized meal plans, deeper analytics, AI coaching, and a broader nutrition workflow than basic logging alone.',
+  },
+  {
+    question: 'Which plan is the best value?',
+    answer:
+      'The yearly plan is the best value for users who expect to keep using Calkilo premium throughout the year.',
   },
   {
     question: 'Why have a dedicated pricing page instead of only a homepage section?',
@@ -67,9 +62,8 @@ export default function PricingPage() {
     GUIDE_LINKS[2],
   ]
   const offers = [
-    { name: 'Premium 1 Month', price: '7.99' },
-    { name: 'Premium 3 Months', price: '21.99' },
-    { name: 'Premium 6 Months', price: '59.99' },
+    { name: 'Monthly', price: '4.99' },
+    { name: 'Yearly', price: '14.99' },
   ]
   const pageJsonLd = [
     {
@@ -128,8 +122,8 @@ export default function PricingPage() {
       title={PRICING_PAGE_TITLE}
       description={PRICING_PAGE_DESCRIPTION}
       path="/pricing/"
-      heading="Calkilo pricing for free use and premium upgrades"
-      intro="This page gives Google and users a direct branded destination for pricing intent instead of relying on the homepage pricing section alone."
+      heading="Calkilo pricing for monthly and yearly premium plans"
+      intro="This page gives Google and users a direct branded destination for monthly and yearly pricing instead of relying on the homepage pricing section alone."
       activeNav="none"
       keywords={PRICING_PAGE_KEYWORDS}
       jsonLd={pageJsonLd}
@@ -137,8 +131,8 @@ export default function PricingPage() {
       <section className="lp-static-card">
         <h2>How to read the plans</h2>
         <p>
-          The public pricing structure is simple: start free, then upgrade when meal planning, AI help, and deeper
-          tracking become part of your routine.
+          The public pricing structure is simple: choose monthly premium access for flexibility, or yearly premium
+          access for the best value.
         </p>
         <div className="lp-resource-actions">
           <a className="lp-btn lp-btn--solid" href={GOOGLE_PLAY_URL} target="_blank" rel="noreferrer">
@@ -161,15 +155,15 @@ export default function PricingPage() {
       </section>
 
       <section className="lp-static-card">
-        <h2>What the free experience is for</h2>
+        <h2>When monthly makes sense</h2>
         <p>
-          Free access lowers the barrier to trying the product. That matters for branded search because many people
-          want pricing confirmation before downloading, even when they are open to a later upgrade.
+          The monthly plan is the lighter commitment. It fits users who want premium meal planning, AI help, and deeper
+          nutrition insights while keeping billing flexible.
         </p>
         <ul className="lp-policy-list">
-          <li>Try the core tracking flow without a credit card</li>
-          <li>Evaluate whether photo-based logging fits daily use</li>
-          <li>Decide later whether premium planning features are worth it</li>
+          <li>$4.99 monthly premium access</li>
+          <li>Useful for trying premium workflows before an annual commitment</li>
+          <li>Includes the same premium feature set as the yearly plan</li>
         </ul>
       </section>
 
@@ -188,15 +182,14 @@ export default function PricingPage() {
       </section>
 
       <section className="lp-static-card">
-        <h2>How to choose between the premium plans</h2>
+        <h2>How to choose between monthly and yearly</h2>
         <p>
-          The one-month plan is the least commitment. The three-month plan is the most balanced for habit-building.
-          The six-month plan is better for users who already know they want a longer runway for consistent nutrition
-          work.
+          Monthly is best when flexibility matters most. Yearly is best when you already know you want consistent
+          premium support for nutrition planning and progress tracking.
         </p>
         <p>
-          A dedicated pricing URL also gives Google a much clearer candidate for a brand-query sitelink than a single
-          anchor inside the homepage.
+          The yearly plan is $14.99, making it the lower total cost for users who expect to keep Calkilo premium active
+          beyond a few months.
         </p>
       </section>
 

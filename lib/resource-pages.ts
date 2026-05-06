@@ -1,3 +1,5 @@
+import { type SiteLanguage } from './site-language'
+
 export interface ResourceHighlight {
   title: string
   body: string
@@ -21,6 +23,7 @@ export interface ResourceLink {
 }
 
 export interface ResourcePageDefinition {
+  language?: SiteLanguage
   path: string
   title: string
   description: string
@@ -31,6 +34,8 @@ export interface ResourcePageDefinition {
   sections: ResourceSection[]
   faqs: ResourceFaq[]
 }
+
+export type ResourcePageKey = 'ai-calorie-tracker' | 'photo-calorie-calculator' | 'macro-tracker' | 'faq'
 
 export const GUIDE_LINKS: ReadonlyArray<ResourceLink> = [
   {
@@ -59,7 +64,7 @@ export const RESOURCE_LINKS: ReadonlyArray<ResourceLink> = [
   },
 ]
 
-export const RESOURCE_PAGES: Record<'ai-calorie-tracker' | 'photo-calorie-calculator' | 'macro-tracker' | 'faq', ResourcePageDefinition> = {
+export const RESOURCE_PAGES: Record<ResourcePageKey, ResourcePageDefinition> = {
   'ai-calorie-tracker': {
     path: '/ai-calorie-tracker/',
     title: 'AI Calorie Tracker App | Calkilo',
@@ -409,7 +414,7 @@ export const RESOURCE_PAGES: Record<'ai-calorie-tracker' | 'photo-calorie-calcul
       {
         question: 'How much does Calkilo cost?',
         answer:
-          'Calkilo offers a free starting point, while premium plans unlock more advanced features such as deeper analytics, meal planning, and AI coaching.',
+          'Calkilo premium is available monthly for $4.99 or yearly for $14.99, unlocking deeper analytics, meal planning, and AI coaching.',
       },
       {
         question: 'How does photo calorie tracking work in Calkilo?',
@@ -450,3 +455,520 @@ export const RESOURCE_PAGES: Record<'ai-calorie-tracker' | 'photo-calorie-calcul
   },
 }
 
+export const LOCALIZED_RESOURCE_PAGES: Partial<
+  Record<SiteLanguage, Partial<Record<ResourcePageKey, ResourcePageDefinition>>>
+> = {
+  fa: {
+    'photo-calorie-calculator': {
+      language: 'fa',
+      path: '/fa/photo-calorie-calculator/',
+      title: 'کالری شمار با عکس رایگان | محاسبه کالری غذا با هوش مصنوعی',
+      description:
+        'با کالکیلو از غذای خود عکس بگیرید و کالری، پروتئین، کربوهیدرات و چربی را با هوش مصنوعی تخمین بزنید. مناسب برای ثبت سریع وعده‌ها در آیفون و اندروید.',
+      heading: 'کالری شمار با عکس رایگان برای غذا و وعده‌های روزانه',
+      intro:
+        'اگر ثبت دستی غذا زمان‌بر است، کالکیلو عکس غذا را به یک شروع سریع برای ثبت کالری و درشت‌مغذی‌ها تبدیل می‌کند. نتیجه را بررسی می‌کنید، در صورت نیاز اصلاح می‌کنید و آن را در گزارش روزانه نگه می‌دارید.',
+      keywords: [
+        'کالری شمار با عکس رایگان',
+        'محاسبه کالری غذا با عکس',
+        'اسکن کالری غذا رایگان',
+        'کالری شمار هوش مصنوعی',
+      ],
+      highlights: [
+        {
+          title: 'شروع با عکس غذا',
+          body: 'یک تصویر واضح از وعده بگیرید تا ثبت غذا سریع‌تر از جست‌وجوی دستی انجام شود.',
+        },
+        {
+          title: 'کالری همراه با ماکروها',
+          body: 'به جای یک عدد خام، کالری، پروتئین، کربوهیدرات و چربی را در کنار هم ببینید.',
+        },
+        {
+          title: 'قابل بررسی و اصلاح',
+          body: 'تخمین هوش مصنوعی نقطه شروع است؛ می‌توانید مقدار غذا، مواد مخفی یا اندازه وعده را بررسی کنید.',
+        },
+      ],
+      sections: [
+        {
+          title: 'کالری شمار با عکس چه زمانی مفید است؟',
+          paragraphs: [
+            'این روش زمانی بیشترین ارزش را دارد که غذا خانگی، ترکیبی یا رستورانی باشد و پیدا کردن تک‌تک مواد در بانک غذایی سخت شود.',
+            'هدف کالکیلو این است که ثبت روزانه غذا کمتر خسته‌کننده باشد، چون سرعت ثبت معمولاً همان چیزی است که ادامه دادن رژیم را ممکن می‌کند.',
+          ],
+          bullets: [
+            'ثبت سریع صبحانه، ناهار، شام و میان‌وعده',
+            'تخمین بهتر برای غذاهای ترکیبی نسبت به ورود دستی کامل',
+            'نمایش کالری و ماکروها در یک گزارش قابل استفاده',
+            'مناسب برای کاربرانی که با اپ‌های سنگین ثبت غذا کنار نمی‌آیند',
+          ],
+        },
+        {
+          title: 'بعد از گرفتن عکس چه اتفاقی می‌افتد؟',
+          paragraphs: [
+            'یک ابزار ضعیف فقط یک عدد نشان می‌دهد. کالکیلو تخمین را به بخشی از مسیر ثبت غذا، بررسی وعده و پیگیری هدف تبدیل می‌کند.',
+            'این یعنی کاربر می‌تواند نتیجه را با بقیه روز مقایسه کند و بداند وعده از نظر کالری و درشت‌مغذی‌ها چه اثری دارد.',
+          ],
+          bullets: [
+            'عکس غذا را ثبت کنید',
+            'تخمین کالری و مواد مغذی را ببینید',
+            'اگر اندازه وعده یا مواد غذایی متفاوت بود، نتیجه را بررسی کنید',
+            'وعده را در لاگ روزانه نگه دارید',
+          ],
+        },
+        {
+          title: 'چه زمانی باید نتیجه را بررسی یا اصلاح کرد؟',
+          paragraphs: [
+            'هوش مصنوعی وقتی غذا در تصویر واضح باشد عملکرد بهتری دارد. سس‌ها، روغن، مواد مخفی و اندازه واقعی وعده ممکن است به بررسی انسانی نیاز داشته باشند.',
+            'این موضوع ضعف نیست؛ یک کالری شمار خوب باید اجازه بدهد کاربر نتیجه را اصلاح کند و همان نسخه اصلاح‌شده را برای تصمیم‌های بعدی نگه دارد.',
+          ],
+          bullets: [
+            'غذاهای مخلوط یا چندلایه را بررسی کنید',
+            'برای غذاهای پرکالری مثل روغن و سس دقت بیشتری داشته باشید',
+            'اگر بخشی از غذا در تصویر نیست، مقدار آن را در نظر بگیرید',
+            'از نتیجه اصلاح‌شده برای پیگیری روزانه استفاده کنید',
+          ],
+        },
+      ],
+      faqs: [
+        {
+          question: 'آیا کالکیلو کالری غذا را از روی عکس محاسبه می‌کند؟',
+          answer:
+            'بله. کالکیلو از عکس غذا برای تخمین کالری و اطلاعات تغذیه‌ای استفاده می‌کند و نتیجه را به یک ورودی قابل بررسی در لاگ غذایی تبدیل می‌کند.',
+        },
+        {
+          question: 'آیا این کالری شمار با عکس رایگان است؟',
+          answer:
+            'شروع استفاده از کالکیلو رایگان است. امکانات پیشرفته‌تر مانند برنامه غذایی و تحلیل‌های عمیق‌تر می‌توانند در طرح‌های پریمیوم ارائه شوند.',
+        },
+        {
+          question: 'آیا فقط کالری نمایش داده می‌شود؟',
+          answer:
+            'خیر. کالکیلو برای پیگیری کالری و ماکروها طراحی شده است، بنابراین پروتئین، کربوهیدرات و چربی هم در کنار کالری اهمیت دارند.',
+        },
+        {
+          question: 'آیا نتیجه عکس همیشه دقیق است؟',
+          answer:
+            'تخمین عکس یک نقطه شروع سریع است. برای وعده‌های پیچیده، مواد مخفی یا اندازه وعده‌های نامشخص بهتر است نتیجه را بررسی و اصلاح کنید.',
+        },
+      ],
+    },
+    'ai-calorie-tracker': {
+      language: 'fa',
+      path: '/fa/ai-calorie-tracker/',
+      title: 'کالری شمار هوش مصنوعی رایگان | Calkilo',
+      description:
+        'کالکیلو یک کالری شمار هوش مصنوعی برای ثبت غذا از روی عکس، پیگیری ماکروها و برنامه‌ریزی وعده‌ها در آیفون و اندروید است.',
+      heading: 'کالری شمار هوش مصنوعی برای ثبت سریع غذا',
+      intro:
+        'کالکیلو برای کاربرانی ساخته شده که می‌خواهند کالری و تغذیه را سریع‌تر ثبت کنند، اما هنوز به جزئیات لازم برای تصمیم‌گیری روزانه نیاز دارند. عکس غذا، هوش مصنوعی، ماکروها و هدف‌های تغذیه‌ای در یک مسیر ساده کنار هم قرار می‌گیرند.',
+      keywords: [
+        'هوش مصنوعی کالری شمار رایگان',
+        'کالری شمار هوش مصنوعی',
+        'کالری شمار رایگان',
+        'اپ کالری شمار با هوش مصنوعی',
+      ],
+      highlights: [
+        {
+          title: 'ثبت غذا با هوش مصنوعی',
+          body: 'غذا را سریع‌تر از ورود دستی ثبت کنید و تخمین را قبل از ذخیره بررسی کنید.',
+        },
+        {
+          title: 'پیگیری کالری و ماکرو',
+          body: 'کالری، پروتئین، کربوهیدرات و چربی را در کنار هدف روزانه دنبال کنید.',
+        },
+        {
+          title: 'برنامه‌ریزی بر اساس هدف',
+          body: 'ردیابی غذا زمانی مفیدتر است که به برنامه غذایی، عادت روزانه و هدف وزن وصل شود.',
+        },
+      ],
+      sections: [
+        {
+          title: 'چرا کاربران دنبال کالری شمار هوش مصنوعی هستند؟',
+          paragraphs: [
+            'بیشتر کاربران کالری شماری را به خاطر زمان‌بر بودن رها می‌کنند. هوش مصنوعی می‌تواند مرحله سخت ثبت غذا را کوتاه‌تر کند.',
+            'یک کالری شمار هوش مصنوعی خوب فقط حدس نمی‌زند؛ باید نتیجه را قابل فهم، قابل اصلاح و قابل استفاده در گزارش روزانه کند.',
+          ],
+          bullets: [
+            'کاهش زمان ثبت غذا',
+            'ثبت غذاهای خانگی و رستورانی با عکس',
+            'نمایش کالری و درشت‌مغذی‌ها',
+            'ادامه دادن آسان‌تر در روزهای شلوغ',
+          ],
+        },
+        {
+          title: 'کالکیلو چه تفاوتی ایجاد می‌کند؟',
+          paragraphs: [
+            'کالکیلو عکس غذا را به یک ورودی تغذیه‌ای تبدیل می‌کند و آن را در کنار هدف‌ها، ماکروها و برنامه‌ریزی وعده‌ها قرار می‌دهد.',
+            'این ساختار برای کاربرانی مناسب است که می‌خواهند سرعت داشته باشند، اما همچنان بتوانند نتیجه را مرور و اصلاح کنند.',
+          ],
+          bullets: [
+            'تخمین غذا از روی عکس',
+            'ثبت وعده در لاگ روزانه',
+            'نمایش ماکروها در کنار کالری',
+            'پشتیبانی از Apple Health، Google Fit، Fitbit و Samsung Health',
+          ],
+        },
+        {
+          title: 'برای چه کسانی مناسب است؟',
+          paragraphs: [
+            'این نوع اپ برای افرادی مناسب است که می‌خواهند وزن کم کنند، وزن خود را حفظ کنند، پروتئین بیشتری مصرف کنند یا فقط عادت غذایی واضح‌تری داشته باشند.',
+            'اگر ورود دستی هر وعده باعث می‌شود پیگیری را رها کنید، ثبت مبتنی بر عکس می‌تواند اصطکاک را کمتر کند.',
+          ],
+          bullets: [
+            'افراد در مسیر کاهش یا حفظ وزن',
+            'کاربرانی که هدف پروتئین یا ماکرو دارند',
+            'افراد پرمشغله که ثبت سریع می‌خواهند',
+            'کسانی که اپ ساده‌تر از دفترچه یا جدول می‌خواهند',
+          ],
+        },
+      ],
+      faqs: [
+        {
+          question: 'کالری شمار هوش مصنوعی چگونه کار می‌کند؟',
+          answer:
+            'کاربر عکس غذا را ثبت می‌کند، کالکیلو تخمین کالری و مواد مغذی را آماده می‌کند و کاربر می‌تواند نتیجه را پیش از ذخیره بررسی کند.',
+        },
+        {
+          question: 'آیا کالکیلو برای آیفون و اندروید موجود است؟',
+          answer: 'بله. کالکیلو از طریق Google Play و App Store در دسترس است.',
+        },
+        {
+          question: 'آیا می‌توانم بعداً نتیجه تخمین را اصلاح کنم؟',
+          answer:
+            'بله. تخمین هوش مصنوعی باید قابل بررسی باشد، مخصوصاً وقتی اندازه وعده یا مواد مخفی در عکس کاملاً مشخص نیست.',
+        },
+        {
+          question: 'آیا کالکیلو فقط برای کاهش وزن است؟',
+          answer:
+            'خیر. می‌توانید از آن برای کاهش وزن، حفظ وزن، آگاهی از وعده‌ها، پیگیری ماکروها یا ساخت عادت غذایی منظم‌تر استفاده کنید.',
+        },
+      ],
+    },
+    'macro-tracker': {
+      language: 'fa',
+      path: '/fa/macro-tracker/',
+      title: 'برنامه پیگیری ماکرو و کالری | کالکیلو',
+      description:
+        'با کالکیلو کالری، پروتئین، کربوهیدرات و چربی را همراه با ثبت غذا از روی عکس و برنامه‌ریزی وعده‌ها دنبال کنید.',
+      heading: 'پیگیری ماکروها همراه با کالری شمار هوش مصنوعی',
+      intro:
+        'اگر فقط کالری را ببینید، تصویر کامل تغذیه مشخص نمی‌شود. کالکیلو کمک می‌کند کالری و ماکروها را در کنار هم ثبت کنید تا وعده‌ها برای هدف روزانه قابل تصمیم‌گیری باشند.',
+      keywords: ['پیگیری ماکرو', 'ماکرو شمار', 'کالری و ماکرو', 'اپ پیگیری پروتئین'],
+      highlights: [
+        {
+          title: 'پروتئین، کربوهیدرات و چربی',
+          body: 'ماکروها را کنار کالری ببینید تا هر وعده معنی بیشتری داشته باشد.',
+        },
+        {
+          title: 'ثبت سریع‌تر وعده‌ها',
+          body: 'عکس غذا زمان ثبت را کم می‌کند و ادامه دادن پیگیری را آسان‌تر می‌کند.',
+        },
+        {
+          title: 'هماهنگ با هدف‌های تغذیه‌ای',
+          body: 'پیگیری ماکرو زمانی ارزشمندتر است که به هدف وزن، برنامه غذایی و روند روزانه وصل شود.',
+        },
+      ],
+      sections: [
+        {
+          title: 'چرا پیگیری ماکرو با کالری شماری فرق دارد؟',
+          paragraphs: [
+            'کالری مقدار انرژی را نشان می‌دهد، اما ماکروها توضیح می‌دهند این انرژی از چه ترکیبی آمده است.',
+            'برای بسیاری از کاربران، مخصوصاً کسانی که هدف پروتئین یا ترکیب بدنی دارند، دیدن ماکروها کنار کالری ضروری است.',
+          ],
+          bullets: [
+            'هدف پروتئین برای حفظ یا افزایش عضله',
+            'کنترل کربوهیدرات برای انرژی و تمرین',
+            'تعادل چربی در برنامه غذایی',
+            'تصمیم بهتر درباره وعده‌های بعدی روز',
+          ],
+        },
+        {
+          title: 'کالکیلو چگونه به پیگیری ماکرو کمک می‌کند؟',
+          paragraphs: [
+            'کالکیلو ثبت غذا را با عکس سریع‌تر می‌کند و نتیجه را در قالب کالری و ماکروهای قابل بررسی نشان می‌دهد.',
+            'این مسیر برای کاربرانی طراحی شده که نمی‌خواهند هر ماده غذایی را جداگانه و زمان‌بر وارد کنند.',
+          ],
+          bullets: [
+            'ثبت غذا از روی عکس',
+            'نمایش کالری و درشت‌مغذی‌ها',
+            'پیگیری هدف روزانه',
+            'برنامه‌ریزی وعده و پیشنهادهای غذایی',
+          ],
+        },
+      ],
+      faqs: [
+        {
+          question: 'آیا کالکیلو ماکروها را هم نشان می‌دهد؟',
+          answer:
+            'بله. کالکیلو برای پیگیری کالری و ماکروها طراحی شده است و پروتئین، کربوهیدرات و چربی را در کنار کالری در نظر می‌گیرد.',
+        },
+        {
+          question: 'آیا پیگیری ماکرو برای همه لازم است؟',
+          answer:
+            'برای همه ضروری نیست، اما برای هدف‌هایی مثل کنترل وزن، افزایش پروتئین یا برنامه تمرینی مفیدتر از دیدن کالری تنهاست.',
+        },
+        {
+          question: 'آیا می‌توانم با عکس غذا ماکرو هم ثبت کنم؟',
+          answer:
+            'بله. ارزش اصلی کالکیلو این است که عکس غذا به یک رکورد تغذیه‌ای تبدیل می‌شود، نه فقط یک تخمین جداگانه.',
+        },
+      ],
+    },
+  },
+  it: {
+    'photo-calorie-calculator': {
+      language: 'it',
+      path: '/it/photo-calorie-calculator/',
+      title: 'Calcolo calorie AI da foto | Calkilo',
+      description:
+        'Scatta una foto del pasto e usa Calkilo per stimare calorie, macro e dati nutrizionali con AI. Disponibile su iPhone e Android.',
+      heading: 'Calcolo calorie AI da foto per pasti e snack',
+      intro:
+        'Calkilo aiuta chi vuole registrare i pasti piu velocemente. La foto diventa l’inizio di un diario alimentare con calorie, macro e dettagli modificabili, non solo un numero isolato.',
+      keywords: ['calcolo calorie ai', 'calorie da foto', 'contacalorie con foto', 'app calorie e macro'],
+      highlights: [
+        {
+          title: 'Scatta una foto',
+          body: 'Registra un pasto reale senza cercare ogni ingrediente manualmente.',
+        },
+        {
+          title: 'Vedi calorie e macro',
+          body: 'Usa la stima come punto di partenza per calorie, proteine, carboidrati e grassi.',
+        },
+        {
+          title: 'Controlla il risultato',
+          body: 'Rivedi porzioni, condimenti e ingredienti nascosti prima di salvare il pasto.',
+        },
+      ],
+      sections: [
+        {
+          title: 'Quando serve un calcolo calorie da foto',
+          paragraphs: [
+            'Il calcolo da foto e utile per pasti fatti in casa, piatti misti e ristoranti dove una ricerca manuale richiede troppo tempo.',
+            'Il vantaggio principale e la velocita: meno attrito significa piu probabilita di continuare a tracciare ogni giorno.',
+          ],
+          bullets: [
+            'Pasti con piu ingredienti',
+            'Snack e pranzi veloci',
+            'Piatti senza etichetta nutrizionale',
+            'Diario alimentare quotidiano con meno inserimenti manuali',
+          ],
+        },
+        {
+          title: 'Perche non basta un numero solo',
+          paragraphs: [
+            'Sapere le calorie e utile, ma spesso l’utente vuole capire anche se il pasto aiuta a raggiungere proteine, carboidrati e grassi della giornata.',
+            'Calkilo collega la stima AI al tracking quotidiano, cosi il risultato resta utile anche dopo aver salvato il pasto.',
+          ],
+          bullets: [
+            'Calorie con contesto nutrizionale',
+            'Macro accanto al diario dei pasti',
+            'Obiettivi e pianificazione alimentare',
+            'Correzioni quando la stima va rivista',
+          ],
+        },
+        {
+          title: 'Quando controllare la stima AI',
+          paragraphs: [
+            'Le foto funzionano meglio quando il piatto e visibile e ben illuminato. Porzioni, salse, olio e ingredienti nascosti possono richiedere una revisione.',
+            'Un buon flusso AI non pretende che la prima stima sia perfetta: permette di correggere e salvare un dato piu utile.',
+          ],
+          bullets: [
+            'Controlla piatti misti o coperti',
+            'Rivedi porzioni dense di calorie',
+            'Aggiungi contesto se qualcosa non si vede',
+            'Usa il risultato corretto nel diario giornaliero',
+          ],
+        },
+      ],
+      faqs: [
+        {
+          question: 'Calkilo calcola le calorie da una foto?',
+          answer:
+            'Si. Calkilo usa la foto del pasto per stimare calorie e informazioni nutrizionali, poi permette di rivedere il risultato.',
+        },
+        {
+          question: 'Il calcolo calorie AI mostra anche le macro?',
+          answer:
+            'Calkilo e pensato per calorie e macro, quindi proteine, carboidrati e grassi sono parte del contesto nutrizionale.',
+        },
+        {
+          question: 'Il risultato e sempre preciso?',
+          answer:
+            'La stima AI e un punto di partenza rapido. Pasti complessi, salse e porzioni nascoste possono richiedere una correzione.',
+        },
+        {
+          question: 'Calkilo e disponibile su iPhone e Android?',
+          answer: 'Si. Calkilo e disponibile tramite App Store e Google Play.',
+        },
+      ],
+    },
+    'ai-calorie-tracker': {
+      language: 'it',
+      path: '/it/ai-calorie-tracker/',
+      title: 'App contacalorie AI da foto | Calkilo',
+      description:
+        'Registra pasti con AI, stima calorie da foto, monitora macro e crea piani alimentari con Calkilo su iPhone e Android.',
+      heading: 'App contacalorie AI per registrare i pasti piu velocemente',
+      intro:
+        'Calkilo combina foto del cibo, stime AI, diario alimentare, macro e pianificazione dei pasti. E pensato per chi vuole tracciare meglio senza passare troppo tempo su inserimenti manuali.',
+      keywords: ['app contacalorie ai', 'calcolo calorie ai', 'ai calorie tracker', 'app nutrizione ai'],
+      highlights: [
+        {
+          title: 'Meno inserimento manuale',
+          body: 'Parti da una foto e rivedi la stima prima di salvare il pasto.',
+        },
+        {
+          title: 'Calorie e macro insieme',
+          body: 'Tieni sotto controllo energia, proteine, carboidrati e grassi nello stesso flusso.',
+        },
+        {
+          title: 'Obiettivi e pianificazione',
+          body: 'Collega il diario alimentare a obiettivi, ricette e suggerimenti piu pratici.',
+        },
+      ],
+      sections: [
+        {
+          title: 'Perche scegliere un contacalorie AI',
+          paragraphs: [
+            'Molte persone smettono di tracciare perche registrare ogni pasto richiede troppo tempo. L’AI riduce l’attrito iniziale.',
+            'La parte importante e mantenere il controllo: la stima deve essere chiara, modificabile e collegata al diario giornaliero.',
+          ],
+          bullets: [
+            'Registrazione piu rapida dei pasti',
+            'Supporto per piatti misti e foto del cibo',
+            'Macro oltre alle calorie',
+            'Tracking piu facile da mantenere nel tempo',
+          ],
+        },
+        {
+          title: 'Come Calkilo usa l’AI nel tracking',
+          paragraphs: [
+            'Calkilo trasforma la foto in una stima nutrizionale e la collega al diario, agli obiettivi e alla pianificazione.',
+            'Questo rende l’app utile sia per chi vuole perdere peso sia per chi vuole capire meglio porzioni e abitudini.',
+          ],
+          bullets: [
+            'Analisi del pasto da foto',
+            'Revisione del risultato',
+            'Diario calorie e macro',
+            'Integrazioni con Apple Health, Google Fit, Fitbit e Samsung Health',
+          ],
+        },
+        {
+          title: 'Per chi e piu adatta',
+          paragraphs: [
+            'Un contacalorie AI e adatto a chi vuole un diario piu veloce, ma non vuole rinunciare a dettagli utili per le decisioni quotidiane.',
+            'E utile per perdere peso, mantenere una routine, controllare le porzioni o raggiungere target di macro.',
+          ],
+          bullets: [
+            'Persone che tracciano pasti ogni giorno',
+            'Utenti con obiettivi di peso o composizione corporea',
+            'Chi vuole piu proteine o macro piu bilanciate',
+            'Chi preferisce partire da una foto invece che da una ricerca manuale',
+          ],
+        },
+      ],
+      faqs: [
+        {
+          question: 'Calkilo e un’app contacalorie AI?',
+          answer:
+            'Si. Calkilo usa funzioni AI per stimare pasti da foto e aiuta a registrare calorie, macro e informazioni nutrizionali.',
+        },
+        {
+          question: 'Posso modificare una stima AI?',
+          answer:
+            'Si. La stima e un punto di partenza e va rivista quando porzioni o ingredienti non sono chiari.',
+        },
+        {
+          question: 'Serve internet per l’analisi delle foto?',
+          answer:
+            'L’analisi delle foto richiede connessione internet, mentre i dati gia registrati possono essere consultati anche in seguito.',
+        },
+        {
+          question: 'Calkilo serve solo per dimagrire?',
+          answer:
+            'No. Puo aiutare anche a mantenere una routine, migliorare la consapevolezza delle porzioni e monitorare obiettivi di macro.',
+        },
+      ],
+    },
+  },
+}
+
+const LOCALIZED_RESOURCE_LINKS: Partial<Record<SiteLanguage, ReadonlyArray<ResourceLink>>> = {
+  fa: [
+    {
+      href: '/fa/ai-calorie-tracker/',
+      label: 'کالری شمار هوش مصنوعی',
+      description: 'چطور کالکیلو ثبت غذا، کالری و ماکروها را با هوش مصنوعی سریع‌تر می‌کند.',
+    },
+    {
+      href: '/fa/photo-calorie-calculator/',
+      label: 'کالری شمار با عکس',
+      description: 'راهنمای محاسبه کالری غذا از روی عکس و بررسی نتیجه در کالکیلو.',
+    },
+    {
+      href: '/fa/macro-tracker/',
+      label: 'پیگیری ماکرو',
+      description: 'پیگیری کالری، پروتئین، کربوهیدرات و چربی در کنار ثبت غذا از روی عکس.',
+    },
+    {
+      href: '/faq/',
+      label: 'سوالات متداول',
+      description: 'پاسخ پرسش‌های رایج درباره اشتراک، حریم خصوصی، همگام‌سازی و ثبت غذا با هوش مصنوعی.',
+    },
+  ],
+  it: [
+    {
+      href: '/it/ai-calorie-tracker/',
+      label: 'App contacalorie AI',
+      description: 'Come Calkilo usa AI, foto del cibo e macro per tracciare i pasti piu velocemente.',
+    },
+    {
+      href: '/it/photo-calorie-calculator/',
+      label: 'Calcolo calorie AI da foto',
+      description: 'Guida pratica per stimare calorie e macro da una foto del pasto.',
+    },
+    {
+      href: '/macro-tracker/',
+      label: 'Macro Tracker',
+      description: 'Come tracciare calorie, proteine, carboidrati e grassi in un’unica app.',
+    },
+    {
+      href: '/faq/',
+      label: 'FAQ',
+      description: 'Risposte su abbonamenti, privacy, sincronizzazione e food logging AI.',
+    },
+  ],
+}
+
+export function getResourcePage(pageKey: ResourcePageKey, language: SiteLanguage = 'en'): ResourcePageDefinition {
+  return LOCALIZED_RESOURCE_PAGES[language]?.[pageKey] ?? RESOURCE_PAGES[pageKey]
+}
+
+export function getLocalizedResourceLinks(language: SiteLanguage): ReadonlyArray<ResourceLink> {
+  return LOCALIZED_RESOURCE_LINKS[language] ?? RESOURCE_LINKS
+}
+
+export function getResourceLocalizedLanguages(pageKey: ResourcePageKey): SiteLanguage[] {
+  return (Object.entries(LOCALIZED_RESOURCE_PAGES) as Array<[SiteLanguage, Partial<Record<ResourcePageKey, ResourcePageDefinition>>]>)
+    .filter(([, pages]) => Boolean(pages[pageKey]))
+    .map(([language]) => language)
+}
+
+export function getResourcePathForLanguage(pageKey: ResourcePageKey, language: SiteLanguage): string | null {
+  if (language === 'en') {
+    return RESOURCE_PAGES[pageKey].path
+  }
+
+  return LOCALIZED_RESOURCE_PAGES[language]?.[pageKey]?.path ?? null
+}
+
+export function getResourceAlternateLanguages(pageKey: ResourcePageKey): Array<{ lang: SiteLanguage; path: string }> {
+  return [
+    { lang: 'en', path: RESOURCE_PAGES[pageKey].path },
+    ...getResourceLocalizedLanguages(pageKey).map((language) => ({
+      lang: language,
+      path: LOCALIZED_RESOURCE_PAGES[language]?.[pageKey]?.path ?? RESOURCE_PAGES[pageKey].path,
+    })),
+  ]
+}
