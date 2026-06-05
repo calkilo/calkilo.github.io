@@ -6,6 +6,7 @@ import {
   APP_STORE_URL,
   CALKILO_WEB_URL,
   GOOGLE_PLAY_URL,
+  buildAndroidIntentLink,
   buildAppDeepLink,
   detectDevicePlatform,
   getQueryValue,
@@ -32,7 +33,9 @@ export default function InvitePage() {
 
   const inviteCode = (linkQuery.code || '').trim().toUpperCase()
   const deepLink = useMemo(() => buildAppDeepLink('invite', linkQuery), [linkQuery])
-  const primaryHref = platform === 'desktop' ? CALKILO_WEB_URL : deepLink
+  const androidIntentLink = useMemo(() => buildAndroidIntentLink('invite', linkQuery), [linkQuery])
+  const mobileOpenLink = platform === 'android' ? androidIntentLink : deepLink
+  const primaryHref = platform === 'desktop' ? CALKILO_WEB_URL : mobileOpenLink
   const primaryLabel = platform === 'desktop' ? 'Go to calkilo.com' : 'Open Calkilo'
 
   useEffect(() => {
@@ -40,7 +43,10 @@ export default function InvitePage() {
       return
     }
 
-    const nextPlatform = detectDevicePlatform(window.navigator.userAgent)
+    const nextPlatform = detectDevicePlatform(
+      window.navigator.userAgent,
+      window.navigator.maxTouchPoints,
+    )
     setPlatform(nextPlatform)
 
     if (nextPlatform === 'desktop') {
@@ -58,7 +64,7 @@ export default function InvitePage() {
     }
 
     const openTimer = window.setTimeout(() => {
-      window.location.href = deepLink
+      window.location.href = nextPlatform === 'android' ? androidIntentLink : deepLink
     }, 120)
 
     const fallbackTimer = window.setTimeout(() => {
@@ -79,7 +85,7 @@ export default function InvitePage() {
       document.removeEventListener('visibilitychange', markAsOpened)
       window.removeEventListener('pagehide', markAsOpened)
     }
-  }, [deepLink, router.isReady])
+  }, [androidIntentLink, deepLink, router.isReady])
 
   const statusText =
     status === 'fallback'
