@@ -63,7 +63,7 @@ export default function StaticPageLayout({
       links: [
         { label: t('Features'), href: featuresHref },
         { label: t('Choose Plan'), href: pricingHref },
-        { label: 'AI Calorie Tracker', href: RESOURCE_LINKS[0].href },
+        { label: 'Calorie Calculator', href: RESOURCE_LINKS[0].href },
       ],
     },
     {
@@ -80,8 +80,9 @@ export default function StaticPageLayout({
       title: t('Get in Touch'),
       links: [
         { label: t('Contact'), href: toLocalizedPath('/contact', language) },
-        { label: 'Photo Calorie Calculator', href: RESOURCE_LINKS[1].href },
-        { label: 'Macro Tracker', href: RESOURCE_LINKS[2].href },
+        { label: 'AI Calorie Tracker', href: RESOURCE_LINKS[1].href },
+        { label: 'Photo Calorie Calculator', href: RESOURCE_LINKS[2].href },
+        { label: 'Macro Tracker', href: RESOURCE_LINKS[3].href },
       ],
     },
   ] as const

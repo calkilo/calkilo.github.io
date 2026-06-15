@@ -59,7 +59,7 @@ const PRICING_FAQS = [
 export default function PricingPage() {
   const relatedPages = [
     ...CORE_SITE_LINKS.filter((link) => link.href !== '/pricing/'),
-    GUIDE_LINKS[2],
+    GUIDE_LINKS[3],
   ]
   const offers = [
     { name: 'Monthly', price: '4.99' },
