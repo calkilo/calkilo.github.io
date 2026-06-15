@@ -58,7 +58,7 @@ const FEATURE_FAQS = [
 ] as const
 
 export default function FeaturesPage() {
-  const relatedPages = [...CORE_SITE_LINKS.filter((link) => link.href !== '/features/'), GUIDE_LINKS[0], GUIDE_LINKS[1]]
+  const relatedPages = [...CORE_SITE_LINKS.filter((link) => link.href !== '/features/'), GUIDE_LINKS[1], GUIDE_LINKS[2]]
   const pageJsonLd = [
     {
       '@context': 'https://schema.org',

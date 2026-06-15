@@ -10,6 +10,7 @@
 
 ## Canonical pages
 - Home: https://calkilo.com/
+- Daily calorie calculator: https://calkilo.com/calorie-calculator/
 - AI calorie tracker: https://calkilo.com/ai-calorie-tracker/
 - Photo calorie calculator: https://calkilo.com/photo-calorie-calculator/
 - Macro tracker: https://calkilo.com/macro-tracker/
@@ -24,4 +25,3 @@
 ## Support
 - Contact support: https://calkilo.com/contact/
 - Account deletion: https://calkilo.com/account-deletion/
-

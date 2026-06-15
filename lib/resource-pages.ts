@@ -39,6 +39,11 @@ export type ResourcePageKey = 'ai-calorie-tracker' | 'photo-calorie-calculator' 
 
 export const GUIDE_LINKS: ReadonlyArray<ResourceLink> = [
   {
+    href: '/calorie-calculator/',
+    label: 'Calorie Calculator',
+    description: 'Calculate daily calories, TDEE, and a weight goal timeline from your body and activity details.',
+  },
+  {
     href: '/ai-calorie-tracker/',
     label: 'AI Calorie Tracker',
     description: 'How Calkilo helps people track calories faster with AI.',
