@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { type CSSProperties } from 'react'
-import { APP_STORE_URL, GOOGLE_PLAY_URL } from '../lib/app-links'
+import { APP_STORE_URL, getAndroidStoreLinks, getStoreSameAs } from '../lib/app-links'
 import { SITE_URL } from '../lib/seo'
 import {
   DEFAULT_LANGUAGE,
@@ -39,6 +39,8 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
   const featuresHref = language === 'en' ? '/features/' : toLocalizedPath('/#features', language)
   const pricingHref = language === 'en' ? '/pricing/' : toLocalizedPath('/#pricing', language)
   const localizedResourceLinks = getLocalizedResourceLinks(language)
+  const androidStoreLinks = getAndroidStoreLinks(language)
+  const storeSameAs = getStoreSameAs(language)
   const alternateLanguages = pageKey ? getResourceAlternateLanguages(pageKey) : undefined
   const localizedCorePages = CORE_SITE_LINKS.map((link) => {
     if (link.href === '/features/') {
@@ -120,7 +122,7 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
       name: 'Calkilo',
       url: SITE_URL,
       logo: `${SITE_URL}/assets/logo.png`,
-      sameAs: [GOOGLE_PLAY_URL, APP_STORE_URL],
+      sameAs: storeSameAs,
     },
     {
       '@context': 'https://schema.org',
@@ -137,13 +139,13 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
     },
     {
       '@context': 'https://schema.org',
-      '@type': 'SoftwareApplication',
+      '@type': 'WebApplication',
       name: 'Calkilo',
       applicationCategory: 'HealthApplication',
       operatingSystem: 'iOS, Android',
       description: page.description,
       url: `${SITE_URL}${page.path}`,
-      sameAs: [GOOGLE_PLAY_URL, APP_STORE_URL],
+      sameAs: storeSameAs,
       featureList: page.highlights.map((highlight) => highlight.title),
       publisher: {
         '@type': 'Organization',
@@ -234,9 +236,17 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
               <h1>{page.heading}</h1>
               <p>{page.intro}</p>
               <div className="lp-resource-actions">
-                <a className="lp-btn lp-btn--solid" href={GOOGLE_PLAY_URL} target="_blank" rel="noreferrer">
-                  Google Play
-                </a>
+                {androidStoreLinks.map((store, index) => (
+                  <a
+                    key={store.href}
+                    className={index === 0 ? 'lp-btn lp-btn--solid' : 'lp-btn lp-resource-btn-secondary'}
+                    href={store.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {store.label}
+                  </a>
+                ))}
                 <a className="lp-btn lp-resource-btn-secondary" href={APP_STORE_URL} target="_blank" rel="noreferrer">
                   App Store
                 </a>

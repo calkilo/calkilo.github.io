@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo, useState, type CSSProperties } from 'react'
-import { APP_STORE_URL, GOOGLE_PLAY_URL } from '../lib/app-links'
+import { APP_STORE_URL, getAndroidStoreLinks, getStoreSameAs, GOOGLE_PLAY_URL } from '../lib/app-links'
 import { getLocalizedResourceLinks } from '../lib/resource-pages'
 import { SITE_URL } from '../lib/seo'
 import { CORE_SITE_LINKS, ENGLISH_POPULAR_PAGE_LINKS, type SitePageLink } from '../lib/site-pages'
@@ -651,6 +651,47 @@ const PRICING_PLANS = [
   },
 ] as const
 
+const PERSIAN_PRICING: Record<(typeof PRICING_PLANS)[number]['title'], { displayPrice: string; schemaPriceIrr: string }> = {
+  Monthly: {
+    displayPrice: '۲۸۹٬۰۰۰٬۰۰۰ تومان',
+    schemaPriceIrr: '2890000000',
+  },
+  Yearly: {
+    displayPrice: '۵۸۹٬۰۰۰٬۰۰۰ تومان',
+    schemaPriceIrr: '5890000000',
+  },
+}
+
+function getPricingDisplayPrice(plan: (typeof PRICING_PLANS)[number], language: SiteLanguage) {
+  if (language === 'fa') {
+    return PERSIAN_PRICING[plan.title].displayPrice
+  }
+
+  return plan.price
+}
+
+function getPricingSchemaOffer(plan: (typeof PRICING_PLANS)[number], language: SiteLanguage, url: string) {
+  if (language === 'fa') {
+    return {
+      '@type': 'Offer',
+      name: plan.title,
+      priceCurrency: 'IRR',
+      price: PERSIAN_PRICING[plan.title].schemaPriceIrr,
+      availability: 'https://schema.org/InStock',
+      url,
+    }
+  }
+
+  return {
+    '@type': 'Offer',
+    name: plan.title,
+    priceCurrency: 'USD',
+    price: plan.price.replace('$', ''),
+    availability: 'https://schema.org/InStock',
+    url,
+  }
+}
+
 const COMMUNITY_ITEMS = [
   {
     title: 'Challenges',
@@ -1214,7 +1255,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Do I need internet connection to use the app?": "آیا کار با اپلیکیشن نیاز به اینترنت دائمی دارد؟",
     "Do recipes include nutritional information?": "آیا دستورها شامل اطلاعات تغذیه‌ای هستند؟",
     "Does it work with my fitness tracker?": "آیا اپلیکیشن با ساعت‌های هوشمند و مچ‌بندهای سلامتی همگام می‌شود؟",
-    "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "اشتراک پریمیوم Calkilo به‌صورت ماهانه با قیمت $4.99 یا سالانه با قیمت $14.99 ارائه می‌شود. هر دو طرح برنامه غذایی شخصی‌سازی‌شده، تحلیل‌های دقیق‌تر و مربی هوش مصنوعی را فعال می‌کنند.",
+    "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "اشتراک پریمیوم Calkilo به‌صورت ماهانه با قیمت ۲۸۹٬۰۰۰٬۰۰۰ تومان یا سالانه با قیمت ۵۸۹٬۰۰۰٬۰۰۰ تومان ارائه می‌شود. هر دو طرح برنامه غذایی شخصی‌سازی‌شده، تحلیل‌های دقیق‌تر و مربی هوش مصنوعی را فعال می‌کنند.",
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "سیستم ما با ترکیب اهداف، ذائقه و سوابق تغذیه‌ای شما، هوشمندانه‌ترین پیشنهادها را که دقیقاً با سبک زندگی‌تان سازگار است، طراحی می‌کند.",
     "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "بله، بعد از شروع برنامه می‌توانید اطلاعاتی مثل قد و وزن هدف را در پروفایل خود به‌روزرسانی کنید. در حال حاضر امکان تنظیم دستی ماکروها وجود ندارد.",
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "بله، تمام تصاویر ارسالی به‌صورت رمزگذاری‌شده ذخیره می‌شوند. این داده‌ها صرفاً برای تحلیل دقیق‌تر و شخصی‌سازی بهتر پیشنهادها برای خود شما استفاده می‌شوند.",
@@ -1386,18 +1427,32 @@ function AppleIcon() {
   )
 }
 
-function StoreButtons({ copy }: { copy: TranslationCopy }) {
+function StoreButtons({ language }: { language: SiteLanguage }) {
+  const androidStoreLinks = getAndroidStoreLinks(language)
+
   return (
     <div className="lp-store-row" aria-label="Store links">
-      <a className="lp-store-btn" href={GOOGLE_PLAY_URL} role="button" target="_blank" rel="noopener noreferrer">
-        
-          <GooglePlayIcon />
-      
-        {/* <span className="lp-store-copy">
-          <small>{copy.storeGoogleSmall}</small>
-          <strong>{copy.storeGoogleLarge}</strong>
-        </span> */}
-      </a>
+      {language === 'fa'
+        ? androidStoreLinks.map((store) => (
+            <a
+              key={store.href}
+              className="lp-store-btn lp-store-btn--text"
+              href={store.href}
+              role="button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="lp-store-copy">
+                <small>دریافت از</small>
+                <strong>{store.label}</strong>
+              </span>
+            </a>
+          ))
+        : (
+            <a className="lp-store-btn" href={GOOGLE_PLAY_URL} role="button" target="_blank" rel="noopener noreferrer">
+              <GooglePlayIcon />
+            </a>
+          )}
       <a className="lp-store-btn" href={APP_STORE_URL} role="button" target="_blank" rel="noopener noreferrer">
 
           <AppleIcon />
@@ -1778,7 +1833,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
         name: 'Calkilo',
         url: SITE_URL,
         logo: `${SITE_URL}/assets/logo.png`,
-        sameAs: [GOOGLE_PLAY_URL, APP_STORE_URL],
+        sameAs: getStoreSameAs(language),
         contactPoint: [
           {
             '@type': 'ContactPoint',
@@ -1819,15 +1874,11 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
         url: `${SITE_URL}${seoPath}`,
         inLanguage: language,
         isAccessibleForFree: true,
-        sameAs: [GOOGLE_PLAY_URL, APP_STORE_URL],
+        sameAs: getStoreSameAs(language),
         featureList: FEATURE_ITEMS.map((item) => ts(item.title)),
         offers: PRICING_PLANS.map((plan) => ({
-          '@type': 'Offer',
+          ...getPricingSchemaOffer(plan, language, pricingOfferUrl),
           name: ts(plan.title),
-          priceCurrency: 'USD',
-          price: plan.price.replace('$', ''),
-          availability: 'https://schema.org/InStock',
-          url: pricingOfferUrl,
         })),
       },
       ...(!isDarkVariantPage
@@ -1900,7 +1951,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
               </h1>
               <p>{copy.heroDescription}</p>
               <div className="lp-store-label">{copy.availableOn}</div>
-              <StoreButtons copy={copy} />
+              <StoreButtons language={language} />
             </div>
 
             <div className="lp-hero-media lp-reveal lp-reveal--right" aria-hidden="true">
@@ -2180,7 +2231,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
                   <h3>{ts(plan.title)}</h3>
                   <p className="lp-price-subtitle">{ts(plan.subtitle)}</p>
                   <div className="lp-price-row">
-                    <span>{plan.price}</span>
+                    <span>{getPricingDisplayPrice(plan, language)}</span>
                     {plan.oldPrice ? <small>{plan.oldPrice}</small> : null}
                   </div>
                   <ul>
@@ -2270,7 +2321,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
                 <span> {copy.downloadTitleB}</span>
               </h2>
               <p>{copy.downloadDescription}</p>
-              <StoreButtons copy={copy} />
+              <StoreButtons language={language} />
             </div>
 
             <div className="lp-download-scan lp-reveal">

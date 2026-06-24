@@ -385,6 +385,14 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
   transition: transform 0.28s var(--lp-motion-smooth), filter 0.28s var(--lp-motion-smooth);
 }
 
+.lp-store-btn--text {
+  background: #121212;
+  border-radius: 13px;
+  min-height: 52px;
+  min-width: 148px;
+  padding: 8px 16px;
+}
+
 .lp-store-btn:hover {
   filter: drop-shadow(0 14px 28px rgba(18, 18, 18, 0.24));
   transform: translateY(-4px);
@@ -2101,6 +2109,53 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
   color: var(--lp-text);
 }
 
+.lp-food-stat-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  margin-top: 20px;
+}
+
+.lp-food-stat-grid article {
+  background: var(--lp-surface-soft);
+  border: 1px solid var(--lp-border);
+  border-radius: 18px;
+  display: grid;
+  gap: 6px;
+  min-height: 142px;
+  padding: 18px;
+}
+
+.lp-food-stat-grid span,
+.lp-food-stat-grid small {
+  color: var(--lp-muted);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.lp-food-stat-grid strong {
+  color: var(--lp-text);
+  font-family: var(--lp-display-font);
+  font-size: clamp(1.9rem, 3vw, 2.45rem);
+  line-height: 1;
+}
+
+.lp-food-cta-card {
+  align-items: center;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.lp-food-cta-card .lp-btn {
+  white-space: nowrap;
+}
+
+.lp-food-cta-actions {
+  justify-content: flex-end;
+  margin-top: 0;
+}
+
 .lp-calculator-page {
   --lp-calculator-ink: #102218;
   --lp-calculator-soft: #edfff3;
@@ -3444,7 +3499,8 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
   .lp-calculator-hero-grid,
   .lp-calculator-intro-card,
   .lp-calculator-two-column,
-  .lp-calculator-app-cta {
+  .lp-calculator-app-cta,
+  .lp-food-cta-card {
     grid-template-columns: minmax(0, 1fr);
   }
 

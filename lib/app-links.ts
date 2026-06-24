@@ -1,8 +1,29 @@
+import { type SiteLanguage } from './site-language'
+
 export const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.calkilo.mobile&hl=fa'
+export const CAFE_BAZAAR_URL = 'https://cafebazaar.ir/app/com.calkilo.mobile'
+export const MYKET_URL = 'https://myket.ir/app/com.calkilo.mobile'
 export const APP_STORE_URL = 'https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411'
 export const CALKILO_WEB_URL = 'https://calkilo.com'
 export const CALKILO_APP_SCHEME = 'calkilo'
 export const CALKILO_ANDROID_PACKAGE = 'com.calkilo.mobile'
+
+export const PERSIAN_ANDROID_STORE_LINKS = [
+  { label: 'Cafe Bazaar', href: CAFE_BAZAAR_URL },
+  { label: 'Myket', href: MYKET_URL },
+] as const
+
+export function getAndroidStoreLinks(language: SiteLanguage | string = 'en') {
+  if (language === 'fa') {
+    return PERSIAN_ANDROID_STORE_LINKS
+  }
+
+  return [{ label: 'Google Play', href: GOOGLE_PLAY_URL }] as const
+}
+
+export function getStoreSameAs(language: SiteLanguage | string = 'en') {
+  return [...getAndroidStoreLinks(language).map((store) => store.href), APP_STORE_URL]
+}
 
 type LinkQueryValue = string | undefined
 
