@@ -17,7 +17,8 @@ export default class AppDocument extends Document<AppDocumentProps> {
   static async getInitialProps(ctx: DocumentContext): Promise<AppDocumentProps> {
     const initialProps = await Document.getInitialProps(ctx)
     const queryLanguage = Array.isArray(ctx.query.lang) ? ctx.query.lang[0] : ctx.query.lang
-    const language = normalizeSiteLanguage(queryLanguage)
+    const pathLanguage = ctx.pathname.split('/').filter(Boolean)[0]
+    const language = normalizeSiteLanguage(queryLanguage || pathLanguage)
 
     return {
       ...initialProps,

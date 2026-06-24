@@ -4,8 +4,9 @@ import { useEffect } from 'react'
 import { isRtlLanguage, normalizeSiteLanguage } from '../lib/site-language'
 import '../styles/globals.css'
 
-export default function App({ Component, pageProps }: AppProps) {
-  const language = normalizeSiteLanguage((pageProps as { lang?: string }).lang)
+export default function App({ Component, pageProps, router }: AppProps) {
+  const pathLanguage = router.asPath.split(/[/?#]/).filter(Boolean)[0]
+  const language = normalizeSiteLanguage((pageProps as { lang?: string }).lang || pathLanguage)
 
   useEffect(() => {
     document.documentElement.lang = language
