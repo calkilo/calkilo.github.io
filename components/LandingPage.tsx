@@ -653,12 +653,12 @@ const PRICING_PLANS = [
 
 const PERSIAN_PRICING: Record<(typeof PRICING_PLANS)[number]['title'], { displayPrice: string; schemaPriceIrr: string }> = {
   Monthly: {
-    displayPrice: '۲۸۹٬۰۰۰٬۰۰۰ تومان',
-    schemaPriceIrr: '2890000000',
+    displayPrice: '۲۸۹٬۰۰۰ تومان',
+    schemaPriceIrr: '289000',
   },
   Yearly: {
-    displayPrice: '۵۸۹٬۰۰۰٬۰۰۰ تومان',
-    schemaPriceIrr: '5890000000',
+    displayPrice: '۵۸۹٬۰۰۰ تومان',
+    schemaPriceIrr: '5890000',
   },
 }
 
