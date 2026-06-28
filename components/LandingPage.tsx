@@ -1416,15 +1416,11 @@ function translateStaticText(language: SiteLanguage, text: string): string {
 }
 
 function GooglePlayIcon() {
-  return (
-    <img   src={FIGMA_ASSETS.GooglePlay} alt="" />
-  )
+  return <img src={FIGMA_ASSETS.GooglePlay} alt="" width="120" height="40" decoding="async" />
 }
 
 function AppleIcon() {
-  return (
-    <img src={FIGMA_ASSETS.AppStore} alt="" />
-  )
+  return <img src={FIGMA_ASSETS.AppStore} alt="" width="120" height="40" decoding="async" />
 }
 
 function StoreButtons({ language }: { language: SiteLanguage }) {
@@ -1466,7 +1462,7 @@ function StoreButtons({ language }: { language: SiteLanguage }) {
 function QrCard({ label }: { label: string }) {
   return (
     <div className="lp-qr-card">
-      <img className="lp-qr-image" src="/assets/qr-code.png" alt={label} />
+      <img className="lp-qr-image" src="/assets/qr-code.png" alt={label} width="1155" height="1155" loading="lazy" decoding="async" />
       <p>{label}</p>
     </div>
   )
@@ -1533,8 +1529,14 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
   const heroSlides = useMemo(
     () =>
       isDark
-        ? [FIGMA_ASSETS.heroSlideOne, FIGMA_ASSETS.heroSlideTwoDark]
-        : [FIGMA_ASSETS.heroSlideOne, FIGMA_ASSETS.heroSlideTwoLight],
+        ? [
+            { src: FIGMA_ASSETS.heroSlideOne, width: 1400, height: 1090 },
+            { src: FIGMA_ASSETS.heroSlideTwoDark, width: 1400, height: 908 },
+          ]
+        : [
+            { src: FIGMA_ASSETS.heroSlideOne, width: 1400, height: 1090 },
+            { src: FIGMA_ASSETS.heroSlideTwoLight, width: 950, height: 600 },
+          ],
     [isDark],
   )
 
@@ -1923,6 +1925,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
         noindex={isDarkVariantPage}
         imagePath="/assets/hero-main.png"
         imageAlt="Calkilo AI calorie tracking dashboard"
+        preloadImagePaths={[heroSlides[0].src]}
         jsonLd={landingJsonLd}
         language={language}
         alternateLanguages={landingAlternateLanguages}
@@ -1944,7 +1947,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
       <main id="home">
         <section className="lp-hero">
           <div className="lp-container lp-hero-grid">
-            <div className="lp-hero-copy lp-reveal lp-reveal--left">
+            <div className="lp-hero-copy lp-reveal lp-reveal--left is-visible">
               <h1>
                 {copy.heroTitleA}
                 <span>{copy.heroTitleB}</span>
@@ -1954,17 +1957,20 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
               <StoreButtons language={language} />
             </div>
 
-            <div className="lp-hero-media lp-reveal lp-reveal--right" aria-hidden="true">
+            <div className="lp-hero-media lp-reveal lp-reveal--right is-visible" aria-hidden="true">
               <div className="lp-hero-glow" />
               <div className="lp-hero-orbit lp-hero-orbit--one" />
               <div className="lp-hero-orbit lp-hero-orbit--two" />
               {heroSlides.map((slide, index) => (
                 <img
-                  key={slide}
-                  src={slide}
+                  key={slide.src}
+                  src={slide.src}
                   alt=""
+                  width={slide.width}
+                  height={slide.height}
                   loading={index === 0 ? 'eager' : 'lazy'}
                   fetchPriority={index === 0 ? 'high' : 'low'}
+                  decoding={index === 0 ? 'sync' : 'async'}
                   className={`lp-hero-slide${index === heroSlide ? ' is-active' : ''}`}
                 />
               ))}
@@ -1983,9 +1989,8 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
                     src={item.screen}
                     alt=""
                     className={`lp-ai-screen${activeFeature === index ? ' is-active' : ''}`}
-                    loading={index === 0 ? 'eager' : 'lazy'}
+                    loading="lazy"
                     decoding="async"
-                    fetchPriority={index === 0 ? 'high' : 'low'}
                   />
                 ))}
               </div>

@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&family=Poppins:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap');
-
 *,
 *::before,
 *::after {
@@ -19,17 +17,17 @@ html {
 }
 
 body {
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 html[lang='ar'] body {
-  font-family: 'Cairo', 'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+  font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
 }
 
 html[lang='fa'] body {
-  font-family: 'Vazirmatn', 'Cairo', 'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+  font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
 }
 
 a {
@@ -65,14 +63,14 @@ img {
   --lp-card-alt: #f8f8f8;
   --lp-accent: #00d448;
   --lp-accent-dark: #0aaa40;
-  --lp-display-font: 'Arial Rounded MT Bold', 'Arial Rounded MT', 'Trebuchet MS', 'Poppins', sans-serif;
-  --lp-brand-font: 'Arial Rounded MT Bold', 'Arial Rounded MT', 'Trebuchet MS', 'Poppins', sans-serif;
+  --lp-display-font: 'Arial Rounded MT Bold', 'Arial Rounded MT', 'Trebuchet MS', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --lp-brand-font: 'Arial Rounded MT Bold', 'Arial Rounded MT', 'Trebuchet MS', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --lp-motion-smooth: cubic-bezier(0.22, 1, 0.36, 1);
   --lp-motion-gentle: cubic-bezier(0.37, 0, 0.18, 1);
   --lp-shadow: 0 16px 42px rgba(0, 0, 0, 0.1);
   background: var(--lp-bg);
   color: var(--lp-text);
-  font-family: var(--lp-language-font, 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  font-family: var(--lp-language-font, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif);
   overflow-x: clip;
   width: 100%;
 }

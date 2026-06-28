@@ -24,6 +24,7 @@ interface SeoHeadProps {
   imageWidth?: number
   imageHeight?: number
   imageType?: string
+  preloadImagePaths?: ReadonlyArray<string>
   keywords?: ReadonlyArray<string>
   noindex?: boolean
   nofollow?: boolean
@@ -91,6 +92,7 @@ export default function SeoHead({
   imageWidth,
   imageHeight,
   imageType,
+  preloadImagePaths,
   keywords,
   noindex = false,
   nofollow = false,
@@ -128,6 +130,15 @@ export default function SeoHead({
       ) : null}
 
       <link rel="canonical" href={canonicalUrl} key="canonical" />
+      {preloadImagePaths?.map((preloadImagePath) => (
+        <link
+          key={`preload:image:${preloadImagePath}`}
+          rel="preload"
+          as="image"
+          href={preloadImagePath}
+          fetchPriority="high"
+        />
+      ))}
       <meta name="robots" content={robotsContent} key="robots" />
       <meta name="googlebot" content={robotsContent} key="googlebot" />
       <meta name="author" content={SITE_NAME} key="author" />

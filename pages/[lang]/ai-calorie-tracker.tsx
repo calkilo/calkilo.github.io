@@ -1,10 +1,10 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import ResourcePage from '../../components/ResourcePage'
-import { getResourceLocalizedLanguages, getResourcePage } from '../../lib/resource-pages'
-import { normalizeSiteLanguage } from '../../lib/site-language'
+import { getResourcePage } from '../../lib/resource-pages'
+import { LOCALIZED_LANGUAGES, normalizeSiteLanguage } from '../../lib/site-language'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getResourceLocalizedLanguages('ai-calorie-tracker').map((lang) => ({
+  const paths = LOCALIZED_LANGUAGES.map((lang) => ({
     params: { lang },
   }))
 
