@@ -28,19 +28,19 @@ export const LANGUAGE_SHORT_LABELS: Record<SiteLanguage, string> = {
   it: 'It',
 }
 
-const DEFAULT_WEB_FONT_FAMILY = "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+const DEFAULT_WEB_FONT_FAMILY =
+  "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
 const DEFAULT_DISPLAY_FONT_FAMILY =
-  "'Arial Rounded MT Bold', 'Arial Rounded MT', 'Trebuchet MS', 'Poppins', sans-serif"
-const ARABIC_WEB_FONT_FAMILY = "'Cairo', 'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif"
-const PERSIAN_WEB_FONT_FAMILY =
-  "'Vazirmatn', 'Cairo', 'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif"
+  "'Arial Rounded MT Bold', 'Arial Rounded MT', 'Trebuchet MS', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+const ARABIC_WEB_FONT_FAMILY = "Tahoma, 'Segoe UI', Arial, sans-serif"
+const PERSIAN_WEB_FONT_FAMILY = "Tahoma, 'Segoe UI', Arial, sans-serif"
 
 export const LANGUAGE_FONT_FAMILIES: Record<SiteLanguage, string> = {
   en: DEFAULT_WEB_FONT_FAMILY,
   nl: DEFAULT_WEB_FONT_FAMILY,
   it: DEFAULT_WEB_FONT_FAMILY,
-  ru: "'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-  zh: "'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif",
+  ru: DEFAULT_WEB_FONT_FAMILY,
+  zh: "-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif",
   ar: ARABIC_WEB_FONT_FAMILY,
   fa: PERSIAN_WEB_FONT_FAMILY,
 }
