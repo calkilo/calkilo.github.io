@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useEffect, useMemo, useState, type CSSProperties } from 'react'
+import { useCallback, useEffect, useMemo, useState, type CSSProperties, type ImgHTMLAttributes } from 'react'
 import { APP_STORE_URL, getAndroidStoreLinks, getStoreSameAs, GOOGLE_PLAY_URL } from '../lib/app-links'
 import { getLocalizedResourceLinks } from '../lib/resource-pages'
 import { SITE_URL } from '../lib/seo'
@@ -62,6 +62,32 @@ const FIGMA_ASSETS = {
   AppStore:'/assets/appstore.png',
   GooglePlay: '/assets/google-play.png',
 } as const
+
+type OptimizedImageProps = ImgHTMLAttributes<HTMLImageElement> & {
+  alt: string
+  src: string
+}
+
+function getWebpSource(src: string): string | undefined {
+  return src.endsWith('.png') ? src.replace(/\.png$/u, '.webp') : undefined
+}
+
+function OptimizedImage({ alt, src, ...props }: OptimizedImageProps) {
+  const webpSource = getWebpSource(src)
+  // eslint-disable-next-line @next/next/no-img-element
+  const image = <img {...props} src={src} alt={alt} />
+
+  if (!webpSource) {
+    return image
+  }
+
+  return (
+    <picture className="lp-optimized-picture">
+      <source srcSet={webpSource} type="image/webp" />
+      {image}
+    </picture>
+  )
+}
 
 const NAV_ITEMS = ['home', 'features', 'pricing', 'contact'] as const
 
@@ -1416,11 +1442,27 @@ function translateStaticText(language: SiteLanguage, text: string): string {
 }
 
 function GooglePlayIcon() {
-  return <img src={FIGMA_ASSETS.GooglePlay} alt="" width="120" height="40" decoding="async" />
+  return (
+    <OptimizedImage
+      src={FIGMA_ASSETS.GooglePlay}
+      alt="Get it on Google Play"
+      width="120"
+      height="40"
+      decoding="async"
+    />
+  )
 }
 
 function AppleIcon() {
-  return <img src={FIGMA_ASSETS.AppStore} alt="" width="120" height="40" decoding="async" />
+  return (
+    <OptimizedImage
+      src={FIGMA_ASSETS.AppStore}
+      alt="Download on the App Store"
+      width="120"
+      height="40"
+      decoding="async"
+    />
+  )
 }
 
 function StoreButtons({ language }: { language: SiteLanguage }) {
@@ -1462,7 +1504,15 @@ function StoreButtons({ language }: { language: SiteLanguage }) {
 function QrCard({ label }: { label: string }) {
   return (
     <div className="lp-qr-card">
-      <img className="lp-qr-image" src="/assets/qr-code.png" alt={label} width="1155" height="1155" loading="lazy" decoding="async" />
+      <OptimizedImage
+        className="lp-qr-image"
+        src="/assets/qr-code.png"
+        alt={`${label} QR code for Calkilo`}
+        width="1155"
+        height="1155"
+        loading="lazy"
+        decoding="async"
+      />
       <p>{label}</p>
     </div>
   )
@@ -1470,16 +1520,50 @@ function QrCard({ label }: { label: string }) {
 
 function DownloadArt({ isDark }: { isDark: boolean }) {
   if (!isDark) {
-    return <img src={FIGMA_ASSETS.downloadObjects} alt="" className="lp-download-composite" loading="lazy" decoding="async" />
+    return (
+      <OptimizedImage
+        src={FIGMA_ASSETS.downloadObjects}
+        alt="Calkilo app download preview"
+        className="lp-download-composite"
+        width="518"
+        height="556"
+        loading="lazy"
+        decoding="async"
+      />
+    )
   }
 
   return (
     <div className="lp-download-stage">
       <div className="lp-download-glow lp-download-glow--primary" />
       <div className="lp-download-glow lp-download-glow--secondary" />
-      <img src={FIGMA_ASSETS.downloadDecor} alt="" className="lp-download-floaters" loading="lazy" decoding="async" />
-      <img src={FIGMA_ASSETS.downloadPhone} alt="" className="lp-download-phone" loading="lazy" decoding="async" />
-      <img src={FIGMA_ASSETS.downloadTrophy} alt="" className="lp-download-trophy" loading="lazy" decoding="async" />
+      <OptimizedImage
+        src={FIGMA_ASSETS.downloadDecor}
+        alt="Floating Calkilo nutrition cards"
+        className="lp-download-floaters"
+        width="652"
+        height="2392"
+        loading="lazy"
+        decoding="async"
+      />
+      <OptimizedImage
+        src={FIGMA_ASSETS.downloadPhone}
+        alt="Calkilo mobile app screen"
+        className="lp-download-phone"
+        width="800"
+        height="1200"
+        loading="lazy"
+        decoding="async"
+      />
+      <OptimizedImage
+        src={FIGMA_ASSETS.downloadTrophy}
+        alt="Calkilo achievement trophy"
+        className="lp-download-trophy"
+        width="682"
+        height="1890"
+        loading="lazy"
+        decoding="async"
+      />
     </div>
   )
 }
@@ -1521,7 +1605,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
   const resolvedVariant: LandingVariant = manualVariant ?? systemVariant
   const isDark = resolvedVariant === 'dark'
   const copy = TRANSLATIONS[language]
-  const ts = (text: string) => translateStaticText(language, text)
+  const ts = useCallback((text: string) => translateStaticText(language, text), [language])
   const aiTitleSuffix = copy.aiTitle.replace(/^CalKilo-AI[:：]\s*/u, '')
   const languageFontFamily = LANGUAGE_FONT_FAMILIES[language]
   const languageDisplayFontFamily = LANGUAGE_DISPLAY_FONT_FAMILIES[language]
@@ -1901,7 +1985,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
           ]
         : []),
     ],
-    [copy.pageDescription, isDarkVariantPage, language, pricingOfferUrl, seoPath, seoTitle],
+    [copy.pageDescription, isDarkVariantPage, language, pricingOfferUrl, seoPath, seoTitle, ts],
   )
 
   return (
@@ -1962,10 +2046,10 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
               <div className="lp-hero-orbit lp-hero-orbit--one" />
               <div className="lp-hero-orbit lp-hero-orbit--two" />
               {heroSlides.map((slide, index) => (
-                <img
+                <OptimizedImage
                   key={slide.src}
                   src={slide.src}
-                  alt=""
+                  alt={index === 0 ? 'Calkilo AI calorie tracking dashboard' : 'Calkilo nutrition summary app screen'}
                   width={slide.width}
                   height={slide.height}
                   loading={index === 0 ? 'eager' : 'lazy'}
@@ -1984,11 +2068,13 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
               <div className="lp-ai-screen-glow" />
               <div className="lp-ai-screen-stage">
                 {FEATURE_ITEMS.map((item, index) => (
-                  <img
+                  <OptimizedImage
                     key={item.title}
                     src={item.screen}
-                    alt=""
+                    alt={`${ts(item.title)} Calkilo app screen`}
                     className={`lp-ai-screen${activeFeature === index ? ' is-active' : ''}`}
+                    width={index === 0 ? '399' : index === 1 ? '544' : index === 2 ? '491' : '509'}
+                    height={index === 3 ? '572' : '576'}
                     loading="lazy"
                     decoding="async"
                   />
@@ -2047,7 +2133,14 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
 
               <div className="lp-nutrients-panel lp-reveal lp-reveal--right">
                 <div className="lp-tilted-food" aria-hidden="true">
-                  <img src={FIGMA_ASSETS.nutrientFood} alt="" loading="lazy" decoding="async" />
+                  <OptimizedImage
+                    src={FIGMA_ASSETS.nutrientFood}
+                    alt="Balanced meal plate in Calkilo"
+                    width="4096"
+                    height="2731"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
                 <article className="lp-requirement-card">
                   <h3>{ts('Nutrients required')}</h3>
@@ -2071,7 +2164,14 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
 
             <div className="lp-meal-lane">
               <article className="lp-meal-item lp-reveal">
-                <img src={FIGMA_ASSETS.mealCheese} alt={ts('Cheese, Bread')} loading="lazy" decoding="async" />
+                <OptimizedImage
+                  src={FIGMA_ASSETS.mealCheese}
+                  alt={ts('Cheese, Bread')}
+                  width="600"
+                  height="450"
+                  loading="lazy"
+                  decoding="async"
+                />
                 <div>
                   <h3>{ts('Cheese, Bread')}</h3>
                   <p>{ts('270 Cal')}</p>
@@ -2083,7 +2183,14 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
                 className="lp-meal-item lp-meal-item--shift lp-reveal lp-reveal--right"
                 style={{ '--stagger-index': 1 } as CSSProperties}
               >
-                <img src={FIGMA_ASSETS.mealKebab} alt={ts('Kebab, Tomato & Basil')} loading="lazy" decoding="async" />
+                <OptimizedImage
+                  src={FIGMA_ASSETS.mealKebab}
+                  alt={ts('Kebab, Tomato & Basil')}
+                  width="1200"
+                  height="743"
+                  loading="lazy"
+                  decoding="async"
+                />
                 <div>
                   <h3>{ts('Kebab, Tomato & Basil')}</h3>
                   <p>{ts('480 Cal')}</p>
@@ -2111,7 +2218,14 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
                   style={{ '--stagger-index': index } as CSSProperties}
                 >
                   <div className="lp-how-image-wrap">
-                    <img src={step.image} alt={ts(step.title)} loading="lazy" decoding="async" />
+                    <OptimizedImage
+                      src={step.image}
+                      alt={`${ts(step.title)} in Calkilo`}
+                      width={index === 0 ? '1206' : '1254'}
+                      height={index === 0 ? '1299' : '1347'}
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
                  
                 </article>
@@ -2144,8 +2258,24 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
             </div>
 
             <div className="lp-style-phones lp-reveal lp-reveal--right" aria-hidden="true">
-              <img src={FIGMA_ASSETS.showcasePhoneDark} alt="" className="lp-style-phone back" loading="lazy" decoding="async" />
-              <img src={FIGMA_ASSETS.showcasePhoneLight} alt="" className="lp-style-phone front" loading="lazy" decoding="async" />
+              <OptimizedImage
+                src={FIGMA_ASSETS.showcasePhoneDark}
+                alt="Calkilo dark mode phone preview"
+                className="lp-style-phone back"
+                width="1494"
+                height="2994"
+                loading="lazy"
+                decoding="async"
+              />
+              <OptimizedImage
+                src={FIGMA_ASSETS.showcasePhoneLight}
+                alt="Calkilo light mode phone preview"
+                className="lp-style-phone front"
+                width="1494"
+                height="2994"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </div>
         </section>
@@ -2165,7 +2295,23 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
                   style={{ '--stagger-index': index } as CSSProperties}
                 >
                   <div className="lp-integration-mark" aria-hidden="true">
-                    <img src={integration.icon} alt="" className="lp-integration-icon" loading="lazy" />
+                    <OptimizedImage
+                      src={integration.icon}
+                      alt={`${ts(integration.name)} integration icon`}
+                      className="lp-integration-icon"
+                      width={
+                        integration.name === 'Apple Health'
+                          ? '37'
+                          : integration.name === 'Google Fit'
+                            ? '52'
+                            : integration.name === 'Samsung Health'
+                              ? '48'
+                              : '44'
+                      }
+                      height={integration.name === 'Samsung Health' ? '51' : '44'}
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
                   <h3>{ts(integration.name)}</h3>
                   <p>{ts(integration.description)}</p>
@@ -2192,11 +2338,13 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
             </header>
 
             <div className="lp-testimonial-stage">
-              <img
+              <OptimizedImage
                 src={FIGMA_ASSETS.avocadoAccent}
-                alt=""
+                alt="Avocado nutrition accent"
                 className="lp-testimonial-avocado lp-reveal lp-reveal--pop"
                 aria-hidden="true"
+                width="600"
+                height="568"
                 loading="lazy"
                 decoding="async"
               />
@@ -2273,7 +2421,15 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
                   className="lp-community-card lp-reveal lp-reveal--pop"
                   style={{ '--stagger-index': index } as CSSProperties}
                 >
-                  <img src={item.icon} alt="" className="lp-community-icon" loading="lazy" />
+                  <OptimizedImage
+                    src={item.icon}
+                    alt={`${ts(item.title)} community feature icon`}
+                    className="lp-community-icon"
+                    width="50"
+                    height="50"
+                    loading="lazy"
+                    decoding="async"
+                  />
                   <h3>{ts(item.title)}</h3>
                   <p>{ts(item.description)}</p>
                 </article>

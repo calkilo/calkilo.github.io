@@ -40,6 +40,10 @@ img {
   max-width: 100%;
 }
 
+.lp-optimized-picture {
+  display: contents;
+}
+
 .sr-only {
   border: 0;
   clip: rect(0 0 0 0);
@@ -1951,6 +1955,50 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
   margin: 10px 0 0;
 }
 
+.lp-not-found-card {
+  max-width: 900px;
+}
+
+.lp-not-found-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 18px;
+}
+
+.lp-not-found-link {
+  background: var(--lp-card-alt);
+  border: 1px solid var(--lp-border);
+  border-radius: 16px;
+  display: block;
+  padding: 18px;
+  transition:
+    border-color 0.24s ease,
+    box-shadow 0.24s ease,
+    transform 0.24s ease;
+}
+
+.lp-not-found-link:hover {
+  border-color: rgba(0, 212, 72, 0.34);
+  box-shadow: 0 14px 30px rgba(18, 18, 18, 0.1);
+  transform: translateY(-3px);
+}
+
+.lp-not-found-link span {
+  color: var(--lp-text);
+  display: block;
+  font-family: var(--lp-display-font);
+  font-size: 1.08rem;
+  margin-bottom: 6px;
+}
+
+.lp-not-found-link small {
+  color: var(--lp-muted);
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
 .lp-policy-date {
   margin-top: 12px;
 }
@@ -3273,6 +3321,10 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 @media (max-width: 760px) {
+  .lp-not-found-grid {
+    grid-template-columns: 1fr;
+  }
+
   .lp-topbar {
     padding: 18px 0 12px;
   }
