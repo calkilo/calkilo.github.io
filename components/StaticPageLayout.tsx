@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import { type CSSProperties, type ReactNode } from 'react'
+import { getBlogCopy } from '../lib/blog-copy'
 import { RESOURCE_LINKS } from '../lib/resource-pages'
 import { translateStaticPageText } from '../lib/static-page-translations'
 import {
@@ -15,7 +16,7 @@ import SiteFooter from './SiteFooter'
 import SiteHeader from './SiteHeader'
 import SeoHead from './SeoHead'
 
-type StaticNavItem = 'privacy' | 'contact' | 'terms' | 'deletion' | 'none'
+type StaticNavItem = 'privacy' | 'contact' | 'terms' | 'deletion' | 'blog' | 'none'
 type JsonLdSchema = Record<string, unknown>
 
 interface StaticPageLayoutProps {
@@ -53,16 +54,19 @@ export default function StaticPageLayout({
   const language = normalizeSiteLanguage(lang)
   const languageFontFamily = LANGUAGE_FONT_FAMILIES[language]
   const languageDisplayFontFamily = LANGUAGE_DISPLAY_FONT_FAMILIES[language]
+  const blogCopy = getBlogCopy(language)
   const t = (text: string) => translateStaticPageText(language, text)
   const localizedPath = toLocalizedPath(path, language)
   const featuresHref = language === 'en' ? '/features/' : toLocalizedPath('/#features', language)
   const pricingHref = language === 'en' ? '/pricing/' : toLocalizedPath('/#pricing', language)
+  const blogHref = toLocalizedPath('/blog', language)
   const footerSections = [
     {
       title: t('Feature'),
       links: [
         { label: t('Features'), href: featuresHref },
         { label: t('Choose Plan'), href: pricingHref },
+        { label: blogCopy.navLabel, href: blogHref },
         { label: 'Calorie Calculator', href: RESOURCE_LINKS[0].href },
       ],
     },
@@ -101,6 +105,12 @@ export default function StaticPageLayout({
       key: 'pricing',
       href: pricingHref,
       label: t('Choose Plan'),
+    },
+    {
+      key: 'blog',
+      href: blogHref,
+      label: blogCopy.navLabel,
+      isActive: activeNav === 'blog',
     },
     {
       key: 'contact',

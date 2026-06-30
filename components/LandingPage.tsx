@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useMemo, useState, type CSSProperties, type ImgHTMLAttributes } from 'react'
 import { APP_STORE_URL, getAndroidStoreLinks, getStoreSameAs, GOOGLE_PLAY_URL } from '../lib/app-links'
+import { type BlogListStatus, type BlogPost } from '../lib/blog'
 import { getLocalizedResourceLinks } from '../lib/resource-pages'
 import { SITE_URL } from '../lib/seo'
 import { CORE_SITE_LINKS, ENGLISH_POPULAR_PAGE_LINKS, type SitePageLink } from '../lib/site-pages'
@@ -15,6 +16,7 @@ import {
   switchLanguagePath,
   toLocalizedPath,
 } from '../lib/site-language'
+import BlogLatestSection from './BlogLatestSection'
 import SiteFooter from './SiteFooter'
 import SiteHeader from './SiteHeader'
 import SeoHead from './SeoHead'
@@ -22,6 +24,8 @@ import SeoHead from './SeoHead'
 type LandingVariant = 'light' | 'dark'
 
 interface LandingPageProps {
+  initialBlogPosts?: BlogPost[]
+  initialBlogStatus?: BlogListStatus
   lang?: string
   variant: LandingVariant
 }
@@ -89,7 +93,7 @@ function OptimizedImage({ alt, src, ...props }: OptimizedImageProps) {
   )
 }
 
-const NAV_ITEMS = ['home', 'features', 'pricing', 'contact'] as const
+const NAV_ITEMS = ['home', 'features', 'pricing', 'blog', 'contact'] as const
 
 const LANDING_PAGE_KEYWORDS: Record<SiteLanguage, ReadonlyArray<string>> = {
   en: ['free ai calorie tracker', 'photo calorie calculator', 'macro tracker app', 'nutrition tracking app', 'calkilo'],
@@ -157,7 +161,7 @@ const TRANSLATIONS: Record<
       'Free AI calorie tracker that estimates food calories from photos, tracks macros, and creates meal plans on iPhone and Android.',
     pageTitle: 'Free AI Calorie Tracker & Photo Food Calorie Counter | Calkilo',
     darkThemeLabel: 'Dark Theme',
-    nav: { home: 'Home', features: 'Features', pricing: 'Choose Plan', contact: 'Contact' },
+    nav: { home: 'Home', features: 'Features', pricing: 'Choose Plan', blog: 'Blog', contact: 'Contact' },
     tryFree: 'Try for free',
     heroTitleA: 'Free AI Calorie Tracker',
     heroTitleB: 'for Food Photos',
@@ -208,7 +212,7 @@ const TRANSLATIONS: Record<
       'Bereken calorieen met AI-nauwkeurigheid, ontvang persoonlijke maaltijdplannen en volg je voeding op al je apparaten.',
     pageTitle: 'Calkilo | AI-calorietracker en voedingsapp',
     darkThemeLabel: 'Donkere modus',
-    nav: { home: 'Thuis', features: 'Functies', pricing: 'Kies plan', contact: 'Contact' },
+    nav: { home: 'Thuis', features: 'Functies', pricing: 'Kies plan', blog: 'Blog', contact: 'Contact' },
     tryFree: 'Probeer gratis',
     heroTitleA: 'Bereken calorieen met',
     heroTitleB: 'AI-precisie',
@@ -253,7 +257,7 @@ const TRANSLATIONS: Record<
     pageDescription: '用 AI 精准计算卡路里，获取个性化餐食计划，并在所有设备上追踪营养。',
     pageTitle: 'Calkilo | AI 卡路里追踪与营养应用',
     darkThemeLabel: '深色主题',
-    nav: { home: '首页', features: '功能', pricing: '选择计划', contact: '联系我们' },
+    nav: { home: '首页', features: '功能', pricing: '选择计划', blog: '博客', contact: '联系我们' },
     tryFree: '免费试用',
     heroTitleA: '使用',
     heroTitleB: 'AI 精准计算卡路里',
@@ -299,7 +303,7 @@ const TRANSLATIONS: Record<
       'Считайте калории с точностью AI, получайте персональные планы питания и отслеживайте рацион на всех устройствах.',
     pageTitle: 'Calkilo | AI-трекер калорий и питания',
     darkThemeLabel: 'Темная тема',
-    nav: { home: 'Главная', features: 'Функции', pricing: 'Тарифы', contact: 'Контакты' },
+    nav: { home: 'Главная', features: 'Функции', pricing: 'Тарифы', blog: 'Блог', contact: 'Контакты' },
     tryFree: 'Попробовать бесплатно',
     heroTitleA: 'Считайте калории с',
     heroTitleB: 'точностью AI',
@@ -345,7 +349,7 @@ const TRANSLATIONS: Record<
       'احسب السعرات بدقة الذكاء الاصطناعي، واحصل على خطط وجبات مخصصة، وتابع تغذيتك على جميع أجهزتك.',
     pageTitle: 'Calkilo | تطبيق تتبع السعرات والتغذية بالذكاء الاصطناعي',
     darkThemeLabel: 'الوضع الداكن',
-    nav: { home: 'الرئيسية', features: 'الميزات', pricing: 'الخطط', contact: 'تواصل' },
+    nav: { home: 'الرئيسية', features: 'الميزات', pricing: 'الخطط', blog: 'المدونة', contact: 'تواصل' },
     tryFree: 'جرب مجاناً',
     heroTitleA: 'احسب السعرات بـ',
     heroTitleB: 'دقة الذكاء الاصطناعي',
@@ -391,7 +395,7 @@ const TRANSLATIONS: Record<
       'از غذای خود عکس بگیرید و با کالری شمار هوش مصنوعی کالکیلو، کالری، پروتئین، کربوهیدرات و چربی را سریع‌تر پیگیری کنید.',
     pageTitle: 'کالری شمار با عکس رایگان و هوش مصنوعی | کالکیلو',
     darkThemeLabel: 'حالت تیره',
-    nav: { home: 'خانه', features: 'ویژگی‌ها', pricing: 'انتخاب طرح', contact: 'تماس' },
+    nav: { home: 'خانه', features: 'ویژگی‌ها', pricing: 'انتخاب طرح', blog: 'بلاگ', contact: 'تماس' },
     tryFree: 'رایگان شروع کنید',
     heroTitleA: 'کالری شمار با عکس',
     heroTitleB: 'رایگان و هوش مصنوعی',
@@ -438,7 +442,7 @@ const TRANSLATIONS: Record<
       'Scatta una foto del pasto e calcola calorie, macro e nutrizione con AI. Calkilo ti aiuta a registrare il diario alimentare su iPhone e Android.',
     pageTitle: 'Calcolo calorie AI da foto | Calkilo',
     darkThemeLabel: 'Tema scuro',
-    nav: { home: 'Home', features: 'Funzioni', pricing: 'Scegli piano', contact: 'Contatto' },
+    nav: { home: 'Home', features: 'Funzioni', pricing: 'Scegli piano', blog: 'Blog', contact: 'Contatto' },
     tryFree: 'Provalo gratis',
     heroTitleA: 'Calcolo calorie AI',
     heroTitleB: 'da foto',
@@ -1591,7 +1595,7 @@ function BoworaBadge() {
   )
 }
 
-export default function LandingPage({ lang, variant }: LandingPageProps) {
+export default function LandingPage({ initialBlogPosts = [], initialBlogStatus, lang, variant }: LandingPageProps) {
   const router = useRouter()
   const initialLanguage = normalizeSiteLanguage(lang)
   const [systemVariant, setSystemVariant] = useState<LandingVariant>(variant)
@@ -1774,6 +1778,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
   const landingKeywords = LANDING_PAGE_KEYWORDS[language] ?? LANDING_PAGE_KEYWORDS.en
   const featuresHref = language === 'en' ? '/features/' : '#features'
   const pricingHref = language === 'en' ? '/pricing/' : '#pricing'
+  const blogHref = toLocalizedPath('/blog', language)
   const contactHref = toLocalizedPath('/contact', language)
   const pricingOfferUrl = pricingHref.startsWith('#') ? `${SITE_URL}${seoPath}${pricingHref}` : `${SITE_URL}${pricingHref}`
   const localizedResourceLinks = getLocalizedResourceLinks(language)
@@ -1863,6 +1868,15 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
       }
     }
 
+    if (item === 'blog') {
+      return {
+        key: item,
+        href: blogHref,
+        isActive: false,
+        label: copy.nav[item],
+      }
+    }
+
     return {
       key: item,
       href: contactHref,
@@ -1876,6 +1890,7 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
       links: [
         { label: copy.nav.features, href: featuresHref },
         { label: copy.nav.pricing, href: pricingHref },
+        { label: copy.nav.blog, href: blogHref },
         { label: localizedResourceLinks[0]?.label ?? 'AI Calorie Tracker', href: localizedResourceLinks[0]?.href ?? '/ai-calorie-tracker/' },
       ],
     },
@@ -2469,6 +2484,13 @@ export default function LandingPage({ lang, variant }: LandingPageProps) {
             </div>
           </section>
         ) : null}
+
+        <BlogLatestSection
+          initialPosts={initialBlogPosts}
+          initialStatus={language === initialLanguage ? initialBlogStatus : 'loading'}
+          language={language}
+          postsLanguage={initialLanguage}
+        />
 
         <section className="lp-section lp-download" id="download">
           <div className="lp-container lp-download-grid">

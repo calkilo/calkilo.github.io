@@ -1,9 +1,30 @@
+import { GetStaticProps } from 'next'
 import LandingPage from '../components/LandingPage'
+import { fetchBlogListSnapshot, type BlogListSnapshot } from '../lib/blog'
 
 interface DarkPageProps {
+  blogSnapshot?: BlogListSnapshot
   lang?: string
 }
 
-export default function DarkPage({ lang }: DarkPageProps) {
-  return <LandingPage lang={lang} variant="dark" />
+export const getStaticProps: GetStaticProps<DarkPageProps> = async () => {
+  const blogSnapshot = await fetchBlogListSnapshot('en')
+
+  return {
+    props: {
+      blogSnapshot,
+      lang: 'en',
+    },
+  }
+}
+
+export default function DarkPage({ blogSnapshot, lang }: DarkPageProps) {
+  return (
+    <LandingPage
+      initialBlogPosts={blogSnapshot?.posts}
+      initialBlogStatus={blogSnapshot?.status}
+      lang={lang}
+      variant="dark"
+    />
+  )
 }

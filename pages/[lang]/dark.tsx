@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import DarkPage from '../dark'
+import { fetchBlogListSnapshot, normalizeBlogLanguage, type BlogListSnapshot } from '../../lib/blog'
 import { LOCALIZED_LANGUAGES } from '../../lib/site-language'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -13,10 +14,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+interface LangDarkPageProps {
+  blogSnapshot?: BlogListSnapshot
+  lang?: string
+}
+
+export const getStaticProps: GetStaticProps<LangDarkPageProps> = async ({ params }) => {
+  const lang = normalizeBlogLanguage(params?.lang)
+  const blogSnapshot = await fetchBlogListSnapshot(lang)
+
   return {
     props: {
-      lang: params?.lang || 'en',
+      blogSnapshot,
+      lang,
     },
   }
 }
