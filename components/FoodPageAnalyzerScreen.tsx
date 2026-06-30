@@ -124,7 +124,10 @@ export interface FoodPageAnalyzerScreenProps {
   emptyTitle: string
   emptyDescription: string
   validateUrl?: (rawUrl: string) => string | undefined
+  requireAuth?: boolean
   authMessage?: string
+  saveMealWhenAuthenticated?: boolean
+  saveMealWhenAnonymous?: boolean
   footerDescription?: string
   children?: ReactNode
 }
@@ -629,7 +632,10 @@ export default function FoodPageAnalyzerScreen({
   emptyTitle,
   emptyDescription,
   validateUrl = defaultValidateUrl,
+  requireAuth = true,
   authMessage = 'Sign in to Calkilo in this browser before analyzing a food page.',
+  saveMealWhenAuthenticated = true,
+  saveMealWhenAnonymous = false,
   footerDescription = 'AI-powered calorie and nutrition tracking for real meals.',
   children,
 }: FoodPageAnalyzerScreenProps) {
@@ -685,7 +691,7 @@ export default function FoodPageAnalyzerScreen({
 
     const accessToken = readAccessTokenFromBrowser()
 
-    if (!accessToken) {
+    if (requireAuth && !accessToken) {
       setResult(null)
       setError({
         title: 'Authentication required',
@@ -698,15 +704,20 @@ export default function FoodPageAnalyzerScreen({
     setError(null)
 
     try {
+      const headers: HeadersInit = {
+        'Content-Type': 'application/json',
+      }
+
+      if (accessToken) {
+        headers.Authorization = `Bearer ${accessToken}`
+      }
+
       const response = await fetch(ANALYZE_ENDPOINT, {
         method: 'POST',
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        },
+        headers,
         body: JSON.stringify({
           url: url.trim(),
-          save_meal: true,
+          save_meal: accessToken ? saveMealWhenAuthenticated : saveMealWhenAnonymous,
         }),
       })
 

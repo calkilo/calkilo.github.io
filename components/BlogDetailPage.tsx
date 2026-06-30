@@ -30,15 +30,16 @@ export default function BlogDetailPage({ initialPost = null, lang, slug }: BlogD
   const [reloadKey, setReloadKey] = useState(0)
 
   useEffect(() => {
-    if (hasInitialPost) {
+    if (hasInitialPost && initialPost) {
       setPost(initialPost)
       setStatus('ready')
-      return undefined
     }
 
     const controller = new AbortController()
 
-    setStatus('loading')
+    if (!hasInitialPost) {
+      setStatus('loading')
+    }
 
     fetchBlogPost(slug, language, { signal: controller.signal })
       .then((nextPost) => {
@@ -47,6 +48,12 @@ export default function BlogDetailPage({ initialPost = null, lang, slug }: BlogD
       })
       .catch((error: unknown) => {
         if (error instanceof DOMException && error.name === 'AbortError') {
+          return
+        }
+
+        if (hasInitialPost && initialPost) {
+          setPost(initialPost)
+          setStatus('ready')
           return
         }
 

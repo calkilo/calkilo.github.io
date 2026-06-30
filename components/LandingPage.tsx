@@ -30,6 +30,8 @@ interface LandingPageProps {
   variant: LandingVariant
 }
 
+const EMPTY_BLOG_POSTS: BlogPost[] = []
+
 const FIGMA_ASSETS = {
   heroSlideOne: '/assets/figma/9d9b9498b6a18bddd5bf8497bbfeac1152b019f0.webp',
   heroSlideTwoLight: '/assets/figma/65a641bda519c280d8c60b43b9194d73157d5c50.webp',
@@ -1595,7 +1597,12 @@ function BoworaBadge() {
   )
 }
 
-export default function LandingPage({ initialBlogPosts = [], initialBlogStatus, lang, variant }: LandingPageProps) {
+export default function LandingPage({
+  initialBlogPosts = EMPTY_BLOG_POSTS,
+  initialBlogStatus,
+  lang,
+  variant,
+}: LandingPageProps) {
   const router = useRouter()
   const initialLanguage = normalizeSiteLanguage(lang)
   const [systemVariant, setSystemVariant] = useState<LandingVariant>(variant)

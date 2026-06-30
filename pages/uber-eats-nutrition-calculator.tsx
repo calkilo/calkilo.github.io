@@ -133,7 +133,8 @@ export default function UberEatsNutritionCalculatorPage() {
       emptyTitle="Paste an Uber Eats link"
       emptyDescription="The result will show the menu item name, restaurant, food image, calories, health score, macros, nutrition facts, visible options, and coin usage when returned by the API."
       validateUrl={validateUberEatsUrl}
-      authMessage="Sign in to Calkilo in this browser before analyzing an Uber Eats item."
+      requireAuth={false}
+      saveMealWhenAnonymous={false}
       footerDescription="Estimate calories, macros, and nutrition facts from Uber Eats menu item links."
     >
       <section className="lp-static-card">

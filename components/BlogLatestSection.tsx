@@ -12,6 +12,8 @@ import { getBlogCopy } from '../lib/blog-copy'
 import { type SiteLanguage } from '../lib/site-language'
 import BlogCard from './BlogCard'
 
+const EMPTY_BLOG_POSTS: BlogPost[] = []
+
 interface BlogLatestSectionProps {
   initialPosts?: BlogPost[]
   initialStatus?: BlogListStatus
@@ -20,47 +22,56 @@ interface BlogLatestSectionProps {
 }
 
 export default function BlogLatestSection({
-  initialPosts = [],
+  initialPosts = EMPTY_BLOG_POSTS,
   initialStatus,
   language,
   postsLanguage,
 }: BlogLatestSectionProps) {
   const normalizedLanguage = normalizeBlogLanguage(language)
   const copy = getBlogCopy(normalizedLanguage)
-  const hasStaticSnapshot =
+  const hasInitialSnapshot =
     Boolean(initialStatus) && (!postsLanguage || postsLanguage === normalizedLanguage)
-  const [clientPosts, setClientPosts] = useState<BlogPost[]>([])
-  const [clientStatus, setClientStatus] = useState<BlogListStatus>('loading')
+  const initialVisiblePosts = hasInitialSnapshot ? sortBlogPostsForHome(initialPosts).slice(0, 3) : []
+  const [posts, setPosts] = useState<BlogPost[]>(initialVisiblePosts)
+  const [status, setStatus] = useState<BlogListStatus>(hasInitialSnapshot ? initialStatus ?? 'loading' : 'loading')
   const [reloadKey, setReloadKey] = useState(0)
-  const posts = hasStaticSnapshot ? sortBlogPostsForHome(initialPosts).slice(0, 3) : clientPosts
-  const status: BlogListStatus = hasStaticSnapshot ? initialStatus ?? 'loading' : clientStatus
 
   useEffect(() => {
-    if (hasStaticSnapshot) {
-      return undefined
+    const snapshotPosts = hasInitialSnapshot ? sortBlogPostsForHome(initialPosts).slice(0, 3) : []
+    const hasUsableSnapshot = snapshotPosts.length > 0 && initialStatus === 'ready'
+
+    setPosts(snapshotPosts)
+    setStatus(hasInitialSnapshot ? initialStatus ?? 'loading' : 'loading')
+
+    if (!hasUsableSnapshot) {
+      setStatus('loading')
     }
 
     const controller = new AbortController()
 
-    setClientStatus('loading')
-
     fetchBlogPosts(normalizedLanguage, { signal: controller.signal })
       .then((nextPosts) => {
         const visiblePosts = sortBlogPostsForHome(nextPosts).slice(0, 3)
-        setClientPosts(visiblePosts)
-        setClientStatus(visiblePosts.length > 0 ? 'ready' : 'empty')
+        setPosts(visiblePosts)
+        setStatus(visiblePosts.length > 0 ? 'ready' : 'empty')
       })
       .catch((error: unknown) => {
         if (error instanceof DOMException && error.name === 'AbortError') {
           return
         }
 
-        setClientPosts([])
-        setClientStatus('error')
+        if (hasUsableSnapshot) {
+          setPosts(snapshotPosts)
+          setStatus('ready')
+          return
+        }
+
+        setPosts([])
+        setStatus('error')
       })
 
     return () => controller.abort()
-  }, [hasStaticSnapshot, normalizedLanguage, reloadKey])
+  }, [hasInitialSnapshot, initialPosts, initialStatus, normalizedLanguage, reloadKey])
 
   return (
     <section className="lp-section lp-blog-latest" aria-labelledby="latest-blog-title">
@@ -93,11 +104,9 @@ export default function BlogLatestSection({
           <div className="lp-blog-state" role="status">
             <h3>{copy.errorTitle}</h3>
             <p>{copy.errorText}</p>
-            {!hasStaticSnapshot ? (
-              <button type="button" onClick={() => setReloadKey((key) => key + 1)}>
-                {copy.retry}
-              </button>
-            ) : null}
+            <button type="button" onClick={() => setReloadKey((key) => key + 1)}>
+              {copy.retry}
+            </button>
           </div>
         ) : null}
 

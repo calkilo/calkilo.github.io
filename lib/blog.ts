@@ -141,6 +141,7 @@ async function requestJson(url: string, init?: RequestInit): Promise<unknown> {
   }
 
   const response = await fetch(url, {
+    cache: init?.cache ?? 'no-store',
     ...init,
     headers,
   })

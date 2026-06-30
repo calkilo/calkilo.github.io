@@ -5,47 +5,55 @@ import { SITE_URL } from '../lib/seo'
 import BlogCard from './BlogCard'
 import StaticPageLayout from './StaticPageLayout'
 
+const EMPTY_BLOG_POSTS: BlogPost[] = []
+
 interface BlogArchivePageProps {
   initialPosts?: BlogPost[]
   initialStatus?: BlogListStatus
   lang?: string
 }
 
-export default function BlogArchivePage({ initialPosts = [], initialStatus, lang }: BlogArchivePageProps) {
+export default function BlogArchivePage({ initialPosts = EMPTY_BLOG_POSTS, initialStatus, lang }: BlogArchivePageProps) {
   const language = normalizeBlogLanguage(lang)
   const copy = getBlogCopy(language)
-  const hasStaticSnapshot = Boolean(initialStatus)
-  const [clientPosts, setClientPosts] = useState<BlogPost[]>([])
-  const [clientStatus, setClientStatus] = useState<BlogListStatus>('loading')
+  const hasInitialSnapshot = Boolean(initialStatus)
+  const [posts, setPosts] = useState<BlogPost[]>(initialPosts)
+  const [status, setStatus] = useState<BlogListStatus>(hasInitialSnapshot ? initialStatus ?? 'loading' : 'loading')
   const [reloadKey, setReloadKey] = useState(0)
-  const posts = hasStaticSnapshot ? initialPosts : clientPosts
-  const status: BlogListStatus = hasStaticSnapshot ? initialStatus ?? 'loading' : clientStatus
 
   useEffect(() => {
-    if (hasStaticSnapshot) {
-      return undefined
-    }
-
     const controller = new AbortController()
+    const hasUsableSnapshot = initialPosts.length > 0 && initialStatus === 'ready'
 
-    setClientStatus('loading')
+    setPosts(initialPosts)
+    setStatus(hasInitialSnapshot ? initialStatus ?? 'loading' : 'loading')
+
+    if (!hasUsableSnapshot) {
+      setStatus('loading')
+    }
 
     fetchBlogPosts(language, { signal: controller.signal })
       .then((nextPosts) => {
-        setClientPosts(nextPosts)
-        setClientStatus(nextPosts.length > 0 ? 'ready' : 'empty')
+        setPosts(nextPosts)
+        setStatus(nextPosts.length > 0 ? 'ready' : 'empty')
       })
       .catch((error: unknown) => {
         if (error instanceof DOMException && error.name === 'AbortError') {
           return
         }
 
-        setClientPosts([])
-        setClientStatus('error')
+        if (hasUsableSnapshot) {
+          setPosts(initialPosts)
+          setStatus('ready')
+          return
+        }
+
+        setPosts([])
+        setStatus('error')
       })
 
     return () => controller.abort()
-  }, [hasStaticSnapshot, language, reloadKey])
+  }, [hasInitialSnapshot, initialPosts, initialStatus, language, reloadKey])
 
   const pageJsonLd = useMemo(
     () => ({
@@ -97,11 +105,9 @@ export default function BlogArchivePage({ initialPosts = [], initialStatus, lang
         <section className="lp-blog-state" role="alert">
           <h2>{copy.errorTitle}</h2>
           <p>{copy.errorText}</p>
-          {!hasStaticSnapshot ? (
-            <button type="button" onClick={() => setReloadKey((key) => key + 1)}>
-              {copy.retry}
-            </button>
-          ) : null}
+          <button type="button" onClick={() => setReloadKey((key) => key + 1)}>
+            {copy.retry}
+          </button>
         </section>
       ) : null}
 
