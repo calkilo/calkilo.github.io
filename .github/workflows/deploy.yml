@@ -35,10 +35,16 @@ jobs:
       - name: Build Next.js site
         run: npm run build
 
+      - name: Disable Jekyll processing
+        run: touch out/.nojekyll
+
       - name: Verify static export output
         run: |
           test -d out
           test -f out/index.html
+          test -f out/404.html
+          test -f out/.nojekyll
+          test -d out/_next
           test -f out/contact/index.html
           test -f out/faq/index.html
           test ! -e out/contact.html
