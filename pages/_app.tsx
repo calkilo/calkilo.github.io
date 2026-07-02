@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import { isRtlLanguage, normalizeSiteLanguage } from '../lib/site-language'
 import '../styles/globals.css'
 
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim()
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || 'G-KSFK6RGGYG'
 
 export default function App({ Component, pageProps, router }: AppProps) {
   const pathLanguage = router.asPath.split(/[/?#]/).filter(Boolean)[0]
@@ -34,9 +34,9 @@ export default function App({ Component, pageProps, router }: AppProps) {
             dangerouslySetInnerHTML={{
               __html: `
                 window.dataLayer = window.dataLayer || [];
-                function gtag(){window.dataLayer.push(arguments);}
+                function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', ${JSON.stringify(GA_MEASUREMENT_ID)}, { anonymize_ip: true });
+                gtag('config', ${JSON.stringify(GA_MEASUREMENT_ID)});
               `,
             }}
           />

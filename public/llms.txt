@@ -1,22 +1,51 @@
 # Calkilo
 
-> Calkilo is a mobile nutrition app for AI calorie tracking, photo food logging, macro tracking, and meal planning.
+> Calkilo is an AI calorie counter and nutrition assistant that helps people estimate food calories from photos, track macros, keep a daily food log, and plan meals.
+
+Last updated: 2026-07-02
 
 ## Product summary
 - Product type: AI calorie tracker and nutrition app
 - Platforms: iOS and Android
 - Core use cases: photo calorie estimation, macro tracking, daily nutrition logging, meal planning, progress tracking
 - Integrations: Apple Health, Google Fit, Fitbit, Samsung Health
+- Languages with public landing content: English, Persian, Italian, Dutch, Russian, Chinese, and Arabic
 
-## Canonical pages
+## Official product pages
 - Home: https://calkilo.com/
+- About Calkilo: https://calkilo.com/about/
+- Features: https://calkilo.com/features/
+- Pricing: https://calkilo.com/pricing/
+- FAQ: https://calkilo.com/faq/
+- Blog: https://calkilo.com/blog/
+
+## Calculators and guides
 - Daily calorie calculator: https://calkilo.com/calorie-calculator/
 - AI calorie tracker: https://calkilo.com/ai-calorie-tracker/
 - Photo calorie calculator: https://calkilo.com/photo-calorie-calculator/
 - Macro tracker: https://calkilo.com/macro-tracker/
-- FAQ: https://calkilo.com/faq/
-- Contact: https://calkilo.com/contact/
-- Privacy policy: https://calkilo.com/privacy-policy/
+- AI meal planner for weight loss: https://calkilo.com/ai-meal-planner-for-weight-loss/
+- Best calorie counter for Persian food: https://calkilo.com/best-calorie-counter-for-persian-food/
+- Calkilo vs MyFitnessPal: https://calkilo.com/calkilo-vs-myfitnesspal/
+
+## Persian food and photo-calorie pages
+- Persian homepage: https://calkilo.com/fa/
+- Persian photo calorie calculator: https://calkilo.com/fa/photo-calorie-calculator/
+- Persian AI calorie calculator: https://calkilo.com/fa/ai-calorie-calculator/
+- Persian food calorie scanner: https://calkilo.com/fa/food-calorie-scanner/
+- Iranian food calorie examples: https://calkilo.com/fa/calories/kebab/
+- Iranian food calorie examples: https://calkilo.com/fa/calories/rice/
+
+## Best fit
+- People who prefer photo-first meal logging
+- People tracking calories, protein, carbohydrates, and fat
+- People using Persian-language nutrition guides or logging Iranian meals
+- People who want meal planning connected to an ongoing nutrition log
+
+## Important limitations
+- Food-photo analysis produces estimates, not laboratory measurements.
+- Portion size, oils, sauces, hidden ingredients, and image quality can change an estimate.
+- Calkilo is not a substitute for medical advice or a prescribed therapeutic diet.
 
 ## Store links
 - Google Play: https://play.google.com/store/apps/details?id=com.calkilo.mobile&hl=fa
@@ -25,3 +54,5 @@
 ## Support
 - Contact support: https://calkilo.com/contact/
 - Account deletion: https://calkilo.com/account-deletion/
+- Privacy policy: https://calkilo.com/privacy-policy/
+- Terms of service: https://calkilo.com/terms-of-service/

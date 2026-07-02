@@ -32,6 +32,7 @@ interface StaticPageLayoutProps {
   ogType?: 'website' | 'article'
   imagePath?: string
   jsonLd?: JsonLdSchema | ReadonlyArray<JsonLdSchema>
+  hasLocalizedVersions?: boolean
   children: ReactNode
 }
 
@@ -48,6 +49,7 @@ export default function StaticPageLayout({
   ogType,
   imagePath,
   jsonLd,
+  hasLocalizedVersions = true,
   children,
 }: StaticPageLayoutProps) {
   const router = useRouter()
@@ -125,7 +127,11 @@ export default function StaticPageLayout({
       return
     }
 
-    void router.push(switchLanguagePath(router.asPath || localizedPath, nextLanguage))
+    void router.push(
+      hasLocalizedVersions
+        ? switchLanguagePath(router.asPath || localizedPath, nextLanguage)
+        : toLocalizedPath('/', nextLanguage),
+    )
   }
 
   return (
@@ -150,7 +156,7 @@ export default function StaticPageLayout({
         imagePath={imagePath}
         jsonLd={jsonLd}
         language={language}
-        alternateLanguages={buildAlternateLanguagePaths(path)}
+        alternateLanguages={hasLocalizedVersions ? buildAlternateLanguagePaths(path) : undefined}
       />
 
       <SiteHeader

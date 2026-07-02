@@ -29,4 +29,14 @@ export const CORE_SITE_LINKS: ReadonlyArray<SitePageLink> = [
   },
 ] as const
 
-export const ENGLISH_POPULAR_PAGE_LINKS: ReadonlyArray<SitePageLink> = [...CORE_SITE_LINKS, ...GUIDE_LINKS]
+export const ABOUT_PAGE_LINK: SitePageLink = {
+  href: '/about/',
+  label: 'About Calkilo',
+  description: 'What Calkilo is, who it is for, and how its AI nutrition workflow is designed.',
+}
+
+export const ENGLISH_POPULAR_PAGE_LINKS: ReadonlyArray<SitePageLink> = [
+  ...CORE_SITE_LINKS,
+  ABOUT_PAGE_LINK,
+  ...GUIDE_LINKS,
+]

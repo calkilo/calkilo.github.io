@@ -58,6 +58,21 @@ export const GUIDE_LINKS: ReadonlyArray<ResourceLink> = [
     label: 'Macro Tracker',
     description: 'How to track calories, protein, carbs, and fats in one app.',
   },
+  {
+    href: '/best-calorie-counter-for-persian-food/',
+    label: 'Calorie Counter for Persian Food',
+    description: 'What to look for when tracking Iranian meals, mixed dishes, calories, and macros.',
+  },
+  {
+    href: '/ai-meal-planner-for-weight-loss/',
+    label: 'AI Meal Planner for Weight Loss',
+    description: 'How to connect calorie targets, food logging, and practical meal planning.',
+  },
+  {
+    href: '/calkilo-vs-myfitnesspal/',
+    label: 'Calkilo vs MyFitnessPal',
+    description: 'Compare photo logging, macro tracking, meal planning, language fit, and workflow.',
+  },
 ]
 
 export const RESOURCE_LINKS: ReadonlyArray<ResourceLink> = [

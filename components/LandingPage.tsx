@@ -160,7 +160,7 @@ const TRANSLATIONS: Record<
 > = {
   en: {
     pageDescription:
-      'Free AI calorie tracker that estimates food calories from photos, tracks macros, and creates meal plans on iPhone and Android.',
+      'Calkilo is a free AI calorie counter and nutrition assistant that estimates calories from food photos, tracks macros, and creates meal plans on iPhone and Android.',
     pageTitle: 'Free AI Calorie Tracker & Photo Food Calorie Counter | Calkilo',
     darkThemeLabel: 'Dark Theme',
     nav: { home: 'Home', features: 'Features', pricing: 'Choose Plan', blog: 'Blog', contact: 'Contact' },
@@ -168,7 +168,7 @@ const TRANSLATIONS: Record<
     heroTitleA: 'Free AI Calorie Tracker',
     heroTitleB: 'for Food Photos',
     heroDescription:
-      'Snap a meal photo and let Calkilo estimate calories, macros, and nutrition instantly. Review each result, keep your daily log, and stay on track without manual entry.',
+      'Calkilo is an AI calorie counter and nutrition assistant. Snap a meal photo to estimate calories and macros, review the result, keep a daily log, and plan meals with less manual entry.',
     availableOn: 'Available on:',
     aiTitle: 'CalKilo-AI: Powered Agent, Meal Planning & Recipes',
     aiSubtitle:
