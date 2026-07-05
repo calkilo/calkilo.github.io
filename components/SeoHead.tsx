@@ -12,6 +12,14 @@ import { DEFAULT_LANGUAGE } from '../lib/site-language'
 type OpenGraphType = 'website' | 'article'
 type JsonLdSchema = Record<string, unknown>
 type JsonLdInput = JsonLdSchema | ReadonlyArray<JsonLdSchema>
+type PreloadImage =
+  | string
+  | {
+      src: string
+      srcSet?: string
+      sizes?: string
+      type?: string
+    }
 
 interface SeoHeadProps {
   title: string
@@ -24,7 +32,7 @@ interface SeoHeadProps {
   imageWidth?: number
   imageHeight?: number
   imageType?: string
-  preloadImagePaths?: ReadonlyArray<string>
+  preloadImagePaths?: ReadonlyArray<PreloadImage>
   keywords?: ReadonlyArray<string>
   noindex?: boolean
   nofollow?: boolean
@@ -81,6 +89,20 @@ const LOCALE_MAP: Record<string, string> = {
   it: 'it_IT',
 }
 
+function normalizePreloadImage(preloadImage: PreloadImage) {
+  if (typeof preloadImage === 'string') {
+    return {
+      src: preloadImage,
+      type: detectImageType(preloadImage),
+    }
+  }
+
+  return {
+    ...preloadImage,
+    type: preloadImage.type ?? detectImageType(preloadImage.src),
+  }
+}
+
 export default function SeoHead({
   title,
   description,
@@ -130,15 +152,22 @@ export default function SeoHead({
       ) : null}
 
       <link rel="canonical" href={canonicalUrl} key="canonical" />
-      {preloadImagePaths?.map((preloadImagePath) => (
-        <link
-          key={`preload:image:${preloadImagePath}`}
-          rel="preload"
-          as="image"
-          href={preloadImagePath}
-          fetchPriority="high"
-        />
-      ))}
+      {preloadImagePaths?.map((preloadImage) => {
+        const normalizedPreloadImage = normalizePreloadImage(preloadImage)
+
+        return (
+          <link
+            key={`preload:image:${normalizedPreloadImage.src}`}
+            rel="preload"
+            as="image"
+            href={normalizedPreloadImage.src}
+            type={normalizedPreloadImage.type}
+            imageSrcSet={normalizedPreloadImage.srcSet}
+            imageSizes={normalizedPreloadImage.sizes}
+            fetchPriority="high"
+          />
+        )
+      })}
       <meta name="robots" content={robotsContent} key="robots" />
       <meta name="googlebot" content={robotsContent} key="googlebot" />
       <meta name="author" content={SITE_NAME} key="author" />

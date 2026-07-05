@@ -47,6 +47,10 @@ export default function BlogLatestSection({
       setStatus('loading')
     }
 
+    if (hasUsableSnapshot && reloadKey === 0) {
+      return
+    }
+
     const controller = new AbortController()
 
     fetchBlogPosts(normalizedLanguage, { signal: controller.signal })
@@ -120,8 +124,8 @@ export default function BlogLatestSection({
         {status === 'ready' ? (
           <>
             <div className="lp-blog-grid">
-              {posts.map((post, index) => (
-                <BlogCard key={post.id} language={normalizedLanguage} post={post} priority={index === 0} variant="compact" />
+              {posts.map((post) => (
+                <BlogCard key={post.id} language={normalizedLanguage} post={post} variant="compact" />
               ))}
             </div>
             <div className="lp-blog-section-actions">

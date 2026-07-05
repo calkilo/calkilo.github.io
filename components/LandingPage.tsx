@@ -30,11 +30,24 @@ interface LandingPageProps {
   variant: LandingVariant
 }
 
+interface HeroSlide {
+  height: number
+  sizes?: string
+  src: string
+  srcSet?: string
+  width: number
+}
+
 const EMPTY_BLOG_POSTS: BlogPost[] = []
 
 const FIGMA_ASSETS = {
   heroSlideOne: '/assets/figma/9d9b9498b6a18bddd5bf8497bbfeac1152b019f0.webp',
+  heroSlideOne520: '/assets/figma/9d9b9498b6a18bddd5bf8497bbfeac1152b019f0-520.webp',
+  heroSlideOne700: '/assets/figma/9d9b9498b6a18bddd5bf8497bbfeac1152b019f0-700.webp',
+  heroSlideOne960: '/assets/figma/9d9b9498b6a18bddd5bf8497bbfeac1152b019f0-960.webp',
   heroSlideTwoLight: '/assets/figma/65a641bda519c280d8c60b43b9194d73157d5c50.webp',
+  heroSlideTwoLight520: '/assets/figma/65a641bda519c280d8c60b43b9194d73157d5c50-520.webp',
+  heroSlideTwoLight760: '/assets/figma/65a641bda519c280d8c60b43b9194d73157d5c50-760.webp',
   heroSlideTwoDark: '/assets/figma/e868a161326472def96e2a09561e5c328725ad68.webp',
   aiScreenMain: '/assets/analysis.png',
   aiScreenAltOne: '/assets/chatAi.png',
@@ -68,6 +81,19 @@ const FIGMA_ASSETS = {
   AppStore:'/assets/appstore.png',
   GooglePlay: '/assets/google-play.png',
 } as const
+
+const HERO_IMAGE_SIZES = '(max-width: 760px) calc(100vw - 28px), (max-width: 1160px) calc(100vw - 48px), 690px'
+const HERO_SLIDE_ONE_SRC_SET = [
+  `${FIGMA_ASSETS.heroSlideOne520} 520w`,
+  `${FIGMA_ASSETS.heroSlideOne700} 700w`,
+  `${FIGMA_ASSETS.heroSlideOne960} 960w`,
+  `${FIGMA_ASSETS.heroSlideOne} 1400w`,
+].join(', ')
+const HERO_SLIDE_TWO_LIGHT_SRC_SET = [
+  `${FIGMA_ASSETS.heroSlideTwoLight520} 520w`,
+  `${FIGMA_ASSETS.heroSlideTwoLight760} 760w`,
+  `${FIGMA_ASSETS.heroSlideTwoLight} 950w`,
+].join(', ')
 
 type OptimizedImageProps = ImgHTMLAttributes<HTMLImageElement> & {
   alt: string
@@ -1621,19 +1647,38 @@ export default function LandingPage({
   const languageFontFamily = LANGUAGE_FONT_FAMILIES[language]
   const languageDisplayFontFamily = LANGUAGE_DISPLAY_FONT_FAMILIES[language]
 
-  const heroSlides = useMemo(
+  const heroSlides = useMemo<HeroSlide[]>(
     () =>
       isDark
         ? [
-            { src: FIGMA_ASSETS.heroSlideOne, width: 1400, height: 1090 },
+            {
+              src: FIGMA_ASSETS.heroSlideOne,
+              srcSet: HERO_SLIDE_ONE_SRC_SET,
+              sizes: HERO_IMAGE_SIZES,
+              width: 1400,
+              height: 1090,
+            },
             { src: FIGMA_ASSETS.heroSlideTwoDark, width: 1400, height: 908 },
           ]
         : [
-            { src: FIGMA_ASSETS.heroSlideOne, width: 1400, height: 1090 },
-            { src: FIGMA_ASSETS.heroSlideTwoLight, width: 950, height: 600 },
+            {
+              src: FIGMA_ASSETS.heroSlideOne,
+              srcSet: HERO_SLIDE_ONE_SRC_SET,
+              sizes: HERO_IMAGE_SIZES,
+              width: 1400,
+              height: 1090,
+            },
+            {
+              src: FIGMA_ASSETS.heroSlideTwoLight,
+              srcSet: HERO_SLIDE_TWO_LIGHT_SRC_SET,
+              sizes: HERO_IMAGE_SIZES,
+              width: 950,
+              height: 600,
+            },
           ],
     [isDark],
   )
+  const activeHeroSlide = heroSlides[heroSlide] ?? heroSlides[0]
 
   useEffect(() => {
     setLanguage(initialLanguage)
@@ -1673,6 +1718,10 @@ export default function LandingPage({
   }, [resolvedVariant, language])
 
   useEffect(() => {
+    if (heroSlides.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return
+    }
+
     const interval = window.setInterval(() => {
       setHeroSlide((prev) => (prev + 1) % heroSlides.length)
     }, 4200)
@@ -1681,6 +1730,10 @@ export default function LandingPage({
   }, [heroSlides.length])
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return
+    }
+
     const interval = window.setInterval(() => {
       setActiveFeature((prev) => (prev + 1) % FEATURE_ITEMS.length)
     }, 5200)
@@ -2031,7 +2084,14 @@ export default function LandingPage({
         noindex={isDarkVariantPage}
         imagePath="/assets/hero-main.png"
         imageAlt="Calkilo AI calorie tracking dashboard"
-        preloadImagePaths={[heroSlides[0].src]}
+        preloadImagePaths={[
+          {
+            src: heroSlides[0].src,
+            srcSet: heroSlides[0].srcSet,
+            sizes: heroSlides[0].sizes,
+            type: 'image/webp',
+          },
+        ]}
         jsonLd={landingJsonLd}
         language={language}
         alternateLanguages={landingAlternateLanguages}
@@ -2067,19 +2127,19 @@ export default function LandingPage({
               <div className="lp-hero-glow" />
               <div className="lp-hero-orbit lp-hero-orbit--one" />
               <div className="lp-hero-orbit lp-hero-orbit--two" />
-              {heroSlides.map((slide, index) => (
-                <OptimizedImage
-                  key={slide.src}
-                  src={slide.src}
-                  alt={index === 0 ? 'Calkilo AI calorie tracking dashboard' : 'Calkilo nutrition summary app screen'}
-                  width={slide.width}
-                  height={slide.height}
-                  loading={index === 0 ? 'eager' : 'lazy'}
-                  fetchPriority={index === 0 ? 'high' : 'low'}
-                  decoding={index === 0 ? 'sync' : 'async'}
-                  className={`lp-hero-slide${index === heroSlide ? ' is-active' : ''}`}
-                />
-              ))}
+              <OptimizedImage
+                key={activeHeroSlide.src}
+                src={activeHeroSlide.src}
+                srcSet={activeHeroSlide.srcSet}
+                sizes={activeHeroSlide.sizes}
+                alt={heroSlide === 0 ? 'Calkilo AI calorie tracking dashboard' : 'Calkilo nutrition summary app screen'}
+                width={activeHeroSlide.width}
+                height={activeHeroSlide.height}
+                loading={heroSlide === 0 ? 'eager' : 'lazy'}
+                fetchPriority={heroSlide === 0 ? 'high' : 'low'}
+                decoding={heroSlide === 0 ? 'sync' : 'async'}
+                className="lp-hero-slide is-active"
+              />
             </div>
           </div>
         </section>

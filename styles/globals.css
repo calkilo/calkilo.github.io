@@ -110,13 +110,13 @@ img {
     opacity 0.82s var(--lp-motion-smooth) calc(var(--stagger-index) * 85ms),
     transform 0.96s var(--lp-motion-smooth) calc(var(--stagger-index) * 85ms),
     filter 0.96s var(--lp-motion-smooth) calc(var(--stagger-index) * 85ms);
-  will-change: transform, opacity, filter;
 }
 
 html.lp-motion-ready .lp-reveal:not(.is-visible) {
   filter: blur(14px);
   opacity: 0;
   transform: translate3d(0, 38px, 0) scale(0.98);
+  will-change: transform, opacity, filter;
 }
 
 html.lp-motion-ready .lp-reveal.lp-reveal--left:not(.is-visible) {
@@ -507,6 +507,8 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 760px;
   padding: 86px 0;
   position: relative;
 }
@@ -972,6 +974,8 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 
 .lp-style {
   background: #212121;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 760px;
   color: #fff;
   overflow: hidden;
   padding: 104px 0;
