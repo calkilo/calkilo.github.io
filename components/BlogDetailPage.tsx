@@ -4,6 +4,7 @@ import {
   fetchBlogPost,
   formatBlogDate,
   getBlogArchivePath,
+  getBlogPostAlternateLanguagePaths,
   normalizeBlogLanguage,
   type BlogPost,
 } from '../lib/blog'
@@ -68,6 +69,7 @@ export default function BlogDetailPage({ initialPost = null, lang, slug }: BlogD
   const basePath = `/blog/${post?.slug || slug}`
   const publishedDate = post ? formatBlogDate(post, language) : ''
   const articleUrl = `${SITE_URL}${language === 'en' ? basePath : `/${language}${basePath}`}/`
+  const alternateLanguagePaths = post ? getBlogPostAlternateLanguagePaths(post) : undefined
 
   const jsonLd = useMemo(() => {
     if (!post) {
@@ -83,6 +85,8 @@ export default function BlogDetailPage({ initialPost = null, lang, slug }: BlogD
         image: post.image_url ? [post.image_url] : undefined,
         datePublished: post.published_at || post.created_at || undefined,
         dateModified: post.updated_at || post.published_at || undefined,
+        keywords: post.tags.length > 0 ? post.tags : undefined,
+        articleSection: post.topic || undefined,
         inLanguage: language,
         url: articleUrl,
         author: {
@@ -136,7 +140,14 @@ export default function BlogDetailPage({ initialPost = null, lang, slug }: BlogD
       lang={language}
       ogType="article"
       imagePath={post?.image_url || undefined}
+      imageAlt={post?.image_alt_text || post?.title || copy.fallbackImageAlt}
       jsonLd={jsonLd}
+      noindex={!post}
+      alternateLanguagePaths={alternateLanguagePaths}
+      articlePublishedTime={post?.published_at || post?.created_at || undefined}
+      articleModifiedTime={post?.updated_at || post?.published_at || undefined}
+      articleSection={post?.topic || undefined}
+      articleTags={post?.tags}
     >
       <article className="lp-static-card lp-blog-detail-card">
         <div className="lp-blog-detail-cover">
@@ -179,6 +190,7 @@ export default function BlogDetailPage({ initialPost = null, lang, slug }: BlogD
                   </time>
                 ) : null}
                 {post.topic ? <span>{post.topic}</span> : null}
+                <span>Calkilo</span>
               </div>
 
               {post.tags.length > 0 ? (

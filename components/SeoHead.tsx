@@ -40,6 +40,10 @@ interface SeoHeadProps {
   themeColor?: string
   language?: string
   alternateLanguages?: ReadonlyArray<{ lang: string; path: string }>
+  articlePublishedTime?: string
+  articleModifiedTime?: string
+  articleSection?: string
+  articleTags?: ReadonlyArray<string>
 }
 
 const DEFAULT_THEME_COLOR = '#00d448'
@@ -122,6 +126,10 @@ export default function SeoHead({
   themeColor = DEFAULT_THEME_COLOR,
   language = 'en',
   alternateLanguages,
+  articlePublishedTime,
+  articleModifiedTime,
+  articleSection,
+  articleTags,
 }: SeoHeadProps) {
   const canonicalUrl = toAbsoluteUrl(canonicalPath ?? path)
   const pageUrl = toAbsoluteUrl(path)
@@ -216,6 +224,23 @@ export default function SeoHead({
         <meta property="og:image:height" content={String(resolvedImageHeight)} key="og:image:height" />
       ) : null}
       <meta property="og:image:alt" content={imageAlt ?? title} key="og:image:alt" />
+      {ogType === 'article' && articlePublishedTime ? (
+        <meta property="article:published_time" content={articlePublishedTime} key="article:published_time" />
+      ) : null}
+      {ogType === 'article' && articleModifiedTime ? (
+        <meta property="article:modified_time" content={articleModifiedTime} key="article:modified_time" />
+      ) : null}
+      {ogType === 'article' && articleSection ? (
+        <meta property="article:section" content={articleSection} key="article:section" />
+      ) : null}
+      {ogType === 'article' ? (
+        <meta property="article:author" content={SITE_NAME} key="article:author" />
+      ) : null}
+      {ogType === 'article'
+        ? articleTags?.map((tag) => (
+            <meta property="article:tag" content={tag} key={`article:tag:${tag}`} />
+          ))
+        : null}
 
       <meta name="twitter:card" content="summary_large_image" key="twitter:card" />
       <meta name="twitter:url" content={pageUrl} key="twitter:url" />

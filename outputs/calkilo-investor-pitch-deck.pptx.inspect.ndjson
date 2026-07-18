@@ -1,0 +1,185 @@
+{"kind":"deck","id":"pr/nmmzb7","name":"Deck"}
+{"kind":"layout","layoutId":"dbdb2e89-872e-41c8-83ca-06d90fd9d0ed","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"812a7f0f-bd34-4d24-8a96-76721f55ed6d","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/zetv1k","slide":1,"title":"CALKILO","textShapes":4}
+{"kind":"shape","id":"sh/zi98ru10","slide":1,"bbox":[0,0,1280,720]}
+{"kind":"shape","id":"sh/kj290z2l","slide":1,"bbox":[0,0,20,720]}
+{"kind":"textbox","id":"sh/lkbqt4j6","slide":1,"text":"CALKILO","textPreview":"CALKILO","textChars":7,"textLines":1,"bbox":[52,54,300,30]}
+{"kind":"textbox","id":"sh/mlkr290b","slide":1,"text":"The photo-first\nnutrition companion\nfor everyday eating.","textPreview":"The photo-first | nutrition companion | for everyday eating.","textChars":56,"textLines":3,"bbox":[52,132,600,250]}
+{"kind":"textbox","id":"sh/7mt8ve1w","slide":1,"text":"AI calorie estimates, macro tracking, meal planning and progress support — built for global and Persian-language nutrition workflows.","textPreview":"AI calorie estimates, macro tracking, meal planning and progress support — built for global and Persian-language nutrition workflows.","textChars":133,"textLines":1,"bbox":[54,414,540,90]}
+{"kind":"textbox","id":"sh/8n294jih","slide":1,"text":"Investor pitch deck | July 2026","textPreview":"Investor pitch deck | July 2026","textChars":31,"textLines":1,"bbox":[54,630,400,26]}
+{"kind":"image","id":"im/0nqd0fq9","slide":1,"name":"","geometry":"roundRect","alt":"Calkilo mobile product experience","bbox":[700,72,520,576]}
+{"kind":"notes","id":"nt/zetv1k","slide":1,"text":""}
+{"kind":"slide","id":"sl/fp612p","slide":2,"title":"CALKILO | INVESTOR DECK","textShapes":12}
+{"kind":"textbox","id":"sh/9czq18nm","slide":2,"text":"CALKILO | INVESTOR DECK","textPreview":"CALKILO | INVESTOR DECK","textChars":23,"textLines":1,"bbox":[42,30,650,22]}
+{"kind":"textbox","id":"sh/m9or6d4b","slide":2,"text":"Nutrition tracking still asks people to do too much work.","textPreview":"Nutrition tracking still asks people to do too much work.","textChars":57,"textLines":1,"bbox":[42,58,1120,72]}
+{"kind":"textbox","id":"sh/nah8zi5g","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1180,670,56,18]}
+{"kind":"textbox","id":"sh/076943m5","slide":2,"text":"The friction is the product opportunity.","textPreview":"The friction is the product opportunity.","textChars":40,"textLines":1,"bbox":[42,148,500,30]}
+{"kind":"textbox","id":"sh/l8fqx8nq","slide":2,"text":"Manual logging breaks consistency","textPreview":"Manual logging breaks consistency","textChars":33,"textLines":1,"bbox":[42,236,330,52]}
+{"kind":"textbox","id":"sh/y5or2t4z","slide":2,"text":"Typing ingredients, portions and macros turns a daily habit into a chore.","textPreview":"Typing ingredients, portions and macros turns a daily habit into a chore.","textChars":73,"textLines":1,"bbox":[42,294,330,66]}
+{"kind":"textbox","id":"sh/z6x8vy5k","slide":2,"text":"Generic apps miss local context","textPreview":"Generic apps miss local context","textChars":31,"textLines":1,"bbox":[455,236,330,52]}
+{"kind":"textbox","id":"sh/cj690jmt","slide":2,"text":"Food databases and interfaces often under-serve non-English and Persian-speaking users.","textPreview":"Food databases and interfaces often under-serve non-English and Persian-speaking users.","textChars":87,"textLines":1,"bbox":[455,294,330,66]}
+{"kind":"textbox","id":"sh/dkfqtone","slide":2,"text":"Insight arrives too late","textPreview":"Insight arrives too late","textChars":24,"textLines":1,"bbox":[868,236,330,52]}
+{"kind":"textbox","id":"sh/h4jmdkz6","slide":2,"text":"Tracking alone does not help users turn food data into an actionable next meal.","textPreview":"Tracking alone does not help users turn food data into an actionable next meal.","textChars":79,"textLines":1,"bbox":[868,294,330,66]}
+{"kind":"shape","id":"sh/g3a54fil","slide":2,"bbox":[42,470,1196,120]}
+{"kind":"textbox","id":"sh/f214bah0","slide":2,"text":"Calkilo compresses the workflow: photo → estimate → nutrition record → personalized guidance.","textPreview":"Calkilo compresses the workflow: photo → estimate → nutrition record → personalized guidance.","textChars":93,"textLines":1,"bbox":[70,507,1120,34]}
+{"kind":"textbox","id":"sh/u183250f","slide":2,"text":"Product framing drawn from Calkilo landing pages and llms.txt.","textPreview":"Product framing drawn from Calkilo landing pages and llms.txt.","textChars":62,"textLines":1,"bbox":[42,675,930,16]}
+{"kind":"notes","id":"nt/fp612p","slide":2,"text":""}
+{"kind":"slide","id":"sl/fc90d4","slide":3,"title":"CALKILO | INVESTOR DECK","textShapes":16}
+{"kind":"textbox","id":"sh/wja5srmt","slide":3,"text":"CALKILO | INVESTOR DECK","textPreview":"CALKILO | INVESTOR DECK","textChars":23,"textLines":1,"bbox":[42,30,650,22]}
+{"kind":"textbox","id":"sh/bi14jml8","slide":3,"text":"A single loop turns a food photo into a daily nutrition habit.","textPreview":"A single loop turns a food photo into a daily nutrition habit.","textChars":62,"textLines":1,"bbox":[42,58,1120,72]}
+{"kind":"textbox","id":"sh/ahsnq14n","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1180,670,56,18]}
+{"kind":"textbox","id":"sh/ofqlormx","slide":3,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[420,205,55,30]}
+{"kind":"textbox","id":"sh/neh4fmlc","slide":3,"text":"Capture","textPreview":"Capture","textChars":7,"textLines":1,"bbox":[420,248,235,34]}
+{"kind":"textbox","id":"sh/mt83mh4r","slide":3,"text":"Take a photo of a meal.","textPreview":"Take a photo of a meal.","textChars":23,"textLines":1,"bbox":[420,293,225,72]}
+{"kind":"textbox","id":"sh/1szmdc36","slide":3,"text":"→","textPreview":"→","textChars":1,"textLines":1,"bbox":[645,250,30,30]}
+{"kind":"textbox","id":"sh/0rqlk7ml","slide":3,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[685,205,55,30]}
+{"kind":"textbox","id":"sh/u1s7apkf","slide":3,"text":"Understand","textPreview":"Understand","textChars":10,"textLines":1,"bbox":[685,248,235,34]}
+{"kind":"textbox","id":"sh/f21ojulk","slide":3,"text":"Estimate calories, portions and macros.","textPreview":"Estimate calories, portions and macros.","textChars":39,"textLines":1,"bbox":[685,293,225,72]}
+{"kind":"textbox","id":"sh/g3apcz25","slide":3,"text":"→","textPreview":"→","textChars":1,"textLines":1,"bbox":[910,250,30,30]}
+{"kind":"textbox","id":"sh/h4j6lk3q","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[950,205,55,30]}
+{"kind":"textbox","id":"sh/6dsn65k3","slide":3,"text":"Act","textPreview":"Act","textChars":3,"textLines":1,"bbox":[950,248,235,34]}
+{"kind":"textbox","id":"sh/7e1ofalo","slide":3,"text":"Log meals, track goals and receive AI-supported guidance.","textPreview":"Log meals, track goals and receive AI-supported guidance.","textChars":57,"textLines":1,"bbox":[950,293,225,72]}
+{"kind":"shape","id":"sh/sza58f29","slide":3,"bbox":[420,425,760,115]}
+{"kind":"textbox","id":"sh/t0j6hk3u","slide":3,"text":"Core workflow is designed for photo-first meal logging, macro tracking, meal planning and ongoing progress visibility.","textPreview":"Core workflow is designed for photo-first meal logging, macro tracking, meal planning and ongoing progress visibility.","textChars":118,"textLines":1,"bbox":[448,457,690,54]}
+{"kind":"textbox","id":"sh/i98n25k7","slide":3,"text":"Source: Calkilo repository — public product, pricing & Search Console data (Feb 4–May 3, 2026).","textPreview":"Source: Calkilo repository — public product, pricing & Search Console data (Feb 4–May 3, 2026).","textChars":95,"textLines":1,"bbox":[42,675,930,16]}
+{"kind":"image","id":"im/07u5sbax","slide":3,"name":"","alt":"Calkilo food analysis screen","bbox":[72,165,270,430]}
+{"kind":"notes","id":"nt/fc90d4","slide":3,"text":""}
+{"kind":"slide","id":"sl/1vfq81","slide":4,"title":"CALKILO | INVESTOR DECK","textShapes":12}
+{"kind":"textbox","id":"sh/dwvipwfy","slide":4,"text":"CALKILO | INVESTOR DECK","textPreview":"CALKILO | INVESTOR DECK","textChars":23,"textLines":1,"bbox":[42,30,650,22]}
+{"kind":"textbox","id":"sh/qt4juhw7","slide":4,"text":"Calkilo layers high-frequency tracking with premium guidance.","textPreview":"Calkilo layers high-frequency tracking with premium guidance.","textChars":61,"textLines":1,"bbox":[42,58,1120,72]}
+{"kind":"textbox","id":"sh/rud0nmxs","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1180,670,56,18]}
+{"kind":"shape","id":"sh/4rm1s7e1","slide":4,"bbox":[42,165,566,165]}
+{"kind":"textbox","id":"sh/psvilcfm","slide":4,"text":"Photo calorie estimation","textPreview":"Photo calorie estimation","textChars":24,"textLines":1,"bbox":[68,190,500,30]}
+{"kind":"textbox","id":"sh/25kjqhwb","slide":4,"text":"AI-assisted recognition of meals, ingredients, portions and nutrition estimates.","textPreview":"AI-assisted recognition of meals, ingredients, portions and nutrition estimates.","textChars":80,"textLines":1,"bbox":[68,237,490,60]}
+{"kind":"shape","id":"sh/3qt0jmxg","slide":4,"bbox":[652,165,566,165]}
+{"kind":"textbox","id":"sh/g321o7e5","slide":4,"text":"Macro & food logging","textPreview":"Macro & food logging","textChars":20,"textLines":1,"bbox":[678,190,500,30]}
+{"kind":"textbox","id":"sh/h4bihcfq","slide":4,"text":"Daily records for calories, protein, carbohydrates and fat.","textPreview":"Daily records for calories, protein, carbohydrates and fat.","textChars":59,"textLines":1,"bbox":[678,237,490,60]}
+{"kind":"shape","id":"sh/5c7u9sru","slide":4,"bbox":[42,370,566,165]}
+{"kind":"textbox","id":"sh/4bydgnap","slide":4,"text":"AI coaching & planning","textPreview":"AI coaching & planning","textChars":22,"textLines":1,"bbox":[68,395,500,30]}
+{"kind":"textbox","id":"sh/3a5c7i94","slide":4,"text":"Personalized meal plans and nutrition support built around goals and history.","textPreview":"Personalized meal plans and nutrition support built around goals and history.","textChars":77,"textLines":1,"bbox":[68,442,490,60]}
+{"kind":"shape","id":"sh/i9wvedsj","slide":4,"bbox":[652,370,566,165]}
+{"kind":"textbox","id":"sh/h8nu58ry","slide":4,"text":"Motivation & progress","textPreview":"Motivation & progress","textChars":21,"textLines":1,"bbox":[678,395,500,30]}
+{"kind":"textbox","id":"sh/g7edc3ad","slide":4,"text":"Goals, analytics, challenges and health-oriented tracking.","textPreview":"Goals, analytics, challenges and health-oriented tracking.","textChars":58,"textLines":1,"bbox":[678,442,490,60]}
+{"kind":"textbox","id":"sh/v65c3y9s","slide":4,"text":"Source: Calkilo repository — public product, pricing & Search Console data (Feb 4–May 3, 2026).","textPreview":"Source: Calkilo repository — public product, pricing & Search Console data (Feb 4–May 3, 2026).","textChars":95,"textLines":1,"bbox":[42,675,930,16]}
+{"kind":"notes","id":"nt/1vfq81","slide":4,"text":""}
+{"kind":"slide","id":"sl/jp6bwx","slide":5,"title":"CALKILO | INVESTOR DECK","textShapes":15}
+{"kind":"textbox","id":"sh/1ofalsjq","slide":5,"text":"CALKILO | INVESTOR DECK","textPreview":"CALKILO | INVESTOR DECK","textChars":23,"textLines":1,"bbox":[42,30,650,22]}
+{"kind":"textbox","id":"sh/elorqx0f","slide":5,"text":"Organic search is already validating product demand.","textPreview":"Organic search is already validating product demand.","textChars":52,"textLines":1,"bbox":[42,58,1120,72]}
+{"kind":"textbox","id":"sh/fmxsji10","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1180,670,56,18]}
+{"kind":"textbox","id":"sh/orq9w7ih","slide":5,"text":"Search Console | Feb 4–May 3, 2026","textPreview":"Search Console | Feb 4–May 3, 2026","textChars":34,"textLines":1,"bbox":[42,140,420,24]}
+{"kind":"shape","id":"sh/9szapcj2","slide":5,"bbox":[42,197,260,130]}
+{"kind":"textbox","id":"sh/2porux0b","slide":5,"text":"2,317","textPreview":"2,317","textChars":5,"textLines":1,"bbox":[60,220,220,42]}
+{"kind":"textbox","id":"sh/nqhsn21w","slide":5,"text":"impressions","textPreview":"impressions","textChars":11,"textLines":1,"bbox":[60,271,220,24]}
+{"kind":"shape","id":"sh/wfqt07id","slide":5,"bbox":[337,197,260,130]}
+{"kind":"textbox","id":"sh/xgzatczy","slide":5,"text":"89","textPreview":"89","textChars":2,"textLines":1,"bbox":[355,220,220,42]}
+{"kind":"textbox","id":"sh/5czq9czi","slide":5,"text":"clicks","textPreview":"clicks","textChars":6,"textLines":1,"bbox":[355,271,220,24]}
+{"kind":"shape","id":"sh/4bqp0rix","slide":5,"bbox":[632,197,260,130]}
+{"kind":"textbox","id":"sh/jah87mhc","slide":5,"text":"3.84%","textPreview":"3.84%","textChars":5,"textLines":1,"bbox":[650,220,220,42]}
+{"kind":"textbox","id":"sh/i987yh0r","slide":5,"text":"CTR","textPreview":"CTR","textChars":3,"textLines":1,"bbox":[650,271,220,24]}
+{"kind":"shape","id":"sh/t0jqdwze","slide":5,"bbox":[927,197,260,130]}
+{"kind":"textbox","id":"sh/szap4ri9","slide":5,"text":"8.04","textPreview":"8.04","textChars":4,"textLines":1,"bbox":[945,220,220,42]}
+{"kind":"textbox","id":"sh/ryh8bmho","slide":5,"text":"avg. position","textPreview":"avg. position","textChars":13,"textLines":1,"bbox":[945,271,220,24]}
+{"kind":"shape","id":"sh/6d872h03","slide":5,"bbox":[42,382,1196,190]}
+{"kind":"textbox","id":"sh/94fq1sza","slide":5,"text":"Visibility accelerated in late April","textPreview":"Visibility accelerated in late April","textChars":36,"textLines":1,"bbox":[72,410,520,30]}
+{"kind":"textbox","id":"sh/836psnip","slide":5,"text":"Weekly impressions rose from 58 in the first exported week to 790 in the week beginning Apr 28. The final 30 days delivered 65 clicks versus 12 in the first 30 days.","textPreview":"Weekly impressions rose from 58 in the first exported week to 790 in the week beginning Apr 28. The final 30 days delivered 65 clicks ver...","textChars":165,"textLines":1,"bbox":[72,458,555,70]}
+{"kind":"textbox","id":"sh/lojqhc76","slide":5,"text":"Source: Calkilo Google Search Console SEO Analysis (exported May 6, 2026).","textPreview":"Source: Calkilo Google Search Console SEO Analysis (exported May 6, 2026).","textChars":74,"textLines":1,"bbox":[42,675,930,16]}
+{"kind":"chart","id":"ch/snip0vq1","slide":5,"name":"","chartType":"bar","bbox":[685,405,470,135]}
+{"kind":"notes","id":"nt/jp6bwx","slide":5,"text":""}
+{"kind":"slide","id":"sl/u08cxe","slide":6,"title":"CALKILO | INVESTOR DECK","textShapes":25}
+{"kind":"textbox","id":"sh/b6tcvml0","slide":6,"text":"CALKILO | INVESTOR DECK","textPreview":"CALKILO | INVESTOR DECK","textChars":23,"textLines":1,"bbox":[42,30,650,22]}
+{"kind":"textbox","id":"sh/c72t4r25","slide":6,"text":"Persian search demand is the clearest initial beachhead.","textPreview":"Persian search demand is the clearest initial beachhead.","textChars":56,"textLines":1,"bbox":[42,58,1120,72]}
+{"kind":"textbox","id":"sh/d8buxw3q","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1180,670,56,18]}
+{"kind":"shape","id":"sh/210byhk3","slide":6,"bbox":[42,165,1196,48]}
+{"kind":"textbox","id":"sh/329crmlo","slide":6,"text":"Market","textPreview":"Market","textChars":6,"textLines":1,"bbox":[64,179,240,22]}
+{"kind":"textbox","id":"sh/o3it0r29","slide":6,"text":"Clicks","textPreview":"Clicks","textChars":6,"textLines":1,"bbox":[344,179,150,22]}
+{"kind":"textbox","id":"sh/p4rutw3u","slide":6,"text":"Impressions","textPreview":"Impressions","textChars":11,"textLines":1,"bbox":[554,179,200,22]}
+{"kind":"textbox","id":"sh/uxgbuxk7","slide":6,"text":"CTR","textPreview":"CTR","textChars":3,"textLines":1,"bbox":[824,179,150,22]}
+{"kind":"textbox","id":"sh/fy9sn2ls","slide":6,"text":"Position","textPreview":"Position","textChars":8,"textLines":1,"bbox":[1024,179,200,22]}
+{"kind":"shape","id":"sh/zyd4byps","slide":6,"bbox":[42,213,1196,90]}
+{"kind":"textbox","id":"sh/yx4n2d87","slide":6,"text":"Iran","textPreview":"Iran","textChars":4,"textLines":1,"bbox":[64,243,240,28]}
+{"kind":"textbox","id":"sh/lkfmd87y","slide":6,"text":"54 clicks","textPreview":"54 clicks","textChars":9,"textLines":1,"bbox":[344,243,150,28]}
+{"kind":"textbox","id":"sh/kz6543qd","slide":6,"text":"864 impressions","textPreview":"864 impressions","textChars":15,"textLines":1,"bbox":[554,243,200,28]}
+{"kind":"textbox","id":"sh/7mxofip4","slide":6,"text":"6.25% CTR","textPreview":"6.25% CTR","textChars":9,"textLines":1,"bbox":[824,243,150,28]}
+{"kind":"textbox","id":"sh/mlon6d8j","slide":6,"text":"7.36 avg. position","textPreview":"7.36 avg. position","textChars":18,"textLines":1,"bbox":[1024,243,200,28]}
+{"kind":"shape","id":"sh/9of6hs7u","slide":6,"bbox":[42,303,1196,90]}
+{"kind":"textbox","id":"sh/8n658nqp","slide":6,"text":"United States","textPreview":"United States","textChars":13,"textLines":1,"bbox":[64,333,240,28]}
+{"kind":"textbox","id":"sh/nqt43epk","slide":6,"text":"2 clicks","textPreview":"2 clicks","textChars":8,"textLines":1,"bbox":[344,333,150,28]}
+{"kind":"textbox","id":"sh/2pknut8z","slide":6,"text":"458 impressions","textPreview":"458 impressions","textChars":15,"textLines":1,"bbox":[554,333,200,28]}
+{"kind":"textbox","id":"sh/6ls72hsn","slide":6,"text":"0.44% CTR","textPreview":"0.44% CTR","textChars":9,"textLines":1,"bbox":[824,333,150,28]}
+{"kind":"textbox","id":"sh/rm18bm98","slide":6,"text":"7.80 avg. position","textPreview":"7.80 avg. position","textChars":18,"textLines":1,"bbox":[1024,333,200,28]}
+{"kind":"shape","id":"sh/snap4rat","slide":6,"bbox":[42,393,1196,90]}
+{"kind":"textbox","id":"sh/tojqdwre","slide":6,"text":"Italy","textPreview":"Italy","textChars":5,"textLines":1,"bbox":[64,423,240,28]}
+{"kind":"textbox","id":"sh/ih87yhsr","slide":6,"text":"1 click","textPreview":"1 click","textChars":7,"textLines":1,"bbox":[344,423,150,28]}
+{"kind":"textbox","id":"sh/ji187m9c","slide":6,"text":"110 impressions","textPreview":"110 impressions","textChars":15,"textLines":1,"bbox":[554,423,200,28]}
+{"kind":"textbox","id":"sh/4jap0rax","slide":6,"text":"0.91% CTR","textPreview":"0.91% CTR","textChars":9,"textLines":1,"bbox":[824,423,150,28]}
+{"kind":"textbox","id":"sh/5kjq9wr2","slide":6,"text":"11.10 avg. position","textPreview":"11.10 avg. position","textChars":19,"textLines":1,"bbox":[1024,423,200,28]}
+{"kind":"textbox","id":"sh/ut87uxsf","slide":6,"text":"Why it matters: Persian photo-calorie queries rank near page one and already earn clicks; dedicated localized pages can deepen query-to-page fit.","textPreview":"Why it matters: Persian photo-calorie queries rank near page one and already earn clicks; dedicated localized pages can deepen query-to-p...","textChars":145,"textLines":1,"bbox":[42,530,1110,46]}
+{"kind":"textbox","id":"sh/veh83290","slide":6,"text":"Source: Calkilo repository — public product, pricing & Search Console data (Feb 4–May 3, 2026).","textPreview":"Source: Calkilo repository — public product, pricing & Search Console data (Feb 4–May 3, 2026).","textChars":95,"textLines":1,"bbox":[42,675,930,16]}
+{"kind":"notes","id":"nt/u08cxe","slide":6,"text":""}
+{"kind":"slide","id":"sl/buf9fx","slide":7,"title":"CALKILO | INVESTOR DECK","textShapes":11}
+{"kind":"textbox","id":"sh/wzep8fil","slide":7,"text":"CALKILO | INVESTOR DECK","textPreview":"CALKILO | INVESTOR DECK","textChars":23,"textLines":1,"bbox":[42,30,650,22]}
+{"kind":"textbox","id":"sh/be58zah0","slide":7,"text":"A simple freemium model keeps the upgrade path legible.","textPreview":"A simple freemium model keeps the upgrade path legible.","textChars":55,"textLines":1,"bbox":[42,58,1120,72]}
+{"kind":"textbox","id":"sh/adc7650f","slide":7,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1180,670,56,18]}
+{"kind":"shape","id":"sh/9c3qxkzu","slide":7,"bbox":[42,170,550,320]}
+{"kind":"textbox","id":"sh/obup4fi9","slide":7,"text":"Free","textPreview":"Free","textChars":4,"textLines":1,"bbox":[72,205,130,34]}
+{"kind":"textbox","id":"sh/nal8vah4","slide":7,"text":"Habit formation through photo-first calorie estimates, food logging and core nutrition tracking.","textPreview":"Habit formation through photo-first calorie estimates, food logging and core nutrition tracking.","textChars":96,"textLines":1,"bbox":[72,265,440,70]}
+{"kind":"shape","id":"sh/m9c7250j","slide":7,"bbox":[650,170,550,320]}
+{"kind":"textbox","id":"sh/t87q94ze","slide":7,"text":"Premium","textPreview":"Premium","textChars":7,"textLines":1,"bbox":[680,205,150,34]}
+{"kind":"textbox","id":"sh/87y9gzit","slide":7,"text":"Personalized meal plans, deeper analytics and AI coaching.","textPreview":"Personalized meal plans, deeper analytics and AI coaching.","textChars":58,"textLines":1,"bbox":[680,265,440,70]}
+{"kind":"textbox","id":"sh/2pkv25wv","slide":7,"text":"$4.99 / month","textPreview":"$4.99 / month","textChars":13,"textLines":1,"bbox":[680,365,210,30]}
+{"kind":"textbox","id":"sh/nqdwbadg","slide":7,"text":"$14.99 / year","textPreview":"$14.99 / year","textChars":13,"textLines":1,"bbox":[920,365,190,30]}
+{"kind":"textbox","id":"sh/ormd4fe1","slide":7,"text":"Investor note: repository data confirms pricing and feature packaging; it does not include conversion, retention or revenue metrics.","textPreview":"Investor note: repository data confirms pricing and feature packaging; it does not include conversion, retention or revenue metrics.","textChars":132,"textLines":1,"bbox":[42,555,1140,28]}
+{"kind":"textbox","id":"sh/psvedkvm","slide":7,"text":"Source: Calkilo public pricing page.","textPreview":"Source: Calkilo public pricing page.","textChars":36,"textLines":1,"bbox":[42,675,930,16]}
+{"kind":"notes","id":"nt/buf9fx","slide":7,"text":""}
+{"kind":"slide","id":"sl/5a9iad","slide":8,"title":"CALKILO | INVESTOR DECK","textShapes":16}
+{"kind":"textbox","id":"sh/psf25wrm","slide":8,"text":"CALKILO | INVESTOR DECK","textPreview":"CALKILO | INVESTOR DECK","textChars":23,"textLines":1,"bbox":[42,30,650,22]}
+{"kind":"textbox","id":"sh/2po3ahsv","slide":8,"text":"The compounding asset is a localized, habit-forming product surface.","textPreview":"The compounding asset is a localized, habit-forming product surface.","textChars":68,"textLines":1,"bbox":[42,58,1120,72]}
+{"kind":"textbox","id":"sh/3qxk3m9g","slide":8,"text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1180,670,56,18]}
+{"kind":"textbox","id":"sh/cvqlgbax","slide":8,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[42,170,44,24]}
+{"kind":"textbox","id":"sh/dwzm9wri","slide":8,"text":"Photo-first UX","textPreview":"Photo-first UX","textChars":14,"textLines":1,"bbox":[42,202,540,32]}
+{"kind":"textbox","id":"sh/qt83e1s7","slide":8,"text":"Reduces friction at the moment a meal happens.","textPreview":"Reduces friction at the moment a meal happens.","textChars":46,"textLines":1,"bbox":[42,248,500,55]}
+{"kind":"textbox","id":"sh/ruhk769s","slide":8,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[652,170,44,24]}
+{"kind":"textbox","id":"sh/0jqlkba9","slide":8,"text":"Localized acquisition","textPreview":"Localized acquisition","textChars":21,"textLines":1,"bbox":[652,202,540,32]}
+{"kind":"textbox","id":"sh/1kzmdgru","slide":8,"text":"Public landing content spans English, Persian, Italian, Dutch, Russian, Chinese and Arabic.","textPreview":"Public landing content spans English, Persian, Italian, Dutch, Russian, Chinese and Arabic.","textChars":91,"textLines":1,"bbox":[652,248,500,55]}
+{"kind":"textbox","id":"sh/xwfmpcva","slide":8,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[42,365,44,24]}
+{"kind":"textbox","id":"sh/wb65w7ep","slide":8,"text":"Persian food relevance","textPreview":"Persian food relevance","textChars":22,"textLines":1,"bbox":[42,397,540,32]}
+{"kind":"textbox","id":"sh/bax4nmd4","slide":8,"text":"Dedicated Persian guides and food-calorie examples strengthen regional usefulness.","textPreview":"Dedicated Persian guides and food-calorie examples strengthen regional usefulness.","textChars":82,"textLines":1,"bbox":[42,443,500,55]}
+{"kind":"textbox","id":"sh/a9onuhwj","slide":8,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[652,365,44,24]}
+{"kind":"textbox","id":"sh/l0zmtwv6","slide":8,"text":"Data loop","textPreview":"Data loop","textChars":9,"textLines":1,"bbox":[652,397,540,32]}
+{"kind":"textbox","id":"sh/kzq50rel","slide":8,"text":"Goals, history and preferences inform meal suggestions as user data changes.","textPreview":"Goals, history and preferences inform meal suggestions as user data changes.","textChars":76,"textLines":1,"bbox":[652,443,500,55]}
+{"kind":"textbox","id":"sh/jyh4rmdg","slide":8,"text":"Source: Calkilo llms.txt and localized landing-page copy.","textPreview":"Source: Calkilo llms.txt and localized landing-page copy.","textChars":57,"textLines":1,"bbox":[42,675,930,16]}
+{"kind":"notes","id":"nt/5a9iad","slide":8,"text":""}
+{"kind":"slide","id":"sl/vvzfvz","slide":9,"title":"CALKILO | INVESTOR DECK","textShapes":14}
+{"kind":"textbox","id":"sh/upwvqdwn","slide":9,"text":"CALKILO | INVESTOR DECK","textPreview":"CALKILO | INVESTOR DECK","textChars":23,"textLines":1,"bbox":[42,30,650,22]}
+{"kind":"textbox","id":"sh/hs7ulsfy","slide":9,"text":"The near-term plan converts early search visibility into repeatable acquisition.","textPreview":"The near-term plan converts early search visibility into repeatable acquisition.","textChars":80,"textLines":1,"bbox":[42,58,1120,72]}
+{"kind":"textbox","id":"sh/wredsned","slide":9,"text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[1180,670,56,18]}
+{"kind":"shape","id":"sh/7m5cfixw","slide":9,"bbox":[42,205,350,270]}
+{"kind":"textbox","id":"sh/mlwvmdwb","slide":9,"text":"Now","textPreview":"Now","textChars":3,"textLines":1,"bbox":[67,230,280,28]}
+{"kind":"textbox","id":"sh/9onuhsf2","slide":9,"text":"Sharpen Persian query-to-page fit","textPreview":"Sharpen Persian query-to-page fit","textChars":33,"textLines":1,"bbox":[67,278,300,60]}
+{"kind":"textbox","id":"sh/8nedoneh","slide":9,"text":"Photo-calorie and AI-calorie pages match validated high-intent searches.","textPreview":"Photo-calorie and AI-calorie pages match validated high-intent searches.","textChars":72,"textLines":1,"bbox":[67,360,290,70]}
+{"kind":"shape","id":"sh/zylcbyx0","slide":9,"bbox":[439,205,350,270]}
+{"kind":"textbox","id":"sh/yxcbitgf","slide":9,"text":"Next","textPreview":"Next","textChars":4,"textLines":1,"bbox":[464,230,280,28]}
+{"kind":"textbox","id":"sh/knadcrq1","slide":9,"text":"Improve conversion surfaces","textPreview":"Improve conversion surfaces","textChars":27,"textLines":1,"bbox":[464,278,300,60]}
+{"kind":"textbox","id":"sh/loje5w7m","slide":9,"text":"Optimize mobile pages, app-store paths, snippets and premium communication.","textPreview":"Optimize mobile pages, app-store paths, snippets and premium communication.","textChars":75,"textLines":1,"bbox":[464,360,290,70]}
+{"kind":"shape","id":"sh/y1svah8v","slide":9,"bbox":[836,205,350,270]}
+{"kind":"textbox","id":"sh/zm1w3mpg","slide":9,"text":"Then","textPreview":"Then","textChars":4,"textLines":1,"bbox":[861,230,280,28]}
+{"kind":"textbox","id":"sh/czqd87qp","slide":9,"text":"Repeat localization playbook","textPreview":"Repeat localization playbook","textChars":28,"textLines":1,"bbox":[861,278,300,60]}
+{"kind":"textbox","id":"sh/x0ze1c7a","slide":9,"text":"Extend proven content-product fit to Italian and other high-potential markets.","textPreview":"Extend proven content-product fit to Italian and other high-potential markets.","textChars":78,"textLines":1,"bbox":[861,360,290,70]}
+{"kind":"textbox","id":"sh/ax8v6h8z","slide":9,"text":"The operating question for investors: can Calkilo translate localized intent and a lower-friction logging loop into durable subscriptions?","textPreview":"The operating question for investors: can Calkilo translate localized intent and a lower-friction logging loop into durable subscriptions?","textChars":138,"textLines":1,"bbox":[42,550,1125,30]}
+{"kind":"textbox","id":"sh/byhwzmp4","slide":9,"text":"Roadmap synthesized from the repository’s 30-day SEO action plan.","textPreview":"Roadmap synthesized from the repository’s 30-day SEO action plan.","textChars":65,"textLines":1,"bbox":[42,675,930,16]}
+{"kind":"notes","id":"nt/vvzfvz","slide":9,"text":""}
+{"kind":"slide","id":"sl/19b9jn","slide":10,"title":"CALKILO","textShapes":12}
+{"kind":"textbox","id":"sh/7ih47i9g","slide":10,"text":"CALKILO","textPreview":"CALKILO","textChars":7,"textLines":1,"bbox":[52,54,300,30]}
+{"kind":"textbox","id":"sh/8jq5gnq1","slide":10,"text":"A practical AI nutrition\ncompanion with early\nlocalized demand.","textPreview":"A practical AI nutrition | companion with early | localized demand.","textChars":63,"textLines":3,"bbox":[52,135,700,215]}
+{"kind":"textbox","id":"sh/9kzm9srm","slide":10,"text":"The investment case","textPreview":"The investment case","textChars":19,"textLines":1,"bbox":[52,423,300,25]}
+{"kind":"textbox","id":"sh/yt8nad8z","slide":10,"text":"Back the team to turn photo-first nutrition tracking, regional relevance and early organic validation into a scalable subscription business.","textPreview":"Back the team to turn photo-first nutrition tracking, regional relevance and early organic validation into a scalable subscription business.","textChars":140,"textLines":1,"bbox":[52,465,700,76]}
+{"kind":"textbox","id":"sh/zuh43i9k","slide":10,"text":"Next diligence priorities","textPreview":"Next diligence priorities","textChars":25,"textLines":1,"bbox":[860,160,300,24]}
+{"kind":"textbox","id":"sh/kvq5c3qp","slide":10,"text":"Product","textPreview":"Product","textChars":7,"textLines":1,"bbox":[860,220,300,28]}
+{"kind":"textbox","id":"sh/lwzm58ra","slide":10,"text":"Accuracy and repeat-use behavior","textPreview":"Accuracy and repeat-use behavior","textChars":32,"textLines":1,"bbox":[860,255,310,28]}
+{"kind":"textbox","id":"sh/apo36t8n","slide":10,"text":"Growth","textPreview":"Growth","textChars":6,"textLines":1,"bbox":[860,325,300,28]}
+{"kind":"textbox","id":"sh/bqx4zy98","slide":10,"text":"Install, activation and CAC","textPreview":"Install, activation and CAC","textChars":27,"textLines":1,"bbox":[860,360,310,28]}
+{"kind":"textbox","id":"sh/vi1gn69s","slide":10,"text":"Economics","textPreview":"Economics","textChars":9,"textLines":1,"bbox":[860,430,300,28]}
+{"kind":"textbox","id":"sh/uhsze18n","slide":10,"text":"Conversion, retention and LTV","textPreview":"Conversion, retention and LTV","textChars":29,"textLines":1,"bbox":[860,465,310,28]}
+{"kind":"textbox","id":"sh/hkjypgry","slide":10,"text":"calkilo.com","textPreview":"calkilo.com","textChars":11,"textLines":1,"bbox":[52,650,300,22]}
+{"kind":"notes","id":"nt/19b9jn","slide":10,"text":""}

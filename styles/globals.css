@@ -1493,6 +1493,10 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 .lp-download-floaters,
 .lp-download-phone,
 .lp-download-trophy {
+  /* The source dimensions are present as HTML attributes for layout stability.
+     When these illustrations are responsively width-constrained, reset the
+     attribute height so their natural aspect ratios are preserved. */
+  height: auto;
   pointer-events: none;
   position: absolute;
 }
@@ -1527,6 +1531,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 
 .lp-download-composite {
   bottom: 0;
+  height: auto;
   left: 0;
   margin: auto 0;
   max-width: 100%;

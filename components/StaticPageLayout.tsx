@@ -31,8 +31,14 @@ interface StaticPageLayoutProps {
   noindex?: boolean
   ogType?: 'website' | 'article'
   imagePath?: string
+  imageAlt?: string
   jsonLd?: JsonLdSchema | ReadonlyArray<JsonLdSchema>
   hasLocalizedVersions?: boolean
+  alternateLanguagePaths?: ReadonlyArray<{ lang: string; path: string }>
+  articlePublishedTime?: string
+  articleModifiedTime?: string
+  articleSection?: string
+  articleTags?: ReadonlyArray<string>
   children: ReactNode
 }
 
@@ -48,8 +54,14 @@ export default function StaticPageLayout({
   noindex,
   ogType,
   imagePath,
+  imageAlt,
   jsonLd,
   hasLocalizedVersions = true,
+  alternateLanguagePaths,
+  articlePublishedTime,
+  articleModifiedTime,
+  articleSection,
+  articleTags,
   children,
 }: StaticPageLayoutProps) {
   const router = useRouter()
@@ -127,11 +139,13 @@ export default function StaticPageLayout({
       return
     }
 
-    void router.push(
+    const explicitAlternate = alternateLanguagePaths?.find((alternate) => alternate.lang === nextLanguage)
+
+    void router.push(explicitAlternate?.path || (
       hasLocalizedVersions
         ? switchLanguagePath(router.asPath || localizedPath, nextLanguage)
-        : toLocalizedPath('/', nextLanguage),
-    )
+        : toLocalizedPath('/', nextLanguage)
+    ))
   }
 
   return (
@@ -154,9 +168,16 @@ export default function StaticPageLayout({
         noindex={noindex}
         ogType={ogType}
         imagePath={imagePath}
+        imageAlt={imageAlt}
         jsonLd={jsonLd}
         language={language}
-        alternateLanguages={hasLocalizedVersions ? buildAlternateLanguagePaths(path) : undefined}
+        alternateLanguages={
+          alternateLanguagePaths || (hasLocalizedVersions ? buildAlternateLanguagePaths(path) : undefined)
+        }
+        articlePublishedTime={articlePublishedTime}
+        articleModifiedTime={articleModifiedTime}
+        articleSection={articleSection}
+        articleTags={articleTags}
       />
 
       <SiteHeader

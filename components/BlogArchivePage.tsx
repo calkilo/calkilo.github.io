@@ -55,22 +55,54 @@ export default function BlogArchivePage({ initialPosts = EMPTY_BLOG_POSTS, initi
     return () => controller.abort()
   }, [hasInitialSnapshot, initialPosts, initialStatus, language, reloadKey])
 
-  const pageJsonLd = useMemo(
-    () => ({
-      '@context': 'https://schema.org',
-      '@type': 'Blog',
-      name: copy.archiveSeoTitle,
-      description: copy.archiveSeoDescription,
-      url: `${SITE_URL}${language === 'en' ? '/blog/' : `/${language}/blog/`}`,
-      inLanguage: language,
-      isPartOf: {
-        '@type': 'WebSite',
-        name: 'Calkilo',
-        url: SITE_URL,
+  const pageJsonLd = useMemo(() => {
+    const archiveUrl = `${SITE_URL}${language === 'en' ? '/blog/' : `/${language}/blog/`}`
+
+    return [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Blog',
+        '@id': `${archiveUrl}#blog`,
+        name: copy.archiveSeoTitle,
+        description: copy.archiveSeoDescription,
+        url: archiveUrl,
+        inLanguage: language,
+        isPartOf: {
+          '@type': 'WebSite',
+          name: 'Calkilo',
+          url: SITE_URL,
+        },
+        blogPost: posts.map((post) => ({
+          '@type': 'BlogPosting',
+          headline: post.title,
+          description: post.excerpt || undefined,
+          url: `${SITE_URL}${language === 'en' ? '' : `/${language}`}/blog/${post.slug}/`,
+          datePublished: post.published_at || post.created_at || undefined,
+          dateModified: post.updated_at || post.published_at || undefined,
+          image: post.image_url || undefined,
+          inLanguage: language,
+        })),
       },
-    }),
-    [copy.archiveSeoDescription, copy.archiveSeoTitle, language],
-  )
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Calkilo',
+            item: `${SITE_URL}${language === 'en' ? '/' : `/${language}/`}`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: copy.archiveHeading,
+            item: archiveUrl,
+          },
+        ],
+      },
+    ]
+  }, [copy.archiveHeading, copy.archiveSeoDescription, copy.archiveSeoTitle, language, posts])
 
   return (
     <StaticPageLayout

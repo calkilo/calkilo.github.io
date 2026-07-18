@@ -1,5 +1,6 @@
 import {
   DEFAULT_LANGUAGE,
+  isSiteLanguage,
   normalizeSiteLanguage,
   toLocalizedPath,
   type SiteLanguage,
@@ -118,12 +119,16 @@ function normalizeBlogListPayload(payload: unknown): BlogListPage {
   throw new Error('Unexpected blog API response.')
 }
 
-function resolvePaginatedUrl(value: string): string {
-  if (value.startsWith('http://') || value.startsWith('https://')) {
-    return value
-  }
+function resolvePaginatedUrl(value: string, language: SiteLanguage): string {
+  const url = value.startsWith('http://') || value.startsWith('https://')
+    ? new URL(value)
+    : new URL(value, `${BLOG_API_BASE_URL}/`)
 
-  return new URL(value, `${BLOG_API_BASE_URL}/`).toString()
+  // Pagination links can omit request filters. Keep the selected site language on
+  // every page so a localized blog never falls back to the API's default language.
+  url.searchParams.set('language', normalizeBlogLanguage(language))
+
+  return url.toString()
 }
 
 function buildBlogApiUrl(path: string, language: SiteLanguage): string {
@@ -190,7 +195,7 @@ export async function fetchBlogPosts(language: SiteLanguage, init?: RequestInit)
     visitedUrls.add(nextUrl)
     const page = normalizeBlogListPayload(await requestJson(nextUrl, init))
     posts.push(...page.posts)
-    nextUrl = page.next ? resolvePaginatedUrl(page.next) : null
+    nextUrl = page.next ? resolvePaginatedUrl(page.next, language) : null
   }
 
   return sortBlogPostsByNewest(posts)
@@ -234,6 +239,27 @@ export function getBlogArchivePath(language: SiteLanguage): string {
 
 export function getBlogPostPath(slug: string, language: SiteLanguage): string {
   return toLocalizedPath(`/blog/${slug}`, normalizeBlogLanguage(language))
+}
+
+export function getBlogPostAlternateLanguagePaths(
+  post: BlogPost,
+): Array<{ lang: SiteLanguage; path: string }> {
+  const languages = new Set<SiteLanguage>()
+
+  post.available_languages.forEach((language) => {
+    if (isSiteLanguage(language)) {
+      languages.add(language)
+    }
+  })
+
+  if (isSiteLanguage(post.language)) {
+    languages.add(post.language)
+  }
+
+  return Array.from(languages).map((language) => ({
+    lang: language,
+    path: getBlogPostPath(post.slug, language),
+  }))
 }
 
 export function formatBlogDate(post: BlogPost, language: SiteLanguage): string {
