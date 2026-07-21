@@ -1,0 +1,1081 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "Calkilo Search Performance: Where to Focus Next",
+    "description": "A decision-ready analysis of Calkilo's Google Search Console performance and the highest-priority SEO actions.",
+    "generatedAt": "2026-07-21T00:00:00+03:30",
+    "sources": [
+      {
+        "id": "gsc_bundle",
+        "label": "Google Search Console export bundle — July 21, 2026",
+        "path": "/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21",
+        "query": {
+          "engine": "DuckDB",
+          "language": "sql",
+          "executed_at": "2026-07-21T00:00:00+03:30",
+          "description": "Reconciles the top-line, page, and visible-query metrics used in the executive summary.",
+          "tables_used": [
+            "Chart.csv",
+            "Pages.csv",
+            "Queries.csv"
+          ],
+          "filters": [
+            "Search type: Web",
+            "April 20–July 19, 2026"
+          ],
+          "metric_definitions": [
+            "CTR = clicks / impressions.",
+            "Top-page share uses the Pages.csv click total as its denominator.",
+            "Generic-query scenario uses a 3.5% CTR and holds impressions constant."
+          ],
+          "sql": "WITH\nchart AS (SELECT * FROM read_csv_auto('/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21/Chart.csv', header=true)),\npages AS (SELECT * FROM read_csv_auto('/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21/Pages.csv', header=true)),\nqueries AS (SELECT * FROM read_csv_auto('/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21/Queries.csv', header=true)),\ngeneric AS (\n  SELECT SUM(Clicks) AS clicks, SUM(Impressions) AS impressions\n  FROM queries\n  WHERE \"Top queries\" IN ('کالری شمار غذا انلاین', 'کالری شمار رایگان', 'کالری شمار')\n),\ntop_page AS (\n  SELECT Clicks, Impressions, \"Top pages\"\n  FROM pages\n  ORDER BY Clicks DESC\n  LIMIT 1\n)\nSELECT\n  (SELECT SUM(Clicks) FROM chart) AS total_clicks,\n  (SELECT SUM(Impressions) FROM chart) AS total_impressions,\n  (SELECT Clicks FROM top_page) AS top_page_clicks,\n  (SELECT Clicks FROM top_page) / (SELECT SUM(Clicks) FROM pages) AS top_page_click_share,\n  (SELECT clicks FROM generic) AS generic_clicks,\n  (SELECT impressions FROM generic) AS generic_impressions,\n  (SELECT clicks FROM generic) / (SELECT impressions FROM generic) AS generic_ctr,\n  (SELECT impressions * 0.035 - clicks FROM generic) AS generic_scenario_gain"
+        }
+      },
+      {
+        "id": "gsc_chart",
+        "label": "Google Search Console daily performance",
+        "path": "/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21/Chart.csv",
+        "query": {
+          "engine": "DuckDB",
+          "language": "sql",
+          "executed_at": "2026-07-21T00:00:00+03:30",
+          "description": "Aggregates the daily Search Console export into Monday–Sunday weeks.",
+          "tables_used": [
+            "Chart.csv"
+          ],
+          "filters": [
+            "Search type: Web",
+            "April 20–July 19, 2026"
+          ],
+          "metric_definitions": [
+            "Weekly clicks and impressions are sums of daily values.",
+            "Weekly CTR = weekly clicks / weekly impressions.",
+            "Weekly position is weighted by daily impressions."
+          ],
+          "sql": "WITH daily AS (\n  SELECT CAST(Date AS DATE) AS date, Clicks, Impressions, Position\n  FROM read_csv_auto('/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21/Chart.csv', header=true)\n)\nSELECT\n  CAST(date_trunc('week', date) + INTERVAL '6 days' AS DATE) AS week,\n  SUM(Clicks) AS clicks,\n  SUM(Impressions) AS impressions,\n  SUM(Clicks) / SUM(Impressions) AS ctr,\n  SUM(Position * Impressions) / SUM(Impressions) AS position\nFROM daily\nGROUP BY 1\nORDER BY 1"
+        }
+      },
+      {
+        "id": "gsc_pages",
+        "label": "Google Search Console landing pages",
+        "path": "/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21/Pages.csv",
+        "query": {
+          "engine": "DuckDB",
+          "language": "sql",
+          "executed_at": "2026-07-21T00:00:00+03:30",
+          "description": "Ranks landing pages by clicks and calculates page-export click share.",
+          "tables_used": [
+            "Pages.csv"
+          ],
+          "filters": [
+            "Search type: Web",
+            "Date: Last 3 months",
+            "Top six pages by clicks"
+          ],
+          "metric_definitions": [
+            "Page click share = page clicks / all clicks in Pages.csv."
+          ],
+          "sql": "WITH pages AS (\n  SELECT * FROM read_csv_auto('/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21/Pages.csv', header=true)\n)\nSELECT\n  \"Top pages\" AS page,\n  Clicks AS clicks,\n  Impressions AS impressions,\n  Clicks / Impressions AS ctr,\n  Position AS position,\n  Clicks / SUM(Clicks) OVER () AS click_share\nFROM pages\nORDER BY clicks DESC\nLIMIT 6"
+        }
+      },
+      {
+        "id": "gsc_queries",
+        "label": "Google Search Console visible queries",
+        "path": "/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21/Queries.csv",
+        "query": {
+          "engine": "DuckDB",
+          "language": "sql",
+          "executed_at": "2026-07-21T00:00:00+03:30",
+          "description": "Ranks visible queries by a conservative rank-band CTR scenario.",
+          "tables_used": [
+            "Queries.csv"
+          ],
+          "filters": [
+            "Search type: Web",
+            "Date: Last 3 months",
+            "At least 100 impressions for the detail table",
+            "Suspicious photographer query excluded from opportunity totals"
+          ],
+          "metric_definitions": [
+            "Scenario click gain = max(0, impressions × scenario CTR − clicks).",
+            "Scenario CTR bands: 12% for positions 1–3, 7% for 4–5, 3.5% for 6–10, 1.5% for 11–20, and 0.5% thereafter.",
+            "The scenario is directional, not a forecast."
+          ],
+          "sql": "WITH queries AS (\n  SELECT *,\n    CASE\n      WHEN Position <= 3 THEN 0.12\n      WHEN Position <= 5 THEN 0.07\n      WHEN Position <= 10 THEN 0.035\n      WHEN Position <= 20 THEN 0.015\n      ELSE 0.005\n    END AS scenario_ctr\n  FROM read_csv_auto('/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21/Queries.csv', header=true)\n)\nSELECT\n  \"Top queries\" AS query,\n  Clicks AS clicks,\n  Impressions AS impressions,\n  Clicks / Impressions AS ctr,\n  Position AS position,\n  scenario_ctr,\n  greatest(0, Impressions * scenario_ctr - Clicks) AS scenario_gain\nFROM queries\nWHERE Impressions >= 100\n  AND \"Top queries\" <> 'calorie counting recipes for photographers'\nORDER BY scenario_gain DESC, impressions DESC"
+        }
+      },
+      {
+        "id": "google_title_guidance",
+        "label": "Google Search Central — title links",
+        "href": "https://developers.google.com/search/docs/appearance/title-link"
+      },
+      {
+        "id": "google_snippet_guidance",
+        "label": "Google Search Central — snippets",
+        "href": "https://developers.google.com/search/docs/appearance/snippet"
+      },
+      {
+        "id": "google_helpful_content",
+        "label": "Google Search Central — helpful, people-first content",
+        "href": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      },
+      {
+        "id": "live_english_page",
+        "label": "Calkilo English photo calorie calculator page",
+        "href": "https://calkilo.com/photo-calorie-calculator/"
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# Calkilo Search Performance: Where to Focus Next"
+      },
+      {
+        "id": "executive_summary",
+        "type": "markdown",
+        "sourceId": "gsc_bundle",
+        "body": "## Executive Summary\n\n- **Search visibility is accelerating.** The last 30 days delivered **805 clicks**, up from **109** in the first 30 days, while CTR improved from **3.39% to 4.33%** and weighted position improved from **8.00 to 7.19**.\n- **The fastest safe gain is generic Persian intent.** Three high-volume queries produced **3,787 impressions but only 58 clicks (1.53% CTR)**. Reaching a modest 3.5% CTR at the current rank would add about **75 clicks per 90 days**.\n- **Do not treat every impression as opportunity.** The largest visible query — `calorie counting recipes for photographers` — produced **2,514 impressions and zero clicks** and appears irrelevant. Diagnose it before changing the English landing page.\n- **Concentration is the strategic risk.** `/fa/photo-calorie-calculator/` contributes **64.3%** of page-export clicks. Protect it, then build a second growth engine around generic Persian and Italian intent."
+      },
+      {
+        "id": "headline_metrics",
+        "type": "metric-strip",
+        "cardIds": [
+          "last_30_clicks",
+          "last_30_ctr",
+          "top_page_share"
+        ]
+      },
+      {
+        "id": "growth_section",
+        "type": "markdown",
+        "sourceId": "gsc_chart",
+        "body": "## Growth is real, but the latest week broadened\n\n**The underlying direction is strongly positive.** Last-30-day clicks were 7.4× the first-30-day level, supported by both more impressions and better CTR. The final week still produced 226 clicks, but impressions rose to 6,075 while CTR fell from 5.07% to 3.72% and weighted position slipped from 6.67 to 7.36.\n\nThis one-week move is not yet a trend. It is consistent with Google showing the site for a broader set of queries — some relevant and some not — so the next monitoring step should separate branded, photo-intent, generic-calorie, and irrelevant queries."
+      },
+      {
+        "id": "weekly_chart_block",
+        "type": "chart",
+        "chartId": "weekly_clicks"
+      },
+      {
+        "id": "concentration_section",
+        "type": "markdown",
+        "sourceId": "gsc_pages",
+        "body": "## One Persian page carries most of the result\n\n**The Persian photo-calorie page is the asset to protect.** It generated 777 clicks and 15,736 impressions at 4.94% CTR and position 6.20. The top three pages together account for 84.4% of page-export clicks.\n\nThat concentration makes large title, heading, or content rewrites risky. Improve the winning page with proof and product clarity, but use a separate, clearly differentiated page to pursue generic `کالری شمار` intent."
+      },
+      {
+        "id": "page_chart_block",
+        "type": "chart",
+        "chartId": "top_pages"
+      },
+      {
+        "id": "query_section",
+        "type": "markdown",
+        "sourceId": "gsc_queries",
+        "body": "## Generic Persian queries are the clearest near-term upside\n\n**The gap is concentrated in three terms:** `کالری شمار غذا انلاین`, `کالری شمار رایگان`, and `کالری شمار`. Together they generate 3,787 impressions, 58 clicks, and 1.53% CTR at average positions between 7.76 and 9.71.\n\nThe 3.5% scenario below is intentionally conservative and assumes no rank improvement. It is an opportunity-sizing device, not a traffic forecast. Before editing pages, export query × page data to confirm which Persian URL owns each term and whether similar landing pages are competing."
+      },
+      {
+        "id": "query_chart_block",
+        "type": "chart",
+        "chartId": "generic_query_gain"
+      },
+      {
+        "id": "query_table_block",
+        "type": "table",
+        "tableId": "priority_queries"
+      },
+      {
+        "id": "actions_section",
+        "type": "markdown",
+        "body": "## Recommended Next Steps\n\n1. **Assign one page to generic Persian calorie-counter intent.** In Search Console, filter the three priority queries and compare pages. If `/fa/`, `/fa/ai-calorie-tracker/`, `/fa/free-photo-calorie-calculator/`, and related pages rotate for the same terms, consolidate overlapping copy, strengthen internal anchors, and keep each page's title/H1 focused on one intent.\n2. **Add real product evidence above the fold.** The live English and Persian calculator pages are mostly explanatory copy. Add a real food photo, the returned calorie and macro estimate, an edit/review state, product screenshots, supported-food examples, and a direct try/download path. This follows Google's emphasis on descriptive titles, query-relevant snippets, and substantial people-first content: [title links](https://developers.google.com/search/docs/appearance/title-link), [snippets](https://developers.google.com/search/docs/appearance/snippet), and [helpful content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content).\n3. **Treat the photographer query as a diagnostic, not a keyword target.** Export query × page for that exact phrase and track it weekly. If it is tied to the English photo page and persists, tighten title/H1/body language around *food photo calorie estimation* and remove ambiguous wording; do not create photographer content.\n4. **Improve Italian as the second market.** Italy generated 3,190 impressions and 58 clicks (1.82% CTR) at position 7.92. Strengthen Italian examples, titles, and internal links before expanding into low-click countries.\n5. **Keep mobile first, diagnose desktop by mix.** Mobile generated 94.9% of clicks. Desktop CTR is only 0.88%, but its average position is also worse at 10.60. Compare query × device and country × device before attributing the gap to design or speed.\n6. **Measure qualified SEO outcomes.** Track landing-page engagement, store-link clicks, installs, signups, and paid conversion alongside Search Console clicks. Stop changes that raise low-quality impressions without improving those downstream actions."
+      },
+      {
+        "id": "questions_section",
+        "type": "markdown",
+        "body": "## Further Questions\n\n- Which page ranks for the suspicious photographer query, and did those impressions start in one week?\n- Do the overlapping Persian pages compete for the same generic queries, or does each own a distinct cluster?\n- Which countries and devices generate installs or signups, not just clicks?\n- Did any deployment or indexing event precede the early-July traffic acceleration?"
+      },
+      {
+        "id": "caveats_section",
+        "type": "markdown",
+        "sourceId": "gsc_bundle",
+        "body": "## Caveats and Assumptions\n\n- Query rows cover only 55.9% of top-line clicks and 53.3% of impressions because Search Console suppresses some query data for privacy.\n- The Pages export totals 1,209 clicks and 35,420 impressions versus 1,188 and 32,826 in the daily, country, and device exports. Page shares are calculated within the Pages export and should not be mixed with top-line denominators.\n- Search appearance contains no rows. That does not prove structured data is invalid or absent.\n- CTR scenarios are directional and do not control for SERP features, brand, device, country, or true query relevance.\n- Search Console cannot establish conversion quality or causality."
+      }
+    ],
+    "cards": [
+      {
+        "id": "last_30_clicks",
+        "description": "Google Search clicks in the latest equal 30-day window.",
+        "dataset": "period_metrics",
+        "sourceId": "gsc_chart",
+        "metrics": [
+          {
+            "label": "Last 30d clicks",
+            "field": "clicks",
+            "format": "compact"
+          },
+          {
+            "label": "vs first 30d",
+            "field": "click_change",
+            "format": "percent",
+            "signed": true
+          },
+          {
+            "label": "First 30d",
+            "field": "first_30_clicks",
+            "format": "compact"
+          }
+        ]
+      },
+      {
+        "id": "last_30_ctr",
+        "description": "Clicks divided by impressions in the latest 30 days.",
+        "dataset": "period_metrics",
+        "sourceId": "gsc_chart",
+        "metrics": [
+          {
+            "label": "Last 30d CTR",
+            "field": "ctr",
+            "format": "percent"
+          },
+          {
+            "label": "Change",
+            "field": "ctr_change",
+            "format": "percent",
+            "signed": true
+          },
+          {
+            "label": "First 30d",
+            "field": "first_30_ctr",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "top_page_share",
+        "description": "Share of page-export clicks from the leading landing page.",
+        "dataset": "page_summary",
+        "sourceId": "gsc_pages",
+        "metrics": [
+          {
+            "label": "Top-page click share",
+            "field": "click_share",
+            "format": "percent"
+          },
+          {
+            "label": "Clicks",
+            "field": "clicks",
+            "format": "compact"
+          }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "weekly_clicks",
+        "title": "Weekly Google Search clicks",
+        "subtitle": "Thirteen complete weeks ending April 26–July 19, 2026",
+        "showDescription": true,
+        "intent": "trend",
+        "question": "How has organic search click volume changed week by week?",
+        "rationale": "A line chart shows the acceleration and the final-week pullback across 13 complete weekly observations.",
+        "comparisonContext": {
+          "grain": "Week ending Sunday",
+          "unit": "Clicks",
+          "baseline": "Earlier weeks in the same 90-day export"
+        },
+        "type": "line",
+        "dataset": "weekly_performance",
+        "sourceId": "gsc_chart",
+        "encodings": {
+          "x": {
+            "field": "week",
+            "type": "temporal",
+            "label": "Week ending"
+          },
+          "y": {
+            "field": "clicks",
+            "type": "quantitative",
+            "label": "Clicks",
+            "format": "compact"
+          },
+          "tooltip": [
+            {
+              "field": "impressions",
+              "type": "quantitative",
+              "label": "Impressions",
+              "format": "compact"
+            },
+            {
+              "field": "ctr",
+              "type": "quantitative",
+              "label": "CTR",
+              "format": "percent"
+            },
+            {
+              "field": "position",
+              "type": "quantitative",
+              "label": "Avg. position",
+              "format": "number"
+            }
+          ]
+        },
+        "palette": {
+          "kind": "sequential",
+          "name": "blue"
+        },
+        "labels": {
+          "values": "endpoints"
+        },
+        "settings": {
+          "showPoints": "always"
+        },
+        "layout": "full"
+      },
+      {
+        "id": "top_pages",
+        "title": "Clicks by leading landing page",
+        "subtitle": "Top six pages in the 90-day page export",
+        "showDescription": true,
+        "intent": "comparison",
+        "question": "Which landing pages contribute the most organic search clicks?",
+        "rationale": "Sorted horizontal bars keep long URL labels readable and reveal concentration in the leading Persian page.",
+        "comparisonContext": {
+          "grain": "Landing page",
+          "unit": "Clicks",
+          "denominator": "All clicks represented in Pages.csv"
+        },
+        "type": "horizontalBar",
+        "dataset": "top_pages",
+        "sourceId": "gsc_pages",
+        "encodings": {
+          "x": {
+            "field": "page",
+            "type": "nominal",
+            "label": "Landing page"
+          },
+          "y": {
+            "field": "clicks",
+            "type": "quantitative",
+            "label": "Clicks",
+            "format": "compact"
+          },
+          "tooltip": [
+            {
+              "field": "impressions",
+              "type": "quantitative",
+              "label": "Impressions",
+              "format": "compact"
+            },
+            {
+              "field": "ctr",
+              "type": "quantitative",
+              "label": "CTR",
+              "format": "percent"
+            },
+            {
+              "field": "position",
+              "type": "quantitative",
+              "label": "Avg. position",
+              "format": "number"
+            },
+            {
+              "field": "click_share",
+              "type": "quantitative",
+              "label": "Click share",
+              "format": "percent"
+            }
+          ]
+        },
+        "palette": {
+          "kind": "sequential",
+          "name": "blue"
+        },
+        "labels": {
+          "values": "all"
+        },
+        "settings": {
+          "sort": "descending",
+          "showValues": true,
+          "categoryLabelPolicy": "wrap"
+        },
+        "layout": "full"
+      },
+      {
+        "id": "generic_query_gain",
+        "title": "Scenario click gain for priority Persian queries",
+        "subtitle": "Additional 90-day clicks at 3.5% CTR, holding impressions constant",
+        "showDescription": true,
+        "intent": "comparison",
+        "question": "Which generic Persian queries have the largest CTR-based upside?",
+        "rationale": "A sorted horizontal comparison makes the relative opportunity across three long query labels easy to scan.",
+        "comparisonContext": {
+          "grain": "Search query",
+          "unit": "Incremental clicks per 90-day export",
+          "baseline": "Observed clicks",
+          "denominator": "Observed impressions"
+        },
+        "type": "horizontalBar",
+        "dataset": "generic_queries",
+        "sourceId": "gsc_queries",
+        "encodings": {
+          "x": {
+            "field": "query",
+            "type": "nominal",
+            "label": "Query"
+          },
+          "y": {
+            "field": "scenario_gain",
+            "type": "quantitative",
+            "label": "Scenario click gain",
+            "format": "number"
+          },
+          "tooltip": [
+            {
+              "field": "clicks",
+              "type": "quantitative",
+              "label": "Observed clicks",
+              "format": "compact"
+            },
+            {
+              "field": "impressions",
+              "type": "quantitative",
+              "label": "Impressions",
+              "format": "compact"
+            },
+            {
+              "field": "ctr",
+              "type": "quantitative",
+              "label": "Observed CTR",
+              "format": "percent"
+            },
+            {
+              "field": "position",
+              "type": "quantitative",
+              "label": "Avg. position",
+              "format": "number"
+            }
+          ]
+        },
+        "palette": {
+          "kind": "sequential",
+          "name": "orange"
+        },
+        "labels": {
+          "values": "all"
+        },
+        "settings": {
+          "sort": "descending",
+          "showValues": true,
+          "categoryLabelPolicy": "wrap"
+        },
+        "layout": "full"
+      }
+    ],
+    "tables": [
+      {
+        "id": "priority_queries",
+        "title": "Visible query opportunities",
+        "subtitle": "Queries with at least 100 impressions; suspicious photographer query excluded",
+        "showDescription": true,
+        "dataset": "priority_queries",
+        "sourceId": "gsc_queries",
+        "defaultSort": {
+          "field": "scenario_gain",
+          "direction": "desc"
+        },
+        "density": "spacious",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "query",
+            "label": "Query",
+            "type": "text"
+          },
+          {
+            "field": "clicks",
+            "label": "Clicks",
+            "format": "number"
+          },
+          {
+            "field": "impressions",
+            "label": "Impressions",
+            "format": "compact"
+          },
+          {
+            "field": "ctr",
+            "label": "CTR",
+            "format": "percent"
+          },
+          {
+            "field": "position",
+            "label": "Avg. position",
+            "format": "number"
+          },
+          {
+            "field": "scenario_gain",
+            "label": "Scenario gain",
+            "format": "number"
+          }
+        ]
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-07-21T00:00:00+03:30",
+    "status": "ready",
+    "datasets": {
+      "period_metrics": [
+        {
+          "window": "Last 30 days",
+          "clicks": 805,
+          "impressions": 18589,
+          "ctr": 0.04330518048308139,
+          "position": 7.189967184894292,
+          "first_30_clicks": 109,
+          "first_30_impressions": 3216,
+          "first_30_ctr": 0.033893034825870645,
+          "first_30_position": 7.998818407960201,
+          "click_change": 6.385321100917431,
+          "ctr_change": 0.009412145657210748
+        }
+      ],
+      "weekly_performance": [
+        {
+          "week": "2026-04-26",
+          "clicks": 15,
+          "impressions": 345,
+          "ctr": 0.043478260869565216,
+          "position": 7.698550724637681
+        },
+        {
+          "week": "2026-05-03",
+          "clicks": 41,
+          "impressions": 925,
+          "ctr": 0.04432432432432432,
+          "position": 7.785081081081081
+        },
+        {
+          "week": "2026-05-10",
+          "clicks": 20,
+          "impressions": 848,
+          "ctr": 0.02358490566037736,
+          "position": 8.433254716981132
+        },
+        {
+          "week": "2026-05-17",
+          "clicks": 28,
+          "impressions": 876,
+          "ctr": 0.0319634703196347,
+          "position": 7.781392694063927
+        },
+        {
+          "week": "2026-05-24",
+          "clicks": 27,
+          "impressions": 892,
+          "ctr": 0.030269058295964126,
+          "position": 8.123654708520178
+        },
+        {
+          "week": "2026-05-31",
+          "clicks": 65,
+          "impressions": 1832,
+          "ctr": 0.035480349344978165,
+          "position": 7.7865720524017465
+        },
+        {
+          "week": "2026-06-07",
+          "clicks": 56,
+          "impressions": 2202,
+          "ctr": 0.025431425976385105,
+          "position": 8.070526793823797
+        },
+        {
+          "week": "2026-06-14",
+          "clicks": 63,
+          "impressions": 3410,
+          "ctr": 0.01847507331378299,
+          "position": 7.129824046920821
+        },
+        {
+          "week": "2026-06-21",
+          "clicks": 92,
+          "impressions": 3835,
+          "ctr": 0.023989569752281618,
+          "position": 7.932151238591916
+        },
+        {
+          "week": "2026-06-28",
+          "clicks": 91,
+          "impressions": 2231,
+          "ctr": 0.04078888390856118,
+          "position": 8.075526669654863
+        },
+        {
+          "week": "2026-07-05",
+          "clicks": 201,
+          "impressions": 4172,
+          "ctr": 0.048178331735378714,
+          "position": 6.991778523489933
+        },
+        {
+          "week": "2026-07-12",
+          "clicks": 263,
+          "impressions": 5183,
+          "ctr": 0.0507428130426394,
+          "position": 6.674300598109204
+        },
+        {
+          "week": "2026-07-19",
+          "clicks": 226,
+          "impressions": 6075,
+          "ctr": 0.03720164609053498,
+          "position": 7.36398353909465
+        }
+      ],
+      "top_pages": [
+        {
+          "page": "/fa/photo-calorie-calculator/",
+          "url": "https://calkilo.com/fa/photo-calorie-calculator/",
+          "clicks": 777,
+          "impressions": 15736,
+          "ctr": 0.049400000000000006,
+          "position": 6.2,
+          "click_share": 0.6426799007444168
+        },
+        {
+          "page": "/fa/",
+          "url": "https://calkilo.com/fa/",
+          "clicks": 177,
+          "impressions": 3903,
+          "ctr": 0.0453,
+          "position": 7.43,
+          "click_share": 0.14640198511166252
+        },
+        {
+          "page": "/photo-calorie-calculator/",
+          "url": "https://calkilo.com/photo-calorie-calculator/",
+          "clicks": 67,
+          "impressions": 5003,
+          "ctr": 0.0134,
+          "position": 8.05,
+          "click_share": 0.055417700578990904
+        },
+        {
+          "page": "/",
+          "url": "https://calkilo.com/",
+          "clicks": 55,
+          "impressions": 1700,
+          "ctr": 0.032400000000000005,
+          "position": 9.2,
+          "click_share": 0.045492142266335814
+        },
+        {
+          "page": "/fa/ai-calorie-tracker/",
+          "url": "https://calkilo.com/fa/ai-calorie-tracker/",
+          "clicks": 53,
+          "impressions": 2075,
+          "ctr": 0.0255,
+          "position": 8.06,
+          "click_share": 0.043837882547559964
+        },
+        {
+          "page": "/it/photo-calorie-calculator/",
+          "url": "https://calkilo.com/it/photo-calorie-calculator/",
+          "clicks": 29,
+          "impressions": 1795,
+          "ctr": 0.016200000000000003,
+          "position": 7.7,
+          "click_share": 0.023986765922249794
+        }
+      ],
+      "page_summary": [
+        {
+          "page": "/fa/photo-calorie-calculator/",
+          "clicks": 777,
+          "impressions": 15736,
+          "ctr": 0.049400000000000006,
+          "position": 6.2,
+          "click_share": 0.6426799007444168
+        }
+      ],
+      "generic_queries": [
+        {
+          "query": "کالری شمار غذا انلاین",
+          "clicks": 39,
+          "impressions": 1735,
+          "ctr": 0.0225,
+          "position": 7.76,
+          "scenario_ctr": 0.035,
+          "scenario_gain": 21.72500000000001
+        },
+        {
+          "query": "کالری شمار رایگان",
+          "clicks": 13,
+          "impressions": 1051,
+          "ctr": 0.0124,
+          "position": 7.82,
+          "scenario_ctr": 0.035,
+          "scenario_gain": 23.785000000000004
+        },
+        {
+          "query": "کالری شمار",
+          "clicks": 6,
+          "impressions": 1001,
+          "ctr": 0.006,
+          "position": 9.71,
+          "scenario_ctr": 0.035,
+          "scenario_gain": 29.035000000000004
+        }
+      ],
+      "priority_queries": [
+        {
+          "query": "کالری شمار",
+          "clicks": 6,
+          "impressions": 1001,
+          "ctr": 0.006,
+          "position": 9.71,
+          "scenario_ctr": 0.035,
+          "scenario_gain": 29.035000000000004
+        },
+        {
+          "query": "کالری شمار رایگان",
+          "clicks": 13,
+          "impressions": 1051,
+          "ctr": 0.0124,
+          "position": 7.82,
+          "scenario_ctr": 0.035,
+          "scenario_gain": 23.785000000000004
+        },
+        {
+          "query": "کالری شمار غذا انلاین",
+          "clicks": 39,
+          "impressions": 1735,
+          "ctr": 0.0225,
+          "position": 7.76,
+          "scenario_ctr": 0.035,
+          "scenario_gain": 21.72500000000001
+        },
+        {
+          "query": "کالری شمار غذا انلاین با عکس",
+          "clicks": 21,
+          "impressions": 442,
+          "ctr": 0.0475,
+          "position": 4.93,
+          "scenario_ctr": 0.07,
+          "scenario_gain": 9.940000000000001
+        },
+        {
+          "query": "برنامه کالری شمار با عکس",
+          "clicks": 2,
+          "impressions": 146,
+          "ctr": 0.0137,
+          "position": 7.29,
+          "scenario_ctr": 0.035,
+          "scenario_gain": 3.1100000000000003
+        },
+        {
+          "query": "calcolo calorie ai",
+          "clicks": 1,
+          "impressions": 115,
+          "ctr": 0.0087,
+          "position": 6.28,
+          "scenario_ctr": 0.035,
+          "scenario_gain": 3.0250000000000004
+        },
+        {
+          "query": "کالری شمار روزانه",
+          "clicks": 1,
+          "impressions": 115,
+          "ctr": 0.0087,
+          "position": 8.07,
+          "scenario_ctr": 0.035,
+          "scenario_gain": 3.0250000000000004
+        },
+        {
+          "query": "محاسبه کالری غذا",
+          "clicks": 23,
+          "impressions": 735,
+          "ctr": 0.0313,
+          "position": 5.34,
+          "scenario_ctr": 0.035,
+          "scenario_gain": 2.7250000000000014
+        },
+        {
+          "query": "کالری سنج",
+          "clicks": 3,
+          "impressions": 137,
+          "ctr": 0.0219,
+          "position": 7.58,
+          "scenario_ctr": 0.035,
+          "scenario_gain": 1.7950000000000008
+        },
+        {
+          "query": "کالری شمار آنلاین",
+          "clicks": 3,
+          "impressions": 124,
+          "ctr": 0.0242,
+          "position": 6.04,
+          "scenario_ctr": 0.035,
+          "scenario_gain": 1.3400000000000007
+        }
+      ],
+      "devices": [
+        {
+          "device": "Mobile",
+          "clicks": 1127,
+          "impressions": 26215,
+          "ctr": 0.043,
+          "position": 6.66,
+          "click_share": 0.9486531986531986
+        },
+        {
+          "device": "Desktop",
+          "clicks": 57,
+          "impressions": 6452,
+          "ctr": 0.0088,
+          "position": 10.6,
+          "click_share": 0.047979797979797977
+        },
+        {
+          "device": "Tablet",
+          "clicks": 4,
+          "impressions": 159,
+          "ctr": 0.0252,
+          "position": 10.06,
+          "click_share": 0.003367003367003367
+        }
+      ],
+      "countries": [
+        {
+          "country": "Iran",
+          "clicks": 1009,
+          "impressions": 20348,
+          "ctr": 0.0496,
+          "position": 6.42,
+          "click_share": 0.8493265993265994
+        },
+        {
+          "country": "Italy",
+          "clicks": 58,
+          "impressions": 3190,
+          "ctr": 0.0182,
+          "position": 7.92,
+          "click_share": 0.04882154882154882
+        },
+        {
+          "country": "United States",
+          "clicks": 10,
+          "impressions": 2269,
+          "ctr": 0.0044,
+          "position": 12.52,
+          "click_share": 0.008417508417508417
+        },
+        {
+          "country": "Brazil",
+          "clicks": 0,
+          "impressions": 877,
+          "ctr": 0.0,
+          "position": 8.7,
+          "click_share": 0.0
+        },
+        {
+          "country": "Japan",
+          "clicks": 1,
+          "impressions": 523,
+          "ctr": 0.0019,
+          "position": 7.01,
+          "click_share": 0.0008417508417508417
+        },
+        {
+          "country": "Vietnam",
+          "clicks": 2,
+          "impressions": 516,
+          "ctr": 0.0039000000000000003,
+          "position": 9.82,
+          "click_share": 0.0016835016835016834
+        },
+        {
+          "country": "India",
+          "clicks": 7,
+          "impressions": 380,
+          "ctr": 0.0184,
+          "position": 7.39,
+          "click_share": 0.005892255892255892
+        },
+        {
+          "country": "United Kingdom",
+          "clicks": 5,
+          "impressions": 312,
+          "ctr": 0.016,
+          "position": 7.54,
+          "click_share": 0.004208754208754209
+        },
+        {
+          "country": "Netherlands",
+          "clicks": 4,
+          "impressions": 311,
+          "ctr": 0.0129,
+          "position": 9.13,
+          "click_share": 0.003367003367003367
+        },
+        {
+          "country": "Germany",
+          "clicks": 5,
+          "impressions": 298,
+          "ctr": 0.0168,
+          "position": 7.6,
+          "click_share": 0.004208754208754209
+        },
+        {
+          "country": "Canada",
+          "clicks": 3,
+          "impressions": 295,
+          "ctr": 0.0102,
+          "position": 7.45,
+          "click_share": 0.0025252525252525255
+        },
+        {
+          "country": "Russia",
+          "clicks": 4,
+          "impressions": 264,
+          "ctr": 0.0152,
+          "position": 21.77,
+          "click_share": 0.003367003367003367
+        }
+      ],
+      "anomaly": [
+        {
+          "query": "calorie counting recipes for photographers",
+          "clicks": 0,
+          "impressions": 2514,
+          "ctr": 0.0,
+          "position": 7.56
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "gsc_bundle",
+      "label": "Google Search Console export bundle — July 21, 2026",
+      "path": "/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21",
+      "query": {
+        "engine": "DuckDB",
+        "language": "sql",
+        "executed_at": "2026-07-21T00:00:00+03:30",
+        "description": "Reconciles the top-line, page, and visible-query metrics used in the executive summary.",
+        "tables_used": [
+          "Chart.csv",
+          "Pages.csv",
+          "Queries.csv"
+        ],
+        "filters": [
+          "Search type: Web",
+          "April 20–July 19, 2026"
+        ],
+        "metric_definitions": [
+          "CTR = clicks / impressions.",
+          "Top-page share uses the Pages.csv click total as its denominator.",
+          "Generic-query scenario uses a 3.5% CTR and holds impressions constant."
+        ],
+        "sql": "WITH\nchart AS (SELECT * FROM read_csv_auto('/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21/Chart.csv', header=true)),\npages AS (SELECT * FROM read_csv_auto('/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21/Pages.csv', header=true)),\nqueries AS (SELECT * FROM read_csv_auto('/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21/Queries.csv', header=true)),\ngeneric AS (\n  SELECT SUM(Clicks) AS clicks, SUM(Impressions) AS impressions\n  FROM queries\n  WHERE \"Top queries\" IN ('کالری شمار غذا انلاین', 'کالری شمار رایگان', 'کالری شمار')\n),\ntop_page AS (\n  SELECT Clicks, Impressions, \"Top pages\"\n  FROM pages\n  ORDER BY Clicks DESC\n  LIMIT 1\n)\nSELECT\n  (SELECT SUM(Clicks) FROM chart) AS total_clicks,\n  (SELECT SUM(Impressions) FROM chart) AS total_impressions,\n  (SELECT Clicks FROM top_page) AS top_page_clicks,\n  (SELECT Clicks FROM top_page) / (SELECT SUM(Clicks) FROM pages) AS top_page_click_share,\n  (SELECT clicks FROM generic) AS generic_clicks,\n  (SELECT impressions FROM generic) AS generic_impressions,\n  (SELECT clicks FROM generic) / (SELECT impressions FROM generic) AS generic_ctr,\n  (SELECT impressions * 0.035 - clicks FROM generic) AS generic_scenario_gain"
+      }
+    },
+    {
+      "id": "gsc_chart",
+      "label": "Google Search Console daily performance",
+      "path": "/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21/Chart.csv",
+      "query": {
+        "engine": "DuckDB",
+        "language": "sql",
+        "executed_at": "2026-07-21T00:00:00+03:30",
+        "description": "Aggregates the daily Search Console export into Monday–Sunday weeks.",
+        "tables_used": [
+          "Chart.csv"
+        ],
+        "filters": [
+          "Search type: Web",
+          "April 20–July 19, 2026"
+        ],
+        "metric_definitions": [
+          "Weekly clicks and impressions are sums of daily values.",
+          "Weekly CTR = weekly clicks / weekly impressions.",
+          "Weekly position is weighted by daily impressions."
+        ],
+        "sql": "WITH daily AS (\n  SELECT CAST(Date AS DATE) AS date, Clicks, Impressions, Position\n  FROM read_csv_auto('/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21/Chart.csv', header=true)\n)\nSELECT\n  CAST(date_trunc('week', date) + INTERVAL '6 days' AS DATE) AS week,\n  SUM(Clicks) AS clicks,\n  SUM(Impressions) AS impressions,\n  SUM(Clicks) / SUM(Impressions) AS ctr,\n  SUM(Position * Impressions) / SUM(Impressions) AS position\nFROM daily\nGROUP BY 1\nORDER BY 1"
+      }
+    },
+    {
+      "id": "gsc_pages",
+      "label": "Google Search Console landing pages",
+      "path": "/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21/Pages.csv",
+      "query": {
+        "engine": "DuckDB",
+        "language": "sql",
+        "executed_at": "2026-07-21T00:00:00+03:30",
+        "description": "Ranks landing pages by clicks and calculates page-export click share.",
+        "tables_used": [
+          "Pages.csv"
+        ],
+        "filters": [
+          "Search type: Web",
+          "Date: Last 3 months",
+          "Top six pages by clicks"
+        ],
+        "metric_definitions": [
+          "Page click share = page clicks / all clicks in Pages.csv."
+        ],
+        "sql": "WITH pages AS (\n  SELECT * FROM read_csv_auto('/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21/Pages.csv', header=true)\n)\nSELECT\n  \"Top pages\" AS page,\n  Clicks AS clicks,\n  Impressions AS impressions,\n  Clicks / Impressions AS ctr,\n  Position AS position,\n  Clicks / SUM(Clicks) OVER () AS click_share\nFROM pages\nORDER BY clicks DESC\nLIMIT 6"
+      }
+    },
+    {
+      "id": "gsc_queries",
+      "label": "Google Search Console visible queries",
+      "path": "/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21/Queries.csv",
+      "query": {
+        "engine": "DuckDB",
+        "language": "sql",
+        "executed_at": "2026-07-21T00:00:00+03:30",
+        "description": "Ranks visible queries by a conservative rank-band CTR scenario.",
+        "tables_used": [
+          "Queries.csv"
+        ],
+        "filters": [
+          "Search type: Web",
+          "Date: Last 3 months",
+          "At least 100 impressions for the detail table",
+          "Suspicious photographer query excluded from opportunity totals"
+        ],
+        "metric_definitions": [
+          "Scenario click gain = max(0, impressions × scenario CTR − clicks).",
+          "Scenario CTR bands: 12% for positions 1–3, 7% for 4–5, 3.5% for 6–10, 1.5% for 11–20, and 0.5% thereafter.",
+          "The scenario is directional, not a forecast."
+        ],
+        "sql": "WITH queries AS (\n  SELECT *,\n    CASE\n      WHEN Position <= 3 THEN 0.12\n      WHEN Position <= 5 THEN 0.07\n      WHEN Position <= 10 THEN 0.035\n      WHEN Position <= 20 THEN 0.015\n      ELSE 0.005\n    END AS scenario_ctr\n  FROM read_csv_auto('/Users/mohammad/Downloads/calkilo.com-Performance-on-Search-2026-07-21/Queries.csv', header=true)\n)\nSELECT\n  \"Top queries\" AS query,\n  Clicks AS clicks,\n  Impressions AS impressions,\n  Clicks / Impressions AS ctr,\n  Position AS position,\n  scenario_ctr,\n  greatest(0, Impressions * scenario_ctr - Clicks) AS scenario_gain\nFROM queries\nWHERE Impressions >= 100\n  AND \"Top queries\" <> 'calorie counting recipes for photographers'\nORDER BY scenario_gain DESC, impressions DESC"
+      }
+    },
+    {
+      "id": "google_title_guidance",
+      "label": "Google Search Central — title links",
+      "href": "https://developers.google.com/search/docs/appearance/title-link"
+    },
+    {
+      "id": "google_snippet_guidance",
+      "label": "Google Search Central — snippets",
+      "href": "https://developers.google.com/search/docs/appearance/snippet"
+    },
+    {
+      "id": "google_helpful_content",
+      "label": "Google Search Central — helpful, people-first content",
+      "href": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+    },
+    {
+      "id": "live_english_page",
+      "label": "Calkilo English photo calorie calculator page",
+      "href": "https://calkilo.com/photo-calorie-calculator/"
+    }
+  ]
+}

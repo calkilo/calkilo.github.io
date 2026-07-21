@@ -753,13 +753,13 @@ export const LOCALIZED_RESOURCE_PAGES: Partial<
     'photo-calorie-calculator': {
       language: 'it',
       path: '/it/photo-calorie-calculator/',
-      title: 'Calcolo calorie AI da foto | Calkilo',
+      title: 'Calcolo calorie da foto con AI | Calkilo',
       description:
-        'Scatta una foto del pasto e usa Calkilo per stimare calorie, macro e dati nutrizionali con AI. Disponibile su iPhone e Android.',
-      heading: 'Calcolo calorie AI da foto per pasti e snack',
+        'Scatta una foto di pasta, pizza o altri pasti e usa Calkilo per stimare calorie, proteine, carboidrati e grassi con l’AI.',
+      heading: 'Calcolo calorie da foto con AI per pasti e snack',
       intro:
-        'Calkilo aiuta chi vuole registrare i pasti piu velocemente. La foto diventa l’inizio di un diario alimentare con calorie, macro e dettagli modificabili, non solo un numero isolato.',
-      keywords: ['calcolo calorie ai', 'calorie da foto', 'contacalorie con foto', 'app calorie e macro'],
+        'Calkilo aiuta a registrare i pasti più velocemente: una foto diventa il punto di partenza per stimare calorie e macronutrienti, controllare la porzione e salvare il risultato nel diario alimentare.',
+      keywords: ['calcolo calorie ai', 'calcolo calorie da foto', 'contacalorie con foto', 'app calorie e macro'],
       highlights: [
         {
           title: 'Scatta una foto',
@@ -778,21 +778,34 @@ export const LOCALIZED_RESOURCE_PAGES: Partial<
         {
           title: 'Quando serve un calcolo calorie da foto',
           paragraphs: [
-            'Il calcolo da foto e utile per pasti fatti in casa, piatti misti e ristoranti dove una ricerca manuale richiede troppo tempo.',
-            'Il vantaggio principale e la velocita: meno attrito significa piu probabilita di continuare a tracciare ogni giorno.',
+            'Il calcolo da foto è utile per pasti fatti in casa, piatti misti e ristoranti, dove cercare manualmente ogni ingrediente richiede troppo tempo.',
+            'Il vantaggio principale è la velocità: meno passaggi rendono più semplice mantenere un diario alimentare completo durante la settimana.',
           ],
           bullets: [
-            'Pasti con piu ingredienti',
+            'Pasti con più ingredienti',
             'Snack e pranzi veloci',
             'Piatti senza etichetta nutrizionale',
             'Diario alimentare quotidiano con meno inserimenti manuali',
           ],
         },
         {
-          title: 'Perche non basta un numero solo',
+          title: 'Esempi pratici con pasta, pizza e piatti misti',
           paragraphs: [
-            'Sapere le calorie e utile, ma spesso l’utente vuole capire anche se il pasto aiuta a raggiungere proteine, carboidrati e grassi della giornata.',
-            'Calkilo collega la stima AI al tracking quotidiano, cosi il risultato resta utile anche dopo aver salvato il pasto.',
+            'Con una pasta al pomodoro, fotografa l’intero piatto e controlla soprattutto quantità di pasta, olio e formaggio grattugiato. Per una pizza, includi tutta la base e gli ingredienti visibili, poi verifica dimensione, mozzarella e condimenti extra.',
+            'Risotti, lasagne e piatti unici richiedono più attenzione perché burro, besciamella, formaggi o salse possono essere nascosti. La foto accelera la prima stima; la revisione rende il risultato più realistico.',
+          ],
+          bullets: [
+            'Pasta: controlla porzione, olio e formaggio',
+            'Pizza: verifica diametro, impasto e condimenti',
+            'Risotto e lasagne: considera burro, salse e strati nascosti',
+            'Panini e aperitivi: includi contorni, salse e bevande',
+          ],
+        },
+        {
+          title: 'Perché non basta un numero solo',
+          paragraphs: [
+            'Sapere le calorie è utile, ma spesso serve capire anche se il pasto aiuta a raggiungere gli obiettivi giornalieri di proteine, carboidrati e grassi.',
+            'Calkilo collega la stima AI al tracking quotidiano, così il risultato resta utile anche dopo aver salvato il pasto.',
           ],
           bullets: [
             'Calorie con contesto nutrizionale',
@@ -804,8 +817,8 @@ export const LOCALIZED_RESOURCE_PAGES: Partial<
         {
           title: 'Quando controllare la stima AI',
           paragraphs: [
-            'Le foto funzionano meglio quando il piatto e visibile e ben illuminato. Porzioni, salse, olio e ingredienti nascosti possono richiedere una revisione.',
-            'Un buon flusso AI non pretende che la prima stima sia perfetta: permette di correggere e salvare un dato piu utile.',
+            'Le foto funzionano meglio quando il piatto è visibile e ben illuminato. Porzioni, salse, olio e ingredienti nascosti possono richiedere una revisione.',
+            'Un buon flusso AI non pretende che la prima stima sia perfetta: permette di controllare e salvare un dato più utile.',
           ],
           bullets: [
             'Controlla piatti misti o coperti',
@@ -819,33 +832,33 @@ export const LOCALIZED_RESOURCE_PAGES: Partial<
         {
           question: 'Calkilo calcola le calorie da una foto?',
           answer:
-            'Si. Calkilo usa la foto del pasto per stimare calorie e informazioni nutrizionali, poi permette di rivedere il risultato.',
+            'Sì. Calkilo usa la foto del pasto per stimare calorie e informazioni nutrizionali, poi permette di rivedere il risultato.',
         },
         {
           question: 'Il calcolo calorie AI mostra anche le macro?',
           answer:
-            'Calkilo e pensato per calorie e macro, quindi proteine, carboidrati e grassi sono parte del contesto nutrizionale.',
+            'Calkilo è pensato per calorie e macro, quindi proteine, carboidrati e grassi fanno parte del contesto nutrizionale.',
         },
         {
-          question: 'Il risultato e sempre preciso?',
+          question: 'Il risultato è sempre preciso?',
           answer:
-            'La stima AI e un punto di partenza rapido. Pasti complessi, salse e porzioni nascoste possono richiedere una correzione.',
+            'La stima AI è un punto di partenza rapido. Pasti complessi, salse e porzioni nascoste possono richiedere una correzione.',
         },
         {
-          question: 'Calkilo e disponibile su iPhone e Android?',
-          answer: 'Si. Calkilo e disponibile tramite App Store e Google Play.',
+          question: 'Calkilo è disponibile su iPhone e Android?',
+          answer: 'Sì. Calkilo è disponibile tramite App Store e Google Play.',
         },
       ],
     },
     'ai-calorie-tracker': {
       language: 'it',
       path: '/it/ai-calorie-tracker/',
-      title: 'App contacalorie AI da foto | Calkilo',
+      title: 'App contacalorie AI da foto: pasti e macro | Calkilo',
       description:
-        'Registra pasti con AI, stima calorie da foto, monitora macro e crea piani alimentari con Calkilo su iPhone e Android.',
-      heading: 'App contacalorie AI per registrare i pasti piu velocemente',
+        'Registra pasti da foto, controlla calorie e macro e segui il diario alimentare con l’app contacalorie AI Calkilo su iPhone e Android.',
+      heading: 'App contacalorie AI per registrare i pasti più velocemente',
       intro:
-        'Calkilo combina foto del cibo, stime AI, diario alimentare, macro e pianificazione dei pasti. E pensato per chi vuole tracciare meglio senza passare troppo tempo su inserimenti manuali.',
+        'Calkilo combina foto del cibo, stime AI, diario alimentare, macro e pianificazione dei pasti. È pensato per chi vuole tracciare meglio senza passare troppo tempo su inserimenti manuali.',
       keywords: ['app contacalorie ai', 'calcolo calorie ai', 'ai calorie tracker', 'app nutrizione ai'],
       highlights: [
         {
@@ -858,21 +871,34 @@ export const LOCALIZED_RESOURCE_PAGES: Partial<
         },
         {
           title: 'Obiettivi e pianificazione',
-          body: 'Collega il diario alimentare a obiettivi, ricette e suggerimenti piu pratici.',
+          body: 'Collega il diario alimentare a obiettivi, ricette e suggerimenti più pratici.',
         },
       ],
       sections: [
         {
-          title: 'Perche scegliere un contacalorie AI',
+          title: 'Perché scegliere un contacalorie AI',
           paragraphs: [
-            'Molte persone smettono di tracciare perche registrare ogni pasto richiede troppo tempo. L’AI riduce l’attrito iniziale.',
-            'La parte importante e mantenere il controllo: la stima deve essere chiara, modificabile e collegata al diario giornaliero.',
+            'Molte persone smettono di tracciare perché registrare ogni pasto richiede troppo tempo. L’AI riduce l’attrito iniziale.',
+            'La parte importante è mantenere il controllo: la stima deve essere chiara, modificabile e collegata al diario giornaliero.',
           ],
           bullets: [
-            'Registrazione piu rapida dei pasti',
+            'Registrazione più rapida dei pasti',
             'Supporto per piatti misti e foto del cibo',
             'Macro oltre alle calorie',
-            'Tracking piu facile da mantenere nel tempo',
+            'Tracking più facile da mantenere nel tempo',
+          ],
+        },
+        {
+          title: 'Un esempio di giornata nel diario alimentare',
+          paragraphs: [
+            'A colazione puoi registrare cappuccino e cornetto nella stessa foto; a pranzo fotografare un piatto di pasta con il contorno; a cena controllare pizza, secondo o piatto misto. Ogni stima entra nello stesso diario, invece di restare un calcolo isolato.',
+            'Gli snack e l’aperitivo contano: includere bevande, salse e piccoli assaggi aiuta a costruire un quadro giornaliero più completo.',
+          ],
+          bullets: [
+            'Colazione: cappuccino, cornetto e aggiunte visibili',
+            'Pranzo: pasta, riso o piatto unico con contorni',
+            'Cena: pizza, secondo e condimenti',
+            'Snack e aperitivo: bevande, salse e porzioni piccole',
           ],
         },
         {
@@ -889,39 +915,39 @@ export const LOCALIZED_RESOURCE_PAGES: Partial<
           ],
         },
         {
-          title: 'Per chi e piu adatta',
+          title: 'Per chi è più adatta',
           paragraphs: [
-            'Un contacalorie AI e adatto a chi vuole un diario piu veloce, ma non vuole rinunciare a dettagli utili per le decisioni quotidiane.',
-            'E utile per perdere peso, mantenere una routine, controllare le porzioni o raggiungere target di macro.',
+            'Un contacalorie AI è adatto a chi vuole un diario più veloce, ma non vuole rinunciare a dettagli utili per le decisioni quotidiane.',
+            'È utile per perdere peso, mantenere una routine, controllare le porzioni o raggiungere obiettivi di macro.',
           ],
           bullets: [
             'Persone che tracciano pasti ogni giorno',
             'Utenti con obiettivi di peso o composizione corporea',
-            'Chi vuole piu proteine o macro piu bilanciate',
+            'Chi vuole più proteine o macro più bilanciate',
             'Chi preferisce partire da una foto invece che da una ricerca manuale',
           ],
         },
       ],
       faqs: [
         {
-          question: 'Calkilo e un’app contacalorie AI?',
+          question: 'Calkilo è un’app contacalorie AI?',
           answer:
-            'Si. Calkilo usa funzioni AI per stimare pasti da foto e aiuta a registrare calorie, macro e informazioni nutrizionali.',
+            'Sì. Calkilo usa funzioni AI per stimare pasti da foto e aiuta a registrare calorie, macro e informazioni nutrizionali.',
         },
         {
           question: 'Posso modificare una stima AI?',
           answer:
-            'Si. La stima e un punto di partenza e va rivista quando porzioni o ingredienti non sono chiari.',
+            'Sì. La stima è un punto di partenza e va rivista quando porzioni o ingredienti non sono chiari.',
         },
         {
           question: 'Serve internet per l’analisi delle foto?',
           answer:
-            'L’analisi delle foto richiede connessione internet, mentre i dati gia registrati possono essere consultati anche in seguito.',
+            'L’analisi delle foto richiede una connessione internet, mentre i dati già registrati possono essere consultati anche in seguito.',
         },
         {
           question: 'Calkilo serve solo per dimagrire?',
           answer:
-            'No. Puo aiutare anche a mantenere una routine, migliorare la consapevolezza delle porzioni e monitorare obiettivi di macro.',
+            'No. Può aiutare anche a mantenere una routine, migliorare la consapevolezza delle porzioni e monitorare obiettivi di macro.',
         },
       ],
     },
@@ -973,29 +999,29 @@ const LOCALIZED_RESOURCE_LINKS: Partial<Record<SiteLanguage, ReadonlyArray<Resou
   ],
   it: [
     {
-      href: '/it/calcolo-calorie-con-foto-gratis/',
-      label: 'Calcolo calorie con foto gratis',
-      description: 'Stima calorie e macro partendo da una foto del pasto.',
-    },
-    {
-      href: '/it/intelligenza-artificiale-calorie/',
-      label: 'Intelligenza artificiale calorie',
-      description: 'Come l’AI aiuta a stimare calorie e macronutrienti da una foto.',
+      href: '/it/photo-calorie-calculator/',
+      label: 'Calcolo calorie da foto con AI',
+      description: 'Guida principale con esempi di pasta, pizza e piatti misti, calorie e macro.',
     },
     {
       href: '/it/ai-calorie-tracker/',
-      label: 'App contacalorie AI',
-      description: 'Come Calkilo usa AI, foto del cibo e macro per tracciare i pasti piu velocemente.',
+      label: 'App contacalorie AI da foto',
+      description: 'Registra i pasti nel diario e monitora calorie, proteine, carboidrati e grassi.',
     },
     {
-      href: '/it/photo-calorie-calculator/',
-      label: 'Calcolo calorie AI da foto',
-      description: 'Guida pratica per stimare calorie e macro da una foto del pasto.',
+      href: '/it/calcolo-calorie-con-foto-gratis/',
+      label: 'Calcolo calorie con foto gratis',
+      description: 'Prova il flusso da foto e scopri cosa include l’esperienza gratuita.',
     },
     {
-      href: '/macro-tracker/',
-      label: 'Macro Tracker',
-      description: 'Come tracciare calorie, proteine, carboidrati e grassi in un’unica app.',
+      href: '/it/intelligenza-artificiale-calorie/',
+      label: 'Come l’AI stima le calorie',
+      description: 'Capisci come funziona la stima e quando porzioni o ingredienti richiedono una revisione.',
+    },
+    {
+      href: '/it/',
+      label: 'Calkilo in italiano',
+      description: 'Scopri funzioni, piani e download di Calkilo nella pagina italiana.',
     },
     {
       href: '/faq/',

@@ -439,12 +439,12 @@ export const SEO_LANDING_PAGES: Record<SeoLandingPageKey, ResourcePageDefinition
   'it-calcolo-calorie-con-foto-gratis': {
     language: 'it',
     path: '/it/calcolo-calorie-con-foto-gratis/',
-    title: 'Calcolo calorie con foto gratis | Calkilo',
+    title: 'Calcolo calorie con foto gratis e AI | Calkilo',
     description:
-      'Scatta una foto del tuo piatto e stima calorie, proteine, carboidrati e grassi con l’intelligenza artificiale di Calkilo.',
+      'Prova il calcolo calorie con foto di Calkilo: fotografa il pasto, ottieni una stima AI di calorie e macro e controlla il risultato.',
     heading: 'Calcolo calorie con foto gratis',
     intro:
-      'Calkilo aiuta a iniziare il tracking alimentare partendo da una foto. L’obiettivo non e sostituire il controllo dell’utente, ma ridurre il tempo necessario per stimare calorie e macro di un pasto reale.',
+      'Calkilo aiuta a iniziare il tracking alimentare partendo da una foto. L’obiettivo non è sostituire il controllo dell’utente, ma ridurre il tempo necessario per stimare calorie e macro di un pasto reale.',
     keywords: ['calcolo calorie con foto gratis', 'calorie da foto', 'contacalorie con foto', 'app calorie gratis'],
     highlights: [
       {
@@ -462,17 +462,17 @@ export const SEO_LANDING_PAGES: Record<SeoLandingPageKey, ResourcePageDefinition
     ],
     sections: [
       {
-        title: 'Perche cercare un calcolo calorie con foto gratis',
+        title: 'Perché cercare un calcolo calorie con foto gratis',
         paragraphs: [
-          'Molte persone conoscono l’importanza del diario alimentare, ma smettono perche inserire ogni ingrediente richiede troppo tempo. Una foto del pasto riduce il primo attrito: non bisogna partire da una ricerca manuale, ma da un’immagine reale del piatto.',
-          'Calkilo rende questa esperienza piu pratica. L’AI analizza cio che si vede, crea una stima di calorie e macronutrienti e permette all’utente di valutare il risultato. La parte gratuita serve soprattutto per provare se questo flusso si adatta alla routine quotidiana.',
+          'Molte persone conoscono l’importanza del diario alimentare, ma smettono perché inserire ogni ingrediente richiede troppo tempo. Una foto del pasto riduce il primo attrito: non bisogna partire da una ricerca manuale, ma da un’immagine reale del piatto.',
+          'Calkilo rende questa esperienza più pratica. L’AI analizza ciò che si vede, crea una stima di calorie e macronutrienti e permette all’utente di valutare il risultato. La parte gratuita serve soprattutto per provare se questo flusso si adatta alla routine quotidiana.',
         ],
       },
       {
         title: 'Come usare la stima in modo corretto',
         paragraphs: [
-          'Il risultato non deve essere letto come un valore di laboratorio. Foto sfocate, piatti coperti, olio, salse e ingredienti nascosti possono cambiare molto le calorie finali. Per questo una buona app deve rendere chiaro che la stima e un punto di partenza.',
-          'Per ottenere un risultato migliore conviene fotografare tutto il pasto, usare buona luce e includere contorni, pane, bevande o condimenti quando fanno parte della porzione. Se qualcosa resta fuori dall’immagine, va considerato durante la revisione.',
+          'Il risultato non deve essere letto come un valore di laboratorio. Foto sfocate, piatti coperti, olio, salse e ingredienti nascosti possono cambiare molto le calorie finali. Per questo una buona app deve rendere chiaro che la stima è un punto di partenza.',
+          'Per ottenere un risultato migliore conviene fotografare tutto il pasto, usare una buona luce e includere contorni, pane, bevande o condimenti quando fanno parte della porzione. Se qualcosa resta fuori dall’immagine, va considerato durante la revisione.',
         ],
         bullets: [
           'Fotografa il piatto intero',
@@ -482,17 +482,30 @@ export const SEO_LANDING_PAGES: Record<SeoLandingPageKey, ResourcePageDefinition
         ],
       },
       {
+        title: 'Esempi gratuiti da provare con piatti comuni',
+        paragraphs: [
+          'Inizia con un pasto semplice e ben visibile, come pasta al pomodoro, pizza margherita o un secondo con contorno. Questi esempi aiutano a capire il flusso: foto, stima iniziale, controllo della porzione e salvataggio.',
+          'Poi prova un piatto più complesso, come lasagne, risotto o insalata con condimento. Confrontare casi semplici e misti mostra quando la revisione di olio, formaggio, salse o ingredienti nascosti diventa importante.',
+        ],
+        bullets: [
+          'Pasta al pomodoro: verifica quantità, olio e formaggio',
+          'Pizza margherita: controlla diametro e mozzarella',
+          'Secondo con contorno: includi tutto nello stesso scatto',
+          'Lasagne o risotto: rivedi strati, burro e condimenti',
+        ],
+      },
+      {
         title: 'Dimagrimento, fitness e consapevolezza alimentare',
         paragraphs: [
-          'Per dimagrire, la costanza e spesso piu importante della perfezione. Se il tracking e troppo lento, diventa difficile mantenerlo. Una stima da foto puo aiutare a registrare piu pasti e capire meglio dove vanno le calorie della giornata.',
-          'Per il fitness contano anche le macro. Proteine, carboidrati e grassi aiutano a valutare se un pasto e coerente con allenamento, recupero e obiettivi di composizione corporea. Calkilo mostra questi dati insieme alla stima calorica.',
+          'Per dimagrire, la costanza è spesso più importante della perfezione. Se il tracking è troppo lento, diventa difficile mantenerlo. Una stima da foto può aiutare a registrare più pasti e capire meglio dove vanno le calorie della giornata.',
+          'Per il fitness contano anche le macro. Proteine, carboidrati e grassi aiutano a valutare se un pasto è coerente con allenamento, recupero e obiettivi di composizione corporea. Calkilo mostra questi dati insieme alla stima calorica.',
         ],
       },
       {
         title: 'Quando serve una revisione manuale',
         paragraphs: [
-          'Piatti misti, cibo fritto, formaggi, salse e dessert possono richiedere piu attenzione. Anche due piatti visivamente simili possono avere calorie diverse se cambiano olio, porzione o metodo di cottura.',
-          'Il valore dell’AI sta nel velocizzare il primo passaggio. La revisione dell’utente rende il dato piu utile nella vita reale, soprattutto quando il pasto ha dettagli che una foto non mostra bene.',
+          'Piatti misti, cibo fritto, formaggi, salse e dessert possono richiedere più attenzione. Anche due piatti visivamente simili possono avere calorie diverse se cambiano olio, porzione o metodo di cottura.',
+          'Il valore dell’AI sta nel velocizzare il primo passaggio. La revisione dell’utente rende il dato più utile nella vita reale, soprattutto quando il pasto ha dettagli che una foto non mostra bene.',
         ],
       },
     ],
@@ -503,31 +516,31 @@ export const SEO_LANDING_PAGES: Record<SeoLandingPageKey, ResourcePageDefinition
           'Calkilo permette di iniziare con un flusso gratuito. Alcune funzioni avanzate possono essere disponibili in piani premium.',
       },
       {
-        question: 'La stima da foto e precisa?',
+        question: 'La stima da foto è precisa?',
         answer:
-          'E una stima. La precisione dipende da foto, porzione, ingredienti visibili e condimenti nascosti.',
+          'È una stima. La precisione dipende da foto, porzione, ingredienti visibili e condimenti nascosti.',
       },
       {
         question: 'Mostra anche le macro?',
         answer:
-          'Si. Calkilo stima calorie, proteine, carboidrati e grassi per dare piu contesto al pasto.',
+          'Sì. Calkilo stima calorie, proteine, carboidrati e grassi per dare più contesto al pasto.',
       },
       {
         question: 'Serve pesare il cibo?',
         answer:
-          'Non per iniziare, ma conoscere il peso o la porzione puo aiutare a correggere il risultato.',
+          'Non per iniziare, ma conoscere il peso o la porzione può aiutare a correggere il risultato.',
       },
     ],
   },
   'it-intelligenza-artificiale-calorie': {
     language: 'it',
     path: '/it/intelligenza-artificiale-calorie/',
-    title: 'Intelligenza artificiale calorie | Stima calorie da foto',
+    title: 'Intelligenza artificiale per calorie da foto | Calkilo',
     description:
-      'Usa l’intelligenza artificiale di Calkilo per stimare calorie e macronutrienti da una foto del cibo.',
-    heading: 'Intelligenza artificiale per calorie',
+      'Scopri come l’intelligenza artificiale analizza una foto del cibo, stima calorie e macro e perché porzioni e ingredienti vanno controllati.',
+    heading: 'Come l’intelligenza artificiale stima le calorie',
     intro:
-      'L’intelligenza artificiale applicata alle calorie aiuta a trasformare una foto del cibo in una stima nutrizionale. Calkilo usa questo approccio per rendere piu rapido il tracking quotidiano senza togliere all’utente il controllo sul risultato.',
+      'L’intelligenza artificiale applicata alle calorie aiuta a trasformare una foto del cibo in una stima nutrizionale. Calkilo usa questo approccio per rendere più rapido il tracking quotidiano senza togliere all’utente il controllo sul risultato.',
     keywords: ['intelligenza artificiale calorie', 'calorie ai', 'calorie da foto ai', 'app nutrizione intelligenza artificiale'],
     highlights: [
       {
@@ -539,66 +552,79 @@ export const SEO_LANDING_PAGES: Record<SeoLandingPageKey, ResourcePageDefinition
         body: 'La stima include calorie, proteine, carboidrati e grassi.',
       },
       {
-        title: 'Diario piu veloce',
+        title: 'Diario più veloce',
         body: 'La foto riduce il tempo di inserimento rispetto alla ricerca manuale.',
       },
     ],
     sections: [
       {
-        title: 'Come l’AI puo stimare le calorie',
+        title: 'Come l’AI può stimare le calorie',
         paragraphs: [
-          'Un sistema AI parte dall’immagine del pasto. Analizza forme, colori, contesto e alimenti visibili, poi collega queste informazioni a dati nutrizionali per costruire una stima. Il risultato non e una misurazione diretta, ma una previsione informata.',
-          'Questo e utile perche molti pasti reali non hanno un’etichetta nutrizionale. Pranzi al ristorante, piatti casalinghi e ricette miste sono difficili da inserire a mano. L’intelligenza artificiale riduce il tempo necessario per arrivare a un dato utilizzabile.',
+          'Un sistema AI parte dall’immagine del pasto. Analizza forme, colori, contesto e alimenti visibili, poi collega queste informazioni a dati nutrizionali per costruire una stima. Il risultato non è una misurazione diretta, ma una previsione informata.',
+          'Questo è utile perché molti pasti reali non hanno un’etichetta nutrizionale. Pranzi al ristorante, piatti casalinghi e ricette miste sono difficili da inserire a mano. L’intelligenza artificiale riduce il tempo necessario per arrivare a un dato utilizzabile.',
         ],
       },
       {
-        title: 'Perche il controllo dell’utente resta importante',
+        title: 'Cosa vede l’AI in alcuni piatti italiani',
         paragraphs: [
-          'L’AI vede cio che appare nella foto, ma non puo conoscere sempre olio, burro, zucchero, salse o ingredienti nascosti. Anche la dimensione della porzione puo essere difficile da interpretare se manca un riferimento visivo.',
-          'Per questo Calkilo tratta la stima come un punto di partenza. L’utente puo valutare se il numero sembra coerente con il pasto e correggere mentalmente o operativamente i dettagli che non erano visibili.',
+          'In una pizza l’immagine mostra base, mozzarella e condimenti, ma non sempre rende evidente quanto olio è stato usato. In una carbonara l’AI può riconoscere pasta e ingredienti visibili, mentre quantità di guanciale, pecorino e uovo richiedono una verifica.',
+          'Lasagne, risotti e piatti al forno hanno strati o ingredienti nascosti. Questi esempi spiegano perché l’AI è utile per iniziare rapidamente, ma la porzione e la ricetta reale restano decisive per migliorare la stima.',
+        ],
+        bullets: [
+          'Pizza: ingredienti visibili, diametro e olio',
+          'Carbonara: porzione, guanciale, uovo e pecorino',
+          'Lasagne: numero di strati, besciamella e formaggio',
+          'Risotto: quantità, burro, brodo e mantecatura',
+        ],
+      },
+      {
+        title: 'Perché il controllo dell’utente resta importante',
+        paragraphs: [
+          'L’AI vede ciò che appare nella foto, ma non può conoscere sempre olio, burro, zucchero, salse o ingredienti nascosti. Anche la dimensione della porzione può essere difficile da interpretare se manca un riferimento visivo.',
+          'Per questo Calkilo tratta la stima come un punto di partenza. L’utente può valutare se il numero sembra coerente con il pasto e correggere i dettagli che non erano visibili.',
         ],
         bullets: [
           'Le foto chiare migliorano la stima',
           'Ingredienti nascosti richiedono revisione',
           'La porzione cambia molto il risultato',
-          'La stima e utile quando resta modificabile',
+          'La stima è utile quando resta modificabile',
         ],
       },
       {
         title: 'Uso quotidiano per dieta e fitness',
         paragraphs: [
-          'Chi segue una dieta ha bisogno di continuita. Se registrare il cibo richiede troppi passaggi, il diario resta incompleto. L’intelligenza artificiale puo aiutare a registrare piu pasti e creare un quadro piu realistico della giornata.',
+          'Chi segue una dieta ha bisogno di continuità. Se registrare il cibo richiede troppi passaggi, il diario resta incompleto. L’intelligenza artificiale può aiutare a registrare più pasti e creare un quadro più realistico della giornata.',
           'Nel fitness, invece, calorie e macro vanno lette insieme. Proteine, carboidrati e grassi aiutano a capire se un pasto supporta allenamento, recupero e composizione corporea. Calkilo mette questi dati nello stesso flusso.',
         ],
       },
       {
         title: 'Limiti realistici dell’intelligenza artificiale',
         paragraphs: [
-          'Un’app AI non sostituisce un nutrizionista, una bilancia da cucina o un piano medico. Serve per stimare, imparare e tracciare con meno attrito. Per condizioni cliniche, disturbi alimentari, gravidanza o obiettivi terapeutici e necessario un professionista.',
-          'Usata nel modo giusto, pero, l’AI puo rendere il tracking meno pesante. Il vantaggio concreto e abbassare la soglia di ingresso: scattare una foto e piu facile che costruire ogni pasto da zero.',
+          'Un’app AI non sostituisce un nutrizionista, una bilancia da cucina o un piano medico. Serve per stimare, imparare e tracciare con meno attrito. Per condizioni cliniche, disturbi alimentari, gravidanza o obiettivi terapeutici è necessario un professionista.',
+          'Usata nel modo giusto, però, l’AI può rendere il tracking meno pesante. Il vantaggio concreto è abbassare la soglia di ingresso: scattare una foto è più facile che costruire ogni pasto da zero.',
         ],
       },
     ],
     faqs: [
       {
-        question: 'L’intelligenza artificiale puo calcolare le calorie?',
+        question: 'L’intelligenza artificiale può calcolare le calorie?',
         answer:
-          'Puo stimarle da una foto e da dati nutrizionali, ma il risultato resta una stima da controllare.',
+          'Può stimarle da una foto e da dati nutrizionali, ma il risultato resta una stima da controllare.',
       },
       {
         question: 'Calkilo usa AI per le macro?',
         answer:
-          'Si. La stima include anche proteine, carboidrati e grassi oltre alle calorie.',
+          'Sì. La stima include anche proteine, carboidrati e grassi oltre alle calorie.',
       },
       {
-        question: 'Quando la stima AI e meno affidabile?',
+        question: 'Quando la stima AI è meno affidabile?',
         answer:
-          'Quando il pasto e coperto, molto condito, fritto, sfocato o con ingredienti nascosti.',
+          'Quando il pasto è coperto, molto condito, fritto, sfocato o contiene ingredienti nascosti.',
       },
       {
         question: 'L’AI sostituisce un nutrizionista?',
         answer:
-          'No. E uno strumento di tracking e stima. Per consigli medici o diete terapeutiche serve un professionista.',
+          'No. È uno strumento di tracking e stima. Per consigli medici o diete terapeutiche serve un professionista.',
       },
     ],
   },
