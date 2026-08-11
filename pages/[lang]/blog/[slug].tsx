@@ -1,7 +1,6 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import BlogDetailPage from '../../../components/BlogDetailPage'
-import { fetchBlogPost, fetchBlogPosts, normalizeBlogLanguage, type BlogPost } from '../../../lib/blog'
-import { LOCALIZED_LANGUAGES } from '../../../lib/site-language'
+import { fetchBlogPost, normalizeBlogLanguage, type BlogPost } from '../../../lib/blog'
 
 interface LangBlogPostPageProps {
   initialPost?: BlogPost | null
@@ -9,31 +8,7 @@ interface LangBlogPostPageProps {
   slug: string
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths: Array<{ params: { lang: string; slug: string } }> = []
-
-  await Promise.all(
-    LOCALIZED_LANGUAGES.map(async (lang) => {
-      try {
-        const posts = await fetchBlogPosts(lang)
-        posts.forEach((post) => {
-          paths.push({
-            params: { lang, slug: post.slug },
-          })
-        })
-      } catch {
-        // Keep static export resilient if the blog API is temporarily unavailable.
-      }
-    }),
-  )
-
-  return {
-    paths,
-    fallback: false,
-  }
-}
-
-export const getStaticProps: GetStaticProps<LangBlogPostPageProps> = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps<LangBlogPostPageProps> = async ({ params, res }) => {
   const lang = normalizeBlogLanguage(params?.lang)
   const slug = typeof params?.slug === 'string' ? params.slug : ''
 
@@ -43,20 +18,22 @@ export const getStaticProps: GetStaticProps<LangBlogPostPageProps> = async ({ pa
     }
   }
 
-  let initialPost: BlogPost | null = null
-
   try {
-    initialPost = await fetchBlogPost(slug, lang)
-  } catch {
-    initialPost = null
-  }
+    const initialPost = await fetchBlogPost(slug, lang)
 
-  return {
-    props: {
-      initialPost,
-      lang,
-      slug,
-    },
+    res.setHeader('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=86400')
+
+    return {
+      props: {
+        initialPost,
+        lang,
+        slug,
+      },
+    }
+  } catch {
+    return {
+      notFound: true,
+    }
   }
 }
 

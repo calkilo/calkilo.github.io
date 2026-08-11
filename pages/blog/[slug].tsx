@@ -1,31 +1,13 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import BlogDetailPage from '../../components/BlogDetailPage'
-import { fetchBlogPost, fetchBlogPosts, type BlogPost } from '../../lib/blog'
+import { fetchBlogPost, type BlogPost } from '../../lib/blog'
 
 interface BlogPostPageProps {
   initialPost?: BlogPost | null
   slug: string
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  try {
-    const posts = await fetchBlogPosts('en')
-
-    return {
-      paths: posts.map((post) => ({
-        params: { slug: post.slug },
-      })),
-      fallback: false,
-    }
-  } catch {
-    return {
-      paths: [],
-      fallback: false,
-    }
-  }
-}
-
-export const getStaticProps: GetStaticProps<BlogPostPageProps> = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps<BlogPostPageProps> = async ({ params, res }) => {
   const slug = typeof params?.slug === 'string' ? params.slug : ''
 
   if (!slug) {
@@ -34,19 +16,21 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async ({ params
     }
   }
 
-  let initialPost: BlogPost | null = null
-
   try {
-    initialPost = await fetchBlogPost(slug, 'en')
-  } catch {
-    initialPost = null
-  }
+    const initialPost = await fetchBlogPost(slug, 'en')
 
-  return {
-    props: {
-      initialPost,
-      slug,
-    },
+    res.setHeader('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=86400')
+
+    return {
+      props: {
+        initialPost,
+        slug,
+      },
+    }
+  } catch {
+    return {
+      notFound: true,
+    }
   }
 }
 
