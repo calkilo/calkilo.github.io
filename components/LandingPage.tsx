@@ -129,7 +129,7 @@ const LANDING_PAGE_KEYWORDS: Record<SiteLanguage, ReadonlyArray<string>> = {
   zh: ['ai 卡路里追踪', '拍照计算卡路里', '营养追踪应用', '宏量营养追踪', 'calkilo'],
   ru: ['ai трекер калорий', 'подсчет калорий по фото', 'приложение для макросов', 'трекер питания', 'calkilo'],
   ar: ['متتبع السعرات بالذكاء الاصطناعي', 'حاسبة سعرات من الصورة', 'تطبيق تتبع الماكروز', 'تتبع التغذية', 'calkilo'],
-  fa: ['کالری شمار با عکس رایگان', 'هوش مصنوعی کالری شمار رایگان', 'کالری شمار هوش مصنوعی', 'اسکن کالری غذا رایگان', 'کالکیلو'],
+  fa: ['کالری شمار', 'کالری شمار آنلاین', 'کالری شمار رایگان', 'کالری شمار غذا آنلاین', 'کالکیلو'],
   it: ['calcolo calorie ai', 'calorie da foto', 'contacalorie con foto', 'app calorie e macro', 'calkilo'],
 }
 
@@ -420,15 +420,15 @@ const TRANSLATIONS: Record<
   },
   fa: {
     pageDescription:
-      'از غذای خود عکس بگیرید و با کالری شمار هوش مصنوعی کالکیلو، کالری، پروتئین، کربوهیدرات و چربی را سریع‌تر پیگیری کنید.',
-    pageTitle: 'کالری شمار با عکس رایگان و هوش مصنوعی | کالکیلو',
+      'کالری شمار آنلاین رایگان کالکیلو برای ثبت غذای روزانه، پیگیری کالری و ماکروها و رسیدن به هدف کاهش یا حفظ وزن؛ با ورود سریع غذا و تحلیل هوش مصنوعی.',
+    pageTitle: 'کالری شمار آنلاین رایگان غذا | کالکیلو',
     darkThemeLabel: 'حالت تیره',
     nav: { home: 'خانه', features: 'ویژگی‌ها', pricing: 'انتخاب طرح', blog: 'بلاگ', contact: 'تماس' },
     tryFree: 'رایگان شروع کنید',
-    heroTitleA: 'کالری شمار با عکس',
-    heroTitleB: 'رایگان و هوش مصنوعی',
+    heroTitleA: 'کالری شمار آنلاین',
+    heroTitleB: 'رایگان برای غذای روزانه',
     heroDescription:
-      'از غذای خود عکس بگیرید تا کالکیلو با هوش مصنوعی، کالری، درشت‌مغذی‌ها و اطلاعات تغذیه‌ای را سریع محاسبه کند. نتیجه را بررسی کنید، وعده‌ها را ثبت کنید و بدون ورود دستی پیگیر رژیم بمانید.',
+      'غذا و میان‌وعده‌های روزانه را سریع ثبت کنید، کالری، پروتئین، کربوهیدرات و چربی را ببینید و روند رژیم خود را دنبال کنید. برای ثبت سریع‌تر می‌توانید از عکس غذا و تحلیل هوش مصنوعی هم استفاده کنید.',
     availableOn: 'در دسترس در:',
     aiTitle: 'CalKilo-AI: عامل هوشمند، برنامه‌ریزی وعده غذایی و دستور غذا',
     aiSubtitle: 'برنامه‌های غذایی شخصی‌سازی‌شده متناسب با اهداف، ترجیحات و محدودیت‌های غذایی شما.',
@@ -1499,6 +1499,17 @@ function AppleIcon() {
 
 function StoreButtons({ language }: { language: SiteLanguage }) {
   const androidStoreLinks = getAndroidStoreLinks(language)
+  const trackStoreClick = (store: string) => {
+    if (typeof window === 'undefined' || !window.gtag) {
+      return
+    }
+
+    window.gtag('event', 'store_click', {
+      store,
+      language,
+      landing_page: window.location.pathname,
+    })
+  }
 
   return (
     <div className="lp-store-row" aria-label="Store links">
@@ -1511,6 +1522,7 @@ function StoreButtons({ language }: { language: SiteLanguage }) {
               role="button"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackStoreClick(store.label)}
             >
               <span className="lp-store-copy">
                 <small>دریافت از</small>
@@ -1519,11 +1531,25 @@ function StoreButtons({ language }: { language: SiteLanguage }) {
             </a>
           ))
         : (
-            <a className="lp-store-btn" href={GOOGLE_PLAY_URL} role="button" target="_blank" rel="noopener noreferrer">
+            <a
+              className="lp-store-btn"
+              href={GOOGLE_PLAY_URL}
+              role="button"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackStoreClick('Google Play')}
+            >
               <GooglePlayIcon />
             </a>
           )}
-      <a className="lp-store-btn" href={APP_STORE_URL} role="button" target="_blank" rel="noopener noreferrer">
+      <a
+        className="lp-store-btn"
+        href={APP_STORE_URL}
+        role="button"
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => trackStoreClick('App Store')}
+      >
 
           <AppleIcon />
       

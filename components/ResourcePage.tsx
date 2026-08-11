@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { type CSSProperties } from 'react'
 import { APP_STORE_URL, getAndroidStoreLinks, getStoreSameAs } from '../lib/app-links'
@@ -31,6 +32,33 @@ interface ResourcePageProps {
   lang?: string
 }
 
+const PRODUCT_PROOF_COPY = {
+  en: {
+    kicker: 'From food photo to daily record',
+    title: 'See what the estimate includes before you save it',
+    body: 'A clear photo starts the analysis. Calkilo returns an editable estimate so you can review the portion, account for sauces or hidden ingredients, and keep a more useful nutrition record.',
+    steps: ['Photograph the complete meal', 'Review calories, protein, carbs and fat', 'Correct the estimate and save it'],
+    result: 'Example nutrition result',
+    note: 'Illustrative result—actual values depend on the food, recipe and portion.',
+  },
+  fa: {
+    kicker: 'از عکس غذا تا ثبت روزانه',
+    title: 'قبل از ذخیره، جزئیات تخمین را ببینید',
+    body: 'یک عکس واضح، نقطه شروع تحلیل است. کالکیلو یک تخمین قابل ویرایش می‌سازد تا اندازه وعده، سس و مواد پنهان را بررسی کنید و رکورد تغذیه‌ای مفیدتری داشته باشید.',
+    steps: ['از کل وعده عکس بگیرید', 'کالری، پروتئین، کربوهیدرات و چربی را بررسی کنید', 'تخمین را اصلاح و وعده را ذخیره کنید'],
+    result: 'نمونه نتیجه تغذیه‌ای',
+    note: 'این نتیجه نمونه است؛ مقدار واقعی به غذا، دستور پخت و اندازه وعده بستگی دارد.',
+  },
+  it: {
+    kicker: 'Dalla foto al diario alimentare',
+    title: 'Controlla cosa include la stima prima di salvarla',
+    body: 'Una foto chiara avvia l’analisi. Calkilo restituisce una stima modificabile per verificare la porzione, considerare salse o ingredienti nascosti e salvare un dato più utile.',
+    steps: ['Fotografa l’intero pasto', 'Controlla calorie, proteine, carboidrati e grassi', 'Correggi la stima e salva il pasto'],
+    result: 'Esempio di risultato nutrizionale',
+    note: 'Risultato illustrativo: i valori reali dipendono da alimento, ricetta e porzione.',
+  },
+} as const
+
 export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps) {
   const router = useRouter()
   const language = page.language ?? normalizeSiteLanguage(lang) ?? DEFAULT_LANGUAGE
@@ -42,6 +70,18 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
   const androidStoreLinks = getAndroidStoreLinks(language)
   const storeSameAs = getStoreSameAs(language)
   const alternateLanguages = pageKey ? getResourceAlternateLanguages(pageKey) : undefined
+  const proofCopy = PRODUCT_PROOF_COPY[language as keyof typeof PRODUCT_PROOF_COPY] ?? PRODUCT_PROOF_COPY.en
+  const trackStoreClick = (store: string) => {
+    if (typeof window === 'undefined' || !window.gtag) {
+      return
+    }
+
+    window.gtag('event', 'store_click', {
+      store,
+      language,
+      landing_page: page.path,
+    })
+  }
   const localizedCorePages = CORE_SITE_LINKS.map((link) => {
     if (link.href === '/features/') {
       return {
@@ -243,11 +283,18 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
                     href={store.href}
                     target="_blank"
                     rel="noreferrer"
+                    onClick={() => trackStoreClick(store.label)}
                   >
                     {store.label}
                   </a>
                 ))}
-                <a className="lp-btn lp-resource-btn-secondary" href={APP_STORE_URL} target="_blank" rel="noreferrer">
+                <a
+                  className="lp-btn lp-resource-btn-secondary"
+                  href={APP_STORE_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => trackStoreClick('App Store')}
+                >
                   App Store
                 </a>
               </div>
@@ -264,6 +311,37 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
                   <p>{highlight.body}</p>
                 </article>
               ))}
+            </section>
+
+            <section className="lp-static-card lp-resource-proof">
+              <div className="lp-resource-proof-copy">
+                <p className="lp-kicker">{proofCopy.kicker}</p>
+                <h2>{proofCopy.title}</h2>
+                <p>{proofCopy.body}</p>
+                <ol className="lp-resource-proof-steps">
+                  {proofCopy.steps.map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ol>
+              </div>
+              <div className="lp-resource-proof-visual">
+                <Image
+                  src="/assets/hero-main.png"
+                  alt={language === 'fa' ? 'نمونه عکس واضح از یک وعده غذایی' : language === 'it' ? 'Esempio di foto chiara di un pasto' : 'Example of a clear food photo for calorie estimation'}
+                  width={760}
+                  height={571}
+                />
+                <div className="lp-resource-proof-result">
+                  <strong>{proofCopy.result}</strong>
+                  <dl>
+                    <div><dt>Calories</dt><dd>640 kcal</dd></div>
+                    <div><dt>Protein</dt><dd>32 g</dd></div>
+                    <div><dt>Carbs</dt><dd>68 g</dd></div>
+                    <div><dt>Fat</dt><dd>26 g</dd></div>
+                  </dl>
+                  <small>{proofCopy.note}</small>
+                </div>
+              </div>
             </section>
 
             {page.sections.map((section) => (

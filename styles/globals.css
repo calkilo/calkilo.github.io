@@ -2569,6 +2569,118 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
   color: var(--lp-text);
 }
 
+.lp-resource-proof {
+  align-items: center;
+  display: grid;
+  gap: clamp(24px, 4vw, 48px);
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  overflow: hidden;
+}
+
+.lp-resource-proof-copy > .lp-kicker {
+  color: var(--lp-accent-dark);
+  font-weight: 800;
+  margin-top: 0;
+}
+
+.lp-resource-proof-steps {
+  counter-reset: proof-step;
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+}
+
+.lp-resource-proof-steps li {
+  align-items: center;
+  color: var(--lp-text);
+  counter-increment: proof-step;
+  display: flex;
+  font-weight: 700;
+  gap: 12px;
+}
+
+.lp-resource-proof-steps li::before {
+  align-items: center;
+  background: var(--lp-accent);
+  border-radius: 999px;
+  color: #071a0d;
+  content: counter(proof-step);
+  display: inline-flex;
+  flex: 0 0 30px;
+  font-size: 0.82rem;
+  font-weight: 900;
+  height: 30px;
+  justify-content: center;
+}
+
+.lp-resource-proof-visual {
+  background: var(--lp-surface-soft);
+  border: 1px solid var(--lp-border);
+  border-radius: 22px;
+  min-height: 360px;
+  padding: 22px;
+  position: relative;
+}
+
+.lp-resource-proof-visual > img {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  max-width: 100%;
+  width: min(100%, 520px);
+}
+
+.lp-resource-proof-result {
+  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(15, 55, 30, 0.12);
+  border-radius: 18px;
+  bottom: 18px;
+  box-shadow: 0 16px 45px rgba(10, 35, 18, 0.16);
+  color: #102418;
+  inset-inline-end: 18px;
+  padding: 16px;
+  position: absolute;
+  width: min(360px, calc(100% - 36px));
+}
+
+.lp-resource-proof-result dl {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 12px 0;
+}
+
+.lp-resource-proof-result dl div {
+  background: #f3f8f4;
+  border-radius: 10px;
+  padding: 9px;
+}
+
+.lp-resource-proof-result dt,
+.lp-resource-proof-result small {
+  color: #53655a;
+  font-size: 0.74rem;
+}
+
+.lp-resource-proof-result dd {
+  font-size: 0.94rem;
+  font-weight: 800;
+  margin: 2px 0 0;
+}
+
+@media (max-width: 760px) {
+  .lp-resource-proof {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-resource-proof-visual {
+    min-height: 390px;
+  }
+}
+
 .lp-food-stat-grid {
   display: grid;
   gap: 14px;
