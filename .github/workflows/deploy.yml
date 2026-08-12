@@ -43,6 +43,8 @@ jobs:
           test -d out
           test -f out/index.html
           test -f out/404.html
+          test -f out/CNAME
+          grep -qx 'calkilo.com' out/CNAME
           test -f out/.nojekyll
           test -d out/_next
           test -f out/contact/index.html

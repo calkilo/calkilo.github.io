@@ -1,13 +1,22 @@
-import { GetServerSideProps } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import BlogDetailPage from '../../components/BlogDetailPage'
-import { fetchBlogPost, type BlogPost } from '../../lib/blog'
+import { fetchBlogPost, fetchBlogPosts, type BlogPost } from '../../lib/blog'
 
 interface BlogPostPageProps {
   initialPost?: BlogPost | null
   slug: string
 }
 
-export const getServerSideProps: GetServerSideProps<BlogPostPageProps> = async ({ params, res }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await fetchBlogPosts('en')
+
+  return {
+    paths: posts.map((post) => ({ params: { slug: post.slug } })),
+    fallback: false,
+  }
+}
+
+export const getStaticProps: GetStaticProps<BlogPostPageProps> = async ({ params }) => {
   const slug = typeof params?.slug === 'string' ? params.slug : ''
 
   if (!slug) {
@@ -18,8 +27,6 @@ export const getServerSideProps: GetServerSideProps<BlogPostPageProps> = async (
 
   try {
     const initialPost = await fetchBlogPost(slug, 'en')
-
-    res.setHeader('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=86400')
 
     return {
       props: {

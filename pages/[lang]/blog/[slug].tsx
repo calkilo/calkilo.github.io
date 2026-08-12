@@ -1,6 +1,7 @@
-import { GetServerSideProps } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import BlogDetailPage from '../../../components/BlogDetailPage'
-import { fetchBlogPost, normalizeBlogLanguage, type BlogPost } from '../../../lib/blog'
+import { fetchBlogPost, fetchBlogPosts, normalizeBlogLanguage, type BlogPost } from '../../../lib/blog'
+import { LOCALIZED_LANGUAGES } from '../../../lib/site-language'
 
 interface LangBlogPostPageProps {
   initialPost?: BlogPost | null
@@ -8,7 +9,20 @@ interface LangBlogPostPageProps {
   slug: string
 }
 
-export const getServerSideProps: GetServerSideProps<LangBlogPostPageProps> = async ({ params, res }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const localizedPosts = await Promise.all(
+    LOCALIZED_LANGUAGES.map(async (lang) => ({ lang, posts: await fetchBlogPosts(lang) })),
+  )
+
+  return {
+    paths: localizedPosts.flatMap(({ lang, posts }) =>
+      posts.map((post) => ({ params: { lang, slug: post.slug } })),
+    ),
+    fallback: false,
+  }
+}
+
+export const getStaticProps: GetStaticProps<LangBlogPostPageProps> = async ({ params }) => {
   const lang = normalizeBlogLanguage(params?.lang)
   const slug = typeof params?.slug === 'string' ? params.slug : ''
 
@@ -20,8 +34,6 @@ export const getServerSideProps: GetServerSideProps<LangBlogPostPageProps> = asy
 
   try {
     const initialPost = await fetchBlogPost(slug, lang)
-
-    res.setHeader('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=86400')
 
     return {
       props: {
