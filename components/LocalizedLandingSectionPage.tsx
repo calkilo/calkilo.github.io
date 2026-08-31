@@ -1,7 +1,5 @@
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import LandingPage from './LandingPage'
 import { normalizeSiteLanguage, toLocalizedPath } from '../lib/site-language'
+import LegacyRedirectPage from './LegacyRedirectPage'
 
 interface LocalizedLandingSectionPageProps {
   lang?: string
@@ -10,13 +8,12 @@ interface LocalizedLandingSectionPageProps {
 
 export default function LocalizedLandingSectionPage({ lang, section }: LocalizedLandingSectionPageProps) {
   const language = normalizeSiteLanguage(lang)
-  const router = useRouter()
+  const localizedHome = toLocalizedPath('/', language)
 
-  useEffect(() => {
-    const localizedHome = toLocalizedPath('/', language)
-
-    void router.replace(`${localizedHome}#${section}`)
-  }, [language, router, section])
-
-  return <LandingPage lang={language} variant="light" />
+  return (
+    <LegacyRedirectPage
+      title={`${section === 'features' ? 'Features' : 'Pricing'} moved`}
+      toPath={`${localizedHome}#${section}`}
+    />
+  )
 }

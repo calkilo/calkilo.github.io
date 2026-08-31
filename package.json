@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-blog-sitemap.mjs",
+    "prebuild": "node scripts/generate-site-data.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "seo:audit": "node scripts/audit-export.mjs",
+    "indexnow:submit": "node scripts/submit-indexnow.mjs"
   },
   "dependencies": {
-    "next": "14.1.0",
+    "next": "16.3.3",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
@@ -18,8 +20,8 @@
     "@types/node": "20.11.19",
     "@types/react": "18.2.66",
     "@types/react-dom": "18.2.23",
-    "eslint": "8.57.0",
-    "eslint-config-next": "14.1.0",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.3.3",
     "typescript": "5.3.3"
   }
 }

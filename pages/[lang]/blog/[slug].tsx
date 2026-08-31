@@ -1,22 +1,27 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import BlogDetailPage from '../../../components/BlogDetailPage'
-import { fetchBlogPost, fetchBlogPosts, normalizeBlogLanguage, type BlogPost } from '../../../lib/blog'
+import LegacyRedirectPage from '../../../components/LegacyRedirectPage'
+import {
+  getBlogBuildAlternateLanguagePaths,
+  getBlogBuildLanguageData,
+  getBlogBuildPost,
+  getBlogBuildRedirect,
+} from '../../../lib/blog-build-data'
+import { getBlogPostPath, normalizeBlogLanguage, type BlogPost } from '../../../lib/blog'
 import { LOCALIZED_LANGUAGES } from '../../../lib/site-language'
 
 interface LangBlogPostPageProps {
+  alternateLanguagePaths?: Array<{ lang: string; path: string }>
   initialPost?: BlogPost | null
   lang?: string
+  redirectSlug?: string | null
   slug: string
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const localizedPosts = await Promise.all(
-    LOCALIZED_LANGUAGES.map(async (lang) => ({ lang, posts: await fetchBlogPosts(lang) })),
-  )
-
   return {
-    paths: localizedPosts.flatMap(({ lang, posts }) =>
-      posts.map((post) => ({ params: { lang, slug: post.slug } })),
+    paths: LOCALIZED_LANGUAGES.flatMap((lang) =>
+      getBlogBuildLanguageData(lang).allSlugs.map((slug) => ({ params: { lang, slug } })),
     ),
     fallback: false,
   }
@@ -32,23 +37,37 @@ export const getStaticProps: GetStaticProps<LangBlogPostPageProps> = async ({ pa
     }
   }
 
-  try {
-    const initialPost = await fetchBlogPost(slug, lang)
-
+  const redirectSlug = getBlogBuildRedirect(lang, slug)
+  if (redirectSlug) {
     return {
       props: {
+        lang,
+        redirectSlug,
+        slug,
+      },
+    }
+  }
+
+  const initialPost = getBlogBuildPost(lang, slug)
+  if (initialPost) {
+    return {
+      props: {
+        alternateLanguagePaths: getBlogBuildAlternateLanguagePaths(initialPost),
         initialPost,
         lang,
         slug,
       },
     }
-  } catch {
-    return {
-      notFound: true,
-    }
   }
+
+  return { notFound: true }
 }
 
-export default function LangBlogPostPage({ initialPost, lang, slug }: LangBlogPostPageProps) {
-  return <BlogDetailPage initialPost={initialPost} lang={lang} slug={slug} />
+export default function LangBlogPostPage({ alternateLanguagePaths, initialPost, lang, redirectSlug, slug }: LangBlogPostPageProps) {
+  if (redirectSlug) {
+    const language = normalizeBlogLanguage(lang)
+    return <LegacyRedirectPage title="Article moved" toPath={getBlogPostPath(redirectSlug, language)} />
+  }
+
+  return <BlogDetailPage alternateLanguagePaths={alternateLanguagePaths} initialPost={initialPost} lang={lang} slug={slug} />
 }

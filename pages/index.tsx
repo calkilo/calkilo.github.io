@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next'
 import LandingPage from '../components/LandingPage'
-import { fetchBlogListSnapshot, type BlogListSnapshot } from '../lib/blog'
+import { getBlogBuildSnapshot } from '../lib/blog-build-data'
+import { type BlogListSnapshot } from '../lib/blog'
 
 interface HomePageProps {
   blogSnapshot?: BlogListSnapshot
@@ -8,7 +9,7 @@ interface HomePageProps {
 }
 
 export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
-  const blogSnapshot = await fetchBlogListSnapshot('en')
+  const blogSnapshot = getBlogBuildSnapshot('en', 3)
 
   return {
     props: {

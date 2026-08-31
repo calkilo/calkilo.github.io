@@ -8,6 +8,7 @@ import {
 
 const DEFAULT_BLOG_API_BASE_URL = 'https://api.calkilo.com'
 const MAX_PAGINATED_REQUESTS = 12
+const MAX_REQUEST_RETRIES = 4
 
 function trimTrailingSlashes(value: string): string {
   return value.replace(/\/+$/u, '')
@@ -138,6 +139,35 @@ function buildBlogApiUrl(path: string, language: SiteLanguage): string {
   return url.toString()
 }
 
+function parseRetryAfter(value: string | null): number | null {
+  if (!value) return null
+
+  const seconds = Number(value)
+  if (Number.isFinite(seconds)) return Math.max(0, seconds * 1000)
+
+  const timestamp = Date.parse(value)
+  return Number.isFinite(timestamp) ? Math.max(0, timestamp - Date.now()) : null
+}
+
+function waitForRetry(milliseconds: number, signal?: AbortSignal | null): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (signal?.aborted) {
+      reject(new DOMException('The operation was aborted.', 'AbortError'))
+      return
+    }
+
+    const timeout = setTimeout(resolve, milliseconds)
+    signal?.addEventListener(
+      'abort',
+      () => {
+        clearTimeout(timeout)
+        reject(new DOMException('The operation was aborted.', 'AbortError'))
+      },
+      { once: true },
+    )
+  })
+}
+
 async function requestJson(url: string, init?: RequestInit): Promise<unknown> {
   const headers = new Headers(init?.headers)
 
@@ -145,17 +175,29 @@ async function requestJson(url: string, init?: RequestInit): Promise<unknown> {
     headers.set('Accept', 'application/json')
   }
 
-  const response = await fetch(url, {
-    cache: init?.cache ?? 'no-store',
-    ...init,
-    headers,
-  })
+  for (let attempt = 0; attempt <= MAX_REQUEST_RETRIES; attempt += 1) {
+    const response = await fetch(url, {
+      ...init,
+      cache: init?.cache ?? 'no-store',
+      headers,
+    })
 
-  if (!response.ok) {
-    throw new Error(`Blog API request failed with ${response.status}.`)
+    if (response.ok) {
+      return response.json()
+    }
+
+    const retriable = response.status === 429 || response.status >= 500
+    if (!retriable || attempt === MAX_REQUEST_RETRIES) {
+      throw new Error(`Blog API request failed with ${response.status}.`)
+    }
+
+    const retryAfter = parseRetryAfter(response.headers.get('retry-after'))
+    const backoff = Math.min(8_000, 500 * (2 ** attempt))
+    const jitter = Math.floor(Math.random() * 250)
+    await waitForRetry(Math.min(15_000, retryAfter ?? backoff) + jitter, init?.signal)
   }
 
-  return response.json()
+  throw new Error('Blog API request failed after retries.')
 }
 
 function getPostTimestamp(post: BlogPost): number {
@@ -182,6 +224,56 @@ export function sortBlogPostsForHome(posts: ReadonlyArray<BlogPost>): BlogPost[]
   })
 }
 
+function normalizeBlogTitle(value: string): string {
+  return value
+    .normalize('NFKC')
+    .toLocaleLowerCase('en')
+    .replace(/[\p{P}\p{S}]+/gu, ' ')
+    .replace(/\s+/gu, ' ')
+    .trim()
+}
+
+function numericSlugSuffix(slug: string): number {
+  const match = slug.match(/-(\d+)$/u)
+  return match ? Number(match[1]) : 0
+}
+
+export function deduplicateBlogPosts(posts: ReadonlyArray<BlogPost>): BlogPost[] {
+  const canonicalPosts = new Map<string, BlogPost>()
+  const slugFamilyCounts = new Map<string, number>()
+
+  posts.forEach((post) => {
+    const slugFamily = post.slug.replace(/-\d+$/u, '')
+    slugFamilyCounts.set(slugFamily, (slugFamilyCounts.get(slugFamily) ?? 0) + 1)
+  })
+
+  posts.forEach((post) => {
+    const slugFamily = post.slug.replace(/-\d+$/u, '')
+    const topic = normalizeBlogTitle(post.topic ?? '')
+    const key = topic
+      ? `topic:${topic}`
+      : (slugFamilyCounts.get(slugFamily) ?? 0) > 1
+        ? `slug:${slugFamily}`
+        : `title:${normalizeBlogTitle(post.title)}`
+    const current = canonicalPosts.get(key)
+
+    const postSuffix = numericSlugSuffix(post.slug)
+    const currentSuffix = current ? numericSlugSuffix(current.slug) : Number.POSITIVE_INFINITY
+    const postTimestamp = getPostTimestamp(post)
+    const currentTimestamp = current ? getPostTimestamp(current) : Number.POSITIVE_INFINITY
+    const shouldReplace = !current
+      || postSuffix < currentSuffix
+      || (postSuffix === currentSuffix && postTimestamp < currentTimestamp)
+      || (postSuffix === currentSuffix && postTimestamp === currentTimestamp && post.slug.localeCompare(current.slug) < 0)
+
+    if (shouldReplace) {
+      canonicalPosts.set(key, post)
+    }
+  })
+
+  return sortBlogPostsByNewest(Array.from(canonicalPosts.values()))
+}
+
 export async function fetchBlogPosts(language: SiteLanguage, init?: RequestInit): Promise<BlogPost[]> {
   const posts: BlogPost[] = []
   const visitedUrls = new Set<string>()
@@ -198,7 +290,7 @@ export async function fetchBlogPosts(language: SiteLanguage, init?: RequestInit)
     nextUrl = page.next ? resolvePaginatedUrl(page.next, language) : null
   }
 
-  return sortBlogPostsByNewest(posts)
+  return deduplicateBlogPosts(posts)
 }
 
 export async function fetchBlogListSnapshot(language: SiteLanguage): Promise<BlogListSnapshot> {
@@ -264,6 +356,11 @@ export function getBlogPostAlternateLanguagePaths(
 
 export function formatBlogDate(post: BlogPost, language: SiteLanguage): string {
   const sourceDate = post.published_at || post.created_at || post.updated_at
+
+  return formatBlogDateValue(sourceDate, language)
+}
+
+export function formatBlogDateValue(sourceDate: string | null | undefined, language: SiteLanguage): string {
 
   if (!sourceDate) {
     return ''

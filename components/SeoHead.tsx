@@ -194,6 +194,7 @@ export default function SeoHead({
       <meta name="msapplication-TileColor" content={themeColor} key="msapplication-TileColor" />
 
       <link rel="manifest" href="/manifest.webmanifest" key="manifest" />
+      <link rel="describedby" href="/llms.txt" type="text/markdown" key="llms-description" />
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" key="apple-touch-icon" />
       <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" key="favicon-svg" />
       <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" key="favicon-32x32" />

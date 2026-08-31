@@ -26,7 +26,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
@@ -34,6 +34,9 @@ jobs:
 
       - name: Build Next.js site
         run: npm run build
+
+      - name: Audit exported SEO output
+        run: npm run seo:audit
 
       - name: Disable Jekyll processing
         run: touch out/.nojekyll
@@ -49,6 +52,10 @@ jobs:
           test -d out/_next
           test -f out/contact/index.html
           test -f out/faq/index.html
+          test -f out/uber-eats-nutrition-calculator/index.html
+          test -f out/llms.txt
+          test -f out/e61d4bd78a471d760d7acf510125a6c0.txt
+          test ! -e 'out/[lang]'
           test ! -e out/contact.html
           test ! -e out/faq.html
 
@@ -60,6 +67,15 @@ jobs:
         with:
           path: ./out
 
+      - name: Upload discovery data for post-deploy submission
+        uses: actions/upload-artifact@v4
+        with:
+          name: discovery-data
+          path: |
+            public/sitemap.xml
+            public/blog-sitemap.xml
+          retention-days: 1
+
   deploy:
     environment:
       name: github-pages
@@ -70,3 +86,21 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Checkout IndexNow submission script
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Download generated discovery data
+        uses: actions/download-artifact@v4
+        with:
+          name: discovery-data
+          path: public
+
+      - name: Notify IndexNow after deployment
+        continue-on-error: true
+        run: node scripts/submit-indexnow.mjs

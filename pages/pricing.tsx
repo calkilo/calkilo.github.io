@@ -4,6 +4,7 @@ import { APP_STORE_URL, GOOGLE_PLAY_URL } from '../lib/app-links'
 import { GUIDE_LINKS } from '../lib/resource-pages'
 import { SITE_URL } from '../lib/seo'
 import { CORE_SITE_LINKS } from '../lib/site-pages'
+import { CALKILO_PRICING, getUsdPricingDisplay, PRICING_FAQ_ANSWER } from '../lib/pricing'
 
 const PRICING_PAGE_TITLE = 'Calkilo Pricing | Monthly and Yearly Plans'
 const PRICING_PAGE_DESCRIPTION =
@@ -18,12 +19,12 @@ const PRICING_PAGE_KEYWORDS = [
 const PRICING_CARDS = [
   {
     title: 'Monthly',
-    subtitle: '$4.99',
+    subtitle: getUsdPricingDisplay('Monthly'),
     body: 'Best for flexible premium access when you want meal planning, AI support, and deeper tracking month to month.',
   },
   {
     title: 'Yearly',
-    subtitle: '$14.99',
+    subtitle: getUsdPricingDisplay('Yearly'),
     body: 'Best value for users who already know they want premium nutrition support for the full year.',
   },
 ] as const
@@ -31,8 +32,7 @@ const PRICING_CARDS = [
 const PRICING_FAQS = [
   {
     question: 'What are the Calkilo pricing options?',
-    answer:
-      'Calkilo premium is available monthly for $4.99 or yearly for $14.99.',
+    answer: PRICING_FAQ_ANSWER,
   },
   {
     question: 'What premium value is emphasized most strongly?',
@@ -45,9 +45,9 @@ const PRICING_FAQS = [
       'The yearly plan is the best value for users who expect to keep using Calkilo premium throughout the year.',
   },
   {
-    question: 'Why have a dedicated pricing page instead of only a homepage section?',
+    question: 'Can I compare the monthly and yearly plans before installing?',
     answer:
-      'A standalone pricing page gives search engines and users a direct destination for branded pricing intent, which is more sitelink-friendly than a fragment alone.',
+      'Yes. This page shows both public premium prices and explains when the flexible monthly plan or lower-cost yearly plan may fit better.',
   },
   {
     question: 'Where should users go if they still have billing questions?',
@@ -62,8 +62,8 @@ export default function PricingPage() {
     GUIDE_LINKS[3],
   ]
   const offers = [
-    { name: 'Monthly', price: '4.99' },
-    { name: 'Yearly', price: '14.99' },
+    { name: 'Monthly', price: CALKILO_PRICING.Monthly.usd },
+    { name: 'Yearly', price: CALKILO_PRICING.Yearly.usd },
   ]
   const pageJsonLd = [
     {
@@ -123,10 +123,11 @@ export default function PricingPage() {
       description={PRICING_PAGE_DESCRIPTION}
       path="/pricing/"
       heading="Calkilo pricing for monthly and yearly premium plans"
-      intro="This page gives Google and users a direct branded destination for monthly and yearly pricing instead of relying on the homepage pricing section alone."
+      intro="Compare Calkilo monthly and yearly premium pricing, understand what premium adds, and choose the billing period that fits your plans."
       activeNav="none"
       keywords={PRICING_PAGE_KEYWORDS}
       jsonLd={pageJsonLd}
+      hasLocalizedVersions={false}
     >
       <section className="lp-static-card">
         <h2>How to read the plans</h2>
@@ -161,7 +162,7 @@ export default function PricingPage() {
           nutrition insights while keeping billing flexible.
         </p>
         <ul className="lp-policy-list">
-          <li>$4.99 monthly premium access</li>
+          <li>{getUsdPricingDisplay('Monthly')} monthly premium access</li>
           <li>Useful for trying premium workflows before an annual commitment</li>
           <li>Includes the same premium feature set as the yearly plan</li>
         </ul>
@@ -170,8 +171,8 @@ export default function PricingPage() {
       <section className="lp-static-card">
         <h2>What premium unlocks</h2>
         <p>
-          Premium is where Calkilo moves beyond simple logging into personalized guidance. That is the main commercial
-          story the site needs to explain clearly for both search engines and users.
+          Premium is where Calkilo moves beyond simple logging into personalized guidance. The features below explain
+          what the subscription adds to the everyday nutrition workflow.
         </p>
         <ul className="lp-policy-list">
           <li>Personalized meal plans</li>
@@ -188,7 +189,7 @@ export default function PricingPage() {
           premium support for nutrition planning and progress tracking.
         </p>
         <p>
-          The yearly plan is $14.99, making it the lower total cost for users who expect to keep Calkilo premium active
+          The yearly plan is {getUsdPricingDisplay('Yearly')}, making it the lower total cost for users who expect to keep Calkilo premium active
           beyond a few months.
         </p>
       </section>

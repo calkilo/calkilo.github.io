@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { useMemo, useState, type FormEvent } from 'react'
 import { GOOGLE_PLAY_URL } from '../lib/app-links'
 import { SITE_URL } from '../lib/seo'
@@ -97,6 +98,7 @@ function formatWeight(value: number) {
 }
 
 export default function BmiCalculatorPage() {
+  const router = useRouter()
   const [unitSystem, setUnitSystem] = useState<UnitSystem>('metric')
   const [heightCm, setHeightCm] = useState(170)
   const [weightKg, setWeightKg] = useState(68)
@@ -245,7 +247,7 @@ export default function BmiCalculatorPage() {
           { key: 'pricing', href: '/pricing/', label: 'Choose Plan' },
         ]}
         onLanguageChange={(language) => {
-          if (language !== 'en') window.location.assign(`/${language}/`)
+          if (language !== 'en') void router.push(`/${language}/`)
         }}
       />
 

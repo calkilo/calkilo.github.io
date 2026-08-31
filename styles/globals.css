@@ -2040,6 +2040,53 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
   text-underline-offset: 3px;
 }
 
+.lp-blog-editorial-note {
+  background: var(--lp-surface-soft);
+  border: 1px solid var(--lp-border);
+  border-inline-start: 4px solid var(--lp-accent);
+  border-radius: 16px;
+  color: var(--lp-muted);
+  margin: clamp(28px, 4vw, 42px) auto 0;
+  max-width: 880px;
+  padding: clamp(20px, 3vw, 28px);
+}
+
+.lp-blog-editorial-note h2,
+.lp-blog-editorial-note h3 {
+  color: var(--lp-text);
+  font-family: var(--lp-display-font);
+  line-height: 1.3;
+  margin: 0 0 10px;
+}
+
+.lp-blog-editorial-note h2 {
+  font-size: 1.25rem;
+}
+
+.lp-blog-editorial-note h3 {
+  font-size: 1.05rem;
+  margin-top: 22px;
+}
+
+.lp-blog-editorial-note p {
+  line-height: 1.7;
+  margin: 0 0 12px;
+}
+
+.lp-blog-editorial-note ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-inline-start: 1.25rem;
+}
+
+.lp-blog-editorial-note a {
+  color: var(--lp-accent-dark);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .lp-faq {
   background: linear-gradient(180deg, rgba(0, 212, 72, 0.03) 0%, transparent 100%);
 }

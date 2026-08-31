@@ -73,6 +73,11 @@ export const GUIDE_LINKS: ReadonlyArray<ResourceLink> = [
     label: 'Calkilo vs MyFitnessPal',
     description: 'Compare photo logging, macro tracking, meal planning, language fit, and workflow.',
   },
+  {
+    href: '/uber-eats-nutrition-calculator/',
+    label: 'Uber Eats Nutrition Calculator',
+    description: 'Estimate calories and macros from the information available on an Uber Eats menu-item page.',
+  },
 ]
 
 export const RESOURCE_LINKS: ReadonlyArray<ResourceLink> = [
@@ -152,13 +157,13 @@ export const RESOURCE_PAGES: Record<ResourcePageKey, ResourcePageDefinition> = {
         title: 'What to compare before choosing any calorie tracker',
         paragraphs: [
           'Look for tools that make correction easy. AI estimates are helpful, but users still need a simple way to review, adjust, and learn from the result.',
-          'It also matters whether the product has enough plain-language content for support, privacy, and feature explanations. Search engines and AI systems both rely on that clarity when deciding what the product does.',
+          'It also matters whether the product offers clear support, privacy, and feature explanations before a person decides to install it.',
         ],
         bullets: [
           'Editable entries after photo analysis',
           'Macro tracking alongside calorie totals',
           'Clear privacy and support pages',
-          'Enough indexable content to explain the product outside the app stores',
+          'Clear product documentation outside the app stores',
         ],
       },
     ],
@@ -352,7 +357,7 @@ export const RESOURCE_PAGES: Record<ResourcePageKey, ResourcePageDefinition> = {
         title: 'What to compare in macro tracker apps',
         paragraphs: [
           'The best macro tracker is the one people will keep using. That usually depends on logging speed, clear meal summaries, and whether the product gives practical follow-up features like planning and progress views.',
-          'Search engines and AI tools also understand products better when feature pages explain these differences in plain text instead of leaving everything inside the app interface.',
+          'Clear feature pages also help people compare workflows without having to install every app first.',
         ],
         bullets: [
           'How fast the app is to log each meal',
@@ -419,7 +424,7 @@ export const RESOURCE_PAGES: Record<ResourcePageKey, ResourcePageDefinition> = {
       {
         title: 'What the FAQ page is for',
         paragraphs: [
-          'Support pages are useful for more than existing customers. They also help search engines and AI systems understand the product with explicit, crawlable text that is not hidden inside the app.',
+          'Support pages are useful before and after installation because they make product, privacy, and account details easy to verify outside the app.',
           'This page is meant to be the canonical public answer hub for questions that previously surfaced through older HTML pages.',
         ],
         bullets: [

@@ -1,10 +1,10 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import ResourcePage from '../../components/ResourcePage'
-import { getResourcePage } from '../../lib/resource-pages'
-import { LOCALIZED_LANGUAGES, normalizeSiteLanguage } from '../../lib/site-language'
+import { getResourceLocalizedLanguages, getResourcePage } from '../../lib/resource-pages'
+import { normalizeSiteLanguage } from '../../lib/site-language'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = LOCALIZED_LANGUAGES.map((lang) => ({
+  const paths = getResourceLocalizedLanguages('macro-tracker').map((lang) => ({
     params: { lang },
   }))
 

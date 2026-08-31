@@ -1,6 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import BlogArchivePage from '../../../components/BlogArchivePage'
-import { fetchBlogListSnapshot, normalizeBlogLanguage, type BlogListSnapshot } from '../../../lib/blog'
+import { getBlogBuildSnapshot } from '../../../lib/blog-build-data'
+import { normalizeBlogLanguage, type BlogListSnapshot } from '../../../lib/blog'
 import { LOCALIZED_LANGUAGES } from '../../../lib/site-language'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -21,7 +22,7 @@ interface LangBlogPageProps {
 
 export const getStaticProps: GetStaticProps<LangBlogPageProps> = async ({ params }) => {
   const lang = normalizeBlogLanguage(params?.lang)
-  const blogSnapshot = await fetchBlogListSnapshot(lang)
+  const blogSnapshot = getBlogBuildSnapshot(lang)
 
   return {
     props: {

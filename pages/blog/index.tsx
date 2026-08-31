@@ -1,13 +1,14 @@
 import { GetStaticProps } from 'next'
 import BlogArchivePage from '../../components/BlogArchivePage'
-import { fetchBlogListSnapshot, type BlogListSnapshot } from '../../lib/blog'
+import { getBlogBuildSnapshot } from '../../lib/blog-build-data'
+import { type BlogListSnapshot } from '../../lib/blog'
 
 interface BlogPageProps {
   blogSnapshot?: BlogListSnapshot
 }
 
 export const getStaticProps: GetStaticProps<BlogPageProps> = async () => {
-  const blogSnapshot = await fetchBlogListSnapshot('en')
+  const blogSnapshot = getBlogBuildSnapshot('en')
 
   return {
     props: {

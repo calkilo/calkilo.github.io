@@ -32,6 +32,10 @@ export default function BlogArchivePage({ initialPosts = EMPTY_BLOG_POSTS, initi
       setStatus('loading')
     }
 
+    if (hasUsableSnapshot && reloadKey === 0) {
+      return
+    }
+
     fetchBlogPosts(language, { signal: controller.signal })
       .then((nextPosts) => {
         setPosts(nextPosts)

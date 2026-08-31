@@ -6,6 +6,7 @@ import { type BlogListStatus, type BlogPost } from '../lib/blog'
 import { getLocalizedResourceLinks } from '../lib/resource-pages'
 import { SITE_URL } from '../lib/seo'
 import { CORE_SITE_LINKS, ENGLISH_POPULAR_PAGE_LINKS, type SitePageLink } from '../lib/site-pages'
+import { CALKILO_PRICING, getUsdPricingDisplay, PRICING_FAQ_ANSWER } from '../lib/pricing'
 import {
   buildAlternateLanguagePaths,
   isRtlLanguage,
@@ -216,7 +217,7 @@ const TRANSLATIONS: Record<
     pricingKicker: 'Simple pricing',
     pricingTitle: 'Choose monthly or yearly premium access',
     communityTitle: 'Join a Thriving Community',
-    communitySubtitle: 'Invite, share, and get motivated with thousands of health-conscious users',
+    communitySubtitle: 'Invite friends, share progress, and build healthier routines together',
     downloadTitleA: 'Ready to Transform Your Nutrition?',
     downloadTitleB: 'Get Calkilo for free.',
     downloadDescription: 'Download the app to track calories and crush your health goals.',
@@ -229,7 +230,7 @@ const TRANSLATIONS: Record<
     faqSupportText:
       "Can't find the answer you're looking for? Our friendly support team is ready to help you get the most out of Calkilo.",
     faqSupportButton: 'Get in touch',
-    footerDescription: 'Revolutionizing nutrition tracking with AI-powered calorie calculation.',
+    footerDescription: 'Simplifying nutrition tracking with editable AI-assisted calorie estimates.',
     storeGoogleSmall: 'GET IT ON',
     storeGoogleLarge: 'Google Play',
     storeAppleSmall: 'Download on the',
@@ -237,14 +238,14 @@ const TRANSLATIONS: Record<
   },
   nl: {
     pageDescription:
-      'Bereken calorieen met AI-nauwkeurigheid, ontvang persoonlijke maaltijdplannen en volg je voeding op al je apparaten.',
+      'Schat calorieen met AI, ontvang persoonlijke maaltijdplannen en volg je voeding op al je apparaten.',
     pageTitle: 'Calkilo | AI-calorietracker en voedingsapp',
     darkThemeLabel: 'Donkere modus',
     nav: { home: 'Thuis', features: 'Functies', pricing: 'Kies plan', blog: 'Blog', contact: 'Contact' },
     tryFree: 'Probeer gratis',
-    heroTitleA: 'Bereken calorieen met',
-    heroTitleB: 'AI-precisie',
-    heroDescription: 'Maak een foto van je maaltijd en krijg direct calorieen en voedingswaarden.',
+    heroTitleA: 'Schat calorieen met',
+    heroTitleB: 'AI',
+    heroDescription: 'Maak een foto van je maaltijd en krijg een bewerkbare schatting van calorieen en voedingswaarden.',
     availableOn: 'Beschikbaar op:',
     aiTitle: 'CalKilo-AI: Slimme agent, maaltijdplanning en recepten',
     aiSubtitle: 'Ontvang persoonlijke maaltijdplannen op basis van je doelen en voorkeuren.',
@@ -263,7 +264,7 @@ const TRANSLATIONS: Record<
     pricingKicker: 'Eenvoudige prijzen',
     pricingTitle: 'Kies maandelijkse of jaarlijkse premium toegang',
     communityTitle: 'Word deel van een actieve community',
-    communitySubtitle: 'Nodig uit, deel en blijf gemotiveerd met duizenden gebruikers',
+    communitySubtitle: 'Nodig vrienden uit, deel je voortgang en bouw samen gezondere routines op',
     downloadTitleA: 'Klaar om je voeding te verbeteren?',
     downloadTitleB: 'Download Calkilo gratis.',
     downloadDescription: 'Download de app en haal je gezondheidsdoelen sneller.',
@@ -275,21 +276,21 @@ const TRANSLATIONS: Record<
     faqSupportTitle: 'Nog vragen?',
     faqSupportText: 'Ons supportteam helpt je graag om het meeste uit Calkilo te halen.',
     faqSupportButton: 'Neem contact op',
-    footerDescription: 'Voedingstracking vernieuwd met AI-gestuurde calorieberekening.',
+    footerDescription: 'Voeding bijhouden wordt eenvoudiger met bewerkbare, door AI ondersteunde calorieschattingen.',
     storeGoogleSmall: 'GET IT ON',
     storeGoogleLarge: 'Google Play',
     storeAppleSmall: 'Download on the',
     storeAppleLarge: 'App Store',
   },
   zh: {
-    pageDescription: '用 AI 精准计算卡路里，获取个性化餐食计划，并在所有设备上追踪营养。',
+    pageDescription: '用 AI 估算卡路里，获取个性化餐食计划，并在所有设备上追踪营养。',
     pageTitle: 'Calkilo | AI 卡路里追踪与营养应用',
     darkThemeLabel: '深色主题',
     nav: { home: '首页', features: '功能', pricing: '选择计划', blog: '博客', contact: '联系我们' },
     tryFree: '免费试用',
-    heroTitleA: '使用',
-    heroTitleB: 'AI 精准计算卡路里',
-    heroDescription: '拍一张食物照片，Calkilo 的 AI 会立即计算准确热量和营养信息。',
+    heroTitleA: '使用 AI',
+    heroTitleB: '估算卡路里',
+    heroDescription: '拍一张食物照片，获得可检查和修改的热量及营养估算。',
     availableOn: '可在以下平台下载：',
     aiTitle: 'CalKilo-AI：智能助手、餐食规划与食谱',
     aiSubtitle: '根据你的目标、偏好和饮食限制，生成个性化餐食计划。',
@@ -308,7 +309,7 @@ const TRANSLATIONS: Record<
     pricingKicker: '简单定价',
     pricingTitle: '选择月度或年度高级版',
     communityTitle: '加入活跃社区',
-    communitySubtitle: '邀请、分享，与成千上万注重健康的用户一起获得动力',
+    communitySubtitle: '邀请朋友、分享进展，一起养成更健康的习惯',
     downloadTitleA: '准备好改变你的营养习惯了吗？',
     downloadTitleB: '免费获取 Calkilo。',
     downloadDescription: '下载应用，追踪热量并达成健康目标。',
@@ -320,7 +321,7 @@ const TRANSLATIONS: Record<
     faqSupportTitle: '还有问题？',
     faqSupportText: '找不到答案？我们的支持团队随时帮助你更好使用 Calkilo。',
     faqSupportButton: '联系我们',
-    footerDescription: '用 AI 热量计算革新营养追踪。',
+    footerDescription: '通过可编辑的 AI 辅助热量估算，让营养追踪更简单。',
     storeGoogleSmall: '立即获取',
     storeGoogleLarge: 'Google Play',
     storeAppleSmall: '下载于',
@@ -328,14 +329,14 @@ const TRANSLATIONS: Record<
   },
   ru: {
     pageDescription:
-      'Считайте калории с точностью AI, получайте персональные планы питания и отслеживайте рацион на всех устройствах.',
+      'Оценивайте калории с помощью AI, получайте персональные планы питания и отслеживайте рацион на всех устройствах.',
     pageTitle: 'Calkilo | AI-трекер калорий и питания',
     darkThemeLabel: 'Темная тема',
     nav: { home: 'Главная', features: 'Функции', pricing: 'Тарифы', blog: 'Блог', contact: 'Контакты' },
     tryFree: 'Попробовать бесплатно',
-    heroTitleA: 'Считайте калории с',
-    heroTitleB: 'точностью AI',
-    heroDescription: 'Сфотографируйте еду и мгновенно получите калории и данные по питанию.',
+    heroTitleA: 'Оценивайте калории с',
+    heroTitleB: 'помощью AI',
+    heroDescription: 'Сфотографируйте еду и получите редактируемую оценку калорий и пищевой ценности.',
     availableOn: 'Доступно в:',
     aiTitle: 'CalKilo-AI: Умный агент, план питания и рецепты',
     aiSubtitle: 'Получайте персональные планы питания под ваши цели и предпочтения.',
@@ -366,7 +367,7 @@ const TRANSLATIONS: Record<
     faqSupportTitle: 'Остались вопросы?',
     faqSupportText: 'Наша поддержка поможет получить максимум от Calkilo.',
     faqSupportButton: 'Связаться',
-    footerDescription: 'Революция в трекинге питания с AI-анализом калорий.',
+    footerDescription: 'Упрощаем контроль питания с помощью редактируемых оценок калорий на базе ИИ.',
     storeGoogleSmall: 'СКАЧАТЬ В',
     storeGoogleLarge: 'Google Play',
     storeAppleSmall: 'Загрузить в',
@@ -374,14 +375,14 @@ const TRANSLATIONS: Record<
   },
   ar: {
     pageDescription:
-      'احسب السعرات بدقة الذكاء الاصطناعي، واحصل على خطط وجبات مخصصة، وتابع تغذيتك على جميع أجهزتك.',
+      'قدّر السعرات بمساعدة الذكاء الاصطناعي، واحصل على خطط وجبات مخصصة، وتابع تغذيتك على جميع أجهزتك.',
     pageTitle: 'Calkilo | تطبيق تتبع السعرات والتغذية بالذكاء الاصطناعي',
     darkThemeLabel: 'الوضع الداكن',
     nav: { home: 'الرئيسية', features: 'الميزات', pricing: 'الخطط', blog: 'المدونة', contact: 'تواصل' },
     tryFree: 'جرب مجاناً',
-    heroTitleA: 'احسب السعرات بـ',
-    heroTitleB: 'دقة الذكاء الاصطناعي',
-    heroDescription: 'التقط صورة لوجبتك واحصل فوراً على السعرات والمعلومات الغذائية الدقيقة.',
+    heroTitleA: 'قدّر السعرات بـ',
+    heroTitleB: 'الذكاء الاصطناعي',
+    heroDescription: 'التقط صورة لوجبتك واحصل على تقدير قابل للمراجعة للسعرات والمعلومات الغذائية.',
     availableOn: 'متاح على:',
     aiTitle: 'CalKilo-AI: وكيل ذكي، تخطيط وجبات ووصفات',
     aiSubtitle: 'احصل على خطط وجبات مخصصة حسب أهدافك وتفضيلاتك وقيودك الغذائية.',
@@ -400,7 +401,7 @@ const TRANSLATIONS: Record<
     pricingKicker: 'أسعار بسيطة',
     pricingTitle: 'اختر اشتراك بريميوم شهرياً أو سنوياً',
     communityTitle: 'انضم إلى مجتمع مزدهر',
-    communitySubtitle: 'ادعُ وشارك وتحفّز مع آلاف المستخدمين المهتمين بالصحة',
+    communitySubtitle: 'ادعُ أصدقاءك وشارك تقدمك وابنوا عادات صحية معاً',
     downloadTitleA: 'جاهز لتحسين تغذيتك؟',
     downloadTitleB: 'احصل على Calkilo مجاناً.',
     downloadDescription: 'حمّل التطبيق لتتبع السعرات وتحقيق أهدافك الصحية.',
@@ -412,7 +413,7 @@ const TRANSLATIONS: Record<
     faqSupportTitle: 'ما زلت تبحث عن إجابة؟',
     faqSupportText: 'فريق الدعم لدينا جاهز لمساعدتك لتحقيق أفضل استفادة من Calkilo.',
     faqSupportButton: 'تواصل معنا',
-    footerDescription: 'نُحدث ثورة في تتبع التغذية بحساب السعرات المدعوم بالذكاء الاصطناعي.',
+    footerDescription: 'نبسّط تتبع التغذية بتقديرات سعرات قابلة للتعديل ومدعومة بالذكاء الاصطناعي.',
     storeGoogleSmall: 'حمّل من',
     storeGoogleLarge: 'Google Play',
     storeAppleSmall: 'تنزيل من',
@@ -447,7 +448,7 @@ const TRANSLATIONS: Record<
     pricingKicker: 'قیمت‌گذاری ساده',
     pricingTitle: 'دسترسی پریمیوم ماهانه یا سالانه را انتخاب کنید',
     communityTitle: 'به یک جامعه پویا بپیوندید',
-    communitySubtitle: 'دوستانتان را دعوت کنید، تجربیاتتان را به اشتراک بگذارید و در کنار هزاران کاربر دیگر، انگیزه‌تان را برای سلامتی حفظ کنید.',
+    communitySubtitle: 'دوستانتان را دعوت کنید، پیشرفت را به اشتراک بگذارید و با هم عادت‌های سالم‌تری بسازید.',
     downloadTitleA: 'آماده تغییر تغذیه خود هستید؟',
     downloadTitleB: 'همین حالا رایگان شروع کنید',
     downloadDescription: 'اپ را دانلود کنید تا کالری را دنبال کنید و به اهداف سلامتی برسید.',
@@ -459,7 +460,7 @@ const TRANSLATIONS: Record<
     faqSupportTitle: 'همچنان سوالی در ذهن دارید؟',
     faqSupportText: 'تیم پشتیبانی ما آماده است تا به شما کمک کند بهترین تجربه را در استفاده از Calkilo داشته باشید.',
     faqSupportButton: 'تماس با ما',
-    footerDescription: 'ردیابی تغذیه را با کالری‌شماری دقیق مبتنی بر هوش مصنوعی متحول می‌کنیم.',
+    footerDescription: 'ردیابی تغذیه را با تخمین کالری مبتنی بر هوش مصنوعی ساده‌تر می‌کنیم.',
     storeGoogleSmall: 'دریافت از',
     storeGoogleLarge: 'Google Play',
     storeAppleSmall: 'دانلود از',
@@ -494,7 +495,7 @@ const TRANSLATIONS: Record<
     pricingKicker: 'Prezzi semplici',
     pricingTitle: 'Scegli accesso premium mensile o annuale',
     communityTitle: 'Unisciti a una community attiva',
-    communitySubtitle: 'Invita, condividi e resta motivato con migliaia di utenti',
+    communitySubtitle: 'Invita gli amici, condividi i progressi e costruite insieme abitudini più sane',
     downloadTitleA: 'Pronto a migliorare la tua nutrizione?',
     downloadTitleB: 'Scarica Calkilo gratis.',
     downloadDescription: "Scarica l'app per tracciare calorie e raggiungere i tuoi obiettivi.",
@@ -506,7 +507,7 @@ const TRANSLATIONS: Record<
     faqSupportTitle: 'Hai ancora domande?',
     faqSupportText: 'Il nostro team di supporto e pronto ad aiutarti con Calkilo.',
     faqSupportButton: 'Contattaci',
-    footerDescription: 'Tracking nutrizionale rivoluzionato dal calcolo calorie con AI.',
+    footerDescription: 'Semplifichiamo il monitoraggio nutrizionale con stime caloriche modificabili assistite dall’AI.',
     storeGoogleSmall: 'GET IT ON',
     storeGoogleLarge: 'Google Play',
     storeAppleSmall: 'Download on the',
@@ -541,7 +542,7 @@ const FEATURE_ITEMS = [
   {
     title: 'Instant Photo Analysis',
     description:
-      'Simply snap a photo of your meal and get instant, accurate calorie calculations powered by advanced computer vision AI.',
+      'Snap a photo of your meal and get an editable calorie and macro estimate powered by computer vision AI.',
     icon: 'camera',
     screen: FIGMA_ASSETS.aiScreenAltThree,
   },
@@ -615,7 +616,7 @@ const HOW_STEPS = [
   {
     title: 'AI Analyzes',
     description:
-      'Our advanced AI instantly recognizes ingredients, portion sizes, and calculates precise nutrition data.',
+      'Our AI analyzes visible ingredients and portions to create an initial nutrition estimate for you to review.',
     image: FIGMA_ASSETS.howAnalyze,
   },
   {
@@ -655,45 +656,12 @@ const INTEGRATIONS = [
   },
 ] as const
 
-const TESTIMONIALS = [
-  {
-    title: 'Love this app',
-    author: 'Omar Taham',
-    body: 'Calkilo makes tracking food fast and stress-free. It helped me improve my eating habits without feeling restricted.',
-  },
-  {
-    title: 'Very helpful',
-    author: 'Maria Santa',
-    body: 'As someone trying to lose weight, Calkilo helped me understand portions better and make smarter food choices.',
-  },
-  {
-    title: 'Works great for me',
-    author: 'Kevin Lovatho',
-    body: 'The AI suggestions are genuinely useful and the app design is clear and fast to use every day.',
-  },
-  {
-    title: 'Saves my time',
-    author: 'Aisha Kardashian',
-    body: 'Photo analysis is quick, and I can stay consistent with meal tracking even on busy days.',
-  },
-  {
-    title: 'Really simple app',
-    author: 'David Ralph',
-    body: 'The structure is clean, and all key nutrition data is easy to read. Exactly what I needed.',
-  },
-  {
-    title: 'Super easy to use',
-    author: 'Sarah Morgan',
-    body: 'I started monthly and moved to yearly quickly. Great value for daily nutrition planning.',
-  },
-] as const
-
 const PRICING_PLANS = [
   {
     title: 'Monthly',
     subtitle: 'Flexible month-to-month access',
     oldPrice: '',
-    price: '$4.99',
+    price: getUsdPricingDisplay('Monthly'),
     cta: 'Choose Monthly',
     highlight: false,
     badge: '',
@@ -702,27 +670,16 @@ const PRICING_PLANS = [
     title: 'Yearly',
     subtitle: 'Best value for the full year',
     oldPrice: '',
-    price: '$14.99',
+    price: getUsdPricingDisplay('Yearly'),
     cta: 'Choose Yearly',
     highlight: true,
     badge: 'Best Value',
   },
 ] as const
 
-const PERSIAN_PRICING: Record<(typeof PRICING_PLANS)[number]['title'], { displayPrice: string; schemaPriceIrr: string }> = {
-  Monthly: {
-    displayPrice: '۲۸۹٬۰۰۰ تومان',
-    schemaPriceIrr: '289000',
-  },
-  Yearly: {
-    displayPrice: '۵۸۹٬۰۰۰ تومان',
-    schemaPriceIrr: '5890000',
-  },
-}
-
 function getPricingDisplayPrice(plan: (typeof PRICING_PLANS)[number], language: SiteLanguage) {
   if (language === 'fa') {
-    return PERSIAN_PRICING[plan.title].displayPrice
+    return CALKILO_PRICING[plan.title].persianDisplay
   }
 
   return plan.price
@@ -734,7 +691,7 @@ function getPricingSchemaOffer(plan: (typeof PRICING_PLANS)[number], language: S
       '@type': 'Offer',
       name: plan.title,
       priceCurrency: 'IRR',
-      price: PERSIAN_PRICING[plan.title].schemaPriceIrr,
+      price: CALKILO_PRICING[plan.title].irr,
       availability: 'https://schema.org/InStock',
       url,
     }
@@ -777,8 +734,7 @@ const FAQ_ITEMS = [
   {
     topic: 'Pricing',
     question: 'How much does Calkilo cost?',
-    answer:
-      'Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.',
+    answer: PRICING_FAQ_ANSWER,
   },
   {
     topic: 'Meal Planning',
@@ -830,11 +786,11 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Personalized Goals": "Persoonlijke doelen",
     "Set and track personalized health goals with AI-powered recommendations tailored to your lifestyle and preferences.": "Stel persoonlijke gezondheidsdoelen in en volg ze met AI-aanbevelingen die passen bij je leefstijl.",
     "Instant Photo Analysis": "Directe fotoanalyse",
-    "Simply snap a photo of your meal and get instant, accurate calorie calculations powered by advanced computer vision AI.": "Maak een foto van je maaltijd en krijg direct nauwkeurige calorieberekeningen met AI.",
+    "Snap a photo of your meal and get an editable calorie and macro estimate powered by computer vision AI.": "Maak een foto van je maaltijd en krijg een bewerkbare schatting van calorieen en macro's met AI.",
     "Scan Your Meal": "Scan je maaltijd",
     "Take a photo of your food.": "Maak een foto van je eten.",
     "AI Analyzes": "AI analyseert",
-    "Our advanced AI instantly recognizes ingredients, portion sizes, and calculates precise nutrition data.": "Onze geavanceerde AI herkent ingredienten, porties en berekent nauwkeurige voedingswaarden.",
+    "Our AI analyzes visible ingredients and portions to create an initial nutrition estimate for you to review.": "Onze AI analyseert zichtbare ingredienten en porties en maakt een eerste voedingsschatting die je kunt controleren.",
     "Track Progress": "Volg voortgang",
     "View detailed nutrition breakdown, track your goals, and watch your progress over time.": "Bekijk voedingsdetails, volg je doelen en zie je voortgang in de tijd.",
     "Sync calories, workouts, and health metrics": "Synchroniseer calorieen, workouts en gezondheidsgegevens",
@@ -935,11 +891,11 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Personalized Goals": "Персональные цели",
     "Set and track personalized health goals with AI-powered recommendations tailored to your lifestyle and preferences.": "Ставьте и отслеживайте цели здоровья с AI-рекомендациями под ваш образ жизни.",
     "Instant Photo Analysis": "Мгновенный анализ фото",
-    "Simply snap a photo of your meal and get instant, accurate calorie calculations powered by advanced computer vision AI.": "Сфотографируйте блюдо и сразу получите точный расчет калорий с помощью AI.",
+    "Snap a photo of your meal and get an editable calorie and macro estimate powered by computer vision AI.": "Сфотографируйте блюдо и получите редактируемую оценку калорий и макронутриентов с помощью AI.",
     "Scan Your Meal": "Сканируйте блюдо",
     "Take a photo of your food.": "Сделайте фото еды.",
     "AI Analyzes": "AI анализирует",
-    "Our advanced AI instantly recognizes ingredients, portion sizes, and calculates precise nutrition data.": "AI распознает ингредиенты, порции и рассчитывает точные данные по питанию.",
+    "Our AI analyzes visible ingredients and portions to create an initial nutrition estimate for you to review.": "AI анализирует видимые ингредиенты и порции и создает первоначальную оценку питания для проверки.",
     "Track Progress": "Отслеживайте прогресс",
     "View detailed nutrition breakdown, track your goals, and watch your progress over time.": "Смотрите детали питания, отслеживайте цели и прогресс со временем.",
     "Sync calories, workouts, and health metrics": "Синхронизация калорий, тренировок и показателей здоровья",
@@ -1041,11 +997,11 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Personalized Goals": "个性化目标",
     "Set and track personalized health goals with AI-powered recommendations tailored to your lifestyle and preferences.": "根据你的生活方式设置并跟踪健康目标，获得 AI 推荐。",
     "Instant Photo Analysis": "即时照片分析",
-    "Simply snap a photo of your meal and get instant, accurate calorie calculations powered by advanced computer vision AI.": "拍一张餐食照片，即刻获得准确热量计算。",
+    "Snap a photo of your meal and get an editable calorie and macro estimate powered by computer vision AI.": "拍一张餐食照片，获得可编辑的热量和宏量营养估算。",
     "Scan Your Meal": "扫描你的餐食",
     "Take a photo of your food.": "拍下你的食物。",
     "AI Analyzes": "AI 分析",
-    "Our advanced AI instantly recognizes ingredients, portion sizes, and calculates precise nutrition data.": "AI 可识别食材和份量，并计算精确营养数据。",
+    "Our AI analyzes visible ingredients and portions to create an initial nutrition estimate for you to review.": "AI 会分析可见食材和份量，生成可供你检查的初步营养估算。",
     "Track Progress": "追踪进度",
     "View detailed nutrition breakdown, track your goals, and watch your progress over time.": "查看营养明细，跟踪目标并观察长期进展。",
     "Sync calories, workouts, and health metrics": "同步热量、训练和健康指标",
@@ -1147,11 +1103,11 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Personalized Goals": "أهداف مخصصة",
     "Set and track personalized health goals with AI-powered recommendations tailored to your lifestyle and preferences.": "حدد وتتبع أهدافك الصحية مع توصيات ذكية تناسب نمط حياتك.",
     "Instant Photo Analysis": "تحليل فوري للصور",
-    "Simply snap a photo of your meal and get instant, accurate calorie calculations powered by advanced computer vision AI.": "التقط صورة لوجبتك واحصل فوراً على حساب دقيق للسعرات.",
+    "Snap a photo of your meal and get an editable calorie and macro estimate powered by computer vision AI.": "التقط صورة لوجبتك واحصل على تقدير قابل للتعديل للسعرات والماكروز بمساعدة الذكاء الاصطناعي.",
     "Scan Your Meal": "امسح وجبتك",
     "Take a photo of your food.": "التقط صورة لطعامك.",
     "AI Analyzes": "الذكاء الاصطناعي يحلل",
-    "Our advanced AI instantly recognizes ingredients, portion sizes, and calculates precise nutrition data.": "يتعرف الذكاء الاصطناعي على المكونات وحجم الحصص ويحسب القيم الغذائية بدقة.",
+    "Our AI analyzes visible ingredients and portions to create an initial nutrition estimate for you to review.": "يحلل الذكاء الاصطناعي المكونات والحصص الظاهرة ليقدم تقديراً أولياً للتغذية يمكنك مراجعته.",
     "Track Progress": "تتبع التقدم",
     "View detailed nutrition breakdown, track your goals, and watch your progress over time.": "اعرض تفاصيل التغذية وتابع أهدافك وراقب تقدمك مع الوقت.",
     "Sync calories, workouts, and health metrics": "مزامنة السعرات والتمارين والمؤشرات الصحية",
@@ -1253,11 +1209,11 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Personalized Goals": "اهداف شخصی‌سازی‌شده",
     "Set and track personalized health goals with AI-powered recommendations tailored to your lifestyle and preferences.": "اهداف سلامتی خود را با توصیه‌های هوش مصنوعی تنظیم و پیگیری کنید.",
     "Instant Photo Analysis": "تحلیل فوری عکس",
-    "Simply snap a photo of your meal and get instant, accurate calorie calculations powered by advanced computer vision AI.": "از وعده غذایی عکس بگیرید و فوراً محاسبه دقیق کالری دریافت کنید.",
+    "Snap a photo of your meal and get an editable calorie and macro estimate powered by computer vision AI.": "از وعده غذایی عکس بگیرید و یک تخمین قابل ویرایش از کالری و ماکروها دریافت کنید.",
     "Scan Your Meal": "وعده غذایی خود را اسکن کنید",
     "Take a photo of your food.": "از غذای خود عکس بگیرید.",
     "AI Analyzes": "تحلیل توسط هوش مصنوعی",
-    "Our advanced AI instantly recognizes ingredients, portion sizes, and calculates precise nutrition data.": "هوش مصنوعی مواد اولیه و حجم وعده را تشخیص می‌دهد و داده تغذیه‌ای دقیق محاسبه می‌کند.",
+    "Our AI analyzes visible ingredients and portions to create an initial nutrition estimate for you to review.": "هوش مصنوعی مواد و اندازه بخش‌های قابل مشاهده را تحلیل می‌کند و یک تخمین اولیه برای بررسی شما می‌سازد.",
     "Track Progress": "پیگیری پیشرفت",
     "View detailed nutrition breakdown, track your goals, and watch your progress over time.": "جزئیات تغذیه را ببینید، اهداف را پیگیری کنید و پیشرفت را در طول زمان بررسی کنید.",
     "Sync calories, workouts, and health metrics": "همگام‌سازی کالری، تمرین و شاخص‌های سلامت",
@@ -1313,7 +1269,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Do I need internet connection to use the app?": "آیا کار با اپلیکیشن نیاز به اینترنت دائمی دارد؟",
     "Do recipes include nutritional information?": "آیا دستورها شامل اطلاعات تغذیه‌ای هستند؟",
     "Does it work with my fitness tracker?": "آیا اپلیکیشن با ساعت‌های هوشمند و مچ‌بندهای سلامتی همگام می‌شود؟",
-    "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "اشتراک پریمیوم Calkilo به‌صورت ماهانه با قیمت ۲۸۹٬۰۰۰٬۰۰۰ تومان یا سالانه با قیمت ۵۸۹٬۰۰۰٬۰۰۰ تومان ارائه می‌شود. هر دو طرح برنامه غذایی شخصی‌سازی‌شده، تحلیل‌های دقیق‌تر و مربی هوش مصنوعی را فعال می‌کنند.",
+    [PRICING_FAQ_ANSWER]: `اشتراک پریمیوم Calkilo به‌صورت ماهانه با قیمت ${CALKILO_PRICING.Monthly.persianDisplay} یا سالانه با قیمت ${CALKILO_PRICING.Yearly.persianDisplay} ارائه می‌شود. هر دو طرح برنامه غذایی شخصی‌سازی‌شده، تحلیل‌های دقیق‌تر و مربی هوش مصنوعی را فعال می‌کنند.`,
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "سیستم ما با ترکیب اهداف، ذائقه و سوابق تغذیه‌ای شما، هوشمندانه‌ترین پیشنهادها را که دقیقاً با سبک زندگی‌تان سازگار است، طراحی می‌کند.",
     "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "بله، بعد از شروع برنامه می‌توانید اطلاعاتی مثل قد و وزن هدف را در پروفایل خود به‌روزرسانی کنید. در حال حاضر امکان تنظیم دستی ماکروها وجود ندارد.",
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "بله، تمام تصاویر ارسالی به‌صورت رمزگذاری‌شده ذخیره می‌شوند. این داده‌ها صرفاً برای تحلیل دقیق‌تر و شخصی‌سازی بهتر پیشنهادها برای خود شما استفاده می‌شوند.",
@@ -1364,11 +1320,11 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Personalized Goals": "Obiettivi personalizzati",
     "Set and track personalized health goals with AI-powered recommendations tailored to your lifestyle and preferences.": "Imposta e monitora obiettivi salute con raccomandazioni AI su misura.",
     "Instant Photo Analysis": "Analisi foto istantanea",
-    "Simply snap a photo of your meal and get instant, accurate calorie calculations powered by advanced computer vision AI.": "Scatta una foto del pasto e ottieni subito un calcolo calorie accurato.",
+    "Snap a photo of your meal and get an editable calorie and macro estimate powered by computer vision AI.": "Scatta una foto del pasto e ottieni una stima modificabile di calorie e macro con l'AI.",
     "Scan Your Meal": "Scansiona il tuo pasto",
     "Take a photo of your food.": "Scatta una foto del tuo cibo.",
     "AI Analyzes": "L'AI analizza",
-    "Our advanced AI instantly recognizes ingredients, portion sizes, and calculates precise nutrition data.": "La nostra AI riconosce ingredienti e porzioni e calcola dati nutrizionali precisi.",
+    "Our AI analyzes visible ingredients and portions to create an initial nutrition estimate for you to review.": "L'AI analizza ingredienti e porzioni visibili e crea una stima nutrizionale iniziale da controllare.",
     "Track Progress": "Monitora i progressi",
     "View detailed nutrition breakdown, track your goals, and watch your progress over time.": "Visualizza i dettagli nutrizionali e monitora i progressi nel tempo.",
     "Sync calories, workouts, and health metrics": "Sincronizza calorie, allenamenti e metriche salute",
@@ -2142,7 +2098,7 @@ export default function LandingPage({
             <div className="lp-hero-copy lp-reveal lp-reveal--left is-visible">
               <h1>
                 {copy.heroTitleA}
-                <span>{copy.heroTitleB}</span>
+                {' '}<span>{copy.heroTitleB}</span>
               </h1>
               <p>{copy.heroDescription}</p>
               <div className="lp-store-label">{copy.availableOn}</div>
@@ -2425,50 +2381,6 @@ export default function LandingPage({
                   <p>{ts(integration.description)}</p>
                 </article>
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="lp-section lp-testimonials">
-          <div
-            className="lp-testimonials-bg"
-            aria-hidden="true"
-            style={{
-              backgroundImage: `url(${isDark ? FIGMA_ASSETS.testimonialPatternDark : FIGMA_ASSETS.testimonialPatternLight})`,
-            }}
-          />
-
-          <div className="lp-container">
-            <header className="lp-section-head lp-reveal">
-              <h2>
-                {copy.testimonialsTitleA} <span>{copy.testimonialsTitleB}</span>
-              </h2>
-            </header>
-
-            <div className="lp-testimonial-stage">
-              <OptimizedImage
-                src={FIGMA_ASSETS.avocadoAccent}
-                alt="Avocado nutrition accent"
-                className="lp-testimonial-avocado lp-reveal lp-reveal--pop"
-                aria-hidden="true"
-                width="600"
-                height="568"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="lp-testimonial-grid">
-                {TESTIMONIALS.map((review, index) => (
-                  <article
-                    key={review.author}
-                    className="lp-testimonial-card lp-reveal"
-                    style={{ '--stagger-index': index } as CSSProperties}
-                  >
-                    <h3>{ts(review.title)}</h3>
-                    <p>{ts(review.body)}</p>
-                    <footer>{review.author}</footer>
-                  </article>
-                ))}
-              </div>
             </div>
           </div>
         </section>

@@ -1,17 +1,26 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import BlogDetailPage from '../../components/BlogDetailPage'
-import { fetchBlogPost, fetchBlogPosts, type BlogPost } from '../../lib/blog'
+import LegacyRedirectPage from '../../components/LegacyRedirectPage'
+import {
+  getBlogBuildAlternateLanguagePaths,
+  getBlogBuildLanguageData,
+  getBlogBuildPost,
+  getBlogBuildRedirect,
+} from '../../lib/blog-build-data'
+import { getBlogPostPath, type BlogPost } from '../../lib/blog'
 
 interface BlogPostPageProps {
+  alternateLanguagePaths?: Array<{ lang: string; path: string }>
   initialPost?: BlogPost | null
+  redirectSlug?: string | null
   slug: string
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await fetchBlogPosts('en')
+  const { allSlugs } = getBlogBuildLanguageData('en')
 
   return {
-    paths: posts.map((post) => ({ params: { slug: post.slug } })),
+    paths: allSlugs.map((slug) => ({ params: { slug } })),
     fallback: false,
   }
 }
@@ -25,22 +34,34 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async ({ params
     }
   }
 
-  try {
-    const initialPost = await fetchBlogPost(slug, 'en')
-
+  const redirectSlug = getBlogBuildRedirect('en', slug)
+  if (redirectSlug) {
     return {
       props: {
+        redirectSlug,
+        slug,
+      },
+    }
+  }
+
+  const initialPost = getBlogBuildPost('en', slug)
+  if (initialPost) {
+    return {
+      props: {
+        alternateLanguagePaths: getBlogBuildAlternateLanguagePaths(initialPost),
         initialPost,
         slug,
       },
     }
-  } catch {
-    return {
-      notFound: true,
-    }
   }
+
+  return { notFound: true }
 }
 
-export default function BlogPostPage({ initialPost, slug }: BlogPostPageProps) {
-  return <BlogDetailPage initialPost={initialPost} lang="en" slug={slug} />
+export default function BlogPostPage({ alternateLanguagePaths, initialPost, redirectSlug, slug }: BlogPostPageProps) {
+  if (redirectSlug) {
+    return <LegacyRedirectPage title="Article moved" toPath={getBlogPostPath(redirectSlug, 'en')} />
+  }
+
+  return <BlogDetailPage alternateLanguagePaths={alternateLanguagePaths} initialPost={initialPost} lang="en" slug={slug} />
 }

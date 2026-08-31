@@ -38,8 +38,8 @@ const COMMON_TRANSLATIONS: TranslationTable = {
     'April 5, 2026': '5 april 2026',
     'Account Deletion': 'Accountverwijdering',
     or: 'of',
-    'Revolutionizing nutrition tracking with AI-powered calorie calculation.':
-      'Voedingstracking vernieuwd met AI-gestuurde calorieberekening.',
+    'Simplifying nutrition tracking with editable AI-assisted calorie estimates.':
+      'Voeding bijhouden wordt eenvoudiger met bewerkbare, door AI ondersteunde calorieschattingen.',
     'All rights reserved.': 'Alle rechten voorbehouden.',
   },
   ru: {
@@ -76,8 +76,8 @@ const COMMON_TRANSLATIONS: TranslationTable = {
     'April 5, 2026': '5 апреля 2026',
     'Account Deletion': 'Удаление аккаунта',
     or: 'или',
-    'Revolutionizing nutrition tracking with AI-powered calorie calculation.':
-      'Революция в трекинге питания с AI-анализом калорий.',
+    'Simplifying nutrition tracking with editable AI-assisted calorie estimates.':
+      'Упрощаем контроль питания с помощью редактируемых оценок калорий на базе ИИ.',
     'All rights reserved.': 'Все права защищены.',
   },
   zh: {
@@ -114,7 +114,8 @@ const COMMON_TRANSLATIONS: TranslationTable = {
     'April 5, 2026': '2026年4月5日',
     'Account Deletion': '账户删除',
     or: '或',
-    'Revolutionizing nutrition tracking with AI-powered calorie calculation.': '用 AI 热量计算革新营养追踪。',
+    'Simplifying nutrition tracking with editable AI-assisted calorie estimates.':
+      '通过可编辑的 AI 辅助热量估算，让营养追踪更简单。',
     'All rights reserved.': '保留所有权利。',
   },
   ar: {
@@ -151,8 +152,8 @@ const COMMON_TRANSLATIONS: TranslationTable = {
     'April 5, 2026': '5 أبريل 2026',
     'Account Deletion': 'حذف الحساب',
     or: 'أو',
-    'Revolutionizing nutrition tracking with AI-powered calorie calculation.':
-      'نُحدث ثورة في تتبع التغذية بحساب السعرات المدعوم بالذكاء الاصطناعي.',
+    'Simplifying nutrition tracking with editable AI-assisted calorie estimates.':
+      'نبسّط تتبع التغذية بتقديرات سعرات قابلة للتعديل ومدعومة بالذكاء الاصطناعي.',
     'All rights reserved.': 'جميع الحقوق محفوظة.',
   },
   fa: {
@@ -189,8 +190,8 @@ const COMMON_TRANSLATIONS: TranslationTable = {
     'April 5, 2026': '5 آوریل 2026',
     'Account Deletion': 'حذف حساب',
     or: 'یا',
-    'Revolutionizing nutrition tracking with AI-powered calorie calculation.':
-      'انقلابی در پیگیری تغذیه با محاسبه کالری مبتنی بر هوش مصنوعی.',
+    'Simplifying nutrition tracking with editable AI-assisted calorie estimates.':
+      'ردیابی تغذیه را با تخمین کالری مبتنی بر هوش مصنوعی ساده‌تر می‌کنیم.',
     'See photo calorie tracking, macro goals, AI meal plans, and health app integrations.':
       'قابلیت‌های ثبت کالری با عکس، هدف‌های ماکرو، برنامه غذایی هوش مصنوعی و اتصال به اپ‌های سلامت را ببینید.',
     'Compare monthly and yearly premium plans and what each subscription unlocks.':
@@ -235,8 +236,8 @@ const COMMON_TRANSLATIONS: TranslationTable = {
     'April 5, 2026': '5 aprile 2026',
     'Account Deletion': 'Eliminazione account',
     or: 'o',
-    'Revolutionizing nutrition tracking with AI-powered calorie calculation.':
-      'Tracking nutrizionale rivoluzionato dal calcolo calorie con AI.',
+    'Simplifying nutrition tracking with editable AI-assisted calorie estimates.':
+      'Semplifichiamo il monitoraggio nutrizionale con stime caloriche modificabili assistite dall’AI.',
     'See photo calorie tracking, macro goals, AI meal plans, and health app integrations.':
       'Scopri tracking calorie da foto, obiettivi macro, piani alimentari AI e integrazioni salute.',
     'Compare monthly and yearly premium plans and what each subscription unlocks.':

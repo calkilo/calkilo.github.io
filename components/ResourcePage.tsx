@@ -391,7 +391,7 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
 
       <SiteFooter
         copyright={`© ${new Date().getFullYear()} Calkilo. ${t('All rights reserved.')}`}
-        description={t('Revolutionizing nutrition tracking with AI-powered calorie calculation.')}
+        description={t('Simplifying nutrition tracking with editable AI-assisted calorie estimates.')}
         homeAriaLabel="Calkilo home"
         homeHref={toLocalizedPath('/', language)}
         sections={footerSections}

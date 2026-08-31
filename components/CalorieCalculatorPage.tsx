@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useMemo, useState, type FormEvent } from 'react'
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from '../lib/app-links'
 import { SITE_URL } from '../lib/seo'
@@ -144,6 +145,7 @@ function goalLabel(goal: Goal) {
 }
 
 export default function CalorieCalculatorPage() {
+  const router = useRouter()
   const [step, setStep] = useState(1)
   const [values, setValues] = useState<CalculatorValues>(INITIAL_VALUES)
   const [error, setError] = useState('')
@@ -395,7 +397,7 @@ export default function CalorieCalculatorPage() {
           { key: 'pricing', href: '/pricing/', label: 'Choose Plan' },
         ]}
         onLanguageChange={(language) => {
-          if (language !== 'en') window.location.assign(`/${language}/`)
+          if (language !== 'en') void router.push(`/${language}/`)
         }}
       />
 
@@ -867,7 +869,7 @@ export default function CalorieCalculatorPage() {
 
       <SiteFooter
         copyright={`© ${new Date().getFullYear()} Calkilo. All rights reserved.`}
-        description="Revolutionizing nutrition tracking with AI-powered calorie calculation."
+        description="Simplifying nutrition tracking with editable AI-assisted calorie estimates."
         homeAriaLabel="Calkilo home"
         homeHref="/"
         sections={footerSections}

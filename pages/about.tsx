@@ -146,6 +146,28 @@ export default function AboutPage() {
         </p>
       </section>
 
+      <section className="lp-static-card" id="editorial-methodology">
+        <h2>Editorial and estimation methodology</h2>
+        <p>
+          Calkilo articles are published by the Calkilo Editorial Team for general education. Product claims are
+          checked against the current app workflow, while general nutrition values and dietary guidance should be
+          verified against official references such as{' '}
+          <a href="https://fdc.nal.usda.gov/" target="_blank" rel="noreferrer">USDA FoodData Central</a>,{' '}
+          <a href="https://www.who.int/news-room/fact-sheets/detail/healthy-diet" target="_blank" rel="noreferrer">World Health Organization guidance</a>, and{' '}
+          <a href="https://www.efsa.europa.eu/en/topics/topic/dietary-reference-values" target="_blank" rel="noreferrer">EFSA dietary reference values</a>.
+        </p>
+        <ul className="lp-policy-list">
+          <li>Food values are presented as estimates or ranges unless they come from a cited label or database entry.</li>
+          <li>Material article changes update the visible modified date and structured data.</li>
+          <li>Near-duplicate articles are consolidated so one maintained page represents each topic and language.</li>
+          <li>Health content does not replace diagnosis, treatment, or individualized advice from a qualified professional.</li>
+        </ul>
+        <p>
+          To report a factual or product error, email{' '}
+          <a href="mailto:support@calkilo.com">support@calkilo.com</a> or use the <Link href="/contact/">contact page</Link>.
+        </p>
+      </section>
+
       <section className="lp-static-card">
         <h2>Official Calkilo pages</h2>
         <div className="lp-resource-related-grid">

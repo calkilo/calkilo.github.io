@@ -114,6 +114,7 @@ export default function FeaturesPage() {
       activeNav="none"
       keywords={FEATURES_PAGE_KEYWORDS}
       jsonLd={pageJsonLd}
+      hasLocalizedVersions={false}
     >
       <section className="lp-static-card">
         <h2>What this page covers</h2>
@@ -180,8 +181,8 @@ export default function FeaturesPage() {
           passive diary that only reports what already happened.
         </p>
         <p>
-          For branded search, that gives Google a dedicated features URL it can surface instead of trying to infer the
-          whole product from the homepage alone.
+          That helps people move from recording a meal to choosing a useful next step instead of treating the app as
+          a passive diary.
         </p>
         <ul className="lp-policy-list">
           <li>Goal-aware meal suggestions</li>
@@ -193,8 +194,7 @@ export default function FeaturesPage() {
       <section className="lp-static-card">
         <h2>Integrations and connected health data</h2>
         <p>
-          Integrations are a common navigational intent for branded searches. People want to know whether the app fits
-          the rest of their health stack before they install or upgrade.
+          People often want to know whether an app fits the rest of their health setup before they install or upgrade.
         </p>
         <ul className="lp-policy-list">
           <li>Apple Health</li>

@@ -2,294 +2,224 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://calkilo.com/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/nl/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/ru/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/zh/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/ar/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/</loc>
-    <lastmod>2026-05-06</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/it/</loc>
-    <lastmod>2026-05-06</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/features/</loc>
-    <lastmod>2026-04-13</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/pricing/</loc>
-    <lastmod>2026-04-13</lastmod>
   </url>
   <url>
     <loc>https://calkilo.com/contact/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/nl/contact/</loc>
-    <lastmod>2026-04-01</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/ru/contact/</loc>
-    <lastmod>2026-04-01</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/zh/contact/</loc>
-    <lastmod>2026-04-01</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/ar/contact/</loc>
-    <lastmod>2026-04-01</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/contact/</loc>
-    <lastmod>2026-04-01</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/it/contact/</loc>
-    <lastmod>2026-04-01</lastmod>
   </url>
   <url>
     <loc>https://calkilo.com/account-deletion/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/nl/account-deletion/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/ru/account-deletion/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/zh/account-deletion/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/ar/account-deletion/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/account-deletion/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/it/account-deletion/</loc>
-    <lastmod>2026-02-25</lastmod>
   </url>
   <url>
     <loc>https://calkilo.com/privacy-policy/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/nl/privacy-policy/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/ru/privacy-policy/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/zh/privacy-policy/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/ar/privacy-policy/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/privacy-policy/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/it/privacy-policy/</loc>
-    <lastmod>2026-02-25</lastmod>
   </url>
   <url>
     <loc>https://calkilo.com/terms-of-service/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/nl/terms-of-service/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/ru/terms-of-service/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/zh/terms-of-service/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/ar/terms-of-service/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/terms-of-service/</loc>
-    <lastmod>2026-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/it/terms-of-service/</loc>
-    <lastmod>2026-02-25</lastmod>
   </url>
   <url>
     <loc>https://calkilo.com/terms-and-conditions/</loc>
-    <lastmod>2026-02-25</lastmod>
+  </url>
+  <url>
+    <loc>https://calkilo.com/nl/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/nl/contact/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/nl/account-deletion/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/nl/privacy-policy/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/nl/terms-of-service/</loc>
   </url>
   <url>
     <loc>https://calkilo.com/nl/terms-and-conditions/</loc>
-    <lastmod>2026-02-25</lastmod>
+  </url>
+  <url>
+    <loc>https://calkilo.com/ru/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/ru/contact/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/ru/account-deletion/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/ru/privacy-policy/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/ru/terms-of-service/</loc>
   </url>
   <url>
     <loc>https://calkilo.com/ru/terms-and-conditions/</loc>
-    <lastmod>2026-02-25</lastmod>
+  </url>
+  <url>
+    <loc>https://calkilo.com/zh/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/zh/contact/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/zh/account-deletion/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/zh/privacy-policy/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/zh/terms-of-service/</loc>
   </url>
   <url>
     <loc>https://calkilo.com/zh/terms-and-conditions/</loc>
-    <lastmod>2026-02-25</lastmod>
+  </url>
+  <url>
+    <loc>https://calkilo.com/ar/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/ar/contact/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/ar/account-deletion/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/ar/privacy-policy/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/ar/terms-of-service/</loc>
   </url>
   <url>
     <loc>https://calkilo.com/ar/terms-and-conditions/</loc>
-    <lastmod>2026-02-25</lastmod>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/contact/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/account-deletion/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/privacy-policy/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/terms-of-service/</loc>
   </url>
   <url>
     <loc>https://calkilo.com/fa/terms-and-conditions/</loc>
-    <lastmod>2026-02-25</lastmod>
+  </url>
+  <url>
+    <loc>https://calkilo.com/it/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/it/contact/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/it/account-deletion/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/it/privacy-policy/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/it/terms-of-service/</loc>
   </url>
   <url>
     <loc>https://calkilo.com/it/terms-and-conditions/</loc>
-    <lastmod>2026-02-25</lastmod>
+  </url>
+  <url>
+    <loc>https://calkilo.com/features/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/pricing/</loc>
   </url>
   <url>
     <loc>https://calkilo.com/ai-calorie-tracker/</loc>
-    <lastmod>2026-05-06</lastmod>
   </url>
   <url>
     <loc>https://calkilo.com/calorie-calculator/</loc>
-    <lastmod>2026-06-15</lastmod>
   </url>
   <url>
     <loc>https://calkilo.com/bmi-calculator/</loc>
-    <lastmod>2026-07-23</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/ai-calorie-tracker/</loc>
-    <lastmod>2026-05-06</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/it/ai-calorie-tracker/</loc>
-    <lastmod>2026-07-21</lastmod>
   </url>
   <url>
     <loc>https://calkilo.com/photo-calorie-calculator/</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/photo-calorie-calculator/</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/calorie-counter-with-photo/</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/free-photo-calorie-calculator/</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/ai-calorie-calculator/</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/food-calorie-scanner/</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/calories/pizza/</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/calories/hamburger/</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/calories/kebab/</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/calories/rice/</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/calories/falafel/</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/examples/pizza-scan/</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/examples/kebab-scan/</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/examples/burger-scan/</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/it/photo-calorie-calculator/</loc>
-    <lastmod>2026-07-21</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/it/calcolo-calorie-con-foto-gratis/</loc>
-    <lastmod>2026-07-21</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/it/intelligenza-artificiale-calorie/</loc>
-    <lastmod>2026-07-21</lastmod>
   </url>
   <url>
     <loc>https://calkilo.com/macro-tracker/</loc>
-    <lastmod>2026-05-06</lastmod>
-  </url>
-  <url>
-    <loc>https://calkilo.com/fa/macro-tracker/</loc>
-    <lastmod>2026-05-06</lastmod>
   </url>
   <url>
     <loc>https://calkilo.com/faq/</loc>
-    <lastmod>2026-05-06</lastmod>
   </url>
   <url>
     <loc>https://calkilo.com/about/</loc>
-    <lastmod>2026-07-02</lastmod>
   </url>
   <url>
     <loc>https://calkilo.com/best-calorie-counter-for-persian-food/</loc>
-    <lastmod>2026-07-02</lastmod>
   </url>
   <url>
     <loc>https://calkilo.com/ai-meal-planner-for-weight-loss/</loc>
-    <lastmod>2026-07-02</lastmod>
   </url>
   <url>
     <loc>https://calkilo.com/calkilo-vs-myfitnesspal/</loc>
-    <lastmod>2026-07-02</lastmod>
+  </url>
+  <url>
+    <loc>https://calkilo.com/uber-eats-nutrition-calculator/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/ai-calorie-tracker/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/photo-calorie-calculator/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/calorie-counter-with-photo/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/free-photo-calorie-calculator/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/ai-calorie-calculator/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/food-calorie-scanner/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/calories/pizza/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/calories/hamburger/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/calories/kebab/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/calories/rice/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/calories/falafel/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/examples/pizza-scan/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/examples/kebab-scan/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/examples/burger-scan/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/fa/macro-tracker/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/it/ai-calorie-tracker/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/it/photo-calorie-calculator/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/it/calcolo-calorie-con-foto-gratis/</loc>
+  </url>
+  <url>
+    <loc>https://calkilo.com/it/intelligenza-artificiale-calorie/</loc>
   </url>
 </urlset>
