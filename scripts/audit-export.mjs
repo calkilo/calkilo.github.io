@@ -10,6 +10,7 @@ const manifestPath = join(projectRoot, 'data', 'blog-manifest.json')
 const sitemapPaths = [join(projectRoot, 'public', 'sitemap.xml'), join(projectRoot, 'public', 'blog-sitemap.xml')]
 const errors = []
 const warnings = []
+const sourceRoot = projectRoot
 
 function decodeHtml(value) {
   return value
@@ -70,6 +71,7 @@ for (const url of sitemapUrls) {
   const canonical = decodeHtml(firstMatch(html, /<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["'][^>]*>/iu))
   const robots = decodeHtml(firstMatch(html, /<meta[^>]+name=["']robots["'][^>]+content=["']([^"']+)["'][^>]*>/iu))
   const language = firstMatch(html, /<html[^>]+lang=["']([^"']+)["']/iu)
+  const direction = firstMatch(html, /<html[^>]+dir=["']([^"']+)["']/iu)
   const h1Count = (html.match(/<h1(?:\s|>)/giu) || []).length
 
   if (!title) errors.push(`${url}: missing title`)
@@ -77,6 +79,8 @@ for (const url of sitemapUrls) {
   if (canonical !== url) errors.push(`${url}: canonical is ${canonical || 'missing'}`)
   if (/noindex/iu.test(robots)) errors.push(`${url}: sitemap URL is noindex`)
   if (!language) errors.push(`${url}: missing html lang`)
+  if (['ar', 'fa'].includes(language) && direction !== 'rtl') errors.push(`${url}: expected rtl html direction`)
+  if (!['ar', 'fa'].includes(language) && direction !== 'ltr') errors.push(`${url}: expected ltr html direction`)
   if (h1Count !== 1) errors.push(`${url}: expected one H1, found ${h1Count}`)
 
   if (pathname.includes('/blog/') && !pathname.endsWith('/blog/')) {
@@ -101,7 +105,11 @@ for (const url of sitemapUrls) {
 
   for (const match of html.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/giu)) {
     try {
-      JSON.parse(decodeHtml(match[1]))
+      const schema = JSON.parse(decodeHtml(match[1]))
+      const values = Array.isArray(schema) ? schema : [schema]
+      if (values.some((value) => value?.['@type'] === 'FAQPage')) {
+        errors.push(`${url}: deprecated FAQPage markup is present; keep the visible FAQ without this rich-result schema`)
+      }
     } catch (error) {
       errors.push(`${url}: invalid JSON-LD (${error instanceof Error ? error.message : 'parse error'})`)
     }
@@ -219,6 +227,40 @@ if (!persianHome.includes('"price":"2890000"') || !persianHome.includes('"price"
 }
 if (persianHome.includes('۲۸۹٬۰۰۰٬۰۰۰ تومان') || persianHome.includes('۵۸۹٬۰۰۰٬۰۰۰ تومان')) {
   errors.push('The obsolete 1000x Persian FAQ prices are still present.')
+}
+if (!persianHome.includes('امکان تغییر دستی این هدف‌ها را ندارد')) {
+  errors.push('The Persian homepage is missing the verified manual macro-goal editing limitation.')
+}
+
+const generatedSourceFiles = (await readdir(join(sourceRoot, 'pages'), { recursive: true }))
+  .filter((path) => /\.(?:ts|tsx)$/u.test(path))
+  .map((path) => join(sourceRoot, 'pages', path))
+const componentSourceFiles = (await readdir(join(sourceRoot, 'components'), { recursive: true }))
+  .filter((path) => /\.(?:ts|tsx)$/u.test(path))
+  .map((path) => join(sourceRoot, 'components', path))
+const librarySourceFiles = (await readdir(join(sourceRoot, 'lib'), { recursive: true }))
+  .filter((path) => /\.(?:ts|tsx)$/u.test(path))
+  .map((path) => join(sourceRoot, 'lib', path))
+const publicCopySource = (await Promise.all(
+  [...generatedSourceFiles, ...componentSourceFiles, ...librarySourceFiles].map((path) => readFile(path, 'utf8')),
+)).join('\n')
+for (const leakedPhrase of [
+  'brand searches often',
+  'strongest search pages and AI answers',
+  'canonical public answer hub',
+  'macro targets any time from profile settings',
+]) {
+  if (publicCopySource.toLowerCase().includes(leakedPhrase.toLowerCase())) {
+    errors.push(`Public source still contains drafting or contradictory copy: ${leakedPhrase}`)
+  }
+}
+
+const robotsText = await readFile(join(projectRoot, 'public', 'robots.txt'), 'utf8')
+for (const crawler of ['Googlebot', 'Bingbot', 'OAI-SearchBot', 'PerplexityBot', 'GPTBot']) {
+  if (!robotsText.includes(`User-agent: ${crawler}`)) errors.push(`robots.txt has no explicit ${crawler} group`)
+}
+for (const sitemapPath of ['/sitemap.xml', '/blog-sitemap.xml']) {
+  if (!robotsText.includes(`${SITE_URL}${sitemapPath}`)) errors.push(`robots.txt is missing ${sitemapPath}`)
 }
 
 if (warnings.length > 0) warnings.forEach((warning) => console.warn(`WARN ${warning}`))

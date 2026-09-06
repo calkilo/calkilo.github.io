@@ -144,7 +144,13 @@ export default function BmiCalculatorPage() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    setError(validate())
+    const validationError = validate()
+    setError(validationError)
+    if (!validationError && typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'calculator_complete', {
+        calculator: 'bmi',
+      })
+    }
   }
 
   const selectUnitSystem = (nextUnitSystem: UnitSystem) => {
@@ -172,15 +178,6 @@ export default function BmiCalculatorPage() {
       url: `${SITE_URL}/bmi-calculator/`,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
       featureList: ['Metric and US units', 'Adult BMI category', 'Healthy weight range'],
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: FAQS.map((faq) => ({
-        '@type': 'Question',
-        name: faq.question,
-        acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-      })),
     },
   ] as const
 

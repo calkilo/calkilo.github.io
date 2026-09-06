@@ -7,6 +7,7 @@ import { getLocalizedResourceLinks } from '../lib/resource-pages'
 import { SITE_URL } from '../lib/seo'
 import { CORE_SITE_LINKS, ENGLISH_POPULAR_PAGE_LINKS, type SitePageLink } from '../lib/site-pages'
 import { CALKILO_PRICING, getUsdPricingDisplay, PRICING_FAQ_ANSWER } from '../lib/pricing'
+import { PREFERENCE_UPDATE_ANSWER_EN, PREFERENCE_UPDATE_ANSWERS } from '../lib/product-facts'
 import {
   buildAlternateLanguagePaths,
   isRtlLanguage,
@@ -187,12 +188,12 @@ const TRANSLATIONS: Record<
 > = {
   en: {
     pageDescription:
-      'Calkilo is a free AI calorie counter and nutrition assistant that estimates calories from food photos, tracks macros, and creates meal plans on iPhone and Android.',
-    pageTitle: 'Free AI Calorie Tracker & Photo Food Calorie Counter | Calkilo',
+      'Download Calkilo free with in-app purchases to estimate calories from food photos, track macros, and plan meals on iPhone and Android.',
+    pageTitle: 'AI Calorie Tracker & Photo Food Calorie Counter | Calkilo',
     darkThemeLabel: 'Dark Theme',
     nav: { home: 'Home', features: 'Features', pricing: 'Choose Plan', blog: 'Blog', contact: 'Contact' },
     tryFree: 'Try for free',
-    heroTitleA: 'Free AI Calorie Tracker',
+    heroTitleA: 'AI Calorie Tracker',
     heroTitleB: 'for Food Photos',
     heroDescription:
       'Calkilo is an AI calorie counter and nutrition assistant. Snap a meal photo to estimate calories and macros, review the result, keep a daily log, and plan meals with less manual entry.',
@@ -421,13 +422,13 @@ const TRANSLATIONS: Record<
   },
   fa: {
     pageDescription:
-      'کالری شمار آنلاین رایگان کالکیلو برای ثبت غذای روزانه، پیگیری کالری و ماکروها و رسیدن به هدف کاهش یا حفظ وزن؛ با ورود سریع غذا و تحلیل هوش مصنوعی.',
-    pageTitle: 'کالری شمار آنلاین رایگان غذا | کالکیلو',
+      'دانلود Calkilo رایگان است و خرید درون‌برنامه‌ای دارد؛ غذا را ثبت کنید، کالری و ماکروها را ببینید و از تحلیل عکس کمک بگیرید.',
+    pageTitle: 'کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو',
     darkThemeLabel: 'حالت تیره',
     nav: { home: 'خانه', features: 'ویژگی‌ها', pricing: 'انتخاب طرح', blog: 'بلاگ', contact: 'تماس' },
     tryFree: 'رایگان شروع کنید',
     heroTitleA: 'کالری شمار آنلاین',
-    heroTitleB: 'رایگان برای غذای روزانه',
+    heroTitleB: 'برای غذای روزانه',
     heroDescription:
       'غذا و میان‌وعده‌های روزانه را سریع ثبت کنید، کالری، پروتئین، کربوهیدرات و چربی را ببینید و روند رژیم خود را دنبال کنید. برای ثبت سریع‌تر می‌توانید از عکس غذا و تحلیل هوش مصنوعی هم استفاده کنید.',
     availableOn: 'در دسترس در:',
@@ -450,7 +451,7 @@ const TRANSLATIONS: Record<
     communityTitle: 'به یک جامعه پویا بپیوندید',
     communitySubtitle: 'دوستانتان را دعوت کنید، پیشرفت را به اشتراک بگذارید و با هم عادت‌های سالم‌تری بسازید.',
     downloadTitleA: 'آماده تغییر تغذیه خود هستید؟',
-    downloadTitleB: 'همین حالا رایگان شروع کنید',
+    downloadTitleB: 'اپ را رایگان دانلود کنید',
     downloadDescription: 'اپ را دانلود کنید تا کالری را دنبال کنید و به اهداف سلامتی برسید.',
     scanLabel: 'برای دانلود اسکن کنید',
     faqKicker: 'سوالات متداول',
@@ -745,8 +746,7 @@ const FAQ_ITEMS = [
   {
     topic: 'Preferences',
     question: 'Can I change my preferences after onboarding?',
-    answer:
-      'Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.',
+    answer: PREFERENCE_UPDATE_ANSWER_EN,
   },
   {
     topic: 'Security',
@@ -848,7 +848,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Does it work with my fitness tracker?": "Werkt het met mijn fitness tracker?",
     "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "Calkilo premium is maandelijks beschikbaar voor $4.99 of jaarlijks voor $14.99. Beide plannen ontgrendelen persoonlijke plannen, diepere analyses en AI-coaching.",
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "De app combineert je doelen, voedingsgeschiedenis en voorkeuren om maaltijdsuggesties te maken die zich aanpassen.",
-    "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "Ja. Je kunt dieetbeperkingen, smaakvoorkeuren en macrodoelen op elk moment aanpassen in je profiel.",
+    [PREFERENCE_UPDATE_ANSWER_EN]: PREFERENCE_UPDATE_ANSWERS.nl,
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "Uploads zijn versleuteld en worden alleen gebruikt voor je analyse en betere aanbevelingen.",
     "Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.": "Voordat Calkilo een nieuwe AI-voedingsscan, maaltijdbewerking of AI-chatverzoek verstuurt, vraagt de app om jouw toestemming. Als je AI-functies toestaat, kan Calkilo voedselfoto's, maaltijdgegevens, chatberichten en de account- of aanvraag-ID's versturen die nodig zijn om je resultaat via api.calkilo.com terug te sturen.",
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "Fotoanalyse vereist internet, maar je kunt eerdere gegevens en basislogs ook offline bekijken.",
@@ -953,7 +953,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Does it work with my fitness tracker?": "Работает ли это с моим фитнес-трекером?",
     "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "Calkilo Premium доступен ежемесячно за $4.99 или ежегодно за $14.99. Оба плана открывают персональные планы питания, глубокую аналитику и AI-коучинг.",
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "Приложение объединяет ваши цели, историю питания и предпочтения, чтобы формировать персональные рекомендации.",
-    "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "Да. Вы можете менять ограничения, вкусовые предпочтения и цели по макроэлементам в настройках профиля.",
+    [PREFERENCE_UPDATE_ANSWER_EN]: PREFERENCE_UPDATE_ANSWERS.ru,
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "Загрузки шифруются и используются только для анализа и улучшения персональных рекомендаций.",
     "Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.": "Перед отправкой нового AI-сканирования еды, редактирования приема пищи или AI-чата приложение запрашивает ваше разрешение. Если вы разрешите AI-функции, Calkilo может отправлять фотографии еды, записи о приемах пищи, сообщения чата, а также идентификаторы аккаунта или запроса, необходимые для возврата результата через api.calkilo.com.",
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "Для анализа фото нужен интернет, но прошлые данные и базовые записи доступны офлайн.",
@@ -1059,7 +1059,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Does it work with my fitness tracker?": "是否支持我的健身追踪器？",
     "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "Calkilo 高级版可按月 $4.99 或按年 $14.99 使用。两个计划都解锁个性化餐食计划、深度分析和 AI 教练。",
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "应用会结合你的目标、饮食历史和偏好，生成会随数据变化而调整的餐食建议。",
-    "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "可以。你可随时在个人设置中更新饮食限制、口味偏好和宏量目标。",
+    [PREFERENCE_UPDATE_ANSWER_EN]: PREFERENCE_UPDATE_ANSWERS.zh,
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "上传内容会加密，仅用于提供分析结果并优化个性化推荐。",
     "Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.": "在 Calkilo 发送新的 AI 食物扫描、餐食编辑或 AI 聊天请求之前，应用会先征求你的许可。如果你允许 AI 功能，Calkilo 可能会通过 api.calkilo.com 发送食物照片、餐食记录、聊天消息，以及返回结果所需的账户或请求标识符。",
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "照片分析需要联网，但离线时仍可查看历史数据和基础记录。",
@@ -1165,7 +1165,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Does it work with my fitness tracker?": "هل يعمل مع جهاز تتبع اللياقة الخاص بي؟",
     "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "يتوفر Calkilo Premium شهرياً مقابل $4.99 أو سنوياً مقابل $14.99. يفتح كلا الخيارين خطط وجبات مخصصة وتحليلات أعمق وتدريباً بالذكاء الاصطناعي.",
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "يجمع التطبيق أهدافك وسجل التغذية وتفضيلاتك ليولد اقتراحات وجبات تتكيف مع تغير بياناتك.",
-    "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "نعم. يمكنك تحديث القيود الغذائية وتفضيلات الذوق وأهداف الماكروز في أي وقت من إعدادات الملف الشخصي.",
+    [PREFERENCE_UPDATE_ANSWER_EN]: PREFERENCE_UPDATE_ANSWERS.ar,
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "يتم تشفير الملفات المرفوعة وتستخدم فقط لتقديم التحليل وتحسين توصياتك الشخصية.",
     "Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.": "قبل أن يرسل Calkilo فحص طعام جديداً بالذكاء الاصطناعي أو تعديل وجبة أو طلب دردشة بالذكاء الاصطناعي، يطلب التطبيق إذنك. إذا سمحت بميزات الذكاء الاصطناعي، فقد يرسل Calkilo صور الطعام وسجلات الوجبات ورسائل الدردشة ومعرّفات الحساب أو الطلب اللازمة لإرجاع النتيجة عبر api.calkilo.com.",
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "تحليل الصور يحتاج إلى الإنترنت، لكن يمكنك مراجعة البيانات السابقة والسجلات الأساسية دون اتصال.",
@@ -1271,7 +1271,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Does it work with my fitness tracker?": "آیا اپلیکیشن با ساعت‌های هوشمند و مچ‌بندهای سلامتی همگام می‌شود؟",
     [PRICING_FAQ_ANSWER]: `اشتراک پریمیوم Calkilo به‌صورت ماهانه با قیمت ${CALKILO_PRICING.Monthly.persianDisplay} یا سالانه با قیمت ${CALKILO_PRICING.Yearly.persianDisplay} ارائه می‌شود. هر دو طرح برنامه غذایی شخصی‌سازی‌شده، تحلیل‌های دقیق‌تر و مربی هوش مصنوعی را فعال می‌کنند.`,
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "سیستم ما با ترکیب اهداف، ذائقه و سوابق تغذیه‌ای شما، هوشمندانه‌ترین پیشنهادها را که دقیقاً با سبک زندگی‌تان سازگار است، طراحی می‌کند.",
-    "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "بله، بعد از شروع برنامه می‌توانید اطلاعاتی مثل قد و وزن هدف را در پروفایل خود به‌روزرسانی کنید. در حال حاضر امکان تنظیم دستی ماکروها وجود ندارد.",
+    [PREFERENCE_UPDATE_ANSWER_EN]: PREFERENCE_UPDATE_ANSWERS.fa,
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "بله، تمام تصاویر ارسالی به‌صورت رمزگذاری‌شده ذخیره می‌شوند. این داده‌ها صرفاً برای تحلیل دقیق‌تر و شخصی‌سازی بهتر پیشنهادها برای خود شما استفاده می‌شوند.",
     "Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.": "پیش از آن‌که Calkilo اسکن غذایی جدید، ویرایش وعده یا درخواست چت هوش مصنوعی را ارسال کند، اپ از شما اجازه می‌گیرد. اگر قابلیت‌های هوش مصنوعی را فعال کنید، Calkilo ممکن است عکس غذا، سوابق وعده‌ها، پیام‌های چت و شناسه‌های حساب یا درخواست لازم برای برگرداندن نتیجه را از طریق api.calkilo.com ارسال کند.",
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "برای تحلیل تصاویر به اینترنت نیاز است؛ اما می‌توانید اطلاعات ثبت‌شده قبلی را در حالت آفلاین مشاهده کنید.",
@@ -1382,7 +1382,7 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Does it work with my fitness tracker?": "Funziona con il mio fitness tracker?",
     "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "Calkilo Premium e disponibile mensilmente a $4.99 o annualmente a $14.99. Entrambi i piani sbloccano piani personalizzati, analisi avanzate e coaching AI.",
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "L'app combina obiettivi, storico nutrizionale e preferenze per suggerire pasti che si adattano ai tuoi dati.",
-    "Yes. You can update dietary restrictions, taste preferences, and macro targets any time from profile settings.": "Si. Puoi aggiornare restrizioni alimentari, gusti e obiettivi macro in qualsiasi momento dalle impostazioni profilo.",
+    [PREFERENCE_UPDATE_ANSWER_EN]: PREFERENCE_UPDATE_ANSWERS.it,
     "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "I caricamenti sono crittografati e usati solo per l'analisi e per migliorare i suggerimenti personali.",
     "Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.": "Prima che Calkilo invii una nuova scansione cibo AI, una modifica del pasto o una richiesta di chat AI, l'app ti chiede il permesso. Se abiliti le funzioni AI, Calkilo puo inviare foto del cibo, registri dei pasti, messaggi di chat e gli identificatori di account o richiesta necessari per restituire il risultato tramite api.calkilo.com.",
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "L'analisi foto richiede internet, ma puoi rivedere dati precedenti e registri base anche offline.",
@@ -1823,6 +1823,15 @@ export default function LandingPage({
   const blogHref = toLocalizedPath('/blog', language)
   const contactHref = toLocalizedPath('/contact', language)
   const pricingOfferUrl = pricingHref.startsWith('#') ? `${SITE_URL}${seoPath}${pricingHref}` : `${SITE_URL}${pricingHref}`
+  const trackPricingClick = (plan: string) => {
+    if (typeof window === 'undefined' || !window.gtag) return
+
+    window.gtag('event', 'pricing_plan_click', {
+      plan,
+      language,
+      landing_page: window.location.pathname,
+    })
+  }
   const localizedResourceLinks = getLocalizedResourceLinks(language)
   const localizedCorePageLinks: SitePageLink[] = CORE_SITE_LINKS.map((link) => {
     if (link.href === '/features/') {
@@ -1973,6 +1982,7 @@ export default function LandingPage({
       {
         '@context': 'https://schema.org',
         '@type': 'Organization',
+        '@id': `${SITE_URL}/#organization`,
         name: 'Calkilo',
         url: SITE_URL,
         logo: `${SITE_URL}/assets/logo.png`,
@@ -1990,6 +2000,7 @@ export default function LandingPage({
       {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
+        '@id': `${SITE_URL}/#website`,
         name: 'Calkilo',
         url: SITE_URL,
         inLanguage: language,
@@ -2002,47 +2013,32 @@ export default function LandingPage({
         url: `${SITE_URL}${seoPath}`,
         inLanguage: language,
         isPartOf: {
-          '@type': 'WebSite',
-          name: 'Calkilo',
-          url: SITE_URL,
+          '@id': `${SITE_URL}/#website`,
         },
       },
       {
         '@context': 'https://schema.org',
         '@type': 'SoftwareApplication',
+        '@id': `${SITE_URL}/#app`,
         name: 'Calkilo',
         applicationCategory: 'HealthApplication',
         operatingSystem: 'iOS, Android',
         description: copy.pageDescription,
-        url: `${SITE_URL}${seoPath}`,
+        url: SITE_URL,
         inLanguage: language,
         isAccessibleForFree: true,
         sameAs: getStoreSameAs(language),
+        publisher: {
+          '@id': `${SITE_URL}/#organization`,
+        },
         featureList: FEATURE_ITEMS.map((item) => ts(item.title)),
         offers: PRICING_PLANS.map((plan) => ({
           ...getPricingSchemaOffer(plan, language, pricingOfferUrl),
           name: ts(plan.title),
         })),
       },
-      ...(!isDarkVariantPage
-        ? [
-            {
-              '@context': 'https://schema.org',
-              '@type': 'FAQPage',
-              inLanguage: language,
-              mainEntity: FAQ_ITEMS.map((item) => ({
-                '@type': 'Question',
-                name: ts(item.question),
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: ts(item.answer),
-                },
-              })),
-            },
-          ]
-        : []),
     ],
-    [copy.pageDescription, isDarkVariantPage, language, pricingOfferUrl, seoPath, seoTitle, ts],
+    [copy.pageDescription, language, pricingOfferUrl, seoPath, seoTitle, ts],
   )
 
   return (
@@ -2415,7 +2411,9 @@ export default function LandingPage({
                     <li>{ts('Mobile-friendly interface')}</li>
                     <li>{ts('Customer support')}</li>
                   </ul>
-                  <button type="button">{ts(plan.cta)}</button>
+                  <a href="#download" onClick={() => trackPricingClick(plan.title)}>
+                    {ts(plan.cta)}
+                  </a>
                 </article>
               ))}
             </div>

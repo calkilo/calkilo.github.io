@@ -22,7 +22,7 @@ export const CALORIE_RELATED_LINKS_FA = [
   {
     href: '/fa/free-photo-calorie-calculator/',
     label: 'کالری شمار با عکس رایگان',
-    description: 'مناسب کاربرانی که دنبال شروع رایگان و سریع برای کالری شماری با عکس هستند.',
+    description: 'توضیح دانلود رایگان، خرید درون‌برنامه‌ای و نحوه بررسی محدودیت‌های اسکن در نسخه فعلی.',
   },
   {
     href: '/fa/ai-calorie-calculator/',
@@ -143,10 +143,10 @@ export const SEO_LANDING_PAGES: Record<SeoLandingPageKey, ResourcePageDefinition
     path: '/fa/free-photo-calorie-calculator/',
     title: 'کالری شمار با عکس رایگان | تخمین کالری غذا با هوش مصنوعی',
     description:
-      'با Calkilo رایگان شروع کنید، از غذای خود عکس بگیرید و کالری و ماکروهای وعده را با هوش مصنوعی تخمین بزنید.',
+      'Calkilo برای دانلود رایگان است و خرید درون‌برنامه‌ای دارد؛ پیش از اسکن، محدودیت‌های نسخه و بازار خود را داخل اپ بررسی کنید.',
     heading: 'کالری شمار با عکس رایگان',
     intro:
-      'اگر دنبال کالری شمار با عکس رایگان هستید، احتمالاً می‌خواهید بدون پیچیدگی و هزینه اولیه ببینید هر وعده حدوداً چند کالری دارد. Calkilo برای همین شروع سریع طراحی شده است: عکس غذا را ثبت می‌کنید، تخمین هوش مصنوعی را می‌بینید و در صورت نیاز نتیجه را مرور می‌کنید.',
+      'Calkilo را می‌توانید رایگان دانلود کنید، اما اپ خرید درون‌برنامه‌ای دارد و تعداد اسکن‌های بدون پرداخت در منابع عمومی فعلی مشخص نشده است. قبل از شروع، شرایط نمایش‌داده‌شده در نسخه و فروشگاه خود را بررسی کنید؛ سپس عکس غذا را ثبت کنید، تخمین را ببینید و نتیجه را مرور کنید.',
     keywords: [
       'کالری شمار با عکس رایگان',
       'محاسبه کالری غذا با عکس رایگان',
@@ -155,8 +155,8 @@ export const SEO_LANDING_PAGES: Record<SeoLandingPageKey, ResourcePageDefinition
     ],
     highlights: [
       {
-        title: 'شروع رایگان',
-        body: 'بدون نیاز به ساختن یک سیستم پیچیده، کالری شماری با عکس را امتحان کنید.',
+        title: 'دانلود رایگان',
+        body: 'دانلود اپ رایگان است؛ امکانات و محدودیت‌های بدون پرداخت را در صفحه خرید داخل نسخه خود بررسی کنید.',
       },
       {
         title: 'تخمین سریع',
@@ -172,7 +172,7 @@ export const SEO_LANDING_PAGES: Record<SeoLandingPageKey, ResourcePageDefinition
         title: 'رایگان بودن در کالری شمار با عکس یعنی چه؟',
         paragraphs: [
           'وقتی کاربر عبارت کالری شمار با عکس رایگان را جست‌وجو می‌کند، معمولاً می‌خواهد قبل از پرداخت، اصل تجربه را امتحان کند. یعنی بتواند یک وعده واقعی را ثبت کند، ببیند هوش مصنوعی چه تخمینی می‌دهد و تصمیم بگیرد آیا این روش برای برنامه روزانه‌اش مناسب است یا نه.',
-          'Calkilo با همین منطق معرفی می‌شود. شروع استفاده از اپ رایگان است و کاربر می‌تواند مسیر ثبت غذا با عکس را تجربه کند. امکانات پیشرفته‌تر مثل تحلیل عمیق‌تر، برنامه‌ریزی غذایی یا برخی قابلیت‌های پریمیوم ممکن است در طرح‌های پولی ارائه شوند، اما نقطه ورود باید ساده و قابل امتحان باشد.',
+          'Calkilo در فروشگاه رسمی به‌صورت دانلود رایگان همراه با خرید درون‌برنامه‌ای ارائه می‌شود. منابع عمومی فعلی تعداد اسکن رایگان، نیاز به حساب یا مرز دقیق هر قابلیت را ثابت نمی‌کنند؛ بنابراین شرایط همان نسخه و بازار که داخل اپ می‌بینید مبناست.',
         ],
       },
       {
@@ -198,11 +198,11 @@ export const SEO_LANDING_PAGES: Record<SeoLandingPageKey, ResourcePageDefinition
       {
         title: 'چه زمانی ممکن است به امکانات بیشتر نیاز داشته باشید؟',
         paragraphs: [
-          'بعضی کاربران فقط می‌خواهند چند وعده را سریع بررسی کنند. برای این گروه، شروع رایگان می‌تواند کافی باشد. اما اگر هر روز غذا ثبت می‌کنید، هدف وزنی مشخص دارید، برنامه غذایی می‌خواهید یا می‌خواهید روند پیشرفت را دقیق‌تر ببینید، امکانات پیشرفته‌تر ارزش بیشتری پیدا می‌کنند.',
+          'بعضی کاربران فقط می‌خواهند چند وعده را سریع بررسی کنند. پیش از اتکا به نسخه بدون پرداخت، تعداد اسکن‌ها و امکانات فعال را در اپ بررسی کنید. اگر هر روز غذا ثبت می‌کنید، هدف وزنی مشخص دارید، برنامه غذایی می‌خواهید یا می‌خواهید روند پیشرفت را دقیق‌تر ببینید، طرح پریمیوم را با نیاز خود مقایسه کنید.',
           'به همین دلیل بهتر است ابتدا با عکس غذا شروع کنید و ببینید این روش در سبک زندگی شما جا می‌افتد یا نه. اگر ثبت غذا سریع‌تر شد و داده‌ها به تصمیم‌های بهتر کمک کردند، استفاده منظم از اپ می‌تواند به بخشی از برنامه تغذیه روزانه تبدیل شود.',
         ],
         bullets: [
-          'برای شروع و تست تجربه، نسخه رایگان مفید است',
+          'دانلود رایگان است؛ محدودیت اسکن باید داخل اپ بررسی شود',
           'برای تحلیل‌های بلندمدت ممکن است ابزارهای پیشرفته لازم شوند',
           'برای هدف‌های ورزشی، ماکروها اهمیت بیشتری دارند',
           'برای رژیم جدی، بررسی و اصلاح نتیجه ضروری است',
@@ -220,7 +220,7 @@ export const SEO_LANDING_PAGES: Record<SeoLandingPageKey, ResourcePageDefinition
       {
         question: 'آیا Calkilo کاملاً رایگان است؟',
         answer:
-          'شروع استفاده رایگان است، اما برخی امکانات پیشرفته می‌توانند در طرح‌های پریمیوم ارائه شوند. صفحه قیمت‌گذاری اپ جزئیات نهایی را مشخص می‌کند.',
+          'خیر، چنین ادعایی نمی‌کنیم. دانلود Calkilo رایگان است و اپ خرید درون‌برنامه‌ای دارد. تعداد اسکن‌های بدون پرداخت و امکانات فعال را در نسخه و بازار خود داخل اپ بررسی کنید.',
       },
       {
         question: 'آیا برای محاسبه کالری با عکس باید وزن غذا را بدانم؟',
@@ -230,7 +230,7 @@ export const SEO_LANDING_PAGES: Record<SeoLandingPageKey, ResourcePageDefinition
       {
         question: 'آیا نسخه رایگان برای رژیم کافی است؟',
         answer:
-          'برای شروع، شناخت وعده‌ها و ثبت سریع غذا مفید است. برای رژیم دقیق‌تر، بررسی نتیجه و استفاده از امکانات تکمیلی می‌تواند کمک کند.',
+          'این موضوع به امکانات فعال در نسخه و بازار شما بستگی دارد. ابتدا محدودیت‌های داخل اپ را بررسی کنید؛ برای رژیم درمانی یا نیاز پزشکی نیز از متخصص کمک بگیرید.',
       },
       {
         question: 'آیا هوش مصنوعی Calkilo مواد مغذی را هم تخمین می‌زند؟',
@@ -465,7 +465,7 @@ export const SEO_LANDING_PAGES: Record<SeoLandingPageKey, ResourcePageDefinition
         title: 'Perché cercare un calcolo calorie con foto gratis',
         paragraphs: [
           'Molte persone conoscono l’importanza del diario alimentare, ma smettono perché inserire ogni ingrediente richiede troppo tempo. Una foto del pasto riduce il primo attrito: non bisogna partire da una ricerca manuale, ma da un’immagine reale del piatto.',
-          'Calkilo rende questa esperienza più pratica. L’AI analizza ciò che si vede, crea una stima di calorie e macronutrienti e permette all’utente di valutare il risultato. La parte gratuita serve soprattutto per provare se questo flusso si adatta alla routine quotidiana.',
+          'Calkilo si scarica gratuitamente e include acquisti in-app. Le fonti pubbliche attuali non confermano un numero preciso di scansioni gratuite: controlla i limiti mostrati nella tua versione e nel tuo mercato prima di usare il flusso foto.',
         ],
       },
       {
@@ -513,7 +513,7 @@ export const SEO_LANDING_PAGES: Record<SeoLandingPageKey, ResourcePageDefinition
       {
         question: 'Calkilo calcola le calorie da una foto gratis?',
         answer:
-          'Calkilo permette di iniziare con un flusso gratuito. Alcune funzioni avanzate possono essere disponibili in piani premium.',
+          'L’app si scarica gratuitamente e include acquisti in-app. Il numero di scansioni disponibili senza pagamento può dipendere dalla versione e dal mercato: verifica i limiti mostrati nell’app.',
       },
       {
         question: 'La stima da foto è precisa?',

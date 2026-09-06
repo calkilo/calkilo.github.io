@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint .",
     "seo:audit": "node scripts/audit-export.mjs",
+    "seo:route-map": "node scripts/generate-seo-route-map.mjs",
     "indexnow:submit": "node scripts/submit-indexnow.mjs"
   },
   "dependencies": {

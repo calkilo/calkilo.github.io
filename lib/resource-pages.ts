@@ -1,4 +1,5 @@
 import { type SiteLanguage } from './site-language'
+import { PREFERENCE_UPDATE_ANSWER_EN } from './product-facts'
 
 export interface ResourceHighlight {
   title: string
@@ -244,7 +245,7 @@ export const RESOURCE_PAGES: Record<ResourcePageKey, ResourcePageDefinition> = {
         title: 'Why this is better than a one-number calculator',
         paragraphs: [
           'Users usually need context, not only a number. They want to know whether a meal fits the rest of the day and whether it matches their protein or calorie target.',
-          'That is why the strongest search pages and AI answers for this topic need more than a marketing slogan. They should explain editing, macro tracking, and how estimates are used in practice.',
+          'Reviewing the estimate is important: check the portion, add context for oils, sauces, drinks, or hidden ingredients, and then save the corrected meal to your daily log.',
         ],
         bullets: [
           'Calories are more useful when paired with macros',
@@ -397,7 +398,7 @@ export const RESOURCE_PAGES: Record<ResourcePageKey, ResourcePageDefinition> = {
       'Find answers about calorie tracking, photo food logging, meal plans, subscriptions, privacy, and device integrations in Calkilo.',
     heading: 'Frequently Asked Questions About Calkilo',
     intro:
-      'This page collects the main product, subscription, privacy, and device questions people ask about Calkilo. It is also the canonical FAQ URL for old /faq.html links that may still appear in search results.',
+      'This page collects the main product, subscription, privacy, and device questions people ask about Calkilo, with direct links to support when an account-specific answer is needed.',
     keywords: ['calkilo faq', 'ai calorie tracker faq', 'photo calorie app questions', 'macro tracker faq'],
     highlights: [
       {
@@ -425,7 +426,7 @@ export const RESOURCE_PAGES: Record<ResourcePageKey, ResourcePageDefinition> = {
         title: 'What the FAQ page is for',
         paragraphs: [
           'Support pages are useful before and after installation because they make product, privacy, and account details easy to verify outside the app.',
-          'This page is meant to be the canonical public answer hub for questions that previously surfaced through older HTML pages.',
+          'Use the sections below to verify how scans, plans, privacy controls, account deletion, and supported integrations work before or after installing the app.',
         ],
         bullets: [
           'Product questions',
@@ -453,8 +454,7 @@ export const RESOURCE_PAGES: Record<ResourcePageKey, ResourcePageDefinition> = {
       },
       {
         question: 'Can I change dietary preferences after onboarding?',
-        answer:
-          'Yes. Users can update preferences, restrictions, and nutrition targets after onboarding.',
+        answer: PREFERENCE_UPDATE_ANSWER_EN,
       },
       {
         question: 'Is food photo data private?',
@@ -489,7 +489,7 @@ export const LOCALIZED_RESOURCE_PAGES: Partial<
       path: '/fa/photo-calorie-calculator/',
       title: 'کالری شمار با عکس رایگان | محاسبه کالری غذا با هوش مصنوعی - Calkilo',
       description:
-        'کالری شمار با عکس رایگان کالکیلو؛ از غذای واقعی عکس بگیرید، کالری و ماکروها را تخمین بزنید، نتیجه را بررسی کنید و وعده را ثبت کنید.',
+        'Calkilo برای دانلود رایگان است و خرید درون‌برنامه‌ای دارد؛ از غذا عکس بگیرید، تخمین کالری و ماکروها را بررسی و اصلاح کنید.',
       heading: 'کالری شمار با عکس رایگان',
       intro:
         'در Calkilo کافی است عکس غذای خود را آپلود کنید یا همان لحظه با دوربین بگیرید. هوش مصنوعی غذا و اجزای اصلی آن را تشخیص می‌دهد، سپس کالری، پروتئین، چربی و کربوهیدرات را به صورت تخمینی نمایش می‌دهد. این روش برای رژیم لاغری، برنامه بدنسازی، کنترل وزن و پیگیری تغذیه روزانه مناسب است، چون ثبت غذا را سریع‌تر می‌کند و در عین حال امکان بررسی و اصلاح نتیجه را به شما می‌دهد.',
@@ -567,7 +567,7 @@ export const LOCALIZED_RESOURCE_PAGES: Partial<
         {
           question: 'آیا Calkilo رایگان است؟',
           answer:
-            'شروع استفاده از Calkilo رایگان است. برخی امکانات پیشرفته مانند برنامه‌ریزی غذایی، تحلیل‌های عمیق‌تر یا قابلیت‌های پریمیوم ممکن است در طرح پولی ارائه شوند.',
+            'دانلود Calkilo رایگان است و اپ خرید درون‌برنامه‌ای دارد. تعداد اسکن‌های بدون پرداخت و مرز دقیق امکانات ممکن است با نسخه و بازار فرق کند؛ شرایط داخل اپ را بررسی کنید.',
         },
         {
           question: 'هوش مصنوعی چگونه کالری غذا را از روی عکس محاسبه می‌کند؟',
@@ -974,7 +974,7 @@ const LOCALIZED_RESOURCE_LINKS: Partial<Record<SiteLanguage, ReadonlyArray<Resou
     {
       href: '/fa/free-photo-calorie-calculator/',
       label: 'کالری شمار با عکس رایگان',
-      description: 'شروع رایگان برای تخمین کالری غذا با عکس و بررسی نتیجه.',
+      description: 'دانلود رایگان، خرید درون‌برنامه‌ای و بررسی محدودیت‌های اسکن در نسخه فعلی.',
     },
     {
       href: '/fa/ai-calorie-calculator/',

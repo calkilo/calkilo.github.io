@@ -159,6 +159,7 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
     {
       '@context': 'https://schema.org',
       '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
       name: 'Calkilo',
       url: SITE_URL,
       logo: `${SITE_URL}/assets/logo.png`,
@@ -172,25 +173,22 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
       url: `${SITE_URL}${page.path}`,
       inLanguage: language,
       isPartOf: {
-        '@type': 'WebSite',
-        name: 'Calkilo',
-        url: SITE_URL,
+        '@id': `${SITE_URL}/#website`,
       },
     },
     {
       '@context': 'https://schema.org',
-      '@type': 'WebApplication',
+      '@type': 'SoftwareApplication',
+      '@id': `${SITE_URL}/#app`,
       name: 'Calkilo',
       applicationCategory: 'HealthApplication',
       operatingSystem: 'iOS, Android',
       description: page.description,
-      url: `${SITE_URL}${page.path}`,
+      url: SITE_URL,
       sameAs: storeSameAs,
       featureList: page.highlights.map((highlight) => highlight.title),
       publisher: {
-        '@type': 'Organization',
-        name: 'Calkilo',
-        url: SITE_URL,
+        '@id': `${SITE_URL}/#organization`,
       },
     },
     {
@@ -210,19 +208,6 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
           item: `${SITE_URL}${page.path}`,
         },
       ],
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      inLanguage: language,
-      mainEntity: page.faqs.map((faq) => ({
-        '@type': 'Question',
-        name: faq.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: faq.answer,
-        },
-      })),
     },
   ] as const
 

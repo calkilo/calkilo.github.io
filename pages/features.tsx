@@ -38,12 +38,12 @@ const FEATURE_FAQS = [
   {
     question: 'Does Calkilo only show calories?',
     answer:
-      'No. The product is positioned around calorie tracking and macro tracking, so protein, carbs, and fats are part of the value proposition too.',
+      'No. Meal results and daily tracking include protein, carbohydrates, and fat alongside calories.',
   },
   {
     question: 'Is the app built around manual food search or photos?',
     answer:
-      'The main positioning is photo-first logging, with the food photo acting as the fast starting point for a saved meal entry.',
+      'Photos are the fastest starting point: take a clear picture, review the estimate, correct any portion or hidden-ingredient details, and save the meal.',
   },
   {
     question: 'Can Calkilo help after the meal is logged?',
@@ -68,20 +68,20 @@ export default function FeaturesPage() {
       url: `${SITE_URL}/features/`,
       inLanguage: 'en',
       isPartOf: {
-        '@type': 'WebSite',
-        name: 'Calkilo',
-        url: SITE_URL,
+        '@id': `${SITE_URL}/#website`,
       },
     },
     {
       '@context': 'https://schema.org',
       '@type': 'SoftwareApplication',
+      '@id': `${SITE_URL}/#app`,
       name: 'Calkilo',
       applicationCategory: 'HealthApplication',
       operatingSystem: 'iOS, Android',
       description: FEATURES_PAGE_DESCRIPTION,
-      url: `${SITE_URL}/features/`,
+      url: SITE_URL,
       sameAs: [GOOGLE_PLAY_URL, APP_STORE_URL],
+      publisher: { '@id': `${SITE_URL}/#organization` },
       featureList: FEATURE_CARDS.map((card) => card.title),
     },
     {
@@ -110,7 +110,7 @@ export default function FeaturesPage() {
       description={FEATURES_PAGE_DESCRIPTION}
       path="/features/"
       heading="Calkilo features for faster calorie and macro tracking"
-      intro="This page explains the main product areas people usually want to find after searching for the Calkilo brand: food-photo logging, macro tracking, meal planning, and device integrations."
+      intro="See how Calkilo handles food-photo logging, calorie and macro tracking, meal planning, progress views, and supported device integrations."
       activeNav="none"
       keywords={FEATURES_PAGE_KEYWORDS}
       jsonLd={pageJsonLd}
@@ -119,8 +119,8 @@ export default function FeaturesPage() {
       <section className="lp-static-card">
         <h2>What this page covers</h2>
         <p>
-          Use this page as the main overview for the product instead of forcing users to piece together features
-          from the homepage, app stores, and support content.
+          Start with a food photo, review the nutrition estimate, and save the corrected meal to your daily log.
+          The sections below explain what happens after a scan and which connected features are available.
         </p>
         <div className="lp-resource-actions">
           <a className="lp-btn lp-btn--solid" href={GOOGLE_PLAY_URL} target="_blank" rel="noreferrer">
@@ -148,8 +148,8 @@ export default function FeaturesPage() {
           a photo, not a long ingredient search.
         </p>
         <p>
-          That matters because brand searches often come from users who already heard about the photo feature and now
-          want a direct page that confirms how it works.
+          A clear photo works best. Review the portion and add context for oils, sauces, drinks, or ingredients that
+          are not visible before you save the result.
         </p>
         <ul className="lp-policy-list">
           <li>Photo-first meal capture instead of manual-only entry</li>
@@ -165,7 +165,7 @@ export default function FeaturesPage() {
           protein, carbohydrates, and fats together so each meal fits the rest of the day.
         </p>
         <p>
-          This is why Calkilo is positioned as both an AI calorie tracker and a macro tracker, not only a scanner.
+          Calkilo keeps those nutrients next to meal history so you can compare a meal with the rest of your day.
         </p>
         <ul className="lp-policy-list">
           <li>Daily logs for calories and macros</li>

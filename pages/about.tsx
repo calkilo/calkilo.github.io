@@ -30,9 +30,7 @@ const PAGE_JSON_LD = [
       '@id': `${SITE_URL}/#organization`,
     },
     isPartOf: {
-      '@type': 'WebSite',
-      name: 'Calkilo',
-      url: SITE_URL,
+      '@id': `${SITE_URL}/#website`,
     },
   },
   {

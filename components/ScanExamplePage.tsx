@@ -89,19 +89,6 @@ export default function ScanExamplePage({ example }: ScanExamplePageProps) {
         },
       ],
     },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      inLanguage: language,
-      mainEntity: faqItems.map((faq) => ({
-        '@type': 'Question',
-        name: faq.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: faq.answer,
-        },
-      })),
-    },
   ] as const
   const footerSections = [
     {

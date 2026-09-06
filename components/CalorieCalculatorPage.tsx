@@ -262,6 +262,11 @@ export default function CalorieCalculatorPage() {
     }
 
     setError('')
+    if (step === 3 && typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'calculator_complete', {
+        calculator: 'daily_calorie',
+      })
+    }
     setStep((current) => Math.min(4, current + 1))
   }
 
@@ -319,15 +324,6 @@ export default function CalorieCalculatorPage() {
           item: `${SITE_URL}/calorie-calculator/`,
         },
       ],
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: FAQS.map((faq) => ({
-        '@type': 'Question',
-        name: faq.question,
-        acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-      })),
     },
   ] as const
 

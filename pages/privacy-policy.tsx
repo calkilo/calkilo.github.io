@@ -11,8 +11,8 @@ interface PolicySection {
 
 const PRIVACY_PAGE_TITLE = 'Calkilo Privacy Policy'
 const PRIVACY_PAGE_DESCRIPTION = "Read Calkilo's privacy policy and learn how we collect, use, and protect your data."
-const EFFECTIVE_DATE = 'April 5, 2026'
-const EFFECTIVE_DATE_ISO = '2026-04-05'
+const EFFECTIVE_DATE = 'September 4, 2026'
+const EFFECTIVE_DATE_ISO = '2026-09-04'
 const PRIVACY_PAGE_KEYWORDS = ['calkilo privacy policy', 'nutrition app privacy', 'ai calorie app data policy']
 
 const POLICY_SECTIONS: PolicySection[] = [
@@ -50,6 +50,14 @@ const POLICY_SECTIONS: PolicySection[] = [
       'Any service provider that processes data on our behalf must provide the same or an equal level of privacy and security protection required by our agreements and applicable law.',
       'If you grant permission in the app, AI requests such as food scans, meal edits, and AI chat messages are sent to Calkilo secure AI processing service via api.calkilo.com so we can return your result.',
       'We may disclose information when required by law, to enforce our terms, or to protect the rights, safety, and security of Calkilo and its users.',
+    ],
+  },
+  {
+    title: 'Apple Health and HealthKit',
+    paragraphs: [
+      'If you choose to connect Apple Health, Calkilo requests permission to read your steps, active energy, workouts, weight, body-fat percentage, and lean body mass, and to write dietary energy, protein, carbohydrates, fat, fiber, sugar, and water.',
+      'HealthKit access is optional. HealthKit data read by this integration is processed on your device and is not uploaded to Calkilo servers. Information you separately submit to Calkilo, such as meals or body measurements, is handled as described elsewhere in this policy.',
+      'Calkilo does not use HealthKit data for advertising, marketing, tracking, data mining, or sale to third parties. You can review or revoke Calkilo access at any time in Apple Health or iOS privacy settings.',
     ],
   },
   {

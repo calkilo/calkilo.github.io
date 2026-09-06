@@ -1320,7 +1320,8 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
   line-height: 1.45;
 }
 
-.lp-pricing-card button {
+.lp-pricing-card button,
+.lp-pricing-card > a {
   background: var(--lp-surface-soft);
   border: 1px solid var(--lp-border);
   border-radius: 12px;
@@ -1333,15 +1334,21 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
   min-height: 52px;
   padding: 12px 16px;
   width: 100%;
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  text-decoration: none;
 }
 
-.lp-page--dark .lp-pricing-card button {
+.lp-page--dark .lp-pricing-card button,
+.lp-page--dark .lp-pricing-card > a {
   background: #878488;
   border-color: #d1d5db;
   color: #fff;
 }
 
-.lp-pricing-card.is-highlight button {
+.lp-pricing-card.is-highlight button,
+.lp-pricing-card.is-highlight > a {
   background: linear-gradient(180deg, var(--lp-accent) 0%, var(--lp-accent-dark) 100%);
   border-color: transparent;
   color: #fff;
