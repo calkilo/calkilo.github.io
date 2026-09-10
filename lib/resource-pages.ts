@@ -138,7 +138,7 @@ export const RESOURCE_PAGES: Record<ResourcePageKey, ResourcePageDefinition> = {
           'Photo calorie estimation for faster meal capture',
           'Daily nutrition tracking with macros and progress views',
           'AI-supported meal planning and recipe suggestions',
-          'Integrations with Apple Health, Google Fit, Fitbit, and Samsung Health',
+          'Apple Health integration on iOS (version 1.3.3)',
         ],
       },
       {
@@ -411,7 +411,7 @@ export const RESOURCE_PAGES: Record<ResourcePageKey, ResourcePageDefinition> = {
       },
       {
         title: 'Device connections',
-        body: 'Answers about Apple Health, Google Fit, Fitbit, and Samsung Health support.',
+        body: 'Apple Health support on iOS, version 1.3.3.',
       },
     ],
     sections: [
@@ -459,7 +459,7 @@ export const RESOURCE_PAGES: Record<ResourcePageKey, ResourcePageDefinition> = {
       {
         question: 'Is food photo data private?',
         answer:
-          'Calkilo states that uploads are encrypted and used to deliver analysis and personal recommendations. Privacy-related questions can also be handled through the privacy and contact pages.',
+          'Photos are sent to Calkilo for analysis. Read the privacy policy for data use and deletion requests, or contact support.',
       },
       {
         question: 'Do I need an internet connection to use the app?',
@@ -469,7 +469,7 @@ export const RESOURCE_PAGES: Record<ResourcePageKey, ResourcePageDefinition> = {
       {
         question: 'Does Calkilo work with health and fitness apps?',
         answer:
-          'Yes. The landing page states support for Apple Health, Google Fit, Fitbit, and Samsung Health.',
+          'Apple Health is supported on iOS in version 1.3.3. Check the app for the options available on your device.',
       },
       {
         question: 'Where can I contact support or request account deletion?',
@@ -491,8 +491,7 @@ export const LOCALIZED_RESOURCE_PAGES: Partial<
       description:
         'Calkilo برای دانلود رایگان است و خرید درون‌برنامه‌ای دارد؛ از غذا عکس بگیرید، تخمین کالری و ماکروها را بررسی و اصلاح کنید.',
       heading: 'کالری شمار با عکس رایگان',
-      intro:
-        'در Calkilo کافی است عکس غذای خود را آپلود کنید یا همان لحظه با دوربین بگیرید. هوش مصنوعی غذا و اجزای اصلی آن را تشخیص می‌دهد، سپس کالری، پروتئین، چربی و کربوهیدرات را به صورت تخمینی نمایش می‌دهد. این روش برای رژیم لاغری، برنامه بدنسازی، کنترل وزن و پیگیری تغذیه روزانه مناسب است، چون ثبت غذا را سریع‌تر می‌کند و در عین حال امکان بررسی و اصلاح نتیجه را به شما می‌دهد.',
+      intro: 'در اپ کالکیلو از غذا عکس بگیر؛ تخمین کالری و درشت‌مغذی‌ها را ببین، اندازه وعده و مواد پنهان را بررسی کن و نتیجه را ثبت کن.',
       keywords: [
         'کالری شمار با عکس',
         'کالری شمار با عکس رایگان',
@@ -526,7 +525,7 @@ export const LOCALIZED_RESOURCE_PAGES: Partial<
           ],
           bullets: [
             'ثبت سریع صبحانه، ناهار، شام و میان‌وعده',
-            'تخمین بهتر برای غذاهای خانگی و ترکیبی نسبت به ورود دستی کامل',
+            'مرور اندازه وعده و مواد غذاهای خانگی و ترکیبی',
             'نمایش کالری و ماکروها در یک گزارش قابل استفاده',
             'مناسب برای رژیم لاغری، تناسب اندام و پیگیری تغذیه روزانه',
           ],
@@ -541,7 +540,7 @@ export const LOCALIZED_RESOURCE_PAGES: Partial<
             'عکس غذا را ثبت کنید',
             'تخمین کالری و مواد مغذی را ببینید',
             'اگر اندازه وعده یا مواد غذایی متفاوت بود، نتیجه را بررسی کنید',
-            'وعده را در لاگ روزانه نگه دارید',
+            'وعده را در سابقه روزانه نگه دارید',
           ],
         },
         {
@@ -642,9 +641,9 @@ export const LOCALIZED_RESOURCE_PAGES: Partial<
           ],
           bullets: [
             'تخمین غذا از روی عکس',
-            'ثبت وعده در لاگ روزانه',
+            'ثبت وعده در سابقه روزانه',
             'نمایش ماکروها در کنار کالری',
-            'پشتیبانی از Apple Health، Google Fit، Fitbit و Samsung Health',
+            'اتصال Apple Health در نسخه ۱٫۳٫۳ iOS',
           ],
         },
         {
@@ -916,7 +915,7 @@ export const LOCALIZED_RESOURCE_PAGES: Partial<
             'Analisi del pasto da foto',
             'Revisione del risultato',
             'Diario calorie e macro',
-            'Integrazioni con Apple Health, Google Fit, Fitbit e Samsung Health',
+            'Integrazione Apple Health su iOS (versione 1.3.3)',
           ],
         },
         {

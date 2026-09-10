@@ -1,7 +1,9 @@
 import { type SiteLanguage } from './site-language'
 
 /**
- * Product facts checked against the mobile application source. Customer-facing
+ * Source-level product facts checked against the mobile application source.
+ * Source presence alone does not establish release or a free entitlement.
+ * See reports/ux-2026-09-11/product-evidence.md for versioned release evidence. Customer-facing
  * statements that vary by locale should derive from this file.
  */
 export const VERIFIED_PRODUCT_FACTS = {

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useRef, useState } from 'react'
 import StaticPageLayout from '../components/StaticPageLayout'
 import { SITE_URL } from '../lib/seo'
 import { translateStaticPageText } from '../lib/static-page-translations'
@@ -18,6 +19,8 @@ interface ContactPageProps {
 }
 
 export default function ContactPage({ lang }: ContactPageProps) {
+  const formRef = useRef<HTMLFormElement>(null)
+  const [copyStatus, setCopyStatus] = useState('')
   const language = normalizeSiteLanguage(lang)
   const localizedPath = toLocalizedPath('/contact', language)
   const t = (text: string) => translateStaticPageText(language, text)
@@ -42,13 +45,17 @@ export default function ContactPage({ lang }: ContactPageProps) {
       actionLabel: 'Open account deletion page',
       actionHref: toLocalizedPath('/account-deletion', language),
     },
-    {
-      title: 'Response Window',
-      description: 'We typically respond to support inquiries within one business day.',
-      actionLabel: 'View Privacy Policy',
-      actionHref: toLocalizedPath('/privacy-policy', language),
-    },
+
   ] as const
+  const messageText = () => {
+    if (!formRef.current) return ''
+    const form = new FormData(formRef.current)
+    return ['fullName', 'email', 'topic', 'accountId', 'message'].map(key => `${key}: ${String(form.get(key) || '')}`).join('\n')
+  }
+  const copyText = async (text: string) => {
+    try { await navigator.clipboard.writeText(text); setCopyStatus(language === 'fa' ? 'کپی شد؛ ارسال را در برنامه ایمیل انجام دهید.' : 'Copied. Send it from your email app.') }
+    catch { setCopyStatus(language === 'fa' ? 'کپی خودکار در دسترس نیست؛ متن یا آدرس را انتخاب و دستی کپی کنید.' : 'Select and copy the text or address manually.') }
+  }
   const pageJsonLd = [
     {
       '@context': 'https://schema.org',
@@ -107,7 +114,7 @@ export default function ContactPage({ lang }: ContactPageProps) {
       description={pageDescription}
       path="/contact"
       heading={t('Contact Us')}
-      intro={t('Need help with Calkilo? Send us a message and our support team will get back to you as soon as possible.')}
+      intro={language === 'fa' ? 'برای پرسش درباره حساب، خرید یا ثبت غذا، از طریق ایمیل با پشتیبانی کالکیلو در ارتباط باشید.' : t('Need help with Calkilo? Send us a message and our support team will get back to you as soon as possible.')}
       activeNav="contact"
       lang={language}
       keywords={CONTACT_PAGE_KEYWORDS}
@@ -118,7 +125,13 @@ export default function ContactPage({ lang }: ContactPageProps) {
           <h2>{t('Send a Message')}</h2>
           <p>{t('Share as much detail as possible so we can resolve your issue quickly. For urgent requests, email support@calkilo.com directly.')}</p>
 
-          <form className="lp-contact-form" action="mailto:support@calkilo.com" method="post" encType="text/plain">
+          <p id="contact-email-help">{language === 'fa' ? 'این فرم پیام را از سایت ارسال نمی‌کند. دکمه زیر برنامه ایمیل شما را با متن آماده باز می‌کند؛ ارسال نهایی را همان‌جا انجام دهید. اگر برنامه ایمیل ندارید، آدرس و متن را کپی کنید.' : 'This form opens your email app with a draft. Send the message there, or copy the address and text to your webmail.'}</p>
+          <a href="mailto:support@calkilo.com" dir="ltr">support@calkilo.com</a>
+          <button className="lp-btn fa-secondary" type="button" onClick={() => void copyText('support@calkilo.com')}>{language === 'fa' ? 'کپی آدرس ایمیل' : 'Copy email address'}</button>
+          <form ref={formRef} className="lp-contact-form" aria-describedby="contact-email-help" action="mailto:support@calkilo.com" method="post" encType="text/plain" onSubmit={event => {
+            event.preventDefault()
+            window.location.href = `mailto:support@calkilo.com?subject=${encodeURIComponent('Calkilo support')}&body=${encodeURIComponent(messageText())}`
+          }}>
             <div className="lp-form-row">
               <label>
                 {t('Full Name')}
@@ -157,8 +170,10 @@ export default function ContactPage({ lang }: ContactPageProps) {
             </label>
 
             <button className="lp-contact-submit" type="submit">
-              {t('Send message')}
+              {language === 'fa' ? 'باز کردن برنامه ایمیل' : 'Open email app'}
             </button>
+            <button className="lp-btn fa-secondary" type="button" onClick={() => void copyText(messageText())}>{language === 'fa' ? 'کپی متن پیام' : 'Copy message'}</button>
+            <p role="status" aria-live="polite">{copyStatus}</p>
             <p className="lp-contact-note">{t('Submitting this form opens your email app with pre-filled details for support@calkilo.com.')}</p>
           </form>
         </article>

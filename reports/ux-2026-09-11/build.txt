@@ -1,0 +1,144 @@
+
+> calkilo-landing@1.0.0 prebuild
+> node scripts/generate-site-data.mjs
+
+Offline review build: retaining checked-in blog and discovery files without network refresh.
+
+> calkilo-landing@1.0.0 build
+> next build
+
+▲ Next.js 16.3.3 (Turbopack)
+✓ Running next.config.mjs took 7ms
+
+  Running TypeScript ...
+  Finished TypeScript in 1196ms ...
+  Creating an optimized production build ...
+✓ Compiled successfully in 817ms
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/319) ...
+  Generating static pages using 7 workers (79/319) 
+  Generating static pages using 7 workers (159/319) 
+  Generating static pages using 7 workers (239/319) 
+✓ Generating static pages using 7 workers (319/319) in 247ms
+  Finalizing page optimization ...
+  Exporting using 7 workers (0/34) ...
+  Exporting using 7 workers (8/34) 
+  Exporting using 7 workers (16/34) 
+  Exporting using 7 workers (25/34) 
+
+Route (pages)
+┌ ● /
+├   /_app
+├   /[lang] (314 ms)
+│ ├ ● /nl
+│ ├ ● /ru
+│ ├ ● /zh
+│ └ ● [+3 more paths]
+├   /[lang]/account-deletion
+│ ├ ● /nl/account-deletion
+│ ├ ● /ru/account-deletion
+│ ├ ● /zh/account-deletion
+│ └ ● [+3 more paths]
+├   /[lang]/ai-calorie-tracker
+│ ├ ● /fa/ai-calorie-tracker
+│ └ ● /it/ai-calorie-tracker
+├   /[lang]/blog
+│ ├ ● /nl/blog
+│ ├ ● /ru/blog
+│ ├ ● /zh/blog
+│ └ ● [+3 more paths]
+├   /[lang]/blog/[slug] (4644 ms)
+│ ├ ● /nl/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying-3
+│ ├ ● /nl/blog/simple-daily-habits-to-make-calorie-tracking-stick
+│ ├ ● /nl/blog/hydration-and-nutrition-basics-simple-habits-for-everyday-energy-2
+│ └ ● [+177 more paths]
+├   /[lang]/contact
+│ ├ ● /nl/contact
+│ ├ ● /ru/contact
+│ ├ ● /zh/contact
+│ └ ● [+3 more paths]
+├   /[lang]/dark (583 ms)
+│ ├ ● /nl/dark
+│ ├ ● /ru/dark
+│ ├ ● /zh/dark
+│ └ ● [+3 more paths]
+├   /[lang]/features (450 ms)
+│ ├ ● /nl/features
+│ ├ ● /ru/features
+│ ├ ● /zh/features
+│ └ ● [+3 more paths]
+├   /[lang]/macro-tracker
+│ └ ● /fa/macro-tracker
+├   /[lang]/photo-calorie-calculator
+│ ├ ● /fa/photo-calorie-calculator
+│ └ ● /it/photo-calorie-calculator
+├   /[lang]/pricing
+│ ├ ● /nl/pricing
+│ ├ ● /ru/pricing
+│ ├ ● /zh/pricing
+│ └ ● [+3 more paths]
+├   /[lang]/privacy-policy
+│ ├ ● /nl/privacy-policy
+│ ├ ● /ru/privacy-policy
+│ ├ ● /zh/privacy-policy
+│ └ ● [+3 more paths]
+├   /[lang]/terms-and-conditions
+│ ├ ● /nl/terms-and-conditions
+│ ├ ● /ru/terms-and-conditions
+│ ├ ● /zh/terms-and-conditions
+│ └ ● [+3 more paths]
+├   /[lang]/terms-of-service
+│ ├ ● /nl/terms-of-service
+│ ├ ● /ru/terms-of-service
+│ ├ ● /zh/terms-of-service
+│ └ ● [+3 more paths]
+├ ○ /404
+├ ○ /about
+├ ○ /account-deletion
+├ ○ /ai-calorie-tracker
+├ ○ /ai-meal-planner-for-weight-loss
+├ ○ /best-calorie-counter-for-persian-food
+├ ● /blog
+├   /blog/[slug] (1144 ms)
+│ ├ ● /blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying-3
+│ ├ ● /blog/simple-daily-habits-to-make-calorie-tracking-stick
+│ ├ ● /blog/hydration-and-nutrition-basics-simple-habits-for-everyday-energy-2
+│ └ ● [+29 more paths]
+├ ○ /bmi-calculator
+├ ○ /calkilo-vs-myfitnesspal
+├ ○ /calorie-calculator
+├ ○ /contact
+├ ● /dark
+├ ○ /en/privacy-policy
+├ ○ /en/terms-of-service
+├ ○ /fa/ai-calorie-calculator
+├ ○ /fa/calorie-counter-with-photo
+├   /fa/calories/[foodSlug]
+│ ├ ● /fa/calories/pizza
+│ ├ ● /fa/calories/hamburger
+│ ├ ● /fa/calories/kebab
+│ └ ● [+2 more paths]
+├   /fa/examples/[exampleSlug]
+│ ├ ● /fa/examples/pizza-scan
+│ ├ ● /fa/examples/kebab-scan
+│ └ ● /fa/examples/burger-scan
+├ ○ /fa/food-calorie-scanner
+├ ○ /fa/free-photo-calorie-calculator
+├ ○ /faq
+├ ○ /features
+├ ○ /food-page-analyze
+├ ○ /invite
+├ ○ /it/calcolo-calorie-con-foto-gratis
+├ ○ /it/intelligenza-artificiale-calorie
+├ ○ /macro-tracker
+├ ○ /open-meal
+├ ○ /photo-calorie-calculator
+├ ○ /pricing
+├ ○ /privacy-policy
+├ ○ /terms-and-conditions
+├ ○ /terms-of-service
+└ ○ /uber-eats-nutrition-calculator
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses getStaticProps)
+

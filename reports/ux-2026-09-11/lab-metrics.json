@@ -1,0 +1,1139 @@
+{
+  "environment": {
+    "browser": "152.0.7977.84",
+    "viewport": "390×844",
+    "cpuSlowdown": 4,
+    "latencyMs": 150,
+    "downloadBytesPerSecond": 200000,
+    "server": "local Python HTTP, no compression; cold cache each run; analytics blocked",
+    "field": "not measured",
+    "inp": "not measured"
+  },
+  "runs": [
+    {
+      "route": "/fa/",
+      "run": 1,
+      "lcpMs": 2900,
+      "cls": 0.003043897549031889,
+      "longTasksMs": [],
+      "resources": [
+        {
+          "url": "http://localhost:4173/fonts/vazirmatn/Vazirmatn-Regular.woff2",
+          "type": "link",
+          "bytes": 50984,
+          "bodyBytes": 50684,
+          "durationMs": 1535.6000000014901
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/30utfrsrbmg7d.css",
+          "type": "link",
+          "bytes": 79550,
+          "bodyBytes": 79250,
+          "durationMs": 2225.7999999970198
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/17pznn8noz28k.js",
+          "type": "script",
+          "bytes": 23209,
+          "bodyBytes": 22909,
+          "durationMs": 838.2000000029802
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/0rwghhxuo0iuo.js",
+          "type": "script",
+          "bytes": 32657,
+          "bodyBytes": 32357,
+          "durationMs": 1084.6000000014901
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/turbopack-14hutuadfa0hp.js",
+          "type": "script",
+          "bytes": 10061,
+          "bodyBytes": 9761,
+          "durationMs": 1273.3999999985099
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/252jebodi67kg.js",
+          "type": "script",
+          "bytes": 45903,
+          "bodyBytes": 45603,
+          "durationMs": 1549.7000000029802
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/1ob2jdw2acw-7.js",
+          "type": "script",
+          "bytes": 183664,
+          "bodyBytes": 183364,
+          "durationMs": 3851.60000000149
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2rftlkijffov6.js",
+          "type": "script",
+          "bytes": 10554,
+          "bodyBytes": 10254,
+          "durationMs": 1520
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/1j74p_g1xw03h.js",
+          "type": "script",
+          "bytes": 33924,
+          "bodyBytes": 33624,
+          "durationMs": 2283.7999999970198
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/0r21cctotvcvh.js",
+          "type": "script",
+          "bytes": 126317,
+          "bodyBytes": 126017,
+          "durationMs": 3859
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/turbopack-3lyru-9zlx0rh.js",
+          "type": "script",
+          "bytes": 10126,
+          "bodyBytes": 9826,
+          "durationMs": 2006.1000000014901
+        },
+        {
+          "url": "http://localhost:4173/_next/static/d21IJe0oWqb142TZEjGUL/_buildManifest.js",
+          "type": "script",
+          "bytes": 5330,
+          "bodyBytes": 5030,
+          "durationMs": 2313.89999999851
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2da2mjhij-3me.js",
+          "type": "script",
+          "bytes": 62584,
+          "bodyBytes": 62284,
+          "durationMs": 3004.60000000149
+        },
+        {
+          "url": "http://localhost:4173/_next/static/d21IJe0oWqb142TZEjGUL/_ssgManifest.js",
+          "type": "script",
+          "bytes": 979,
+          "bodyBytes": 679,
+          "durationMs": 2401
+        },
+        {
+          "url": "http://localhost:4173/_next/static/d21IJe0oWqb142TZEjGUL/_clientMiddlewareManifest.js",
+          "type": "script",
+          "bytes": 396,
+          "bodyBytes": 96,
+          "durationMs": 2459.39999999851
+        },
+        {
+          "url": "http://localhost:4173/assets/logo-calkilo.svg",
+          "type": "img",
+          "bytes": 3807,
+          "bodyBytes": 3507,
+          "durationMs": 2549.89999999851
+        },
+        {
+          "url": "http://localhost:4173/fonts/vazirmatn/Vazirmatn-Bold.woff2",
+          "type": "css",
+          "bytes": 51320,
+          "bodyBytes": 51020,
+          "durationMs": 1380.3999999985099
+        },
+        {
+          "url": "http://localhost:4173/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "bodyBytes": 0,
+          "durationMs": 0.6000000014901161
+        },
+        {
+          "url": "http://localhost:4173/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "bodyBytes": 0,
+          "durationMs": 0.5
+        },
+        {
+          "url": "http://localhost:4173/_next/data/d21IJe0oWqb142TZEjGUL/fa.json?lang=fa",
+          "type": "fetch",
+          "bytes": 4154,
+          "bodyBytes": 3854,
+          "durationMs": 201
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2njbzlwwqop94.js",
+          "type": "link",
+          "bytes": 644,
+          "bodyBytes": 344,
+          "durationMs": 169
+        },
+        {
+          "url": "http://localhost:4173/favicon.svg",
+          "type": "other",
+          "bytes": 3464,
+          "bodyBytes": 3164,
+          "durationMs": 205.69999999552965
+        }
+      ],
+      "navigation": [
+        {
+          "bytes": 29137,
+          "bodyBytes": 28837,
+          "ttfbMs": 5.9000000059604645
+        }
+      ]
+    },
+    {
+      "route": "/fa/",
+      "run": 2,
+      "lcpMs": 2608,
+      "cls": 0.003043897549031889,
+      "longTasksMs": [],
+      "resources": [
+        {
+          "url": "http://localhost:4173/fonts/vazirmatn/Vazirmatn-Regular.woff2",
+          "type": "link",
+          "bytes": 50984,
+          "bodyBytes": 50684,
+          "durationMs": 1542.4000000059605
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/17pznn8noz28k.js",
+          "type": "script",
+          "bytes": 23209,
+          "bodyBytes": 22909,
+          "durationMs": 837.5
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/30utfrsrbmg7d.css",
+          "type": "link",
+          "bytes": 79550,
+          "bodyBytes": 79250,
+          "durationMs": 2225.2000000029802
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/0rwghhxuo0iuo.js",
+          "type": "script",
+          "bytes": 32657,
+          "bodyBytes": 32357,
+          "durationMs": 1084.7999999970198
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/turbopack-14hutuadfa0hp.js",
+          "type": "script",
+          "bytes": 10061,
+          "bodyBytes": 9761,
+          "durationMs": 1271.8999999985099
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2rftlkijffov6.js",
+          "type": "script",
+          "bytes": 10554,
+          "bodyBytes": 10254,
+          "durationMs": 1520.0999999940395
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/252jebodi67kg.js",
+          "type": "script",
+          "bytes": 45903,
+          "bodyBytes": 45603,
+          "durationMs": 1549.2999999970198
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/1j74p_g1xw03h.js",
+          "type": "script",
+          "bytes": 33924,
+          "bodyBytes": 33624,
+          "durationMs": 2269.1999999955297
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/1ob2jdw2acw-7.js",
+          "type": "script",
+          "bytes": 183664,
+          "bodyBytes": 183364,
+          "durationMs": 3852.89999999851
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/0r21cctotvcvh.js",
+          "type": "script",
+          "bytes": 126317,
+          "bodyBytes": 126017,
+          "durationMs": 3860.2000000029802
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/turbopack-3lyru-9zlx0rh.js",
+          "type": "script",
+          "bytes": 10126,
+          "bodyBytes": 9826,
+          "durationMs": 2013.2000000029802
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2da2mjhij-3me.js",
+          "type": "script",
+          "bytes": 62584,
+          "bodyBytes": 62284,
+          "durationMs": 3086.10000000149
+        },
+        {
+          "url": "http://localhost:4173/_next/static/d21IJe0oWqb142TZEjGUL/_buildManifest.js",
+          "type": "script",
+          "bytes": 5330,
+          "bodyBytes": 5030,
+          "durationMs": 2314.39999999851
+        },
+        {
+          "url": "http://localhost:4173/_next/static/d21IJe0oWqb142TZEjGUL/_ssgManifest.js",
+          "type": "script",
+          "bytes": 979,
+          "bodyBytes": 679,
+          "durationMs": 2401
+        },
+        {
+          "url": "http://localhost:4173/_next/static/d21IJe0oWqb142TZEjGUL/_clientMiddlewareManifest.js",
+          "type": "script",
+          "bytes": 396,
+          "bodyBytes": 96,
+          "durationMs": 2436.2999999970198
+        },
+        {
+          "url": "http://localhost:4173/assets/logo-calkilo.svg",
+          "type": "img",
+          "bytes": 3807,
+          "bodyBytes": 3507,
+          "durationMs": 2548.2999999970198
+        },
+        {
+          "url": "http://localhost:4173/fonts/vazirmatn/Vazirmatn-Bold.woff2",
+          "type": "css",
+          "bytes": 51320,
+          "bodyBytes": 51020,
+          "durationMs": 1237.6000000014901
+        },
+        {
+          "url": "http://localhost:4173/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "bodyBytes": 0,
+          "durationMs": 0.6000000014901161
+        },
+        {
+          "url": "http://localhost:4173/_next/data/d21IJe0oWqb142TZEjGUL/fa.json?lang=fa",
+          "type": "fetch",
+          "bytes": 4154,
+          "bodyBytes": 3854,
+          "durationMs": 195.89999999850988
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2njbzlwwqop94.js",
+          "type": "link",
+          "bytes": 644,
+          "bodyBytes": 344,
+          "durationMs": 163.80000000447035
+        },
+        {
+          "url": "http://localhost:4173/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "bodyBytes": 0,
+          "durationMs": 0.5999999940395355
+        },
+        {
+          "url": "http://localhost:4173/favicon.svg",
+          "type": "other",
+          "bytes": 3464,
+          "bodyBytes": 3164,
+          "durationMs": 199.79999999701977
+        }
+      ],
+      "navigation": [
+        {
+          "bytes": 29137,
+          "bodyBytes": 28837,
+          "ttfbMs": 3
+        }
+      ]
+    },
+    {
+      "route": "/fa/",
+      "run": 3,
+      "lcpMs": 2640,
+      "cls": 0.003043897549031889,
+      "longTasksMs": [],
+      "resources": [
+        {
+          "url": "http://localhost:4173/fonts/vazirmatn/Vazirmatn-Regular.woff2",
+          "type": "link",
+          "bytes": 50984,
+          "bodyBytes": 50684,
+          "durationMs": 1535.8999999985099
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/30utfrsrbmg7d.css",
+          "type": "link",
+          "bytes": 79550,
+          "bodyBytes": 79250,
+          "durationMs": 2194.6999999955297
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/17pznn8noz28k.js",
+          "type": "script",
+          "bytes": 23209,
+          "bodyBytes": 22909,
+          "durationMs": 830.2999999970198
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/0rwghhxuo0iuo.js",
+          "type": "script",
+          "bytes": 32657,
+          "bodyBytes": 32357,
+          "durationMs": 1084.5
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/1ob2jdw2acw-7.js",
+          "type": "script",
+          "bytes": 183664,
+          "bodyBytes": 183364,
+          "durationMs": 3843.9000000059605
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/252jebodi67kg.js",
+          "type": "script",
+          "bytes": 45903,
+          "bodyBytes": 45603,
+          "durationMs": 1551.7000000029802
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/turbopack-14hutuadfa0hp.js",
+          "type": "script",
+          "bytes": 10061,
+          "bodyBytes": 9761,
+          "durationMs": 1259.2000000029802
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2rftlkijffov6.js",
+          "type": "script",
+          "bytes": 10554,
+          "bodyBytes": 10254,
+          "durationMs": 1514.5
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/turbopack-3lyru-9zlx0rh.js",
+          "type": "script",
+          "bytes": 10126,
+          "bodyBytes": 9826,
+          "durationMs": 2009.7000000029802
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/1j74p_g1xw03h.js",
+          "type": "script",
+          "bytes": 33924,
+          "bodyBytes": 33624,
+          "durationMs": 2257.7000000029802
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2da2mjhij-3me.js",
+          "type": "script",
+          "bytes": 62584,
+          "bodyBytes": 62284,
+          "durationMs": 3073.9000000059605
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/0r21cctotvcvh.js",
+          "type": "script",
+          "bytes": 126317,
+          "bodyBytes": 126017,
+          "durationMs": 3847.4000000059605
+        },
+        {
+          "url": "http://localhost:4173/_next/static/d21IJe0oWqb142TZEjGUL/_buildManifest.js",
+          "type": "script",
+          "bytes": 5330,
+          "bodyBytes": 5030,
+          "durationMs": 2309.60000000149
+        },
+        {
+          "url": "http://localhost:4173/_next/static/d21IJe0oWqb142TZEjGUL/_ssgManifest.js",
+          "type": "script",
+          "bytes": 979,
+          "bodyBytes": 679,
+          "durationMs": 2368.3000000044703
+        },
+        {
+          "url": "http://localhost:4173/_next/static/d21IJe0oWqb142TZEjGUL/_clientMiddlewareManifest.js",
+          "type": "script",
+          "bytes": 396,
+          "bodyBytes": 96,
+          "durationMs": 2435.7000000029802
+        },
+        {
+          "url": "http://localhost:4173/assets/logo-calkilo.svg",
+          "type": "img",
+          "bytes": 3807,
+          "bodyBytes": 3507,
+          "durationMs": 2548.10000000149
+        },
+        {
+          "url": "http://localhost:4173/fonts/vazirmatn/Vazirmatn-Bold.woff2",
+          "type": "css",
+          "bytes": 51320,
+          "bodyBytes": 51020,
+          "durationMs": 1267.5
+        },
+        {
+          "url": "http://localhost:4173/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "bodyBytes": 0,
+          "durationMs": 0.5
+        },
+        {
+          "url": "http://localhost:4173/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "bodyBytes": 0,
+          "durationMs": 0.30000000447034836
+        },
+        {
+          "url": "http://localhost:4173/_next/data/d21IJe0oWqb142TZEjGUL/fa.json?lang=fa",
+          "type": "fetch",
+          "bytes": 4154,
+          "bodyBytes": 3854,
+          "durationMs": 202.5
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2njbzlwwqop94.js",
+          "type": "link",
+          "bytes": 644,
+          "bodyBytes": 344,
+          "durationMs": 171.5
+        },
+        {
+          "url": "http://localhost:4173/favicon.svg",
+          "type": "other",
+          "bytes": 3464,
+          "bodyBytes": 3164,
+          "durationMs": 207
+        }
+      ],
+      "navigation": [
+        {
+          "bytes": 29137,
+          "bodyBytes": 28837,
+          "ttfbMs": 13.299999997019768
+        }
+      ]
+    },
+    {
+      "route": "/fa/photo-calorie-calculator/",
+      "run": 1,
+      "lcpMs": 2624,
+      "cls": 0.0023998666616164713,
+      "longTasksMs": [],
+      "resources": [
+        {
+          "url": "http://localhost:4173/fonts/vazirmatn/Vazirmatn-Regular.woff2",
+          "type": "link",
+          "bytes": 50984,
+          "bodyBytes": 50684,
+          "durationMs": 1556.5
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/30utfrsrbmg7d.css",
+          "type": "link",
+          "bytes": 79550,
+          "bodyBytes": 79250,
+          "durationMs": 2292.8000000044703
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/17pznn8noz28k.js",
+          "type": "script",
+          "bytes": 23209,
+          "bodyBytes": 22909,
+          "durationMs": 828.5
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/0rwghhxuo0iuo.js",
+          "type": "script",
+          "bytes": 32657,
+          "bodyBytes": 32357,
+          "durationMs": 1084.6000000014901
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/turbopack-14hutuadfa0hp.js",
+          "type": "script",
+          "bytes": 10061,
+          "bodyBytes": 9761,
+          "durationMs": 1263.3999999985099
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/252jebodi67kg.js",
+          "type": "script",
+          "bytes": 45903,
+          "bodyBytes": 45603,
+          "durationMs": 1541
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/1ob2jdw2acw-7.js",
+          "type": "script",
+          "bytes": 183664,
+          "bodyBytes": 183364,
+          "durationMs": 3872.7999999970198
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/25yhg6aioocog.js",
+          "type": "script",
+          "bytes": 28024,
+          "bodyBytes": 27724,
+          "durationMs": 1984
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2axonca90bvcw.js",
+          "type": "script",
+          "bytes": 48925,
+          "bodyBytes": 48625,
+          "durationMs": 2703.7000000029802
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/turbopack-2060v3y7ljkt4.js",
+          "type": "script",
+          "bytes": 10126,
+          "bodyBytes": 9826,
+          "durationMs": 2425.89999999851
+        },
+        {
+          "url": "http://localhost:4173/_next/static/d21IJe0oWqb142TZEjGUL/_buildManifest.js",
+          "type": "script",
+          "bytes": 5330,
+          "bodyBytes": 5030,
+          "durationMs": 2590.60000000149
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/1j74p_g1xw03h.js",
+          "type": "script",
+          "bytes": 33924,
+          "bodyBytes": 33624,
+          "durationMs": 2642.7999999970198
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/3dd6l31dqn9-b.js",
+          "type": "script",
+          "bytes": 161453,
+          "bodyBytes": 161153,
+          "durationMs": 4053.60000000149
+        },
+        {
+          "url": "http://localhost:4173/_next/static/d21IJe0oWqb142TZEjGUL/_ssgManifest.js",
+          "type": "script",
+          "bytes": 979,
+          "bodyBytes": 679,
+          "durationMs": 2830.7999999970198
+        },
+        {
+          "url": "http://localhost:4173/_next/static/d21IJe0oWqb142TZEjGUL/_clientMiddlewareManifest.js",
+          "type": "script",
+          "bytes": 396,
+          "bodyBytes": 96,
+          "durationMs": 2883
+        },
+        {
+          "url": "http://localhost:4173/assets/logo-calkilo.svg",
+          "type": "img",
+          "bytes": 3807,
+          "bodyBytes": 3507,
+          "durationMs": 2818.89999999851
+        },
+        {
+          "url": "http://localhost:4173/fonts/vazirmatn/Vazirmatn-Bold.woff2",
+          "type": "css",
+          "bytes": 51320,
+          "bodyBytes": 51020,
+          "durationMs": 1148.1000000014901
+        },
+        {
+          "url": "http://localhost:4173/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "bodyBytes": 0,
+          "durationMs": 0.6999999955296516
+        },
+        {
+          "url": "http://localhost:4173/_next/data/d21IJe0oWqb142TZEjGUL/fa.json?lang=fa",
+          "type": "fetch",
+          "bytes": 4154,
+          "bodyBytes": 3854,
+          "durationMs": 206.89999999850988
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2njbzlwwqop94.js",
+          "type": "link",
+          "bytes": 644,
+          "bodyBytes": 344,
+          "durationMs": 168.60000000149012
+        },
+        {
+          "url": "http://localhost:4173/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "bodyBytes": 0,
+          "durationMs": 0.6000000014901161
+        },
+        {
+          "url": "http://localhost:4173/favicon.svg",
+          "type": "other",
+          "bytes": 3464,
+          "bodyBytes": 3164,
+          "durationMs": 208.69999999552965
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2njbzlwwqop94.js",
+          "type": "script",
+          "bytes": 644,
+          "bodyBytes": 344,
+          "durationMs": 177
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2rftlkijffov6.js",
+          "type": "script",
+          "bytes": 10554,
+          "bodyBytes": 10254,
+          "durationMs": 340.69999999552965
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/0r21cctotvcvh.js",
+          "type": "script",
+          "bytes": 126317,
+          "bodyBytes": 126017,
+          "durationMs": 1211.5999999940395
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2da2mjhij-3me.js",
+          "type": "script",
+          "bytes": 62584,
+          "bodyBytes": 62284,
+          "durationMs": 887.3000000044703
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/turbopack-3lyru-9zlx0rh.js",
+          "type": "script",
+          "bytes": 10126,
+          "bodyBytes": 9826,
+          "durationMs": 355.8999999985099
+        }
+      ],
+      "navigation": [
+        {
+          "bytes": 27607,
+          "bodyBytes": 27307,
+          "ttfbMs": 3
+        }
+      ]
+    },
+    {
+      "route": "/fa/photo-calorie-calculator/",
+      "run": 2,
+      "lcpMs": 2800,
+      "cls": 0.0023998666616164713,
+      "longTasksMs": [],
+      "resources": [
+        {
+          "url": "http://localhost:4173/fonts/vazirmatn/Vazirmatn-Regular.woff2",
+          "type": "link",
+          "bytes": 50984,
+          "bodyBytes": 50684,
+          "durationMs": 1570.1000000014901
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/30utfrsrbmg7d.css",
+          "type": "link",
+          "bytes": 79550,
+          "bodyBytes": 79250,
+          "durationMs": 2295.7000000029802
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/17pznn8noz28k.js",
+          "type": "script",
+          "bytes": 23209,
+          "bodyBytes": 22909,
+          "durationMs": 833.3999999985099
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/0rwghhxuo0iuo.js",
+          "type": "script",
+          "bytes": 32657,
+          "bodyBytes": 32357,
+          "durationMs": 1080.2999999970198
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/turbopack-14hutuadfa0hp.js",
+          "type": "script",
+          "bytes": 10061,
+          "bodyBytes": 9761,
+          "durationMs": 1267.3999999985099
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/252jebodi67kg.js",
+          "type": "script",
+          "bytes": 45903,
+          "bodyBytes": 45603,
+          "durationMs": 1538.5
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/1ob2jdw2acw-7.js",
+          "type": "script",
+          "bytes": 183664,
+          "bodyBytes": 183364,
+          "durationMs": 3884.7999999970198
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/25yhg6aioocog.js",
+          "type": "script",
+          "bytes": 28024,
+          "bodyBytes": 27724,
+          "durationMs": 1979.5
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2axonca90bvcw.js",
+          "type": "script",
+          "bytes": 48925,
+          "bodyBytes": 48625,
+          "durationMs": 2693.10000000149
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/3dd6l31dqn9-b.js",
+          "type": "script",
+          "bytes": 161453,
+          "bodyBytes": 161153,
+          "durationMs": 4057.3000000044703
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/turbopack-2060v3y7ljkt4.js",
+          "type": "script",
+          "bytes": 10126,
+          "bodyBytes": 9826,
+          "durationMs": 2414.2999999970198
+        },
+        {
+          "url": "http://localhost:4173/_next/static/d21IJe0oWqb142TZEjGUL/_buildManifest.js",
+          "type": "script",
+          "bytes": 5330,
+          "bodyBytes": 5030,
+          "durationMs": 2594.39999999851
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/1j74p_g1xw03h.js",
+          "type": "script",
+          "bytes": 33924,
+          "bodyBytes": 33624,
+          "durationMs": 2647.5
+        },
+        {
+          "url": "http://localhost:4173/_next/static/d21IJe0oWqb142TZEjGUL/_ssgManifest.js",
+          "type": "script",
+          "bytes": 979,
+          "bodyBytes": 679,
+          "durationMs": 2608.8000000044703
+        },
+        {
+          "url": "http://localhost:4173/_next/static/d21IJe0oWqb142TZEjGUL/_clientMiddlewareManifest.js",
+          "type": "script",
+          "bytes": 396,
+          "bodyBytes": 96,
+          "durationMs": 2833.7000000029802
+        },
+        {
+          "url": "http://localhost:4173/assets/logo-calkilo.svg",
+          "type": "img",
+          "bytes": 3807,
+          "bodyBytes": 3507,
+          "durationMs": 2853.60000000149
+        },
+        {
+          "url": "http://localhost:4173/fonts/vazirmatn/Vazirmatn-Bold.woff2",
+          "type": "css",
+          "bytes": 51320,
+          "bodyBytes": 51020,
+          "durationMs": 1238.1000000014901
+        },
+        {
+          "url": "http://localhost:4173/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "bodyBytes": 0,
+          "durationMs": 0.6000000014901161
+        },
+        {
+          "url": "http://localhost:4173/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "bodyBytes": 0,
+          "durationMs": 0.5
+        },
+        {
+          "url": "http://localhost:4173/_next/data/d21IJe0oWqb142TZEjGUL/fa.json?lang=fa",
+          "type": "fetch",
+          "bytes": 4154,
+          "bodyBytes": 3854,
+          "durationMs": 206.60000000149012
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2njbzlwwqop94.js",
+          "type": "link",
+          "bytes": 644,
+          "bodyBytes": 344,
+          "durationMs": 166.60000000149012
+        },
+        {
+          "url": "http://localhost:4173/favicon.svg",
+          "type": "other",
+          "bytes": 3464,
+          "bodyBytes": 3164,
+          "durationMs": 210.79999999701977
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2njbzlwwqop94.js",
+          "type": "script",
+          "bytes": 644,
+          "bodyBytes": 344,
+          "durationMs": 176.29999999701977
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2rftlkijffov6.js",
+          "type": "script",
+          "bytes": 10554,
+          "bodyBytes": 10254,
+          "durationMs": 355.90000000596046
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2da2mjhij-3me.js",
+          "type": "script",
+          "bytes": 62584,
+          "bodyBytes": 62284,
+          "durationMs": 888.3000000044703
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/0r21cctotvcvh.js",
+          "type": "script",
+          "bytes": 126317,
+          "bodyBytes": 126017,
+          "durationMs": 1212
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/turbopack-3lyru-9zlx0rh.js",
+          "type": "script",
+          "bytes": 10126,
+          "bodyBytes": 9826,
+          "durationMs": 364.5
+        }
+      ],
+      "navigation": [
+        {
+          "bytes": 27607,
+          "bodyBytes": 27307,
+          "ttfbMs": 7.4000000059604645
+        }
+      ]
+    },
+    {
+      "route": "/fa/photo-calorie-calculator/",
+      "run": 3,
+      "lcpMs": 2760,
+      "cls": 0.0023998666616164713,
+      "longTasksMs": [],
+      "resources": [
+        {
+          "url": "http://localhost:4173/fonts/vazirmatn/Vazirmatn-Regular.woff2",
+          "type": "link",
+          "bytes": 50984,
+          "bodyBytes": 50684,
+          "durationMs": 1558.3999999985099
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/30utfrsrbmg7d.css",
+          "type": "link",
+          "bytes": 79550,
+          "bodyBytes": 79250,
+          "durationMs": 2293.10000000149
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/17pznn8noz28k.js",
+          "type": "script",
+          "bytes": 23209,
+          "bodyBytes": 22909,
+          "durationMs": 829.6999999955297
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/0rwghhxuo0iuo.js",
+          "type": "script",
+          "bytes": 32657,
+          "bodyBytes": 32357,
+          "durationMs": 1084.8999999985099
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/252jebodi67kg.js",
+          "type": "script",
+          "bytes": 45903,
+          "bodyBytes": 45603,
+          "durationMs": 1534.1999999955297
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/1ob2jdw2acw-7.js",
+          "type": "script",
+          "bytes": 183664,
+          "bodyBytes": 183364,
+          "durationMs": 3881.6999999955297
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/turbopack-14hutuadfa0hp.js",
+          "type": "script",
+          "bytes": 10061,
+          "bodyBytes": 9761,
+          "durationMs": 1264.8999999985099
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/25yhg6aioocog.js",
+          "type": "script",
+          "bytes": 28024,
+          "bodyBytes": 27724,
+          "durationMs": 1983.5
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/1j74p_g1xw03h.js",
+          "type": "script",
+          "bytes": 33924,
+          "bodyBytes": 33624,
+          "durationMs": 2644.89999999851
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2axonca90bvcw.js",
+          "type": "script",
+          "bytes": 48925,
+          "bodyBytes": 48625,
+          "durationMs": 2690
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/3dd6l31dqn9-b.js",
+          "type": "script",
+          "bytes": 161453,
+          "bodyBytes": 161153,
+          "durationMs": 4055.0999999940395
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/turbopack-2060v3y7ljkt4.js",
+          "type": "script",
+          "bytes": 10126,
+          "bodyBytes": 9826,
+          "durationMs": 2418.3000000044703
+        },
+        {
+          "url": "http://localhost:4173/_next/static/d21IJe0oWqb142TZEjGUL/_buildManifest.js",
+          "type": "script",
+          "bytes": 5330,
+          "bodyBytes": 5030,
+          "durationMs": 2590.89999999851
+        },
+        {
+          "url": "http://localhost:4173/_next/static/d21IJe0oWqb142TZEjGUL/_ssgManifest.js",
+          "type": "script",
+          "bytes": 979,
+          "bodyBytes": 679,
+          "durationMs": 2613.2999999970198
+        },
+        {
+          "url": "http://localhost:4173/_next/static/d21IJe0oWqb142TZEjGUL/_clientMiddlewareManifest.js",
+          "type": "script",
+          "bytes": 396,
+          "bodyBytes": 96,
+          "durationMs": 2830.60000000149
+        },
+        {
+          "url": "http://localhost:4173/assets/logo-calkilo.svg",
+          "type": "img",
+          "bytes": 3807,
+          "bodyBytes": 3507,
+          "durationMs": 2856.2000000029802
+        },
+        {
+          "url": "http://localhost:4173/fonts/vazirmatn/Vazirmatn-Bold.woff2",
+          "type": "css",
+          "bytes": 51320,
+          "bodyBytes": 51020,
+          "durationMs": 1244.7000000029802
+        },
+        {
+          "url": "http://localhost:4173/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "bodyBytes": 0,
+          "durationMs": 11.299999997019768
+        },
+        {
+          "url": "http://localhost:4173/_next/data/d21IJe0oWqb142TZEjGUL/fa.json?lang=fa",
+          "type": "fetch",
+          "bytes": 4154,
+          "bodyBytes": 3854,
+          "durationMs": 209.60000000149012
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2njbzlwwqop94.js",
+          "type": "link",
+          "bytes": 644,
+          "bodyBytes": 344,
+          "durationMs": 169.70000000298023
+        },
+        {
+          "url": "http://localhost:4173/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "bodyBytes": 0,
+          "durationMs": 0.5
+        },
+        {
+          "url": "http://localhost:4173/favicon.svg",
+          "type": "other",
+          "bytes": 3464,
+          "bodyBytes": 3164,
+          "durationMs": 209.10000000149012
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2njbzlwwqop94.js",
+          "type": "script",
+          "bytes": 644,
+          "bodyBytes": 344,
+          "durationMs": 176.39999999850988
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2rftlkijffov6.js",
+          "type": "script",
+          "bytes": 10554,
+          "bodyBytes": 10254,
+          "durationMs": 342.19999999552965
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/0r21cctotvcvh.js",
+          "type": "script",
+          "bytes": 126317,
+          "bodyBytes": 126017,
+          "durationMs": 1212.7000000029802
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/2da2mjhij-3me.js",
+          "type": "script",
+          "bytes": 62584,
+          "bodyBytes": 62284,
+          "durationMs": 890.1000000014901
+        },
+        {
+          "url": "http://localhost:4173/_next/static/chunks/turbopack-3lyru-9zlx0rh.js",
+          "type": "script",
+          "bytes": 10126,
+          "bodyBytes": 9826,
+          "durationMs": 363.8999999985099
+        }
+      ],
+      "navigation": [
+        {
+          "bytes": 27607,
+          "bodyBytes": 27307,
+          "ttfbMs": 3.2999999970197678
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "‏‏‏‏کل کیلو - لاغری با هوش مصنوعی",
+  "description": "‏‏‏‏کل کیلو | کالری‌شمار و تناسب اندام با هوش مصنوعی ‏‏‏‏کل کیلو یک اپلیکیشن هوشمند محاسبه کالری و تناسب اندام است که با کمک هوش مصنوعی به شما…",
+  "FileFormat": "application/vnd.android.package-archive",
+  "operatingSystem": "ANDROID",
+  "applicationCategory": "HealthApplication",
+  "FileSize": 32372,
+  "softwareVersion": " ۱.۳.۳",
+  "keywords": "",
+  "url": "https://myket.ir/app/com.calkilo.mobile",
+  "downloadUrl": "https://myket.ir/dl?packageName=com.calkilo.mobile",
+  "installUrl": "myket://download/com.calkilo.mobile",
+  "image": "https://myket.ir/asset-files/icons/large/e3d785d5-250a-41bb-aa01-f585420d6d7f.png",
+  "datePublished": "2026-05-24T11:36:38Z",
+  "dateModified": "2026-08-20T07:52:30Z",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": 4.0,
+    "ratingCount": 12,
+    "bestRating": 5,
+    "worstRating": 1
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "IRR"
+  }
+}

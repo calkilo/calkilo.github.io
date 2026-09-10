@@ -91,7 +91,7 @@ export default function StaticPageLayout({
         { label: t('Terms of Service'), href: toLocalizedPath('/terms-of-service', language) },
         { label: t('Delete Account & Data'), href: toLocalizedPath('/account-deletion', language) },
         { label: t('Terms & Conditions'), href: toLocalizedPath('/terms-and-conditions', language) },
-        { label: t('FAQ'), href: '/faq/' },
+        { label: t('FAQ'), href: language === 'fa' ? '/fa/#faq' : '/faq/' },
       ],
     },
     {

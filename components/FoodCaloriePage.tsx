@@ -14,7 +14,7 @@ interface FoodCaloriePageProps {
 }
 
 const language: SiteLanguage = 'fa'
-const macroFormatter = new Intl.NumberFormat('fa-IR', { maximumFractionDigits: 1 })
+const macroFormatter = new Intl.NumberFormat('fa-IR', { maximumFractionDigits: 2 })
 const androidStoreLinks = getAndroidStoreLinks(language)
 const storeSameAs = getStoreSameAs(language)
 
@@ -23,18 +23,19 @@ function formatMacro(value: number) {
 }
 
 export default function FoodCaloriePage({ food }: FoodCaloriePageProps) {
+  const nutrition = food.nutrition
   const path = `/fa/calories/${food.slug}/`
   const title = `کالری ${food.nameFa} چقدر است؟ | ارزش غذایی و محاسبه با عکس`
-  const description = `کالری ${food.nameFa} در هر 100 گرم و هر وعده را ببینید؛ پروتئین، چربی و کربوهیدرات را بررسی کنید و برای تخمین دقیق‌تر از غذای خود در Calkilo عکس بگیرید.`
+  const description = `کالری ${food.nameFa} در هر 100 گرم و هر وعده را ببینید؛ پروتئین، چربی و کربوهیدرات را بررسی کنید و برای بررسی وعده، از غذای خود در اپ کالکیلو عکس بگیرید.`
   const heading = `کالری ${food.nameFa} چقدر است؟`
   const faqItems = [
     {
       question: `کالری ${food.nameFa} در هر 100 گرم چقدر است؟`,
-      answer: `به طور تخمینی، هر 100 گرم ${food.nameFa} حدود ${food.caloriesPer100g} کالری دارد. مقدار واقعی می‌تواند با روش پخت، اندازه وعده و مواد اضافه تغییر کند.`,
+      answer: nutrition ? `در نمونه مرجع، هر ۱۰۰ گرم حدود ${formatMacro(nutrition.caloriesPer100g)} کیلوکالری دارد. این مقدار به ترکیب مشخص منبع مربوط است.` : 'کالری کباب به نوع گوشت، چربی و وزن پس از پخت بستگی دارد. بدون دستور و وزن مشخص نمی‌توان عدد قابل اتکایی برای همه کباب‌ها داد.',
     },
     {
       question: `یک وعده ${food.nameFa} چند کالری دارد؟`,
-      answer: `یک وعده معمولی شامل ${food.servingLabel} حدود ${food.servingCalories} کالری دارد. برای وعده‌های بزرگ‌تر یا همراه با سس و کنارغذا، عدد نهایی بالاتر می‌رود.`,
+      answer: nutrition ? `نمونه ${formatMacro(nutrition.servingGrams)} گرمیِ منبع، ${formatMacro(nutrition.servingCalories)} کیلوکالری دارد. سس و کنارغذا جدا حساب می‌شوند.` : 'گوشت، نان یا برنج، کره و کنارغذا را با مقدار مصرفی مشخص کنید. وزن خام و پخته قابل جایگزینی نیستند.',
     },
     {
       question: `آیا Calkilo کالری ${food.nameFa} را از روی عکس تخمین می‌زند؟`,
@@ -50,20 +51,6 @@ export default function FoodCaloriePage({ food }: FoodCaloriePageProps) {
       url: SITE_URL,
       logo: `${SITE_URL}/assets/logo.png`,
       sameAs: storeSameAs,
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'WebApplication',
-      name: 'Calkilo',
-      applicationCategory: 'HealthApplication',
-      operatingSystem: 'iOS, Android',
-      url: `${SITE_URL}${path}`,
-      description,
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'USD',
-      },
     },
     {
       '@context': 'https://schema.org',
@@ -173,7 +160,19 @@ export default function FoodCaloriePage({ food }: FoodCaloriePageProps) {
             <div className="lp-static-hero-inner">
               <p className="lp-kicker">راهنمای کالری غذا</p>
               <h1>{heading}</h1>
-              <p>{food.intro}</p>
+              {nutrition ? <section className="lp-food-answer" aria-label="ارزش غذایی و منبع">
+                <p className="lp-food-source">{nutrition.preparation}</p>
+                <div className="lp-food-stat-grid">
+                  <article><span>در ۱۰۰ گرم</span><strong>{formatMacro(nutrition.caloriesPer100g)}</strong><small>کیلوکالری</small></article>
+                  <article><span>نمونه {formatMacro(nutrition.servingGrams)} گرمی</span><strong>{formatMacro(nutrition.servingCalories)}</strong><small>کیلوکالری</small></article>
+                  <article><span>پروتئین</span><strong>{formatMacro(nutrition.protein)} گرم</strong><small>در نمونه مشخص‌شده</small></article>
+                  <article><span>چربی</span><strong>{formatMacro(nutrition.fat)} گرم</strong><small>در نمونه مشخص‌شده</small></article>
+                  <article><span>کربوهیدرات</span><strong>{formatMacro(nutrition.carbs)} گرم</strong><small>در نمونه مشخص‌شده</small></article>
+                </div>
+                <p className="lp-food-source"><a href={nutrition.sourceUrl} target="_blank" rel="noreferrer">{nutrition.sourceLabel}</a>{nutrition.mirrorUrl && <> · <a href={nutrition.mirrorUrl} target="_blank" rel="noreferrer">جدول قابل خواندن منبع</a></>}<br />{nutrition.basisNote}</p>
+                <p className="fa-download-note">انرژی از مقدار گزارش‌شده منبع آمده است؛ محاسبه ساده ۴/۴/۹ با ماکروهای گرد‌شده ممکن است دقیقاً همان نتیجه را ندهد. این نمونه، اندازه‌گیری غذای شما نیست.</p>
+              </section> : <p className="lp-food-source">برای کباب عدد ثابتی وجود ندارد. نوع گوشت و درصد چربی، وزن پس از پخت و مقدار نان، برنج یا کره را مشخص کنید. وزن یک سیخ به‌تنهایی دستور غذا را مشخص نمی‌کند.</p>}
+              <p>برای بررسی غذای خود، عکس را داخل اپ تحلیل کنید. دانلود رایگان؛ دارای خرید درون‌برنامه‌ای.</p>
               <div className="lp-resource-actions">
                 {androidStoreLinks.map((store, index) => (
                   <a
@@ -196,39 +195,10 @@ export default function FoodCaloriePage({ food }: FoodCaloriePageProps) {
 
         <section className="lp-static-content">
           <div className="lp-container lp-static-content-wrap">
-            <section className="lp-static-card">
-              <h2>ارزش غذایی تخمینی {food.nameFa}</h2>
-              <div className="lp-food-stat-grid" aria-label={`ارزش غذایی ${food.nameFa}`}>
-                <article>
-                  <span>کالری در 100 گرم</span>
-                  <strong>{food.caloriesPer100g}</strong>
-                  <small>کیلوکالری</small>
-                </article>
-                <article>
-                  <span>کالری هر وعده</span>
-                  <strong>{food.servingCalories}</strong>
-                  <small>{food.servingLabel}</small>
-                </article>
-                <article>
-                  <span>پروتئین</span>
-                  <strong>{formatMacro(food.protein)} گرم</strong>
-                  <small>در هر وعده</small>
-                </article>
-                <article>
-                  <span>چربی</span>
-                  <strong>{formatMacro(food.fat)} گرم</strong>
-                  <small>در هر وعده</small>
-                </article>
-                <article>
-                  <span>کربوهیدرات</span>
-                  <strong>{formatMacro(food.carbs)} گرم</strong>
-                  <small>در هر وعده</small>
-                </article>
-              </div>
-            </section>
 
             <section className="lp-static-card">
               <h2>چرا کالری {food.nameFa} ثابت نیست؟</h2>
+              <p>{food.intro}</p>
               {food.notes.map((note) => (
                 <p key={note}>{note}</p>
               ))}
@@ -241,10 +211,10 @@ export default function FoodCaloriePage({ food }: FoodCaloriePageProps) {
 
             <section className="lp-static-card lp-food-cta-card">
               <div>
-                <h2>برای محاسبه دقیق‌تر، از غذای خود عکس بگیرید.</h2>
+                <h2>از غذای خود عکس بگیرید و نتیجه را بررسی کنید.</h2>
                 <p>
-                  اعداد این صفحه میانگین آموزشی هستند. اندازه واقعی وعده، روش پخت و مواد اضافه می‌تواند نتیجه را
-                  تغییر دهد. برای تخمین دقیق‌تر، عکس {food.nameFa} خود را در Calkilo آپلود کنید.
+                  اعداد مرجع به غذا و وزن مشخص منبع مربوط‌اند. اندازه واقعی وعده، روش پخت و مواد اضافه می‌تواند نتیجه را
+                  تغییر دهد. برای تخمین و بررسی وعده، عکس {food.nameFa} خود را در اپ کالکیلو تحلیل کنید.
                 </p>
               </div>
               <div className="lp-resource-actions lp-food-cta-actions">

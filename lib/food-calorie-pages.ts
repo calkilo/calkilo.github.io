@@ -1,12 +1,19 @@
 export interface FoodCaloriePageData {
   slug: string
   nameFa: string
-  caloriesPer100g: number
-  servingLabel: string
-  servingCalories: number
-  protein: number
-  fat: number
-  carbs: number
+  nutrition?: {
+    caloriesPer100g: number
+    servingGrams: number
+    servingCalories: number
+    protein: number
+    fat: number
+    carbs: number
+    preparation: string
+    sourceLabel: string
+    sourceUrl: string
+    mirrorUrl?: string
+    basisNote: string
+  }
   intro: string
   notes: string[]
   tips: string[]
@@ -16,12 +23,19 @@ export const FOOD_CALORIE_PAGES: FoodCaloriePageData[] = [
   {
     slug: 'pizza',
     nameFa: 'پیتزا',
-    caloriesPer100g: 266,
-    servingLabel: 'دو برش متوسط، حدود 180 گرم',
-    servingCalories: 480,
-    protein: 20,
-    fat: 18,
-    carbs: 54,
+    nutrition: {
+      caloriesPer100g: 266,
+      servingGrams: 100,
+      servingCalories: 266,
+      protein: 11.4,
+      fat: 9.7,
+      carbs: 33.3,
+      preparation: 'پیتزای پنیر با خمیر معمولی، پخته و آماده مصرف؛ نمونه پیتزای زنجیره‌ای ۱۴ اینچی. بدون گوشت و تاپینگ اضافه.',
+      sourceLabel: 'USDA SR Legacy، شناسه 173292',
+      sourceUrl: 'https://fdc.nal.usda.gov/food-details/173292/nutrients',
+      mirrorUrl: 'https://tools.myfooddata.com/nutrition-facts/173292/100g',
+      basisNote: 'تمام اعداد برای ۱۰۰ گرم از همان پیتزای مرجع هستند؛ اندازه یک برش در رستوران‌های مختلف یکسان نیست.'
+    },
     intro:
       'کالری پیتزا به نوع خمیر، مقدار پنیر، گوشت، سس و اندازه برش بستگی دارد. پیتزای پنیر ساده معمولاً کالری کمتری از پیتزای گوشت، پپرونی یا پیتزای پر از پنیر اضافه دارد.',
     notes: [
@@ -37,12 +51,18 @@ export const FOOD_CALORIE_PAGES: FoodCaloriePageData[] = [
   {
     slug: 'hamburger',
     nameFa: 'همبرگر',
-    caloriesPer100g: 295,
-    servingLabel: 'یک ساندویچ متوسط، حدود 250 گرم',
-    servingCalories: 550,
-    protein: 28,
-    fat: 25,
-    carbs: 50,
+    nutrition: {
+      caloriesPer100g: 306,
+      servingGrams: 90,
+      servingCalories: 275,
+      protein: 12,
+      fat: 12,
+      carbs: 31,
+      preparation: 'ساندویچ همبرگر ساده با یک پَتی پخته و نان؛ نمونه مرجع ۹۰ گرمی، بدون پنیر و مخلفات اضافه. این وزن، وزن گوشت تنها نیست.',
+      sourceLabel: 'Health Canada، جدول ۲۰۰۸؛ Hamburger, single patty, plain',
+      sourceUrl: 'https://www.canada.ca/en/health-canada/services/food-nutrition/healthy-eating/nutrient-data/nutrient-value-some-common-foods-2008.html',
+      basisNote: 'مقادیر وعده عین جدول برای ۹۰ گرم‌اند. مقدار ۱۰۰ گرم فقط با تبدیل وزن همین ردیف محاسبه و گرد شده است؛ به برگر ۲۵۰ گرمی با دستور متفاوت تعمیم داده نمی‌شود.'
+    },
     intro:
       'کالری همبرگر با توجه به وزن گوشت، نوع نان، پنیر، سس و مخلفات تغییر می‌کند. یک همبرگر ساده با گوشت کم‌چرب کالری متفاوتی نسبت به چیزبرگر یا برگر رستورانی با سس زیاد دارد.',
     notes: [
@@ -58,12 +78,6 @@ export const FOOD_CALORIE_PAGES: FoodCaloriePageData[] = [
   {
     slug: 'kebab',
     nameFa: 'کباب',
-    caloriesPer100g: 220,
-    servingLabel: 'یک سیخ کباب کوبیده، حدود 120 گرم',
-    servingCalories: 260,
-    protein: 20,
-    fat: 18,
-    carbs: 4,
     intro:
       'کالری کباب به نوع گوشت، درصد چربی، روش پخت و همراه‌هایی مثل برنج، نان، کره و گوجه بستگی دارد. کباب کوبیده معمولاً چربی بیشتری از جوجه کباب ساده دارد.',
     notes: [
@@ -79,12 +93,19 @@ export const FOOD_CALORIE_PAGES: FoodCaloriePageData[] = [
   {
     slug: 'rice',
     nameFa: 'برنج',
-    caloriesPer100g: 130,
-    servingLabel: 'یک پیمانه برنج سفید پخته، حدود 160 گرم',
-    servingCalories: 205,
-    protein: 4,
-    fat: 0.4,
-    carbs: 45,
+    nutrition: {
+      caloriesPer100g: 130,
+      servingGrams: 158,
+      servingCalories: 205,
+      protein: 4.3,
+      fat: 0.44,
+      carbs: 44.5,
+      preparation: 'برنج سفید دانه‌بلند غنی‌شده، پخته؛ یک پیمانه مرجع. روغن، کره، ته‌دیگ و خورشت در این ردیف نیستند.',
+      sourceLabel: 'USDA SR Legacy، شناسه 168878',
+      sourceUrl: 'https://fdc.nal.usda.gov/food-details/168878/nutrients',
+      mirrorUrl: 'https://tools.myfooddata.com/nutrition-facts/168878/wt1',
+      basisNote: 'وزن پیمانه منبع ۱۵۸ گرم است. مقادیر وعده و ۱۰۰ گرم از همان ردیف‌اند؛ کالری به عدد صحیح گرد شده است.'
+    },
     intro:
       'کالری برنج پخته به نوع برنج، مقدار روغن یا کره، حجم پیمانه و روش پخت بستگی دارد. برنج ساده آبکش یا کته بدون روغن کالری کمتری از برنج کره‌ای یا ته‌دیگ دارد.',
     notes: [
@@ -100,12 +121,19 @@ export const FOOD_CALORIE_PAGES: FoodCaloriePageData[] = [
   {
     slug: 'falafel',
     nameFa: 'فلافل',
-    caloriesPer100g: 333,
-    servingLabel: 'سه عدد فلافل متوسط، حدود 90 گرم',
-    servingCalories: 300,
-    protein: 12,
-    fat: 18,
-    carbs: 30,
+    nutrition: {
+      caloriesPer100g: 333,
+      servingGrams: 100,
+      servingCalories: 333,
+      protein: 13.3,
+      fat: 17.8,
+      carbs: 31.8,
+      preparation: 'فلافل خانگی آماده مصرف طبق ردیف مرجع؛ بدون نان، سس یا مخلفات ساندویچ. مقدار روغن جذب‌شده در دستورهای دیگر متفاوت است.',
+      sourceLabel: 'USDA SR Legacy، شناسه 172455',
+      sourceUrl: 'https://fdc.nal.usda.gov/food-details/172455/nutrients',
+      mirrorUrl: 'https://datanutri.com/foods/172455/falafel-home-prepared',
+      basisNote: 'همه اعداد برای ۱۰۰ گرم فلافل مرجع هستند. تعداد قطعه ثابت نیست؛ فلافل‌ها را وزن کنید.'
+    },
     intro:
       'کالری فلافل به اندازه هر عدد، مقدار روغن جذب‌شده در سرخ کردن و مواد داخل ساندویچ بستگی دارد. فلافل تنها با ساندویچ فلافل همراه نان، سس و مخلفات کالری یکسانی ندارد.',
     notes: [

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
 import BrandLogo from './BrandLogo'
 import {
   LANGUAGE_FONT_FAMILIES,
@@ -41,8 +42,31 @@ export default function SiteHeader({
   navItems,
   onLanguageChange,
 }: SiteHeaderProps) {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const menuButton = useRef<HTMLButtonElement>(null)
+  const header = useRef<HTMLElement>(null)
+  const closeMenu = () => { setMenuOpen(false); menuButton.current?.focus() }
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && menuOpen) { setMenuOpen(false); menuButton.current?.focus() }
+    }
+    const onPointer = (event: PointerEvent) => {
+      if (!header.current?.contains(event.target as Node)) setMenuOpen(false)
+    }
+    document.addEventListener('keydown', onKey)
+    document.addEventListener('pointerdown', onPointer)
+    return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onPointer) }
+  }, [menuOpen])
+  const mobileItems = language === 'fa' ? [
+    { key: 'features', href: '/fa/#features', label: 'امکانات' },
+    { key: 'pricing', href: '/fa/#pricing', label: 'اشتراک' },
+    { key: 'guides', href: '/fa/blog/', label: 'راهنماها' },
+    { key: 'support', href: '/fa/contact/', label: 'پشتیبانی' },
+  ] : navItems
   return (
-    <header className={`lp-topbar${isScrolled ? ' is-scrolled' : ''}`}>
+    <header ref={header} onBlur={(event) => {
+      if (!event.currentTarget.contains(event.relatedTarget as Node)) setMenuOpen(false)
+    }} className={`lp-topbar${isScrolled ? ' is-scrolled' : ''}`}>
       <div className="lp-container lp-topbar-inner">
         <Link className="lp-logo" href={homeHref} aria-label={homeAriaLabel}>
           <BrandLogo />
@@ -62,8 +86,11 @@ export default function SiteHeader({
         </nav>
 
         <div className="lp-topbar-actions">
+          <button ref={menuButton} className="lp-menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen(!menuOpen)}>
+            {language === 'fa' ? (menuOpen ? 'بستن' : 'منو') : (menuOpen ? 'Close' : 'Menu')}
+          </button>
           <Link className="lp-btn lp-btn--solid" href={ctaHref}>
-            {ctaLabel}
+            {language === 'fa' ? 'دانلود کالکیلو' : ctaLabel}
           </Link>
           <label className="lp-lang" aria-label={languageLabel}>
             <span className="sr-only">{languageLabel}</span>
@@ -92,6 +119,9 @@ export default function SiteHeader({
           </label>
         </div>
       </div>
+      <nav id="mobile-navigation" className="lp-mobile-nav" hidden={!menuOpen} aria-label={language === 'fa' ? 'ناوبری موبایل' : navAriaLabel}>
+        {mobileItems.map(item => <Link key={item.key} href={item.href} onClick={closeMenu}>{item.label}</Link>)}
+      </nav>
     </header>
   )
 }

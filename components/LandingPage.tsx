@@ -1,3 +1,4 @@
+import PersianHomeContent from './PersianHomeContent'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useMemo, useState, type CSSProperties, type ImgHTMLAttributes } from 'react'
@@ -425,7 +426,7 @@ const TRANSLATIONS: Record<
       'دانلود Calkilo رایگان است و خرید درون‌برنامه‌ای دارد؛ غذا را ثبت کنید، کالری و ماکروها را ببینید و از تحلیل عکس کمک بگیرید.',
     pageTitle: 'کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو',
     darkThemeLabel: 'حالت تیره',
-    nav: { home: 'خانه', features: 'ویژگی‌ها', pricing: 'انتخاب طرح', blog: 'بلاگ', contact: 'تماس' },
+    nav: { home: 'خانه', features: 'امکانات', pricing: 'اشتراک', blog: 'راهنماها', contact: 'پشتیبانی' },
     tryFree: 'رایگان شروع کنید',
     heroTitleA: 'کالری شمار آنلاین',
     heroTitleB: 'برای غذای روزانه',
@@ -751,7 +752,7 @@ const FAQ_ITEMS = [
   {
     topic: 'Security',
     question: 'Is my food photo data private and secure?',
-    answer: 'Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.',
+    answer: 'Photos are sent to Calkilo for analysis. Read the privacy policy for data use and deletion requests.',
   },
   {
     topic: 'AI Privacy',
@@ -772,7 +773,7 @@ const FAQ_ITEMS = [
   {
     topic: 'Device & App',
     question: 'Does it work with my fitness tracker?',
-    answer: 'Yes. You can connect supported platforms like Apple Health, Google Fit, Fitbit, and Samsung Health.',
+    answer: 'Apple Health is supported on iOS in version 1.3.3. Check the app for the options available on your device.',
   },
 ] as const
 
@@ -849,11 +850,11 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "Calkilo premium is maandelijks beschikbaar voor $4.99 of jaarlijks voor $14.99. Beide plannen ontgrendelen persoonlijke plannen, diepere analyses en AI-coaching.",
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "De app combineert je doelen, voedingsgeschiedenis en voorkeuren om maaltijdsuggesties te maken die zich aanpassen.",
     [PREFERENCE_UPDATE_ANSWER_EN]: PREFERENCE_UPDATE_ANSWERS.nl,
-    "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "Uploads zijn versleuteld en worden alleen gebruikt voor je analyse en betere aanbevelingen.",
+    "Photos are sent to Calkilo for analysis. Read the privacy policy for data use and deletion requests.": "Foto’s worden naar Calkilo gestuurd voor analyse. Lees het privacybeleid voor gegevensgebruik en verwijdering.",
     "Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.": "Voordat Calkilo een nieuwe AI-voedingsscan, maaltijdbewerking of AI-chatverzoek verstuurt, vraagt de app om jouw toestemming. Als je AI-functies toestaat, kan Calkilo voedselfoto's, maaltijdgegevens, chatberichten en de account- of aanvraag-ID's versturen die nodig zijn om je resultaat via api.calkilo.com terug te sturen.",
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "Fotoanalyse vereist internet, maar je kunt eerdere gegevens en basislogs ook offline bekijken.",
     "Each suggested meal includes calories, protein, carbs, fats, and portion guidance.": "Elke voorgestelde maaltijd bevat calorieen, eiwitten, koolhydraten, vetten en portierichtlijnen.",
-    "Yes. You can connect supported platforms like Apple Health, Google Fit, Fitbit, and Samsung Health.": "Ja. Je kunt ondersteunde platforms verbinden zoals Apple Health, Google Fit, Fitbit en Samsung Health.",
+    "Apple Health is supported on iOS in version 1.3.3. Check the app for the options available on your device.": "Apple Health wordt ondersteund op iOS vanaf versie 1.3.3. Bekijk de beschikbare opties in de app.",
     "Feature": "Functies",
     "Download": "Downloaden",
     "How it Works?": "Hoe werkt het?",
@@ -954,11 +955,11 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "Calkilo Premium доступен ежемесячно за $4.99 или ежегодно за $14.99. Оба плана открывают персональные планы питания, глубокую аналитику и AI-коучинг.",
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "Приложение объединяет ваши цели, историю питания и предпочтения, чтобы формировать персональные рекомендации.",
     [PREFERENCE_UPDATE_ANSWER_EN]: PREFERENCE_UPDATE_ANSWERS.ru,
-    "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "Загрузки шифруются и используются только для анализа и улучшения персональных рекомендаций.",
+    "Photos are sent to Calkilo for analysis. Read the privacy policy for data use and deletion requests.": "Фотографии отправляются в Calkilo для анализа. Использование и удаление данных описаны в политике конфиденциальности.",
     "Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.": "Перед отправкой нового AI-сканирования еды, редактирования приема пищи или AI-чата приложение запрашивает ваше разрешение. Если вы разрешите AI-функции, Calkilo может отправлять фотографии еды, записи о приемах пищи, сообщения чата, а также идентификаторы аккаунта или запроса, необходимые для возврата результата через api.calkilo.com.",
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "Для анализа фото нужен интернет, но прошлые данные и базовые записи доступны офлайн.",
     "Each suggested meal includes calories, protein, carbs, fats, and portion guidance.": "Каждая рекомендация включает калории, белки, углеводы, жиры и рекомендации по порциям.",
-    "Yes. You can connect supported platforms like Apple Health, Google Fit, Fitbit, and Samsung Health.": "Да. Можно подключить Apple Health, Google Fit, Fitbit и Samsung Health.",
+    "Apple Health is supported on iOS in version 1.3.3. Check the app for the options available on your device.": "Apple Health поддерживается в iOS версии 1.3.3. Доступные настройки смотрите в приложении.",
     "Feature": "Функции",
     "Download": "Скачать",
     "How it Works?": "Как это работает?",
@@ -1060,11 +1061,11 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "Calkilo 高级版可按月 $4.99 或按年 $14.99 使用。两个计划都解锁个性化餐食计划、深度分析和 AI 教练。",
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "应用会结合你的目标、饮食历史和偏好，生成会随数据变化而调整的餐食建议。",
     [PREFERENCE_UPDATE_ANSWER_EN]: PREFERENCE_UPDATE_ANSWERS.zh,
-    "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "上传内容会加密，仅用于提供分析结果并优化个性化推荐。",
+    "Photos are sent to Calkilo for analysis. Read the privacy policy for data use and deletion requests.": "照片会发送至 Calkilo 进行分析。数据使用和删除请求请参阅隐私政策。",
     "Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.": "在 Calkilo 发送新的 AI 食物扫描、餐食编辑或 AI 聊天请求之前，应用会先征求你的许可。如果你允许 AI 功能，Calkilo 可能会通过 api.calkilo.com 发送食物照片、餐食记录、聊天消息，以及返回结果所需的账户或请求标识符。",
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "照片分析需要联网，但离线时仍可查看历史数据和基础记录。",
     "Each suggested meal includes calories, protein, carbs, fats, and portion guidance.": "每个推荐餐食都包含热量、蛋白质、碳水、脂肪和份量建议。",
-    "Yes. You can connect supported platforms like Apple Health, Google Fit, Fitbit, and Samsung Health.": "可以。你可以连接 Apple Health、Google Fit、Fitbit 和 Samsung Health。",
+    "Apple Health is supported on iOS in version 1.3.3. Check the app for the options available on your device.": "iOS 1.3.3 版支持 Apple Health。请在应用中查看设备上可用的选项。",
     "Feature": "功能",
     "Download": "下载",
     "How it Works?": "如何工作？",
@@ -1166,11 +1167,11 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "يتوفر Calkilo Premium شهرياً مقابل $4.99 أو سنوياً مقابل $14.99. يفتح كلا الخيارين خطط وجبات مخصصة وتحليلات أعمق وتدريباً بالذكاء الاصطناعي.",
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "يجمع التطبيق أهدافك وسجل التغذية وتفضيلاتك ليولد اقتراحات وجبات تتكيف مع تغير بياناتك.",
     [PREFERENCE_UPDATE_ANSWER_EN]: PREFERENCE_UPDATE_ANSWERS.ar,
-    "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "يتم تشفير الملفات المرفوعة وتستخدم فقط لتقديم التحليل وتحسين توصياتك الشخصية.",
+    "Photos are sent to Calkilo for analysis. Read the privacy policy for data use and deletion requests.": "تُرسل الصور إلى Calkilo لتحليلها. راجع سياسة الخصوصية لاستخدام البيانات وطلبات حذفها.",
     "Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.": "قبل أن يرسل Calkilo فحص طعام جديداً بالذكاء الاصطناعي أو تعديل وجبة أو طلب دردشة بالذكاء الاصطناعي، يطلب التطبيق إذنك. إذا سمحت بميزات الذكاء الاصطناعي، فقد يرسل Calkilo صور الطعام وسجلات الوجبات ورسائل الدردشة ومعرّفات الحساب أو الطلب اللازمة لإرجاع النتيجة عبر api.calkilo.com.",
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "تحليل الصور يحتاج إلى الإنترنت، لكن يمكنك مراجعة البيانات السابقة والسجلات الأساسية دون اتصال.",
     "Each suggested meal includes calories, protein, carbs, fats, and portion guidance.": "كل وجبة مقترحة تتضمن السعرات والبروتين والكربوهيدرات والدهون وإرشادات الحصص.",
-    "Yes. You can connect supported platforms like Apple Health, Google Fit, Fitbit, and Samsung Health.": "نعم. يمكنك ربط المنصات المدعومة مثل Apple Health وGoogle Fit وFitbit وSamsung Health.",
+    "Apple Health is supported on iOS in version 1.3.3. Check the app for the options available on your device.": "يتوفر Apple Health على iOS في الإصدار 1.3.3. راجع الخيارات المتاحة في التطبيق.",
     "Feature": "الميزات",
     "Download": "تحميل",
     "How it Works?": "كيف يعمل؟",
@@ -1272,11 +1273,11 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     [PRICING_FAQ_ANSWER]: `اشتراک پریمیوم Calkilo به‌صورت ماهانه با قیمت ${CALKILO_PRICING.Monthly.persianDisplay} یا سالانه با قیمت ${CALKILO_PRICING.Yearly.persianDisplay} ارائه می‌شود. هر دو طرح برنامه غذایی شخصی‌سازی‌شده، تحلیل‌های دقیق‌تر و مربی هوش مصنوعی را فعال می‌کنند.`,
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "سیستم ما با ترکیب اهداف، ذائقه و سوابق تغذیه‌ای شما، هوشمندانه‌ترین پیشنهادها را که دقیقاً با سبک زندگی‌تان سازگار است، طراحی می‌کند.",
     [PREFERENCE_UPDATE_ANSWER_EN]: PREFERENCE_UPDATE_ANSWERS.fa,
-    "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "بله، تمام تصاویر ارسالی به‌صورت رمزگذاری‌شده ذخیره می‌شوند. این داده‌ها صرفاً برای تحلیل دقیق‌تر و شخصی‌سازی بهتر پیشنهادها برای خود شما استفاده می‌شوند.",
+    "Photos are sent to Calkilo for analysis. Read the privacy policy for data use and deletion requests.": "عکس‌ها برای تحلیل به کالکیلو ارسال می‌شوند. جزئیات استفاده و درخواست حذف داده‌ها در سیاست حریم خصوصی آمده است.",
     "Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.": "پیش از آن‌که Calkilo اسکن غذایی جدید، ویرایش وعده یا درخواست چت هوش مصنوعی را ارسال کند، اپ از شما اجازه می‌گیرد. اگر قابلیت‌های هوش مصنوعی را فعال کنید، Calkilo ممکن است عکس غذا، سوابق وعده‌ها، پیام‌های چت و شناسه‌های حساب یا درخواست لازم برای برگرداندن نتیجه را از طریق api.calkilo.com ارسال کند.",
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "برای تحلیل تصاویر به اینترنت نیاز است؛ اما می‌توانید اطلاعات ثبت‌شده قبلی را در حالت آفلاین مشاهده کنید.",
     "Each suggested meal includes calories, protein, carbs, fats, and portion guidance.": "هر وعده پیشنهادی شامل کالری، پروتئین، کربوهیدرات، چربی و راهنمای مقدار است.",
-    "Yes. You can connect supported platforms like Apple Health, Google Fit, Fitbit, and Samsung Health.": "بله، می‌توانید سرویس‌های محبوبی مثل Apple Health، Google Fit، Samsung Health و Fitbit را به برنامه متصل کنید.",
+    "Apple Health is supported on iOS in version 1.3.3. Check the app for the options available on your device.": "اتصال Apple Health در نسخه ۱٫۳٫۳ iOS در دسترس است. گزینه‌های دستگاه خود را در اپ بررسی کنید.",
     "Features": "ویژگی‌ها",
     "See photo calorie tracking, macro goals, AI meal plans, and health app integrations.": "قابلیت‌های ثبت کالری با عکس، هدف‌های ماکرو، برنامه غذایی هوش مصنوعی و اتصال به اپ‌های سلامت را ببینید.",
     "Compare monthly and yearly premium plans and what each subscription unlocks.": "طرح‌های ماهانه و سالانه پریمیوم و امکانات هر اشتراک را مقایسه کنید.",
@@ -1383,11 +1384,11 @@ const STATIC_TEXT_TRANSLATIONS: Record<SiteLanguage, Record<string, string>> = {
     "Calkilo premium is available monthly for $4.99 or yearly for $14.99. Both plans unlock personalized meal plans, deeper analytics, and AI coaching.": "Calkilo Premium e disponibile mensilmente a $4.99 o annualmente a $14.99. Entrambi i piani sbloccano piani personalizzati, analisi avanzate e coaching AI.",
     "The app combines your goals, nutrition history, and preferences to generate meal suggestions that adjust as your data changes.": "L'app combina obiettivi, storico nutrizionale e preferenze per suggerire pasti che si adattano ai tuoi dati.",
     [PREFERENCE_UPDATE_ANSWER_EN]: PREFERENCE_UPDATE_ANSWERS.it,
-    "Uploads are encrypted and used only to deliver your analysis and improve your personal recommendations.": "I caricamenti sono crittografati e usati solo per l'analisi e per migliorare i suggerimenti personali.",
+    "Photos are sent to Calkilo for analysis. Read the privacy policy for data use and deletion requests.": "Le foto vengono inviate a Calkilo per l’analisi. Consulta l’informativa sulla privacy per uso e cancellazione dei dati.",
     "Before Calkilo sends a new AI food scan, meal edit, or AI chat request, the app asks for your permission. If you allow AI features, Calkilo may send food photos, meal records, chat messages, and the account or request identifiers needed to return your result through api.calkilo.com.": "Prima che Calkilo invii una nuova scansione cibo AI, una modifica del pasto o una richiesta di chat AI, l'app ti chiede il permesso. Se abiliti le funzioni AI, Calkilo puo inviare foto del cibo, registri dei pasti, messaggi di chat e gli identificatori di account o richiesta necessari per restituire il risultato tramite api.calkilo.com.",
     "Photo analysis needs internet, but you can still review previous data and basic logs while offline.": "L'analisi foto richiede internet, ma puoi rivedere dati precedenti e registri base anche offline.",
     "Each suggested meal includes calories, protein, carbs, fats, and portion guidance.": "Ogni pasto suggerito include calorie, proteine, carboidrati, grassi e guida porzioni.",
-    "Yes. You can connect supported platforms like Apple Health, Google Fit, Fitbit, and Samsung Health.": "Si. Puoi collegare piattaforme supportate come Apple Health, Google Fit, Fitbit e Samsung Health.",
+    "Apple Health is supported on iOS in version 1.3.3. Check the app for the options available on your device.": "Apple Health è disponibile su iOS nella versione 1.3.3. Controlla le opzioni nell’app.",
     "Features": "Funzioni",
     "See photo calorie tracking, macro goals, AI meal plans, and health app integrations.": "Scopri tracking calorie da foto, obiettivi macro, piani alimentari AI e integrazioni salute.",
     "Compare monthly and yearly premium plans and what each subscription unlocks.": "Confronta i piani premium mensili e annuali e le funzioni incluse.",
@@ -1455,17 +1456,7 @@ function AppleIcon() {
 
 function StoreButtons({ language }: { language: SiteLanguage }) {
   const androidStoreLinks = getAndroidStoreLinks(language)
-  const trackStoreClick = (store: string) => {
-    if (typeof window === 'undefined' || !window.gtag) {
-      return
-    }
 
-    window.gtag('event', 'store_click', {
-      store,
-      language,
-      landing_page: window.location.pathname,
-    })
-  }
 
   return (
     <div className="lp-store-row" aria-label="Store links">
@@ -1475,10 +1466,8 @@ function StoreButtons({ language }: { language: SiteLanguage }) {
               key={store.href}
               className="lp-store-btn lp-store-btn--text"
               href={store.href}
-              role="button"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackStoreClick(store.label)}
             >
               <span className="lp-store-copy">
                 <small>دریافت از</small>
@@ -1490,10 +1479,8 @@ function StoreButtons({ language }: { language: SiteLanguage }) {
             <a
               className="lp-store-btn"
               href={GOOGLE_PLAY_URL}
-              role="button"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackStoreClick('Google Play')}
             >
               <GooglePlayIcon />
             </a>
@@ -1504,7 +1491,6 @@ function StoreButtons({ language }: { language: SiteLanguage }) {
         role="button"
         target="_blank"
         rel="noopener noreferrer"
-        onClick={() => trackStoreClick('App Store')}
       >
 
           <AppleIcon />
@@ -1700,30 +1686,6 @@ export default function LandingPage({
   }, [resolvedVariant, language])
 
   useEffect(() => {
-    if (heroSlides.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      return
-    }
-
-    const interval = window.setInterval(() => {
-      setHeroSlide((prev) => (prev + 1) % heroSlides.length)
-    }, 4200)
-
-    return () => window.clearInterval(interval)
-  }, [heroSlides.length])
-
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      return
-    }
-
-    const interval = window.setInterval(() => {
-      setActiveFeature((prev) => (prev + 1) % FEATURE_ITEMS.length)
-    }, 5200)
-
-    return () => window.clearInterval(interval)
-  }, [])
-
-  useEffect(() => {
     const syncScrollState = () => {
       setIsScrolled(window.scrollY > 24)
     }
@@ -1823,15 +1785,7 @@ export default function LandingPage({
   const blogHref = toLocalizedPath('/blog', language)
   const contactHref = toLocalizedPath('/contact', language)
   const pricingOfferUrl = pricingHref.startsWith('#') ? `${SITE_URL}${seoPath}${pricingHref}` : `${SITE_URL}${pricingHref}`
-  const trackPricingClick = (plan: string) => {
-    if (typeof window === 'undefined' || !window.gtag) return
 
-    window.gtag('event', 'pricing_plan_click', {
-      plan,
-      language,
-      landing_page: window.location.pathname,
-    })
-  }
   const localizedResourceLinks = getLocalizedResourceLinks(language)
   const localizedCorePageLinks: SitePageLink[] = CORE_SITE_LINKS.map((link) => {
     if (link.href === '/features/') {
@@ -1952,7 +1906,7 @@ export default function LandingPage({
         { label: ts('Terms of Service'), href: toLocalizedPath('/terms-of-service', language) },
         { label: ts('Delete Account & Data'), href: toLocalizedPath('/account-deletion', language) },
         { label: ts('Terms & Conditions'), href: toLocalizedPath('/terms-and-conditions', language) },
-        { label: ts('FAQ'), href: '/faq/' },
+        { label: ts('FAQ'), href: language === 'fa' ? '/fa/#faq' : '/faq/' },
       ],
     },
     {
@@ -2031,8 +1985,8 @@ export default function LandingPage({
         publisher: {
           '@id': `${SITE_URL}/#organization`,
         },
-        featureList: FEATURE_ITEMS.map((item) => ts(item.title)),
-        offers: PRICING_PLANS.map((plan) => ({
+        featureList: language === 'fa' ? ['تخمین کالری و درشت‌مغذی‌ها از عکس', 'ثبت روزانه غذا'] : FEATURE_ITEMS.map((item) => ts(item.title)),
+        offers: language === 'fa' ? undefined : PRICING_PLANS.map((plan) => ({
           ...getPricingSchemaOffer(plan, language, pricingOfferUrl),
           name: ts(plan.title),
         })),
@@ -2062,7 +2016,7 @@ export default function LandingPage({
         noindex={isDarkVariantPage}
         imagePath="/assets/hero-main.png"
         imageAlt="Calkilo AI calorie tracking dashboard"
-        preloadImagePaths={[
+        preloadImagePaths={language === 'fa' ? [] : [
           {
             src: heroSlides[0].src,
             srcSet: heroSlides[0].srcSet,
@@ -2088,7 +2042,7 @@ export default function LandingPage({
         onLanguageChange={handleLanguageChange}
       />
 
-      <main id="home">
+      {language === 'fa' ? <PersianHomeContent titleA={copy.heroTitleA} titleB={copy.heroTitleB} /> : <main id="home">
         <section className="lp-hero">
           <div className="lp-container lp-hero-grid">
             <div className="lp-hero-copy lp-reveal lp-reveal--left is-visible">
@@ -2348,7 +2302,7 @@ export default function LandingPage({
             </header>
 
             <div className="lp-integrations-grid">
-              {INTEGRATIONS.map((integration, index) => (
+              {INTEGRATIONS.filter(integration => integration.name === 'Apple Health').map((integration, index) => (
                 <article
                   key={integration.name}
                   className="lp-integration-card lp-reveal lp-reveal--pop"
@@ -2411,7 +2365,7 @@ export default function LandingPage({
                     <li>{ts('Mobile-friendly interface')}</li>
                     <li>{ts('Customer support')}</li>
                   </ul>
-                  <a href="#download" onClick={() => trackPricingClick(plan.title)}>
+                  <a href="#download">
                     {ts(plan.cta)}
                   </a>
                 </article>
@@ -2550,12 +2504,12 @@ export default function LandingPage({
             </aside>
           </div>
         </section>
-      </main>
+      </main>}
 
       <SiteFooter
         copyright={`© ${new Date().getFullYear()} Calkilo. ${ts('All rights reserved.')}`}
         description={copy.footerDescription}
-        featuredContent={<BoworaBadge />}
+        featuredContent={language === 'fa' ? undefined : <BoworaBadge />}
         homeAriaLabel="Calkilo home"
         homeHref={seoPath}
         id="contact"

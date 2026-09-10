@@ -4,6 +4,7 @@ import { Fragment, type ReactNode } from 'react'
 interface BlogMarkdownProps {
   content?: string | null
   emptyLabel: string
+  tocLabel?: string
 }
 
 type ListKind = 'ol' | 'ul'
@@ -92,7 +93,7 @@ function renderList(list: MarkdownList, key: string): ReactNode {
   )
 }
 
-export default function BlogMarkdown({ content, emptyLabel }: BlogMarkdownProps) {
+export default function BlogMarkdown({ content, emptyLabel, tocLabel }: BlogMarkdownProps) {
   const source = content?.replace(/\r\n?/gu, '\n').trim()
 
   if (!source) {
@@ -100,6 +101,7 @@ export default function BlogMarkdown({ content, emptyLabel }: BlogMarkdownProps)
   }
 
   const blocks: ReactNode[] = []
+  const headings: { id: string; text: string }[] = []
   const paragraphLines: string[] = []
   let activeList: MarkdownList | null = null
   let codeLines: string[] | null = null
@@ -157,13 +159,15 @@ export default function BlogMarkdown({ content, emptyLabel }: BlogMarkdownProps)
       flushList()
       const level = headingMatch[1].length
       const text = headingMatch[2]
+      const id = `article-section-${headings.length + 1}`
+      headings.push({ id, text })
 
       if (level === 1) {
-        blocks.push(<h2 key={`h-${blocks.length}`}>{renderInline(text)}</h2>)
+        blocks.push(<h2 id={id} key={`h-${blocks.length}`}>{renderInline(text)}</h2>)
       } else if (level === 2) {
-        blocks.push(<h2 key={`h-${blocks.length}`}>{renderInline(text)}</h2>)
+        blocks.push(<h2 id={id} key={`h-${blocks.length}`}>{renderInline(text)}</h2>)
       } else {
-        blocks.push(<h3 key={`h-${blocks.length}`}>{renderInline(text)}</h3>)
+        blocks.push(<h3 id={id} key={`h-${blocks.length}`}>{renderInline(text)}</h3>)
       }
 
       return
@@ -208,5 +212,5 @@ export default function BlogMarkdown({ content, emptyLabel }: BlogMarkdownProps)
     )
   }
 
-  return <>{blocks.map((block, index) => <Fragment key={index}>{block}</Fragment>)}</>
+  return <>{tocLabel && headings.length >= 4 && <nav className="lp-article-toc" aria-label={tocLabel}><strong>{tocLabel}</strong><ol>{headings.map(heading => <li key={heading.id}><a href={`#${heading.id}`}>{renderInline(heading.text)}</a></li>)}</ol></nav>}{blocks.map((block, index) => <Fragment key={index}>{block}</Fragment>)}</>
 }

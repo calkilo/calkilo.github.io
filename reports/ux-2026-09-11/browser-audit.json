@@ -1,0 +1,927 @@
+{
+  "matrix": [
+    {
+      "route": "/fa/",
+      "width": 360,
+      "colorScheme": "light",
+      "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+      "h1": "کالری شمار آنلاین برای غذای روزانه",
+      "canonical": "https://calkilo.com/fa/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/photo-calorie-calculator/",
+      "width": 360,
+      "colorScheme": "light",
+      "title": "کالری شمار با عکس رایگان | محاسبه کالری غذا با هوش مصنوعی - Calkilo",
+      "h1": "کالری شمار با عکس رایگان",
+      "canonical": "https://calkilo.com/fa/photo-calorie-calculator/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/calories/hamburger/",
+      "width": 360,
+      "colorScheme": "light",
+      "title": "کالری همبرگر چقدر است؟ | ارزش غذایی و محاسبه با عکس",
+      "h1": "کالری همبرگر چقدر است؟",
+      "canonical": "https://calkilo.com/fa/calories/hamburger/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/blog/",
+      "width": 360,
+      "colorScheme": "light",
+      "title": "بلاگ Calkilo | راهنماهای تغذیه و کالری شماری هوش مصنوعی",
+      "h1": "بلاگ Calkilo",
+      "canonical": "https://calkilo.com/fa/blog/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/",
+      "width": 360,
+      "colorScheme": "light",
+      "title": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+      "h1": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+      "canonical": "https://calkilo.com/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/contact/",
+      "width": 360,
+      "colorScheme": "light",
+      "title": "تماس با Calkilo",
+      "h1": "تماس با ما",
+      "canonical": "https://calkilo.com/fa/contact/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/#pricing",
+      "width": 360,
+      "colorScheme": "light",
+      "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+      "h1": "کالری شمار آنلاین برای غذای روزانه",
+      "canonical": "https://calkilo.com/fa/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/",
+      "width": 390,
+      "colorScheme": "light",
+      "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+      "h1": "کالری شمار آنلاین برای غذای روزانه",
+      "canonical": "https://calkilo.com/fa/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/photo-calorie-calculator/",
+      "width": 390,
+      "colorScheme": "light",
+      "title": "کالری شمار با عکس رایگان | محاسبه کالری غذا با هوش مصنوعی - Calkilo",
+      "h1": "کالری شمار با عکس رایگان",
+      "canonical": "https://calkilo.com/fa/photo-calorie-calculator/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/calories/hamburger/",
+      "width": 390,
+      "colorScheme": "light",
+      "title": "کالری همبرگر چقدر است؟ | ارزش غذایی و محاسبه با عکس",
+      "h1": "کالری همبرگر چقدر است؟",
+      "canonical": "https://calkilo.com/fa/calories/hamburger/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/blog/",
+      "width": 390,
+      "colorScheme": "light",
+      "title": "بلاگ Calkilo | راهنماهای تغذیه و کالری شماری هوش مصنوعی",
+      "h1": "بلاگ Calkilo",
+      "canonical": "https://calkilo.com/fa/blog/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/",
+      "width": 390,
+      "colorScheme": "light",
+      "title": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+      "h1": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+      "canonical": "https://calkilo.com/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/contact/",
+      "width": 390,
+      "colorScheme": "light",
+      "title": "تماس با Calkilo",
+      "h1": "تماس با ما",
+      "canonical": "https://calkilo.com/fa/contact/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/#pricing",
+      "width": 390,
+      "colorScheme": "light",
+      "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+      "h1": "کالری شمار آنلاین برای غذای روزانه",
+      "canonical": "https://calkilo.com/fa/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/",
+      "width": 768,
+      "colorScheme": "light",
+      "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+      "h1": "کالری شمار آنلاین برای غذای روزانه",
+      "canonical": "https://calkilo.com/fa/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/photo-calorie-calculator/",
+      "width": 768,
+      "colorScheme": "light",
+      "title": "کالری شمار با عکس رایگان | محاسبه کالری غذا با هوش مصنوعی - Calkilo",
+      "h1": "کالری شمار با عکس رایگان",
+      "canonical": "https://calkilo.com/fa/photo-calorie-calculator/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/calories/hamburger/",
+      "width": 768,
+      "colorScheme": "light",
+      "title": "کالری همبرگر چقدر است؟ | ارزش غذایی و محاسبه با عکس",
+      "h1": "کالری همبرگر چقدر است؟",
+      "canonical": "https://calkilo.com/fa/calories/hamburger/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/blog/",
+      "width": 768,
+      "colorScheme": "light",
+      "title": "بلاگ Calkilo | راهنماهای تغذیه و کالری شماری هوش مصنوعی",
+      "h1": "بلاگ Calkilo",
+      "canonical": "https://calkilo.com/fa/blog/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/",
+      "width": 768,
+      "colorScheme": "light",
+      "title": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+      "h1": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+      "canonical": "https://calkilo.com/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/contact/",
+      "width": 768,
+      "colorScheme": "light",
+      "title": "تماس با Calkilo",
+      "h1": "تماس با ما",
+      "canonical": "https://calkilo.com/fa/contact/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/#pricing",
+      "width": 768,
+      "colorScheme": "light",
+      "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+      "h1": "کالری شمار آنلاین برای غذای روزانه",
+      "canonical": "https://calkilo.com/fa/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/",
+      "width": 1440,
+      "colorScheme": "light",
+      "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+      "h1": "کالری شمار آنلاین برای غذای روزانه",
+      "canonical": "https://calkilo.com/fa/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/photo-calorie-calculator/",
+      "width": 1440,
+      "colorScheme": "light",
+      "title": "کالری شمار با عکس رایگان | محاسبه کالری غذا با هوش مصنوعی - Calkilo",
+      "h1": "کالری شمار با عکس رایگان",
+      "canonical": "https://calkilo.com/fa/photo-calorie-calculator/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/calories/hamburger/",
+      "width": 1440,
+      "colorScheme": "light",
+      "title": "کالری همبرگر چقدر است؟ | ارزش غذایی و محاسبه با عکس",
+      "h1": "کالری همبرگر چقدر است؟",
+      "canonical": "https://calkilo.com/fa/calories/hamburger/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/blog/",
+      "width": 1440,
+      "colorScheme": "light",
+      "title": "بلاگ Calkilo | راهنماهای تغذیه و کالری شماری هوش مصنوعی",
+      "h1": "بلاگ Calkilo",
+      "canonical": "https://calkilo.com/fa/blog/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/",
+      "width": 1440,
+      "colorScheme": "light",
+      "title": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+      "h1": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+      "canonical": "https://calkilo.com/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/contact/",
+      "width": 1440,
+      "colorScheme": "light",
+      "title": "تماس با Calkilo",
+      "h1": "تماس با ما",
+      "canonical": "https://calkilo.com/fa/contact/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/#pricing",
+      "width": 1440,
+      "colorScheme": "light",
+      "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+      "h1": "کالری شمار آنلاین برای غذای روزانه",
+      "canonical": "https://calkilo.com/fa/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/",
+      "width": 360,
+      "colorScheme": "dark",
+      "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+      "h1": "کالری شمار آنلاین برای غذای روزانه",
+      "canonical": "https://calkilo.com/fa/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/photo-calorie-calculator/",
+      "width": 360,
+      "colorScheme": "dark",
+      "title": "کالری شمار با عکس رایگان | محاسبه کالری غذا با هوش مصنوعی - Calkilo",
+      "h1": "کالری شمار با عکس رایگان",
+      "canonical": "https://calkilo.com/fa/photo-calorie-calculator/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/calories/hamburger/",
+      "width": 360,
+      "colorScheme": "dark",
+      "title": "کالری همبرگر چقدر است؟ | ارزش غذایی و محاسبه با عکس",
+      "h1": "کالری همبرگر چقدر است؟",
+      "canonical": "https://calkilo.com/fa/calories/hamburger/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/blog/",
+      "width": 360,
+      "colorScheme": "dark",
+      "title": "بلاگ Calkilo | راهنماهای تغذیه و کالری شماری هوش مصنوعی",
+      "h1": "بلاگ Calkilo",
+      "canonical": "https://calkilo.com/fa/blog/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/",
+      "width": 360,
+      "colorScheme": "dark",
+      "title": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+      "h1": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+      "canonical": "https://calkilo.com/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/contact/",
+      "width": 360,
+      "colorScheme": "dark",
+      "title": "تماس با Calkilo",
+      "h1": "تماس با ما",
+      "canonical": "https://calkilo.com/fa/contact/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/#pricing",
+      "width": 360,
+      "colorScheme": "dark",
+      "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+      "h1": "کالری شمار آنلاین برای غذای روزانه",
+      "canonical": "https://calkilo.com/fa/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/",
+      "width": 390,
+      "colorScheme": "dark",
+      "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+      "h1": "کالری شمار آنلاین برای غذای روزانه",
+      "canonical": "https://calkilo.com/fa/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/photo-calorie-calculator/",
+      "width": 390,
+      "colorScheme": "dark",
+      "title": "کالری شمار با عکس رایگان | محاسبه کالری غذا با هوش مصنوعی - Calkilo",
+      "h1": "کالری شمار با عکس رایگان",
+      "canonical": "https://calkilo.com/fa/photo-calorie-calculator/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/calories/hamburger/",
+      "width": 390,
+      "colorScheme": "dark",
+      "title": "کالری همبرگر چقدر است؟ | ارزش غذایی و محاسبه با عکس",
+      "h1": "کالری همبرگر چقدر است؟",
+      "canonical": "https://calkilo.com/fa/calories/hamburger/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/blog/",
+      "width": 390,
+      "colorScheme": "dark",
+      "title": "بلاگ Calkilo | راهنماهای تغذیه و کالری شماری هوش مصنوعی",
+      "h1": "بلاگ Calkilo",
+      "canonical": "https://calkilo.com/fa/blog/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/",
+      "width": 390,
+      "colorScheme": "dark",
+      "title": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+      "h1": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+      "canonical": "https://calkilo.com/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/contact/",
+      "width": 390,
+      "colorScheme": "dark",
+      "title": "تماس با Calkilo",
+      "h1": "تماس با ما",
+      "canonical": "https://calkilo.com/fa/contact/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/#pricing",
+      "width": 390,
+      "colorScheme": "dark",
+      "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+      "h1": "کالری شمار آنلاین برای غذای روزانه",
+      "canonical": "https://calkilo.com/fa/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/",
+      "width": 768,
+      "colorScheme": "dark",
+      "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+      "h1": "کالری شمار آنلاین برای غذای روزانه",
+      "canonical": "https://calkilo.com/fa/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/photo-calorie-calculator/",
+      "width": 768,
+      "colorScheme": "dark",
+      "title": "کالری شمار با عکس رایگان | محاسبه کالری غذا با هوش مصنوعی - Calkilo",
+      "h1": "کالری شمار با عکس رایگان",
+      "canonical": "https://calkilo.com/fa/photo-calorie-calculator/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/calories/hamburger/",
+      "width": 768,
+      "colorScheme": "dark",
+      "title": "کالری همبرگر چقدر است؟ | ارزش غذایی و محاسبه با عکس",
+      "h1": "کالری همبرگر چقدر است؟",
+      "canonical": "https://calkilo.com/fa/calories/hamburger/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/blog/",
+      "width": 768,
+      "colorScheme": "dark",
+      "title": "بلاگ Calkilo | راهنماهای تغذیه و کالری شماری هوش مصنوعی",
+      "h1": "بلاگ Calkilo",
+      "canonical": "https://calkilo.com/fa/blog/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/",
+      "width": 768,
+      "colorScheme": "dark",
+      "title": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+      "h1": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+      "canonical": "https://calkilo.com/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/contact/",
+      "width": 768,
+      "colorScheme": "dark",
+      "title": "تماس با Calkilo",
+      "h1": "تماس با ما",
+      "canonical": "https://calkilo.com/fa/contact/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/#pricing",
+      "width": 768,
+      "colorScheme": "dark",
+      "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+      "h1": "کالری شمار آنلاین برای غذای روزانه",
+      "canonical": "https://calkilo.com/fa/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/",
+      "width": 1440,
+      "colorScheme": "dark",
+      "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+      "h1": "کالری شمار آنلاین برای غذای روزانه",
+      "canonical": "https://calkilo.com/fa/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/photo-calorie-calculator/",
+      "width": 1440,
+      "colorScheme": "dark",
+      "title": "کالری شمار با عکس رایگان | محاسبه کالری غذا با هوش مصنوعی - Calkilo",
+      "h1": "کالری شمار با عکس رایگان",
+      "canonical": "https://calkilo.com/fa/photo-calorie-calculator/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/calories/hamburger/",
+      "width": 1440,
+      "colorScheme": "dark",
+      "title": "کالری همبرگر چقدر است؟ | ارزش غذایی و محاسبه با عکس",
+      "h1": "کالری همبرگر چقدر است؟",
+      "canonical": "https://calkilo.com/fa/calories/hamburger/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/blog/",
+      "width": 1440,
+      "colorScheme": "dark",
+      "title": "بلاگ Calkilo | راهنماهای تغذیه و کالری شماری هوش مصنوعی",
+      "h1": "بلاگ Calkilo",
+      "canonical": "https://calkilo.com/fa/blog/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/",
+      "width": 1440,
+      "colorScheme": "dark",
+      "title": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+      "h1": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+      "canonical": "https://calkilo.com/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/contact/",
+      "width": 1440,
+      "colorScheme": "dark",
+      "title": "تماس با Calkilo",
+      "h1": "تماس با ما",
+      "canonical": "https://calkilo.com/fa/contact/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    },
+    {
+      "route": "/fa/#pricing",
+      "width": 1440,
+      "colorScheme": "dark",
+      "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+      "h1": "کالری شمار آنلاین برای غذای روزانه",
+      "canonical": "https://calkilo.com/fa/",
+      "lang": "fa",
+      "dir": "rtl",
+      "overflow": false,
+      "clipped": [],
+      "violations": []
+    }
+  ],
+  "checks": [
+    {
+      "name": "first click #download",
+      "passed": true,
+      "detail": {
+        "top": 108.46875,
+        "bottom": 478.234375,
+        "headerBottom": 76,
+        "visible": true
+      }
+    },
+    {
+      "name": "direct #download",
+      "passed": true,
+      "detail": {
+        "top": 108.46875,
+        "bottom": 478.234375,
+        "headerBottom": 76,
+        "visible": true
+      }
+    },
+    {
+      "name": "cross-page #download",
+      "passed": true,
+      "detail": {
+        "top": 108.46875,
+        "bottom": 478.234375,
+        "headerBottom": 76,
+        "visible": true
+      }
+    },
+    {
+      "name": "back #download",
+      "passed": true,
+      "detail": {
+        "top": 108.46875,
+        "bottom": 478.234375,
+        "headerBottom": 76,
+        "visible": true
+      }
+    },
+    {
+      "name": "first click #pricing",
+      "passed": true,
+      "detail": {
+        "top": 107.578125,
+        "bottom": 724.78125,
+        "headerBottom": 76,
+        "visible": true
+      }
+    },
+    {
+      "name": "direct #pricing",
+      "passed": true,
+      "detail": {
+        "top": 107.578125,
+        "bottom": 724.78125,
+        "headerBottom": 76,
+        "visible": true
+      }
+    },
+    {
+      "name": "cross-page #pricing",
+      "passed": true,
+      "detail": {
+        "top": 107.578125,
+        "bottom": 724.78125,
+        "headerBottom": 76,
+        "visible": true
+      }
+    },
+    {
+      "name": "back #pricing",
+      "passed": true,
+      "detail": {
+        "top": 107.578125,
+        "bottom": 724.78125,
+        "headerBottom": 76,
+        "visible": true
+      }
+    },
+    {
+      "name": "menu opens",
+      "passed": true
+    },
+    {
+      "name": "Escape returns focus",
+      "passed": true
+    },
+    {
+      "name": "menu selection closes",
+      "passed": true
+    },
+    {
+      "name": "FAQ keyboard toggles",
+      "passed": true
+    },
+    {
+      "name": "sample expands",
+      "passed": true
+    },
+    {
+      "name": "hash does not repeat sample view",
+      "passed": true,
+      "detail": {
+        "before": 1,
+        "after": 1
+      }
+    },
+    {
+      "name": "single store event /fa/",
+      "passed": true,
+      "detail": [
+        {
+          "language": "fa",
+          "landing_page": "/fa/",
+          "page_type": "home",
+          "cta_location": "hero",
+          "store": "cafe_bazaar"
+        }
+      ]
+    },
+    {
+      "name": "single store event /fa/photo-calorie-calculator/",
+      "passed": true,
+      "detail": [
+        {
+          "language": "fa",
+          "landing_page": "/fa/photo-calorie-calculator/",
+          "page_type": "photo",
+          "cta_location": "hero",
+          "store": "cafe_bazaar"
+        }
+      ]
+    },
+    {
+      "name": "single store event /fa/calories/hamburger/",
+      "passed": true,
+      "detail": [
+        {
+          "language": "fa",
+          "landing_page": "/fa/calories/hamburger/",
+          "page_type": "food",
+          "cta_location": "hero",
+          "store": "cafe_bazaar"
+        }
+      ]
+    },
+    {
+      "name": "copy address",
+      "passed": true
+    },
+    {
+      "name": "copy composed message",
+      "passed": true
+    },
+    {
+      "name": "form values absent from analytics",
+      "passed": true
+    },
+    {
+      "name": "food evidence pizza",
+      "passed": true
+    },
+    {
+      "name": "food evidence hamburger",
+      "passed": true
+    },
+    {
+      "name": "food evidence rice",
+      "passed": true
+    },
+    {
+      "name": "food evidence falafel",
+      "passed": true
+    },
+    {
+      "name": "food evidence kebab",
+      "passed": true
+    },
+    {
+      "name": "protected photo metadata",
+      "passed": true,
+      "detail": {
+        "title": "کالری شمار با عکس رایگان | محاسبه کالری غذا با هوش مصنوعی - Calkilo",
+        "h1": "کالری شمار با عکس رایگان",
+        "canonical": "https://calkilo.com/fa/photo-calorie-calculator/"
+      }
+    },
+    {
+      "name": "stores without JavaScript",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

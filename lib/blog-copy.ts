@@ -239,3 +239,14 @@ const BLOG_COPY: Record<SiteLanguage, BlogCopy> = {
 export function getBlogCopy(language: SiteLanguage): BlogCopy {
   return BLOG_COPY[normalizeBlogLanguage(language)]
 }
+
+export function localizeBlogTag(tag: string, language: string): string {
+  if (language !== 'fa') return tag
+  const labels: Record<string, string> = {
+    snacks: 'میان‌وعده', 'meal-prep': 'آماده‌سازی غذا', 'healthy-eating': 'تغذیه سالم',
+    'on-the-go': 'بیرون از خانه', 'calorie-tracking': 'ثبت کالری', habits: 'عادت‌ها', nutrition: 'تغذیه',
+    'practical-tips': 'نکته‌های کاربردی', hydration: 'آب‌رسانی', 'meal-planning': 'برنامه‌ریزی وعده‌ها',
+    'high-protein': 'پروتئین بیشتر', 'weight-management': 'مدیریت وزن', 'balanced-meals': 'وعده متعادل',
+  }
+  return labels[tag] || tag
+}

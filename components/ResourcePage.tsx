@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import PersianSample from './PersianSample'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { type CSSProperties } from 'react'
@@ -71,17 +72,7 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
   const storeSameAs = getStoreSameAs(language)
   const alternateLanguages = pageKey ? getResourceAlternateLanguages(pageKey) : undefined
   const proofCopy = PRODUCT_PROOF_COPY[language as keyof typeof PRODUCT_PROOF_COPY] ?? PRODUCT_PROOF_COPY.en
-  const trackStoreClick = (store: string) => {
-    if (typeof window === 'undefined' || !window.gtag) {
-      return
-    }
 
-    window.gtag('event', 'store_click', {
-      store,
-      language,
-      landing_page: page.path,
-    })
-  }
   const localizedCorePages = CORE_SITE_LINKS.map((link) => {
     if (link.href === '/features/') {
       return {
@@ -260,6 +251,7 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
               <p className="lp-kicker">{t('Calkilo Guide')}</p>
               <h1>{page.heading}</h1>
               <p>{page.intro}</p>
+              {language === 'fa' && <p>تحلیل عکس داخل اپ انجام می‌شود. دانلود رایگان؛ دارای خرید درون‌برنامه‌ای.</p>}
               <div className="lp-resource-actions">
                 {androidStoreLinks.map((store, index) => (
                   <a
@@ -268,7 +260,6 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
                     href={store.href}
                     target="_blank"
                     rel="noreferrer"
-                    onClick={() => trackStoreClick(store.label)}
                   >
                     {store.label}
                   </a>
@@ -278,7 +269,6 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
                   href={APP_STORE_URL}
                   target="_blank"
                   rel="noreferrer"
-                  onClick={() => trackStoreClick('App Store')}
                 >
                   App Store
                 </a>
@@ -289,6 +279,7 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
 
         <section className="lp-static-content">
           <div className="lp-container lp-static-content-wrap">
+            {language === 'fa' && <PersianSample />}
             <section className="lp-resource-card-grid">
               {page.highlights.map((highlight) => (
                 <article key={highlight.title} className="lp-static-card">
@@ -298,7 +289,7 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
               ))}
             </section>
 
-            <section className="lp-static-card lp-resource-proof">
+            {language !== 'fa' && <section className="lp-static-card lp-resource-proof">
               <div className="lp-resource-proof-copy">
                 <p className="lp-kicker">{proofCopy.kicker}</p>
                 <h2>{proofCopy.title}</h2>
@@ -312,7 +303,7 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
               <div className="lp-resource-proof-visual">
                 <Image
                   src="/assets/hero-main.png"
-                  alt={language === 'fa' ? 'نمونه عکس واضح از یک وعده غذایی' : language === 'it' ? 'Esempio di foto chiara di un pasto' : 'Example of a clear food photo for calorie estimation'}
+                  alt={language === 'it' ? 'Esempio di foto chiara di un pasto' : 'Example of a clear food photo for calorie estimation'}
                   width={760}
                   height={571}
                 />
@@ -327,7 +318,7 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
                   <small>{proofCopy.note}</small>
                 </div>
               </div>
-            </section>
+            </section>}
 
             {page.sections.map((section) => (
               <section key={section.title} className="lp-static-card">

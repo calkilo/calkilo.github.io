@@ -9,8 +9,8 @@ export const CALKILO_APP_SCHEME = 'calkilo'
 export const CALKILO_ANDROID_PACKAGE = 'com.calkilo.mobile'
 
 export const PERSIAN_ANDROID_STORE_LINKS = [
-  { label: 'Cafe Bazaar', href: CAFE_BAZAAR_URL },
-  { label: 'Myket', href: MYKET_URL },
+  { label: 'دریافت از بازار', href: CAFE_BAZAAR_URL },
+  { label: 'دریافت از مایکت', href: MYKET_URL },
 ] as const
 
 export function getAndroidStoreLinks(language: SiteLanguage | string = 'en') {

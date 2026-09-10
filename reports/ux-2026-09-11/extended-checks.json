@@ -1,0 +1,72 @@
+[
+  {
+    "test": "legacy Persian pricing route",
+    "url": "http://localhost:4173/fa/#pricing",
+    "top": 107.578125
+  },
+  {
+    "test": "photo switch English",
+    "url": "http://localhost:4173/photo-calorie-calculator/",
+    "language": "en"
+  },
+  {
+    "test": "photo return Persian",
+    "url": "http://localhost:4173/fa/photo-calorie-calculator/",
+    "language": "fa"
+  },
+  {
+    "test": "download first click additional width",
+    "width": 360,
+    "top": 107.703125
+  },
+  {
+    "test": "download first click additional width",
+    "width": 768,
+    "top": 107.96875
+  },
+  {
+    "test": "download first click additional width",
+    "width": 1440,
+    "top": 108.4375
+  },
+  {
+    "test": "touch target sizes",
+    "controls": [
+      {
+        "text": "بستن",
+        "width": 46.84375,
+        "height": 44
+      },
+      {
+        "text": "دانلود کالکیلو",
+        "width": 82.65625,
+        "height": 44
+      },
+      {
+        "text": "EnNlRuZhArFaIt",
+        "width": 44,
+        "height": 44
+      },
+      {
+        "text": "امکانات",
+        "width": 336,
+        "height": 51.4375
+      },
+      {
+        "text": "اشتراک",
+        "width": 336,
+        "height": 51.4375
+      },
+      {
+        "text": "راهنماها",
+        "width": 336,
+        "height": 51.4375
+      },
+      {
+        "text": "پشتیبانی",
+        "width": 336,
+        "height": 51.4375
+      }
+    ]
+  }
+]

@@ -30,7 +30,7 @@ const FEATURE_CARDS = [
   },
   {
     title: 'Device integrations',
-    description: 'Connect Calkilo with Apple Health, Google Fit, Fitbit, and Samsung Health.',
+    description: 'Connect Calkilo with Apple Health on iOS (version 1.3.3).',
   },
 ] as const
 
@@ -53,7 +53,7 @@ const FEATURE_FAQS = [
   {
     question: 'Which devices and platforms does Calkilo support?',
     answer:
-      'Calkilo is available on iPhone and Android, and the public product messaging includes Apple Health, Google Fit, Fitbit, and Samsung Health integrations.',
+      'Calkilo is available on iPhone and Android. Apple Health integration is documented in the iOS 1.3.3 release notes.',
   },
 ] as const
 
@@ -197,10 +197,7 @@ export default function FeaturesPage() {
           People often want to know whether an app fits the rest of their health setup before they install or upgrade.
         </p>
         <ul className="lp-policy-list">
-          <li>Apple Health</li>
-          <li>Google Fit</li>
-          <li>Fitbit</li>
-          <li>Samsung Health</li>
+          <li>Apple Health — iOS 1.3.3</li>
         </ul>
       </section>
 

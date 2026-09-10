@@ -1,0 +1,5 @@
+
+> calkilo-landing@1.0.0 seo:audit
+> node scripts/audit-export.mjs
+
+SEO export audit passed for 116 canonical URLs.

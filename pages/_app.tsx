@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import { useEffect } from 'react'
 import { isRtlLanguage, normalizeSiteLanguage } from '../lib/site-language'
 import '../styles/globals.css'
+import { captureSiteClick, queueAnalytics, trackUiEvent } from '../lib/analytics'
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || 'G-KSFK6RGGYG'
 const ANALYTICS_DELAY_MS = 10_000
@@ -15,6 +16,7 @@ declare global {
 }
 
 export default function App({ Component, pageProps, router }: AppProps) {
+  const pagePath = router.asPath.split(/[?#]/)[0]
   const pathLanguage = router.asPath.split(/[/?#]/).filter(Boolean)[0]
   const language = normalizeSiteLanguage((pageProps as { lang?: string }).lang || pathLanguage)
 
@@ -28,6 +30,8 @@ export default function App({ Component, pageProps, router }: AppProps) {
       return
     }
 
+    queueAnalytics('js', new Date())
+    queueAnalytics('config', GA_MEASUREMENT_ID, { send_page_view: false })
     let hasLoaded = false
     let timeoutId: number | undefined
     const interactionEvents = ['pointerdown', 'keydown', 'touchstart', 'scroll'] as const
@@ -49,13 +53,6 @@ export default function App({ Component, pageProps, router }: AppProps) {
         window.clearTimeout(timeoutId)
       }
 
-      window.dataLayer = window.dataLayer || []
-      window.gtag = (...args: unknown[]) => {
-        window.dataLayer?.push(args)
-      }
-      window.gtag('js', new Date())
-      window.gtag('config', GA_MEASUREMENT_ID)
-
       const script = document.createElement('script')
       script.async = true
       script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_MEASUREMENT_ID)}`
@@ -76,14 +73,19 @@ export default function App({ Component, pageProps, router }: AppProps) {
   }, [])
 
   useEffect(() => {
-    if (!GA_MEASUREMENT_ID || typeof window === 'undefined' || !window.gtag) {
-      return
-    }
-
-    window.gtag('config', GA_MEASUREMENT_ID, {
-      page_path: router.asPath,
-    })
-  }, [router.asPath])
+    queueAnalytics('event', 'page_view', { page_location: window.location.origin + pagePath, page_title: document.title })
+    const onClick = (event: MouseEvent) => captureSiteClick(event)
+    document.addEventListener('click', onClick, true)
+    const sample = document.querySelector('[data-sample]')
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) {
+        trackUiEvent('sample_view', 'sample')
+        observer.disconnect()
+      }
+    }, { threshold: 0.5 })
+    if (sample) observer.observe(sample)
+    return () => { document.removeEventListener('click', onClick, true); observer.disconnect() }
+  }, [pagePath])
 
   return (
     <>

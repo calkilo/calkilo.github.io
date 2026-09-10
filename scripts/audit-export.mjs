@@ -219,11 +219,17 @@ for (const language of SITE_LANGUAGES) {
 }
 
 const persianHome = await readFile(join(outputRoot, 'fa', 'index.html'), 'utf8')
-if (!persianHome.includes('۲۸۹٬۰۰۰ تومان') || !persianHome.includes('۵۸۹٬۰۰۰ تومان')) {
-  errors.push('Persian visible pricing is missing from the exported homepage.')
+// IRR amounts are intentionally withheld until verified against a real purchase source.
+if (persianHome.includes('"price":"2890000"') || persianHome.includes('"price":"5890000"')) {
+  errors.push('Unverified Persian purchase prices must not appear in structured data.')
 }
-if (!persianHome.includes('"price":"2890000"') || !persianHome.includes('"price":"5890000"')) {
-  errors.push('Persian IRR structured pricing does not match the visible toman prices.')
+if (!persianHome.includes('دانلود رایگان؛ دارای خرید درون‌برنامه‌ای')) {
+  errors.push('Persian homepage must explain free download and in-app purchases.')
+}
+const protectedPhoto = await readFile(join(outputRoot, 'fa', 'photo-calorie-calculator', 'index.html'), 'utf8')
+if (firstMatch(protectedPhoto, /<title[^>]*>([\s\S]*?)<\/title>/u) !== 'کالری شمار با عکس رایگان | محاسبه کالری غذا با هوش مصنوعی - Calkilo'
+  || firstMatch(protectedPhoto, /<h1[^>]*>([\s\S]*?)<\/h1>/u) !== 'کالری شمار با عکس رایگان') {
+  errors.push('The protected Persian photo title or H1 changed.')
 }
 if (persianHome.includes('۲۸۹٬۰۰۰٬۰۰۰ تومان') || persianHome.includes('۵۸۹٬۰۰۰٬۰۰۰ تومان')) {
   errors.push('The obsolete 1000x Persian FAQ prices are still present.')

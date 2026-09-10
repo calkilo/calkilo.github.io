@@ -1,3 +1,4 @@
+import { localizeBlogTag } from '../lib/blog-copy'
 import Link from 'next/link'
 import { formatBlogDate, getBlogPostPath, type BlogPost } from '../lib/blog'
 import { getBlogCopy } from '../lib/blog-copy'
@@ -44,7 +45,7 @@ export default function BlogCard({ language, post, priority = false, variant = '
         {visibleTags.length > 0 ? (
           <ul className="lp-blog-tags" aria-label="Tags">
             {visibleTags.map((tag) => (
-              <li key={tag}>{tag}</li>
+              <li key={tag}>{localizeBlogTag(tag, language)}</li>
             ))}
           </ul>
         ) : null}

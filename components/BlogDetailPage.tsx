@@ -1,3 +1,4 @@
+import { localizeBlogTag } from '../lib/blog-copy'
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import {
@@ -71,7 +72,7 @@ const EDITORIAL_COPY: Record<SiteLanguage, {
     author: 'تیم تحریریه Calkilo', updated: 'به‌روزرسانی', noteTitle: 'یادداشت تحریریه و سلامت',
     note: 'این مقاله برای آموزش عمومی است و توصیه پزشکی محسوب نمی‌شود. مقادیر تغذیه‌ای و نتایج عکس غذا تخمینی هستند؛ دستور پخت، اندازه وعده، روغن، سس و مواد پنهان می‌توانند نتیجه را به‌طور محسوسی تغییر دهند.',
     methodology: 'روش Calkilo برای تخمین اطلاعات تغذیه‌ای', referencesTitle: 'منابع معتبر تغذیه',
-    referencesIntro: 'برای بررسی مقادیر و راهنماهای عمومی تغذیه از این منابع رسمی استفاده کنید:',
+    referencesIntro: 'این منابع برای مطالعه عمومی تغذیه‌اند و به‌تنهایی منبع تک‌تک ادعاهای این مقاله محسوب نمی‌شوند:',
   },
   it: {
     author: 'Redazione Calkilo', updated: 'Aggiornato', noteTitle: 'Nota editoriale e sanitaria',
@@ -276,19 +277,20 @@ export default function BlogDetailPage({ alternateLanguagePaths, initialPost = n
               {post.tags.length > 0 ? (
                 <ul className="lp-blog-tags lp-blog-detail-tags" aria-label="Tags">
                   {post.tags.map((tag) => (
-                    <li key={tag}>{tag}</li>
+                    <li key={tag}>{localizeBlogTag(tag, language)}</li>
                   ))}
                 </ul>
               ) : null}
 
               <div className="lp-blog-prose">
-                <BlogMarkdown content={post.content} emptyLabel={copy.contentUnavailable} />
+                <BlogMarkdown content={post.content} tocLabel={language === 'fa' ? 'در این مقاله می‌خوانید' : 'In this article'} emptyLabel={copy.contentUnavailable} />
               </div>
 
+              {language === 'fa' && <p className="lp-blog-app-link"><Link href="/fa/photo-calorie-calculator/">ثبت غذای روزانه با عکس در کالکیلو؛ روش بررسی و اصلاح تخمین ←</Link></p>}
               <aside className="lp-blog-editorial-note" aria-labelledby="blog-editorial-note-title">
                 <h2 id="blog-editorial-note-title">{editorialCopy.noteTitle}</h2>
                 <p>{editorialCopy.note}</p>
-                <p><Link href="/about/#editorial-methodology">{editorialCopy.methodology}</Link></p>
+                <p><Link href={language === 'fa' ? '/fa/photo-calorie-calculator/' : '/about/#editorial-methodology'}>{editorialCopy.methodology}</Link></p>
                 <h3>{editorialCopy.referencesTitle}</h3>
                 <p>{editorialCopy.referencesIntro}</p>
                 <ul>

@@ -1,0 +1,45 @@
+[
+  {
+    "url": "http://calkilo.com/",
+    "exit": 0,
+    "headers": "HTTP/1.1 200 OK\nDate: Thu, 10 Sep 2026 23:20:06 GMT\nContent-Type: text/html; charset=utf-8\nConnection: keep-alive\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=5wnjd1uF%2FBmfcxUdzbRcHn8fF%2FLWOilEc3csnNQ3Efqo1ONaSPKjN42lJuvBZjM6Pe9PhjOv26JxRYtYn%2BYA%2BYLbZEO1yFBi2NaZ5glUTjZXkpIVm4bXCURKZpYTlQ%3D%3D\"}]}\nServer: cloudflare\nLast-Modified: Sun, 06 Sep 2026 09:57:12 GMT\nAccess-Control-Allow-Origin: *\nexpires: Thu, 10 Sep 2026 23:03:20 GMT\nCache-Control: max-age=600\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\nx-proxy-cache: MISS\nX-GitHub-Request-Id: 41AC:1C5E30:1408D:144A4:6AA334DF\nx-github-edge-region: fra\nAge: 0\nVia: 1.1 varnish\nX-Served-By: cache-sof1510052-SOF\nX-Cache: HIT\nX-Cache-Hits: 0\nX-Timer: S1789082406.252477,VS0,VE125\nVary: Accept-Encoding\nX-Fastly-Request-ID: 3a73197db89382d8741a3877b555e15675c07900\ncf-cache-status: DYNAMIC\nCF-RAY: a392294eff1b16f3-SOF\nalt-svc: h3=\":443\"; ma=86400\n\n",
+    "error": ""
+  },
+  {
+    "url": "https://calkilo.com/fa/",
+    "exit": 0,
+    "headers": "HTTP/2 200 \ndate: Thu, 10 Sep 2026 23:20:06 GMT\ncontent-type: text/html; charset=utf-8\nserver: cloudflare\nlast-modified: Sun, 06 Sep 2026 09:57:12 GMT\naccess-control-allow-origin: *\nexpires: Thu, 10 Sep 2026 23:00:20 GMT\ncache-control: max-age=600\nx-proxy-cache: MISS\nx-github-request-id: 3818:23C71D:2FFC:3108:6AA3342B\nx-github-edge-region: fra\nreport-to: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=gyi1fgZvG%2FPyC7Xub%2BPGLAPMemWgaTwSCGr07h4IHu8XlPNgg%2BOBSNVIouJm6qGgA1n%2FUqU5ZDcbVZFdBB4ReSPnMW9aicN%2FA89%2FbBkeDk6RLVmX7881zjbbcoyDmw%3D%3D\"}]}\nage: 0\nvia: 1.1 varnish\nx-served-by: cache-sof1510038-SOF\nx-cache: HIT\nx-cache-hits: 0\nx-timer: S1789082407.618050,VS0,VE136\nvary: Accept-Encoding\nx-fastly-request-id: 84f813ea35fc8ef2b05556364453c03701dad039\nnel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\ncf-cache-status: DYNAMIC\ncf-ray: a39229514d52264c-SOF\nalt-svc: h3=\":443\"; ma=86400\n\n",
+    "error": ""
+  },
+  {
+    "url": "https://www.calkilo.com/",
+    "exit": 60,
+    "headers": "",
+    "error": "curl: (60) SSL: no alternative certificate subject name matches target host name 'www.calkilo.com'\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.\n"
+  },
+  {
+    "url": "https://cafebazaar.ir/app/com.calkilo.mobile",
+    "exit": 0,
+    "headers": "HTTP/2 200 \ndate: Thu, 10 Sep 2026 23:20:07 GMT\ncontent-type: text/html;charset=utf-8\ncontent-length: 345658\nvary: Accept-Encoding\nvary: Accept-Encoding\nx-frame-options: SAMEORIGIN\nset-cookie: i18n_redirected=fa; Path=/; Expires=Fri, 10 Sep 2027 23:20:07 GMT; SameSite=Lax\nstrict-transport-security: max-age=31536000\nx-xss-protection: 1; mode=block\nx-zrk-us: 200\nx-zrk-cs: BYPASS\nserver: Sotoon CDN\nx-zrk-sn: 70004\naccept-ranges: bytes\naccept-ranges: bytes\n\n",
+    "error": ""
+  },
+  {
+    "url": "https://myket.ir/app/com.calkilo.mobile",
+    "exit": 0,
+    "headers": "HTTP/2 200 \nserver: nginx\ndate: Thu, 10 Sep 2026 23:20:08 GMT\ncontent-type: text/html; charset=utf-8\ncontent-length: 91512\nvary: Accept-Encoding\ncache-control: public,max-age=7200\nx-trace-id: 888da5932e4b4f498c09f3e4a252ee91\ncontent-security-policy: default-src 'self';        frame-ancestors 'self' https://trustseal.enamad.ir;        object-src 'none';        base-uri 'self';        form-action 'self';        script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms https://scripts.clarity.ms;        worker-src 'self' blob:;        style-src 'self' 'unsafe-inline' https://myket.ir;        img-src 'self' data: blob: https://myket.ir https://*.myket.ir https://www.googletagmanager.com;        font-src 'self' data: https://myket.ir https://*.myket.ir;        media-src 'self' blob: https://myket.ir https://*.myket.ir;        connect-src 'self' https://*.myket.ir https://region1.google-analytics.com https://*.clarity.ms;\nx-frame-options: SAMEORIGIN\nstrict-transport-security: max-age=31536000\n\n",
+    "error": ""
+  },
+  {
+    "url": "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411",
+    "exit": 0,
+    "headers": "HTTP/2 301 \nserver: daiquiri/5\ncontent-length: 0\ncache-control: public, max-age=900\ncontent-security-policy: upgrade-insecure-requests; default-src 'none'; manifest-src 'self' https://*.apple.com; img-src 'self' https://*.apple.com https://*.mzstatic.com data:; font-src 'self' https://*.apple.com; style-src 'self' https://*.apple.com 'unsafe-inline'; script-src 'self' https://*.apple.com 'sha256-MS6/3FCg4WjP9gwgaBGwLpRCY6fZBgwmhVCdrPrNf3E=' 'sha256-tQjf8gvb2ROOMapIxFvFAYBeUJ0v1HCbOcSmDNXGtDo=' 'sha256-p7PoC97FO+Lu90RNjGWxhbm13yALSR4xzV8vaDhaQBo=' 'sha256-+5XkZFazzJo8n0iOP4ti/cLCMUudTf//Mzkb7xNPXIc='; connect-src 'self' https://*.apple.com https://*.mzstatic.com; media-src 'self' https://*.apple.com blob:; child-src 'self' https://*.apple.com; frame-src 'self' https://*.apple.com itms-appss: macappstore:; worker-src blob:; frame-ancestors 'none'; block-all-mixed-content; report-uri /api/csp-report\nlocation: https://apps.apple.com/us/app/calkilo-ai-calorie-tracker/id6755718411\nx-apple-jingle-correlation-key: BJ4YYE7PLRLAZ64EY5KUYY4ST4\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-responding-instance: amp-web-app-store-server:amp-web-app-store-server-main-59dbf4fc7c-dwjrl:4200:2636.1.0-external\nx-xss-protection: 1; mode=block\nstrict-transport-security: max-age=31536000; includeSubDomains\nx-daiquiri-instance: daiquiri:10001:daiquiri-cluster-698b7df46b-f8phv:7987:26RELEASE153:daiquiri-amp-kubernetes-shared-cluster-ak8s-prod-sk2-amp-web-app-store-prod\nx-daiquiri-debug-worker-pid: 80476\nx-daiquiri-instance: daiquiri:10001:daiquiri-all-shared-ext-84dbcb7b87-h9dkh:7987:26RELEASE153:daiquiri-amp-kubernetes-shared-ext-ak8s-prod-sk2-amp-daiquiri-ingress-prod\nx-daiquiri-debug-worker-pid: 284751\ndate: Thu, 10 Sep 2026 23:20:09 GMT\nx-cache: TCP_MISS from a23-38-121-121.deploy.akamaitechnologies.com (AkamaiGHost/22.6.2-97ef0859cc144569d43c2bf1998a4b4c) (-)\nx-cache-remote: TCP_MISS from a2-16-110-183.deploy.akamaitechnologies.com (AkamaiGHost/22.6.3-da071da6976b6d633b0b37bcfe65c0fc) (-)\nset-cookie: geo=TR; domain=.apple.com\nalt-svc: h3=\":443\"; ma=93600\n\n",
+    "error": ""
+  },
+  {
+    "url": "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411",
+    "method": "GET with redirects",
+    "status": 200,
+    "finalUrl": "https://apps.apple.com/us/app/calkilo-ai-calorie-tracker/id6755718411",
+    "note": "Read only; no installation or purchase"
+  }
+]

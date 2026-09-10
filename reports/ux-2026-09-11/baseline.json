@@ -1,0 +1,3042 @@
+[
+  {
+    "route": "/fa/",
+    "width": 390,
+    "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+    "h1": "کالری شمار آنلاین برای غذای روزانه",
+    "canonical": "https://calkilo.com/fa/",
+    "lang": "fa",
+    "dir": "rtl",
+    "schema": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://calkilo.com/#organization",
+        "name": "Calkilo",
+        "url": "https://calkilo.com",
+        "logo": "https://calkilo.com/assets/logo.png",
+        "sameAs": [
+          "https://cafebazaar.ir/app/com.calkilo.mobile",
+          "https://myket.ir/app/com.calkilo.mobile",
+          "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+        ],
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "support@calkilo.com",
+            "url": "https://calkilo.com/fa/contact/",
+            "availableLanguage": [
+              "fa"
+            ]
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://calkilo.com/#website",
+        "name": "Calkilo",
+        "url": "https://calkilo.com",
+        "inLanguage": "fa"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+        "description": "دانلود Calkilo رایگان است و خرید درون‌برنامه‌ای دارد؛ غذا را ثبت کنید، کالری و ماکروها را ببینید و از تحلیل عکس کمک بگیرید.",
+        "url": "https://calkilo.com/fa/",
+        "inLanguage": "fa",
+        "isPartOf": {
+          "@id": "https://calkilo.com/#website"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "@id": "https://calkilo.com/#app",
+        "name": "Calkilo",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "iOS, Android",
+        "description": "دانلود Calkilo رایگان است و خرید درون‌برنامه‌ای دارد؛ غذا را ثبت کنید، کالری و ماکروها را ببینید و از تحلیل عکس کمک بگیرید.",
+        "url": "https://calkilo.com",
+        "inLanguage": "fa",
+        "isAccessibleForFree": true,
+        "sameAs": [
+          "https://cafebazaar.ir/app/com.calkilo.mobile",
+          "https://myket.ir/app/com.calkilo.mobile",
+          "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+        ],
+        "publisher": {
+          "@id": "https://calkilo.com/#organization"
+        },
+        "featureList": [
+          "تحلیل و پیشنهادهای هوش مصنوعی",
+          "چت و عامل هوش مصنوعی",
+          "اهداف شخصی‌سازی‌شده",
+          "تحلیل فوری عکس"
+        ],
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "ماهانه",
+            "priceCurrency": "IRR",
+            "price": "2890000",
+            "availability": "https://schema.org/InStock",
+            "url": "https://calkilo.com/fa/#pricing"
+          },
+          {
+            "@type": "Offer",
+            "name": "سالانه",
+            "priceCurrency": "IRR",
+            "price": "5890000",
+            "availability": "https://schema.org/InStock",
+            "url": "https://calkilo.com/fa/#pricing"
+          }
+        ]
+      }
+    ],
+    "ctas": [
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "خانه",
+        "href": "/fa/"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "بلاگ",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "رایگان شروع کنید",
+        "href": "/fa/#download"
+      },
+      {
+        "text": "دریافت ازCafe Bazaar",
+        "href": "https://cafebazaar.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "دریافت ازMyket",
+        "href": "https://myket.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "",
+        "href": "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+      },
+      {
+        "text": "انتخاب ماهانه",
+        "href": "#download"
+      },
+      {
+        "text": "انتخاب سالانه",
+        "href": "#download"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "اشتراک",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "سوالات متداول",
+        "href": "/faq/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/faq/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "محاسبه کالری غذا با عکس",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "کالری شمار با عکس",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "کالری شمار با عکس رایگان",
+        "href": "/fa/free-photo-calorie-calculator/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/free-photo-calorie-calculator/"
+      },
+      {
+        "text": "هوش مصنوعی کالری شمار",
+        "href": "/fa/ai-calorie-calculator/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/ai-calorie-calculator/"
+      },
+      {
+        "text": "اسکن کالری غذا",
+        "href": "/fa/food-calorie-scanner/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/food-calorie-scanner/"
+      },
+      {
+        "text": "کالری شمار هوش مصنوعی",
+        "href": "/fa/ai-calorie-tracker/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/ai-calorie-tracker/"
+      },
+      {
+        "text": "پیگیری ماکرو",
+        "href": "/fa/macro-tracker/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/macro-tracker/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/"
+      },
+      {
+        "text": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+        "href": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/simple-calorie-tracking-habits-that-stick/"
+      },
+      {
+        "text": "عادت‌های ساده برای ثبت کالری که ماندگار می‌مانند",
+        "href": "/fa/blog/simple-calorie-tracking-habits-that-stick/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/simple-calorie-tracking-habits-that-stick/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/"
+      },
+      {
+        "text": "مبانی هیدراسیون و تغذیه: چگونه روزانه سوخت‌رسانی و هیدراته بمانیم",
+        "href": "/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/"
+      },
+      {
+        "text": "همه مقاله‌ها",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "دریافت ازCafe Bazaar",
+        "href": "https://cafebazaar.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "دریافت ازMyket",
+        "href": "https://myket.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "",
+        "href": "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+      },
+      {
+        "text": "تماس با ما",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "Featured onBowora",
+        "href": "https://bowora.com/?via=txqmolhu"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "بلاگ",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "محاسبه کالری غذا با عکس",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "سیاست حریم خصوصی",
+        "href": "/fa/privacy-policy/"
+      },
+      {
+        "text": "شرایط خدمات",
+        "href": "/fa/terms-of-service/"
+      },
+      {
+        "text": "حذف حساب و داده‌ها",
+        "href": "/fa/account-deletion/"
+      },
+      {
+        "text": "شرایط و قوانین",
+        "href": "/fa/terms-and-conditions/"
+      },
+      {
+        "text": "سوالات متداول",
+        "href": "/faq/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "کالری شمار با عکس",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "کالری شمار با عکس رایگان",
+        "href": "/fa/free-photo-calorie-calculator/"
+      }
+    ]
+  },
+  {
+    "route": "/fa/photo-calorie-calculator/",
+    "width": 390,
+    "title": "کالری شمار با عکس رایگان | محاسبه کالری غذا با هوش مصنوعی - Calkilo",
+    "h1": "کالری شمار با عکس رایگان",
+    "canonical": "https://calkilo.com/fa/photo-calorie-calculator/",
+    "lang": "fa",
+    "dir": "rtl",
+    "schema": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://calkilo.com/#organization",
+        "name": "Calkilo",
+        "url": "https://calkilo.com",
+        "logo": "https://calkilo.com/assets/logo.png",
+        "sameAs": [
+          "https://cafebazaar.ir/app/com.calkilo.mobile",
+          "https://myket.ir/app/com.calkilo.mobile",
+          "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "کالری شمار با عکس رایگان | محاسبه کالری غذا با هوش مصنوعی - Calkilo",
+        "description": "Calkilo برای دانلود رایگان است و خرید درون‌برنامه‌ای دارد؛ از غذا عکس بگیرید، تخمین کالری و ماکروها را بررسی و اصلاح کنید.",
+        "url": "https://calkilo.com/fa/photo-calorie-calculator/",
+        "inLanguage": "fa",
+        "isPartOf": {
+          "@id": "https://calkilo.com/#website"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "@id": "https://calkilo.com/#app",
+        "name": "Calkilo",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "iOS, Android",
+        "description": "Calkilo برای دانلود رایگان است و خرید درون‌برنامه‌ای دارد؛ از غذا عکس بگیرید، تخمین کالری و ماکروها را بررسی و اصلاح کنید.",
+        "url": "https://calkilo.com",
+        "sameAs": [
+          "https://cafebazaar.ir/app/com.calkilo.mobile",
+          "https://myket.ir/app/com.calkilo.mobile",
+          "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+        ],
+        "featureList": [
+          "شروع با عکس غذا",
+          "کالری همراه با ماکروها",
+          "قابل بررسی و اصلاح"
+        ],
+        "publisher": {
+          "@id": "https://calkilo.com/#organization"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "خانه",
+            "item": "https://calkilo.com/fa/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "کالری شمار با عکس رایگان",
+            "item": "https://calkilo.com/fa/photo-calorie-calculator/"
+          }
+        ]
+      }
+    ],
+    "ctas": [
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "خانه",
+        "href": "/fa/"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "رایگان امتحان کنید",
+        "href": "/fa/#download"
+      },
+      {
+        "text": "Cafe Bazaar",
+        "href": "https://cafebazaar.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "Myket",
+        "href": "https://myket.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "App Store",
+        "href": "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "قیمت‌گذاری",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "سوالات متداول",
+        "href": "/faq/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "کالری شمار با عکس",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "کالری شمار با عکس رایگان",
+        "href": "/fa/free-photo-calorie-calculator/"
+      },
+      {
+        "text": "هوش مصنوعی کالری شمار",
+        "href": "/fa/ai-calorie-calculator/"
+      },
+      {
+        "text": "اسکن کالری غذا",
+        "href": "/fa/food-calorie-scanner/"
+      },
+      {
+        "text": "کالری شمار هوش مصنوعی",
+        "href": "/fa/ai-calorie-tracker/"
+      },
+      {
+        "text": "پیگیری ماکرو",
+        "href": "/fa/macro-tracker/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "قیمت‌گذاری",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "محاسبه کالری غذا با عکس",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "محاسبه کالری غذا با عکس",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "کالری شمار با عکس",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "کالری شمار با عکس رایگان",
+        "href": "/fa/free-photo-calorie-calculator/"
+      },
+      {
+        "text": "هوش مصنوعی کالری شمار",
+        "href": "/fa/ai-calorie-calculator/"
+      },
+      {
+        "text": "اسکن کالری غذا",
+        "href": "/fa/food-calorie-scanner/"
+      },
+      {
+        "text": "کالری شمار هوش مصنوعی",
+        "href": "/fa/ai-calorie-tracker/"
+      },
+      {
+        "text": "پیگیری ماکرو",
+        "href": "/fa/macro-tracker/"
+      },
+      {
+        "text": "سوالات متداول",
+        "href": "/faq/"
+      },
+      {
+        "text": "سیاست حریم خصوصی",
+        "href": "/fa/privacy-policy/"
+      },
+      {
+        "text": "شرایط استفاده",
+        "href": "/fa/terms-of-service/"
+      },
+      {
+        "text": "حذف حساب",
+        "href": "/fa/account-deletion/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      }
+    ]
+  },
+  {
+    "route": "/fa/calories/hamburger/",
+    "width": 390,
+    "title": "کالری همبرگر چقدر است؟ | ارزش غذایی و محاسبه با عکس",
+    "h1": "کالری همبرگر چقدر است؟",
+    "canonical": "https://calkilo.com/fa/calories/hamburger/",
+    "lang": "fa",
+    "dir": "rtl",
+    "schema": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Calkilo",
+        "url": "https://calkilo.com",
+        "logo": "https://calkilo.com/assets/logo.png",
+        "sameAs": [
+          "https://cafebazaar.ir/app/com.calkilo.mobile",
+          "https://myket.ir/app/com.calkilo.mobile",
+          "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Calkilo",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "iOS, Android",
+        "url": "https://calkilo.com/fa/calories/hamburger/",
+        "description": "کالری همبرگر در هر 100 گرم و هر وعده را ببینید؛ پروتئین، چربی و کربوهیدرات را بررسی کنید و برای تخمین دقیق‌تر از غذای خود در Calkilo عکس بگیرید.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "کالری همبرگر چقدر است؟ | ارزش غذایی و محاسبه با عکس",
+        "description": "کالری همبرگر در هر 100 گرم و هر وعده را ببینید؛ پروتئین، چربی و کربوهیدرات را بررسی کنید و برای تخمین دقیق‌تر از غذای خود در Calkilo عکس بگیرید.",
+        "url": "https://calkilo.com/fa/calories/hamburger/",
+        "inLanguage": "fa",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Calkilo",
+          "url": "https://calkilo.com"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "خانه",
+            "item": "https://calkilo.com/fa/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "کالری همبرگر چقدر است؟",
+            "item": "https://calkilo.com/fa/calories/hamburger/"
+          }
+        ]
+      }
+    ],
+    "ctas": [
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "خانه",
+        "href": "/fa/"
+      },
+      {
+        "text": "کالری با عکس",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "اسکن غذا",
+        "href": "/fa/food-calorie-scanner/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "رایگان امتحان کنید",
+        "href": "/fa/#download"
+      },
+      {
+        "text": "Cafe Bazaar",
+        "href": "https://cafebazaar.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "Myket",
+        "href": "https://myket.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "App Store",
+        "href": "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+      },
+      {
+        "text": "Cafe Bazaar",
+        "href": "https://cafebazaar.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "Myket",
+        "href": "https://myket.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "محاسبه کالری غذا با عکس",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "کالری شمار با عکس",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "کالری شمار با عکس رایگان",
+        "href": "/fa/free-photo-calorie-calculator/"
+      },
+      {
+        "text": "هوش مصنوعی کالری شمار",
+        "href": "/fa/ai-calorie-calculator/"
+      },
+      {
+        "text": "اسکن کالری غذا",
+        "href": "/fa/food-calorie-scanner/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "خانه",
+        "href": "/fa/"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "محاسبه کالری غذا با عکس",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "کالری شمار با عکس",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "کالری شمار با عکس رایگان",
+        "href": "/fa/free-photo-calorie-calculator/"
+      },
+      {
+        "text": "هوش مصنوعی کالری شمار",
+        "href": "/fa/ai-calorie-calculator/"
+      },
+      {
+        "text": "اسکن کالری غذا",
+        "href": "/fa/food-calorie-scanner/"
+      },
+      {
+        "text": "کالری پیتزا",
+        "href": "/fa/calories/pizza/"
+      },
+      {
+        "text": "کالری همبرگر",
+        "href": "/fa/calories/hamburger/"
+      },
+      {
+        "text": "کالری کباب",
+        "href": "/fa/calories/kebab/"
+      },
+      {
+        "text": "کالری برنج",
+        "href": "/fa/calories/rice/"
+      },
+      {
+        "text": "کالری فلافل",
+        "href": "/fa/calories/falafel/"
+      }
+    ]
+  },
+  {
+    "route": "/fa/blog/",
+    "width": 390,
+    "title": "بلاگ Calkilo | راهنماهای تغذیه و کالری شماری هوش مصنوعی",
+    "h1": "بلاگ Calkilo",
+    "canonical": "https://calkilo.com/fa/blog/",
+    "lang": "fa",
+    "dir": "rtl",
+    "schema": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "@id": "https://calkilo.com/fa/blog/#blog",
+        "name": "بلاگ Calkilo | راهنماهای تغذیه و کالری شماری هوش مصنوعی",
+        "description": "مقاله‌های Calkilo درباره برنامه غذایی، پیگیری ماکروها، عکس غذا و عادت‌های کاربردی تغذیه را بخوانید.",
+        "url": "https://calkilo.com/fa/blog/",
+        "inLanguage": "fa",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Calkilo",
+          "url": "https://calkilo.com"
+        },
+        "blogPost": [
+          {
+            "@type": "BlogPosting",
+            "headline": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+            "description": "راهنمایی عملی برای میان‌وعده‌های ساده و پرمغذی که می‌توانید آماده کنید یا در حرکت بردارید تا در برنامه‌های شلوغ انرژی ثابت بماند و گرسنگی کنترل شود.",
+            "url": "https://calkilo.com/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/",
+            "datePublished": "2026-07-10T17:19:13.891608+03:30",
+            "dateModified": "2026-07-10T17:27:06.455826+03:30",
+            "inLanguage": "fa"
+          },
+          {
+            "@type": "BlogPosting",
+            "headline": "عادت‌های ساده برای ثبت کالری که ماندگار می‌مانند",
+            "description": "عادت‌های کوچک و پیوسته ثبت کالری را قابل‌مدیریت و کاربردی می‌کنند. چند روال عملی یاد بگیرید تا بدون فشار ثبت کنید و داده‌های واضح‌تری برای تصمیم‌های روزانه به‌دست آورید.",
+            "url": "https://calkilo.com/fa/blog/simple-calorie-tracking-habits-that-stick/",
+            "datePublished": "2026-07-08T17:18:57.759340+03:30",
+            "dateModified": "2026-07-08T17:26:49.756829+03:30",
+            "inLanguage": "fa"
+          },
+          {
+            "@type": "BlogPosting",
+            "headline": "مبانی هیدراسیون و تغذیه: چگونه روزانه سوخت‌رسانی و هیدراته بمانیم",
+            "description": "راهنمایی عملی برای متعادل‌سازی مایعات و مواد مغذی جهت انرژی و رفاه روزانه، با نکات ساده برای ساخت عادات سالم‌تر بدون قوانین سختگیرانه.",
+            "url": "https://calkilo.com/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/",
+            "datePublished": "2026-07-06T17:18:51.438527+03:30",
+            "dateModified": "2026-07-18T11:58:58.138818+03:30",
+            "inLanguage": "fa"
+          },
+          {
+            "@type": "BlogPosting",
+            "headline": "برنامه‌ریزی عملی وعده‌های غذایی پرپروتئین: ساخت وعده‌های متعادل و پایدار",
+            "description": "راهنمایی عملی برای برنامه‌ریزی وعده‌های غذایی پرپروتئین که با زندگی روزمره سازگارند—شامل اهداف بخش‌ها، منابع پروتئین، قالب‌های ساده و یک برنامه نمونه هفت‌روزه برای ساده‌تر و رضایت‌بخش‌تر شدن آماده‌سازی غذا.",
+            "url": "https://calkilo.com/fa/blog/practical-high-protein-meal-planning-build-balanced-sustainable-meals/",
+            "datePublished": "2026-07-04T17:19:31.847213+03:30",
+            "dateModified": "2026-07-04T17:27:30.772563+03:30",
+            "inLanguage": "fa"
+          },
+          {
+            "@type": "BlogPosting",
+            "headline": "ساختن وعده‌های متعادل برای مدیریت وزن پایدار",
+            "description": "راهنمایی عملی و مبتنی بر شواهد برای ترکیب وعده‌های متعادل که از طریق کنترل سهم‌ها، تعادل مواد مغذی و عادات آگاهانه از مدیریت وزن پشتیبانی می‌کنند—بدون رژیم‌های سختگیرانه.",
+            "url": "https://calkilo.com/fa/blog/building-balanced-meals-for-sustainable-weight-management/",
+            "datePublished": "2026-07-02T18:28:10+03:30",
+            "dateModified": "2026-07-02T19:04:16.891344+03:30",
+            "image": "https://api.calkilo.com/media/blog_images/image3.png",
+            "inLanguage": "fa"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Calkilo",
+            "item": "https://calkilo.com/fa/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "بلاگ Calkilo",
+            "item": "https://calkilo.com/fa/blog/"
+          }
+        ]
+      }
+    ],
+    "ctas": [
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "خانه",
+        "href": "/fa/"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "بلاگ",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "رایگان امتحان کنید",
+        "href": "/fa/#download"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/"
+      },
+      {
+        "text": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+        "href": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/simple-calorie-tracking-habits-that-stick/"
+      },
+      {
+        "text": "عادت‌های ساده برای ثبت کالری که ماندگار می‌مانند",
+        "href": "/fa/blog/simple-calorie-tracking-habits-that-stick/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/simple-calorie-tracking-habits-that-stick/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/"
+      },
+      {
+        "text": "مبانی هیدراسیون و تغذیه: چگونه روزانه سوخت‌رسانی و هیدراته بمانیم",
+        "href": "/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/practical-high-protein-meal-planning-build-balanced-sustainable-meals/"
+      },
+      {
+        "text": "برنامه‌ریزی عملی وعده‌های غذایی پرپروتئین: ساخت وعده‌های متعادل و پایدار",
+        "href": "/fa/blog/practical-high-protein-meal-planning-build-balanced-sustainable-meals/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/practical-high-protein-meal-planning-build-balanced-sustainable-meals/"
+      },
+      {
+        "text": "",
+        "href": "/fa/blog/building-balanced-meals-for-sustainable-weight-management/"
+      },
+      {
+        "text": "ساختن وعده‌های متعادل برای مدیریت وزن پایدار",
+        "href": "/fa/blog/building-balanced-meals-for-sustainable-weight-management/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/building-balanced-meals-for-sustainable-weight-management/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "بلاگ",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "Calorie Calculator",
+        "href": "/calorie-calculator/"
+      },
+      {
+        "text": "سیاست حریم خصوصی",
+        "href": "/fa/privacy-policy/"
+      },
+      {
+        "text": "شرایط استفاده",
+        "href": "/fa/terms-of-service/"
+      },
+      {
+        "text": "حذف حساب و داده‌ها",
+        "href": "/fa/account-deletion/"
+      },
+      {
+        "text": "قوانین و شرایط",
+        "href": "/fa/terms-and-conditions/"
+      },
+      {
+        "text": "سوالات متداول",
+        "href": "/faq/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "AI Calorie Tracker",
+        "href": "/ai-calorie-tracker/"
+      },
+      {
+        "text": "Photo Calorie Calculator",
+        "href": "/photo-calorie-calculator/"
+      },
+      {
+        "text": "Macro Tracker",
+        "href": "/macro-tracker/"
+      }
+    ]
+  },
+  {
+    "route": "/fa/contact/",
+    "width": 390,
+    "title": "تماس با Calkilo",
+    "h1": "تماس با ما",
+    "canonical": "https://calkilo.com/fa/contact/",
+    "lang": "fa",
+    "dir": "rtl",
+    "schema": [
+      {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "تماس با Calkilo",
+        "url": "https://calkilo.com/fa/contact/",
+        "description": "برای درخواست‌های محصول، پرداخت و حریم خصوصی با پشتیبانی Calkilo تماس بگیرید.",
+        "inLanguage": "fa"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Calkilo",
+        "url": "https://calkilo.com",
+        "email": "support@calkilo.com",
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "support@calkilo.com",
+            "url": "https://calkilo.com/fa/contact/",
+            "availableLanguage": [
+              "fa"
+            ]
+          },
+          {
+            "@type": "ContactPoint",
+            "contactType": "privacy inquiries",
+            "email": "privacy@calkilo.com",
+            "url": "https://calkilo.com/fa/privacy-policy/",
+            "availableLanguage": [
+              "fa"
+            ]
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "خانه",
+            "item": "https://calkilo.com/fa/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "تماس",
+            "item": "https://calkilo.com/fa/contact/"
+          }
+        ]
+      }
+    ],
+    "ctas": [
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "خانه",
+        "href": "/fa/"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "بلاگ",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "رایگان امتحان کنید",
+        "href": "/fa/#download"
+      },
+      {
+        "text": "support@calkilo.com",
+        "href": "mailto:support@calkilo.com"
+      },
+      {
+        "text": "privacy@calkilo.com",
+        "href": "mailto:privacy@calkilo.com"
+      },
+      {
+        "text": "باز کردن صفحه حذف حساب",
+        "href": "/fa/account-deletion/"
+      },
+      {
+        "text": "مشاهده سیاست حریم خصوصی",
+        "href": "/fa/privacy-policy/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "بلاگ",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "Calorie Calculator",
+        "href": "/calorie-calculator/"
+      },
+      {
+        "text": "سیاست حریم خصوصی",
+        "href": "/fa/privacy-policy/"
+      },
+      {
+        "text": "شرایط استفاده",
+        "href": "/fa/terms-of-service/"
+      },
+      {
+        "text": "حذف حساب و داده‌ها",
+        "href": "/fa/account-deletion/"
+      },
+      {
+        "text": "قوانین و شرایط",
+        "href": "/fa/terms-and-conditions/"
+      },
+      {
+        "text": "سوالات متداول",
+        "href": "/faq/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "AI Calorie Tracker",
+        "href": "/ai-calorie-tracker/"
+      },
+      {
+        "text": "Photo Calorie Calculator",
+        "href": "/photo-calorie-calculator/"
+      },
+      {
+        "text": "Macro Tracker",
+        "href": "/macro-tracker/"
+      }
+    ]
+  },
+  {
+    "route": "/fa/#pricing",
+    "width": 390,
+    "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+    "h1": "کالری شمار آنلاین برای غذای روزانه",
+    "canonical": "https://calkilo.com/fa/",
+    "lang": "fa",
+    "dir": "rtl",
+    "schema": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://calkilo.com/#organization",
+        "name": "Calkilo",
+        "url": "https://calkilo.com",
+        "logo": "https://calkilo.com/assets/logo.png",
+        "sameAs": [
+          "https://cafebazaar.ir/app/com.calkilo.mobile",
+          "https://myket.ir/app/com.calkilo.mobile",
+          "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+        ],
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "support@calkilo.com",
+            "url": "https://calkilo.com/fa/contact/",
+            "availableLanguage": [
+              "fa"
+            ]
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://calkilo.com/#website",
+        "name": "Calkilo",
+        "url": "https://calkilo.com",
+        "inLanguage": "fa"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+        "description": "دانلود Calkilo رایگان است و خرید درون‌برنامه‌ای دارد؛ غذا را ثبت کنید، کالری و ماکروها را ببینید و از تحلیل عکس کمک بگیرید.",
+        "url": "https://calkilo.com/fa/",
+        "inLanguage": "fa",
+        "isPartOf": {
+          "@id": "https://calkilo.com/#website"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "@id": "https://calkilo.com/#app",
+        "name": "Calkilo",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "iOS, Android",
+        "description": "دانلود Calkilo رایگان است و خرید درون‌برنامه‌ای دارد؛ غذا را ثبت کنید، کالری و ماکروها را ببینید و از تحلیل عکس کمک بگیرید.",
+        "url": "https://calkilo.com",
+        "inLanguage": "fa",
+        "isAccessibleForFree": true,
+        "sameAs": [
+          "https://cafebazaar.ir/app/com.calkilo.mobile",
+          "https://myket.ir/app/com.calkilo.mobile",
+          "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+        ],
+        "publisher": {
+          "@id": "https://calkilo.com/#organization"
+        },
+        "featureList": [
+          "تحلیل و پیشنهادهای هوش مصنوعی",
+          "چت و عامل هوش مصنوعی",
+          "اهداف شخصی‌سازی‌شده",
+          "تحلیل فوری عکس"
+        ],
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "ماهانه",
+            "priceCurrency": "IRR",
+            "price": "2890000",
+            "availability": "https://schema.org/InStock",
+            "url": "https://calkilo.com/fa/#pricing"
+          },
+          {
+            "@type": "Offer",
+            "name": "سالانه",
+            "priceCurrency": "IRR",
+            "price": "5890000",
+            "availability": "https://schema.org/InStock",
+            "url": "https://calkilo.com/fa/#pricing"
+          }
+        ]
+      }
+    ],
+    "ctas": [
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "خانه",
+        "href": "/fa/"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "بلاگ",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "رایگان شروع کنید",
+        "href": "/fa/#download"
+      },
+      {
+        "text": "دریافت ازCafe Bazaar",
+        "href": "https://cafebazaar.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "دریافت ازMyket",
+        "href": "https://myket.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "",
+        "href": "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+      },
+      {
+        "text": "انتخاب ماهانه",
+        "href": "#download"
+      },
+      {
+        "text": "انتخاب سالانه",
+        "href": "#download"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "اشتراک",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "سوالات متداول",
+        "href": "/faq/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/faq/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "محاسبه کالری غذا با عکس",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "کالری شمار با عکس",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "کالری شمار با عکس رایگان",
+        "href": "/fa/free-photo-calorie-calculator/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/free-photo-calorie-calculator/"
+      },
+      {
+        "text": "هوش مصنوعی کالری شمار",
+        "href": "/fa/ai-calorie-calculator/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/ai-calorie-calculator/"
+      },
+      {
+        "text": "اسکن کالری غذا",
+        "href": "/fa/food-calorie-scanner/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/food-calorie-scanner/"
+      },
+      {
+        "text": "کالری شمار هوش مصنوعی",
+        "href": "/fa/ai-calorie-tracker/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/ai-calorie-tracker/"
+      },
+      {
+        "text": "پیگیری ماکرو",
+        "href": "/fa/macro-tracker/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/macro-tracker/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/"
+      },
+      {
+        "text": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+        "href": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/simple-calorie-tracking-habits-that-stick/"
+      },
+      {
+        "text": "عادت‌های ساده برای ثبت کالری که ماندگار می‌مانند",
+        "href": "/fa/blog/simple-calorie-tracking-habits-that-stick/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/simple-calorie-tracking-habits-that-stick/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/"
+      },
+      {
+        "text": "مبانی هیدراسیون و تغذیه: چگونه روزانه سوخت‌رسانی و هیدراته بمانیم",
+        "href": "/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/"
+      },
+      {
+        "text": "همه مقاله‌ها",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "دریافت ازCafe Bazaar",
+        "href": "https://cafebazaar.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "دریافت ازMyket",
+        "href": "https://myket.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "",
+        "href": "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+      },
+      {
+        "text": "تماس با ما",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "Featured onBowora",
+        "href": "https://bowora.com/?via=txqmolhu"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "بلاگ",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "محاسبه کالری غذا با عکس",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "سیاست حریم خصوصی",
+        "href": "/fa/privacy-policy/"
+      },
+      {
+        "text": "شرایط خدمات",
+        "href": "/fa/terms-of-service/"
+      },
+      {
+        "text": "حذف حساب و داده‌ها",
+        "href": "/fa/account-deletion/"
+      },
+      {
+        "text": "شرایط و قوانین",
+        "href": "/fa/terms-and-conditions/"
+      },
+      {
+        "text": "سوالات متداول",
+        "href": "/faq/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "کالری شمار با عکس",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "کالری شمار با عکس رایگان",
+        "href": "/fa/free-photo-calorie-calculator/"
+      }
+    ]
+  },
+  {
+    "route": "/fa/",
+    "width": 1440,
+    "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+    "h1": "کالری شمار آنلاین برای غذای روزانه",
+    "canonical": "https://calkilo.com/fa/",
+    "lang": "fa",
+    "dir": "rtl",
+    "schema": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://calkilo.com/#organization",
+        "name": "Calkilo",
+        "url": "https://calkilo.com",
+        "logo": "https://calkilo.com/assets/logo.png",
+        "sameAs": [
+          "https://cafebazaar.ir/app/com.calkilo.mobile",
+          "https://myket.ir/app/com.calkilo.mobile",
+          "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+        ],
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "support@calkilo.com",
+            "url": "https://calkilo.com/fa/contact/",
+            "availableLanguage": [
+              "fa"
+            ]
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://calkilo.com/#website",
+        "name": "Calkilo",
+        "url": "https://calkilo.com",
+        "inLanguage": "fa"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+        "description": "دانلود Calkilo رایگان است و خرید درون‌برنامه‌ای دارد؛ غذا را ثبت کنید، کالری و ماکروها را ببینید و از تحلیل عکس کمک بگیرید.",
+        "url": "https://calkilo.com/fa/",
+        "inLanguage": "fa",
+        "isPartOf": {
+          "@id": "https://calkilo.com/#website"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "@id": "https://calkilo.com/#app",
+        "name": "Calkilo",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "iOS, Android",
+        "description": "دانلود Calkilo رایگان است و خرید درون‌برنامه‌ای دارد؛ غذا را ثبت کنید، کالری و ماکروها را ببینید و از تحلیل عکس کمک بگیرید.",
+        "url": "https://calkilo.com",
+        "inLanguage": "fa",
+        "isAccessibleForFree": true,
+        "sameAs": [
+          "https://cafebazaar.ir/app/com.calkilo.mobile",
+          "https://myket.ir/app/com.calkilo.mobile",
+          "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+        ],
+        "publisher": {
+          "@id": "https://calkilo.com/#organization"
+        },
+        "featureList": [
+          "تحلیل و پیشنهادهای هوش مصنوعی",
+          "چت و عامل هوش مصنوعی",
+          "اهداف شخصی‌سازی‌شده",
+          "تحلیل فوری عکس"
+        ],
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "ماهانه",
+            "priceCurrency": "IRR",
+            "price": "2890000",
+            "availability": "https://schema.org/InStock",
+            "url": "https://calkilo.com/fa/#pricing"
+          },
+          {
+            "@type": "Offer",
+            "name": "سالانه",
+            "priceCurrency": "IRR",
+            "price": "5890000",
+            "availability": "https://schema.org/InStock",
+            "url": "https://calkilo.com/fa/#pricing"
+          }
+        ]
+      }
+    ],
+    "ctas": [
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "خانه",
+        "href": "/fa/"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "بلاگ",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "رایگان شروع کنید",
+        "href": "/fa/#download"
+      },
+      {
+        "text": "دریافت ازCafe Bazaar",
+        "href": "https://cafebazaar.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "دریافت ازMyket",
+        "href": "https://myket.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "",
+        "href": "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+      },
+      {
+        "text": "انتخاب ماهانه",
+        "href": "#download"
+      },
+      {
+        "text": "انتخاب سالانه",
+        "href": "#download"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "اشتراک",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "سوالات متداول",
+        "href": "/faq/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/faq/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "محاسبه کالری غذا با عکس",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "کالری شمار با عکس",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "کالری شمار با عکس رایگان",
+        "href": "/fa/free-photo-calorie-calculator/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/free-photo-calorie-calculator/"
+      },
+      {
+        "text": "هوش مصنوعی کالری شمار",
+        "href": "/fa/ai-calorie-calculator/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/ai-calorie-calculator/"
+      },
+      {
+        "text": "اسکن کالری غذا",
+        "href": "/fa/food-calorie-scanner/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/food-calorie-scanner/"
+      },
+      {
+        "text": "کالری شمار هوش مصنوعی",
+        "href": "/fa/ai-calorie-tracker/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/ai-calorie-tracker/"
+      },
+      {
+        "text": "پیگیری ماکرو",
+        "href": "/fa/macro-tracker/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/macro-tracker/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/"
+      },
+      {
+        "text": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+        "href": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/simple-calorie-tracking-habits-that-stick/"
+      },
+      {
+        "text": "عادت‌های ساده برای ثبت کالری که ماندگار می‌مانند",
+        "href": "/fa/blog/simple-calorie-tracking-habits-that-stick/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/simple-calorie-tracking-habits-that-stick/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/"
+      },
+      {
+        "text": "مبانی هیدراسیون و تغذیه: چگونه روزانه سوخت‌رسانی و هیدراته بمانیم",
+        "href": "/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/"
+      },
+      {
+        "text": "همه مقاله‌ها",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "دریافت ازCafe Bazaar",
+        "href": "https://cafebazaar.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "دریافت ازMyket",
+        "href": "https://myket.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "",
+        "href": "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+      },
+      {
+        "text": "تماس با ما",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "Featured onBowora",
+        "href": "https://bowora.com/?via=txqmolhu"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "بلاگ",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "محاسبه کالری غذا با عکس",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "سیاست حریم خصوصی",
+        "href": "/fa/privacy-policy/"
+      },
+      {
+        "text": "شرایط خدمات",
+        "href": "/fa/terms-of-service/"
+      },
+      {
+        "text": "حذف حساب و داده‌ها",
+        "href": "/fa/account-deletion/"
+      },
+      {
+        "text": "شرایط و قوانین",
+        "href": "/fa/terms-and-conditions/"
+      },
+      {
+        "text": "سوالات متداول",
+        "href": "/faq/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "کالری شمار با عکس",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "کالری شمار با عکس رایگان",
+        "href": "/fa/free-photo-calorie-calculator/"
+      }
+    ]
+  },
+  {
+    "route": "/fa/photo-calorie-calculator/",
+    "width": 1440,
+    "title": "کالری شمار با عکس رایگان | محاسبه کالری غذا با هوش مصنوعی - Calkilo",
+    "h1": "کالری شمار با عکس رایگان",
+    "canonical": "https://calkilo.com/fa/photo-calorie-calculator/",
+    "lang": "fa",
+    "dir": "rtl",
+    "schema": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://calkilo.com/#organization",
+        "name": "Calkilo",
+        "url": "https://calkilo.com",
+        "logo": "https://calkilo.com/assets/logo.png",
+        "sameAs": [
+          "https://cafebazaar.ir/app/com.calkilo.mobile",
+          "https://myket.ir/app/com.calkilo.mobile",
+          "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "کالری شمار با عکس رایگان | محاسبه کالری غذا با هوش مصنوعی - Calkilo",
+        "description": "Calkilo برای دانلود رایگان است و خرید درون‌برنامه‌ای دارد؛ از غذا عکس بگیرید، تخمین کالری و ماکروها را بررسی و اصلاح کنید.",
+        "url": "https://calkilo.com/fa/photo-calorie-calculator/",
+        "inLanguage": "fa",
+        "isPartOf": {
+          "@id": "https://calkilo.com/#website"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "@id": "https://calkilo.com/#app",
+        "name": "Calkilo",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "iOS, Android",
+        "description": "Calkilo برای دانلود رایگان است و خرید درون‌برنامه‌ای دارد؛ از غذا عکس بگیرید، تخمین کالری و ماکروها را بررسی و اصلاح کنید.",
+        "url": "https://calkilo.com",
+        "sameAs": [
+          "https://cafebazaar.ir/app/com.calkilo.mobile",
+          "https://myket.ir/app/com.calkilo.mobile",
+          "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+        ],
+        "featureList": [
+          "شروع با عکس غذا",
+          "کالری همراه با ماکروها",
+          "قابل بررسی و اصلاح"
+        ],
+        "publisher": {
+          "@id": "https://calkilo.com/#organization"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "خانه",
+            "item": "https://calkilo.com/fa/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "کالری شمار با عکس رایگان",
+            "item": "https://calkilo.com/fa/photo-calorie-calculator/"
+          }
+        ]
+      }
+    ],
+    "ctas": [
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "خانه",
+        "href": "/fa/"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "رایگان امتحان کنید",
+        "href": "/fa/#download"
+      },
+      {
+        "text": "Cafe Bazaar",
+        "href": "https://cafebazaar.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "Myket",
+        "href": "https://myket.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "App Store",
+        "href": "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "قیمت‌گذاری",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "سوالات متداول",
+        "href": "/faq/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "کالری شمار با عکس",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "کالری شمار با عکس رایگان",
+        "href": "/fa/free-photo-calorie-calculator/"
+      },
+      {
+        "text": "هوش مصنوعی کالری شمار",
+        "href": "/fa/ai-calorie-calculator/"
+      },
+      {
+        "text": "اسکن کالری غذا",
+        "href": "/fa/food-calorie-scanner/"
+      },
+      {
+        "text": "کالری شمار هوش مصنوعی",
+        "href": "/fa/ai-calorie-tracker/"
+      },
+      {
+        "text": "پیگیری ماکرو",
+        "href": "/fa/macro-tracker/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "قیمت‌گذاری",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "محاسبه کالری غذا با عکس",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "محاسبه کالری غذا با عکس",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "کالری شمار با عکس",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "کالری شمار با عکس رایگان",
+        "href": "/fa/free-photo-calorie-calculator/"
+      },
+      {
+        "text": "هوش مصنوعی کالری شمار",
+        "href": "/fa/ai-calorie-calculator/"
+      },
+      {
+        "text": "اسکن کالری غذا",
+        "href": "/fa/food-calorie-scanner/"
+      },
+      {
+        "text": "کالری شمار هوش مصنوعی",
+        "href": "/fa/ai-calorie-tracker/"
+      },
+      {
+        "text": "پیگیری ماکرو",
+        "href": "/fa/macro-tracker/"
+      },
+      {
+        "text": "سوالات متداول",
+        "href": "/faq/"
+      },
+      {
+        "text": "سیاست حریم خصوصی",
+        "href": "/fa/privacy-policy/"
+      },
+      {
+        "text": "شرایط استفاده",
+        "href": "/fa/terms-of-service/"
+      },
+      {
+        "text": "حذف حساب",
+        "href": "/fa/account-deletion/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      }
+    ]
+  },
+  {
+    "route": "/fa/calories/hamburger/",
+    "width": 1440,
+    "title": "کالری همبرگر چقدر است؟ | ارزش غذایی و محاسبه با عکس",
+    "h1": "کالری همبرگر چقدر است؟",
+    "canonical": "https://calkilo.com/fa/calories/hamburger/",
+    "lang": "fa",
+    "dir": "rtl",
+    "schema": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Calkilo",
+        "url": "https://calkilo.com",
+        "logo": "https://calkilo.com/assets/logo.png",
+        "sameAs": [
+          "https://cafebazaar.ir/app/com.calkilo.mobile",
+          "https://myket.ir/app/com.calkilo.mobile",
+          "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Calkilo",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "iOS, Android",
+        "url": "https://calkilo.com/fa/calories/hamburger/",
+        "description": "کالری همبرگر در هر 100 گرم و هر وعده را ببینید؛ پروتئین، چربی و کربوهیدرات را بررسی کنید و برای تخمین دقیق‌تر از غذای خود در Calkilo عکس بگیرید.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "کالری همبرگر چقدر است؟ | ارزش غذایی و محاسبه با عکس",
+        "description": "کالری همبرگر در هر 100 گرم و هر وعده را ببینید؛ پروتئین، چربی و کربوهیدرات را بررسی کنید و برای تخمین دقیق‌تر از غذای خود در Calkilo عکس بگیرید.",
+        "url": "https://calkilo.com/fa/calories/hamburger/",
+        "inLanguage": "fa",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Calkilo",
+          "url": "https://calkilo.com"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "خانه",
+            "item": "https://calkilo.com/fa/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "کالری همبرگر چقدر است؟",
+            "item": "https://calkilo.com/fa/calories/hamburger/"
+          }
+        ]
+      }
+    ],
+    "ctas": [
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "خانه",
+        "href": "/fa/"
+      },
+      {
+        "text": "کالری با عکس",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "اسکن غذا",
+        "href": "/fa/food-calorie-scanner/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "رایگان امتحان کنید",
+        "href": "/fa/#download"
+      },
+      {
+        "text": "Cafe Bazaar",
+        "href": "https://cafebazaar.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "Myket",
+        "href": "https://myket.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "App Store",
+        "href": "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+      },
+      {
+        "text": "Cafe Bazaar",
+        "href": "https://cafebazaar.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "Myket",
+        "href": "https://myket.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "محاسبه کالری غذا با عکس",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "کالری شمار با عکس",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "کالری شمار با عکس رایگان",
+        "href": "/fa/free-photo-calorie-calculator/"
+      },
+      {
+        "text": "هوش مصنوعی کالری شمار",
+        "href": "/fa/ai-calorie-calculator/"
+      },
+      {
+        "text": "اسکن کالری غذا",
+        "href": "/fa/food-calorie-scanner/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "خانه",
+        "href": "/fa/"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "محاسبه کالری غذا با عکس",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "کالری شمار با عکس",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "کالری شمار با عکس رایگان",
+        "href": "/fa/free-photo-calorie-calculator/"
+      },
+      {
+        "text": "هوش مصنوعی کالری شمار",
+        "href": "/fa/ai-calorie-calculator/"
+      },
+      {
+        "text": "اسکن کالری غذا",
+        "href": "/fa/food-calorie-scanner/"
+      },
+      {
+        "text": "کالری پیتزا",
+        "href": "/fa/calories/pizza/"
+      },
+      {
+        "text": "کالری همبرگر",
+        "href": "/fa/calories/hamburger/"
+      },
+      {
+        "text": "کالری کباب",
+        "href": "/fa/calories/kebab/"
+      },
+      {
+        "text": "کالری برنج",
+        "href": "/fa/calories/rice/"
+      },
+      {
+        "text": "کالری فلافل",
+        "href": "/fa/calories/falafel/"
+      }
+    ]
+  },
+  {
+    "route": "/fa/blog/",
+    "width": 1440,
+    "title": "بلاگ Calkilo | راهنماهای تغذیه و کالری شماری هوش مصنوعی",
+    "h1": "بلاگ Calkilo",
+    "canonical": "https://calkilo.com/fa/blog/",
+    "lang": "fa",
+    "dir": "rtl",
+    "schema": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "@id": "https://calkilo.com/fa/blog/#blog",
+        "name": "بلاگ Calkilo | راهنماهای تغذیه و کالری شماری هوش مصنوعی",
+        "description": "مقاله‌های Calkilo درباره برنامه غذایی، پیگیری ماکروها، عکس غذا و عادت‌های کاربردی تغذیه را بخوانید.",
+        "url": "https://calkilo.com/fa/blog/",
+        "inLanguage": "fa",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Calkilo",
+          "url": "https://calkilo.com"
+        },
+        "blogPost": [
+          {
+            "@type": "BlogPosting",
+            "headline": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+            "description": "راهنمایی عملی برای میان‌وعده‌های ساده و پرمغذی که می‌توانید آماده کنید یا در حرکت بردارید تا در برنامه‌های شلوغ انرژی ثابت بماند و گرسنگی کنترل شود.",
+            "url": "https://calkilo.com/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/",
+            "datePublished": "2026-07-10T17:19:13.891608+03:30",
+            "dateModified": "2026-07-10T17:27:06.455826+03:30",
+            "inLanguage": "fa"
+          },
+          {
+            "@type": "BlogPosting",
+            "headline": "عادت‌های ساده برای ثبت کالری که ماندگار می‌مانند",
+            "description": "عادت‌های کوچک و پیوسته ثبت کالری را قابل‌مدیریت و کاربردی می‌کنند. چند روال عملی یاد بگیرید تا بدون فشار ثبت کنید و داده‌های واضح‌تری برای تصمیم‌های روزانه به‌دست آورید.",
+            "url": "https://calkilo.com/fa/blog/simple-calorie-tracking-habits-that-stick/",
+            "datePublished": "2026-07-08T17:18:57.759340+03:30",
+            "dateModified": "2026-07-08T17:26:49.756829+03:30",
+            "inLanguage": "fa"
+          },
+          {
+            "@type": "BlogPosting",
+            "headline": "مبانی هیدراسیون و تغذیه: چگونه روزانه سوخت‌رسانی و هیدراته بمانیم",
+            "description": "راهنمایی عملی برای متعادل‌سازی مایعات و مواد مغذی جهت انرژی و رفاه روزانه، با نکات ساده برای ساخت عادات سالم‌تر بدون قوانین سختگیرانه.",
+            "url": "https://calkilo.com/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/",
+            "datePublished": "2026-07-06T17:18:51.438527+03:30",
+            "dateModified": "2026-07-18T11:58:58.138818+03:30",
+            "inLanguage": "fa"
+          },
+          {
+            "@type": "BlogPosting",
+            "headline": "برنامه‌ریزی عملی وعده‌های غذایی پرپروتئین: ساخت وعده‌های متعادل و پایدار",
+            "description": "راهنمایی عملی برای برنامه‌ریزی وعده‌های غذایی پرپروتئین که با زندگی روزمره سازگارند—شامل اهداف بخش‌ها، منابع پروتئین، قالب‌های ساده و یک برنامه نمونه هفت‌روزه برای ساده‌تر و رضایت‌بخش‌تر شدن آماده‌سازی غذا.",
+            "url": "https://calkilo.com/fa/blog/practical-high-protein-meal-planning-build-balanced-sustainable-meals/",
+            "datePublished": "2026-07-04T17:19:31.847213+03:30",
+            "dateModified": "2026-07-04T17:27:30.772563+03:30",
+            "inLanguage": "fa"
+          },
+          {
+            "@type": "BlogPosting",
+            "headline": "ساختن وعده‌های متعادل برای مدیریت وزن پایدار",
+            "description": "راهنمایی عملی و مبتنی بر شواهد برای ترکیب وعده‌های متعادل که از طریق کنترل سهم‌ها، تعادل مواد مغذی و عادات آگاهانه از مدیریت وزن پشتیبانی می‌کنند—بدون رژیم‌های سختگیرانه.",
+            "url": "https://calkilo.com/fa/blog/building-balanced-meals-for-sustainable-weight-management/",
+            "datePublished": "2026-07-02T18:28:10+03:30",
+            "dateModified": "2026-07-02T19:04:16.891344+03:30",
+            "image": "https://api.calkilo.com/media/blog_images/image3.png",
+            "inLanguage": "fa"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Calkilo",
+            "item": "https://calkilo.com/fa/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "بلاگ Calkilo",
+            "item": "https://calkilo.com/fa/blog/"
+          }
+        ]
+      }
+    ],
+    "ctas": [
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "خانه",
+        "href": "/fa/"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "بلاگ",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "رایگان امتحان کنید",
+        "href": "/fa/#download"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/"
+      },
+      {
+        "text": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+        "href": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/simple-calorie-tracking-habits-that-stick/"
+      },
+      {
+        "text": "عادت‌های ساده برای ثبت کالری که ماندگار می‌مانند",
+        "href": "/fa/blog/simple-calorie-tracking-habits-that-stick/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/simple-calorie-tracking-habits-that-stick/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/"
+      },
+      {
+        "text": "مبانی هیدراسیون و تغذیه: چگونه روزانه سوخت‌رسانی و هیدراته بمانیم",
+        "href": "/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/practical-high-protein-meal-planning-build-balanced-sustainable-meals/"
+      },
+      {
+        "text": "برنامه‌ریزی عملی وعده‌های غذایی پرپروتئین: ساخت وعده‌های متعادل و پایدار",
+        "href": "/fa/blog/practical-high-protein-meal-planning-build-balanced-sustainable-meals/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/practical-high-protein-meal-planning-build-balanced-sustainable-meals/"
+      },
+      {
+        "text": "",
+        "href": "/fa/blog/building-balanced-meals-for-sustainable-weight-management/"
+      },
+      {
+        "text": "ساختن وعده‌های متعادل برای مدیریت وزن پایدار",
+        "href": "/fa/blog/building-balanced-meals-for-sustainable-weight-management/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/building-balanced-meals-for-sustainable-weight-management/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "بلاگ",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "Calorie Calculator",
+        "href": "/calorie-calculator/"
+      },
+      {
+        "text": "سیاست حریم خصوصی",
+        "href": "/fa/privacy-policy/"
+      },
+      {
+        "text": "شرایط استفاده",
+        "href": "/fa/terms-of-service/"
+      },
+      {
+        "text": "حذف حساب و داده‌ها",
+        "href": "/fa/account-deletion/"
+      },
+      {
+        "text": "قوانین و شرایط",
+        "href": "/fa/terms-and-conditions/"
+      },
+      {
+        "text": "سوالات متداول",
+        "href": "/faq/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "AI Calorie Tracker",
+        "href": "/ai-calorie-tracker/"
+      },
+      {
+        "text": "Photo Calorie Calculator",
+        "href": "/photo-calorie-calculator/"
+      },
+      {
+        "text": "Macro Tracker",
+        "href": "/macro-tracker/"
+      }
+    ]
+  },
+  {
+    "route": "/fa/contact/",
+    "width": 1440,
+    "title": "تماس با Calkilo",
+    "h1": "تماس با ما",
+    "canonical": "https://calkilo.com/fa/contact/",
+    "lang": "fa",
+    "dir": "rtl",
+    "schema": [
+      {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "تماس با Calkilo",
+        "url": "https://calkilo.com/fa/contact/",
+        "description": "برای درخواست‌های محصول، پرداخت و حریم خصوصی با پشتیبانی Calkilo تماس بگیرید.",
+        "inLanguage": "fa"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Calkilo",
+        "url": "https://calkilo.com",
+        "email": "support@calkilo.com",
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "support@calkilo.com",
+            "url": "https://calkilo.com/fa/contact/",
+            "availableLanguage": [
+              "fa"
+            ]
+          },
+          {
+            "@type": "ContactPoint",
+            "contactType": "privacy inquiries",
+            "email": "privacy@calkilo.com",
+            "url": "https://calkilo.com/fa/privacy-policy/",
+            "availableLanguage": [
+              "fa"
+            ]
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "خانه",
+            "item": "https://calkilo.com/fa/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "تماس",
+            "item": "https://calkilo.com/fa/contact/"
+          }
+        ]
+      }
+    ],
+    "ctas": [
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "خانه",
+        "href": "/fa/"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "بلاگ",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "رایگان امتحان کنید",
+        "href": "/fa/#download"
+      },
+      {
+        "text": "support@calkilo.com",
+        "href": "mailto:support@calkilo.com"
+      },
+      {
+        "text": "privacy@calkilo.com",
+        "href": "mailto:privacy@calkilo.com"
+      },
+      {
+        "text": "باز کردن صفحه حذف حساب",
+        "href": "/fa/account-deletion/"
+      },
+      {
+        "text": "مشاهده سیاست حریم خصوصی",
+        "href": "/fa/privacy-policy/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "بلاگ",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "Calorie Calculator",
+        "href": "/calorie-calculator/"
+      },
+      {
+        "text": "سیاست حریم خصوصی",
+        "href": "/fa/privacy-policy/"
+      },
+      {
+        "text": "شرایط استفاده",
+        "href": "/fa/terms-of-service/"
+      },
+      {
+        "text": "حذف حساب و داده‌ها",
+        "href": "/fa/account-deletion/"
+      },
+      {
+        "text": "قوانین و شرایط",
+        "href": "/fa/terms-and-conditions/"
+      },
+      {
+        "text": "سوالات متداول",
+        "href": "/faq/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "AI Calorie Tracker",
+        "href": "/ai-calorie-tracker/"
+      },
+      {
+        "text": "Photo Calorie Calculator",
+        "href": "/photo-calorie-calculator/"
+      },
+      {
+        "text": "Macro Tracker",
+        "href": "/macro-tracker/"
+      }
+    ]
+  },
+  {
+    "route": "/fa/#pricing",
+    "width": 1440,
+    "title": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+    "h1": "کالری شمار آنلاین برای غذای روزانه",
+    "canonical": "https://calkilo.com/fa/",
+    "lang": "fa",
+    "dir": "rtl",
+    "schema": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://calkilo.com/#organization",
+        "name": "Calkilo",
+        "url": "https://calkilo.com",
+        "logo": "https://calkilo.com/assets/logo.png",
+        "sameAs": [
+          "https://cafebazaar.ir/app/com.calkilo.mobile",
+          "https://myket.ir/app/com.calkilo.mobile",
+          "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+        ],
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "support@calkilo.com",
+            "url": "https://calkilo.com/fa/contact/",
+            "availableLanguage": [
+              "fa"
+            ]
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://calkilo.com/#website",
+        "name": "Calkilo",
+        "url": "https://calkilo.com",
+        "inLanguage": "fa"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو",
+        "description": "دانلود Calkilo رایگان است و خرید درون‌برنامه‌ای دارد؛ غذا را ثبت کنید، کالری و ماکروها را ببینید و از تحلیل عکس کمک بگیرید.",
+        "url": "https://calkilo.com/fa/",
+        "inLanguage": "fa",
+        "isPartOf": {
+          "@id": "https://calkilo.com/#website"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "@id": "https://calkilo.com/#app",
+        "name": "Calkilo",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "iOS, Android",
+        "description": "دانلود Calkilo رایگان است و خرید درون‌برنامه‌ای دارد؛ غذا را ثبت کنید، کالری و ماکروها را ببینید و از تحلیل عکس کمک بگیرید.",
+        "url": "https://calkilo.com",
+        "inLanguage": "fa",
+        "isAccessibleForFree": true,
+        "sameAs": [
+          "https://cafebazaar.ir/app/com.calkilo.mobile",
+          "https://myket.ir/app/com.calkilo.mobile",
+          "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+        ],
+        "publisher": {
+          "@id": "https://calkilo.com/#organization"
+        },
+        "featureList": [
+          "تحلیل و پیشنهادهای هوش مصنوعی",
+          "چت و عامل هوش مصنوعی",
+          "اهداف شخصی‌سازی‌شده",
+          "تحلیل فوری عکس"
+        ],
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "ماهانه",
+            "priceCurrency": "IRR",
+            "price": "2890000",
+            "availability": "https://schema.org/InStock",
+            "url": "https://calkilo.com/fa/#pricing"
+          },
+          {
+            "@type": "Offer",
+            "name": "سالانه",
+            "priceCurrency": "IRR",
+            "price": "5890000",
+            "availability": "https://schema.org/InStock",
+            "url": "https://calkilo.com/fa/#pricing"
+          }
+        ]
+      }
+    ],
+    "ctas": [
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "خانه",
+        "href": "/fa/"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "بلاگ",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "رایگان شروع کنید",
+        "href": "/fa/#download"
+      },
+      {
+        "text": "دریافت ازCafe Bazaar",
+        "href": "https://cafebazaar.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "دریافت ازMyket",
+        "href": "https://myket.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "",
+        "href": "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+      },
+      {
+        "text": "انتخاب ماهانه",
+        "href": "#download"
+      },
+      {
+        "text": "انتخاب سالانه",
+        "href": "#download"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "اشتراک",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "سوالات متداول",
+        "href": "/faq/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/faq/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "محاسبه کالری غذا با عکس",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "کالری شمار با عکس",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "کالری شمار با عکس رایگان",
+        "href": "/fa/free-photo-calorie-calculator/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/free-photo-calorie-calculator/"
+      },
+      {
+        "text": "هوش مصنوعی کالری شمار",
+        "href": "/fa/ai-calorie-calculator/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/ai-calorie-calculator/"
+      },
+      {
+        "text": "اسکن کالری غذا",
+        "href": "/fa/food-calorie-scanner/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/food-calorie-scanner/"
+      },
+      {
+        "text": "کالری شمار هوش مصنوعی",
+        "href": "/fa/ai-calorie-tracker/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/ai-calorie-tracker/"
+      },
+      {
+        "text": "پیگیری ماکرو",
+        "href": "/fa/macro-tracker/"
+      },
+      {
+        "text": "خواندن راهنما",
+        "href": "/fa/macro-tracker/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/"
+      },
+      {
+        "text": "میان‌وعده‌های سالم برای روزهای پرمشغله: سریع، قابل حمل و رضایت‌بخش",
+        "href": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/simple-calorie-tracking-habits-that-stick/"
+      },
+      {
+        "text": "عادت‌های ساده برای ثبت کالری که ماندگار می‌مانند",
+        "href": "/fa/blog/simple-calorie-tracking-habits-that-stick/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/simple-calorie-tracking-habits-that-stick/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/"
+      },
+      {
+        "text": "مبانی هیدراسیون و تغذیه: چگونه روزانه سوخت‌رسانی و هیدراته بمانیم",
+        "href": "/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/"
+      },
+      {
+        "text": "خواندن مقاله",
+        "href": "/fa/blog/hydration-and-nutrition-basics-how-to-fuel-and-hydrate-everyday/"
+      },
+      {
+        "text": "همه مقاله‌ها",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "دریافت ازCafe Bazaar",
+        "href": "https://cafebazaar.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "دریافت ازMyket",
+        "href": "https://myket.ir/app/com.calkilo.mobile"
+      },
+      {
+        "text": "",
+        "href": "https://apps.apple.com/us/app/calkilo-ai-calorie-counter/id6755718411"
+      },
+      {
+        "text": "تماس با ما",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "Calkilo",
+        "href": "/fa/"
+      },
+      {
+        "text": "Featured onBowora",
+        "href": "https://bowora.com/?via=txqmolhu"
+      },
+      {
+        "text": "ویژگی‌ها",
+        "href": "/fa/#features"
+      },
+      {
+        "text": "انتخاب طرح",
+        "href": "/fa/#pricing"
+      },
+      {
+        "text": "بلاگ",
+        "href": "/fa/blog/"
+      },
+      {
+        "text": "محاسبه کالری غذا با عکس",
+        "href": "/fa/photo-calorie-calculator/"
+      },
+      {
+        "text": "سیاست حریم خصوصی",
+        "href": "/fa/privacy-policy/"
+      },
+      {
+        "text": "شرایط خدمات",
+        "href": "/fa/terms-of-service/"
+      },
+      {
+        "text": "حذف حساب و داده‌ها",
+        "href": "/fa/account-deletion/"
+      },
+      {
+        "text": "شرایط و قوانین",
+        "href": "/fa/terms-and-conditions/"
+      },
+      {
+        "text": "سوالات متداول",
+        "href": "/faq/"
+      },
+      {
+        "text": "تماس",
+        "href": "/fa/contact/"
+      },
+      {
+        "text": "کالری شمار با عکس",
+        "href": "/fa/calorie-counter-with-photo/"
+      },
+      {
+        "text": "کالری شمار با عکس رایگان",
+        "href": "/fa/free-photo-calorie-calculator/"
+      }
+    ]
+  },
+  {
+    "test": "original download",
+    "scroll": 9699,
+    "downloadTop": 3331.546875
+  },
+  {
+    "test": "without content visibility",
+    "scroll": 14228,
+    "downloadTop": -10.421875
+  }
+]

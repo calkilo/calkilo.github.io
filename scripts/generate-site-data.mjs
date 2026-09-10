@@ -363,6 +363,13 @@ async function readPreviousManifest() {
 }
 
 const previousManifest = await readPreviousManifest()
+if (process.env.CALKILO_OFFLINE_BUILD === '1') {
+  if (!previousManifest || SITE_LANGUAGES.some(language => !previousManifest.languages?.[language]?.posts?.length)) {
+    throw new Error('Offline build requires a complete checked-in blog snapshot.')
+  }
+  console.log('Offline review build: retaining checked-in blog and discovery files without network refresh.')
+  process.exit(0)
+}
 
 const listPostsByLanguage = {}
 for (const language of SITE_LANGUAGES) {

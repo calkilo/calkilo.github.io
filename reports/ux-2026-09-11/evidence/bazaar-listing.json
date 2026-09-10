@@ -1,0 +1,36 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "operatingSystem": "ANDROID",
+  "url": "https://cafebazaar.ir/app/com.calkilo.mobile",
+  "image": "https://s.cafebazaar.ir/images/icons/com.calkilo.mobile-bc9f4b56-87d2-4e98-a31c-75ce105826be_128x128.png",
+  "name": "کالکیلو | کالری‌شمار هوشمند با عکس",
+  "description": "از غذایت عکس بگیر؛ کالری، پروتئین، کربوهیدرات و چربی را در چند ثانیه تخمین بزن.",
+  "softwareVersion": "1.3.3",
+  "fileSize": 29245,
+  "installUrl": "bazaar://details?id=com.calkilo.mobile",
+  "screenshot": "https://s.cafebazaar.ir/1/https://s.cafebazaar.ir/images/upload/screenshot/com.calkilo.mobile-704642119647.jpg",
+  "dateModified": "2026-08-19T12:30:00.000Z",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": 3.9,
+    "ratingCount": 13,
+    "worstRating": 0,
+    "bestRating": 5
+  },
+  "applicationCategory": "HealthApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": 0,
+    "priceCurrency": "IRR"
+  },
+  "softwareRequirements": "",
+  "potentialAction": {
+    "@type": "ViewAction",
+    "name": "Install from Bazaar",
+    "target": [
+      "https://cafebazaar.ir/app/com.calkilo.mobile",
+      "android-app://com.farsitel.bazaar/bazaar/details?id=com.calkilo.mobile"
+    ]
+  }
+}

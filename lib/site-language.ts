@@ -33,7 +33,7 @@ const DEFAULT_WEB_FONT_FAMILY =
 const DEFAULT_DISPLAY_FONT_FAMILY =
   "'Arial Rounded MT Bold', 'Arial Rounded MT', 'Trebuchet MS', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
 const ARABIC_WEB_FONT_FAMILY = "Tahoma, 'Segoe UI', Arial, sans-serif"
-const PERSIAN_WEB_FONT_FAMILY = "Tahoma, 'Segoe UI', Arial, sans-serif"
+const PERSIAN_WEB_FONT_FAMILY = "Vazirmatn, Tahoma, 'Segoe UI', Arial, sans-serif"
 
 export const LANGUAGE_FONT_FAMILIES: Record<SiteLanguage, string> = {
   en: DEFAULT_WEB_FONT_FAMILY,
