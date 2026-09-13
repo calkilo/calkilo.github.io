@@ -27,3 +27,5 @@ Allow: /
 
 Sitemap: https://calkilo.com/sitemap.xml
 Sitemap: https://calkilo.com/blog-sitemap.xml
+
+Sitemap: https://calkilo.com/food-sitemap.xml

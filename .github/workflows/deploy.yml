@@ -38,6 +38,9 @@ jobs:
       - name: Audit exported SEO output
         run: npm run seo:audit
 
+      - name: Audit food nutrition and crawlability
+        run: npm run seo:food-audit
+
       - name: Disable Jekyll processing
         run: touch out/.nojekyll
 
@@ -74,6 +77,7 @@ jobs:
           path: |
             public/sitemap.xml
             public/blog-sitemap.xml
+            public/food-sitemap.xml
           retention-days: 1
 
   deploy:

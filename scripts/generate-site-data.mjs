@@ -1,3 +1,4 @@
+import { writeFoodSitemap } from './food-seo-catalogue.mjs'
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { LLMS_SECTIONS, SITE_LANGUAGES, SITE_URL, STATIC_INDEXABLE_PATHS, absoluteUrl } from './site-content.mjs'
@@ -362,6 +363,7 @@ async function readPreviousManifest() {
   return null
 }
 
+await writeFoodSitemap(SITE_URL)
 const previousManifest = await readPreviousManifest()
 if (process.env.CALKILO_OFFLINE_BUILD === '1') {
   if (!previousManifest || SITE_LANGUAGES.some(language => !previousManifest.languages?.[language]?.posts?.length)) {

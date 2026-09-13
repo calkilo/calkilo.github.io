@@ -6,7 +6,7 @@ import { SITE_URL } from './site-content.mjs'
 const projectRoot = fileURLToPath(new URL('..', import.meta.url))
 const outputRoot = join(projectRoot, 'out')
 const docsRoot = join(projectRoot, 'docs')
-const sitemapFiles = ['sitemap.xml', 'blog-sitemap.xml']
+const sitemapFiles = ['sitemap.xml', 'blog-sitemap.xml', 'food-sitemap.xml']
 
 function decodeHtml(value = '') {
   return value

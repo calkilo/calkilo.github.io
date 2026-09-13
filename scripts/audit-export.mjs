@@ -7,7 +7,7 @@ import { SITE_LANGUAGES, SITE_URL } from './site-content.mjs'
 const projectRoot = fileURLToPath(new URL('..', import.meta.url))
 const outputRoot = join(projectRoot, 'out')
 const manifestPath = join(projectRoot, 'data', 'blog-manifest.json')
-const sitemapPaths = [join(projectRoot, 'public', 'sitemap.xml'), join(projectRoot, 'public', 'blog-sitemap.xml')]
+const sitemapPaths = [join(projectRoot, 'public', 'sitemap.xml'), join(projectRoot, 'public', 'blog-sitemap.xml'), join(projectRoot, 'public', 'food-sitemap.xml')]
 const errors = []
 const warnings = []
 const sourceRoot = projectRoot
@@ -219,9 +219,9 @@ for (const language of SITE_LANGUAGES) {
 }
 
 const persianHome = await readFile(join(outputRoot, 'fa', 'index.html'), 'utf8')
-// IRR amounts are intentionally withheld until verified against a real purchase source.
-if (persianHome.includes('"price":"2890000"') || persianHome.includes('"price":"5890000"')) {
-  errors.push('Unverified Persian purchase prices must not appear in structured data.')
+// Owner confirmed 289,000 / 589,000 toman on 2026-09-13; schema uses IRR (10 rial per toman).
+for (const amount of ['2890000','5890000']) {
+  if (!persianHome.includes(`"price":"${amount}"`) || !persianHome.includes('"priceCurrency":"IRR"')) errors.push(`Missing owner-confirmed Persian offer: ${amount} IRR`)
 }
 if (!persianHome.includes('دانلود رایگان؛ دارای خرید درون‌برنامه‌ای')) {
   errors.push('Persian homepage must explain free download and in-app purchases.')
@@ -265,7 +265,7 @@ const robotsText = await readFile(join(projectRoot, 'public', 'robots.txt'), 'ut
 for (const crawler of ['Googlebot', 'Bingbot', 'OAI-SearchBot', 'PerplexityBot', 'GPTBot']) {
   if (!robotsText.includes(`User-agent: ${crawler}`)) errors.push(`robots.txt has no explicit ${crawler} group`)
 }
-for (const sitemapPath of ['/sitemap.xml', '/blog-sitemap.xml']) {
+for (const sitemapPath of ['/sitemap.xml', '/blog-sitemap.xml', '/food-sitemap.xml']) {
   if (!robotsText.includes(`${SITE_URL}${sitemapPath}`)) errors.push(`robots.txt is missing ${sitemapPath}`)
 }
 

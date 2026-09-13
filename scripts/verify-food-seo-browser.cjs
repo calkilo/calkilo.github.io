@@ -1,0 +1,45 @@
+const { createRequire } = require('node:module');
+const fs = require('node:fs');
+const assert = require('node:assert/strict');
+const runtime = createRequire(`${process.env.CALKILO_QA_RUNTIME || process.cwd() + '/node_modules'}/package.json`);
+const { chromium } = runtime('playwright');
+const base = process.env.CALKILO_QA_URL || 'http://localhost:3011';
+(async () => {
+ const { referenceFoodPath, foodCategoryPath } = await import('../lib/food-reference-routes.mjs');
+ const foods = JSON.parse(fs.readFileSync('public/data/usda-foods.json','utf8')).foods;
+ const apple = foods.find(f=>f.id===171688);
+ const browser = await chromium.launch({channel:'chrome',headless:true});
+ const out='reports/food-seo';fs.mkdirSync(out,{recursive:true});
+ const context=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});
+ let page=await context.newPage();
+ await page.goto(base+'/fa/calories/');
+ assert.equal(await page.locator('.food-category-links a').count(),25);
+ await page.locator('.food-category-disclosure summary').click();
+ await page.getByRole('link',{name:'کالری میوه‌ها و آبمیوه'}).click();
+ assert.equal(await page.locator('.food-directory-grid a').count(),48);
+ await page.getByRole('link',{name:'صفحه بعد',exact:true}).click();
+ assert(page.url().endsWith('/page/2/'));
+ await page.goto(base+referenceFoodPath(apple));
+ assert.match(await page.locator('h1').innerText(),/سیب خام با پوست/);
+ assert.equal(await page.locator('.reference-details table tbody tr').count(),15);
+ await page.screenshot({path:`${out}/apple-no-javascript-mobile.png`,fullPage:true});
+ await context.close();
+ const interactive=await browser.newContext({reducedMotion:'reduce'});page=await interactive.newPage();
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.route(/google-analytics|googletagmanager/,r=>r.abort());
+ const samples=['/fa/calories/',foodCategoryPath('fruit-juice',2),referenceFoodPath(apple),'/fa/calories/rice/','/fa/calories/sources/'];
+ for(const width of [390,1440]) { await page.setViewportSize({width,height:900});for(const path of samples){
+   const response=await page.goto(base+path);assert.equal(response.status(),200,path);
+   await page.evaluate(()=>document.fonts.ready);
+   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,`${path} ${width}`);
+   assert.equal(await page.locator('link[rel=canonical]').getAttribute('href'),'https://calkilo.com'+path);
+   await page.screenshot({path:`${out}/${path.split('/').filter(Boolean).slice(-1)[0]}-${width}.png`,fullPage:true});
+ }}
+ await page.goto(base+referenceFoodPath(apple));
+ await page.locator('.reference-details input').fill('۱۵۰');
+ assert.match(await page.locator('table caption').first().innerText(),/۱۵۰/);
+ assert.match(await page.locator('.reference-details tr').first().innerText(),/۷۸/);
+ await page.locator('.reference-details input').fill('bad');assert.equal(await page.locator('.reference-details input').getAttribute('aria-invalid'),'true');
+ const bad=await page.goto(base+'/fa/calories/category/fruit-juice/page/999/');assert.equal(bad.status(),404);
+ assert.deepEqual(errors,[]);
+ await browser.close();console.log('PASS: no-JavaScript browsing, pagination and nutrition; mobile/desktop overflow and canonicals; Persian weights and invalid input; missing pages return 404.');
+})().catch(e=>{console.error(e);process.exit(1)});

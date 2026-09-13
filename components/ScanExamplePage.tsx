@@ -1,3 +1,4 @@
+import StoreLogo from './StoreLogo'
 import Link from 'next/link'
 import { type CSSProperties } from 'react'
 import { APP_STORE_URL, getAndroidStoreLinks, getStoreSameAs } from '../lib/app-links'
@@ -245,7 +246,7 @@ export default function ScanExamplePage({ example }: ScanExamplePageProps) {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    {store.label}
+                    <StoreLogo href={store.href} />{store.label}
                   </a>
                 ))}
               </div>

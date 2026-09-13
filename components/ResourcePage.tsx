@@ -1,3 +1,4 @@
+import StoreLogo from './StoreLogo'
 import Link from 'next/link'
 import PersianSample from './PersianSample'
 import Image from 'next/image'
@@ -261,7 +262,7 @@ export default function ResourcePage({ page, pageKey, lang }: ResourcePageProps)
                     target="_blank"
                     rel="noreferrer"
                   >
-                    {store.label}
+                    <StoreLogo href={store.href} />{store.label}
                   </a>
                 ))}
                 <a

@@ -1,3 +1,4 @@
+import StoreLogo from './StoreLogo'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useMemo, useState, type CSSProperties, type ImgHTMLAttributes } from 'react'
@@ -680,7 +681,7 @@ const PRICING_PLANS = [
 
 function getPricingDisplayPrice(plan: (typeof PRICING_PLANS)[number], language: SiteLanguage) {
   if (language === 'fa') {
-    return 'قیمت در اپ'
+    return CALKILO_PRICING[plan.title].persianDisplay
   }
 
   return plan.price
@@ -1468,9 +1469,10 @@ function StoreButtons({ language }: { language: SiteLanguage }) {
               target="_blank"
               rel="noopener noreferrer"
             >
+              <StoreLogo href={store.href} />
               <span className="lp-store-copy">
                 <small>دریافت از</small>
-                <strong>{store.label}</strong>
+                <strong>{store.label.replace('دریافت از ', '')}</strong>
               </span>
             </a>
           ))
@@ -1985,7 +1987,7 @@ export default function LandingPage({
           '@id': `${SITE_URL}/#organization`,
         },
         featureList: FEATURE_ITEMS.map((item) => ts(item.title)),
-        offers: language === 'fa' ? undefined : PRICING_PLANS.map((plan) => ({
+        offers: PRICING_PLANS.map((plan) => ({
           ...getPricingSchemaOffer(plan, language, pricingOfferUrl),
           name: ts(plan.title),
         })),
@@ -2098,7 +2100,7 @@ export default function LandingPage({
 
             <div className="lp-ai-content lp-reveal lp-reveal--right">
               <h2>
-                <span>CalKilo-AI</span>: {aiTitleSuffix}
+                <span dir="ltr">CalKilo-AI</span>: {aiTitleSuffix}
               </h2>
               <p>{copy.aiSubtitle}</p>
 
@@ -2302,7 +2304,7 @@ export default function LandingPage({
               <p>{copy.integrationsSubtitle}</p>
             </header>
 
-            <div className="lp-integrations-grid">
+            <div className="lp-integrations-grid lp-integrations-grid--single">
               {INTEGRATIONS.filter(integration => integration.name === 'Apple Health').map((integration, index) => (
                 <article
                   key={integration.name}

@@ -30,6 +30,8 @@ Calkilo is available for iOS and Android. It supports English, Persian, Italian,
 
 ## Persian resources
 
+- [Food calorie database](https://calkilo.com/fa/calories/): Persian recipes and 7,793 USDA samples with crawlable categories, nutrition tables and portion calculations.
+- [Food data sources](https://calkilo.com/fa/calories/sources/): Data provenance, historical reference version, units, missing values and portion calculation methodology.
 - [Persian homepage](https://calkilo.com/fa/): Persian-language product overview.
 - [Persian photo calorie calculator](https://calkilo.com/fa/photo-calorie-calculator/): Persian guide to photo calorie estimation.
 - [Persian AI calorie calculator](https://calkilo.com/fa/ai-calorie-calculator/): How AI creates an editable nutrition estimate.

@@ -36,6 +36,7 @@ const englishProductPages = [
 
 const persianPages = [
   '/fa/calories/',
+  '/fa/calories/sources/',
   ...persianFoodEstimates.map(food => `/fa/calories/${food.slug}/`),
   '/fa/ai-calorie-tracker/',
   '/fa/photo-calorie-calculator/',
@@ -102,6 +103,8 @@ export const LLMS_SECTIONS = [
   {
     title: 'Persian resources',
     links: [
+      ['Food calorie database', '/fa/calories/', 'Persian recipes and 7,793 USDA samples with crawlable categories, nutrition tables and portion calculations.'],
+      ['Food data sources', '/fa/calories/sources/', 'Data provenance, historical reference version, units, missing values and portion calculation methodology.'],
       ['Persian homepage', '/fa/', 'Persian-language product overview.'],
       ['Persian photo calorie calculator', '/fa/photo-calorie-calculator/', 'Persian guide to photo calorie estimation.'],
       ['Persian AI calorie calculator', '/fa/ai-calorie-calculator/', 'How AI creates an editable nutrition estimate.'],

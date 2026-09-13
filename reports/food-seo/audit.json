@@ -1,0 +1,24 @@
+{
+  "foods": 7793,
+  "newReferencePages": 7790,
+  "preservedLegacyPages": [
+    "rice",
+    "falafel",
+    "pizza"
+  ],
+  "categories": 25,
+  "categoryPages": 174,
+  "checkedPages": 7969,
+  "maxCrawlDepth": 3,
+  "checks": [
+    "SSR tables and original sample names",
+    "Exact nutrient values and 100 g basis",
+    "Unique titles and descriptions",
+    "Self canonicals",
+    "Visible source links and truthful schemas",
+    "All categories and pagination links",
+    "No page/1 or out-of-range exports",
+    "No orphaned pages",
+    "Complete food sitemap without legacy duplicates"
+  ]
+}

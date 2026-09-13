@@ -1,3 +1,5 @@
+import StoreLogo from './StoreLogo'
+import { CALKILO_PRICING } from '../lib/pricing'
 import Link from 'next/link'
 import { PREFERENCE_UPDATE_ANSWERS } from '../lib/product-facts'
 import { APP_STORE_URL, CAFE_BAZAAR_URL, MYKET_URL } from '../lib/app-links'
@@ -5,8 +7,8 @@ import PersianSample from './PersianSample'
 
 export function PersianStoreLinks({ location }: { location: string }) {
   return <div className="fa-stores" data-cta-location={location}>
-    <a className="lp-btn lp-btn--solid" href={CAFE_BAZAAR_URL} target="_blank" rel="noreferrer">دریافت از بازار <span aria-hidden="true">↗</span></a>
-    <a className="lp-btn fa-secondary" href={MYKET_URL} target="_blank" rel="noreferrer">دریافت از مایکت</a>
+    <a className="lp-btn lp-btn--solid" href={CAFE_BAZAAR_URL} target="_blank" rel="noreferrer"><StoreLogo href={CAFE_BAZAAR_URL} />دریافت از بازار <span aria-hidden="true">↗</span></a>
+    <a className="lp-btn fa-secondary" href={MYKET_URL} target="_blank" rel="noreferrer"><StoreLogo href={MYKET_URL} />دریافت از مایکت</a>
     <a className="fa-iphone" href={APP_STORE_URL} target="_blank" rel="noreferrer">نسخه iPhone در App Store <span aria-hidden="true">↗</span></a>
   </div>
 }
@@ -53,7 +55,7 @@ export default function PersianHomeContent({ titleA, titleB }: { titleA: string;
       <div><p>کالکیلو کالری، پروتئین، کربوهیدرات و چربی وعده‌ها را در مسیر ثبت روزانه نشان می‌دهد. مرور سابقه کمک می‌کند مقدارهایی را که ثبت کرده‌ای بهتر بشناسی.</p><p>عکس نقطه شروع است؛ بررسی نتیجه بخشی از ثبت غذاست.</p></div>
     </section>
     <section id="pricing" className="fa-section lp-container" data-cta-location="pricing">
-      <div className="fa-pricing-panel"><div><p className="fa-eyebrow">دانلود و اشتراک</p><h2>رایگان دانلود کن؛<br />شرایط دسترسی را در اپ ببین</h2><p>تحلیل عکس ممکن است به اعتبار یا اشتراک نیاز داشته باشد. تعداد اسکن‌ها، امکانات هر طرح، مبلغ و مدت دسترسی را پیش از خرید در اپ بررسی کن.</p></div><div><p>با این دکمه به لینک‌های دانلود می‌رسی. انتخاب طرح و پرداخت در اپ انجام می‌شود.</p><a href="#download" className="lp-btn lp-btn--solid">دریافت اپ و مشاهده اشتراک</a><Link className="fa-text-link" href="/fa/contact/">سؤالی درباره خرید داری؟</Link></div></div>
+      <div className="fa-pricing-panel"><div><p className="fa-eyebrow">دانلود و اشتراک</p><h2>اشتراک مناسب خودت را انتخاب کن</h2><p>دانلود اپ رایگان است. امکانات و شرایط هر طرح را پیش از خرید در اپ ببین.</p></div><div><dl className="fa-plan-prices"><div><dt>ماهانه · یک ماه</dt><dd>{CALKILO_PRICING.Monthly.persianDisplay}</dd></div><div><dt>سالانه · یک سال</dt><dd>{CALKILO_PRICING.Yearly.persianDisplay}</dd></div></dl><p>با این دکمه به لینک‌های دانلود می‌رسی. انتخاب طرح و پرداخت در اپ انجام می‌شود.</p><a href="#download" className="lp-btn lp-btn--solid">دریافت اپ و مشاهده اشتراک</a><Link className="fa-text-link" href="/fa/contact/">سؤالی درباره خرید داری؟</Link></div></div>
     </section>
     <section id="faq" className="fa-section lp-container fa-faq">
       <p className="fa-eyebrow">پیش از شروع</p><h2>پرسش‌های رایج</h2>

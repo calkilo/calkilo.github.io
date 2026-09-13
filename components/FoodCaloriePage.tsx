@@ -1,3 +1,7 @@
+import ReferenceFoodNutrition from './ReferenceFoodNutrition'
+import { foodDatasetSchema } from '../lib/food-seo'
+import type { ReferenceFood } from '../lib/food-reference'
+import StoreLogo from './StoreLogo'
 import Link from 'next/link'
 import FoodPortionCalculator from './FoodPortionCalculator'
 import { type CSSProperties } from 'react'
@@ -12,6 +16,7 @@ import SeoHead from './SeoHead'
 
 interface FoodCaloriePageProps {
   food: FoodCaloriePageData
+  reference?: ReferenceFood | null
 }
 
 const language: SiteLanguage = 'fa'
@@ -23,13 +28,13 @@ function formatMacro(value: number) {
   return macroFormatter.format(value)
 }
 
-export default function FoodCaloriePage({ food }: FoodCaloriePageProps) {
+export default function FoodCaloriePage({ food, reference }: FoodCaloriePageProps) {
   const nutrition = food.nutrition
   const estimate = food.estimate
   const calories = nutrition?.caloriesPer100g ?? estimate?.caloriesPer100g
   const path = `/fa/calories/${food.slug}/`
-  const title = `کالری ${food.nameFa} چقدر است؟ | ارزش غذایی و محاسبه با عکس`
-  const description = `کالری ${food.nameFa} در هر 100 گرم و هر وعده را ببینید؛ پروتئین، چربی و کربوهیدرات را بررسی کنید و برای بررسی وعده، از غذای خود در اپ کالکیلو عکس بگیرید.`
+  const title = `کالری ${food.nameFa} در ۱۰۰ گرم و هر وعده | کالکیلو`
+  const description = `کالری ${food.nameFa}: ${formatMacro(calories ?? 0)} کیلوکالری در ۱۰۰ گرم ${nutrition ? 'نمونه مرجع؛ جدول پروتئین، چربی و کربوهیدرات' : 'بر اساس تخمین آشپزی؛ وابسته به دستور غذا'}. محاسبه وزن وعده، روش آماده‌سازی و منبع عدد را ببینید.`
   const heading = `کالری ${food.nameFa} چقدر است؟`
   const faqItems = [
     {
@@ -47,6 +52,7 @@ export default function FoodCaloriePage({ food }: FoodCaloriePageProps) {
     },
   ]
   const jsonLd = [
+    ...(reference ? [foodDatasetSchema(reference, food.nameFa, path, description)] : []),
     {
       '@context': 'https://schema.org',
       '@type': 'Organization',
@@ -81,6 +87,12 @@ export default function FoodCaloriePage({ food }: FoodCaloriePageProps) {
         {
           '@type': 'ListItem',
           position: 2,
+          name: 'بانک کالری غذا',
+          item: `${SITE_URL}/fa/calories/`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
           name: heading,
           item: `${SITE_URL}${path}`,
         },
@@ -179,7 +191,8 @@ export default function FoodCaloriePage({ food }: FoodCaloriePageProps) {
                 <div className="lp-food-stat-grid"><article><span>تخمین در ۱۰۰ گرم</span><strong>{formatMacro(estimate.caloriesPer100g)}</strong><small>کیلوکالری</small></article></div>
                 <p className="lp-food-source">منبع: <a href={estimate.sourceUrl} target="_blank" rel="noreferrer">{estimate.sourceLabel}</a>. این مقدار تخمینی از یک منبع آشپزی است، نه اندازه‌گیری آزمایشگاهی. مقدار روغن، آب و نسبت مواد در غذای شما می‌تواند متفاوت باشد.</p>
               </section> : null}
-              {calories !== undefined && <FoodPortionCalculator caloriesPer100g={calories} />}
+              <p><Link href="/fa/calories/sources/">منابع بانک غذا و روش محاسبه ارزش غذایی</Link></p>
+              {reference ? <section className="food-nutrition-page"><h2>جدول کامل ارزش غذایی در ۱۰۰ گرم و وزن دلخواه</h2><p dir="ltr" lang="en">{reference.name}</p><ReferenceFoodNutrition food={reference} /><noscript><p>جدول مقدارهای ۱۰۰ گرم را نشان می‌دهد. برای وزن دلخواه، مقدار را در وزن ضرب و بر ۱۰۰ تقسیم کنید.</p></noscript></section> : calories !== undefined && <FoodPortionCalculator caloriesPer100g={calories} />}
 
               <p>برای بررسی غذای خود، عکس را داخل اپ تحلیل کنید. دانلود رایگان؛ دارای خرید درون‌برنامه‌ای.</p>
               <div className="lp-resource-actions">
@@ -191,7 +204,7 @@ export default function FoodCaloriePage({ food }: FoodCaloriePageProps) {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    {store.label}
+                    <StoreLogo href={store.href} />{store.label}
                   </a>
                 ))}
                 <a className="lp-btn lp-resource-btn-secondary" href={APP_STORE_URL} target="_blank" rel="noreferrer">
@@ -235,7 +248,7 @@ export default function FoodCaloriePage({ food }: FoodCaloriePageProps) {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    {store.label}
+                    <StoreLogo href={store.href} />{store.label}
                   </a>
                 ))}
               </div>
@@ -253,6 +266,7 @@ export default function FoodCaloriePage({ food }: FoodCaloriePageProps) {
               </div>
             </section>
 
+            <section className="lp-static-card"><h2>کالری غذاهای مرتبط</h2><div className="food-directory-grid">{FOOD_CALORIE_PAGES.filter(item => item.slug !== food.slug).sort((a,b) => Number(b.category === food.category)-Number(a.category === food.category)).slice(0,6).map(item => <Link className="food-directory-card" key={item.slug} href={`/fa/calories/${item.slug}/`}><h3>کالری {item.nameFa}</h3><p>{formatMacro(item.nutrition?.caloriesPer100g ?? item.estimate?.caloriesPer100g ?? 0)} کیلوکالری در ۱۰۰ گرم</p></Link>)}</div><p><Link href="/fa/calories/">همه گروه‌ها و جست‌وجوی غذا ←</Link></p></section>
             <section className="lp-static-card">
               <h2>صفحه‌های مرتبط کالری با عکس</h2>
               <div className="lp-resource-related-grid">
