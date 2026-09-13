@@ -431,7 +431,7 @@ export default function BmiCalculatorPage() {
                 </div>
                 <p className="lp-bmi-result-detail">{result.category.detail}</p>
 
-                <div className="lp-bmi-scale" aria-label={`BMI category: ${result.category.label}`}>
+                <div className="lp-bmi-scale" role="img" aria-label={`BMI category: ${result.category.label}`}>
                   <div className="lp-bmi-scale-track">
                     <span className="is-under" />
                     <span className="is-healthy" />

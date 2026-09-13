@@ -34,7 +34,7 @@ export default class AppDocument extends Document<AppDocumentProps> {
       <Html lang={language} dir={direction}>
         <Head>
           <meta name="color-scheme" content="light dark" />
-          {language === 'fa' && <link rel="preload" href="/fonts/vazirmatn/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />}
+          {language === 'fa' && <link rel="preload" href="/fonts/vazir/Vazir-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />}
         </Head>
         <body>
           <Main />

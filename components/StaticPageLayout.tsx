@@ -81,7 +81,7 @@ export default function StaticPageLayout({
         { label: t('Features'), href: featuresHref },
         { label: t('Choose Plan'), href: pricingHref },
         { label: blogCopy.navLabel, href: blogHref },
-        { label: 'Calorie Calculator', href: RESOURCE_LINKS[0].href },
+        { label: language === 'fa' ? 'کالری غذاها' : 'Calorie Calculator', href: language === 'fa' ? '/fa/calories/' : RESOURCE_LINKS[0].href },
       ],
     },
     {
@@ -98,9 +98,9 @@ export default function StaticPageLayout({
       title: t('Get in Touch'),
       links: [
         { label: t('Contact'), href: toLocalizedPath('/contact', language) },
-        { label: 'AI Calorie Tracker', href: RESOURCE_LINKS[1].href },
-        { label: 'Photo Calorie Calculator', href: RESOURCE_LINKS[2].href },
-        { label: 'Macro Tracker', href: RESOURCE_LINKS[3].href },
+        { label: t('AI Calorie Tracker'), href: language === 'fa' ? '/fa/ai-calorie-tracker/' : RESOURCE_LINKS[1].href },
+        { label: t('Photo Calorie Calculator'), href: language === 'fa' ? '/fa/photo-calorie-calculator/' : RESOURCE_LINKS[2].href },
+        { label: t('Macro Tracker'), href: language === 'fa' ? '/fa/macro-tracker/' : RESOURCE_LINKS[3].href },
       ],
     },
   ] as const

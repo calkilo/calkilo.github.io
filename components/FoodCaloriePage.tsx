@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import FoodPortionCalculator from './FoodPortionCalculator'
 import { type CSSProperties } from 'react'
 import { APP_STORE_URL, getAndroidStoreLinks, getStoreSameAs } from '../lib/app-links'
 import { FOOD_CALORIE_PAGES, type FoodCaloriePageData } from '../lib/food-calorie-pages'
@@ -24,6 +25,8 @@ function formatMacro(value: number) {
 
 export default function FoodCaloriePage({ food }: FoodCaloriePageProps) {
   const nutrition = food.nutrition
+  const estimate = food.estimate
+  const calories = nutrition?.caloriesPer100g ?? estimate?.caloriesPer100g
   const path = `/fa/calories/${food.slug}/`
   const title = `کالری ${food.nameFa} چقدر است؟ | ارزش غذایی و محاسبه با عکس`
   const description = `کالری ${food.nameFa} در هر 100 گرم و هر وعده را ببینید؛ پروتئین، چربی و کربوهیدرات را بررسی کنید و برای بررسی وعده، از غذای خود در اپ کالکیلو عکس بگیرید.`
@@ -31,7 +34,7 @@ export default function FoodCaloriePage({ food }: FoodCaloriePageProps) {
   const faqItems = [
     {
       question: `کالری ${food.nameFa} در هر 100 گرم چقدر است؟`,
-      answer: nutrition ? `در نمونه مرجع، هر ۱۰۰ گرم حدود ${formatMacro(nutrition.caloriesPer100g)} کیلوکالری دارد. این مقدار به ترکیب مشخص منبع مربوط است.` : 'کالری کباب به نوع گوشت، چربی و وزن پس از پخت بستگی دارد. بدون دستور و وزن مشخص نمی‌توان عدد قابل اتکایی برای همه کباب‌ها داد.',
+      answer: nutrition ? `در نمونه مرجع، هر ۱۰۰ گرم حدود ${formatMacro(nutrition.caloriesPer100g)} کیلوکالری دارد. این مقدار به ترکیب مشخص منبع مربوط است.` : `تخمین منبع آشپزی برای نمونه این صفحه ${formatMacro(calories || 0)} کیلوکالری در ۱۰۰ گرم است؛ مقدار واقعی با دستور غذا تغییر می‌کند.`,
     },
     {
       question: `یک وعده ${food.nameFa} چند کالری دارد؟`,
@@ -100,10 +103,10 @@ export default function FoodCaloriePage({ food }: FoodCaloriePageProps) {
     },
     {
       title: 'کالری غذاها',
-      links: FOOD_CALORIE_PAGES.map((item) => ({
+      links: [{ label: 'همه غذاها و جست‌وجو', href: '/fa/calories/' }, ...FOOD_CALORIE_PAGES.filter(item => item.slug !== food.slug).slice(0, 5).map((item) => ({
         label: `کالری ${item.nameFa}`,
         href: `/fa/calories/${item.slug}/`,
-      })),
+      }))],
     },
   ] as const
 
@@ -158,7 +161,7 @@ export default function FoodCaloriePage({ food }: FoodCaloriePageProps) {
         <section className="lp-section lp-static-hero">
           <div className="lp-container">
             <div className="lp-static-hero-inner">
-              <p className="lp-kicker">راهنمای کالری غذا</p>
+              <nav className="food-breadcrumb" aria-label="مسیر صفحه"><Link href="/fa/">خانه</Link><span aria-hidden="true"> / </span><Link href="/fa/calories/">کالری غذاها</Link><span aria-hidden="true"> / </span><span>{food.nameFa}</span></nav>
               <h1>{heading}</h1>
               {nutrition ? <section className="lp-food-answer" aria-label="ارزش غذایی و منبع">
                 <p className="lp-food-source">{nutrition.preparation}</p>
@@ -171,7 +174,13 @@ export default function FoodCaloriePage({ food }: FoodCaloriePageProps) {
                 </div>
                 <p className="lp-food-source"><a href={nutrition.sourceUrl} target="_blank" rel="noreferrer">{nutrition.sourceLabel}</a>{nutrition.mirrorUrl && <> · <a href={nutrition.mirrorUrl} target="_blank" rel="noreferrer">جدول قابل خواندن منبع</a></>}<br />{nutrition.basisNote}</p>
                 <p className="fa-download-note">انرژی از مقدار گزارش‌شده منبع آمده است؛ محاسبه ساده ۴/۴/۹ با ماکروهای گرد‌شده ممکن است دقیقاً همان نتیجه را ندهد. این نمونه، اندازه‌گیری غذای شما نیست.</p>
-              </section> : <p className="lp-food-source">برای کباب عدد ثابتی وجود ندارد. نوع گوشت و درصد چربی، وزن پس از پخت و مقدار نان، برنج یا کره را مشخص کنید. وزن یک سیخ به‌تنهایی دستور غذا را مشخص نمی‌کند.</p>}
+              </section> : estimate ? <section className="lp-food-answer" aria-label="تخمین کالری و منبع">
+                <p>{estimate.preparation}</p>
+                <div className="lp-food-stat-grid"><article><span>تخمین در ۱۰۰ گرم</span><strong>{formatMacro(estimate.caloriesPer100g)}</strong><small>کیلوکالری</small></article></div>
+                <p className="lp-food-source">منبع: <a href={estimate.sourceUrl} target="_blank" rel="noreferrer">{estimate.sourceLabel}</a>. این مقدار تخمینی از یک منبع آشپزی است، نه اندازه‌گیری آزمایشگاهی. مقدار روغن، آب و نسبت مواد در غذای شما می‌تواند متفاوت باشد.</p>
+              </section> : null}
+              {calories !== undefined && <FoodPortionCalculator caloriesPer100g={calories} />}
+
               <p>برای بررسی غذای خود، عکس را داخل اپ تحلیل کنید. دانلود رایگان؛ دارای خرید درون‌برنامه‌ای.</p>
               <div className="lp-resource-actions">
                 {androidStoreLinks.map((store, index) => (

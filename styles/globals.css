@@ -63,11 +63,12 @@ img {
   --lp-surface: #ffffff;
   --lp-surface-soft: #f0f0f0;
   --lp-text: #121212;
-  --lp-muted: #6f6f6f;
+  --lp-muted: #626262;
   --lp-border: rgba(18, 18, 18, 0.12);
   --lp-card: #ffffff;
   --lp-card-alt: #f8f8f8;
   --lp-accent: #00d448;
+  --lp-accent-text: #087938;
   --lp-accent-dark: #0aaa40;
   --lp-display-font: 'Arial Rounded MT Bold', 'Arial Rounded MT', 'Trebuchet MS', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --lp-brand-font: 'Arial Rounded MT Bold', 'Arial Rounded MT', 'Trebuchet MS', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -89,6 +90,7 @@ img {
 }
 
 .lp-page--dark {
+  --lp-accent-text: #72e89a;
   --lp-bg: #212121;
   --lp-surface: #2b2b2b;
   --lp-surface-soft: #383838;
@@ -214,7 +216,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-brand-text span:last-child {
-  color: var(--lp-accent);
+  color: var(--lp-accent-text);
 }
 
 .lp-page--dark .lp-topbar .lp-brand-mark-icon,
@@ -529,7 +531,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-section-head h2 span {
-  color: var(--lp-accent);
+  color: var(--lp-accent-text);
 }
 
 .lp-section-head p {
@@ -540,7 +542,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-kicker {
-  color: var(--lp-accent);
+  color: var(--lp-accent-text);
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.11em;
@@ -794,7 +796,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-macro-list span {
-  color: var(--lp-accent);
+  color: var(--lp-accent-text);
   font-size: 0.82rem;
   font-weight: 600;
 }
@@ -911,7 +913,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-meal-item h3 {
-  color: var(--lp-accent-dark);
+  color: var(--lp-accent-text);
   font-size: 0.97rem;
   margin: 0;
 }
@@ -956,7 +958,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-how-meta {
-  color: var(--lp-accent);
+  color: var(--lp-accent-text);
   font-size: 0.78rem;
   font-weight: 700;
   margin: 14px 16px 6px;
@@ -1214,7 +1216,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-testimonial-card footer {
-  color: var(--lp-accent);
+  color: var(--lp-accent-text);
   font-size: 0.84rem;
   font-weight: 600;
   margin-top: 12px;
@@ -1266,7 +1268,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 .lp-price-badge {
   background: rgba(0, 212, 72, 0.17);
   border-radius: 999px;
-  color: var(--lp-accent-dark);
+  color: var(--lp-accent-text);
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 700;
@@ -1293,7 +1295,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-price-row span {
-  color: var(--lp-accent);
+  color: var(--lp-accent-text);
   font-family: var(--lp-display-font);
   font-size: 2.35rem;
   font-weight: 800;
@@ -1556,7 +1558,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-download-copy h2 span {
-  color: var(--lp-accent);
+  color: var(--lp-accent-text);
 }
 
 .lp-download-copy p {
@@ -1646,14 +1648,14 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-guide-link {
-  color: var(--lp-accent-dark);
+  color: var(--lp-accent-text);
   font-size: 0.95rem;
   font-weight: 700;
   margin-top: auto;
 }
 
 .lp-page--dark .lp-guide-link {
-  color: var(--lp-accent);
+  color: var(--lp-accent-text);
 }
 
 .lp-blog-latest {
@@ -1729,7 +1731,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
   background:
     linear-gradient(135deg, rgba(0, 212, 72, 0.14), rgba(255, 255, 255, 0.62)),
     var(--lp-surface-soft);
-  color: var(--lp-accent-dark);
+  color: var(--lp-accent-text);
   display: flex;
   font-family: var(--lp-display-font);
   font-size: clamp(1.4rem, 4vw, 2.4rem);
@@ -1740,7 +1742,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
   background:
     linear-gradient(135deg, rgba(0, 212, 72, 0.18), rgba(255, 255, 255, 0.08)),
     var(--lp-surface-soft);
-  color: var(--lp-accent);
+  color: var(--lp-accent-text);
 }
 
 .lp-blog-featured {
@@ -1816,7 +1818,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
   background: rgba(0, 212, 72, 0.12);
   border: 1px solid rgba(0, 212, 72, 0.2);
   border-radius: 999px;
-  color: var(--lp-accent-dark);
+  color: var(--lp-accent-text);
   font-size: 0.78rem;
   font-weight: 700;
   line-height: 1.2;
@@ -1826,13 +1828,13 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-page--dark .lp-blog-tags li {
-  color: var(--lp-accent);
+  color: var(--lp-accent-text);
 }
 
 .lp-blog-card-link,
 .lp-blog-view-all,
 .lp-blog-back-link {
-  color: var(--lp-accent-dark);
+  color: var(--lp-accent-text);
   font-size: 0.95rem;
   font-weight: 800;
 }
@@ -1840,7 +1842,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 .lp-page--dark .lp-blog-card-link,
 .lp-page--dark .lp-blog-view-all,
 .lp-page--dark .lp-blog-back-link {
-  color: var(--lp-accent);
+  color: var(--lp-accent-text);
 }
 
 .lp-blog-card-link {
@@ -2041,7 +2043,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-blog-prose a {
-  color: var(--lp-accent-dark);
+  color: var(--lp-accent-text);
   font-weight: 800;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -2088,7 +2090,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-blog-editorial-note a {
-  color: var(--lp-accent-dark);
+  color: var(--lp-accent-text);
   font-weight: 800;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -2263,7 +2265,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-footer h3 {
-  color: var(--lp-accent);
+  color: var(--lp-accent-text);
   font-size: 1rem;
   margin: 10px 0 12px;
 }
@@ -2342,7 +2344,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 
 .lp-page--dark .lp-socials a {
   background: rgba(0, 212, 72, 0.12);
-  color: var(--lp-accent-dark);
+  color: var(--lp-accent-text);
 }
 
 .lp-copyright {
@@ -2578,7 +2580,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-contact-method a {
-  color: var(--lp-accent-dark);
+  color: var(--lp-accent-text);
   font-size: 0.92rem;
   font-weight: 700;
   margin-top: 8px;
@@ -2632,7 +2634,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-resource-proof-copy > .lp-kicker {
-  color: var(--lp-accent-dark);
+  color: var(--lp-accent-text);
   font-weight: 800;
   margin-top: 0;
 }
@@ -2869,7 +2871,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-calculator-note-icon {
-  color: var(--lp-accent);
+  color: var(--lp-accent-text);
   display: block;
   font-family: var(--lp-display-font);
   font-size: 2rem;
@@ -2907,7 +2909,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-calculator-eyebrow {
-  color: var(--lp-accent-dark) !important;
+  color: var(--lp-accent-text) !important;
   font-size: 0.78rem !important;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -2956,7 +2958,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 
 .lp-calculator-progress li {
   align-items: center;
-  color: #a1a8a3;
+  color: #626262;
   display: flex;
   font-size: 0.78rem;
   gap: 9px;
@@ -3264,7 +3266,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-calculator-result-hero > strong {
-  color: var(--lp-accent);
+  color: var(--lp-accent-text);
   font-family: var(--lp-display-font);
   font-size: clamp(4rem, 9vw, 6.5rem);
   letter-spacing: -0.06em;
@@ -3434,7 +3436,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 
 .lp-calculator-info-grid article:nth-child(2) p,
 .lp-calculator-info-grid article:nth-child(3) p {
-  color: rgba(16, 34, 24, 0.68);
+  color: #244c32;
 }
 
 .lp-calculator-two-column {
@@ -3467,7 +3469,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-calculator-callout a {
-  color: var(--lp-accent-dark);
+  color: var(--lp-accent-text);
   font-size: 0.86rem;
   font-weight: 800;
 }
@@ -3520,7 +3522,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-calculator-source-grid a::after {
-  color: var(--lp-accent-dark);
+  color: var(--lp-accent-text);
   content: 'Read source ↗';
   font-size: 0.78rem;
   font-weight: 800;
@@ -3560,7 +3562,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-calculator-faq-grid summary::after {
-  color: var(--lp-accent-dark);
+  color: var(--lp-accent-text);
   content: '+';
   font-size: 1.3rem;
   position: absolute;
@@ -3631,7 +3633,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 .lp-bmi-hero-stat strong {
-  color: var(--lp-accent);
+  color: var(--lp-accent-text);
   display: block;
   font-family: var(--lp-display-font);
   font-size: clamp(2.6rem, 5vw, 4.2rem);
@@ -4292,7 +4294,7 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
   }
 
   .lp-hero-slide {
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
   }
 
@@ -4604,8 +4606,8 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 /* Shared review release: stable anchors, Persian typography and accessible controls. */
-@font-face { font-family: Vazirmatn; src: url('/fonts/vazirmatn/Vazirmatn-Regular.woff2') format('woff2'); font-style: normal; font-weight: 400; font-display: optional; }
-@font-face { font-family: Vazirmatn; src: url('/fonts/vazirmatn/Vazirmatn-Bold.woff2') format('woff2'); font-style: normal; font-weight: 700; font-display: optional; }
+@font-face { font-family: Vazir; src: url('/fonts/vazir/Vazir-Regular.woff2') format('woff2'); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: Vazir; src: url('/fonts/vazir/Vazir-Bold.woff2') format('woff2'); font-style: normal; font-weight: 700; font-display: swap; }
 html { scroll-behavior: auto; }
 [id] { scroll-margin-top: 108px; }
 :focus-visible { outline: 3px solid #087938; outline-offset: 4px; }
@@ -4724,21 +4726,6 @@ html { scroll-behavior: auto; }
  .fa-guide-links a { padding-block: 14px; }
  .lp-page[lang='fa'] .lp-static-card { padding: 22px; }
 }
-@media (prefers-color-scheme: dark) {
- .lp-page[lang='fa'] { --lp-bg: #131b16; --lp-surface: #1c2920; --lp-surface-soft: #24372a; --lp-text: #edf4eb; --lp-muted: #bccbbe; --lp-border: #3a4a3d; --lp-card: #1c2920; --lp-card-alt: #24372a; background: var(--lp-bg); color: var(--lp-text); color-scheme: dark; }
- .lp-page[lang='fa'] .lp-topbar { background: #131b16f5; }
- .lp-page[lang='fa'] .lp-topbar .lp-logo, .lp-page[lang='fa'] .lp-nav a { color: #edf4eb; }
- .lp-page[lang='fa'] .lp-static-card { background: #1c2920; color: #edf4eb; border-color: #3a4a3d; }
- .lp-page[lang='fa'] .lp-static-card p, .lp-page[lang='fa'] .lp-static-hero p { color: #bccbbe; }
- .lp-page[lang='fa'] .lp-static-hero h1 { color: #edf4eb; }
- .fa-home { --fa-green: #84e5a0; --fa-soft: #1b2b20; --fa-line: #3a4a3d; background: #131b16; color: #edf4eb; }
- .fa-home p { color: #bccbbe; }
- .fa-sample { background: #1c2920; }
- .fa-plate-scene { background: #304031; }
- .fa-scene-label { color: #d0e1cf; }
- .fa-download { background: #1b2b20; }
- .lp-page[lang='fa'] :focus-visible { outline-color: #84e5a0; }
-}
 @media (prefers-reduced-motion: reduce) {
  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
@@ -4763,22 +4750,17 @@ html { scroll-behavior: auto; }
 }
 .lp-brand-mark-icon { background: #f5f8ef; border-radius: 8px; padding: 2px; }
 .lp-page[lang='fa'] .lp-topbar .lp-brand-text span:last-child { color: #087938; }
-@media (prefers-color-scheme: dark) { .lp-page[lang='fa'] .lp-topbar .lp-brand-text span:last-child { color: #84e5a0; } }
+
 .lp-page[lang='fa'] .lp-footer { background: #13261b; color: #edf4eb; }
 .lp-page[lang='fa'] .lp-footer a, .lp-page[lang='fa'] .lp-footer .lp-logo { color: #edf4eb; }
 .lp-page[lang='fa'] .lp-footer-grid section > p, .lp-page[lang='fa'] .lp-copyright { color: #c2cdc5; }
 .lp-page[lang='fa'] .lp-footer h3, .lp-page[lang='fa'] .lp-footer .lp-brand-text span:last-child { color: #84e5a0; }
-@media (prefers-color-scheme: dark) {
- .lp-page[lang='fa'] .lp-blog-tags li, .lp-page[lang='fa'] .lp-blog-prose a, .lp-page[lang='fa'] .lp-blog-editorial-note a { color: #84e5a0; }
-}
+
 body { overflow-x: clip; }
 .lp-page[lang='fa'] .lp-topbar .lp-logo, .lp-page[lang='fa'] .lp-footer li a { min-height: 44px; }
 .lp-page[lang='fa'] .lp-topbar .lp-logo { align-items: center; }
 .lp-page[lang='fa'] { --lp-accent-dark: #087938; }
-@media (prefers-color-scheme: dark) {
- .lp-page[lang='fa'] { --lp-accent-dark: #84e5a0; }
- .lp-page[lang='fa'] .lp-contact-submit { background: #37db70; color: #102a19; }
-}
+
 .lp-page[lang='fa'] .lp-contact-submit { background: #087938; color: #fff; }
 .lp-page[lang='fa'] .lp-lang select { min-height: 44px; }
 .lp-page[lang='fa'] .lp-btn.fa-secondary { background: var(--lp-surface); border: 1px solid var(--lp-border); color: var(--lp-text); border-radius: 12px; min-height: 44px; }
@@ -4787,3 +4769,33 @@ body { overflow-x: clip; }
  .lp-page[lang='fa'] .lp-food-stat-grid article { padding: 12px; min-height: 0; gap: 4px; border-radius: 12px; }
  .lp-page[lang='fa'] .lp-food-stat-grid article:last-child { grid-column: 1 / -1; }
 }
+
+/* Persian uses the shared landing composition with readable RTL typography. */
+html[lang="fa"] body, html[lang="fa"] button, html[lang="fa"] input, html[lang="fa"] select, html[lang="fa"] textarea { font-family: Vazir, Tahoma, sans-serif; }
+.lp-page[lang="fa"] h1, .lp-page[lang="fa"] h2, .lp-page[lang="fa"] h3 { letter-spacing: normal; line-height: 1.55; }
+.lp-page[lang="fa"] .lp-hero-copy h1 { font-size: clamp(2.2rem, 4.5vw, 4.1rem); }
+.lp-page[lang="fa"] .lp-price-row { flex-wrap: wrap; }
+.lp-page[lang="fa"] .lp-price-row > span { font-size: clamp(1.8rem, 3vw, 2.6rem); }
+.food-filters { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px; }
+.food-filters label, .food-portion label { display: grid; gap: 8px; font-weight: 700; }
+.food-filters input, .food-filters select, .food-portion input { width: 100%; min-width: 0; min-height: 48px; padding: 10px 14px; border: 1px solid var(--lp-border); border-radius: 12px; background: var(--lp-surface); color: var(--lp-text); font: inherit; }
+.food-directory-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.food-directory-card { display: flex; flex-direction: column; padding: 24px; border: 1px solid var(--lp-border); border-radius: 18px; background: var(--lp-surface); transition: border-color .15s, transform .15s; }
+.food-directory-card:hover { border-color: #087938; transform: translateY(-2px); }
+.food-directory-card h2 { font-size: 1.3rem; margin: 10px 0; }
+.food-directory-card strong { font-size: 2rem; color: var(--lp-text); }
+.food-directory-card small, .food-category { color: var(--lp-muted); font-size: .85rem; }
+.food-card-link { margin-top: 18px; color: #087938; font-size: .9rem; }
+.food-portion { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; align-items: center; margin-block: 28px; padding: 24px; background: var(--lp-surface-soft); border: 1px solid var(--lp-border); border-radius: 18px; }
+.food-portion h2 { font-size: 1.4rem; margin: 0; }
+.food-portion output { grid-column: 1 / -1; font-size: 1.15rem; }
+.food-portion output strong { font-size: 2rem; }
+.food-portion input[aria-invalid='true'] { border-color: #b42318; }
+.food-breadcrumb { margin-bottom: 20px; font-size: .9rem; }
+.food-breadcrumb a, .food-directory + section a { text-decoration: underline; text-underline-offset: 4px; }
+.food-empty { text-align: center; padding: 32px 0; }
+@media (max-width: 1000px) { .food-directory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .food-filters, .food-directory-grid, .food-portion { grid-template-columns: 1fr; } .food-directory-card { padding: 20px; } }
+.lp-hero-copy .lp-store-note, .lp-download-copy .lp-store-note { font-size: .85rem; line-height: 1.7; margin-top: 14px; font-weight: 400; }
+
+.lp-footer { --lp-accent-text: #72e89a; }

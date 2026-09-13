@@ -57,12 +57,10 @@ export default function SiteHeader({
     document.addEventListener('pointerdown', onPointer)
     return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onPointer) }
   }, [menuOpen])
-  const mobileItems = language === 'fa' ? [
-    { key: 'features', href: '/fa/#features', label: 'امکانات' },
-    { key: 'pricing', href: '/fa/#pricing', label: 'اشتراک' },
-    { key: 'guides', href: '/fa/blog/', label: 'راهنماها' },
-    { key: 'support', href: '/fa/contact/', label: 'پشتیبانی' },
-  ] : navItems
+  const navigationItems = language === 'fa' && !navItems.some(item => item.key === 'foods')
+    ? [...navItems, { key: 'foods', href: '/fa/calories/', label: 'کالری غذاها' }]
+    : navItems
+
   return (
     <header ref={header} onBlur={(event) => {
       if (!event.currentTarget.contains(event.relatedTarget as Node)) setMenuOpen(false)
@@ -73,7 +71,7 @@ export default function SiteHeader({
         </Link>
 
         <nav className="lp-nav" aria-label={navAriaLabel}>
-          {navItems.map((item) => (
+          {navigationItems.map((item) => (
             <Link
               key={item.key}
               href={item.href}
@@ -112,7 +110,7 @@ export default function SiteHeader({
                   value={option}
                   style={{ fontFamily: LANGUAGE_FONT_FAMILIES[option] }}
                 >
-                  {LANGUAGE_SHORT_LABELS[option]}
+                  {LANGUAGE_LABELS[option]}
                 </option>
               ))}
             </select>
@@ -120,7 +118,7 @@ export default function SiteHeader({
         </div>
       </div>
       <nav id="mobile-navigation" className="lp-mobile-nav" hidden={!menuOpen} aria-label={language === 'fa' ? 'ناوبری موبایل' : navAriaLabel}>
-        {mobileItems.map(item => <Link key={item.key} href={item.href} onClick={closeMenu}>{item.label}</Link>)}
+        {navigationItems.map(item => <Link key={item.key} href={item.href} onClick={closeMenu}>{item.label}</Link>)}
       </nav>
     </header>
   )

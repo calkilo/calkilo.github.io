@@ -1,0 +1,145 @@
+
+> calkilo-landing@1.0.0 prebuild
+> node scripts/generate-site-data.mjs
+
+Offline review build: retaining checked-in blog data and regenerating static discovery files.
+
+> calkilo-landing@1.0.0 build
+> next build
+
+▲ Next.js 16.3.3 (Turbopack)
+✓ Running next.config.mjs took 7ms
+
+  Running TypeScript ...
+  Finished TypeScript in 905ms ...
+  Creating an optimized production build ...
+✓ Compiled successfully in 712ms
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/352) ...
+  Generating static pages using 7 workers (88/352) 
+  Generating static pages using 7 workers (176/352) 
+  Generating static pages using 7 workers (264/352) 
+✓ Generating static pages using 7 workers (352/352) in 268ms
+  Finalizing page optimization ...
+  Exporting using 7 workers (0/35) ...
+  Exporting using 7 workers (8/35) 
+  Exporting using 7 workers (17/35) 
+  Exporting using 7 workers (26/35) 
+
+Route (pages)
+┌ ● /
+├   /_app
+├   /[lang] (619 ms)
+│ ├ ● /nl
+│ ├ ● /ru
+│ ├ ● /zh
+│ └ ● [+3 more paths]
+├   /[lang]/account-deletion
+│ ├ ● /nl/account-deletion
+│ ├ ● /ru/account-deletion
+│ ├ ● /zh/account-deletion
+│ └ ● [+3 more paths]
+├   /[lang]/ai-calorie-tracker
+│ ├ ● /fa/ai-calorie-tracker
+│ └ ● /it/ai-calorie-tracker
+├   /[lang]/blog (323 ms)
+│ ├ ● /nl/blog
+│ ├ ● /ru/blog
+│ ├ ● /zh/blog
+│ └ ● [+3 more paths]
+├   /[lang]/blog/[slug] (5412 ms)
+│ ├ ● /nl/blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying-3
+│ ├ ● /nl/blog/simple-daily-habits-to-make-calorie-tracking-stick
+│ ├ ● /nl/blog/hydration-and-nutrition-basics-simple-habits-for-everyday-energy-2
+│ └ ● [+177 more paths]
+├   /[lang]/contact
+│ ├ ● /nl/contact
+│ ├ ● /ru/contact
+│ ├ ● /zh/contact
+│ └ ● [+3 more paths]
+├   /[lang]/dark (411 ms)
+│ ├ ● /nl/dark
+│ ├ ● /ru/dark
+│ ├ ● /zh/dark
+│ └ ● [+3 more paths]
+├   /[lang]/features
+│ ├ ● /nl/features
+│ ├ ● /ru/features
+│ ├ ● /zh/features
+│ └ ● [+3 more paths]
+├   /[lang]/macro-tracker
+│ └ ● /fa/macro-tracker
+├   /[lang]/photo-calorie-calculator
+│ ├ ● /fa/photo-calorie-calculator
+│ └ ● /it/photo-calorie-calculator
+├   /[lang]/pricing
+│ ├ ● /nl/pricing
+│ ├ ● /ru/pricing
+│ ├ ● /zh/pricing
+│ └ ● [+3 more paths]
+├   /[lang]/privacy-policy
+│ ├ ● /nl/privacy-policy
+│ ├ ● /ru/privacy-policy
+│ ├ ● /zh/privacy-policy
+│ └ ● [+3 more paths]
+├   /[lang]/terms-and-conditions (561 ms)
+│ ├ ● /nl/terms-and-conditions
+│ ├ ● /ru/terms-and-conditions
+│ ├ ● /zh/terms-and-conditions
+│ └ ● [+3 more paths]
+├   /[lang]/terms-of-service
+│ ├ ● /nl/terms-of-service
+│ ├ ● /ru/terms-of-service
+│ ├ ● /zh/terms-of-service
+│ └ ● [+3 more paths]
+├ ○ /404
+├ ○ /about
+├ ○ /account-deletion
+├ ○ /ai-calorie-tracker
+├ ○ /ai-meal-planner-for-weight-loss
+├ ○ /best-calorie-counter-for-persian-food
+├ ● /blog
+├   /blog/[slug] (580 ms)
+│ ├ ● /blog/healthy-snacks-for-busy-days-quick-portable-and-satisfying-3
+│ ├ ● /blog/simple-daily-habits-to-make-calorie-tracking-stick
+│ ├ ● /blog/hydration-and-nutrition-basics-simple-habits-for-everyday-energy-2
+│ └ ● [+29 more paths]
+├ ○ /bmi-calculator
+├ ○ /calkilo-vs-myfitnesspal
+├ ○ /calorie-calculator
+├ ○ /contact
+├ ● /dark
+├ ○ /en/privacy-policy
+├ ○ /en/terms-of-service
+├ ○ /fa/ai-calorie-calculator
+├ ○ /fa/calorie-counter-with-photo
+├ ○ /fa/calories
+├   /fa/calories/[foodSlug] (1133 ms)
+│ ├ ● /fa/calories/pizza
+│ ├ ● /fa/calories/hamburger
+│ ├ ● /fa/calories/kebab
+│ └ ● [+34 more paths]
+├   /fa/examples/[exampleSlug]
+│ ├ ● /fa/examples/pizza-scan
+│ ├ ● /fa/examples/kebab-scan
+│ └ ● /fa/examples/burger-scan
+├ ○ /fa/food-calorie-scanner
+├ ○ /fa/free-photo-calorie-calculator
+├ ○ /faq
+├ ○ /features
+├ ○ /food-page-analyze
+├ ○ /invite
+├ ○ /it/calcolo-calorie-con-foto-gratis
+├ ○ /it/intelligenza-artificiale-calorie
+├ ○ /macro-tracker
+├ ○ /open-meal
+├ ○ /photo-calorie-calculator
+├ ○ /pricing
+├ ○ /privacy-policy
+├ ○ /terms-and-conditions
+├ ○ /terms-of-service
+└ ○ /uber-eats-nutrition-calculator
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses getStaticProps)
+

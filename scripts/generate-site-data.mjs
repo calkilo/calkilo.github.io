@@ -367,7 +367,9 @@ if (process.env.CALKILO_OFFLINE_BUILD === '1') {
   if (!previousManifest || SITE_LANGUAGES.some(language => !previousManifest.languages?.[language]?.posts?.length)) {
     throw new Error('Offline build requires a complete checked-in blog snapshot.')
   }
-  console.log('Offline review build: retaining checked-in blog and discovery files without network refresh.')
+  await writeFile(staticSitemapPath, buildStaticSitemap(), 'utf8')
+  await writeFile(llmsPath, buildLlmsText(), 'utf8')
+  console.log('Offline review build: retaining checked-in blog data and regenerating static discovery files.')
   process.exit(0)
 }
 

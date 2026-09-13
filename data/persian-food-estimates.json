@@ -1,0 +1,226 @@
+[
+  {
+    "slug": "ghormeh-sabzi",
+    "nameFa": "قورمه سبزی",
+    "category": "خورشت",
+    "caloriesPer100g": 180,
+    "preparation": "سبزی، لوبیا و گوشت؛ بدون برنج"
+  },
+  {
+    "slug": "gheymeh",
+    "nameFa": "قیمه",
+    "category": "خورشت",
+    "caloriesPer100g": 185,
+    "preparation": "گوشت، لپه و سیب‌زمینی؛ بدون برنج"
+  },
+  {
+    "slug": "gheymeh-bademjan",
+    "nameFa": "قیمه بادمجان",
+    "category": "خورشت",
+    "caloriesPer100g": 151,
+    "preparation": "لپه، گوشت و بادمجان؛ بدون برنج"
+  },
+  {
+    "slug": "fesenjan",
+    "nameFa": "فسنجان",
+    "category": "خورشت",
+    "caloriesPer100g": 264,
+    "preparation": "گردو، رب انار و گوشت یا مرغ؛ بدون برنج"
+  },
+  {
+    "slug": "bademjan",
+    "nameFa": "خورش بادمجان",
+    "category": "خورشت",
+    "caloriesPer100g": 121,
+    "preparation": "بادمجان، گوجه و گوشت؛ بدون برنج"
+  },
+  {
+    "slug": "aloo-esfenaj",
+    "nameFa": "آلو اسفناج",
+    "category": "خورشت",
+    "caloriesPer100g": 137,
+    "preparation": "اسفناج، آلو و گوشت؛ بدون برنج"
+  },
+  {
+    "slug": "karafs",
+    "nameFa": "خورش کرفس",
+    "category": "خورشت",
+    "caloriesPer100g": 173,
+    "preparation": "کرفس، سبزی و گوشت؛ بدون برنج"
+  },
+  {
+    "slug": "koobideh",
+    "nameFa": "کباب کوبیده",
+    "category": "کباب و پروتئین",
+    "caloriesPer100g": 268,
+    "preparation": "گوشت چرخ‌کرده و پیاز؛ بدون نان و برنج"
+  },
+  {
+    "slug": "joojeh-kebab",
+    "nameFa": "جوجه کباب",
+    "category": "کباب و پروتئین",
+    "caloriesPer100g": 198,
+    "preparation": "مرغ مزه‌دارشده و کبابی؛ بدون نان و برنج"
+  },
+  {
+    "slug": "kabab-barg",
+    "nameFa": "کباب برگ",
+    "category": "کباب و پروتئین",
+    "caloriesPer100g": 310,
+    "preparation": "گوشت کبابی؛ بدون نان و برنج"
+  },
+  {
+    "slug": "kabab-tabei",
+    "nameFa": "کباب تابه‌ای",
+    "category": "کباب و پروتئین",
+    "caloriesPer100g": 177,
+    "preparation": "گوشت چرخ‌کرده، پیاز و گوجه؛ بدون برنج"
+  },
+  {
+    "slug": "kotlet",
+    "nameFa": "کتلت",
+    "category": "خوراک",
+    "caloriesPer100g": 300,
+    "preparation": "گوشت، سیب‌زمینی و تخم‌مرغ؛ سرخ‌شده"
+  },
+  {
+    "slug": "kuku-sibzamini",
+    "nameFa": "کوکو سیب‌زمینی",
+    "category": "خوراک",
+    "caloriesPer100g": 200,
+    "preparation": "سیب‌زمینی و تخم‌مرغ؛ سرخ‌شده"
+  },
+  {
+    "slug": "abgoosht",
+    "nameFa": "آبگوشت",
+    "category": "خوراک",
+    "caloriesPer100g": 150,
+    "preparation": "گوشت، حبوبات و سیب‌زمینی؛ بدون نان"
+  },
+  {
+    "slug": "kashk-bademjan",
+    "nameFa": "کشک بادمجان",
+    "category": "خوراک",
+    "caloriesPer100g": 125,
+    "preparation": "بادمجان و کشک؛ بدون نان"
+  },
+  {
+    "slug": "mirza-ghasemi",
+    "nameFa": "میرزا قاسمی",
+    "category": "خوراک",
+    "caloriesPer100g": 161,
+    "preparation": "بادمجان، گوجه، سیر و تخم‌مرغ؛ بدون نان"
+  },
+  {
+    "slug": "zereshk-polo",
+    "nameFa": "زرشک پلو با مرغ",
+    "category": "پلو",
+    "caloriesPer100g": 230,
+    "preparation": "برنج، زرشک و مرغ؛ غذای ترکیبی"
+  },
+  {
+    "slug": "albaloo-polo",
+    "nameFa": "آلبالو پلو",
+    "category": "پلو",
+    "caloriesPer100g": 286,
+    "preparation": "برنج و آلبالو؛ مقدار شکر و گوشت متغیر است"
+  },
+  {
+    "slug": "kalam-polo",
+    "nameFa": "کلم پلو",
+    "category": "پلو",
+    "caloriesPer100g": 180,
+    "preparation": "برنج، کلم و گوشت؛ غذای ترکیبی"
+  },
+  {
+    "slug": "dampokhtak",
+    "nameFa": "دمپختک",
+    "category": "پلو",
+    "caloriesPer100g": 160,
+    "preparation": "برنج، باقلا و پیاز؛ غذای ترکیبی"
+  },
+  {
+    "slug": "tahchin",
+    "nameFa": "ته‌چین مرغ",
+    "category": "پلو",
+    "caloriesPer100g": 200,
+    "preparation": "برنج، مرغ، ماست و تخم‌مرغ؛ پخته"
+  },
+  {
+    "slug": "loobia-polo",
+    "nameFa": "لوبیا پلو",
+    "category": "پلو",
+    "caloriesPer100g": 180,
+    "preparation": "برنج، لوبیا سبز و گوشت؛ غذای ترکیبی"
+  },
+  {
+    "slug": "adas-polo",
+    "nameFa": "عدس پلو",
+    "category": "پلو",
+    "caloriesPer100g": 204,
+    "preparation": "برنج و عدس؛ کشمش و گوشت می‌تواند متفاوت باشد"
+  },
+  {
+    "slug": "shirin-polo",
+    "nameFa": "شیرین پلو",
+    "category": "پلو",
+    "caloriesPer100g": 241,
+    "preparation": "برنج، خلال و شکر؛ مقدار مغزها متغیر است"
+  },
+  {
+    "slug": "ash-reshteh",
+    "nameFa": "آش رشته",
+    "category": "آش و سوپ",
+    "caloriesPer100g": 250,
+    "preparation": "حبوبات، رشته، سبزی و کشک؛ مقدار آب و تزیین متغیر است"
+  },
+  {
+    "slug": "ash-doogh",
+    "nameFa": "آش دوغ",
+    "category": "آش و سوپ",
+    "caloriesPer100g": 118,
+    "preparation": "دوغ، سبزی و حبوبات؛ مقدار آب متغیر است"
+  },
+  {
+    "slug": "ash-jo",
+    "nameFa": "آش جو",
+    "category": "آش و سوپ",
+    "caloriesPer100g": 95,
+    "preparation": "جو، سبزی و حبوبات؛ مقدار آب متغیر است"
+  },
+  {
+    "slug": "ash-shole-ghalamkar",
+    "nameFa": "آش شله قلمکار",
+    "category": "آش و سوپ",
+    "caloriesPer100g": 121,
+    "preparation": "گوشت، حبوبات، برنج و سبزی؛ مقدار آب متغیر است"
+  },
+  {
+    "slug": "dolmeh",
+    "nameFa": "دلمه برگ مو",
+    "category": "خوراک",
+    "caloriesPer100g": 135,
+    "preparation": "برگ مو با برنج، سبزی و مواد میانی"
+  },
+  {
+    "slug": "tahdig-rice",
+    "nameFa": "ته‌دیگ برنج",
+    "category": "کنارغذا",
+    "caloriesPer100g": 235,
+    "preparation": "برنج برشته با روغن؛ بدون غذای همراه"
+  },
+  {
+    "slug": "tahdig-potato",
+    "nameFa": "ته‌دیگ سیب‌زمینی",
+    "category": "کنارغذا",
+    "caloriesPer100g": 244,
+    "preparation": "سیب‌زمینی برشته با روغن؛ بدون غذای همراه"
+  },
+  {
+    "slug": "tahdig-bread",
+    "nameFa": "ته‌دیگ نان",
+    "category": "کنارغذا",
+    "caloriesPer100g": 250,
+    "preparation": "نان برشته با روغن؛ بدون غذای همراه"
+  }
+]

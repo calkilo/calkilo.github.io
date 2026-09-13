@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs'
+const persianFoodEstimates = JSON.parse(readFileSync(new URL('../data/persian-food-estimates.json', import.meta.url), 'utf8'))
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://calkilo.com').replace(/\/+$/u, '')
 
 export const SITE_LANGUAGES = ['en', 'nl', 'ru', 'zh', 'ar', 'fa', 'it']
@@ -33,6 +35,8 @@ const englishProductPages = [
 ]
 
 const persianPages = [
+  '/fa/calories/',
+  ...persianFoodEstimates.map(food => `/fa/calories/${food.slug}/`),
   '/fa/ai-calorie-tracker/',
   '/fa/photo-calorie-calculator/',
   '/fa/calorie-counter-with-photo/',

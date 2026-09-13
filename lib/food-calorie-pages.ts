@@ -1,6 +1,10 @@
+import persianFoodEstimates from '../data/persian-food-estimates.json'
+
 export interface FoodCaloriePageData {
   slug: string
   nameFa: string
+  category?: string
+  estimate?: { caloriesPer100g: number; preparation: string; sourceUrl: string; sourceLabel: string }
   nutrition?: {
     caloriesPer100g: number
     servingGrams: number
@@ -78,6 +82,8 @@ export const FOOD_CALORIE_PAGES: FoodCaloriePageData[] = [
   {
     slug: 'kebab',
     nameFa: 'کباب',
+    category: 'کباب و پروتئین',
+    estimate: { caloriesPer100g: 268, preparation: 'نمونه کباب کوبیده؛ بدون نان و برنج. این عدد برای همه انواع کباب نیست.', sourceUrl: 'https://mealscook.net/blog/calories-in-persian-food/', sourceLabel: 'Meals Cook؛ تخمین آشپزی برای کوبیده' },
     intro:
       'کالری کباب به نوع گوشت، درصد چربی، روش پخت و همراه‌هایی مثل برنج، نان، کره و گوجه بستگی دارد. کباب کوبیده معمولاً چربی بیشتری از جوجه کباب ساده دارد.',
     notes: [
@@ -146,6 +152,13 @@ export const FOOD_CALORIE_PAGES: FoodCaloriePageData[] = [
       'برای تخمین دقیق‌تر، از کل ساندویچ یا بشقاب فلافل عکس بگیرید.',
     ],
   },
+  ...persianFoodEstimates.map((food): FoodCaloriePageData => ({
+    slug: food.slug, nameFa: food.nameFa, category: food.category,
+    estimate: { caloriesPer100g: food.caloriesPer100g, preparation: food.preparation, sourceLabel: 'Meals Cook؛ جدول تخمینی غذاهای ایرانی', sourceUrl: 'https://mealscook.net/blog/calories-in-persian-food/' },
+    intro: `کالری ${food.nameFa} با مقدار روغن، ترکیب مواد و وزن غذای آماده تغییر می‌کند. عدد این صفحه یک تخمین منتشرشده در منبع آشپزی است؛ اندازه‌گیری آزمایشگاهی یا مقدار دقیق غذای شما نیست.`,
+    notes: [food.preparation, 'مبنای محاسبه ۱۰۰ گرم غذای آماده مصرف است. وزن مواد خام را جایگزین وزن غذای پخته نکنید.'],
+    tips: ['وعده خود را پس از پخت وزن کنید.', 'نان، نوشیدنی، سس و کنارغذاهایی را که در توضیح نمونه نیستند جدا حساب کنید.', 'روغن و مقدار آب باقی‌مانده پس از پخت، کالری در هر ۱۰۰ گرم را تغییر می‌دهند.'],
+  })),
 ]
 
 export function getFoodCaloriePage(slug: string): FoodCaloriePageData | undefined {

@@ -1,4 +1,3 @@
-import PersianHomeContent from './PersianHomeContent'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useMemo, useState, type CSSProperties, type ImgHTMLAttributes } from 'react'
@@ -107,10 +106,10 @@ function getWebpSource(src: string): string | undefined {
   return src.endsWith('.png') ? src.replace(/\.png$/u, '.webp') : undefined
 }
 
-function OptimizedImage({ alt, src, ...props }: OptimizedImageProps) {
+function OptimizedImage({ alt, src, fetchPriority, ...props }: OptimizedImageProps) {
   const webpSource = getWebpSource(src)
   // eslint-disable-next-line @next/next/no-img-element
-  const image = <img {...props} src={src} alt={alt} />
+  const image = <img {...props} {...(fetchPriority ? { fetchpriority: fetchPriority } : {})} src={src} alt={alt} />
 
   if (!webpSource) {
     return image
@@ -681,7 +680,7 @@ const PRICING_PLANS = [
 
 function getPricingDisplayPrice(plan: (typeof PRICING_PLANS)[number], language: SiteLanguage) {
   if (language === 'fa') {
-    return CALKILO_PRICING[plan.title].persianDisplay
+    return 'قیمت در اپ'
   }
 
   return plan.price
@@ -1488,7 +1487,6 @@ function StoreButtons({ language }: { language: SiteLanguage }) {
       <a
         className="lp-store-btn"
         href={APP_STORE_URL}
-        role="button"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -1786,7 +1784,7 @@ export default function LandingPage({
   const contactHref = toLocalizedPath('/contact', language)
   const pricingOfferUrl = pricingHref.startsWith('#') ? `${SITE_URL}${seoPath}${pricingHref}` : `${SITE_URL}${pricingHref}`
 
-  const localizedResourceLinks = getLocalizedResourceLinks(language)
+  const localizedResourceLinks = [...getLocalizedResourceLinks(language), ...(language === 'fa' ? [{ href: '/fa/calories/', label: 'کالری غذاهای ایرانی', description: 'جست‌وجوی غذا، مقایسه کالری در ۱۰۰ گرم و محاسبه بر اساس وزن وعده.' }] : [])]
   const localizedCorePageLinks: SitePageLink[] = CORE_SITE_LINKS.map((link) => {
     if (link.href === '/features/') {
       return {
@@ -1813,7 +1811,7 @@ export default function LandingPage({
     }
 
     return {
-      href: link.href,
+      href: link.href === '/faq/' ? `${seoPath}#faq` : link.href,
       label: ts(link.label),
       description: ts(link.description),
     }
@@ -1896,6 +1894,7 @@ export default function LandingPage({
         { label: copy.nav.features, href: featuresHref },
         { label: copy.nav.pricing, href: pricingHref },
         { label: copy.nav.blog, href: blogHref },
+        ...(language === 'fa' ? [{ label: 'کالری غذاها', href: '/fa/calories/' }] : []),
         { label: localizedResourceLinks[0]?.label ?? 'AI Calorie Tracker', href: localizedResourceLinks[0]?.href ?? '/ai-calorie-tracker/' },
       ],
     },
@@ -1985,7 +1984,7 @@ export default function LandingPage({
         publisher: {
           '@id': `${SITE_URL}/#organization`,
         },
-        featureList: language === 'fa' ? ['تخمین کالری و درشت‌مغذی‌ها از عکس', 'ثبت روزانه غذا'] : FEATURE_ITEMS.map((item) => ts(item.title)),
+        featureList: FEATURE_ITEMS.map((item) => ts(item.title)),
         offers: language === 'fa' ? undefined : PRICING_PLANS.map((plan) => ({
           ...getPricingSchemaOffer(plan, language, pricingOfferUrl),
           name: ts(plan.title),
@@ -2016,7 +2015,7 @@ export default function LandingPage({
         noindex={isDarkVariantPage}
         imagePath="/assets/hero-main.png"
         imageAlt="Calkilo AI calorie tracking dashboard"
-        preloadImagePaths={language === 'fa' ? [] : [
+        preloadImagePaths={[
           {
             src: heroSlides[0].src,
             srcSet: heroSlides[0].srcSet,
@@ -2042,7 +2041,7 @@ export default function LandingPage({
         onLanguageChange={handleLanguageChange}
       />
 
-      {language === 'fa' ? <PersianHomeContent titleA={copy.heroTitleA} titleB={copy.heroTitleB} /> : <main id="home">
+      <main id="home">
         <section className="lp-hero">
           <div className="lp-container lp-hero-grid">
             <div className="lp-hero-copy lp-reveal lp-reveal--left is-visible">
@@ -2053,6 +2052,7 @@ export default function LandingPage({
               <p>{copy.heroDescription}</p>
               <div className="lp-store-label">{copy.availableOn}</div>
               <StoreButtons language={language} />
+              <p className="lp-store-note">{language === 'fa' ? 'دانلود رایگان؛ دارای خرید درون‌برنامه‌ای. شرایط دسترسی و قیمت نهایی را در اپ ببینید.' : ts('Free download. In-app purchases available.')}</p>
             </div>
 
             <div className="lp-hero-media lp-reveal lp-reveal--right is-visible" aria-hidden="true">
@@ -2106,6 +2106,7 @@ export default function LandingPage({
                 {FEATURE_ITEMS.map((item, index) => (
                   <button
                     key={item.title}
+                    aria-pressed={activeFeature === index}
                     className={`lp-feature-card${activeFeature === index ? ' is-active' : ''}`}
                     onClick={() => setActiveFeature(index)}
                     type="button"
@@ -2462,6 +2463,7 @@ export default function LandingPage({
               </h2>
               <p>{copy.downloadDescription}</p>
               <StoreButtons language={language} />
+              <p className="lp-store-note">{language === 'fa' ? 'دانلود رایگان؛ دارای خرید درون‌برنامه‌ای. شرایط دسترسی و قیمت نهایی را در اپ ببینید.' : ts('Free download. In-app purchases available.')}</p>
             </div>
 
             <div className="lp-download-scan lp-reveal">
@@ -2504,7 +2506,7 @@ export default function LandingPage({
             </aside>
           </div>
         </section>
-      </main>}
+      </main>
 
       <SiteFooter
         copyright={`© ${new Date().getFullYear()} Calkilo. ${ts('All rights reserved.')}`}

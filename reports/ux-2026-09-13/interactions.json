@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Vazir font loads",
+    "passed": true
+  },
+  {
+    "name": "Mobile menu opens",
+    "passed": true
+  },
+  {
+    "name": "Escape closes menu and restores focus",
+    "passed": true
+  },
+  {
+    "name": "Download anchor clears header",
+    "passed": true
+  },
+  {
+    "name": "Persian search finds one dish",
+    "passed": true
+  },
+  {
+    "name": "Persian digits calculate portion",
+    "passed": true
+  },
+  {
+    "name": "Negative portions rejected",
+    "passed": true
+  },
+  {
+    "name": "Empty portion rejected",
+    "passed": true
+  },
+  {
+    "name": "Arabic digits and decimal accepted",
+    "passed": true
+  },
+  {
+    "name": "Food category filters",
+    "passed": true
+  },
+  {
+    "name": "No-results guidance appears",
+    "passed": true
+  },
+  {
+    "name": "Reset restores every dish",
+    "passed": true
+  },
+  {
+    "name": "Calorie sorting works",
+    "passed": true
+  },
+  {
+    "name": "BMI 68 kg / 170 cm = 23.5",
+    "passed": true
+  },
+  {
+    "name": "Calorie wizard calculates expected default",
+    "passed": true
+  },
+  {
+    "name": "URL analyzer validates before requesting",
+    "passed": true
+  },
+  {
+    "name": "No horizontal overflow / 320",
+    "passed": true
+  },
+  {
+    "name": "No horizontal overflow / 768",
+    "passed": true
+  },
+  {
+    "name": "No horizontal overflow / 1440",
+    "passed": true
+  },
+  {
+    "name": "No horizontal overflow /fa/ 320",
+    "passed": true
+  },
+  {
+    "name": "No horizontal overflow /fa/ 768",
+    "passed": true
+  },
+  {
+    "name": "No horizontal overflow /fa/ 1440",
+    "passed": true
+  },
+  {
+    "name": "No horizontal overflow /fa/calories/ 320",
+    "passed": true
+  },
+  {
+    "name": "No horizontal overflow /fa/calories/ 768",
+    "passed": true
+  },
+  {
+    "name": "No horizontal overflow /fa/calories/ 1440",
+    "passed": true
+  },
+  {
+    "name": "No horizontal overflow /fa/calories/ghormeh-sabzi/ 320",
+    "passed": true
+  },
+  {
+    "name": "No horizontal overflow /fa/calories/ghormeh-sabzi/ 768",
+    "passed": true
+  },
+  {
+    "name": "No horizontal overflow /fa/calories/ghormeh-sabzi/ 1440",
+    "passed": true
+  },
+  {
+    "name": "English and Persian use identical section layout",
+    "passed": true
+  },
+  {
+    "name": "Language switch changes document direction",
+    "passed": true
+  }
+]
