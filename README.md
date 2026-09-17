@@ -143,7 +143,10 @@ Repository configuration in **Settings → Secrets and variables → Actions**:
 | Secret | `DEPLOY_KNOWN_HOSTS` | Verified SSH host key line for the server IP |
 
 Deployments use the `production` GitHub environment. The deployment user owns only
-`/var/www/calkilo-landing` and does not need sudo. SSH host verification is mandatory;
+`/var/www/calkilo-landing`. Its only sudo permission is the root-owned
+`/usr/local/sbin/calkilo-web-reload` helper, with no arguments. This helper validates exact
+301 redirect data, writes the Nginx map, tests configuration, and reloads Nginx; it never
+executes uploaded configuration. SSH host verification is mandatory;
 the workflow never uses a root password.
 
 ### Server layout and activation
@@ -151,32 +154,34 @@ the workflow never uses a root password.
 - `incoming/`: uploads in progress.
 - `releases/`: complete versioned exports; the latest five plus the previous release are retained.
 - `current`: atomically replaced symlink to the active release.
-- `assets/`: retained immutable Next.js chunks, allowing already-open pages to keep working after deployment. Monitor disk usage; these assets are not automatically deleted.
+- `assets/`: retained immutable Next.js chunks.
+- `versioned-assets/` and `versioned-data/`: retained content-hashed images/fonts and food-search data. These keep already-open pages working across deployments. Monitor disk usage; immutable assets are not automatically deleted.
 
-`deploy/activate-release.sh` verifies the upload, switches the symlink, then checks the origin's
+`deploy/activate-release.sh` verifies the upload, switches the symlink, validates/reloads the redirect map, then checks the origin's
 homepage, contact page, Persian homepage, robots file, and release marker. A failed health
 check restores the previous symlink and fails the workflow. Upload failures leave the active
 release untouched. IndexNow notification runs after a successful deployment.
 
 ### Nginx, DNS, and HTTPS
 
-`deploy/nginx.conf` is the initial HTTP configuration, installed at
+`deploy/nginx.conf` is the production configuration, installed at
 `/etc/nginx/sites-available/calkilo-landing` and enabled in `sites-enabled`.
-It serves trailing-slash routes, real 404 responses, and long-lived hashed assets.
+It serves trailing-slash routes and proper 404 responses, redirects HTTP/www/index.html
+to the canonical HTTPS origin, and applies exact legacy redirects from each release's
+`_redirects` file. Certificates must already exist at `/etc/letsencrypt/live/calkilo.com`.
+Cloudflare must use **Full (strict)** or **Full**, not Flexible. Certbot renews the certificates.
 The API's existing Nginx configuration stays separate.
 
-Point the Cloudflare A record for `calkilo.com` to `65.109.193.193`, and point `www` to
-the same origin if used. Remove conflicting GitHub Pages A/AAAA/CNAME records. For initial
-certificate issuance, use DNS-only mode and ensure port 80 is reachable, then run:
+Install `deploy/reload-site.py` as root-owned executable `/usr/local/sbin/calkilo-web-reload`.
+The sudoers entry permits only `calkilo-web ALL=(root) NOPASSWD: /usr/local/sbin/calkilo-web-reload ""`.
+Create `/etc/nginx/snippets/calkilo-redirects.conf` by running the helper once before enabling
+this Nginx configuration; always run `nginx -t` before reloading. Run `python3 deploy/test_redirects.py`
+to check redirect validation. The loopback-only port `127.0.0.1:8089` serves deployment health checks.
 
-```bash
-ssh root@calkilo 'certbot --nginx --no-redirect -d calkilo.com -d www.calkilo.com'
-```
-
-Omit `www` if it is not configured. Keep HTTP available for local deployment health checks.
-After HTTPS works, Cloudflare proxying can be enabled with **Full (strict)** SSL/TLS and
-**Always Use HTTPS**. Certbot manages certificate renewal. Do not overwrite its resulting
-TLS configuration with the initial HTTP template on subsequent deployments.
+`npm run build` and `npm run dev` first generate content-hashed delivery assets, fonts and a
+compact food-search index. Nutrient groups load only when a search result is expanded.
+Generated delivery files are ignored by Git and recreated by CI. Changing an asset changes its
+URL; immutable caching therefore cannot hide a new image or data revision.
 
 `public/CNAME` is a historical static file and does not control server routing.
 GitHub Pages can be disabled in repository settings after the DNS migration is verified.
@@ -199,7 +204,7 @@ run as `calkilo-web` on the server, replacing `RELEASE_ID` with that directory n
 
 ```bash
 cd /var/www/calkilo-landing
-flock .deploy.lock bash -c 'ln -s "$PWD/releases/RELEASE_ID" current.rollback && mv -Tf current.rollback current'
+flock .deploy.lock bash -c 'ln -s "$PWD/releases/RELEASE_ID" current.rollback && mv -Tf current.rollback current && sudo -n /usr/local/sbin/calkilo-web-reload'
 ```
 
 ### Troubleshooting
@@ -208,7 +213,7 @@ If SSH fails, check the repository secrets, host IP, authorized key, and port 22
 If the build fails, inspect the lint or SEO audit output and blog API connectivity.
 New blog posts require another static build and deployment.
 If origin health checks fail, inspect the Nginx site configuration and `current` symlink;
-HTTP requests with `Host: calkilo.com` to `127.0.0.1` must serve the site without a redirect.
+HTTP requests to `127.0.0.1:8089` must serve the site without a redirect.
 
 ## Contribution notes
 

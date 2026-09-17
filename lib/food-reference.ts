@@ -23,11 +23,29 @@ export const normalizeFoodSearch = (text: string) => text.normalize('NFKC').repl
 export const FOOD_SEARCH_ALIASES: [string, string][] = [
   ['rice','برنج'],['bread','نان'],['chicken','مرغ'],['beef','گوشت گاو'],['lamb','گوشت بره گوسفند'],['veal','گوشت گوساله'],['turkey','بوقلمون'],['duck','اردک'],['fish','ماهی'],['salmon','سالمون'],['tuna','تن ماهی'],['trout','قزل آلا'],['sardine','ساردین'],['shrimp','میگو'],['egg','تخم مرغ'],['milk','شیر'],['yogurt','ماست'],['cheese','پنیر'],['butter','کره'],['cream','خامه'],['apple','سیب'],['banana','موز'],['orange','پرتقال'],['tangerine','نارنگی'],['lemon','لیمو'],['lime','لیموترش'],['grape','انگور'],['raisin','کشمش'],['date','خرما'],['fig','انجیر'],['peach','هلو'],['apricot','زردآلو'],['plum','آلو'],['pear','گلابی'],['cherry','گیلاس'],['strawberry','توت فرنگی'],['raspberry','تمشک'],['blackberry','شاه توت'],['blueberry','بلوبری'],['watermelon','هندوانه'],['melon','خربزه طالبی'],['kiwi','کیوی'],['pomegranate','انار'],['mango','انبه'],['pineapple','آناناس'],['coconut','نارگیل'],['avocado','آووکادو'],['olive','زیتون'],['potato','سیب زمینی'],['tomato','گوجه فرنگی'],['cucumber','خیار'],['onion','پیاز'],['garlic','سیر'],['carrot','هویج'],['spinach','اسفناج'],['lettuce','کاهو'],['cabbage','کلم'],['broccoli','بروکلی'],['cauliflower','گل کلم'],['eggplant','بادمجان'],['squash','کدو'],['pumpkin','کدو حلوایی'],['zucchini','کدو سبز'],['mushroom','قارچ'],['celery','کرفس'],['radish','تربچه'],['turnip','شلغم'],['beet','چغندر لبو'],['pepper','فلفل'],['corn','ذرت'],['peas','نخود فرنگی'],['lentil','عدس'],['chickpea','نخود'],['beans','لوبیا'],['soy','سویا'],['tofu','توفو'],['peanut','بادام زمینی'],['almond','بادام'],['walnut','گردو'],['pistachio','پسته'],['hazelnut','فندق'],['cashew','بادام هندی'],['sesame','کنجد'],['tahini','ارده'],['sunflower','تخمه آفتابگردان'],['flaxseed','تخم کتان'],['chia','چیا'],['oat','جو دوسر'],['barley','جو'],['wheat','گندم'],['quinoa','کینوا'],['pasta','پاستا ماکارونی'],['spaghetti','اسپاگتی ماکارونی'],['noodle','نودل'],['flour','آرد'],['sugar','شکر'],['honey','عسل'],['jam','مربا'],['chocolate','شکلات'],['cocoa','کاکائو'],['coffee','قهوه'],['tea','چای'],['juice','آبمیوه'],['water','آب'],['soup','سوپ'],['pizza','پیتزا'],['hamburger','همبرگر'],['sandwich','ساندویچ'],['falafel','فلافل'],['hummus','حمص'],['sausage','سوسیس'],['mayonnaise','مایونز'],['ketchup','کچاپ'],['mustard','خردل'],['vinegar','سرکه'],['oil','روغن'],['cinnamon','دارچین'],['ginger','زنجبیل'],['turmeric','زردچوبه'],['saffron','زعفران'],['cumin','زیره'],['parsley','جعفری'],['basil','ریحان'],['mint','نعناع'],['dill','شوید'],['coriander','گشنیز'],['raw','خام'],['cooked','پخته'],['boiled','آب پز'],['fried','سرخ شده'],['roasted','برشته'],['dried','خشک'],['canned','کنسروی'],['frozen','منجمد'],['salt','نمک'],
 ]
-export function referenceSearchText(food: ReferenceFood) {
+export function referenceSearchText(food: Pick<ReferenceFood, 'name' | 'id'>) {
   const words = food.name.toLowerCase().split(/[^a-z]+/)
   const aliases = FOOD_SEARCH_ALIASES.filter(([word]) => words.includes(word) || words.includes(`${word}s`)).map(([,fa]) => fa).join(' ')
-  return normalizeFoodSearch(`${food.name} ${food.category} ${aliases} ${food.id}`)
+  return normalizeFoodSearch(`${food.name} ${aliases} ${food.id}`)
 }
 export const REFERENCE_NUTRIENTS = [
   ['calories','انرژی','کیلوکالری'],['protein','پروتئین','گرم'],['carbs','کربوهیدرات','گرم'],['fat','چربی','گرم'],['fiber','فیبر','گرم'],['sugar','قند کل','گرم'],['saturatedFat','چربی اشباع','گرم'],['sodium','سدیم','میلی‌گرم'],['calcium','کلسیم','میلی‌گرم'],['iron','آهن','میلی‌گرم'],['potassium','پتاسیم','میلی‌گرم'],['cholesterol','کلسترول','میلی‌گرم'],['vitaminA','ویتامین A (RAE)','میکروگرم'],['vitaminC','ویتامین C','میلی‌گرم'],['vitaminD','ویتامین D','میکروگرم'],
 ] as const
+
+// Categories are filters, not food-name matches (شیر must not match شیرینی).
+export function createFoodSearchEntry(food: Pick<ReferenceFood, 'name' | 'id'>) {
+  return {
+    words: referenceSearchText(food).split(' '),
+    primary: referenceSearchText({ ...food, name: food.name.split(',')[0] }).split(' '),
+    name: normalizeFoodSearch(food.name),
+  }
+}
+export function scoreFoodSearch(entry: ReturnType<typeof createFoodSearchEntry>, terms: string[]) {
+  if (!terms.length) return 0
+  const matches = (words: string[], term: string) => words.some(word => word === term || (/^[a-z]+$/.test(term) && word.startsWith(term)))
+  if (!terms.every(term => matches(entry.words, term))) return -1
+  return terms.filter(term => matches(entry.primary, term)).length * 10 + (entry.name === terms.join(' ') ? 100 : 0)
+}
+export function foodSearchScore(food: Pick<ReferenceFood, 'name' | 'id'>, query: string) {
+  return scoreFoodSearch(createFoodSearchEntry(food), normalizeFoodSearch(query).split(' ').filter(Boolean))
+}

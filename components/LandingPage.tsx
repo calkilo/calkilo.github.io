@@ -1,3 +1,4 @@
+import { assetUrl, assetSrcSet, assetDimensions } from '../lib/assets'
 import StoreLogo from './StoreLogo'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -107,10 +108,10 @@ function getWebpSource(src: string): string | undefined {
   return src.endsWith('.png') ? src.replace(/\.png$/u, '.webp') : undefined
 }
 
-function OptimizedImage({ alt, src, fetchPriority, ...props }: OptimizedImageProps) {
+function OptimizedImage({ alt, src, srcSet, fetchPriority, ...props }: OptimizedImageProps) {
   const webpSource = getWebpSource(src)
   // eslint-disable-next-line @next/next/no-img-element
-  const image = <img {...props} {...(fetchPriority ? { fetchpriority: fetchPriority } : {})} src={src} alt={alt} />
+  const image = <img {...props} width={assetDimensions(src)?.width ?? props.width} height={assetDimensions(src)?.height ?? props.height} srcSet={assetSrcSet(srcSet)} {...(fetchPriority ? { fetchpriority: fetchPriority } : {})} src={assetUrl(src)} alt={alt} />
 
   if (!webpSource) {
     return image
@@ -118,7 +119,7 @@ function OptimizedImage({ alt, src, fetchPriority, ...props }: OptimizedImagePro
 
   return (
     <picture className="lp-optimized-picture">
-      <source srcSet={webpSource} type="image/webp" />
+      <source srcSet={assetUrl(webpSource)} type="image/webp" />
       {image}
     </picture>
   )
@@ -2019,8 +2020,8 @@ export default function LandingPage({
         imageAlt="Calkilo AI calorie tracking dashboard"
         preloadImagePaths={[
           {
-            src: heroSlides[0].src,
-            srcSet: heroSlides[0].srcSet,
+            src: assetUrl(heroSlides[0].src),
+            srcSet: assetSrcSet(heroSlides[0].srcSet),
             sizes: heroSlides[0].sizes,
             type: 'image/webp',
           },
@@ -2046,7 +2047,7 @@ export default function LandingPage({
       <main id="home">
         <section className="lp-hero">
           <div className="lp-container lp-hero-grid">
-            <div className="lp-hero-copy lp-reveal lp-reveal--left is-visible">
+            <div className="lp-hero-copy">
               <h1>
                 {copy.heroTitleA}
                 {' '}<span>{copy.heroTitleB}</span>
@@ -2057,7 +2058,7 @@ export default function LandingPage({
               <p className="lp-store-note">{language === 'fa' ? 'دانلود رایگان؛ دارای خرید درون‌برنامه‌ای. شرایط دسترسی و قیمت نهایی را در اپ ببینید.' : ts('Free download. In-app purchases available.')}</p>
             </div>
 
-            <div className="lp-hero-media lp-reveal lp-reveal--right is-visible" aria-hidden="true">
+            <div className="lp-hero-media" aria-hidden="true">
               <div className="lp-hero-glow" />
               <div className="lp-hero-orbit lp-hero-orbit--one" />
               <div className="lp-hero-orbit lp-hero-orbit--two" />
@@ -2083,18 +2084,18 @@ export default function LandingPage({
             <div className="lp-ai-screen-wrap lp-reveal lp-reveal--left" aria-hidden="true">
               <div className="lp-ai-screen-glow" />
               <div className="lp-ai-screen-stage">
-                {FEATURE_ITEMS.map((item, index) => (
+                {FEATURE_ITEMS.map((item, index) => activeFeature === index ? (
                   <OptimizedImage
                     key={item.title}
                     src={item.screen}
                     alt={`${ts(item.title)} Calkilo app screen`}
-                    className={`lp-ai-screen${activeFeature === index ? ' is-active' : ''}`}
+                    className="lp-ai-screen is-active"
                     width={index === 0 ? '399' : index === 1 ? '544' : index === 2 ? '491' : '509'}
                     height={index === 3 ? '572' : '576'}
                     loading="lazy"
                     decoding="async"
                   />
-                ))}
+                ) : null)}
               </div>
             </div>
 

@@ -1,3 +1,5 @@
+@import './delivery-fonts.css';
+
 *,
 *::before,
 *::after {
@@ -4606,8 +4608,6 @@ html.lp-motion-ready .lp-reveal.lp-reveal--pop:not(.is-visible) {
 }
 
 /* Shared review release: stable anchors, Persian typography and accessible controls. */
-@font-face { font-family: Vazir; src: url('/fonts/vazir/Vazir-Regular.woff2') format('woff2'); font-style: normal; font-weight: 400; font-display: swap; }
-@font-face { font-family: Vazir; src: url('/fonts/vazir/Vazir-Bold.woff2') format('woff2'); font-style: normal; font-weight: 700; font-display: swap; }
 html { scroll-behavior: auto; }
 [id] { scroll-margin-top: 108px; }
 :focus-visible { outline: 3px solid #087938; outline-offset: 4px; }
@@ -4850,3 +4850,8 @@ html[lang="fa"] body, html[lang="fa"] button, html[lang="fa"] input, html[lang="
 @media(max-width: 500px) { .food-category-links { grid-template-columns: 1fr; } }
 .food-category-disclosure summary { cursor: pointer; padding: 12px 0; font-weight: 700; }
 .food-category-disclosure[open] summary { margin-bottom: 12px; }
+
+/* The first screen must paint immediately, without animation or blur work. */
+.lp-hero-slide.is-active { animation: none; transition: none; transform: none; filter: none; }
+.lp-hero-glow, .lp-hero-orbit { animation: none; }
+#reference-top { scroll-margin-top: 110px; }

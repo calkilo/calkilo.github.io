@@ -34,3 +34,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Generated delivery assets (created by prebuild/predev)
+/public/assets/versioned/
+/public/data/versioned/
+/data/asset-manifest.json
+/data/food-delivery.json
+/styles/delivery-fonts.css
+__pycache__/

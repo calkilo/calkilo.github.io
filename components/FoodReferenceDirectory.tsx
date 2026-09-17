@@ -1,36 +1,43 @@
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
-import ReferenceDetails from './ReferenceFoodNutrition'
+import LazyReferenceDetails from './LazyReferenceDetails'
+import delivery from '../data/food-delivery.json'
 import { referenceFoodPath } from '../lib/food-reference-routes.mjs'
-import { normalizeFoodSearch, referenceSearchText, type ReferenceFood } from '../lib/food-reference'
+import { createFoodSearchEntry, scoreFoodSearch, normalizeFoodSearch, type ReferenceFood } from '../lib/food-reference'
 
 const format = (n: number) => new Intl.NumberFormat('fa-IR', { maximumFractionDigits: 2 }).format(n)
 const PAGE_SIZE = 24
+type Summary = Pick<ReferenceFood, 'id' | 'name' | 'category' | 'calories' | 'protein'> & { detailUrl: string }
+type SearchIndex = { categories: string[]; details: string[]; rows: [number, string, number, number, number | null][] }
 
 
 export default function FoodReferenceDirectory() {
-  const [records, setRecords] = useState<ReferenceFood[]>([])
+  const [records, setRecords] = useState<Summary[]>([])
   const [status, setStatus] = useState<'loading'|'ready'|'error'>('loading')
   const [attempt, setAttempt] = useState(0)
   const [query,setQuery] = useState('')
   const [category,setCategory] = useState('همه')
   const [sort,setSort] = useState('name')
   const [page,setPage] = useState(1)
+  const [opened, setOpened] = useState<Record<number, boolean>>({})
   useEffect(() => {
     const controller = new AbortController()
     setStatus('loading')
-    fetch('/data/usda-foods.json', { signal: controller.signal }).then(r => { if (!r.ok) throw new Error('load'); return r.json() }).then(data => {
-      if (!Array.isArray(data.foods) || data.foods.length !== data.count) throw new Error('invalid catalogue')
-      setRecords(data.foods); setStatus('ready')
+    fetch(delivery.index, { signal: controller.signal }).then(r => { if (!r.ok) throw new Error('load'); return r.json() }).then((data: SearchIndex) => {
+      if (!Array.isArray(data.rows) || !Array.isArray(data.categories) || !Array.isArray(data.details)) throw new Error('invalid catalogue')
+      setRecords(data.rows.map(([id,name,group,calories,protein]) => ({id,name,category:data.categories[group],calories,protein,detailUrl:data.details[group]}))); setStatus('ready')
     }).catch(() => { if (!controller.signal.aborted) setStatus('error') })
     return () => controller.abort()
   },[attempt])
-  const index = useMemo(() => records.map(food => ({ food, text: referenceSearchText(food) })),[records])
+  const index = useMemo(() => records.map(food => ({food, entry:createFoodSearchEntry(food)})),[records])
   const categories = useMemo(() => ['همه', ...Array.from(new Set(records.map(f => f.category))).sort((a,b) => a.localeCompare(b,'fa'))],[records])
   const filtered = useMemo(() => {
     const terms = normalizeFoodSearch(query).split(' ').filter(Boolean)
-    return index.filter(({food,text}) => (category === 'همه' || food.category === category) && terms.every(t => text.includes(t))).map(r => r.food)
-      .sort((a,b) => sort === 'calories' ? a.calories-b.calories : sort === 'protein' ? (b.protein ?? -1)-(a.protein ?? -1) : a.name.localeCompare(b.name))
+    return index.filter(({food}) => category === 'همه' || food.category === category)
+      .map(({food,entry}) => ({ food, score: scoreFoodSearch(entry, terms) }))
+      .filter(item => item.score >= 0)
+      .sort((a,b) => sort === 'calories' ? a.food.calories-b.food.calories : sort === 'protein' ? (b.food.protein ?? -1)-(a.food.protein ?? -1) : b.score-a.score || a.food.name.localeCompare(b.food.name))
+      .map(item => item.food)
   },[index,query,category,sort])
   const pages = Math.max(1,Math.ceil(filtered.length/PAGE_SIZE))
   const changePage = (next: number) => { setPage(next); document.getElementById('reference-top')?.scrollIntoView({ block:'start' }) }
@@ -45,7 +52,7 @@ export default function FoodReferenceDirectory() {
         <label htmlFor="reference-sort">مرتب‌سازی<select id="reference-sort" value={sort} onChange={e=>{setSort(e.target.value);setPage(1)}}><option value="name">نام اصلی</option><option value="calories">کالری کمتر</option><option value="protein">پروتئین بیشتر</option></select></label>
       </div>
       <p role="status">{format(filtered.length)} نتیجه · کالری در ۱۰۰ گرم · صفحه {format(page)} از {format(pages)}</p>
-      <div className="food-directory-grid reference-grid">{filtered.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE).map(food=><details className="food-directory-card reference-card" key={food.id}><summary><span className="food-category">{food.category}</span><h3 dir="ltr" lang="en">{food.name}</h3><p><strong>{format(food.calories)}</strong> کیلوکالری</p><span className="food-card-link">ارزش غذایی و محاسبه وعده</span></summary><p><Link href={referenceFoodPath(food)} prefetch={false}>صفحه کامل کالری و ارزش غذایی ←</Link></p><ReferenceDetails food={food} /></details>)}</div>
+      <div className="food-directory-grid reference-grid">{filtered.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE).map(food=><details className="food-directory-card reference-card" key={food.id} onToggle={event => { const open = event.currentTarget.open; setOpened(value => ({...value,[food.id]:open})) }}><summary><span className="food-category">{food.category}</span><h3 dir="ltr" lang="en">{food.name}</h3><p><strong>{format(food.calories)}</strong> کیلوکالری</p><span className="food-card-link">ارزش غذایی و محاسبه وعده</span></summary><p><Link href={referenceFoodPath(food)} prefetch={false}>صفحه کامل کالری و ارزش غذایی ←</Link></p>{opened[food.id] && <LazyReferenceDetails id={food.id} url={food.detailUrl} />}</details>)}</div>
       {!filtered.length && <div className="food-empty"><p>غذایی پیدا نشد. نام کوتاه‌تر یا نام انگلیسی را امتحان کنید.</p><button className="lp-btn lp-btn--solid" onClick={()=>{setQuery('');setCategory('همه');setPage(1)}}>نمایش همه غذاها</button></div>}
       {pages > 1 && <nav className="reference-pagination" aria-label="صفحه‌های غذا"><button className="lp-btn fa-secondary" disabled={page===1} onClick={()=>changePage(page-1)}>صفحه قبل</button><span>{format(page)} / {format(pages)}</span><button className="lp-btn fa-secondary" disabled={page===pages} onClick={()=>changePage(page+1)}>صفحه بعد</button></nav>}
     </>}
