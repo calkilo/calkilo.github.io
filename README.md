@@ -2,15 +2,15 @@
 
 Public website for [Calkilo](https://calkilo.com), an AI-assisted calorie and nutrition tracking application.
 
-The site is built with Next.js and exported as static HTML for GitHub Pages. It includes localized product pages, nutrition tools, SEO landing pages, food examples, and blog content fetched from the Calkilo API during the build.
+The site is built with Next.js and exported as static HTML served by Nginx on the Calkilo server. It includes localized product pages, nutrition tools, SEO landing pages, food examples, and blog content fetched from the Calkilo API during the build.
 
 ## Technology
 
-- Next.js 14 Pages Router
+- Next.js 16 Pages Router
 - React 18
 - TypeScript
 - Static HTML export
-- GitHub Pages deployment through GitHub Actions
+- SSH deployment through GitHub Actions
 - Google Analytics 4
 
 ## Supported languages
@@ -31,7 +31,7 @@ Persian and Arabic pages use right-to-left layout automatically.
 
 Requirements:
 
-- Node.js 18 or newer
+- Node.js 22
 - npm
 - Network access to the blog API when generating blog pages
 
@@ -92,7 +92,7 @@ public/                  Static assets, CNAME, robots.txt, and sitemaps
 scripts/                 Build-time scripts, including blog sitemap generation
 styles/                  Global site styles
 reports/                 SEO analysis and operational runbooks
-.github/workflows/       GitHub Pages deployment workflow
+.github/workflows/       Server deployment workflow
 ```
 
 Important content sources:
@@ -111,7 +111,7 @@ The `prebuild` script also regenerates `public/blog-sitemap.xml`. As a result:
 
 - New posts appear after the next successful deployment.
 - The build environment must be able to reach the blog API.
-- A blog post is not available on GitHub Pages until a new build is deployed.
+- A blog post is not available on the server until a new build is deployed.
 - Changes to `public/blog-sitemap.xml` after a build are expected when the API contains new or updated posts.
 
 ## SEO conventions
@@ -127,73 +127,92 @@ The `prebuild` script also regenerates `public/blog-sitemap.xml`. As a result:
 
 See [the Search Console optimization runbook](reports/gsc-optimization-runbook-2026-08-11.md) for post-deployment measurement and cannibalization checks.
 
-## GitHub Pages deployment
+## Server deployment
 
-Pushes to `main` or `master` trigger `.github/workflows/deploy.yml`.
+Pushes to `main` or `master`, or a manual workflow dispatch, run `.github/workflows/deploy.yml`.
+The workflow installs dependencies, lints, builds the static export, and runs both SEO audits.
+Only a successful build is uploaded over SSH to the production server. No Node.js process is
+needed on the server.
 
-The workflow:
+Repository configuration in **Settings → Secrets and variables → Actions**:
 
-1. Installs dependencies with `npm ci`.
-2. Runs the production build.
-3. Adds `out/.nojekyll` so GitHub Pages serves `_next` assets.
-4. Verifies the root document, 404 page, custom domain, assets, and key routes.
-5. Uploads `out/` as the Pages artifact.
-6. Deploys the artifact to the `github-pages` environment.
+| Type | Name | Value |
+| --- | --- | --- |
+| Variable | `DEPLOY_HOST` | Public server IP, currently `65.109.193.193` (the local alias `calkilo` will not resolve on GitHub runners) |
+| Secret | `DEPLOY_SSH_KEY` | Dedicated Ed25519 private key authorized for `calkilo-web` |
+| Secret | `DEPLOY_KNOWN_HOSTS` | Verified SSH host key line for the server IP |
 
-The custom domain is declared in `public/CNAME` and must contain exactly:
+Deployments use the `production` GitHub environment. The deployment user owns only
+`/var/www/calkilo-landing` and does not need sudo. SSH host verification is mandatory;
+the workflow never uses a root password.
 
-```text
-calkilo.com
+### Server layout and activation
+
+- `incoming/`: uploads in progress.
+- `releases/`: complete versioned exports; the latest five plus the previous release are retained.
+- `current`: atomically replaced symlink to the active release.
+- `assets/`: retained immutable Next.js chunks, allowing already-open pages to keep working after deployment. Monitor disk usage; these assets are not automatically deleted.
+
+`deploy/activate-release.sh` verifies the upload, switches the symlink, then checks the origin's
+homepage, contact page, Persian homepage, robots file, and release marker. A failed health
+check restores the previous symlink and fails the workflow. Upload failures leave the active
+release untouched. IndexNow notification runs after a successful deployment.
+
+### Nginx, DNS, and HTTPS
+
+`deploy/nginx.conf` is the initial HTTP configuration, installed at
+`/etc/nginx/sites-available/calkilo-landing` and enabled in `sites-enabled`.
+It serves trailing-slash routes, real 404 responses, and long-lived hashed assets.
+The API's existing Nginx configuration stays separate.
+
+Point the Cloudflare A record for `calkilo.com` to `65.109.193.193`, and point `www` to
+the same origin if used. Remove conflicting GitHub Pages A/AAAA/CNAME records. For initial
+certificate issuance, use DNS-only mode and ensure port 80 is reachable, then run:
+
+```bash
+ssh root@calkilo 'certbot --nginx --no-redirect -d calkilo.com -d www.calkilo.com'
 ```
 
-In repository settings, **Settings → Pages → Build and deployment → Source** must be set to **GitHub Actions**.
+Omit `www` if it is not configured. Keep HTTP available for local deployment health checks.
+After HTTPS works, Cloudflare proxying can be enabled with **Full (strict)** SSL/TLS and
+**Always Use HTTPS**. Certbot manages certificate renewal. Do not overwrite its resulting
+TLS configuration with the initial HTTP template on subsequent deployments.
 
-## Pre-deployment checklist
+`public/CNAME` is a historical static file and does not control server routing.
+GitHub Pages can be disabled in repository settings after the DNS migration is verified.
 
-Run these checks before pushing:
+### Verification and rollback
 
 ```bash
 npm run lint
 npm run build
-touch out/.nojekyll
-test -f out/index.html
-test -f out/404.html
-test -f out/CNAME
-grep -qx 'calkilo.com' out/CNAME
-test -d out/_next
-test -f out/contact/index.html
-test -f out/faq/index.html
+npm run seo:audit
+npm run seo:food-audit
+curl --fail https://calkilo.com/deployment.txt
 ```
 
-After deployment, verify:
+Check localized pages, `/_next/` assets, sitemap files, and a nonexistent route (HTTP 404).
+The deployment marker contains the commit SHA, workflow run ID, and attempt number.
 
-- `https://calkilo.com/` returns HTTP 200.
-- CSS and JavaScript under `/_next/` load successfully.
-- `https://calkilo.com/robots.txt` and both sitemaps are accessible.
-- English, Persian, and Italian canonical and `hreflang` tags are correct.
-- The latest GitHub Actions deployment completed successfully.
+For manual rollback, select a directory from `/var/www/calkilo-landing/releases`, then
+run as `calkilo-web` on the server, replacing `RELEASE_ID` with that directory name:
 
-## Troubleshooting
+```bash
+cd /var/www/calkilo-landing
+flock .deploy.lock bash -c 'ln -s "$PWD/releases/RELEASE_ID" current.rollback && mv -Tf current.rollback current'
+```
 
-### GitHub Pages shows “File not found”
+### Troubleshooting
 
-Confirm that the workflow completed and that the uploaded artifact contains `out/index.html`. A normal server-mode Next.js build only produces `.next/`; this repository must retain `output: 'export'` in `next.config.mjs`.
-
-### Pages build fails before upload
-
-Review the failed workflow step. If `out/` is missing, the static export did not complete. If generation fails on a blog route, verify blog API availability and ensure dynamic pages use `getStaticPaths` and `getStaticProps` rather than server-side rendering.
-
-### A new blog post returns 404
-
-Run and deploy a new build. GitHub Pages cannot render new dynamic routes at request time.
-
-### The custom domain stops resolving
-
-Check `public/CNAME`, the repository Pages settings, and the DNS records for `calkilo.com`. Avoid deleting the custom domain from Pages settings while a deployment is in progress.
+If SSH fails, check the repository secrets, host IP, authorized key, and port 22 reachability.
+If the build fails, inspect the lint or SEO audit output and blog API connectivity.
+New blog posts require another static build and deployment.
+If origin health checks fail, inspect the Nginx site configuration and `current` symlink;
+HTTP requests with `Host: calkilo.com` to `127.0.0.1` must serve the site without a redirect.
 
 ## Contribution notes
 
 - Preserve existing localization and RTL behavior when editing shared components.
-- Do not introduce server-only routes; GitHub Pages supports static files only.
+- Do not introduce server-only routes; this deployment serves a static export.
 - Keep unrelated generated or user changes intact.
 - Run lint and a full static build before opening a pull request or pushing to production.
