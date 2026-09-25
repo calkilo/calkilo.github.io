@@ -158,6 +158,7 @@ for (const relativePath of exportedFiles.filter((path) => path.endsWith('.html')
 }
 
 const checkedAssetReferences = new Set()
+const deliveryAssets = JSON.parse(await readFile(join(projectRoot, 'data', 'asset-manifest.json'), 'utf8'))
 for (const relativePath of exportedFiles.filter((path) => /\.(?:css|html|js|json)$/iu.test(path))) {
   const content = await readFile(join(outputRoot, relativePath), 'utf8')
   const assetReferences = Array.from(
@@ -166,10 +167,14 @@ for (const relativePath of exportedFiles.filter((path) => /\.(?:css|html|js|json
   )
 
   for (const reference of assetReferences) {
-    if (checkedAssetReferences.has(reference)) continue
-    checkedAssetReferences.add(reference)
+    const referenceKey = `${relativePath.endsWith('.js') ? 'js' : 'rendered'}:${reference}`
+    if (checkedAssetReferences.has(referenceKey)) continue
+    checkedAssetReferences.add(referenceKey)
     const referencePath = normalizePathname(reference)
     if (!(await fileExists(outputFileForPath(referencePath)))) {
+      // JS retains logical asset keys; rendered URLs must always exist directly.
+      const deliveredPath = relativePath.endsWith('.js') && deliveryAssets[referencePath]?.url
+      if (deliveredPath && await fileExists(outputFileForPath(deliveredPath))) continue
       errors.push(`${relativePath}: unresolved generated asset reference ${reference}`)
     }
   }

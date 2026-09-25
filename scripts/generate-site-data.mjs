@@ -16,6 +16,7 @@ const staticSitemapPath = fileURLToPath(new URL('../public/sitemap.xml', import.
 const llmsPath = fileURLToPath(new URL('../public/llms.txt', import.meta.url))
 const redirectsPath = fileURLToPath(new URL('../public/_redirects', import.meta.url))
 const MAX_PAGES = 20
+const seoRedirects = JSON.parse(await readFile(new URL('../data/seo-redirects.json', import.meta.url), 'utf8'))
 const MAX_RETRIES = 8
 const DETAIL_CONCURRENCY = 1
 
@@ -340,6 +341,10 @@ function buildRedirects(manifestLanguages) {
     '/contact /contact/ 301',
     '/contact.html /contact/ 301',
     '/faq.html /faq/ 301',
+    ...Object.entries(seoRedirects).flatMap(([from, to]) => [
+      `${from} ${to} 301`,
+      `${from.slice(0, -1)} ${to} 301`,
+    ]),
   ]
 
   for (const language of SITE_LANGUAGES) {
@@ -371,6 +376,7 @@ if (process.env.CALKILO_OFFLINE_BUILD === '1') {
   }
   await writeFile(staticSitemapPath, buildStaticSitemap(), 'utf8')
   await writeFile(llmsPath, buildLlmsText(), 'utf8')
+  await writeFile(redirectsPath, buildRedirects(previousManifest.languages), 'utf8')
   console.log('Offline review build: retaining checked-in blog data and regenerating static discovery files.')
   process.exit(0)
 }

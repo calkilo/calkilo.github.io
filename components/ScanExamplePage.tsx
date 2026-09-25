@@ -153,7 +153,7 @@ export default function ScanExamplePage({ example }: ScanExamplePageProps) {
         navItems={[
           { key: 'home', href: '/fa/', label: 'خانه' },
           { key: 'photo', href: '/fa/photo-calorie-calculator/', label: 'کالری با عکس' },
-          { key: 'scanner', href: '/fa/food-calorie-scanner/', label: 'اسکن غذا' },
+          { key: 'foods', href: '/fa/calories/', label: 'بانک غذا' },
           { key: 'contact', href: '/fa/contact/', label: 'تماس' },
         ]}
         onLanguageChange={(nextLanguage) => {
@@ -180,7 +180,7 @@ export default function ScanExamplePage({ example }: ScanExamplePageProps) {
                     {index === 0 ? 'اسکن در Cafe Bazaar' : 'اسکن در Myket'}
                   </a>
                 ))}
-                <Link className="lp-btn lp-resource-btn-secondary" href="/fa/food-calorie-scanner/">
+                <Link className="lp-btn lp-resource-btn-secondary" href="/fa/photo-calorie-calculator/">
                   راهنمای اسکن غذا
                 </Link>
               </div>

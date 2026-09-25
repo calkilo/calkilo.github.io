@@ -36,6 +36,11 @@ export default function FoodCaloriePage({ food, reference }: FoodCaloriePageProp
   const title = `کالری ${food.nameFa} در ۱۰۰ گرم و هر وعده | کالکیلو`
   const description = `کالری ${food.nameFa}: ${formatMacro(calories ?? 0)} کیلوکالری در ۱۰۰ گرم ${nutrition ? 'نمونه مرجع؛ جدول پروتئین، چربی و کربوهیدرات' : 'بر اساس تخمین آشپزی؛ وابسته به دستور غذا'}. محاسبه وزن وعده، روش آماده‌سازی و منبع عدد را ببینید.`
   const heading = `کالری ${food.nameFa} چقدر است؟`
+  const portions = food.slug === 'falafel'
+    ? [{ label: 'یک عدد با وزن فرضی ۲۰ گرم', grams: 20 }, { label: 'یک عدد با وزن فرضی ۳۰ گرم', grams: 30 }, { label: '۴ عدد ۲۵ گرمی، بدون نان و سس', grams: 100 }]
+    : food.slug === 'pizza'
+      ? [{ label: 'یک برش با وزن فرضی ۸۰ گرم', grams: 80 }, { label: 'یک برش با وزن فرضی ۱۲۰ گرم', grams: 120 }, { label: 'دو برش ۱۰۰ گرمی', grams: 200 }]
+      : []
   const faqItems = [
     {
       question: `کالری ${food.nameFa} در هر 100 گرم چقدر است؟`,
@@ -161,7 +166,7 @@ export default function FoodCaloriePage({ food, reference }: FoodCaloriePageProp
         navItems={[
           { key: 'home', href: '/fa/', label: 'خانه' },
           { key: 'photo', href: '/fa/photo-calorie-calculator/', label: 'کالری با عکس' },
-          { key: 'scanner', href: '/fa/food-calorie-scanner/', label: 'اسکن غذا' },
+          { key: 'foods', href: '/fa/calories/', label: 'بانک غذا' },
           { key: 'contact', href: '/fa/contact/', label: 'تماس' },
         ]}
         onLanguageChange={(nextLanguage) => {
@@ -175,6 +180,13 @@ export default function FoodCaloriePage({ food, reference }: FoodCaloriePageProp
             <div className="lp-static-hero-inner">
               <nav className="food-breadcrumb" aria-label="مسیر صفحه"><Link href="/fa/">خانه</Link><span aria-hidden="true"> / </span><Link href="/fa/calories/">کالری غذاها</Link><span aria-hidden="true"> / </span><span>{food.nameFa}</span></nav>
               <h1>{heading}</h1>
+              {nutrition && portions.length > 0 && <section className="lp-food-answer" aria-label="کالری هر عدد یا برش">
+                <h2>{food.slug === 'falafel' ? 'هر عدد فلافل چند کالری دارد؟' : 'هر برش پیتزا چند کالری دارد؟'}</h2>
+                <p>در ۱۰۰ گرم نمونه مرجع، {formatMacro(nutrition.caloriesPer100g)} کیلوکالری وجود دارد. وزن‌های زیر مثال محاسباتی هستند؛ اندازه استاندارد هر قطعه یا برش نیستند.</p>
+                <ul className="lp-policy-list">{portions.map(portion => <li key={portion.grams}>{portion.label}: <strong>{formatMacro(Math.round(nutrition.caloriesPer100g * portion.grams / 100))} کیلوکالری</strong></li>)}</ul>
+                <p>فرمول: کالری در ۱۰۰ گرم × وزن مصرفی ÷ ۱۰۰. نان، نوشیدنی و سس اضافه جدا محاسبه می‌شوند. برای وزن واقعی، از جدول محاسبه وعده در ادامه استفاده کنید.</p>
+                <p><a href={nutrition.sourceUrl}>{nutrition.sourceLabel}</a> · مثال‌های وزن محاسبه‌شده در ۳ مهر ۱۴۰۵ (۲۵ سپتامبر ۲۰۲۶).</p>
+              </section>}
               {nutrition ? <section className="lp-food-answer" aria-label="ارزش غذایی و منبع">
                 <p className="lp-food-source">{nutrition.preparation}</p>
                 <div className="lp-food-stat-grid">

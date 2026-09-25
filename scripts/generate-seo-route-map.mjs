@@ -34,6 +34,8 @@ function localeFor(pathname, html) {
 }
 
 function intentFor(pathname) {
+  if (pathname === '/fa/') return 'Online food and portion calculator; app and tool hub'
+  if (pathname.includes('ai-calorie-tracker')) return 'Daily food diary and macro tracking in the app'
   if (pathname === '/' || /^\/(?:nl|ru|zh|ar|fa|it)\/$/u.test(pathname)) return 'Product overview and app download'
   if (pathname.includes('/blog/')) return pathname.endsWith('/blog/') ? 'Nutrition article discovery' : 'Nutrition education article'
   if (pathname.includes('/calories/')) return 'Persian food calorie reference'
@@ -108,7 +110,7 @@ for (const url of urls) {
     internalLinks.size,
     'Next.js static export (SSG/prerendered HTML)',
     redirectSources.join(' | '),
-    'Keep; no consolidation proposed without query-by-page evidence',
+    redirectSources.length ? 'Canonical destination; preserve merged guide content and track combined traffic' : 'Canonical page; distinct user task',
   ])
 }
 

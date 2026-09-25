@@ -62,7 +62,7 @@ export default function PersianHomeContent({ titleA, titleB }: { titleA: string;
       {faqs.map(([question,answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}
       <p><Link href="/fa/privacy-policy/">سیاست حریم خصوصی</Link> · <Link href="/fa/account-deletion/">حذف حساب و داده‌ها</Link> · <Link href="/fa/contact/">پشتیبانی</Link></p>
     </section>
-    <section id="guides" className="fa-section lp-container"><p className="fa-eyebrow">برای ثبت آگاهانه‌تر</p><h2>راهنماهای کاربردی</h2><div className="fa-guide-links"><Link href="/fa/photo-calorie-calculator/">محاسبه کالری با عکس ←</Link><Link href="/fa/food-calorie-scanner/">عکس مناسب برای تحلیل غذا ←</Link><Link href="/fa/blog/">مقاله‌های تغذیه و ثبت غذا ←</Link></div></section>
+    <section id="guides" className="fa-section lp-container"><p className="fa-eyebrow">برای ثبت آگاهانه‌تر</p><h2>راهنماهای کاربردی</h2><div className="fa-guide-links"><Link href="/fa/photo-calorie-calculator/">محاسبه کالری با عکس ←</Link><Link href="/fa/photo-calorie-calculator/">عکس مناسب برای تحلیل غذا ←</Link><Link href="/fa/blog/">مقاله‌های تغذیه و ثبت غذا ←</Link></div></section>
     <section id="download" className="fa-section fa-download" data-cta-location="download"><div className="lp-container"><p className="fa-eyebrow">اولین وعده‌ات را ثبت کن</p><h2>کالکیلو را دریافت کن</h2><p>اپ را باز کن، از غذا عکس بگیر و نتیجه را بررسی کن.</p><PersianStoreLinks location="download" /><p className="fa-download-note">دانلود رایگان؛ دارای خرید درون‌برنامه‌ای</p></div></section>
   </main>
 }

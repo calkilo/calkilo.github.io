@@ -127,6 +127,8 @@ The `prebuild` script also regenerates `public/blog-sitemap.xml`. As a result:
 
 See [the Search Console optimization runbook](reports/gsc-optimization-runbook-2026-08-11.md) for post-deployment measurement and cannibalization checks.
 
+The [September 25 recovery implementation](docs/seo-recovery-2026-09-25.md) defines the current page roles and six consolidated guide redirects. `/fa/` includes a browser portion calculator and meal total. `data/seo-redirects.json` drives the permanent redirect rules; retired pages are excluded from discovery and internal links. `npm run seo:audit` verifies this contract. Use the comparison instructions in that document for the next Search Console exports.
+
 ## Server deployment
 
 Pushes to `main` or `master`, or a manual workflow dispatch, run `.github/workflows/deploy.yml`.

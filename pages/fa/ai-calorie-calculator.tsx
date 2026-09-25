@@ -1,7 +1,5 @@
-import ResourcePage from '../../components/ResourcePage'
-import { SEO_LANDING_PAGES } from '../../lib/seo-landing-pages'
+import ConsolidatedPage from '../../components/ConsolidatedPage'
 
-export default function PersianAiCalorieCalculatorPage() {
-  return <ResourcePage page={SEO_LANDING_PAGES['fa-ai-calorie-calculator']} lang="fa" />
+export default function Page() {
+  return <ConsolidatedPage path="/fa/ai-calorie-calculator/" />
 }
-

@@ -34,8 +34,7 @@ Calkilo is available for iOS and Android. It supports English, Persian, Italian,
 - [Food data sources](https://calkilo.com/fa/calories/sources/): Data provenance, historical reference version, units, missing values and portion calculation methodology.
 - [Persian homepage](https://calkilo.com/fa/): Persian-language product overview.
 - [Persian photo calorie calculator](https://calkilo.com/fa/photo-calorie-calculator/): Persian guide to photo calorie estimation.
-- [Persian AI calorie calculator](https://calkilo.com/fa/ai-calorie-calculator/): How AI creates an editable nutrition estimate.
-- [Persian food calorie scanner](https://calkilo.com/fa/food-calorie-scanner/): Food-camera workflow and its limitations.
+- [Persian daily tracker](https://calkilo.com/fa/ai-calorie-tracker/): Review daily calorie and macro records in the app.
 - [Kebab calorie example](https://calkilo.com/fa/calories/kebab/): Example nutrition ranges and portion factors for kebab.
 - [Rice calorie example](https://calkilo.com/fa/calories/rice/): Example nutrition ranges and portion factors for rice.
 

@@ -1,5 +1,6 @@
 import { assetUrl, assetSrcSet, assetDimensions } from '../lib/assets'
 import StoreLogo from './StoreLogo'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useMemo, useState, type CSSProperties, type ImgHTMLAttributes } from 'react'
@@ -43,12 +44,13 @@ interface HeroSlide {
 }
 
 const EMPTY_BLOG_POSTS: BlogPost[] = []
+const PersianCalorieHub = dynamic(() => import('./PersianCalorieHub'))
 
 const FIGMA_ASSETS = {
-  heroSlideOne: '/assets/figma/9d9b9498b6a18bddd5bf8497bbfeac1152b019f0.webp',
-  heroSlideOne520: '/assets/figma/9d9b9498b6a18bddd5bf8497bbfeac1152b019f0-520.webp',
-  heroSlideOne700: '/assets/figma/9d9b9498b6a18bddd5bf8497bbfeac1152b019f0-700.webp',
-  heroSlideOne960: '/assets/figma/9d9b9498b6a18bddd5bf8497bbfeac1152b019f0-960.webp',
+  heroSlideOne: '/assets/figma/9d9b9498b6a18bddd5bf8497bbfeac1152b019f0.avif',
+  heroSlideOne520: '/assets/figma/9d9b9498b6a18bddd5bf8497bbfeac1152b019f0-520.avif',
+  heroSlideOne700: '/assets/figma/9d9b9498b6a18bddd5bf8497bbfeac1152b019f0-700.avif',
+  heroSlideOne960: '/assets/figma/9d9b9498b6a18bddd5bf8497bbfeac1152b019f0-960.avif',
   heroSlideTwoLight: '/assets/figma/65a641bda519c280d8c60b43b9194d73157d5c50.webp',
   heroSlideTwoLight520: '/assets/figma/65a641bda519c280d8c60b43b9194d73157d5c50-520.webp',
   heroSlideTwoLight760: '/assets/figma/65a641bda519c280d8c60b43b9194d73157d5c50-760.webp',
@@ -424,8 +426,8 @@ const TRANSLATIONS: Record<
   },
   fa: {
     pageDescription:
-      'دانلود Calkilo رایگان است و خرید درون‌برنامه‌ای دارد؛ غذا را ثبت کنید، کالری و ماکروها را ببینید و از تحلیل عکس کمک بگیرید.',
-    pageTitle: 'کالری شمار آنلاین غذا با دانلود رایگان | کالکیلو',
+      'بدون نصب، غذا و وزن وعده را انتخاب کنید و کالری را آنلاین جمع بزنید. بانک کالری غذاها، ابزار نیاز روزانه و ثبت عکس در اپ کالکیلو.',
+    pageTitle: 'کالری شمار آنلاین رایگان | محاسبه کالری غذا و وعده - کالکیلو',
     darkThemeLabel: 'حالت تیره',
     nav: { home: 'خانه', features: 'امکانات', pricing: 'اشتراک', blog: 'راهنماها', contact: 'پشتیبانی' },
     tryFree: 'رایگان شروع کنید',
@@ -472,12 +474,12 @@ const TRANSLATIONS: Record<
   it: {
     pageDescription:
       'Scatta una foto del pasto e calcola calorie, macro e nutrizione con AI. Calkilo ti aiuta a registrare il diario alimentare su iPhone e Android.',
-    pageTitle: 'Calcolo calorie AI da foto | Calkilo',
+    pageTitle: 'Calkilo: app per calorie, macro e diario alimentare',
     darkThemeLabel: 'Tema scuro',
     nav: { home: 'Home', features: 'Funzioni', pricing: 'Scegli piano', blog: 'Blog', contact: 'Contatto' },
     tryFree: 'Provalo gratis',
-    heroTitleA: 'Calcolo calorie AI',
-    heroTitleB: 'da foto',
+    heroTitleA: 'Il tuo diario alimentare',
+    heroTitleB: 'con Calkilo',
     heroDescription:
       'Scatta una foto del tuo pasto e ottieni una stima di calorie, proteine, carboidrati e grassi. Rivedi il risultato, salva il pasto e mantieni il diario alimentare senza inserimenti manuali lunghi.',
     availableOn: 'Disponibile su:',
@@ -2023,7 +2025,7 @@ export default function LandingPage({
             src: assetUrl(heroSlides[0].src),
             srcSet: assetSrcSet(heroSlides[0].srcSet),
             sizes: heroSlides[0].sizes,
-            type: 'image/webp',
+            type: 'image/avif',
           },
         ]}
         jsonLd={landingJsonLd}
@@ -2053,6 +2055,7 @@ export default function LandingPage({
                 {' '}<span>{copy.heroTitleB}</span>
               </h1>
               <p>{copy.heroDescription}</p>
+              {language === 'fa' && <p><a className="lp-btn lp-btn--solid" href="#online-calorie-counter">محاسبه آنلاین کالری غذا</a></p>}
               <div className="lp-store-label">{copy.availableOn}</div>
               <StoreButtons language={language} />
               <p className="lp-store-note">{language === 'fa' ? 'دانلود رایگان؛ دارای خرید درون‌برنامه‌ای. شرایط دسترسی و قیمت نهایی را در اپ ببینید.' : ts('Free download. In-app purchases available.')}</p>
@@ -2079,6 +2082,7 @@ export default function LandingPage({
           </div>
         </section>
 
+        {language === 'fa' && <PersianCalorieHub />}
         <section className="lp-section lp-ai" id="features">
           <div className="lp-container lp-ai-grid">
             <div className="lp-ai-screen-wrap lp-reveal lp-reveal--left" aria-hidden="true">

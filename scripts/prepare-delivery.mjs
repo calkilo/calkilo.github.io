@@ -34,6 +34,14 @@ async function walk(dir) {
     const file=`${hash(buffer)}${extname(path).toLowerCase()}`
     await writeFile(`${assetRoot}/versioned/${file}`,buffer)
     assets['/'+path.slice(7).replaceAll(' ','%20')]={url:`/assets/versioned/${file}`,...(width?{width,height}:{})}
+    // The hero is discovered in the document head. Supply smaller AVIF variants
+    // at every existing responsive width without changing the layout dimensions.
+    if (/^9d9b949.*\.webp$/.test(entry.name)) {
+      const avif = await sharp(path).avif({ quality: 55, effort: 5 }).toBuffer()
+      const avifFile = `${hash(avif)}.avif`
+      await writeFile(`${assetRoot}/versioned/${avifFile}`, avif)
+      assets[('/'+path.slice(7)).replace(/\.webp$/, '.avif')] = { url: `/assets/versioned/${avifFile}`, width, height }
+    }
   }
 }
 await walk(assetRoot)

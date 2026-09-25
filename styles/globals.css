@@ -4853,5 +4853,12 @@ html[lang="fa"] body, html[lang="fa"] button, html[lang="fa"] input, html[lang="
 
 /* The first screen must paint immediately, without animation or blur work. */
 .lp-hero-slide.is-active { animation: none; transition: none; transform: none; filter: none; }
+
+#online-calorie-counter { scroll-margin-top: 96px; }
+#online-calorie-counter button { font: inherit; cursor: pointer; }
+#online-calorie-counter .lp-btn { border: 0; }
+#online-calorie-counter button:disabled { opacity: .5; cursor: not-allowed; }
+#online-calorie-counter li button { padding: 6px 12px; margin-inline-start: 8px; border: 1px solid currentColor; border-radius: 8px; background: transparent; color: inherit; }
+#online-calorie-counter output { font-weight: 700; }
 .lp-hero-glow, .lp-hero-orbit { animation: none; }
 #reference-top { scroll-margin-top: 110px; }

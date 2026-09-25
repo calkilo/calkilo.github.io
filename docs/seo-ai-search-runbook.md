@@ -71,6 +71,8 @@ Owner-only steps:
 
 Do not redirect any established Persian photo page until evidence passes this gate:
 
+The September 25 implementation consolidates six guides under the user's instruction to apply the SEO recommendations. Its current mapping, evidence limits and measurement plan are in [the recovery document](seo-recovery-2026-09-25.md). The following gate remains appropriate for any additional consolidation:
+
 1. Export 90 days of query × page data for:
    - `/fa/photo-calorie-calculator/`
    - `/fa/calorie-counter-with-photo/`
@@ -119,4 +121,3 @@ The repository already contains a deduplicated batch submission script and a hos
 ## 10. Rollback
 
 If product facts or pricing are wrong, revert the content release immediately and correct `lib/product-facts.ts` or `lib/pricing.ts` from authoritative product/store evidence. If indexing or traffic drops materially, restore the prior page content and annotations as one release, clear only the affected Cloudflare cache paths, and annotate the date in Search Console. Do not mass-redirect, deindex a language, or alter robots rules as an emergency shortcut.
-

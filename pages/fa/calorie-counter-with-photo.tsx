@@ -1,7 +1,5 @@
-import ResourcePage from '../../components/ResourcePage'
-import { SEO_LANDING_PAGES } from '../../lib/seo-landing-pages'
+import ConsolidatedPage from '../../components/ConsolidatedPage'
 
-export default function PersianCalorieCounterWithPhotoPage() {
-  return <ResourcePage page={SEO_LANDING_PAGES['fa-calorie-counter-with-photo']} lang="fa" />
+export default function Page() {
+  return <ConsolidatedPage path="/fa/calorie-counter-with-photo/" />
 }
-

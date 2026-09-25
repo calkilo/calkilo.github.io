@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs'
 const persianFoodEstimates = JSON.parse(readFileSync(new URL('../data/persian-food-estimates.json', import.meta.url), 'utf8'))
+const seoRedirects = JSON.parse(readFileSync(new URL('../data/seo-redirects.json', import.meta.url), 'utf8'))
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://calkilo.com').replace(/\/+$/u, '')
 
 export const SITE_LANGUAGES = ['en', 'nl', 'ru', 'zh', 'ar', 'fa', 'it']
@@ -67,7 +68,7 @@ export const STATIC_INDEXABLE_PATHS = Array.from(new Set([
   ...englishProductPages,
   ...persianPages,
   ...italianPages,
-]))
+])).filter(path => !seoRedirects[path])
 
 export const LLMS_SECTIONS = [
   {
@@ -107,8 +108,7 @@ export const LLMS_SECTIONS = [
       ['Food data sources', '/fa/calories/sources/', 'Data provenance, historical reference version, units, missing values and portion calculation methodology.'],
       ['Persian homepage', '/fa/', 'Persian-language product overview.'],
       ['Persian photo calorie calculator', '/fa/photo-calorie-calculator/', 'Persian guide to photo calorie estimation.'],
-      ['Persian AI calorie calculator', '/fa/ai-calorie-calculator/', 'How AI creates an editable nutrition estimate.'],
-      ['Persian food calorie scanner', '/fa/food-calorie-scanner/', 'Food-camera workflow and its limitations.'],
+      ['Persian daily tracker', '/fa/ai-calorie-tracker/', 'Review daily calorie and macro records in the app.'],
       ['Kebab calorie example', '/fa/calories/kebab/', 'Example nutrition ranges and portion factors for kebab.'],
       ['Rice calorie example', '/fa/calories/rice/', 'Example nutrition ranges and portion factors for rice.'],
     ],
@@ -127,4 +127,3 @@ export const LLMS_SECTIONS = [
 export function absoluteUrl(path) {
   return `${SITE_URL}${path}`
 }
-

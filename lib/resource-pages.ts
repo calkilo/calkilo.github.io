@@ -518,6 +518,21 @@ export const LOCALIZED_RESOURCE_PAGES: Partial<
       ],
       sections: [
         {
+          title: 'دانلود رایگان، اسکن و استفاده آنلاین چه تفاوتی دارند؟',
+          paragraphs: [
+            'دانلود اپ رایگان است و خرید درون‌برنامه‌ای دارد. پیش از ارسال عکس، تعداد اسکن‌های در دسترس و هزینه اعتبار یا اشتراک را در نسخه نصب‌شده بررسی کنید؛ دانلود رایگان به معنی تحلیل نامحدود رایگان نیست.',
+            'تحلیل عکس در اپ و با اتصال اینترنت انجام می‌شود. برای محاسبه بدون نصب، ابزار کالری شمار آنلاین در صفحه اصلی فارسی، وزن غذا را به کالری تبدیل می‌کند. این ابزار مرورگر عکس را تحلیل نمی‌کند.',
+          ],
+        },
+        {
+          title: 'چطور از غذا عکس بگیریم و نتیجه AI را بررسی کنیم؟',
+          paragraphs: [
+            'تمام وعده، نان و کنارغذا را در یک قاب روشن و بدون تاری نشان دهید. اگر بشقاب چند بخش دارد، اجزا را قابل تشخیص نگه دارید. روغن داخل خورشت یا سس زیر غذا ممکن است در عکس دیده نشود.',
+            'برای برنج و کباب، مقدار برنج پخته و گوشت را جدا بررسی کنید. برای فلافل، تعداد و وزن قطعه‌ها را مشخص کنید و نان و سس ساندویچ را حساب کنید. برای پیتزا، تعداد برش‌ها، ضخامت خمیر و پنیر اضافه را در نظر بگیرید.',
+            'هوش مصنوعی از تصویر یک تخمین می‌سازد؛ وزن دقیق یا ترکیب پنهان را اندازه نمی‌گیرد. پیش از ذخیره، نام غذا، اندازه وعده و اجزای حذف‌شده را اصلاح کنید.',
+          ],
+        },
+        {
           title: 'کالری شمار با عکس چگونه به ثبت روزانه غذا کمک می‌کند؟',
           paragraphs: [
             'در روش‌های قدیمی کالری شماری، باید نام غذا را جست‌وجو کنید، مقدار هر ماده را حدس بزنید و برای غذاهای ترکیبی چند بار ورودی بسازید. وقتی وعده خانگی، رستورانی یا چندلایه باشد، همین فرایند باعث می‌شود بسیاری از کاربران بعد از چند روز پیگیری را رها کنند.',
@@ -593,10 +608,10 @@ export const LOCALIZED_RESOURCE_PAGES: Partial<
     'ai-calorie-tracker': {
       language: 'fa',
       path: '/fa/ai-calorie-tracker/',
-      title: 'کالری شمار هوش مصنوعی رایگان | Calkilo',
+      title: 'ثبت روزانه کالری و ماکروها در اپ | کالکیلو',
       description:
         'کالکیلو یک کالری شمار هوش مصنوعی برای ثبت غذا از روی عکس، پیگیری ماکروها و برنامه‌ریزی وعده‌ها در آیفون و اندروید است.',
-      heading: 'کالری شمار هوش مصنوعی برای ثبت سریع غذا',
+      heading: 'دفتر ثبت روزانه غذا، کالری و ماکروها',
       intro:
         'کالکیلو برای کاربرانی ساخته شده که می‌خواهند کالری و تغذیه را سریع‌تر ثبت کنند، اما هنوز به جزئیات لازم برای تصمیم‌گیری روزانه نیاز دارند. عکس غذا، هوش مصنوعی، ماکروها و هدف‌های تغذیه‌ای در یک مسیر ساده کنار هم قرار می‌گیرند.',
       keywords: [
@@ -757,10 +772,10 @@ export const LOCALIZED_RESOURCE_PAGES: Partial<
     'photo-calorie-calculator': {
       language: 'it',
       path: '/it/photo-calorie-calculator/',
-      title: 'Calcolo calorie da foto gratis con AI | Calkilo',
+      title: 'Calcolo calorie da foto con AI: come funziona | Calkilo',
       description:
-        'Scatta una foto di un pasto reale e stima gratis calorie, proteine, carboidrati e grassi con l’AI; controlla il risultato prima di salvarlo.',
-      heading: 'Calcolo calorie da foto gratis per pasti e snack',
+        'Stima calorie e macro da una foto nell’app Calkilo. Esempi con pasta e pizza, controllo delle porzioni e limiti. Download gratuito; acquisti in-app.',
+      heading: 'Calcolo delle calorie da foto: scatta, controlla e registra',
       intro:
         'Calkilo aiuta a registrare i pasti più velocemente: una foto diventa il punto di partenza per stimare calorie e macronutrienti, controllare la porzione e salvare il risultato nel diario alimentare.',
       keywords: ['calcolo calorie ai', 'calcolo calorie da foto', 'contacalorie con foto', 'app calorie e macro'],
@@ -779,6 +794,20 @@ export const LOCALIZED_RESOURCE_PAGES: Partial<
         },
       ],
       sections: [
+        {
+          title: 'Download gratuito e analisi delle foto: cosa aspettarsi',
+          paragraphs: [
+            'Calkilo si scarica gratuitamente su iPhone e Android e prevede acquisti in-app. Prima di inviare una foto, verifica nell’app le scansioni disponibili e le condizioni di eventuali crediti o abbonamenti. Il download gratuito non equivale a scansioni gratuite illimitate.',
+            'Questa pagina spiega il procedimento: l’analisi avviene nell’app e richiede una connessione internet. Dopo la scansione puoi controllare la stima e registrare il pasto nel diario.',
+          ],
+        },
+        {
+          title: 'Che cosa vede l’AI e che cosa devi controllare tu',
+          paragraphs: [
+            'La foto aiuta a riconoscere gli alimenti visibili, ma non misura il peso e non rivela tutti gli ingredienti. Olio nel sugo, ripieni, zucchero nelle bevande e condimenti sotto il cibo possono sfuggire alla stima.',
+            'Fotografa il piatto intero con una buona luce. Controlla il tipo di alimento, la porzione, i condimenti e gli accompagnamenti prima di salvare. Per la pasta distingui il peso a crudo da quello cotto; per la pizza considera quante fette hai mangiato e gli ingredienti aggiunti.',
+          ],
+        },
         {
           title: 'Quando serve un calcolo calorie da foto',
           paragraphs: [
@@ -857,10 +886,10 @@ export const LOCALIZED_RESOURCE_PAGES: Partial<
     'ai-calorie-tracker': {
       language: 'it',
       path: '/it/ai-calorie-tracker/',
-      title: 'App contacalorie AI gratis: diario e macro | Calkilo',
+      title: 'Diario alimentare: calorie e macro giornaliere | Calkilo',
       description:
-        'Inizia gratis con Calkilo: registra pasti da foto, controlla calorie e macro e segui il diario alimentare su iPhone e Android.',
-      heading: 'App contacalorie AI gratis per il diario alimentare',
+        'Organizza colazione, pranzo, cena e spuntini nel diario Calkilo. Controlla calorie, proteine, carboidrati e grassi. Download gratuito; acquisti in-app.',
+      heading: 'Il diario alimentare per seguire calorie e macro ogni giorno',
       intro:
         'Calkilo combina foto del cibo, stime AI, diario alimentare, macro e pianificazione dei pasti. È pensato per chi vuole tracciare meglio senza passare troppo tempo su inserimenti manuali.',
       keywords: ['app contacalorie ai', 'calcolo calorie ai', 'ai calorie tracker', 'app nutrizione ai'],
@@ -966,26 +995,6 @@ const LOCALIZED_RESOURCE_LINKS: Partial<Record<SiteLanguage, ReadonlyArray<Resou
       description: 'صفحه اصلی محاسبه کالری غذا از روی عکس با هوش مصنوعی Calkilo.',
     },
     {
-      href: '/fa/calorie-counter-with-photo/',
-      label: 'کالری شمار با عکس',
-      description: 'راهنمای کامل استفاده از عکس غذا برای ثبت کالری و درشت‌مغذی‌ها.',
-    },
-    {
-      href: '/fa/free-photo-calorie-calculator/',
-      label: 'کالری شمار با عکس رایگان',
-      description: 'دانلود رایگان، خرید درون‌برنامه‌ای و بررسی محدودیت‌های اسکن در نسخه فعلی.',
-    },
-    {
-      href: '/fa/ai-calorie-calculator/',
-      label: 'هوش مصنوعی کالری شمار',
-      description: 'هوش مصنوعی چگونه از عکس غذا کالری، پروتئین، چربی و کربوهیدرات را تخمین می‌زند.',
-    },
-    {
-      href: '/fa/food-calorie-scanner/',
-      label: 'اسکن کالری غذا',
-      description: 'اسکن غذا با دوربین برای ساخت یک تخمین سریع و قابل بررسی.',
-    },
-    {
       href: '/fa/ai-calorie-tracker/',
       label: 'کالری شمار هوش مصنوعی',
       description: 'چطور کالکیلو ثبت غذا، کالری و ماکروها را با هوش مصنوعی سریع‌تر می‌کند.',
@@ -1011,16 +1020,6 @@ const LOCALIZED_RESOURCE_LINKS: Partial<Record<SiteLanguage, ReadonlyArray<Resou
       href: '/it/ai-calorie-tracker/',
       label: 'App contacalorie AI da foto',
       description: 'Registra i pasti nel diario e monitora calorie, proteine, carboidrati e grassi.',
-    },
-    {
-      href: '/it/calcolo-calorie-con-foto-gratis/',
-      label: 'Calcolo calorie con foto gratis',
-      description: 'Prova il flusso da foto e scopri cosa include l’esperienza gratuita.',
-    },
-    {
-      href: '/it/intelligenza-artificiale-calorie/',
-      label: 'Come l’AI stima le calorie',
-      description: 'Capisci come funziona la stima e quando porzioni o ingredienti richiedono una revisione.',
     },
     {
       href: '/it/',
